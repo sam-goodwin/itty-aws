@@ -68,7 +68,7 @@ export type CassandraClustersDeallocateInput =
   typeof CassandraClustersDeallocateInput.Type;
 
 // Output Schema
-export const CassandraClustersDeallocateOutput = /*@__PURE__*/ Schema.Void;
+export const CassandraClustersDeallocateOutput = Schema.Void;
 export type CassandraClustersDeallocateOutput =
   typeof CassandraClustersDeallocateOutput.Type;
 
@@ -99,7 +99,7 @@ export type CassandraClustersDeleteInput =
   typeof CassandraClustersDeleteInput.Type;
 
 // Output Schema
-export const CassandraClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CassandraClustersDeleteOutput = Schema.Void;
 export type CassandraClustersDeleteOutput =
   typeof CassandraClustersDeleteOutput.Type;
 
@@ -172,7 +172,7 @@ export type CassandraClustersInvokeCommandInput =
   typeof CassandraClustersInvokeCommandInput.Type;
 
 // Output Schema
-export const CassandraClustersInvokeCommandOutput = /*@__PURE__*/ Schema.Void;
+export const CassandraClustersInvokeCommandOutput = Schema.Void;
 export type CassandraClustersInvokeCommandOutput =
   typeof CassandraClustersInvokeCommandOutput.Type;
 
@@ -313,7 +313,7 @@ export type CassandraClustersStartInput =
   typeof CassandraClustersStartInput.Type;
 
 // Output Schema
-export const CassandraClustersStartOutput = /*@__PURE__*/ Schema.Void;
+export const CassandraClustersStartOutput = Schema.Void;
 export type CassandraClustersStartOutput =
   typeof CassandraClustersStartOutput.Type;
 
@@ -538,7 +538,7 @@ export type CassandraDataCentersDeleteInput =
   typeof CassandraDataCentersDeleteInput.Type;
 
 // Output Schema
-export const CassandraDataCentersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CassandraDataCentersDeleteOutput = Schema.Void;
 export type CassandraDataCentersDeleteOutput =
   typeof CassandraDataCentersDeleteOutput.Type;
 
@@ -761,8 +761,7 @@ export type CassandraResourcesDeleteCassandraKeyspaceInput =
   typeof CassandraResourcesDeleteCassandraKeyspaceInput.Type;
 
 // Output Schema
-export const CassandraResourcesDeleteCassandraKeyspaceOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CassandraResourcesDeleteCassandraKeyspaceOutput = Schema.Void;
 export type CassandraResourcesDeleteCassandraKeyspaceOutput =
   typeof CassandraResourcesDeleteCassandraKeyspaceOutput.Type;
 
@@ -796,8 +795,7 @@ export type CassandraResourcesDeleteCassandraTableInput =
   typeof CassandraResourcesDeleteCassandraTableInput.Type;
 
 // Output Schema
-export const CassandraResourcesDeleteCassandraTableOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CassandraResourcesDeleteCassandraTableOutput = Schema.Void;
 export type CassandraResourcesDeleteCassandraTableOutput =
   typeof CassandraResourcesDeleteCassandraTableOutput.Type;
 
@@ -1916,7 +1914,7 @@ export type DatabaseAccountsDeleteInput =
   typeof DatabaseAccountsDeleteInput.Type;
 
 // Output Schema
-export const DatabaseAccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DatabaseAccountsDeleteOutput = Schema.Void;
 export type DatabaseAccountsDeleteOutput =
   typeof DatabaseAccountsDeleteOutput.Type;
 
@@ -1948,8 +1946,7 @@ export type DatabaseAccountsFailoverPriorityChangeInput =
   typeof DatabaseAccountsFailoverPriorityChangeInput.Type;
 
 // Output Schema
-export const DatabaseAccountsFailoverPriorityChangeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DatabaseAccountsFailoverPriorityChangeOutput = Schema.Void;
 export type DatabaseAccountsFailoverPriorityChangeOutput =
   typeof DatabaseAccountsFailoverPriorityChangeOutput.Type;
 
@@ -2481,7 +2478,7 @@ export type DatabaseAccountsOfflineRegionInput =
   typeof DatabaseAccountsOfflineRegionInput.Type;
 
 // Output Schema
-export const DatabaseAccountsOfflineRegionOutput = /*@__PURE__*/ Schema.Void;
+export const DatabaseAccountsOfflineRegionOutput = Schema.Void;
 export type DatabaseAccountsOfflineRegionOutput =
   typeof DatabaseAccountsOfflineRegionOutput.Type;
 
@@ -2512,7 +2509,7 @@ export type DatabaseAccountsOnlineRegionInput =
   typeof DatabaseAccountsOnlineRegionInput.Type;
 
 // Output Schema
-export const DatabaseAccountsOnlineRegionOutput = /*@__PURE__*/ Schema.Void;
+export const DatabaseAccountsOnlineRegionOutput = Schema.Void;
 export type DatabaseAccountsOnlineRegionOutput =
   typeof DatabaseAccountsOnlineRegionOutput.Type;
 
@@ -2543,7 +2540,7 @@ export type DatabaseAccountsRegenerateKeyInput =
   typeof DatabaseAccountsRegenerateKeyInput.Type;
 
 // Output Schema
-export const DatabaseAccountsRegenerateKeyOutput = /*@__PURE__*/ Schema.Void;
+export const DatabaseAccountsRegenerateKeyOutput = Schema.Void;
 export type DatabaseAccountsRegenerateKeyOutput =
   typeof DatabaseAccountsRegenerateKeyOutput.Type;
 
@@ -2855,7 +2852,7 @@ export const FleetDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FleetDeleteInput = typeof FleetDeleteInput.Type;
 
 // Output Schema
-export const FleetDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FleetDeleteOutput = Schema.Void;
 export type FleetDeleteOutput = typeof FleetDeleteOutput.Type;
 
 // The operation
@@ -3109,7 +3106,7 @@ export type FleetspaceAccountDeleteInput =
   typeof FleetspaceAccountDeleteInput.Type;
 
 // Output Schema
-export const FleetspaceAccountDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FleetspaceAccountDeleteOutput = Schema.Void;
 export type FleetspaceAccountDeleteOutput =
   typeof FleetspaceAccountDeleteOutput.Type;
 
@@ -3298,7 +3295,7 @@ export const FleetspaceDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FleetspaceDeleteInput = typeof FleetspaceDeleteInput.Type;
 
 // Output Schema
-export const FleetspaceDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FleetspaceDeleteOutput = Schema.Void;
 export type FleetspaceDeleteOutput = typeof FleetspaceDeleteOutput.Type;
 
 // The operation
@@ -3615,8 +3612,7 @@ export type GremlinResourcesDeleteGremlinDatabaseInput =
   typeof GremlinResourcesDeleteGremlinDatabaseInput.Type;
 
 // Output Schema
-export const GremlinResourcesDeleteGremlinDatabaseOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GremlinResourcesDeleteGremlinDatabaseOutput = Schema.Void;
 export type GremlinResourcesDeleteGremlinDatabaseOutput =
   typeof GremlinResourcesDeleteGremlinDatabaseOutput.Type;
 
@@ -3650,8 +3646,7 @@ export type GremlinResourcesDeleteGremlinGraphInput =
   typeof GremlinResourcesDeleteGremlinGraphInput.Type;
 
 // Output Schema
-export const GremlinResourcesDeleteGremlinGraphOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GremlinResourcesDeleteGremlinGraphOutput = Schema.Void;
 export type GremlinResourcesDeleteGremlinGraphOutput =
   typeof GremlinResourcesDeleteGremlinGraphOutput.Type;
 
@@ -4454,8 +4449,7 @@ export type MongoDBResourcesDeleteMongoDBCollectionInput =
   typeof MongoDBResourcesDeleteMongoDBCollectionInput.Type;
 
 // Output Schema
-export const MongoDBResourcesDeleteMongoDBCollectionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const MongoDBResourcesDeleteMongoDBCollectionOutput = Schema.Void;
 export type MongoDBResourcesDeleteMongoDBCollectionOutput =
   typeof MongoDBResourcesDeleteMongoDBCollectionOutput.Type;
 
@@ -4489,8 +4483,7 @@ export type MongoDBResourcesDeleteMongoDBDatabaseInput =
   typeof MongoDBResourcesDeleteMongoDBDatabaseInput.Type;
 
 // Output Schema
-export const MongoDBResourcesDeleteMongoDBDatabaseOutput =
-  /*@__PURE__*/ Schema.Void;
+export const MongoDBResourcesDeleteMongoDBDatabaseOutput = Schema.Void;
 export type MongoDBResourcesDeleteMongoDBDatabaseOutput =
   typeof MongoDBResourcesDeleteMongoDBDatabaseOutput.Type;
 
@@ -4525,8 +4518,7 @@ export type MongoDBResourcesDeleteMongoRoleDefinitionInput =
   typeof MongoDBResourcesDeleteMongoRoleDefinitionInput.Type;
 
 // Output Schema
-export const MongoDBResourcesDeleteMongoRoleDefinitionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const MongoDBResourcesDeleteMongoRoleDefinitionOutput = Schema.Void;
 export type MongoDBResourcesDeleteMongoRoleDefinitionOutput =
   typeof MongoDBResourcesDeleteMongoRoleDefinitionOutput.Type;
 
@@ -4562,8 +4554,7 @@ export type MongoDBResourcesDeleteMongoUserDefinitionInput =
   typeof MongoDBResourcesDeleteMongoUserDefinitionInput.Type;
 
 // Output Schema
-export const MongoDBResourcesDeleteMongoUserDefinitionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const MongoDBResourcesDeleteMongoUserDefinitionOutput = Schema.Void;
 export type MongoDBResourcesDeleteMongoUserDefinitionOutput =
   typeof MongoDBResourcesDeleteMongoUserDefinitionOutput.Type;
 
@@ -5355,7 +5346,7 @@ export type NotebookWorkspacesDeleteInput =
   typeof NotebookWorkspacesDeleteInput.Type;
 
 // Output Schema
-export const NotebookWorkspacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NotebookWorkspacesDeleteOutput = Schema.Void;
 export type NotebookWorkspacesDeleteOutput =
   typeof NotebookWorkspacesDeleteOutput.Type;
 
@@ -5504,8 +5495,7 @@ export type NotebookWorkspacesRegenerateAuthTokenInput =
   typeof NotebookWorkspacesRegenerateAuthTokenInput.Type;
 
 // Output Schema
-export const NotebookWorkspacesRegenerateAuthTokenOutput =
-  /*@__PURE__*/ Schema.Void;
+export const NotebookWorkspacesRegenerateAuthTokenOutput = Schema.Void;
 export type NotebookWorkspacesRegenerateAuthTokenOutput =
   typeof NotebookWorkspacesRegenerateAuthTokenOutput.Type;
 
@@ -5538,7 +5528,7 @@ export type NotebookWorkspacesStartInput =
   typeof NotebookWorkspacesStartInput.Type;
 
 // Output Schema
-export const NotebookWorkspacesStartOutput = /*@__PURE__*/ Schema.Void;
+export const NotebookWorkspacesStartOutput = Schema.Void;
 export type NotebookWorkspacesStartOutput =
   typeof NotebookWorkspacesStartOutput.Type;
 
@@ -6005,7 +5995,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -7275,7 +7265,7 @@ export const ServiceDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ServiceDeleteInput = typeof ServiceDeleteInput.Type;
 
 // Output Schema
-export const ServiceDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServiceDeleteOutput = Schema.Void;
 export type ServiceDeleteOutput = typeof ServiceDeleteOutput.Type;
 
 // The operation
@@ -7700,7 +7690,7 @@ export type SqlResourcesDeleteSqlContainerInput =
   typeof SqlResourcesDeleteSqlContainerInput.Type;
 
 // Output Schema
-export const SqlResourcesDeleteSqlContainerOutput = /*@__PURE__*/ Schema.Void;
+export const SqlResourcesDeleteSqlContainerOutput = Schema.Void;
 export type SqlResourcesDeleteSqlContainerOutput =
   typeof SqlResourcesDeleteSqlContainerOutput.Type;
 
@@ -7731,7 +7721,7 @@ export type SqlResourcesDeleteSqlDatabaseInput =
   typeof SqlResourcesDeleteSqlDatabaseInput.Type;
 
 // Output Schema
-export const SqlResourcesDeleteSqlDatabaseOutput = /*@__PURE__*/ Schema.Void;
+export const SqlResourcesDeleteSqlDatabaseOutput = Schema.Void;
 export type SqlResourcesDeleteSqlDatabaseOutput =
   typeof SqlResourcesDeleteSqlDatabaseOutput.Type;
 
@@ -7764,8 +7754,7 @@ export type SqlResourcesDeleteSqlRoleAssignmentInput =
   typeof SqlResourcesDeleteSqlRoleAssignmentInput.Type;
 
 // Output Schema
-export const SqlResourcesDeleteSqlRoleAssignmentOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlResourcesDeleteSqlRoleAssignmentOutput = Schema.Void;
 export type SqlResourcesDeleteSqlRoleAssignmentOutput =
   typeof SqlResourcesDeleteSqlRoleAssignmentOutput.Type;
 
@@ -7801,8 +7790,7 @@ export type SqlResourcesDeleteSqlRoleDefinitionInput =
   typeof SqlResourcesDeleteSqlRoleDefinitionInput.Type;
 
 // Output Schema
-export const SqlResourcesDeleteSqlRoleDefinitionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlResourcesDeleteSqlRoleDefinitionOutput = Schema.Void;
 export type SqlResourcesDeleteSqlRoleDefinitionOutput =
   typeof SqlResourcesDeleteSqlRoleDefinitionOutput.Type;
 
@@ -7837,8 +7825,7 @@ export type SqlResourcesDeleteSqlStoredProcedureInput =
   typeof SqlResourcesDeleteSqlStoredProcedureInput.Type;
 
 // Output Schema
-export const SqlResourcesDeleteSqlStoredProcedureOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlResourcesDeleteSqlStoredProcedureOutput = Schema.Void;
 export type SqlResourcesDeleteSqlStoredProcedureOutput =
   typeof SqlResourcesDeleteSqlStoredProcedureOutput.Type;
 
@@ -7871,7 +7858,7 @@ export type SqlResourcesDeleteSqlTriggerInput =
   typeof SqlResourcesDeleteSqlTriggerInput.Type;
 
 // Output Schema
-export const SqlResourcesDeleteSqlTriggerOutput = /*@__PURE__*/ Schema.Void;
+export const SqlResourcesDeleteSqlTriggerOutput = Schema.Void;
 export type SqlResourcesDeleteSqlTriggerOutput =
   typeof SqlResourcesDeleteSqlTriggerOutput.Type;
 
@@ -7903,8 +7890,7 @@ export type SqlResourcesDeleteSqlUserDefinedFunctionInput =
   typeof SqlResourcesDeleteSqlUserDefinedFunctionInput.Type;
 
 // Output Schema
-export const SqlResourcesDeleteSqlUserDefinedFunctionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlResourcesDeleteSqlUserDefinedFunctionOutput = Schema.Void;
 export type SqlResourcesDeleteSqlUserDefinedFunctionOutput =
   typeof SqlResourcesDeleteSqlUserDefinedFunctionOutput.Type;
 
@@ -9018,7 +9004,7 @@ export type TableResourcesDeleteTableInput =
   typeof TableResourcesDeleteTableInput.Type;
 
 // Output Schema
-export const TableResourcesDeleteTableOutput = /*@__PURE__*/ Schema.Void;
+export const TableResourcesDeleteTableOutput = Schema.Void;
 export type TableResourcesDeleteTableOutput =
   typeof TableResourcesDeleteTableOutput.Type;
 

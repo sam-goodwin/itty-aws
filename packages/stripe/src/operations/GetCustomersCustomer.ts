@@ -16,7 +16,7 @@ export const GetCustomersCustomerInput = /*@__PURE__*/ Schema.Struct({
 export type GetCustomersCustomerInput = typeof GetCustomersCustomerInput.Type;
 
 // Output Schema
-export const GetCustomersCustomerOutput = /*@__PURE__*/ Schema.Unknown;
+export const GetCustomersCustomerOutput = Schema.Unknown;
 export type GetCustomersCustomerOutput = typeof GetCustomersCustomerOutput.Type;
 
 // The operation

@@ -17,7 +17,7 @@ export type InsightsAllActivityRetrieveInput =
   typeof InsightsAllActivityRetrieveInput.Type;
 
 // Output Schema
-export const InsightsAllActivityRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const InsightsAllActivityRetrieveOutput = Schema.Void;
 export type InsightsAllActivityRetrieveOutput =
   typeof InsightsAllActivityRetrieveOutput.Type;
 

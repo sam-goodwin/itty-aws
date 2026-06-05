@@ -16,7 +16,7 @@ export const GetDocumentInput = /*@__PURE__*/ Schema.Struct({
 export type GetDocumentInput = typeof GetDocumentInput.Type;
 
 // Output Schema
-export const GetDocumentOutput = /*@__PURE__*/ Schema.Unknown;
+export const GetDocumentOutput = Schema.Unknown;
 export type GetDocumentOutput = typeof GetDocumentOutput.Type;
 
 // The operation

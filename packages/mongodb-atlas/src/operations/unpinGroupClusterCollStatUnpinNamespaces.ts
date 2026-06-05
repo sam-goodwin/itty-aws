@@ -19,8 +19,7 @@ export type UnpinGroupClusterCollStatUnpinNamespacesInput =
   typeof UnpinGroupClusterCollStatUnpinNamespacesInput.Type;
 
 // Output Schema
-export const UnpinGroupClusterCollStatUnpinNamespacesOutput =
-  /*@__PURE__*/ Schema.Void;
+export const UnpinGroupClusterCollStatUnpinNamespacesOutput = Schema.Void;
 export type UnpinGroupClusterCollStatUnpinNamespacesOutput =
   typeof UnpinGroupClusterCollStatUnpinNamespacesOutput.Type;
 

@@ -17,7 +17,7 @@ export type ApprovalPoliciesDestroyInput =
   typeof ApprovalPoliciesDestroyInput.Type;
 
 // Output Schema
-export const ApprovalPoliciesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const ApprovalPoliciesDestroyOutput = Schema.Void;
 export type ApprovalPoliciesDestroyOutput =
   typeof ApprovalPoliciesDestroyOutput.Type;
 

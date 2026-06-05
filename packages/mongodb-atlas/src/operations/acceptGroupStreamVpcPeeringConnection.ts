@@ -19,8 +19,7 @@ export type AcceptGroupStreamVpcPeeringConnectionInput =
   typeof AcceptGroupStreamVpcPeeringConnectionInput.Type;
 
 // Output Schema
-export const AcceptGroupStreamVpcPeeringConnectionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AcceptGroupStreamVpcPeeringConnectionOutput = Schema.Void;
 export type AcceptGroupStreamVpcPeeringConnectionOutput =
   typeof AcceptGroupStreamVpcPeeringConnectionOutput.Type;
 

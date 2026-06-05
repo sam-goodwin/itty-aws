@@ -259,7 +259,7 @@ export type ConnectorMappingsDeleteInput =
   typeof ConnectorMappingsDeleteInput.Type;
 
 // Output Schema
-export const ConnectorMappingsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConnectorMappingsDeleteOutput = Schema.Void;
 export type ConnectorMappingsDeleteOutput =
   typeof ConnectorMappingsDeleteOutput.Type;
 
@@ -404,7 +404,7 @@ export const ConnectorsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ConnectorsDeleteInput = typeof ConnectorsDeleteInput.Type;
 
 // Output Schema
-export const ConnectorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConnectorsDeleteOutput = Schema.Void;
 export type ConnectorsDeleteOutput = typeof ConnectorsDeleteOutput.Type;
 
 // The operation
@@ -536,7 +536,7 @@ export const HubsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type HubsDeleteInput = typeof HubsDeleteInput.Type;
 
 // Output Schema
-export const HubsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const HubsDeleteOutput = Schema.Void;
 export type HubsDeleteOutput = typeof HubsDeleteOutput.Type;
 
 // The operation
@@ -979,7 +979,7 @@ export const KpiDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type KpiDeleteInput = typeof KpiDeleteInput.Type;
 
 // Output Schema
-export const KpiDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const KpiDeleteOutput = Schema.Void;
 export type KpiDeleteOutput = typeof KpiDeleteOutput.Type;
 
 // The operation
@@ -1079,7 +1079,7 @@ export const KpiReprocessInput = /*@__PURE__*/ Schema.Struct({
 export type KpiReprocessInput = typeof KpiReprocessInput.Type;
 
 // Output Schema
-export const KpiReprocessOutput = /*@__PURE__*/ Schema.Void;
+export const KpiReprocessOutput = Schema.Void;
 export type KpiReprocessOutput = typeof KpiReprocessOutput.Type;
 
 // The operation
@@ -1141,7 +1141,7 @@ export const LinksDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type LinksDeleteInput = typeof LinksDeleteInput.Type;
 
 // Output Schema
-export const LinksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const LinksDeleteOutput = Schema.Void;
 export type LinksDeleteOutput = typeof LinksDeleteOutput.Type;
 
 // The operation
@@ -1313,7 +1313,7 @@ export const PredictionsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PredictionsDeleteInput = typeof PredictionsDeleteInput.Type;
 
 // Output Schema
-export const PredictionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PredictionsDeleteOutput = Schema.Void;
 export type PredictionsDeleteOutput = typeof PredictionsDeleteOutput.Type;
 
 // The operation
@@ -1553,7 +1553,7 @@ export type PredictionsModelStatusInput =
   typeof PredictionsModelStatusInput.Type;
 
 // Output Schema
-export const PredictionsModelStatusOutput = /*@__PURE__*/ Schema.Void;
+export const PredictionsModelStatusOutput = Schema.Void;
 export type PredictionsModelStatusOutput =
   typeof PredictionsModelStatusOutput.Type;
 
@@ -1619,7 +1619,7 @@ export const ProfilesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ProfilesDeleteInput = typeof ProfilesDeleteInput.Type;
 
 // Output Schema
-export const ProfilesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ProfilesDeleteOutput = Schema.Void;
 export type ProfilesDeleteOutput = typeof ProfilesDeleteOutput.Type;
 
 // The operation
@@ -1881,7 +1881,7 @@ export type RelationshipLinksDeleteInput =
   typeof RelationshipLinksDeleteInput.Type;
 
 // Output Schema
-export const RelationshipLinksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RelationshipLinksDeleteOutput = Schema.Void;
 export type RelationshipLinksDeleteOutput =
   typeof RelationshipLinksDeleteOutput.Type;
 
@@ -2019,7 +2019,7 @@ export const RelationshipsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RelationshipsDeleteInput = typeof RelationshipsDeleteInput.Type;
 
 // Output Schema
-export const RelationshipsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RelationshipsDeleteOutput = Schema.Void;
 export type RelationshipsDeleteOutput = typeof RelationshipsDeleteOutput.Type;
 
 // The operation
@@ -2156,7 +2156,7 @@ export const RoleAssignmentsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RoleAssignmentsDeleteInput = typeof RoleAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const RoleAssignmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RoleAssignmentsDeleteOutput = Schema.Void;
 export type RoleAssignmentsDeleteOutput =
   typeof RoleAssignmentsDeleteOutput.Type;
 
@@ -2331,7 +2331,7 @@ export const ViewsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ViewsDeleteInput = typeof ViewsDeleteInput.Type;
 
 // Output Schema
-export const ViewsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ViewsDeleteOutput = Schema.Void;
 export type ViewsDeleteOutput = typeof ViewsDeleteOutput.Type;
 
 // The operation

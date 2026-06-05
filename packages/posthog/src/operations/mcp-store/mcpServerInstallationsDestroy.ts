@@ -17,7 +17,7 @@ export type McpServerInstallationsDestroyInput =
   typeof McpServerInstallationsDestroyInput.Type;
 
 // Output Schema
-export const McpServerInstallationsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const McpServerInstallationsDestroyOutput = Schema.Void;
 export type McpServerInstallationsDestroyOutput =
   typeof McpServerInstallationsDestroyOutput.Type;
 

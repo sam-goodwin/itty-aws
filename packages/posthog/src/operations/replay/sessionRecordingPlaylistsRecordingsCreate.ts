@@ -71,8 +71,7 @@ export type SessionRecordingPlaylistsRecordingsCreateInput =
   typeof SessionRecordingPlaylistsRecordingsCreateInput.Type;
 
 // Output Schema
-export const SessionRecordingPlaylistsRecordingsCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SessionRecordingPlaylistsRecordingsCreateOutput = Schema.Void;
 export type SessionRecordingPlaylistsRecordingsCreateOutput =
   typeof SessionRecordingPlaylistsRecordingsCreateOutput.Type;
 

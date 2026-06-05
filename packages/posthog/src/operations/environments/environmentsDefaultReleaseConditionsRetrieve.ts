@@ -18,8 +18,7 @@ export type EnvironmentsDefaultReleaseConditionsRetrieveInput =
   typeof EnvironmentsDefaultReleaseConditionsRetrieveInput.Type;
 
 // Output Schema
-export const EnvironmentsDefaultReleaseConditionsRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EnvironmentsDefaultReleaseConditionsRetrieveOutput = Schema.Void;
 export type EnvironmentsDefaultReleaseConditionsRetrieveOutput =
   typeof EnvironmentsDefaultReleaseConditionsRetrieveOutput.Type;
 

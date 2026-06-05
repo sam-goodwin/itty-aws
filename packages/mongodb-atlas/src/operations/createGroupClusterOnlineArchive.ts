@@ -21,7 +21,7 @@ export type CreateGroupClusterOnlineArchiveInput =
   typeof CreateGroupClusterOnlineArchiveInput.Type;
 
 // Output Schema
-export const CreateGroupClusterOnlineArchiveOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupClusterOnlineArchiveOutput = Schema.Void;
 export type CreateGroupClusterOnlineArchiveOutput =
   typeof CreateGroupClusterOnlineArchiveOutput.Type;
 

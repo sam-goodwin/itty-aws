@@ -24,7 +24,7 @@ export type GetGroupDbAccessHistoryClusterInput =
   typeof GetGroupDbAccessHistoryClusterInput.Type;
 
 // Output Schema
-export const GetGroupDbAccessHistoryClusterOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupDbAccessHistoryClusterOutput = Schema.Void;
 export type GetGroupDbAccessHistoryClusterOutput =
   typeof GetGroupDbAccessHistoryClusterOutput.Type;
 

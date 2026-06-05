@@ -19,7 +19,7 @@ export type LlmAnalyticsProviderKeysDestroyInput =
   typeof LlmAnalyticsProviderKeysDestroyInput.Type;
 
 // Output Schema
-export const LlmAnalyticsProviderKeysDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const LlmAnalyticsProviderKeysDestroyOutput = Schema.Void;
 export type LlmAnalyticsProviderKeysDestroyOutput =
   typeof LlmAnalyticsProviderKeysDestroyOutput.Type;
 

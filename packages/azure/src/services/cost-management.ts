@@ -659,7 +659,7 @@ export const BudgetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BudgetsDeleteInput = typeof BudgetsDeleteInput.Type;
 
 // Output Schema
-export const BudgetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BudgetsDeleteOutput = Schema.Void;
 export type BudgetsDeleteOutput = typeof BudgetsDeleteOutput.Type;
 
 // The operation
@@ -890,7 +890,7 @@ export type CostAllocationRulesDeleteInput =
   typeof CostAllocationRulesDeleteInput.Type;
 
 // Output Schema
-export const CostAllocationRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CostAllocationRulesDeleteOutput = Schema.Void;
 export type CostAllocationRulesDeleteOutput =
   typeof CostAllocationRulesDeleteOutput.Type;
 
@@ -1192,7 +1192,7 @@ export const ExportsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ExportsDeleteInput = typeof ExportsDeleteInput.Type;
 
 // Output Schema
-export const ExportsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ExportsDeleteOutput = Schema.Void;
 export type ExportsDeleteOutput = typeof ExportsDeleteOutput.Type;
 
 // The operation
@@ -1221,7 +1221,7 @@ export const ExportsExecuteInput = /*@__PURE__*/ Schema.Struct({
 export type ExportsExecuteInput = typeof ExportsExecuteInput.Type;
 
 // Output Schema
-export const ExportsExecuteOutput = /*@__PURE__*/ Schema.Void;
+export const ExportsExecuteOutput = Schema.Void;
 export type ExportsExecuteOutput = typeof ExportsExecuteOutput.Type;
 
 // The operation
@@ -2923,7 +2923,7 @@ export type ScheduledActionsDeleteInput =
   typeof ScheduledActionsDeleteInput.Type;
 
 // Output Schema
-export const ScheduledActionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ScheduledActionsDeleteOutput = Schema.Void;
 export type ScheduledActionsDeleteOutput =
   typeof ScheduledActionsDeleteOutput.Type;
 
@@ -2953,7 +2953,7 @@ export type ScheduledActionsDeleteByScopeInput =
   typeof ScheduledActionsDeleteByScopeInput.Type;
 
 // Output Schema
-export const ScheduledActionsDeleteByScopeOutput = /*@__PURE__*/ Schema.Void;
+export const ScheduledActionsDeleteByScopeOutput = Schema.Void;
 export type ScheduledActionsDeleteByScopeOutput =
   typeof ScheduledActionsDeleteByScopeOutput.Type;
 
@@ -3204,7 +3204,7 @@ export const ScheduledActionsRunInput = /*@__PURE__*/ Schema.Struct({
 export type ScheduledActionsRunInput = typeof ScheduledActionsRunInput.Type;
 
 // Output Schema
-export const ScheduledActionsRunOutput = /*@__PURE__*/ Schema.Void;
+export const ScheduledActionsRunOutput = Schema.Void;
 export type ScheduledActionsRunOutput = typeof ScheduledActionsRunOutput.Type;
 
 // The operation
@@ -3233,7 +3233,7 @@ export type ScheduledActionsRunByScopeInput =
   typeof ScheduledActionsRunByScopeInput.Type;
 
 // Output Schema
-export const ScheduledActionsRunByScopeOutput = /*@__PURE__*/ Schema.Void;
+export const ScheduledActionsRunByScopeOutput = Schema.Void;
 export type ScheduledActionsRunByScopeOutput =
   typeof ScheduledActionsRunByScopeOutput.Type;
 
@@ -3312,7 +3312,7 @@ export const SettingsDeleteByScopeInput = /*@__PURE__*/ Schema.Struct({
 export type SettingsDeleteByScopeInput = typeof SettingsDeleteByScopeInput.Type;
 
 // Output Schema
-export const SettingsDeleteByScopeOutput = /*@__PURE__*/ Schema.Void;
+export const SettingsDeleteByScopeOutput = Schema.Void;
 export type SettingsDeleteByScopeOutput =
   typeof SettingsDeleteByScopeOutput.Type;
 
@@ -3543,7 +3543,7 @@ export const ViewsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ViewsDeleteInput = typeof ViewsDeleteInput.Type;
 
 // Output Schema
-export const ViewsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ViewsDeleteOutput = Schema.Void;
 export type ViewsDeleteOutput = typeof ViewsDeleteOutput.Type;
 
 // The operation
@@ -3571,7 +3571,7 @@ export const ViewsDeleteByScopeInput = /*@__PURE__*/ Schema.Struct({
 export type ViewsDeleteByScopeInput = typeof ViewsDeleteByScopeInput.Type;
 
 // Output Schema
-export const ViewsDeleteByScopeOutput = /*@__PURE__*/ Schema.Void;
+export const ViewsDeleteByScopeOutput = Schema.Void;
 export type ViewsDeleteByScopeOutput = typeof ViewsDeleteByScopeOutput.Type;
 
 // The operation

@@ -18,7 +18,7 @@ export const RemoveGroupApiKeyInput = /*@__PURE__*/ Schema.Struct({
 export type RemoveGroupApiKeyInput = typeof RemoveGroupApiKeyInput.Type;
 
 // Output Schema
-export const RemoveGroupApiKeyOutput = /*@__PURE__*/ Schema.Void;
+export const RemoveGroupApiKeyOutput = Schema.Void;
 export type RemoveGroupApiKeyOutput = typeof RemoveGroupApiKeyOutput.Type;
 
 // The operation

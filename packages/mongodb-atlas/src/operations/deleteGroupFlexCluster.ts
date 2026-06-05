@@ -19,7 +19,7 @@ export type DeleteGroupFlexClusterInput =
   typeof DeleteGroupFlexClusterInput.Type;
 
 // Output Schema
-export const DeleteGroupFlexClusterOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupFlexClusterOutput = Schema.Void;
 export type DeleteGroupFlexClusterOutput =
   typeof DeleteGroupFlexClusterOutput.Type;
 

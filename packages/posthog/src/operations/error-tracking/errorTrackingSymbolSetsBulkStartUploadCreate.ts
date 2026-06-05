@@ -27,8 +27,7 @@ export type ErrorTrackingSymbolSetsBulkStartUploadCreateInput =
   typeof ErrorTrackingSymbolSetsBulkStartUploadCreateInput.Type;
 
 // Output Schema
-export const ErrorTrackingSymbolSetsBulkStartUploadCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingSymbolSetsBulkStartUploadCreateOutput = Schema.Void;
 export type ErrorTrackingSymbolSetsBulkStartUploadCreateOutput =
   typeof ErrorTrackingSymbolSetsBulkStartUploadCreateOutput.Type;
 

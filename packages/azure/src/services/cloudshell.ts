@@ -18,7 +18,7 @@ export const DeleteConsoleInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DeleteConsoleInput = typeof DeleteConsoleInput.Type;
 
 // Output Schema
-export const DeleteConsoleOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteConsoleOutput = Schema.Void;
 export type DeleteConsoleOutput = typeof DeleteConsoleOutput.Type;
 
 // The operation
@@ -44,7 +44,7 @@ export type DeleteConsoleWithLocationInput =
   typeof DeleteConsoleWithLocationInput.Type;
 
 // Output Schema
-export const DeleteConsoleWithLocationOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteConsoleWithLocationOutput = Schema.Void;
 export type DeleteConsoleWithLocationOutput =
   typeof DeleteConsoleWithLocationOutput.Type;
 
@@ -68,7 +68,7 @@ export const DeleteUserSettingsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DeleteUserSettingsInput = typeof DeleteUserSettingsInput.Type;
 
 // Output Schema
-export const DeleteUserSettingsOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteUserSettingsOutput = Schema.Void;
 export type DeleteUserSettingsOutput = typeof DeleteUserSettingsOutput.Type;
 
 // The operation
@@ -94,7 +94,7 @@ export type DeleteUserSettingsWithLocationInput =
   typeof DeleteUserSettingsWithLocationInput.Type;
 
 // Output Schema
-export const DeleteUserSettingsWithLocationOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteUserSettingsWithLocationOutput = Schema.Void;
 export type DeleteUserSettingsWithLocationOutput =
   typeof DeleteUserSettingsWithLocationOutput.Type;
 
@@ -118,7 +118,7 @@ export const GetConsoleInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type GetConsoleInput = typeof GetConsoleInput.Type;
 
 // Output Schema
-export const GetConsoleOutput = /*@__PURE__*/ Schema.Unknown;
+export const GetConsoleOutput = Schema.Unknown;
 export type GetConsoleOutput = typeof GetConsoleOutput.Type;
 
 // The operation
@@ -142,7 +142,7 @@ export type GetConsoleWithLocationInput =
   typeof GetConsoleWithLocationInput.Type;
 
 // Output Schema
-export const GetConsoleWithLocationOutput = /*@__PURE__*/ Schema.Unknown;
+export const GetConsoleWithLocationOutput = Schema.Unknown;
 export type GetConsoleWithLocationOutput =
   typeof GetConsoleWithLocationOutput.Type;
 
@@ -166,7 +166,7 @@ export const GetUserSettingsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type GetUserSettingsInput = typeof GetUserSettingsInput.Type;
 
 // Output Schema
-export const GetUserSettingsOutput = /*@__PURE__*/ Schema.Unknown;
+export const GetUserSettingsOutput = Schema.Unknown;
 export type GetUserSettingsOutput = typeof GetUserSettingsOutput.Type;
 
 // The operation
@@ -192,7 +192,7 @@ export type GetUserSettingsWithLocationInput =
   typeof GetUserSettingsWithLocationInput.Type;
 
 // Output Schema
-export const GetUserSettingsWithLocationOutput = /*@__PURE__*/ Schema.Unknown;
+export const GetUserSettingsWithLocationOutput = Schema.Unknown;
 export type GetUserSettingsWithLocationOutput =
   typeof GetUserSettingsWithLocationOutput.Type;
 
@@ -216,7 +216,7 @@ export const KeepAliveInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type KeepAliveInput = typeof KeepAliveInput.Type;
 
 // Output Schema
-export const KeepAliveOutput = /*@__PURE__*/ Schema.Void;
+export const KeepAliveOutput = Schema.Void;
 export type KeepAliveOutput = typeof KeepAliveOutput.Type;
 
 // The operation
@@ -239,7 +239,7 @@ export const KeepAliveWithLocationInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type KeepAliveWithLocationInput = typeof KeepAliveWithLocationInput.Type;
 
 // Output Schema
-export const KeepAliveWithLocationOutput = /*@__PURE__*/ Schema.Void;
+export const KeepAliveWithLocationOutput = Schema.Void;
 export type KeepAliveWithLocationOutput =
   typeof KeepAliveWithLocationOutput.Type;
 
@@ -263,7 +263,7 @@ export const PatchUserSettingsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type PatchUserSettingsInput = typeof PatchUserSettingsInput.Type;
 
 // Output Schema
-export const PatchUserSettingsOutput = /*@__PURE__*/ Schema.Unknown;
+export const PatchUserSettingsOutput = Schema.Unknown;
 export type PatchUserSettingsOutput = typeof PatchUserSettingsOutput.Type;
 
 // The operation
@@ -289,7 +289,7 @@ export type PatchUserSettingsWithLocationInput =
   typeof PatchUserSettingsWithLocationInput.Type;
 
 // Output Schema
-export const PatchUserSettingsWithLocationOutput = /*@__PURE__*/ Schema.Unknown;
+export const PatchUserSettingsWithLocationOutput = Schema.Unknown;
 export type PatchUserSettingsWithLocationOutput =
   typeof PatchUserSettingsWithLocationOutput.Type;
 
@@ -313,7 +313,7 @@ export const PutConsoleInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type PutConsoleInput = typeof PutConsoleInput.Type;
 
 // Output Schema
-export const PutConsoleOutput = /*@__PURE__*/ Schema.Unknown;
+export const PutConsoleOutput = Schema.Unknown;
 export type PutConsoleOutput = typeof PutConsoleOutput.Type;
 
 // The operation
@@ -337,7 +337,7 @@ export type PutConsoleWithLocationInput =
   typeof PutConsoleWithLocationInput.Type;
 
 // Output Schema
-export const PutConsoleWithLocationOutput = /*@__PURE__*/ Schema.Unknown;
+export const PutConsoleWithLocationOutput = Schema.Unknown;
 export type PutConsoleWithLocationOutput =
   typeof PutConsoleWithLocationOutput.Type;
 
@@ -361,7 +361,7 @@ export const PutUserSettingsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type PutUserSettingsInput = typeof PutUserSettingsInput.Type;
 
 // Output Schema
-export const PutUserSettingsOutput = /*@__PURE__*/ Schema.Unknown;
+export const PutUserSettingsOutput = Schema.Unknown;
 export type PutUserSettingsOutput = typeof PutUserSettingsOutput.Type;
 
 // The operation
@@ -387,7 +387,7 @@ export type PutUserSettingsWithLocationInput =
   typeof PutUserSettingsWithLocationInput.Type;
 
 // Output Schema
-export const PutUserSettingsWithLocationOutput = /*@__PURE__*/ Schema.Unknown;
+export const PutUserSettingsWithLocationOutput = Schema.Unknown;
 export type PutUserSettingsWithLocationOutput =
   typeof PutUserSettingsWithLocationOutput.Type;
 

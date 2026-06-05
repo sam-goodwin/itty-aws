@@ -19,7 +19,7 @@ export type UpdateGroupClusterProcessArgsInput =
   typeof UpdateGroupClusterProcessArgsInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterProcessArgsOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupClusterProcessArgsOutput = Schema.Void;
 export type UpdateGroupClusterProcessArgsOutput =
   typeof UpdateGroupClusterProcessArgsOutput.Type;
 

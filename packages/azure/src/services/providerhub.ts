@@ -79,7 +79,7 @@ export type AuthorizedApplicationsDeleteInput =
   typeof AuthorizedApplicationsDeleteInput.Type;
 
 // Output Schema
-export const AuthorizedApplicationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AuthorizedApplicationsDeleteOutput = Schema.Void;
 export type AuthorizedApplicationsDeleteOutput =
   typeof AuthorizedApplicationsDeleteOutput.Type;
 
@@ -301,7 +301,7 @@ export const CustomRolloutsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type CustomRolloutsDeleteInput = typeof CustomRolloutsDeleteInput.Type;
 
 // Output Schema
-export const CustomRolloutsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CustomRolloutsDeleteOutput = Schema.Void;
 export type CustomRolloutsDeleteOutput = typeof CustomRolloutsDeleteOutput.Type;
 
 // The operation
@@ -449,7 +449,7 @@ export const CustomRolloutsStopInput = /*@__PURE__*/ Schema.Struct({
 export type CustomRolloutsStopInput = typeof CustomRolloutsStopInput.Type;
 
 // Output Schema
-export const CustomRolloutsStopOutput = /*@__PURE__*/ Schema.Void;
+export const CustomRolloutsStopOutput = Schema.Void;
 export type CustomRolloutsStopOutput = typeof CustomRolloutsStopOutput.Type;
 
 // The operation
@@ -531,7 +531,7 @@ export const DefaultRolloutsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DefaultRolloutsDeleteInput = typeof DefaultRolloutsDeleteInput.Type;
 
 // Output Schema
-export const DefaultRolloutsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DefaultRolloutsDeleteOutput = Schema.Void;
 export type DefaultRolloutsDeleteOutput =
   typeof DefaultRolloutsDeleteOutput.Type;
 
@@ -680,7 +680,7 @@ export const DefaultRolloutsStopInput = /*@__PURE__*/ Schema.Struct({
 export type DefaultRolloutsStopInput = typeof DefaultRolloutsStopInput.Type;
 
 // Output Schema
-export const DefaultRolloutsStopOutput = /*@__PURE__*/ Schema.Void;
+export const DefaultRolloutsStopOutput = Schema.Void;
 export type DefaultRolloutsStopOutput = typeof DefaultRolloutsStopOutput.Type;
 
 // The operation
@@ -2145,7 +2145,7 @@ export type NewRegionFrontloadReleaseStopInput =
   typeof NewRegionFrontloadReleaseStopInput.Type;
 
 // Output Schema
-export const NewRegionFrontloadReleaseStopOutput = /*@__PURE__*/ Schema.Void;
+export const NewRegionFrontloadReleaseStopOutput = Schema.Void;
 export type NewRegionFrontloadReleaseStopOutput =
   typeof NewRegionFrontloadReleaseStopOutput.Type;
 
@@ -2235,7 +2235,7 @@ export type NotificationRegistrationsDeleteInput =
   typeof NotificationRegistrationsDeleteInput.Type;
 
 // Output Schema
-export const NotificationRegistrationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NotificationRegistrationsDeleteOutput = Schema.Void;
 export type NotificationRegistrationsDeleteOutput =
   typeof NotificationRegistrationsDeleteOutput.Type;
 
@@ -2433,7 +2433,7 @@ export const OperationsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type OperationsDeleteInput = typeof OperationsDeleteInput.Type;
 
 // Output Schema
-export const OperationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const OperationsDeleteOutput = Schema.Void;
 export type OperationsDeleteOutput = typeof OperationsDeleteOutput.Type;
 
 // The operation
@@ -2616,7 +2616,7 @@ export type ProviderMonitorSettingsDeleteInput =
   typeof ProviderMonitorSettingsDeleteInput.Type;
 
 // Output Schema
-export const ProviderMonitorSettingsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ProviderMonitorSettingsDeleteOutput = Schema.Void;
 export type ProviderMonitorSettingsDeleteOutput =
   typeof ProviderMonitorSettingsDeleteOutput.Type;
 
@@ -2936,7 +2936,7 @@ export type ProviderRegistrationsDeleteInput =
   typeof ProviderRegistrationsDeleteInput.Type;
 
 // Output Schema
-export const ProviderRegistrationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ProviderRegistrationsDeleteOutput = Schema.Void;
 export type ProviderRegistrationsDeleteOutput =
   typeof ProviderRegistrationsDeleteOutput.Type;
 
@@ -3122,7 +3122,7 @@ export type ResourceActionsDeleteResourcesInput =
   typeof ResourceActionsDeleteResourcesInput.Type;
 
 // Output Schema
-export const ResourceActionsDeleteResourcesOutput = /*@__PURE__*/ Schema.Void;
+export const ResourceActionsDeleteResourcesOutput = Schema.Void;
 export type ResourceActionsDeleteResourcesOutput =
   typeof ResourceActionsDeleteResourcesOutput.Type;
 
@@ -3212,7 +3212,7 @@ export type ResourceTypeRegistrationsDeleteInput =
   typeof ResourceTypeRegistrationsDeleteInput.Type;
 
 // Output Schema
-export const ResourceTypeRegistrationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ResourceTypeRegistrationsDeleteOutput = Schema.Void;
 export type ResourceTypeRegistrationsDeleteOutput =
   typeof ResourceTypeRegistrationsDeleteOutput.Type;
 
@@ -3596,7 +3596,7 @@ export const SkusDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SkusDeleteInput = typeof SkusDeleteInput.Type;
 
 // Output Schema
-export const SkusDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SkusDeleteOutput = Schema.Void;
 export type SkusDeleteOutput = typeof SkusDeleteOutput.Type;
 
 // The operation
@@ -3632,8 +3632,7 @@ export type SkusDeleteNestedResourceTypeFirstInput =
   typeof SkusDeleteNestedResourceTypeFirstInput.Type;
 
 // Output Schema
-export const SkusDeleteNestedResourceTypeFirstOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SkusDeleteNestedResourceTypeFirstOutput = Schema.Void;
 export type SkusDeleteNestedResourceTypeFirstOutput =
   typeof SkusDeleteNestedResourceTypeFirstOutput.Type;
 
@@ -3672,8 +3671,7 @@ export type SkusDeleteNestedResourceTypeSecondInput =
   typeof SkusDeleteNestedResourceTypeSecondInput.Type;
 
 // Output Schema
-export const SkusDeleteNestedResourceTypeSecondOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SkusDeleteNestedResourceTypeSecondOutput = Schema.Void;
 export type SkusDeleteNestedResourceTypeSecondOutput =
   typeof SkusDeleteNestedResourceTypeSecondOutput.Type;
 
@@ -3716,8 +3714,7 @@ export type SkusDeleteNestedResourceTypeThirdInput =
   typeof SkusDeleteNestedResourceTypeThirdInput.Type;
 
 // Output Schema
-export const SkusDeleteNestedResourceTypeThirdOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SkusDeleteNestedResourceTypeThirdOutput = Schema.Void;
 export type SkusDeleteNestedResourceTypeThirdOutput =
   typeof SkusDeleteNestedResourceTypeThirdOutput.Type;
 

@@ -12,8 +12,7 @@ export type OrganizationsControllerDeleteOrganizationInput =
   typeof OrganizationsControllerDeleteOrganizationInput.Type;
 
 // Output Schema
-export const OrganizationsControllerDeleteOrganizationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const OrganizationsControllerDeleteOrganizationOutput = Schema.Void;
 export type OrganizationsControllerDeleteOrganizationOutput =
   typeof OrganizationsControllerDeleteOrganizationOutput.Type;
 

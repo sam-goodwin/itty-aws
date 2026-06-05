@@ -24,7 +24,7 @@ export type TenantGroupFlexClusterUpgradeInput =
   typeof TenantGroupFlexClusterUpgradeInput.Type;
 
 // Output Schema
-export const TenantGroupFlexClusterUpgradeOutput = /*@__PURE__*/ Schema.Void;
+export const TenantGroupFlexClusterUpgradeOutput = Schema.Void;
 export type TenantGroupFlexClusterUpgradeOutput =
   typeof TenantGroupFlexClusterUpgradeOutput.Type;
 

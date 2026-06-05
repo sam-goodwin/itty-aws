@@ -19,7 +19,7 @@ export type DeleteGroupAccessListEntryInput =
   typeof DeleteGroupAccessListEntryInput.Type;
 
 // Output Schema
-export const DeleteGroupAccessListEntryOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupAccessListEntryOutput = Schema.Void;
 export type DeleteGroupAccessListEntryOutput =
   typeof DeleteGroupAccessListEntryOutput.Type;
 

@@ -249,7 +249,7 @@ export type SignalRCustomCertificatesDeleteInput =
   typeof SignalRCustomCertificatesDeleteInput.Type;
 
 // Output Schema
-export const SignalRCustomCertificatesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SignalRCustomCertificatesDeleteOutput = Schema.Void;
 export type SignalRCustomCertificatesDeleteOutput =
   typeof SignalRCustomCertificatesDeleteOutput.Type;
 
@@ -454,7 +454,7 @@ export type SignalRCustomDomainsDeleteInput =
   typeof SignalRCustomDomainsDeleteInput.Type;
 
 // Output Schema
-export const SignalRCustomDomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SignalRCustomDomainsDeleteOutput = Schema.Void;
 export type SignalRCustomDomainsDeleteOutput =
   typeof SignalRCustomDomainsDeleteOutput.Type;
 
@@ -602,7 +602,7 @@ export const SignalRDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SignalRDeleteInput = typeof SignalRDeleteInput.Type;
 
 // Output Schema
-export const SignalRDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SignalRDeleteOutput = Schema.Void;
 export type SignalRDeleteOutput = typeof SignalRDeleteOutput.Type;
 
 // The operation
@@ -967,8 +967,7 @@ export type SignalRPrivateEndpointConnectionsDeleteInput =
   typeof SignalRPrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const SignalRPrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SignalRPrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type SignalRPrivateEndpointConnectionsDeleteOutput =
   typeof SignalRPrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1333,7 +1332,7 @@ export const SignalRReplicasDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SignalRReplicasDeleteInput = typeof SignalRReplicasDeleteInput.Type;
 
 // Output Schema
-export const SignalRReplicasDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SignalRReplicasDeleteOutput = Schema.Void;
 export type SignalRReplicasDeleteOutput =
   typeof SignalRReplicasDeleteOutput.Type;
 
@@ -1648,7 +1647,7 @@ export type SignalRReplicasRestartInput =
   typeof SignalRReplicasRestartInput.Type;
 
 // Output Schema
-export const SignalRReplicasRestartOutput = /*@__PURE__*/ Schema.Void;
+export const SignalRReplicasRestartOutput = Schema.Void;
 export type SignalRReplicasRestartOutput =
   typeof SignalRReplicasRestartOutput.Type;
 
@@ -1726,7 +1725,7 @@ export const SignalRRestartInput = /*@__PURE__*/ Schema.Struct({
 export type SignalRRestartInput = typeof SignalRRestartInput.Type;
 
 // Output Schema
-export const SignalRRestartOutput = /*@__PURE__*/ Schema.Void;
+export const SignalRRestartOutput = Schema.Void;
 export type SignalRRestartOutput = typeof SignalRRestartOutput.Type;
 
 // The operation
@@ -1809,8 +1808,7 @@ export type SignalRSharedPrivateLinkResourcesDeleteInput =
   typeof SignalRSharedPrivateLinkResourcesDeleteInput.Type;
 
 // Output Schema
-export const SignalRSharedPrivateLinkResourcesDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SignalRSharedPrivateLinkResourcesDeleteOutput = Schema.Void;
 export type SignalRSharedPrivateLinkResourcesDeleteOutput =
   typeof SignalRSharedPrivateLinkResourcesDeleteOutput.Type;
 

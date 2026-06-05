@@ -23,7 +23,7 @@ export type ListGroupClusterQueryShapesInput =
   typeof ListGroupClusterQueryShapesInput.Type;
 
 // Output Schema
-export const ListGroupClusterQueryShapesOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupClusterQueryShapesOutput = Schema.Void;
 export type ListGroupClusterQueryShapesOutput =
   typeof ListGroupClusterQueryShapesOutput.Type;
 

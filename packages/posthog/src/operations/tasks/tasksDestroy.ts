@@ -13,7 +13,7 @@ export const TasksDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type TasksDestroyInput = typeof TasksDestroyInput.Type;
 
 // Output Schema
-export const TasksDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const TasksDestroyOutput = Schema.Void;
 export type TasksDestroyOutput = typeof TasksDestroyOutput.Type;
 
 // The operation

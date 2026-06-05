@@ -18,7 +18,7 @@ export type DeleteGroupBackupExportBucketInput =
   typeof DeleteGroupBackupExportBucketInput.Type;
 
 // Output Schema
-export const DeleteGroupBackupExportBucketOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupBackupExportBucketOutput = Schema.Void;
 export type DeleteGroupBackupExportBucketOutput =
   typeof DeleteGroupBackupExportBucketOutput.Type;
 

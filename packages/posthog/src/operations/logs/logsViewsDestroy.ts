@@ -16,7 +16,7 @@ export const LogsViewsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type LogsViewsDestroyInput = typeof LogsViewsDestroyInput.Type;
 
 // Output Schema
-export const LogsViewsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const LogsViewsDestroyOutput = Schema.Void;
 export type LogsViewsDestroyOutput = typeof LogsViewsDestroyOutput.Type;
 
 // The operation

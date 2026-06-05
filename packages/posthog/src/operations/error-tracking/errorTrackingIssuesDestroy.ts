@@ -17,7 +17,7 @@ export type ErrorTrackingIssuesDestroyInput =
   typeof ErrorTrackingIssuesDestroyInput.Type;
 
 // Output Schema
-export const ErrorTrackingIssuesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingIssuesDestroyOutput = Schema.Void;
 export type ErrorTrackingIssuesDestroyOutput =
   typeof ErrorTrackingIssuesDestroyOutput.Type;
 

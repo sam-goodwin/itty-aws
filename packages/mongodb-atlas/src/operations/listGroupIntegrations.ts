@@ -20,7 +20,7 @@ export const ListGroupIntegrationsInput = /*@__PURE__*/ Schema.Struct({
 export type ListGroupIntegrationsInput = typeof ListGroupIntegrationsInput.Type;
 
 // Output Schema
-export const ListGroupIntegrationsOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupIntegrationsOutput = Schema.Void;
 export type ListGroupIntegrationsOutput =
   typeof ListGroupIntegrationsOutput.Type;
 

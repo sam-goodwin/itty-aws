@@ -19,7 +19,7 @@ export type GetGroupClusterGlobalWritesInput =
   typeof GetGroupClusterGlobalWritesInput.Type;
 
 // Output Schema
-export const GetGroupClusterGlobalWritesOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupClusterGlobalWritesOutput = Schema.Void;
 export type GetGroupClusterGlobalWritesOutput =
   typeof GetGroupClusterGlobalWritesOutput.Type;
 

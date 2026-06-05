@@ -17,7 +17,7 @@ export type ErrorTrackingSymbolSetsDestroyInput =
   typeof ErrorTrackingSymbolSetsDestroyInput.Type;
 
 // Output Schema
-export const ErrorTrackingSymbolSetsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingSymbolSetsDestroyOutput = Schema.Void;
 export type ErrorTrackingSymbolSetsDestroyOutput =
   typeof ErrorTrackingSymbolSetsDestroyOutput.Type;
 

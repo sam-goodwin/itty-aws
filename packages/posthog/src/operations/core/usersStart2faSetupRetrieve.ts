@@ -11,7 +11,7 @@ export type UsersStart2faSetupRetrieveInput =
   typeof UsersStart2faSetupRetrieveInput.Type;
 
 // Output Schema
-export const UsersStart2faSetupRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const UsersStart2faSetupRetrieveOutput = Schema.Void;
 export type UsersStart2faSetupRetrieveOutput =
   typeof UsersStart2faSetupRetrieveOutput.Type;
 

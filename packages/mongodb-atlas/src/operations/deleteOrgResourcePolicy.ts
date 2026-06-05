@@ -19,7 +19,7 @@ export type DeleteOrgResourcePolicyInput =
   typeof DeleteOrgResourcePolicyInput.Type;
 
 // Output Schema
-export const DeleteOrgResourcePolicyOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteOrgResourcePolicyOutput = Schema.Void;
 export type DeleteOrgResourcePolicyOutput =
   typeof DeleteOrgResourcePolicyOutput.Type;
 

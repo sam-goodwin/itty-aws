@@ -18,7 +18,7 @@ export type CreateGroupAccessListEntryInput =
   typeof CreateGroupAccessListEntryInput.Type;
 
 // Output Schema
-export const CreateGroupAccessListEntryOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupAccessListEntryOutput = Schema.Void;
 export type CreateGroupAccessListEntryOutput =
   typeof CreateGroupAccessListEntryOutput.Type;
 

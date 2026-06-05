@@ -25,7 +25,7 @@ export type ErrorTrackingSuppressionRulesReorderPartialUpdateInput =
 
 // Output Schema
 export const ErrorTrackingSuppressionRulesReorderPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type ErrorTrackingSuppressionRulesReorderPartialUpdateOutput =
   typeof ErrorTrackingSuppressionRulesReorderPartialUpdateOutput.Type;
 

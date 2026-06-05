@@ -20,7 +20,7 @@ export type DeleteGroupClusterSearchIndexInput =
   typeof DeleteGroupClusterSearchIndexInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterSearchIndexOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupClusterSearchIndexOutput = Schema.Void;
 export type DeleteGroupClusterSearchIndexOutput =
   typeof DeleteGroupClusterSearchIndexOutput.Type;
 

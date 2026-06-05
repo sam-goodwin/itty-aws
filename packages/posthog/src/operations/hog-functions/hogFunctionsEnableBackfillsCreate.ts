@@ -266,8 +266,7 @@ export type HogFunctionsEnableBackfillsCreateInput =
   typeof HogFunctionsEnableBackfillsCreateInput.Type;
 
 // Output Schema
-export const HogFunctionsEnableBackfillsCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const HogFunctionsEnableBackfillsCreateOutput = Schema.Void;
 export type HogFunctionsEnableBackfillsCreateOutput =
   typeof HogFunctionsEnableBackfillsCreateOutput.Type;
 

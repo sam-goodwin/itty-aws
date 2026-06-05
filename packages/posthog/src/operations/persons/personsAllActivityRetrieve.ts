@@ -17,7 +17,7 @@ export type PersonsAllActivityRetrieveInput =
   typeof PersonsAllActivityRetrieveInput.Type;
 
 // Output Schema
-export const PersonsAllActivityRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const PersonsAllActivityRetrieveOutput = Schema.Void;
 export type PersonsAllActivityRetrieveOutput =
   typeof PersonsAllActivityRetrieveOutput.Type;
 

@@ -17,7 +17,7 @@ export type SurveysActivityRetrieveInput =
   typeof SurveysActivityRetrieveInput.Type;
 
 // Output Schema
-export const SurveysActivityRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const SurveysActivityRetrieveOutput = Schema.Void;
 export type SurveysActivityRetrieveOutput =
   typeof SurveysActivityRetrieveOutput.Type;
 

@@ -17,7 +17,7 @@ export type GetTerminalReadersReaderInput =
   typeof GetTerminalReadersReaderInput.Type;
 
 // Output Schema
-export const GetTerminalReadersReaderOutput = /*@__PURE__*/ Schema.Unknown;
+export const GetTerminalReadersReaderOutput = Schema.Unknown;
 export type GetTerminalReadersReaderOutput =
   typeof GetTerminalReadersReaderOutput.Type;
 

@@ -22,7 +22,7 @@ export type DeleteGroupClusterOnlineArchiveInput =
   typeof DeleteGroupClusterOnlineArchiveInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterOnlineArchiveOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupClusterOnlineArchiveOutput = Schema.Void;
 export type DeleteGroupClusterOnlineArchiveOutput =
   typeof DeleteGroupClusterOnlineArchiveOutput.Type;
 

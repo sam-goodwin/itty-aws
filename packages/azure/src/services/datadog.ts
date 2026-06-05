@@ -336,7 +336,7 @@ export type MonitoredSubscriptionsDeleteInput =
   typeof MonitoredSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const MonitoredSubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MonitoredSubscriptionsDeleteOutput = Schema.Void;
 export type MonitoredSubscriptionsDeleteOutput =
   typeof MonitoredSubscriptionsDeleteOutput.Type;
 
@@ -580,7 +580,7 @@ export const MonitorsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type MonitorsDeleteInput = typeof MonitorsDeleteInput.Type;
 
 // Output Schema
-export const MonitorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MonitorsDeleteOutput = Schema.Void;
 export type MonitorsDeleteOutput = typeof MonitorsDeleteOutput.Type;
 
 // The operation
@@ -1023,7 +1023,7 @@ export const MonitorsSetDefaultKeyInput = /*@__PURE__*/ Schema.Struct({
 export type MonitorsSetDefaultKeyInput = typeof MonitorsSetDefaultKeyInput.Type;
 
 // Output Schema
-export const MonitorsSetDefaultKeyOutput = /*@__PURE__*/ Schema.Void;
+export const MonitorsSetDefaultKeyOutput = Schema.Void;
 export type MonitorsSetDefaultKeyOutput =
   typeof MonitorsSetDefaultKeyOutput.Type;
 

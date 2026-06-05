@@ -62,8 +62,7 @@ export type ErrorTrackingIssuesAssignPartialUpdateInput =
   typeof ErrorTrackingIssuesAssignPartialUpdateInput.Type;
 
 // Output Schema
-export const ErrorTrackingIssuesAssignPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingIssuesAssignPartialUpdateOutput = Schema.Void;
 export type ErrorTrackingIssuesAssignPartialUpdateOutput =
   typeof ErrorTrackingIssuesAssignPartialUpdateOutput.Type;
 

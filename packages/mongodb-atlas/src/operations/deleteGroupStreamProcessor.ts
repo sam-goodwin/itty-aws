@@ -20,7 +20,7 @@ export type DeleteGroupStreamProcessorInput =
   typeof DeleteGroupStreamProcessorInput.Type;
 
 // Output Schema
-export const DeleteGroupStreamProcessorOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupStreamProcessorOutput = Schema.Void;
 export type DeleteGroupStreamProcessorOutput =
   typeof DeleteGroupStreamProcessorOutput.Type;
 

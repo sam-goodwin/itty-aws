@@ -138,7 +138,7 @@ export type ChangeDataCaptureDeleteInput =
   typeof ChangeDataCaptureDeleteInput.Type;
 
 // Output Schema
-export const ChangeDataCaptureDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ChangeDataCaptureDeleteOutput = Schema.Void;
 export type ChangeDataCaptureDeleteOutput =
   typeof ChangeDataCaptureDeleteOutput.Type;
 
@@ -293,7 +293,7 @@ export type ChangeDataCaptureStartInput =
   typeof ChangeDataCaptureStartInput.Type;
 
 // Output Schema
-export const ChangeDataCaptureStartOutput = /*@__PURE__*/ Schema.Void;
+export const ChangeDataCaptureStartOutput = Schema.Void;
 export type ChangeDataCaptureStartOutput =
   typeof ChangeDataCaptureStartOutput.Type;
 
@@ -328,7 +328,7 @@ export type ChangeDataCaptureStatusInput =
   typeof ChangeDataCaptureStatusInput.Type;
 
 // Output Schema
-export const ChangeDataCaptureStatusOutput = /*@__PURE__*/ Schema.String;
+export const ChangeDataCaptureStatusOutput = Schema.String;
 export type ChangeDataCaptureStatusOutput =
   typeof ChangeDataCaptureStatusOutput.Type;
 
@@ -362,7 +362,7 @@ export const ChangeDataCaptureStopInput = /*@__PURE__*/ Schema.Struct({
 export type ChangeDataCaptureStopInput = typeof ChangeDataCaptureStopInput.Type;
 
 // Output Schema
-export const ChangeDataCaptureStopOutput = /*@__PURE__*/ Schema.Void;
+export const ChangeDataCaptureStopOutput = Schema.Void;
 export type ChangeDataCaptureStopOutput =
   typeof ChangeDataCaptureStopOutput.Type;
 
@@ -455,7 +455,7 @@ export type CredentialOperationsDeleteInput =
   typeof CredentialOperationsDeleteInput.Type;
 
 // Output Schema
-export const CredentialOperationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CredentialOperationsDeleteOutput = Schema.Void;
 export type CredentialOperationsDeleteOutput =
   typeof CredentialOperationsDeleteOutput.Type;
 
@@ -685,7 +685,7 @@ export type DataFlowDebugSessionDeleteInput =
   typeof DataFlowDebugSessionDeleteInput.Type;
 
 // Output Schema
-export const DataFlowDebugSessionDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DataFlowDebugSessionDeleteOutput = Schema.Void;
 export type DataFlowDebugSessionDeleteOutput =
   typeof DataFlowDebugSessionDeleteOutput.Type;
 
@@ -864,7 +864,7 @@ export const DataFlowsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DataFlowsDeleteInput = typeof DataFlowsDeleteInput.Type;
 
 // Output Schema
-export const DataFlowsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DataFlowsDeleteOutput = Schema.Void;
 export type DataFlowsDeleteOutput = typeof DataFlowsDeleteOutput.Type;
 
 // The operation
@@ -1059,7 +1059,7 @@ export const DatasetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DatasetsDeleteInput = typeof DatasetsDeleteInput.Type;
 
 // Output Schema
-export const DatasetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DatasetsDeleteOutput = Schema.Void;
 export type DatasetsDeleteOutput = typeof DatasetsDeleteOutput.Type;
 
 // The operation
@@ -1418,7 +1418,7 @@ export const FactoriesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FactoriesDeleteInput = typeof FactoriesDeleteInput.Type;
 
 // Output Schema
-export const FactoriesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FactoriesDeleteOutput = Schema.Void;
 export type FactoriesDeleteOutput = typeof FactoriesDeleteOutput.Type;
 
 // The operation
@@ -1789,7 +1789,7 @@ export type GlobalParametersDeleteInput =
   typeof GlobalParametersDeleteInput.Type;
 
 // Output Schema
-export const GlobalParametersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GlobalParametersDeleteOutput = Schema.Void;
 export type GlobalParametersDeleteOutput =
   typeof GlobalParametersDeleteOutput.Type;
 
@@ -2046,7 +2046,7 @@ export type IntegrationRuntimeNodesDeleteInput =
   typeof IntegrationRuntimeNodesDeleteInput.Type;
 
 // Output Schema
-export const IntegrationRuntimeNodesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationRuntimeNodesDeleteOutput = Schema.Void;
 export type IntegrationRuntimeNodesDeleteOutput =
   typeof IntegrationRuntimeNodesDeleteOutput.Type;
 
@@ -2460,7 +2460,7 @@ export type IntegrationRuntimesDeleteInput =
   typeof IntegrationRuntimesDeleteInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationRuntimesDeleteOutput = Schema.Void;
 export type IntegrationRuntimesDeleteOutput =
   typeof IntegrationRuntimesDeleteOutput.Type;
 
@@ -2918,7 +2918,7 @@ export type IntegrationRuntimesRemoveLinksInput =
   typeof IntegrationRuntimesRemoveLinksInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesRemoveLinksOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationRuntimesRemoveLinksOutput = Schema.Void;
 export type IntegrationRuntimesRemoveLinksOutput =
   typeof IntegrationRuntimesRemoveLinksOutput.Type;
 
@@ -3008,7 +3008,7 @@ export type IntegrationRuntimesStopInput =
   typeof IntegrationRuntimesStopInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesStopOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationRuntimesStopOutput = Schema.Void;
 export type IntegrationRuntimesStopOutput =
   typeof IntegrationRuntimesStopOutput.Type;
 
@@ -3044,8 +3044,7 @@ export type IntegrationRuntimesSyncCredentialsInput =
   typeof IntegrationRuntimesSyncCredentialsInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesSyncCredentialsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationRuntimesSyncCredentialsOutput = Schema.Void;
 export type IntegrationRuntimesSyncCredentialsOutput =
   typeof IntegrationRuntimesSyncCredentialsOutput.Type;
 
@@ -3135,7 +3134,7 @@ export type IntegrationRuntimesUpgradeInput =
   typeof IntegrationRuntimesUpgradeInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesUpgradeOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationRuntimesUpgradeOutput = Schema.Void;
 export type IntegrationRuntimesUpgradeOutput =
   typeof IntegrationRuntimesUpgradeOutput.Type;
 
@@ -3223,7 +3222,7 @@ export const LinkedServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type LinkedServicesDeleteInput = typeof LinkedServicesDeleteInput.Type;
 
 // Output Schema
-export const LinkedServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const LinkedServicesDeleteOutput = Schema.Void;
 export type LinkedServicesDeleteOutput = typeof LinkedServicesDeleteOutput.Type;
 
 // The operation
@@ -3426,7 +3425,7 @@ export type ManagedPrivateEndpointsDeleteInput =
   typeof ManagedPrivateEndpointsDeleteInput.Type;
 
 // Output Schema
-export const ManagedPrivateEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ManagedPrivateEndpointsDeleteOutput = Schema.Void;
 export type ManagedPrivateEndpointsDeleteOutput =
   typeof ManagedPrivateEndpointsDeleteOutput.Type;
 
@@ -3865,7 +3864,7 @@ export const PipelineRunsCancelInput = /*@__PURE__*/ Schema.Struct({
 export type PipelineRunsCancelInput = typeof PipelineRunsCancelInput.Type;
 
 // Output Schema
-export const PipelineRunsCancelOutput = /*@__PURE__*/ Schema.Void;
+export const PipelineRunsCancelOutput = Schema.Void;
 export type PipelineRunsCancelOutput = typeof PipelineRunsCancelOutput.Type;
 
 // The operation
@@ -4111,7 +4110,7 @@ export const PipelinesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PipelinesDeleteInput = typeof PipelinesDeleteInput.Type;
 
 // Output Schema
-export const PipelinesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PipelinesDeleteOutput = Schema.Void;
 export type PipelinesDeleteOutput = typeof PipelinesDeleteOutput.Type;
 
 // The operation
@@ -4313,7 +4312,7 @@ export type PrivateEndpointConnectionDeleteInput =
   typeof PrivateEndpointConnectionDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionDeleteOutput =
   typeof PrivateEndpointConnectionDeleteOutput.Type;
 
@@ -4514,7 +4513,7 @@ export const TriggerRunsCancelInput = /*@__PURE__*/ Schema.Struct({
 export type TriggerRunsCancelInput = typeof TriggerRunsCancelInput.Type;
 
 // Output Schema
-export const TriggerRunsCancelOutput = /*@__PURE__*/ Schema.Void;
+export const TriggerRunsCancelOutput = Schema.Void;
 export type TriggerRunsCancelOutput = typeof TriggerRunsCancelOutput.Type;
 
 // The operation
@@ -4604,7 +4603,7 @@ export const TriggerRunsRerunInput = /*@__PURE__*/ Schema.Struct({
 export type TriggerRunsRerunInput = typeof TriggerRunsRerunInput.Type;
 
 // Output Schema
-export const TriggerRunsRerunOutput = /*@__PURE__*/ Schema.Void;
+export const TriggerRunsRerunOutput = Schema.Void;
 export type TriggerRunsRerunOutput = typeof TriggerRunsRerunOutput.Type;
 
 // The operation
@@ -4690,7 +4689,7 @@ export const TriggersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
 
 // Output Schema
-export const TriggersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TriggersDeleteOutput = Schema.Void;
 export type TriggersDeleteOutput = typeof TriggersDeleteOutput.Type;
 
 // The operation
@@ -4936,7 +4935,7 @@ export const TriggersStartInput = /*@__PURE__*/ Schema.Struct({
 export type TriggersStartInput = typeof TriggersStartInput.Type;
 
 // Output Schema
-export const TriggersStartOutput = /*@__PURE__*/ Schema.Void;
+export const TriggersStartOutput = Schema.Void;
 export type TriggersStartOutput = typeof TriggersStartOutput.Type;
 
 // The operation
@@ -4969,7 +4968,7 @@ export const TriggersStopInput = /*@__PURE__*/ Schema.Struct({
 export type TriggersStopInput = typeof TriggersStopInput.Type;
 
 // Output Schema
-export const TriggersStopOutput = /*@__PURE__*/ Schema.Void;
+export const TriggersStopOutput = Schema.Void;
 export type TriggersStopOutput = typeof TriggersStopOutput.Type;
 
 // The operation

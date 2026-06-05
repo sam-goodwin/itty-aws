@@ -20,7 +20,7 @@ export type StartGroupStreamProcessorWithInput =
   typeof StartGroupStreamProcessorWithInput.Type;
 
 // Output Schema
-export const StartGroupStreamProcessorWithOutput = /*@__PURE__*/ Schema.Void;
+export const StartGroupStreamProcessorWithOutput = Schema.Void;
 export type StartGroupStreamProcessorWithOutput =
   typeof StartGroupStreamProcessorWithOutput.Type;
 

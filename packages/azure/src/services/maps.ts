@@ -57,7 +57,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
 
 // Output Schema
-export const AccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AccountsDeleteOutput = Schema.Void;
 export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
 
 // The operation
@@ -373,7 +373,7 @@ export const CreatorsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type CreatorsDeleteInput = typeof CreatorsDeleteInput.Type;
 
 // Output Schema
-export const CreatorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CreatorsDeleteOutput = Schema.Void;
 export type CreatorsDeleteOutput = typeof CreatorsDeleteOutput.Type;
 
 // The operation

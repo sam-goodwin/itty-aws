@@ -19,8 +19,7 @@ export type GetGroupPrivateEndpointRegionalModeInput =
   typeof GetGroupPrivateEndpointRegionalModeInput.Type;
 
 // Output Schema
-export const GetGroupPrivateEndpointRegionalModeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GetGroupPrivateEndpointRegionalModeOutput = Schema.Void;
 export type GetGroupPrivateEndpointRegionalModeOutput =
   typeof GetGroupPrivateEndpointRegionalModeOutput.Type;
 

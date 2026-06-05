@@ -19,7 +19,7 @@ export type LlmAnalyticsReviewQueuesDestroyInput =
   typeof LlmAnalyticsReviewQueuesDestroyInput.Type;
 
 // Output Schema
-export const LlmAnalyticsReviewQueuesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const LlmAnalyticsReviewQueuesDestroyOutput = Schema.Void;
 export type LlmAnalyticsReviewQueuesDestroyOutput =
   typeof LlmAnalyticsReviewQueuesDestroyOutput.Type;
 

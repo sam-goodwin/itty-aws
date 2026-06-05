@@ -18,7 +18,7 @@ export const AddOrgUserRoleInput = /*@__PURE__*/ Schema.Struct({
 export type AddOrgUserRoleInput = typeof AddOrgUserRoleInput.Type;
 
 // Output Schema
-export const AddOrgUserRoleOutput = /*@__PURE__*/ Schema.Void;
+export const AddOrgUserRoleOutput = Schema.Void;
 export type AddOrgUserRoleOutput = typeof AddOrgUserRoleOutput.Type;
 
 // The operation

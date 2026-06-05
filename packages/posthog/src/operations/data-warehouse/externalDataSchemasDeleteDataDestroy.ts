@@ -18,8 +18,7 @@ export type ExternalDataSchemasDeleteDataDestroyInput =
   typeof ExternalDataSchemasDeleteDataDestroyInput.Type;
 
 // Output Schema
-export const ExternalDataSchemasDeleteDataDestroyOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ExternalDataSchemasDeleteDataDestroyOutput = Schema.Void;
 export type ExternalDataSchemasDeleteDataDestroyOutput =
   typeof ExternalDataSchemasDeleteDataDestroyOutput.Type;
 

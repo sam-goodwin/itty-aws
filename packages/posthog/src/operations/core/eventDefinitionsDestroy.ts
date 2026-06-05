@@ -17,7 +17,7 @@ export type EventDefinitionsDestroyInput =
   typeof EventDefinitionsDestroyInput.Type;
 
 // Output Schema
-export const EventDefinitionsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const EventDefinitionsDestroyOutput = Schema.Void;
 export type EventDefinitionsDestroyOutput =
   typeof EventDefinitionsDestroyOutput.Type;
 

@@ -114,7 +114,7 @@ export const BackupInstancesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BackupInstancesDeleteInput = typeof BackupInstancesDeleteInput.Type;
 
 // Output Schema
-export const BackupInstancesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BackupInstancesDeleteOutput = Schema.Void;
 export type BackupInstancesDeleteOutput =
   typeof BackupInstancesDeleteOutput.Type;
 
@@ -326,7 +326,7 @@ export type BackupInstancesResumeBackupsInput =
   typeof BackupInstancesResumeBackupsInput.Type;
 
 // Output Schema
-export const BackupInstancesResumeBackupsOutput = /*@__PURE__*/ Schema.Void;
+export const BackupInstancesResumeBackupsOutput = Schema.Void;
 export type BackupInstancesResumeBackupsOutput =
   typeof BackupInstancesResumeBackupsOutput.Type;
 
@@ -363,7 +363,7 @@ export type BackupInstancesResumeProtectionInput =
   typeof BackupInstancesResumeProtectionInput.Type;
 
 // Output Schema
-export const BackupInstancesResumeProtectionOutput = /*@__PURE__*/ Schema.Void;
+export const BackupInstancesResumeProtectionOutput = Schema.Void;
 export type BackupInstancesResumeProtectionOutput =
   typeof BackupInstancesResumeProtectionOutput.Type;
 
@@ -398,7 +398,7 @@ export type BackupInstancesStopProtectionInput =
   typeof BackupInstancesStopProtectionInput.Type;
 
 // Output Schema
-export const BackupInstancesStopProtectionOutput = /*@__PURE__*/ Schema.Void;
+export const BackupInstancesStopProtectionOutput = Schema.Void;
 export type BackupInstancesStopProtectionOutput =
   typeof BackupInstancesStopProtectionOutput.Type;
 
@@ -433,7 +433,7 @@ export type BackupInstancesSuspendBackupsInput =
   typeof BackupInstancesSuspendBackupsInput.Type;
 
 // Output Schema
-export const BackupInstancesSuspendBackupsOutput = /*@__PURE__*/ Schema.Void;
+export const BackupInstancesSuspendBackupsOutput = Schema.Void;
 export type BackupInstancesSuspendBackupsOutput =
   typeof BackupInstancesSuspendBackupsOutput.Type;
 
@@ -469,8 +469,7 @@ export type BackupInstancesSyncBackupInstanceInput =
   typeof BackupInstancesSyncBackupInstanceInput.Type;
 
 // Output Schema
-export const BackupInstancesSyncBackupInstanceOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BackupInstancesSyncBackupInstanceOutput = Schema.Void;
 export type BackupInstancesSyncBackupInstanceOutput =
   typeof BackupInstancesSyncBackupInstanceOutput.Type;
 
@@ -547,7 +546,7 @@ export type BackupInstancesTriggerRehydrateInput =
   typeof BackupInstancesTriggerRehydrateInput.Type;
 
 // Output Schema
-export const BackupInstancesTriggerRehydrateOutput = /*@__PURE__*/ Schema.Void;
+export const BackupInstancesTriggerRehydrateOutput = Schema.Void;
 export type BackupInstancesTriggerRehydrateOutput =
   typeof BackupInstancesTriggerRehydrateOutput.Type;
 
@@ -696,8 +695,7 @@ export type BackupInstancesValidateForModifyBackupInput =
   typeof BackupInstancesValidateForModifyBackupInput.Type;
 
 // Output Schema
-export const BackupInstancesValidateForModifyBackupOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BackupInstancesValidateForModifyBackupOutput = Schema.Void;
 export type BackupInstancesValidateForModifyBackupOutput =
   typeof BackupInstancesValidateForModifyBackupOutput.Type;
 
@@ -824,7 +822,7 @@ export const BackupPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BackupPoliciesDeleteInput = typeof BackupPoliciesDeleteInput.Type;
 
 // Output Schema
-export const BackupPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BackupPoliciesDeleteOutput = Schema.Void;
 export type BackupPoliciesDeleteOutput = typeof BackupPoliciesDeleteOutput.Type;
 
 // The operation
@@ -1084,7 +1082,7 @@ export const BackupVaultsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BackupVaultsDeleteInput = typeof BackupVaultsDeleteInput.Type;
 
 // Output Schema
-export const BackupVaultsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BackupVaultsDeleteOutput = Schema.Void;
 export type BackupVaultsDeleteOutput = typeof BackupVaultsDeleteOutput.Type;
 
 // The operation
@@ -1453,7 +1451,7 @@ export type DeletedBackupInstancesUndeleteInput =
   typeof DeletedBackupInstancesUndeleteInput.Type;
 
 // Output Schema
-export const DeletedBackupInstancesUndeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DeletedBackupInstancesUndeleteOutput = Schema.Void;
 export type DeletedBackupInstancesUndeleteOutput =
   typeof DeletedBackupInstancesUndeleteOutput.Type;
 
@@ -1662,7 +1660,7 @@ export type DppResourceGuardProxyDeleteInput =
   typeof DppResourceGuardProxyDeleteInput.Type;
 
 // Output Schema
-export const DppResourceGuardProxyDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DppResourceGuardProxyDeleteOutput = Schema.Void;
 export type DppResourceGuardProxyDeleteOutput =
   typeof DppResourceGuardProxyDeleteOutput.Type;
 
@@ -1862,7 +1860,7 @@ export const ExportJobsTriggerInput = /*@__PURE__*/ Schema.Struct({
 export type ExportJobsTriggerInput = typeof ExportJobsTriggerInput.Type;
 
 // Output Schema
-export const ExportJobsTriggerOutput = /*@__PURE__*/ Schema.Void;
+export const ExportJobsTriggerOutput = Schema.Void;
 export type ExportJobsTriggerOutput = typeof ExportJobsTriggerOutput.Type;
 
 // The operation
@@ -2419,7 +2417,7 @@ export const ResourceGuardsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ResourceGuardsDeleteInput = typeof ResourceGuardsDeleteInput.Type;
 
 // Output Schema
-export const ResourceGuardsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ResourceGuardsDeleteOutput = Schema.Void;
 export type ResourceGuardsDeleteOutput = typeof ResourceGuardsDeleteOutput.Type;
 
 // The operation

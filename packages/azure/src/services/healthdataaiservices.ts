@@ -72,7 +72,7 @@ export const DeidServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DeidServicesDeleteInput = typeof DeidServicesDeleteInput.Type;
 
 // Output Schema
-export const DeidServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DeidServicesDeleteOutput = Schema.Void;
 export type DeidServicesDeleteOutput = typeof DeidServicesDeleteOutput.Type;
 
 // The operation
@@ -437,7 +437,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 

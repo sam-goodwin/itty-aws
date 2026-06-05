@@ -77,7 +77,7 @@ export const CGProfileDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type CGProfileDeleteInput = typeof CGProfileDeleteInput.Type;
 
 // Output Schema
-export const CGProfileDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CGProfileDeleteOutput = Schema.Void;
 export type CGProfileDeleteOutput = typeof CGProfileDeleteOutput.Type;
 
 // The operation
@@ -1659,7 +1659,7 @@ export type ContainerGroupsRestartInput =
   typeof ContainerGroupsRestartInput.Type;
 
 // Output Schema
-export const ContainerGroupsRestartOutput = /*@__PURE__*/ Schema.Void;
+export const ContainerGroupsRestartOutput = Schema.Void;
 export type ContainerGroupsRestartOutput =
   typeof ContainerGroupsRestartOutput.Type;
 
@@ -1693,7 +1693,7 @@ export const ContainerGroupsStartInput = /*@__PURE__*/ Schema.Struct({
 export type ContainerGroupsStartInput = typeof ContainerGroupsStartInput.Type;
 
 // Output Schema
-export const ContainerGroupsStartOutput = /*@__PURE__*/ Schema.Void;
+export const ContainerGroupsStartOutput = Schema.Void;
 export type ContainerGroupsStartOutput = typeof ContainerGroupsStartOutput.Type;
 
 // The operation
@@ -1726,7 +1726,7 @@ export const ContainerGroupsStopInput = /*@__PURE__*/ Schema.Struct({
 export type ContainerGroupsStopInput = typeof ContainerGroupsStopInput.Type;
 
 // Output Schema
-export const ContainerGroupsStopOutput = /*@__PURE__*/ Schema.Void;
+export const ContainerGroupsStopOutput = Schema.Void;
 export type ContainerGroupsStopOutput = typeof ContainerGroupsStopOutput.Type;
 
 // The operation
@@ -2114,7 +2114,7 @@ export const NGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NGroupsDeleteInput = typeof NGroupsDeleteInput.Type;
 
 // Output Schema
-export const NGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NGroupsDeleteOutput = Schema.Void;
 export type NGroupsDeleteOutput = typeof NGroupsDeleteOutput.Type;
 
 // The operation
@@ -2306,7 +2306,7 @@ export const NGroupsRestartInput = /*@__PURE__*/ Schema.Struct({
 export type NGroupsRestartInput = typeof NGroupsRestartInput.Type;
 
 // Output Schema
-export const NGroupsRestartOutput = /*@__PURE__*/ Schema.Void;
+export const NGroupsRestartOutput = Schema.Void;
 export type NGroupsRestartOutput = typeof NGroupsRestartOutput.Type;
 
 // The operation
@@ -2339,7 +2339,7 @@ export const NGroupsStartInput = /*@__PURE__*/ Schema.Struct({
 export type NGroupsStartInput = typeof NGroupsStartInput.Type;
 
 // Output Schema
-export const NGroupsStartOutput = /*@__PURE__*/ Schema.Void;
+export const NGroupsStartOutput = Schema.Void;
 export type NGroupsStartOutput = typeof NGroupsStartOutput.Type;
 
 // The operation
@@ -2372,7 +2372,7 @@ export const NGroupsStopInput = /*@__PURE__*/ Schema.Struct({
 export type NGroupsStopInput = typeof NGroupsStopInput.Type;
 
 // Output Schema
-export const NGroupsStopOutput = /*@__PURE__*/ Schema.Void;
+export const NGroupsStopOutput = Schema.Void;
 export type NGroupsStopOutput = typeof NGroupsStopOutput.Type;
 
 // The operation
@@ -2499,8 +2499,7 @@ export type SubnetServiceAssociationLinkDeleteInput =
   typeof SubnetServiceAssociationLinkDeleteInput.Type;
 
 // Output Schema
-export const SubnetServiceAssociationLinkDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SubnetServiceAssociationLinkDeleteOutput = Schema.Void;
 export type SubnetServiceAssociationLinkDeleteOutput =
   typeof SubnetServiceAssociationLinkDeleteOutput.Type;
 

@@ -28,7 +28,7 @@ export type ListGroupProcessPerformanceAdvisorSlowQueryLogsInput =
 
 // Output Schema
 export const ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput =
   typeof ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput.Type;
 

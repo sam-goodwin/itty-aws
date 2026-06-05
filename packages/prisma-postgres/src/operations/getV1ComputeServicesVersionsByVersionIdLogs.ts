@@ -20,8 +20,7 @@ export type GetV1ComputeServicesVersionsByVersionIdLogsInput =
   typeof GetV1ComputeServicesVersionsByVersionIdLogsInput.Type;
 
 // Output Schema
-export const GetV1ComputeServicesVersionsByVersionIdLogsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GetV1ComputeServicesVersionsByVersionIdLogsOutput = Schema.Void;
 export type GetV1ComputeServicesVersionsByVersionIdLogsOutput =
   typeof GetV1ComputeServicesVersionsByVersionIdLogsOutput.Type;
 

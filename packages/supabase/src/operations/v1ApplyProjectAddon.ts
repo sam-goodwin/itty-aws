@@ -20,7 +20,7 @@ export const V1ApplyProjectAddonInput = /*@__PURE__*/ Schema.Struct({
 export type V1ApplyProjectAddonInput = typeof V1ApplyProjectAddonInput.Type;
 
 // Output Schema
-export const V1ApplyProjectAddonOutput = /*@__PURE__*/ Schema.Void;
+export const V1ApplyProjectAddonOutput = Schema.Void;
 export type V1ApplyProjectAddonOutput = typeof V1ApplyProjectAddonOutput.Type;
 
 // The operation

@@ -16,7 +16,7 @@ export const V1RemoveProjectAddonInput = /*@__PURE__*/ Schema.Struct({
 export type V1RemoveProjectAddonInput = typeof V1RemoveProjectAddonInput.Type;
 
 // Output Schema
-export const V1RemoveProjectAddonOutput = /*@__PURE__*/ Schema.Void;
+export const V1RemoveProjectAddonOutput = Schema.Void;
 export type V1RemoveProjectAddonOutput = typeof V1RemoveProjectAddonOutput.Type;
 
 // The operation

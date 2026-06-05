@@ -19,8 +19,7 @@ export type DashboardsSharingPasswordsDestroyInput =
   typeof DashboardsSharingPasswordsDestroyInput.Type;
 
 // Output Schema
-export const DashboardsSharingPasswordsDestroyOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DashboardsSharingPasswordsDestroyOutput = Schema.Void;
 export type DashboardsSharingPasswordsDestroyOutput =
   typeof DashboardsSharingPasswordsDestroyOutput.Type;
 

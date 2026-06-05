@@ -17,7 +17,7 @@ export type PersonsLifecycleRetrieveInput =
   typeof PersonsLifecycleRetrieveInput.Type;
 
 // Output Schema
-export const PersonsLifecycleRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const PersonsLifecycleRetrieveOutput = Schema.Void;
 export type PersonsLifecycleRetrieveOutput =
   typeof PersonsLifecycleRetrieveOutput.Type;
 

@@ -190,7 +190,7 @@ export type ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateInput =
 
 // Output Schema
 export const ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateOutput =
   typeof ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateOutput.Type;
 

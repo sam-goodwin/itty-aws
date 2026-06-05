@@ -16,7 +16,7 @@ export type UpdateNeonAuthEmailProviderInput =
   typeof UpdateNeonAuthEmailProviderInput.Type;
 
 // Output Schema
-export const UpdateNeonAuthEmailProviderOutput = /*@__PURE__*/ Schema.Unknown;
+export const UpdateNeonAuthEmailProviderOutput = Schema.Unknown;
 export type UpdateNeonAuthEmailProviderOutput =
   typeof UpdateNeonAuthEmailProviderOutput.Type;
 

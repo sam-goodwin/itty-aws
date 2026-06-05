@@ -1029,7 +1029,7 @@ function generateOutputSchema(
 
   if (!responseSchema) {
     return {
-      outputSchemaCode: `export const ${outputSchemaName} = /*@__PURE__*/ Schema.Void;
+      outputSchemaCode: `export const ${outputSchemaName} = Schema.Void;
 export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
       outputSchemaName,
       sensitiveImports: {
@@ -1077,7 +1077,7 @@ export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
     ctx,
   );
   return {
-    outputSchemaCode: `export const ${outputSchemaName} = /*@__PURE__*/ ${schemaCode};
+    outputSchemaCode: `${annotatePureExportConst(`export const ${outputSchemaName} = ${schemaCode};`)}
 export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
     outputSchemaName,
     sensitiveImports: {

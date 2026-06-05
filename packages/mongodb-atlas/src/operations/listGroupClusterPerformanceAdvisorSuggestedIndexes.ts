@@ -23,7 +23,7 @@ export type ListGroupClusterPerformanceAdvisorSuggestedIndexesInput =
 
 // Output Schema
 export const ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput =
   typeof ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput.Type;
 

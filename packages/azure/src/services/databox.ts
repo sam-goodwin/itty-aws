@@ -59,7 +59,7 @@ export const JobsCancelInput = /*@__PURE__*/ Schema.Struct({
 export type JobsCancelInput = typeof JobsCancelInput.Type;
 
 // Output Schema
-export const JobsCancelOutput = /*@__PURE__*/ Schema.Void;
+export const JobsCancelOutput = Schema.Void;
 export type JobsCancelOutput = typeof JobsCancelOutput.Type;
 
 // The operation
@@ -139,7 +139,7 @@ export const JobsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type JobsDeleteInput = typeof JobsDeleteInput.Type;
 
 // Output Schema
-export const JobsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const JobsDeleteOutput = Schema.Void;
 export type JobsDeleteOutput = typeof JobsDeleteOutput.Type;
 
 // The operation
@@ -402,7 +402,7 @@ export type JobsMarkDevicesShippedInput =
   typeof JobsMarkDevicesShippedInput.Type;
 
 // Output Schema
-export const JobsMarkDevicesShippedOutput = /*@__PURE__*/ Schema.Void;
+export const JobsMarkDevicesShippedOutput = Schema.Void;
 export type JobsMarkDevicesShippedOutput =
   typeof JobsMarkDevicesShippedOutput.Type;
 
@@ -484,7 +484,7 @@ export const MitigateInput = /*@__PURE__*/ Schema.Struct({
 export type MitigateInput = typeof MitigateInput.Type;
 
 // Output Schema
-export const MitigateOutput = /*@__PURE__*/ Schema.Void;
+export const MitigateOutput = Schema.Void;
 export type MitigateOutput = typeof MitigateOutput.Type;
 
 // The operation

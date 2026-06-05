@@ -16,7 +16,7 @@ export const EventSchemasDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type EventSchemasDestroyInput = typeof EventSchemasDestroyInput.Type;
 
 // Output Schema
-export const EventSchemasDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const EventSchemasDestroyOutput = Schema.Void;
 export type EventSchemasDestroyOutput = typeof EventSchemasDestroyOutput.Type;
 
 // The operation

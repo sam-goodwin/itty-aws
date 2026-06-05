@@ -17,7 +17,7 @@ export type DeleteOrganizationVPCEndpointInput =
   typeof DeleteOrganizationVPCEndpointInput.Type;
 
 // Output Schema
-export const DeleteOrganizationVPCEndpointOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteOrganizationVPCEndpointOutput = Schema.Void;
 export type DeleteOrganizationVPCEndpointOutput =
   typeof DeleteOrganizationVPCEndpointOutput.Type;
 

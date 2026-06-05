@@ -298,7 +298,7 @@ export type DedicatedCloudNodesDeleteInput =
   typeof DedicatedCloudNodesDeleteInput.Type;
 
 // Output Schema
-export const DedicatedCloudNodesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DedicatedCloudNodesDeleteOutput = Schema.Void;
 export type DedicatedCloudNodesDeleteOutput =
   typeof DedicatedCloudNodesDeleteOutput.Type;
 
@@ -679,7 +679,7 @@ export type DedicatedCloudServicesDeleteInput =
   typeof DedicatedCloudServicesDeleteInput.Type;
 
 // Output Schema
-export const DedicatedCloudServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DedicatedCloudServicesDeleteOutput = Schema.Void;
 export type DedicatedCloudServicesDeleteOutput =
   typeof DedicatedCloudServicesDeleteOutput.Type;
 
@@ -1758,7 +1758,7 @@ export const VirtualMachinesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachinesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesDeleteOutput = Schema.Void;
 export type VirtualMachinesDeleteOutput =
   typeof VirtualMachinesDeleteOutput.Type;
 
@@ -2293,7 +2293,7 @@ export const VirtualMachinesStartInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
 
 // Output Schema
-export const VirtualMachinesStartOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesStartOutput = Schema.Void;
 export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
 
 // The operation
@@ -2323,7 +2323,7 @@ export const VirtualMachinesStopInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualMachinesStopInput = typeof VirtualMachinesStopInput.Type;
 
 // Output Schema
-export const VirtualMachinesStopOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesStopOutput = Schema.Void;
 export type VirtualMachinesStopOutput = typeof VirtualMachinesStopOutput.Type;
 
 // The operation

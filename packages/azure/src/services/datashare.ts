@@ -572,7 +572,7 @@ export const DataSetMappingsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DataSetMappingsDeleteInput = typeof DataSetMappingsDeleteInput.Type;
 
 // Output Schema
-export const DataSetMappingsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DataSetMappingsDeleteOutput = Schema.Void;
 export type DataSetMappingsDeleteOutput =
   typeof DataSetMappingsDeleteOutput.Type;
 
@@ -768,7 +768,7 @@ export const DataSetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DataSetsDeleteInput = typeof DataSetsDeleteInput.Type;
 
 // Output Schema
-export const DataSetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DataSetsDeleteOutput = Schema.Void;
 export type DataSetsDeleteOutput = typeof DataSetsDeleteOutput.Type;
 
 // The operation
@@ -1035,7 +1035,7 @@ export const InvitationsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type InvitationsDeleteInput = typeof InvitationsDeleteInput.Type;
 
 // Output Schema
-export const InvitationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const InvitationsDeleteOutput = Schema.Void;
 export type InvitationsDeleteOutput = typeof InvitationsDeleteOutput.Type;
 
 // The operation

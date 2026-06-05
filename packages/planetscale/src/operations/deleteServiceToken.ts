@@ -16,7 +16,7 @@ export const DeleteServiceTokenInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteServiceTokenInput = typeof DeleteServiceTokenInput.Type;
 
 // Output Schema
-export const DeleteServiceTokenOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteServiceTokenOutput = Schema.Void;
 export type DeleteServiceTokenOutput = typeof DeleteServiceTokenOutput.Type;
 
 // The operation

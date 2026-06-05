@@ -68,7 +68,7 @@ export const BgpPeersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BgpPeersDeleteInput = typeof BgpPeersDeleteInput.Type;
 
 // Output Schema
-export const BgpPeersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BgpPeersDeleteOutput = Schema.Void;
 export type BgpPeersDeleteOutput = typeof BgpPeersDeleteOutput.Type;
 
 // The operation
@@ -235,7 +235,7 @@ export const LoadBalancersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type LoadBalancersDeleteInput = typeof LoadBalancersDeleteInput.Type;
 
 // Output Schema
-export const LoadBalancersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const LoadBalancersDeleteOutput = Schema.Void;
 export type LoadBalancersDeleteOutput = typeof LoadBalancersDeleteOutput.Type;
 
 // The operation
@@ -449,7 +449,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesDeleteOutput = Schema.Void;
 export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 
 // The operation
@@ -616,7 +616,7 @@ export const StorageClassDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type StorageClassDeleteInput = typeof StorageClassDeleteInput.Type;
 
 // Output Schema
-export const StorageClassDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StorageClassDeleteOutput = Schema.Void;
 export type StorageClassDeleteOutput = typeof StorageClassDeleteOutput.Type;
 
 // The operation

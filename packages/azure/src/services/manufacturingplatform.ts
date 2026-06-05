@@ -81,7 +81,7 @@ export type ManufacturingDataServicesDeleteInput =
   typeof ManufacturingDataServicesDeleteInput.Type;
 
 // Output Schema
-export const ManufacturingDataServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ManufacturingDataServicesDeleteOutput = Schema.Void;
 export type ManufacturingDataServicesDeleteOutput =
   typeof ManufacturingDataServicesDeleteOutput.Type;
 

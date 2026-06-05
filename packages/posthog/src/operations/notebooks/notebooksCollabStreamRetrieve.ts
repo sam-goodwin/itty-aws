@@ -17,7 +17,7 @@ export type NotebooksCollabStreamRetrieveInput =
   typeof NotebooksCollabStreamRetrieveInput.Type;
 
 // Output Schema
-export const NotebooksCollabStreamRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const NotebooksCollabStreamRetrieveOutput = Schema.Void;
 export type NotebooksCollabStreamRetrieveOutput =
   typeof NotebooksCollabStreamRetrieveOutput.Type;
 

@@ -15,7 +15,7 @@ export const PersonsValuesRetrieveInput = /*@__PURE__*/ Schema.Struct({
 export type PersonsValuesRetrieveInput = typeof PersonsValuesRetrieveInput.Type;
 
 // Output Schema
-export const PersonsValuesRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const PersonsValuesRetrieveOutput = Schema.Void;
 export type PersonsValuesRetrieveOutput =
   typeof PersonsValuesRetrieveOutput.Type;
 

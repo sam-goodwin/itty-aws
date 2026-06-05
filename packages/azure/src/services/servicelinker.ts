@@ -233,7 +233,7 @@ export const ConnectorDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ConnectorDeleteInput = typeof ConnectorDeleteInput.Type;
 
 // Output Schema
-export const ConnectorDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConnectorDeleteOutput = Schema.Void;
 export type ConnectorDeleteOutput = typeof ConnectorDeleteOutput.Type;
 
 // The operation
@@ -263,7 +263,7 @@ export const ConnectorDeleteDryrunInput = /*@__PURE__*/ Schema.Struct({
 export type ConnectorDeleteDryrunInput = typeof ConnectorDeleteDryrunInput.Type;
 
 // Output Schema
-export const ConnectorDeleteDryrunOutput = /*@__PURE__*/ Schema.Void;
+export const ConnectorDeleteDryrunOutput = Schema.Void;
 export type ConnectorDeleteDryrunOutput =
   typeof ConnectorDeleteDryrunOutput.Type;
 
@@ -773,7 +773,7 @@ export const LinkerDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type LinkerDeleteInput = typeof LinkerDeleteInput.Type;
 
 // Output Schema
-export const LinkerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const LinkerDeleteOutput = Schema.Void;
 export type LinkerDeleteOutput = typeof LinkerDeleteOutput.Type;
 
 // The operation
@@ -990,7 +990,7 @@ export const LinkersDeleteDryrunInput = /*@__PURE__*/ Schema.Struct({
 export type LinkersDeleteDryrunInput = typeof LinkersDeleteDryrunInput.Type;
 
 // Output Schema
-export const LinkersDeleteDryrunOutput = /*@__PURE__*/ Schema.Void;
+export const LinkersDeleteDryrunOutput = Schema.Void;
 export type LinkersDeleteDryrunOutput = typeof LinkersDeleteDryrunOutput.Type;
 
 // The operation

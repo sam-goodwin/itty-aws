@@ -13,7 +13,7 @@ export const V1GetActionRunLogsInput = /*@__PURE__*/ Schema.Struct({
 export type V1GetActionRunLogsInput = typeof V1GetActionRunLogsInput.Type;
 
 // Output Schema
-export const V1GetActionRunLogsOutput = /*@__PURE__*/ Schema.Void;
+export const V1GetActionRunLogsOutput = Schema.Void;
 export type V1GetActionRunLogsOutput = typeof V1GetActionRunLogsOutput.Type;
 
 // The operation

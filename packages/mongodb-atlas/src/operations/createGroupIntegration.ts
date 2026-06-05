@@ -33,7 +33,7 @@ export type CreateGroupIntegrationInput =
   typeof CreateGroupIntegrationInput.Type;
 
 // Output Schema
-export const CreateGroupIntegrationOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupIntegrationOutput = Schema.Void;
 export type CreateGroupIntegrationOutput =
   typeof CreateGroupIntegrationOutput.Type;
 

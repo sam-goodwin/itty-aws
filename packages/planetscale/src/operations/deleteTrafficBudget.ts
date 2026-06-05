@@ -18,7 +18,7 @@ export const DeleteTrafficBudgetInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteTrafficBudgetInput = typeof DeleteTrafficBudgetInput.Type;
 
 // Output Schema
-export const DeleteTrafficBudgetOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteTrafficBudgetOutput = Schema.Void;
 export type DeleteTrafficBudgetOutput = typeof DeleteTrafficBudgetOutput.Type;
 
 // The operation

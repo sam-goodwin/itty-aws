@@ -19,8 +19,7 @@ export type DeleteFederationSettingIdentityProviderInput =
   typeof DeleteFederationSettingIdentityProviderInput.Type;
 
 // Output Schema
-export const DeleteFederationSettingIdentityProviderOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeleteFederationSettingIdentityProviderOutput = Schema.Void;
 export type DeleteFederationSettingIdentityProviderOutput =
   typeof DeleteFederationSettingIdentityProviderOutput.Type;
 

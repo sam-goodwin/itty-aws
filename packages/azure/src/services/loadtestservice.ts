@@ -74,7 +74,7 @@ export const LoadTestsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type LoadTestsDeleteInput = typeof LoadTestsDeleteInput.Type;
 
 // Output Schema
-export const LoadTestsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const LoadTestsDeleteOutput = Schema.Void;
 export type LoadTestsDeleteOutput = typeof LoadTestsDeleteOutput.Type;
 
 // The operation
@@ -752,7 +752,7 @@ export type PlaywrightWorkspacesDeleteInput =
   typeof PlaywrightWorkspacesDeleteInput.Type;
 
 // Output Schema
-export const PlaywrightWorkspacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PlaywrightWorkspacesDeleteOutput = Schema.Void;
 export type PlaywrightWorkspacesDeleteOutput =
   typeof PlaywrightWorkspacesDeleteOutput.Type;
 

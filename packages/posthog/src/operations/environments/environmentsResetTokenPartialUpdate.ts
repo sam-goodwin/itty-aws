@@ -1176,8 +1176,7 @@ export type EnvironmentsResetTokenPartialUpdateInput =
   typeof EnvironmentsResetTokenPartialUpdateInput.Type;
 
 // Output Schema
-export const EnvironmentsResetTokenPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EnvironmentsResetTokenPartialUpdateOutput = Schema.Void;
 export type EnvironmentsResetTokenPartialUpdateOutput =
   typeof EnvironmentsResetTokenPartialUpdateOutput.Type;
 

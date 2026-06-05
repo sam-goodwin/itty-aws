@@ -1177,7 +1177,7 @@ export type EnvironmentsGenerateConversationsPublicTokenCreateInput =
 
 // Output Schema
 export const EnvironmentsGenerateConversationsPublicTokenCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type EnvironmentsGenerateConversationsPublicTokenCreateOutput =
   typeof EnvironmentsGenerateConversationsPublicTokenCreateOutput.Type;
 

@@ -94,7 +94,7 @@ export type FeatureFlagsBulkDeleteCreateInput =
   typeof FeatureFlagsBulkDeleteCreateInput.Type;
 
 // Output Schema
-export const FeatureFlagsBulkDeleteCreateOutput = /*@__PURE__*/ Schema.Void;
+export const FeatureFlagsBulkDeleteCreateOutput = Schema.Void;
 export type FeatureFlagsBulkDeleteCreateOutput =
   typeof FeatureFlagsBulkDeleteCreateOutput.Type;
 

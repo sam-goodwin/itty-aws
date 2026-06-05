@@ -19,7 +19,7 @@ export type PostTerminalReadersReaderInput =
   typeof PostTerminalReadersReaderInput.Type;
 
 // Output Schema
-export const PostTerminalReadersReaderOutput = /*@__PURE__*/ Schema.Unknown;
+export const PostTerminalReadersReaderOutput = Schema.Unknown;
 export type PostTerminalReadersReaderOutput =
   typeof PostTerminalReadersReaderOutput.Type;
 

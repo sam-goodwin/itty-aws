@@ -83,7 +83,7 @@ export type AvailabilityGroupListenersDeleteInput =
   typeof AvailabilityGroupListenersDeleteInput.Type;
 
 // Output Schema
-export const AvailabilityGroupListenersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AvailabilityGroupListenersDeleteOutput = Schema.Void;
 export type AvailabilityGroupListenersDeleteOutput =
   typeof AvailabilityGroupListenersDeleteOutput.Type;
 
@@ -339,7 +339,7 @@ export type SqlVirtualMachineGroupsDeleteInput =
   typeof SqlVirtualMachineGroupsDeleteInput.Type;
 
 // Output Schema
-export const SqlVirtualMachineGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlVirtualMachineGroupsDeleteOutput = Schema.Void;
 export type SqlVirtualMachineGroupsDeleteOutput =
   typeof SqlVirtualMachineGroupsDeleteOutput.Type;
 
@@ -646,7 +646,7 @@ export type SqlVirtualMachinesDeleteInput =
   typeof SqlVirtualMachinesDeleteInput.Type;
 
 // Output Schema
-export const SqlVirtualMachinesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlVirtualMachinesDeleteOutput = Schema.Void;
 export type SqlVirtualMachinesDeleteOutput =
   typeof SqlVirtualMachinesDeleteOutput.Type;
 
@@ -680,8 +680,7 @@ export type SqlVirtualMachinesFetchDCAssessmentInput =
   typeof SqlVirtualMachinesFetchDCAssessmentInput.Type;
 
 // Output Schema
-export const SqlVirtualMachinesFetchDCAssessmentOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlVirtualMachinesFetchDCAssessmentOutput = Schema.Void;
 export type SqlVirtualMachinesFetchDCAssessmentOutput =
   typeof SqlVirtualMachinesFetchDCAssessmentOutput.Type;
 
@@ -958,7 +957,7 @@ export type SqlVirtualMachinesRedeployInput =
   typeof SqlVirtualMachinesRedeployInput.Type;
 
 // Output Schema
-export const SqlVirtualMachinesRedeployOutput = /*@__PURE__*/ Schema.Void;
+export const SqlVirtualMachinesRedeployOutput = Schema.Void;
 export type SqlVirtualMachinesRedeployOutput =
   typeof SqlVirtualMachinesRedeployOutput.Type;
 
@@ -992,8 +991,7 @@ export type SqlVirtualMachinesStartAssessmentInput =
   typeof SqlVirtualMachinesStartAssessmentInput.Type;
 
 // Output Schema
-export const SqlVirtualMachinesStartAssessmentOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlVirtualMachinesStartAssessmentOutput = Schema.Void;
 export type SqlVirtualMachinesStartAssessmentOutput =
   typeof SqlVirtualMachinesStartAssessmentOutput.Type;
 

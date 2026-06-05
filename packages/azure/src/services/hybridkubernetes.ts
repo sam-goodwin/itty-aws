@@ -60,7 +60,7 @@ export type ConnectedClusterDeleteInput =
   typeof ConnectedClusterDeleteInput.Type;
 
 // Output Schema
-export const ConnectedClusterDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConnectedClusterDeleteOutput = Schema.Void;
 export type ConnectedClusterDeleteOutput =
   typeof ConnectedClusterDeleteOutput.Type;
 

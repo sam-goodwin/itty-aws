@@ -52,7 +52,7 @@ export const ADCCatalogsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ADCCatalogsDeleteInput = typeof ADCCatalogsDeleteInput.Type;
 
 // Output Schema
-export const ADCCatalogsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ADCCatalogsDeleteOutput = Schema.Void;
 export type ADCCatalogsDeleteOutput = typeof ADCCatalogsDeleteOutput.Type;
 
 // The operation

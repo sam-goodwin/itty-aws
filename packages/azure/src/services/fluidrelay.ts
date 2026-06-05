@@ -21,7 +21,7 @@ export type FluidRelayContainersDeleteInput =
   typeof FluidRelayContainersDeleteInput.Type;
 
 // Output Schema
-export const FluidRelayContainersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FluidRelayContainersDeleteOutput = Schema.Void;
 export type FluidRelayContainersDeleteOutput =
   typeof FluidRelayContainersDeleteOutput.Type;
 
@@ -196,7 +196,7 @@ export type FluidRelayServersDeleteInput =
   typeof FluidRelayServersDeleteInput.Type;
 
 // Output Schema
-export const FluidRelayServersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FluidRelayServersDeleteOutput = Schema.Void;
 export type FluidRelayServersDeleteOutput =
   typeof FluidRelayServersDeleteOutput.Type;
 

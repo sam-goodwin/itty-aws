@@ -92,7 +92,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
 
 // Output Schema
-export const WorkspacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WorkspacesDeleteOutput = Schema.Void;
 export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
 
 // The operation
@@ -261,7 +261,7 @@ export type WorkspacesResyncStorageKeysInput =
   typeof WorkspacesResyncStorageKeysInput.Type;
 
 // Output Schema
-export const WorkspacesResyncStorageKeysOutput = /*@__PURE__*/ Schema.Void;
+export const WorkspacesResyncStorageKeysOutput = Schema.Void;
 export type WorkspacesResyncStorageKeysOutput =
   typeof WorkspacesResyncStorageKeysOutput.Type;
 

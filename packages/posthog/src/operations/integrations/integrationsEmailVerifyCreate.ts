@@ -74,7 +74,7 @@ export type IntegrationsEmailVerifyCreateInput =
   typeof IntegrationsEmailVerifyCreateInput.Type;
 
 // Output Schema
-export const IntegrationsEmailVerifyCreateOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationsEmailVerifyCreateOutput = Schema.Void;
 export type IntegrationsEmailVerifyCreateOutput =
   typeof IntegrationsEmailVerifyCreateOutput.Type;
 

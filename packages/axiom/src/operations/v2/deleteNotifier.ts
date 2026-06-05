@@ -10,7 +10,7 @@ export const DeleteNotifierInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteNotifierInput = typeof DeleteNotifierInput.Type;
 
 // Output Schema
-export const DeleteNotifierOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteNotifierOutput = Schema.Void;
 export type DeleteNotifierOutput = typeof DeleteNotifierOutput.Type;
 
 // The operation

@@ -15,7 +15,7 @@ export type DataIntegrationsControllerGetUserlandUserTokenInput =
 
 // Output Schema
 export const DataIntegrationsControllerGetUserlandUserTokenOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type DataIntegrationsControllerGetUserlandUserTokenOutput =
   typeof DataIntegrationsControllerGetUserlandUserTokenOutput.Type;
 

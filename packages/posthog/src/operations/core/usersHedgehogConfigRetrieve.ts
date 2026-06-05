@@ -11,7 +11,7 @@ export type UsersHedgehogConfigRetrieveInput =
   typeof UsersHedgehogConfigRetrieveInput.Type;
 
 // Output Schema
-export const UsersHedgehogConfigRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const UsersHedgehogConfigRetrieveOutput = Schema.Void;
 export type UsersHedgehogConfigRetrieveOutput =
   typeof UsersHedgehogConfigRetrieveOutput.Type;
 

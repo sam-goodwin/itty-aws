@@ -18,7 +18,7 @@ export type GetOrgBillingCostExplorerUsageInput =
   typeof GetOrgBillingCostExplorerUsageInput.Type;
 
 // Output Schema
-export const GetOrgBillingCostExplorerUsageOutput = /*@__PURE__*/ Schema.Void;
+export const GetOrgBillingCostExplorerUsageOutput = Schema.Void;
 export type GetOrgBillingCostExplorerUsageOutput =
   typeof GetOrgBillingCostExplorerUsageOutput.Type;
 

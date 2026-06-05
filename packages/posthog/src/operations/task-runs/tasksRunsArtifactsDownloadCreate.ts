@@ -20,7 +20,7 @@ export type TasksRunsArtifactsDownloadCreateInput =
   typeof TasksRunsArtifactsDownloadCreateInput.Type;
 
 // Output Schema
-export const TasksRunsArtifactsDownloadCreateOutput = /*@__PURE__*/ Schema.Void;
+export const TasksRunsArtifactsDownloadCreateOutput = Schema.Void;
 export type TasksRunsArtifactsDownloadCreateOutput =
   typeof TasksRunsArtifactsDownloadCreateOutput.Type;
 

@@ -17,7 +17,7 @@ export type InsightsTrendingRetrieveInput =
   typeof InsightsTrendingRetrieveInput.Type;
 
 // Output Schema
-export const InsightsTrendingRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const InsightsTrendingRetrieveOutput = Schema.Void;
 export type InsightsTrendingRetrieveOutput =
   typeof InsightsTrendingRetrieveOutput.Type;
 

@@ -10,7 +10,7 @@ export const V1BulkCreateSecretsInput = /*@__PURE__*/ Schema.Struct({
 export type V1BulkCreateSecretsInput = typeof V1BulkCreateSecretsInput.Type;
 
 // Output Schema
-export const V1BulkCreateSecretsOutput = /*@__PURE__*/ Schema.Void;
+export const V1BulkCreateSecretsOutput = Schema.Void;
 export type V1BulkCreateSecretsOutput = typeof V1BulkCreateSecretsOutput.Type;
 
 // The operation

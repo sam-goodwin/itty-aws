@@ -68,7 +68,7 @@ export const EndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type EndpointsDeleteInput = typeof EndpointsDeleteInput.Type;
 
 // Output Schema
-export const EndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const EndpointsDeleteOutput = Schema.Void;
 export type EndpointsDeleteOutput = typeof EndpointsDeleteOutput.Type;
 
 // The operation
@@ -365,7 +365,7 @@ export type GenerateAwsTemplatePostInput =
   typeof GenerateAwsTemplatePostInput.Type;
 
 // Output Schema
-export const GenerateAwsTemplatePostOutput = /*@__PURE__*/ Schema.Unknown;
+export const GenerateAwsTemplatePostOutput = Schema.Unknown;
 export type GenerateAwsTemplatePostOutput =
   typeof GenerateAwsTemplatePostOutput.Type;
 
@@ -611,7 +611,7 @@ export type PublicCloudConnectorsDeleteInput =
   typeof PublicCloudConnectorsDeleteInput.Type;
 
 // Output Schema
-export const PublicCloudConnectorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PublicCloudConnectorsDeleteOutput = Schema.Void;
 export type PublicCloudConnectorsDeleteOutput =
   typeof PublicCloudConnectorsDeleteOutput.Type;
 
@@ -1023,7 +1023,7 @@ export type ServiceConfigurationsDeleteInput =
   typeof ServiceConfigurationsDeleteInput.Type;
 
 // Output Schema
-export const ServiceConfigurationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServiceConfigurationsDeleteOutput = Schema.Void;
 export type ServiceConfigurationsDeleteOutput =
   typeof ServiceConfigurationsDeleteOutput.Type;
 
@@ -1269,7 +1269,7 @@ export type SolutionConfigurationsDeleteInput =
   typeof SolutionConfigurationsDeleteInput.Type;
 
 // Output Schema
-export const SolutionConfigurationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SolutionConfigurationsDeleteOutput = Schema.Void;
 export type SolutionConfigurationsDeleteOutput =
   typeof SolutionConfigurationsDeleteOutput.Type;
 

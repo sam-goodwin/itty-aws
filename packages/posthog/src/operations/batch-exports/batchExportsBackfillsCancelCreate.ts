@@ -50,8 +50,7 @@ export type BatchExportsBackfillsCancelCreateInput =
   typeof BatchExportsBackfillsCancelCreateInput.Type;
 
 // Output Schema
-export const BatchExportsBackfillsCancelCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BatchExportsBackfillsCancelCreateOutput = Schema.Void;
 export type BatchExportsBackfillsCancelCreateOutput =
   typeof BatchExportsBackfillsCancelCreateOutput.Type;
 

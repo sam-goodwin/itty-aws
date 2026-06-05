@@ -16,7 +16,7 @@ export const SurveysDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type SurveysDestroyInput = typeof SurveysDestroyInput.Type;
 
 // Output Schema
-export const SurveysDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const SurveysDestroyOutput = Schema.Void;
 export type SurveysDestroyOutput = typeof SurveysDestroyOutput.Type;
 
 // The operation

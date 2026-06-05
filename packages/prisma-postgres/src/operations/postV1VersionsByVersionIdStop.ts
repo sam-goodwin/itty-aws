@@ -11,7 +11,7 @@ export type PostV1VersionsByVersionIdStopInput =
   typeof PostV1VersionsByVersionIdStopInput.Type;
 
 // Output Schema
-export const PostV1VersionsByVersionIdStopOutput = /*@__PURE__*/ Schema.Void;
+export const PostV1VersionsByVersionIdStopOutput = Schema.Void;
 export type PostV1VersionsByVersionIdStopOutput =
   typeof PostV1VersionsByVersionIdStopOutput.Type;
 

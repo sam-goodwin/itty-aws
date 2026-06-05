@@ -17,7 +17,7 @@ export type RoleExternalReferencesDestroyInput =
   typeof RoleExternalReferencesDestroyInput.Type;
 
 // Output Schema
-export const RoleExternalReferencesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const RoleExternalReferencesDestroyOutput = Schema.Void;
 export type RoleExternalReferencesDestroyOutput =
   typeof RoleExternalReferencesDestroyOutput.Type;
 

@@ -18,7 +18,7 @@ export const UpdateOrgUserInput = /*@__PURE__*/ Schema.Struct({
 export type UpdateOrgUserInput = typeof UpdateOrgUserInput.Type;
 
 // Output Schema
-export const UpdateOrgUserOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateOrgUserOutput = Schema.Void;
 export type UpdateOrgUserOutput = typeof UpdateOrgUserOutput.Type;
 
 // The operation

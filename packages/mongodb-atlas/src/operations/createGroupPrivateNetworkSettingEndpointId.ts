@@ -19,8 +19,7 @@ export type CreateGroupPrivateNetworkSettingEndpointIdInput =
   typeof CreateGroupPrivateNetworkSettingEndpointIdInput.Type;
 
 // Output Schema
-export const CreateGroupPrivateNetworkSettingEndpointIdOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CreateGroupPrivateNetworkSettingEndpointIdOutput = Schema.Void;
 export type CreateGroupPrivateNetworkSettingEndpointIdOutput =
   typeof CreateGroupPrivateNetworkSettingEndpointIdOutput.Type;
 

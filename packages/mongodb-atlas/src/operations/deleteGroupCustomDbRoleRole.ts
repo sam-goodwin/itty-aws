@@ -19,7 +19,7 @@ export type DeleteGroupCustomDbRoleRoleInput =
   typeof DeleteGroupCustomDbRoleRoleInput.Type;
 
 // Output Schema
-export const DeleteGroupCustomDbRoleRoleOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupCustomDbRoleRoleOutput = Schema.Void;
 export type DeleteGroupCustomDbRoleRoleOutput =
   typeof DeleteGroupCustomDbRoleRoleOutput.Type;
 

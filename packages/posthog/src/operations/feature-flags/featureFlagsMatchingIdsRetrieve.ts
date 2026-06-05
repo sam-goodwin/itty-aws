@@ -18,7 +18,7 @@ export type FeatureFlagsMatchingIdsRetrieveInput =
   typeof FeatureFlagsMatchingIdsRetrieveInput.Type;
 
 // Output Schema
-export const FeatureFlagsMatchingIdsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const FeatureFlagsMatchingIdsRetrieveOutput = Schema.Void;
 export type FeatureFlagsMatchingIdsRetrieveOutput =
   typeof FeatureFlagsMatchingIdsRetrieveOutput.Type;
 

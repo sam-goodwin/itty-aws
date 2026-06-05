@@ -18,8 +18,7 @@ export type HeatmapScreenshotsContentRetrieveInput =
   typeof HeatmapScreenshotsContentRetrieveInput.Type;
 
 // Output Schema
-export const HeatmapScreenshotsContentRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const HeatmapScreenshotsContentRetrieveOutput = Schema.Void;
 export type HeatmapScreenshotsContentRetrieveOutput =
   typeof HeatmapScreenshotsContentRetrieveOutput.Type;
 

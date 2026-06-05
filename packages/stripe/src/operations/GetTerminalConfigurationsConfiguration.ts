@@ -18,8 +18,7 @@ export type GetTerminalConfigurationsConfigurationInput =
   typeof GetTerminalConfigurationsConfigurationInput.Type;
 
 // Output Schema
-export const GetTerminalConfigurationsConfigurationOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const GetTerminalConfigurationsConfigurationOutput = Schema.Unknown;
 export type GetTerminalConfigurationsConfigurationOutput =
   typeof GetTerminalConfigurationsConfigurationOutput.Type;
 

@@ -18,7 +18,7 @@ export const GetOrgServiceAccountInput = /*@__PURE__*/ Schema.Struct({
 export type GetOrgServiceAccountInput = typeof GetOrgServiceAccountInput.Type;
 
 // Output Schema
-export const GetOrgServiceAccountOutput = /*@__PURE__*/ Schema.Void;
+export const GetOrgServiceAccountOutput = Schema.Void;
 export type GetOrgServiceAccountOutput = typeof GetOrgServiceAccountOutput.Type;
 
 // The operation

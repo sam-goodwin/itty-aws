@@ -27,7 +27,7 @@ export type GetGroupProcessDiskMeasurementsInput =
   typeof GetGroupProcessDiskMeasurementsInput.Type;
 
 // Output Schema
-export const GetGroupProcessDiskMeasurementsOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupProcessDiskMeasurementsOutput = Schema.Void;
 export type GetGroupProcessDiskMeasurementsOutput =
   typeof GetGroupProcessDiskMeasurementsOutput.Type;
 

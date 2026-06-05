@@ -23,8 +23,7 @@ export type McpServerInstallationsAuthorizeRetrieveInput =
   typeof McpServerInstallationsAuthorizeRetrieveInput.Type;
 
 // Output Schema
-export const McpServerInstallationsAuthorizeRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const McpServerInstallationsAuthorizeRetrieveOutput = Schema.Void;
 export type McpServerInstallationsAuthorizeRetrieveOutput =
   typeof McpServerInstallationsAuthorizeRetrieveOutput.Type;
 

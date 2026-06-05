@@ -65,7 +65,7 @@ export type AlertProcessingRulesDeleteInput =
   typeof AlertProcessingRulesDeleteInput.Type;
 
 // Output Schema
-export const AlertProcessingRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AlertProcessingRulesDeleteOutput = Schema.Void;
 export type AlertProcessingRulesDeleteOutput =
   typeof AlertProcessingRulesDeleteOutput.Type;
 
@@ -514,7 +514,7 @@ export type PrometheusRuleGroupsDeleteInput =
   typeof PrometheusRuleGroupsDeleteInput.Type;
 
 // Output Schema
-export const PrometheusRuleGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrometheusRuleGroupsDeleteOutput = Schema.Void;
 export type PrometheusRuleGroupsDeleteOutput =
   typeof PrometheusRuleGroupsDeleteOutput.Type;
 
@@ -817,7 +817,7 @@ export type SmartDetectorAlertRulesDeleteInput =
   typeof SmartDetectorAlertRulesDeleteInput.Type;
 
 // Output Schema
-export const SmartDetectorAlertRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SmartDetectorAlertRulesDeleteOutput = Schema.Void;
 export type SmartDetectorAlertRulesDeleteOutput =
   typeof SmartDetectorAlertRulesDeleteOutput.Type;
 

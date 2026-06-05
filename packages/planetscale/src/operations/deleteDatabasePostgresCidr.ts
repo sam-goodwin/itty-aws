@@ -18,7 +18,7 @@ export type DeleteDatabasePostgresCidrInput =
   typeof DeleteDatabasePostgresCidrInput.Type;
 
 // Output Schema
-export const DeleteDatabasePostgresCidrOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteDatabasePostgresCidrOutput = Schema.Void;
 export type DeleteDatabasePostgresCidrOutput =
   typeof DeleteDatabasePostgresCidrOutput.Type;
 

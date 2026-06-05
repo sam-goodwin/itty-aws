@@ -124,7 +124,7 @@ export type RetentionPoliciesDeleteInput =
   typeof RetentionPoliciesDeleteInput.Type;
 
 // Output Schema
-export const RetentionPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RetentionPoliciesDeleteOutput = Schema.Void;
 export type RetentionPoliciesDeleteOutput =
   typeof RetentionPoliciesDeleteOutput.Type;
 
@@ -452,7 +452,7 @@ export const SchedulersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SchedulersDeleteInput = typeof SchedulersDeleteInput.Type;
 
 // Output Schema
-export const SchedulersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SchedulersDeleteOutput = Schema.Void;
 export type SchedulersDeleteOutput = typeof SchedulersDeleteOutput.Type;
 
 // The operation
@@ -486,8 +486,7 @@ export type SchedulersDeletePrivateEndpointConnectionInput =
   typeof SchedulersDeletePrivateEndpointConnectionInput.Type;
 
 // Output Schema
-export const SchedulersDeletePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SchedulersDeletePrivateEndpointConnectionOutput = Schema.Void;
 export type SchedulersDeletePrivateEndpointConnectionOutput =
   typeof SchedulersDeletePrivateEndpointConnectionOutput.Type;
 
@@ -1073,7 +1072,7 @@ export const TaskHubsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TaskHubsDeleteInput = typeof TaskHubsDeleteInput.Type;
 
 // Output Schema
-export const TaskHubsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TaskHubsDeleteOutput = Schema.Void;
 export type TaskHubsDeleteOutput = typeof TaskHubsDeleteOutput.Type;
 
 // The operation

@@ -19,7 +19,7 @@ export type DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput =
 
 // Output Schema
 export const DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput =
   typeof DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput.Type;
 

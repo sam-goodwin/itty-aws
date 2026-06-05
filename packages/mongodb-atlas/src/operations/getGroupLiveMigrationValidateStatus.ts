@@ -19,8 +19,7 @@ export type GetGroupLiveMigrationValidateStatusInput =
   typeof GetGroupLiveMigrationValidateStatusInput.Type;
 
 // Output Schema
-export const GetGroupLiveMigrationValidateStatusOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GetGroupLiveMigrationValidateStatusOutput = Schema.Void;
 export type GetGroupLiveMigrationValidateStatusOutput =
   typeof GetGroupLiveMigrationValidateStatusOutput.Type;
 

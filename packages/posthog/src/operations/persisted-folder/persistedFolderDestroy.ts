@@ -17,7 +17,7 @@ export type PersistedFolderDestroyInput =
   typeof PersistedFolderDestroyInput.Type;
 
 // Output Schema
-export const PersistedFolderDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const PersistedFolderDestroyOutput = Schema.Void;
 export type PersistedFolderDestroyOutput =
   typeof PersistedFolderDestroyOutput.Type;
 

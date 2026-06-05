@@ -11,7 +11,7 @@ export const GetSystemStatusInput = /*@__PURE__*/ Schema.Struct({
 export type GetSystemStatusInput = typeof GetSystemStatusInput.Type;
 
 // Output Schema
-export const GetSystemStatusOutput = /*@__PURE__*/ Schema.Void;
+export const GetSystemStatusOutput = Schema.Void;
 export type GetSystemStatusOutput = typeof GetSystemStatusOutput.Type;
 
 // The operation

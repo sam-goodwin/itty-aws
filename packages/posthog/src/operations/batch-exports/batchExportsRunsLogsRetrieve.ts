@@ -24,7 +24,7 @@ export type BatchExportsRunsLogsRetrieveInput =
   typeof BatchExportsRunsLogsRetrieveInput.Type;
 
 // Output Schema
-export const BatchExportsRunsLogsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const BatchExportsRunsLogsRetrieveOutput = Schema.Void;
 export type BatchExportsRunsLogsRetrieveOutput =
   typeof BatchExportsRunsLogsRetrieveOutput.Type;
 

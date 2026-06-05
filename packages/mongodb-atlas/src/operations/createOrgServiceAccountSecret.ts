@@ -19,7 +19,7 @@ export type CreateOrgServiceAccountSecretInput =
   typeof CreateOrgServiceAccountSecretInput.Type;
 
 // Output Schema
-export const CreateOrgServiceAccountSecretOutput = /*@__PURE__*/ Schema.Void;
+export const CreateOrgServiceAccountSecretOutput = Schema.Void;
 export type CreateOrgServiceAccountSecretOutput =
   typeof CreateOrgServiceAccountSecretOutput.Type;
 

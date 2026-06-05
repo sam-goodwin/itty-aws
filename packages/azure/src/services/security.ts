@@ -101,7 +101,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -413,7 +413,7 @@ export const PrivateLinksDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PrivateLinksDeleteInput = typeof PrivateLinksDeleteInput.Type;
 
 // Output Schema
-export const PrivateLinksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateLinksDeleteOutput = Schema.Void;
 export type PrivateLinksDeleteOutput = typeof PrivateLinksDeleteOutput.Type;
 
 // The operation

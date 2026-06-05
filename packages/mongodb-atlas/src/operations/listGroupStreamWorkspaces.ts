@@ -17,7 +17,7 @@ export type ListGroupStreamWorkspacesInput =
   typeof ListGroupStreamWorkspacesInput.Type;
 
 // Output Schema
-export const ListGroupStreamWorkspacesOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupStreamWorkspacesOutput = Schema.Void;
 export type ListGroupStreamWorkspacesOutput =
   typeof ListGroupStreamWorkspacesOutput.Type;
 

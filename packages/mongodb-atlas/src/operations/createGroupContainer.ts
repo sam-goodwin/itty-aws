@@ -14,7 +14,7 @@ export const CreateGroupContainerInput = /*@__PURE__*/ Schema.Struct({
 export type CreateGroupContainerInput = typeof CreateGroupContainerInput.Type;
 
 // Output Schema
-export const CreateGroupContainerOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupContainerOutput = Schema.Void;
 export type CreateGroupContainerOutput = typeof CreateGroupContainerOutput.Type;
 
 // The operation

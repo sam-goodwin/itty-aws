@@ -19,8 +19,7 @@ export type FeatureFlagsEvaluationReasonsRetrieveInput =
   typeof FeatureFlagsEvaluationReasonsRetrieveInput.Type;
 
 // Output Schema
-export const FeatureFlagsEvaluationReasonsRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const FeatureFlagsEvaluationReasonsRetrieveOutput = Schema.Void;
 export type FeatureFlagsEvaluationReasonsRetrieveOutput =
   typeof FeatureFlagsEvaluationReasonsRetrieveOutput.Type;
 

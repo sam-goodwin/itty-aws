@@ -17,7 +17,7 @@ export const TasksRunsLogsRetrieveInput = /*@__PURE__*/ Schema.Struct({
 export type TasksRunsLogsRetrieveInput = typeof TasksRunsLogsRetrieveInput.Type;
 
 // Output Schema
-export const TasksRunsLogsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const TasksRunsLogsRetrieveOutput = Schema.Void;
 export type TasksRunsLogsRetrieveOutput =
   typeof TasksRunsLogsRetrieveOutput.Type;
 

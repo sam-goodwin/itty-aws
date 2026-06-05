@@ -96,7 +96,7 @@ export type BatchExportsUnpauseCreateInput =
   typeof BatchExportsUnpauseCreateInput.Type;
 
 // Output Schema
-export const BatchExportsUnpauseCreateOutput = /*@__PURE__*/ Schema.Void;
+export const BatchExportsUnpauseCreateOutput = Schema.Void;
 export type BatchExportsUnpauseCreateOutput =
   typeof BatchExportsUnpauseCreateOutput.Type;
 

@@ -19,7 +19,7 @@ export type DeleteGroupAlertConfigInput =
   typeof DeleteGroupAlertConfigInput.Type;
 
 // Output Schema
-export const DeleteGroupAlertConfigOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupAlertConfigOutput = Schema.Void;
 export type DeleteGroupAlertConfigOutput =
   typeof DeleteGroupAlertConfigOutput.Type;
 

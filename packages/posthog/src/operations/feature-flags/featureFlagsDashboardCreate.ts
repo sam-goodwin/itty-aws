@@ -94,7 +94,7 @@ export type FeatureFlagsDashboardCreateInput =
   typeof FeatureFlagsDashboardCreateInput.Type;
 
 // Output Schema
-export const FeatureFlagsDashboardCreateOutput = /*@__PURE__*/ Schema.Void;
+export const FeatureFlagsDashboardCreateOutput = Schema.Void;
 export type FeatureFlagsDashboardCreateOutput =
   typeof FeatureFlagsDashboardCreateOutput.Type;
 

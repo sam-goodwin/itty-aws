@@ -19,7 +19,7 @@ export type CutoverGroupLiveMigrationInput =
   typeof CutoverGroupLiveMigrationInput.Type;
 
 // Output Schema
-export const CutoverGroupLiveMigrationOutput = /*@__PURE__*/ Schema.Void;
+export const CutoverGroupLiveMigrationOutput = Schema.Void;
 export type CutoverGroupLiveMigrationOutput =
   typeof CutoverGroupLiveMigrationOutput.Type;
 

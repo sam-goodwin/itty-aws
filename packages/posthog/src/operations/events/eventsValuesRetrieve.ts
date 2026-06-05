@@ -13,7 +13,7 @@ export const EventsValuesRetrieveInput = /*@__PURE__*/ Schema.Struct({
 export type EventsValuesRetrieveInput = typeof EventsValuesRetrieveInput.Type;
 
 // Output Schema
-export const EventsValuesRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const EventsValuesRetrieveOutput = Schema.Void;
 export type EventsValuesRetrieveOutput = typeof EventsValuesRetrieveOutput.Type;
 
 // The operation

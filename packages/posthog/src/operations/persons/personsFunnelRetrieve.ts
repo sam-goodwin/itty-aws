@@ -13,7 +13,7 @@ export const PersonsFunnelRetrieveInput = /*@__PURE__*/ Schema.Struct({
 export type PersonsFunnelRetrieveInput = typeof PersonsFunnelRetrieveInput.Type;
 
 // Output Schema
-export const PersonsFunnelRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const PersonsFunnelRetrieveOutput = Schema.Void;
 export type PersonsFunnelRetrieveOutput =
   typeof PersonsFunnelRetrieveOutput.Type;
 

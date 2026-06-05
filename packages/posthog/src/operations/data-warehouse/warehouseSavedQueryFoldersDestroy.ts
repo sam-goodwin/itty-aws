@@ -18,8 +18,7 @@ export type WarehouseSavedQueryFoldersDestroyInput =
   typeof WarehouseSavedQueryFoldersDestroyInput.Type;
 
 // Output Schema
-export const WarehouseSavedQueryFoldersDestroyOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WarehouseSavedQueryFoldersDestroyOutput = Schema.Void;
 export type WarehouseSavedQueryFoldersDestroyOutput =
   typeof WarehouseSavedQueryFoldersDestroyOutput.Type;
 

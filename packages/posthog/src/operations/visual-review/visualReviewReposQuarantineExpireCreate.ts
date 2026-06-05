@@ -22,8 +22,7 @@ export type VisualReviewReposQuarantineExpireCreateInput =
   typeof VisualReviewReposQuarantineExpireCreateInput.Type;
 
 // Output Schema
-export const VisualReviewReposQuarantineExpireCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VisualReviewReposQuarantineExpireCreateOutput = Schema.Void;
 export type VisualReviewReposQuarantineExpireCreateOutput =
   typeof VisualReviewReposQuarantineExpireCreateOutput.Type;
 

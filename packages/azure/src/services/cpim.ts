@@ -108,7 +108,7 @@ export const B2CTenantsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type B2CTenantsDeleteInput = typeof B2CTenantsDeleteInput.Type;
 
 // Output Schema
-export const B2CTenantsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const B2CTenantsDeleteOutput = Schema.Void;
 export type B2CTenantsDeleteOutput = typeof B2CTenantsDeleteOutput.Type;
 
 // The operation
@@ -457,7 +457,7 @@ export const GuestUsagesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type GuestUsagesDeleteInput = typeof GuestUsagesDeleteInput.Type;
 
 // Output Schema
-export const GuestUsagesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GuestUsagesDeleteOutput = Schema.Void;
 export type GuestUsagesDeleteOutput = typeof GuestUsagesDeleteOutput.Type;
 
 // The operation

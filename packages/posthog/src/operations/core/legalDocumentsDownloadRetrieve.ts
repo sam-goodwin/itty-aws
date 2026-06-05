@@ -17,7 +17,7 @@ export type LegalDocumentsDownloadRetrieveInput =
   typeof LegalDocumentsDownloadRetrieveInput.Type;
 
 // Output Schema
-export const LegalDocumentsDownloadRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const LegalDocumentsDownloadRetrieveOutput = Schema.Void;
 export type LegalDocumentsDownloadRetrieveOutput =
   typeof LegalDocumentsDownloadRetrieveOutput.Type;
 

@@ -39,7 +39,7 @@ export type ExternalDataSchemasReloadCreateInput =
   typeof ExternalDataSchemasReloadCreateInput.Type;
 
 // Output Schema
-export const ExternalDataSchemasReloadCreateOutput = /*@__PURE__*/ Schema.Void;
+export const ExternalDataSchemasReloadCreateOutput = Schema.Void;
 export type ExternalDataSchemasReloadCreateOutput =
   typeof ExternalDataSchemasReloadCreateOutput.Type;
 

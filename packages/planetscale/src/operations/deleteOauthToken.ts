@@ -17,7 +17,7 @@ export const DeleteOauthTokenInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteOauthTokenInput = typeof DeleteOauthTokenInput.Type;
 
 // Output Schema
-export const DeleteOauthTokenOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteOauthTokenOutput = Schema.Void;
 export type DeleteOauthTokenOutput = typeof DeleteOauthTokenOutput.Type;
 
 // The operation

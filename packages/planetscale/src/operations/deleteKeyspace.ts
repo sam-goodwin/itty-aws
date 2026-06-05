@@ -18,7 +18,7 @@ export const DeleteKeyspaceInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteKeyspaceInput = typeof DeleteKeyspaceInput.Type;
 
 // Output Schema
-export const DeleteKeyspaceOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteKeyspaceOutput = Schema.Void;
 export type DeleteKeyspaceOutput = typeof DeleteKeyspaceOutput.Type;
 
 // The operation

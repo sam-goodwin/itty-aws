@@ -11,7 +11,7 @@ export type DeleteV1VersionsByVersionIdInput =
   typeof DeleteV1VersionsByVersionIdInput.Type;
 
 // Output Schema
-export const DeleteV1VersionsByVersionIdOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteV1VersionsByVersionIdOutput = Schema.Void;
 export type DeleteV1VersionsByVersionIdOutput =
   typeof DeleteV1VersionsByVersionIdOutput.Type;
 

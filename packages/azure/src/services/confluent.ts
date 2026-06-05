@@ -74,7 +74,7 @@ export type AccessDeleteRoleBindingInput =
   typeof AccessDeleteRoleBindingInput.Type;
 
 // Output Schema
-export const AccessDeleteRoleBindingOutput = /*@__PURE__*/ Schema.Void;
+export const AccessDeleteRoleBindingOutput = Schema.Void;
 export type AccessDeleteRoleBindingOutput =
   typeof AccessDeleteRoleBindingOutput.Type;
 
@@ -678,7 +678,7 @@ export const ClusterDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ClusterDeleteInput = typeof ClusterDeleteInput.Type;
 
 // Output Schema
-export const ClusterDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ClusterDeleteOutput = Schema.Void;
 export type ClusterDeleteOutput = typeof ClusterDeleteOutput.Type;
 
 // The operation
@@ -771,7 +771,7 @@ export const ConnectorDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ConnectorDeleteInput = typeof ConnectorDeleteInput.Type;
 
 // Output Schema
-export const ConnectorDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConnectorDeleteOutput = Schema.Void;
 export type ConnectorDeleteOutput = typeof ConnectorDeleteOutput.Type;
 
 // The operation
@@ -976,7 +976,7 @@ export const EnvironmentDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type EnvironmentDeleteInput = typeof EnvironmentDeleteInput.Type;
 
 // Output Schema
-export const EnvironmentDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const EnvironmentDeleteOutput = Schema.Void;
 export type EnvironmentDeleteOutput = typeof EnvironmentDeleteOutput.Type;
 
 // The operation
@@ -1257,7 +1257,7 @@ export const OrganizationDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type OrganizationDeleteInput = typeof OrganizationDeleteInput.Type;
 
 // Output Schema
-export const OrganizationDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const OrganizationDeleteOutput = Schema.Void;
 export type OrganizationDeleteOutput = typeof OrganizationDeleteOutput.Type;
 
 // The operation
@@ -1292,7 +1292,7 @@ export type OrganizationDeleteClusterAPIKeyInput =
   typeof OrganizationDeleteClusterAPIKeyInput.Type;
 
 // Output Schema
-export const OrganizationDeleteClusterAPIKeyOutput = /*@__PURE__*/ Schema.Void;
+export const OrganizationDeleteClusterAPIKeyOutput = Schema.Void;
 export type OrganizationDeleteClusterAPIKeyOutput =
   typeof OrganizationDeleteClusterAPIKeyOutput.Type;
 
@@ -2197,7 +2197,7 @@ export const TopicsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TopicsDeleteInput = typeof TopicsDeleteInput.Type;
 
 // Output Schema
-export const TopicsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TopicsDeleteOutput = Schema.Void;
 export type TopicsDeleteOutput = typeof TopicsDeleteOutput.Type;
 
 // The operation

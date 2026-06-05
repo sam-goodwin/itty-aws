@@ -75,7 +75,7 @@ export const AgentsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AgentsDeleteInput = typeof AgentsDeleteInput.Type;
 
 // Output Schema
-export const AgentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AgentsDeleteOutput = Schema.Void;
 export type AgentsDeleteOutput = typeof AgentsDeleteOutput.Type;
 
 // The operation
@@ -317,7 +317,7 @@ export const ConnectionsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ConnectionsDeleteInput = typeof ConnectionsDeleteInput.Type;
 
 // Output Schema
-export const ConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConnectionsDeleteOutput = Schema.Void;
 export type ConnectionsDeleteOutput = typeof ConnectionsDeleteOutput.Type;
 
 // The operation
@@ -509,7 +509,7 @@ export const EndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type EndpointsDeleteInput = typeof EndpointsDeleteInput.Type;
 
 // Output Schema
-export const EndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const EndpointsDeleteOutput = Schema.Void;
 export type EndpointsDeleteOutput = typeof EndpointsDeleteOutput.Type;
 
 // The operation
@@ -754,7 +754,7 @@ export const JobDefinitionsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type JobDefinitionsDeleteInput = typeof JobDefinitionsDeleteInput.Type;
 
 // Output Schema
-export const JobDefinitionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const JobDefinitionsDeleteOutput = Schema.Void;
 export type JobDefinitionsDeleteOutput = typeof JobDefinitionsDeleteOutput.Type;
 
 // The operation
@@ -1240,7 +1240,7 @@ export const ProjectsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ProjectsDeleteInput = typeof ProjectsDeleteInput.Type;
 
 // Output Schema
-export const ProjectsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ProjectsDeleteOutput = Schema.Void;
 export type ProjectsDeleteOutput = typeof ProjectsDeleteOutput.Type;
 
 // The operation
@@ -1479,7 +1479,7 @@ export const StorageMoversDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type StorageMoversDeleteInput = typeof StorageMoversDeleteInput.Type;
 
 // Output Schema
-export const StorageMoversDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StorageMoversDeleteOutput = Schema.Void;
 export type StorageMoversDeleteOutput = typeof StorageMoversDeleteOutput.Type;
 
 // The operation

@@ -28,7 +28,7 @@ export const MachinesStopInput = /*@__PURE__*/ Schema.Struct({
 export type MachinesStopInput = typeof MachinesStopInput.Type;
 
 // Output Schema
-export const MachinesStopOutput = /*@__PURE__*/ Schema.Void;
+export const MachinesStopOutput = Schema.Void;
 export type MachinesStopOutput = typeof MachinesStopOutput.Type;
 
 // The operation

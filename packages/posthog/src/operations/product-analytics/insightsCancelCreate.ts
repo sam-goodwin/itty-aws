@@ -99,7 +99,7 @@ export const InsightsCancelCreateInput = /*@__PURE__*/ Schema.Struct({
 export type InsightsCancelCreateInput = typeof InsightsCancelCreateInput.Type;
 
 // Output Schema
-export const InsightsCancelCreateOutput = /*@__PURE__*/ Schema.Void;
+export const InsightsCancelCreateOutput = Schema.Void;
 export type InsightsCancelCreateOutput = typeof InsightsCancelCreateOutput.Type;
 
 // The operation

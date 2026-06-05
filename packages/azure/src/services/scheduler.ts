@@ -84,7 +84,7 @@ export const JobCollectionsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type JobCollectionsDeleteInput = typeof JobCollectionsDeleteInput.Type;
 
 // Output Schema
-export const JobCollectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const JobCollectionsDeleteOutput = Schema.Void;
 export type JobCollectionsDeleteOutput = typeof JobCollectionsDeleteOutput.Type;
 
 // The operation
@@ -111,7 +111,7 @@ export const JobCollectionsDisableInput = /*@__PURE__*/ Schema.Struct({
 export type JobCollectionsDisableInput = typeof JobCollectionsDisableInput.Type;
 
 // Output Schema
-export const JobCollectionsDisableOutput = /*@__PURE__*/ Schema.Void;
+export const JobCollectionsDisableOutput = Schema.Void;
 export type JobCollectionsDisableOutput =
   typeof JobCollectionsDisableOutput.Type;
 
@@ -139,7 +139,7 @@ export const JobCollectionsEnableInput = /*@__PURE__*/ Schema.Struct({
 export type JobCollectionsEnableInput = typeof JobCollectionsEnableInput.Type;
 
 // Output Schema
-export const JobCollectionsEnableOutput = /*@__PURE__*/ Schema.Void;
+export const JobCollectionsEnableOutput = Schema.Void;
 export type JobCollectionsEnableOutput = typeof JobCollectionsEnableOutput.Type;
 
 // The operation
@@ -805,7 +805,7 @@ export const JobsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type JobsDeleteInput = typeof JobsDeleteInput.Type;
 
 // Output Schema
-export const JobsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const JobsDeleteOutput = Schema.Void;
 export type JobsDeleteOutput = typeof JobsDeleteOutput.Type;
 
 // The operation
@@ -1971,7 +1971,7 @@ export const JobsRunInput = /*@__PURE__*/ Schema.Struct({
 export type JobsRunInput = typeof JobsRunInput.Type;
 
 // Output Schema
-export const JobsRunOutput = /*@__PURE__*/ Schema.Void;
+export const JobsRunOutput = Schema.Void;
 export type JobsRunOutput = typeof JobsRunOutput.Type;
 
 // The operation

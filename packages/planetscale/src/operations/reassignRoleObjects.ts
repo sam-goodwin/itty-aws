@@ -19,7 +19,7 @@ export const ReassignRoleObjectsInput = /*@__PURE__*/ Schema.Struct({
 export type ReassignRoleObjectsInput = typeof ReassignRoleObjectsInput.Type;
 
 // Output Schema
-export const ReassignRoleObjectsOutput = /*@__PURE__*/ Schema.Void;
+export const ReassignRoleObjectsOutput = Schema.Void;
 export type ReassignRoleObjectsOutput = typeof ReassignRoleObjectsOutput.Type;
 
 // The operation

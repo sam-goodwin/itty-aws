@@ -20,8 +20,7 @@ export type DeleteGroupPrivateNetworkSettingEndpointIdInput =
   typeof DeleteGroupPrivateNetworkSettingEndpointIdInput.Type;
 
 // Output Schema
-export const DeleteGroupPrivateNetworkSettingEndpointIdOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeleteGroupPrivateNetworkSettingEndpointIdOutput = Schema.Void;
 export type DeleteGroupPrivateNetworkSettingEndpointIdOutput =
   typeof DeleteGroupPrivateNetworkSettingEndpointIdOutput.Type;
 

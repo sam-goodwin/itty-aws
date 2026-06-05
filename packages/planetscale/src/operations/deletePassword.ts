@@ -18,7 +18,7 @@ export const DeletePasswordInput = /*@__PURE__*/ Schema.Struct({
 export type DeletePasswordInput = typeof DeletePasswordInput.Type;
 
 // Output Schema
-export const DeletePasswordOutput = /*@__PURE__*/ Schema.Void;
+export const DeletePasswordOutput = Schema.Void;
 export type DeletePasswordOutput = typeof DeletePasswordOutput.Type;
 
 // The operation

@@ -116,7 +116,7 @@ export type ActiveDirectoryConnectorsDeleteInput =
   typeof ActiveDirectoryConnectorsDeleteInput.Type;
 
 // Output Schema
-export const ActiveDirectoryConnectorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ActiveDirectoryConnectorsDeleteOutput = Schema.Void;
 export type ActiveDirectoryConnectorsDeleteOutput =
   typeof ActiveDirectoryConnectorsDeleteOutput.Type;
 
@@ -243,8 +243,7 @@ export type DataControllersDeleteDataControllerInput =
   typeof DataControllersDeleteDataControllerInput.Type;
 
 // Output Schema
-export const DataControllersDeleteDataControllerOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DataControllersDeleteDataControllerOutput = Schema.Void;
 export type DataControllersDeleteDataControllerOutput =
   typeof DataControllersDeleteDataControllerOutput.Type;
 
@@ -722,7 +721,7 @@ export const FailoverGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type FailoverGroupsDeleteInput = typeof FailoverGroupsDeleteInput.Type;
 
 // Output Schema
-export const FailoverGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FailoverGroupsDeleteOutput = Schema.Void;
 export type FailoverGroupsDeleteOutput = typeof FailoverGroupsDeleteOutput.Type;
 
 // The operation
@@ -955,7 +954,7 @@ export type PostgresInstancesDeleteInput =
   typeof PostgresInstancesDeleteInput.Type;
 
 // Output Schema
-export const PostgresInstancesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PostgresInstancesDeleteOutput = Schema.Void;
 export type PostgresInstancesDeleteOutput =
   typeof PostgresInstancesDeleteOutput.Type;
 
@@ -1355,7 +1354,7 @@ export type SqlManagedInstancesDeleteInput =
   typeof SqlManagedInstancesDeleteInput.Type;
 
 // Output Schema
-export const SqlManagedInstancesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlManagedInstancesDeleteOutput = Schema.Void;
 export type SqlManagedInstancesDeleteOutput =
   typeof SqlManagedInstancesDeleteOutput.Type;
 
@@ -1845,8 +1844,7 @@ export type SqlServerAvailabilityGroupsDeleteInput =
   typeof SqlServerAvailabilityGroupsDeleteInput.Type;
 
 // Output Schema
-export const SqlServerAvailabilityGroupsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlServerAvailabilityGroupsDeleteOutput = Schema.Void;
 export type SqlServerAvailabilityGroupsDeleteOutput =
   typeof SqlServerAvailabilityGroupsDeleteOutput.Type;
 
@@ -1877,8 +1875,7 @@ export type SqlServerAvailabilityGroupsDeleteMiLinkInput =
   typeof SqlServerAvailabilityGroupsDeleteMiLinkInput.Type;
 
 // Output Schema
-export const SqlServerAvailabilityGroupsDeleteMiLinkOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlServerAvailabilityGroupsDeleteMiLinkOutput = Schema.Void;
 export type SqlServerAvailabilityGroupsDeleteMiLinkOutput =
   typeof SqlServerAvailabilityGroupsDeleteMiLinkOutput.Type;
 
@@ -2372,7 +2369,7 @@ export type SqlServerDatabasesDeleteInput =
   typeof SqlServerDatabasesDeleteInput.Type;
 
 // Output Schema
-export const SqlServerDatabasesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlServerDatabasesDeleteOutput = Schema.Void;
 export type SqlServerDatabasesDeleteOutput =
   typeof SqlServerDatabasesDeleteOutput.Type;
 
@@ -2589,7 +2586,7 @@ export type SqlServerEsuLicensesDeleteInput =
   typeof SqlServerEsuLicensesDeleteInput.Type;
 
 // Output Schema
-export const SqlServerEsuLicensesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlServerEsuLicensesDeleteOutput = Schema.Void;
 export type SqlServerEsuLicensesDeleteOutput =
   typeof SqlServerEsuLicensesDeleteOutput.Type;
 
@@ -3420,7 +3417,7 @@ export type SqlServerInstancesDeleteInput =
   typeof SqlServerInstancesDeleteInput.Type;
 
 // Output Schema
-export const SqlServerInstancesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlServerInstancesDeleteOutput = Schema.Void;
 export type SqlServerInstancesDeleteOutput =
   typeof SqlServerInstancesDeleteOutput.Type;
 
@@ -4876,7 +4873,7 @@ export type SqlServerLicensesDeleteInput =
   typeof SqlServerLicensesDeleteInput.Type;
 
 // Output Schema
-export const SqlServerLicensesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlServerLicensesDeleteOutput = Schema.Void;
 export type SqlServerLicensesDeleteOutput =
   typeof SqlServerLicensesDeleteOutput.Type;
 

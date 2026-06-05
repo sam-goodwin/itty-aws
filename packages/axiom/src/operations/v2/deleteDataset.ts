@@ -10,7 +10,7 @@ export const DeleteDatasetInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteDatasetInput = typeof DeleteDatasetInput.Type;
 
 // Output Schema
-export const DeleteDatasetOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteDatasetOutput = Schema.Void;
 export type DeleteDatasetOutput = typeof DeleteDatasetOutput.Type;
 
 // The operation

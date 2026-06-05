@@ -28,7 +28,7 @@ export const MachinesRestartInput = /*@__PURE__*/ Schema.Struct({
 export type MachinesRestartInput = typeof MachinesRestartInput.Type;
 
 // Output Schema
-export const MachinesRestartOutput = /*@__PURE__*/ Schema.Void;
+export const MachinesRestartOutput = Schema.Void;
 export type MachinesRestartOutput = typeof MachinesRestartOutput.Type;
 
 // The operation

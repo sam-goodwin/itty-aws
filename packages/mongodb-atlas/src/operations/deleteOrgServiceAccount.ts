@@ -19,7 +19,7 @@ export type DeleteOrgServiceAccountInput =
   typeof DeleteOrgServiceAccountInput.Type;
 
 // Output Schema
-export const DeleteOrgServiceAccountOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteOrgServiceAccountOutput = Schema.Void;
 export type DeleteOrgServiceAccountOutput =
   typeof DeleteOrgServiceAccountOutput.Type;
 

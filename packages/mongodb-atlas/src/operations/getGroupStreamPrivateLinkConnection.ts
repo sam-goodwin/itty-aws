@@ -19,8 +19,7 @@ export type GetGroupStreamPrivateLinkConnectionInput =
   typeof GetGroupStreamPrivateLinkConnectionInput.Type;
 
 // Output Schema
-export const GetGroupStreamPrivateLinkConnectionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GetGroupStreamPrivateLinkConnectionOutput = Schema.Void;
 export type GetGroupStreamPrivateLinkConnectionOutput =
   typeof GetGroupStreamPrivateLinkConnectionOutput.Type;
 

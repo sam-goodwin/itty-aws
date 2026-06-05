@@ -18,7 +18,7 @@ export type VerifyGroupUserSecurityLdapInput =
   typeof VerifyGroupUserSecurityLdapInput.Type;
 
 // Output Schema
-export const VerifyGroupUserSecurityLdapOutput = /*@__PURE__*/ Schema.Void;
+export const VerifyGroupUserSecurityLdapOutput = Schema.Void;
 export type VerifyGroupUserSecurityLdapOutput =
   typeof VerifyGroupUserSecurityLdapOutput.Type;
 

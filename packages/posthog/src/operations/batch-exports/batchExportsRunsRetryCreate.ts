@@ -45,7 +45,7 @@ export type BatchExportsRunsRetryCreateInput =
   typeof BatchExportsRunsRetryCreateInput.Type;
 
 // Output Schema
-export const BatchExportsRunsRetryCreateOutput = /*@__PURE__*/ Schema.Void;
+export const BatchExportsRunsRetryCreateOutput = Schema.Void;
 export type BatchExportsRunsRetryCreateOutput =
   typeof BatchExportsRunsRetryCreateOutput.Type;
 

@@ -840,8 +840,7 @@ export type IntegrationRuntimeCredentialsSyncInput =
   typeof IntegrationRuntimeCredentialsSyncInput.Type;
 
 // Output Schema
-export const IntegrationRuntimeCredentialsSyncOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationRuntimeCredentialsSyncOutput = Schema.Void;
 export type IntegrationRuntimeCredentialsSyncOutput =
   typeof IntegrationRuntimeCredentialsSyncOutput.Type;
 
@@ -975,7 +974,7 @@ export type IntegrationRuntimeNodesDeleteInput =
   typeof IntegrationRuntimeNodesDeleteInput.Type;
 
 // Output Schema
-export const IntegrationRuntimeNodesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationRuntimeNodesDeleteOutput = Schema.Void;
 export type IntegrationRuntimeNodesDeleteOutput =
   typeof IntegrationRuntimeNodesDeleteOutput.Type;
 
@@ -1287,7 +1286,7 @@ export type IntegrationRuntimesDeleteInput =
   typeof IntegrationRuntimesDeleteInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationRuntimesDeleteOutput = Schema.Void;
 export type IntegrationRuntimesDeleteOutput =
   typeof IntegrationRuntimesDeleteOutput.Type;
 
@@ -1323,8 +1322,7 @@ export type IntegrationRuntimesDisableInteractiveQueryInput =
   typeof IntegrationRuntimesDisableInteractiveQueryInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesDisableInteractiveQueryOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationRuntimesDisableInteractiveQueryOutput = Schema.Void;
 export type IntegrationRuntimesDisableInteractiveQueryOutput =
   typeof IntegrationRuntimesDisableInteractiveQueryOutput.Type;
 
@@ -1359,8 +1357,7 @@ export type IntegrationRuntimesEnableInteractiveQueryInput =
   typeof IntegrationRuntimesEnableInteractiveQueryInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesEnableInteractiveQueryOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationRuntimesEnableInteractiveQueryOutput = Schema.Void;
 export type IntegrationRuntimesEnableInteractiveQueryOutput =
   typeof IntegrationRuntimesEnableInteractiveQueryOutput.Type;
 
@@ -1600,7 +1597,7 @@ export type IntegrationRuntimesStopInput =
   typeof IntegrationRuntimesStopInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesStopOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationRuntimesStopOutput = Schema.Void;
 export type IntegrationRuntimesStopOutput =
   typeof IntegrationRuntimesStopOutput.Type;
 
@@ -1729,7 +1726,7 @@ export type IntegrationRuntimesUpgradeInput =
   typeof IntegrationRuntimesUpgradeInput.Type;
 
 // Output Schema
-export const IntegrationRuntimesUpgradeOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationRuntimesUpgradeOutput = Schema.Void;
 export type IntegrationRuntimesUpgradeOutput =
   typeof IntegrationRuntimesUpgradeOutput.Type;
 
@@ -2306,8 +2303,7 @@ export type OperationsGetLocationHeaderResultInput =
   typeof OperationsGetLocationHeaderResultInput.Type;
 
 // Output Schema
-export const OperationsGetLocationHeaderResultOutput =
-  /*@__PURE__*/ Schema.Void;
+export const OperationsGetLocationHeaderResultOutput = Schema.Void;
 export type OperationsGetLocationHeaderResultOutput =
   typeof OperationsGetLocationHeaderResultOutput.Type;
 
@@ -2465,7 +2461,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -2781,7 +2777,7 @@ export const PrivateLinkHubsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type PrivateLinkHubsDeleteInput = typeof PrivateLinkHubsDeleteInput.Type;
 
 // Output Schema
-export const PrivateLinkHubsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateLinkHubsDeleteOutput = Schema.Void;
 export type PrivateLinkHubsDeleteOutput =
   typeof PrivateLinkHubsDeleteOutput.Type;
 
@@ -3524,8 +3520,7 @@ export type SqlPoolMaintenanceWindowsCreateOrUpdateInput =
   typeof SqlPoolMaintenanceWindowsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const SqlPoolMaintenanceWindowsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlPoolMaintenanceWindowsCreateOrUpdateOutput = Schema.Void;
 export type SqlPoolMaintenanceWindowsCreateOrUpdateOutput =
   typeof SqlPoolMaintenanceWindowsCreateOrUpdateOutput.Type;
 
@@ -3698,8 +3693,7 @@ export type SqlPoolRecommendedSensitivityLabelsUpdateInput =
   typeof SqlPoolRecommendedSensitivityLabelsUpdateInput.Type;
 
 // Output Schema
-export const SqlPoolRecommendedSensitivityLabelsUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlPoolRecommendedSensitivityLabelsUpdateOutput = Schema.Void;
 export type SqlPoolRecommendedSensitivityLabelsUpdateOutput =
   typeof SqlPoolRecommendedSensitivityLabelsUpdateOutput.Type;
 
@@ -3869,7 +3863,7 @@ export type SqlPoolRestorePointsDeleteInput =
   typeof SqlPoolRestorePointsDeleteInput.Type;
 
 // Output Schema
-export const SqlPoolRestorePointsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlPoolRestorePointsDeleteOutput = Schema.Void;
 export type SqlPoolRestorePointsDeleteOutput =
   typeof SqlPoolRestorePointsDeleteOutput.Type;
 
@@ -4356,7 +4350,7 @@ export type SqlPoolSensitivityLabelsDeleteInput =
   typeof SqlPoolSensitivityLabelsDeleteInput.Type;
 
 // Output Schema
-export const SqlPoolSensitivityLabelsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlPoolSensitivityLabelsDeleteOutput = Schema.Void;
 export type SqlPoolSensitivityLabelsDeleteOutput =
   typeof SqlPoolSensitivityLabelsDeleteOutput.Type;
 
@@ -4402,8 +4396,7 @@ export type SqlPoolSensitivityLabelsDisableRecommendationInput =
   typeof SqlPoolSensitivityLabelsDisableRecommendationInput.Type;
 
 // Output Schema
-export const SqlPoolSensitivityLabelsDisableRecommendationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlPoolSensitivityLabelsDisableRecommendationOutput = Schema.Void;
 export type SqlPoolSensitivityLabelsDisableRecommendationOutput =
   typeof SqlPoolSensitivityLabelsDisableRecommendationOutput.Type;
 
@@ -4450,8 +4443,7 @@ export type SqlPoolSensitivityLabelsEnableRecommendationInput =
   typeof SqlPoolSensitivityLabelsEnableRecommendationInput.Type;
 
 // Output Schema
-export const SqlPoolSensitivityLabelsEnableRecommendationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlPoolSensitivityLabelsEnableRecommendationOutput = Schema.Void;
 export type SqlPoolSensitivityLabelsEnableRecommendationOutput =
   typeof SqlPoolSensitivityLabelsEnableRecommendationOutput.Type;
 
@@ -4652,7 +4644,7 @@ export type SqlPoolSensitivityLabelsUpdateInput =
   typeof SqlPoolSensitivityLabelsUpdateInput.Type;
 
 // Output Schema
-export const SqlPoolSensitivityLabelsUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const SqlPoolSensitivityLabelsUpdateOutput = Schema.Void;
 export type SqlPoolSensitivityLabelsUpdateOutput =
   typeof SqlPoolSensitivityLabelsUpdateOutput.Type;
 
@@ -5295,7 +5287,7 @@ export type SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteOutput =
   typeof SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteOutput.Type;
 
@@ -5488,7 +5480,7 @@ export type SqlPoolVulnerabilityAssessmentScansInitiateScanInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentScansInitiateScanOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type SqlPoolVulnerabilityAssessmentScansInitiateScanOutput =
   typeof SqlPoolVulnerabilityAssessmentScansInitiateScanOutput.Type;
 
@@ -5634,8 +5626,7 @@ export type SqlPoolVulnerabilityAssessmentsDeleteInput =
   typeof SqlPoolVulnerabilityAssessmentsDeleteInput.Type;
 
 // Output Schema
-export const SqlPoolVulnerabilityAssessmentsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlPoolVulnerabilityAssessmentsDeleteOutput = Schema.Void;
 export type SqlPoolVulnerabilityAssessmentsDeleteOutput =
   typeof SqlPoolVulnerabilityAssessmentsDeleteOutput.Type;
 
@@ -5829,7 +5820,7 @@ export type SqlPoolWorkloadClassifierDeleteInput =
   typeof SqlPoolWorkloadClassifierDeleteInput.Type;
 
 // Output Schema
-export const SqlPoolWorkloadClassifierDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlPoolWorkloadClassifierDeleteOutput = Schema.Void;
 export type SqlPoolWorkloadClassifierDeleteOutput =
   typeof SqlPoolWorkloadClassifierDeleteOutput.Type;
 
@@ -6011,7 +6002,7 @@ export type SqlPoolWorkloadGroupDeleteInput =
   typeof SqlPoolWorkloadGroupDeleteInput.Type;
 
 // Output Schema
-export const SqlPoolWorkloadGroupDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlPoolWorkloadGroupDeleteOutput = Schema.Void;
 export type SqlPoolWorkloadGroupDeleteOutput =
   typeof SqlPoolWorkloadGroupDeleteOutput.Type;
 
@@ -6178,7 +6169,7 @@ export type WorkspaceAadAdminsDeleteInput =
   typeof WorkspaceAadAdminsDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceAadAdminsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WorkspaceAadAdminsDeleteOutput = Schema.Void;
 export type WorkspaceAadAdminsDeleteOutput =
   typeof WorkspaceAadAdminsDeleteOutput.Type;
 
@@ -6756,7 +6747,7 @@ export type WorkspaceManagedSqlServerEncryptionProtectorRevalidateInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorRevalidateOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type WorkspaceManagedSqlServerEncryptionProtectorRevalidateOutput =
   typeof WorkspaceManagedSqlServerEncryptionProtectorRevalidateOutput.Type;
 
@@ -7272,7 +7263,7 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteOutput =
   typeof WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteOutput.Type;
 
@@ -7632,7 +7623,7 @@ export type WorkspaceSqlAadAdminsDeleteInput =
   typeof WorkspaceSqlAadAdminsDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceSqlAadAdminsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WorkspaceSqlAadAdminsDeleteOutput = Schema.Void;
 export type WorkspaceSqlAadAdminsDeleteOutput =
   typeof WorkspaceSqlAadAdminsDeleteOutput.Type;
 

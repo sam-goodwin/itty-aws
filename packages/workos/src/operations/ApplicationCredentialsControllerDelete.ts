@@ -12,8 +12,7 @@ export type ApplicationCredentialsControllerDeleteInput =
   typeof ApplicationCredentialsControllerDeleteInput.Type;
 
 // Output Schema
-export const ApplicationCredentialsControllerDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ApplicationCredentialsControllerDeleteOutput = Schema.Void;
 export type ApplicationCredentialsControllerDeleteOutput =
   typeof ApplicationCredentialsControllerDeleteOutput.Type;
 

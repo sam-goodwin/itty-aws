@@ -18,7 +18,7 @@ export const RenameOrgTeamInput = /*@__PURE__*/ Schema.Struct({
 export type RenameOrgTeamInput = typeof RenameOrgTeamInput.Type;
 
 // Output Schema
-export const RenameOrgTeamOutput = /*@__PURE__*/ Schema.Void;
+export const RenameOrgTeamOutput = Schema.Void;
 export type RenameOrgTeamOutput = typeof RenameOrgTeamOutput.Type;
 
 // The operation

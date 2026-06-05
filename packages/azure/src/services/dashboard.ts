@@ -283,7 +283,7 @@ export const GrafanaDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type GrafanaDeleteInput = typeof GrafanaDeleteInput.Type;
 
 // Output Schema
-export const GrafanaDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GrafanaDeleteOutput = Schema.Void;
 export type GrafanaDeleteOutput = typeof GrafanaDeleteOutput.Type;
 
 // The operation
@@ -616,7 +616,7 @@ export type IntegrationFabricsDeleteInput =
   typeof IntegrationFabricsDeleteInput.Type;
 
 // Output Schema
-export const IntegrationFabricsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationFabricsDeleteOutput = Schema.Void;
 export type IntegrationFabricsDeleteOutput =
   typeof IntegrationFabricsDeleteOutput.Type;
 
@@ -862,7 +862,7 @@ export type ManagedDashboardsDeleteInput =
   typeof ManagedDashboardsDeleteInput.Type;
 
 // Output Schema
-export const ManagedDashboardsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ManagedDashboardsDeleteOutput = Schema.Void;
 export type ManagedDashboardsDeleteOutput =
   typeof ManagedDashboardsDeleteOutput.Type;
 
@@ -1000,7 +1000,7 @@ export type ManagedPrivateEndpointsDeleteInput =
   typeof ManagedPrivateEndpointsDeleteInput.Type;
 
 // Output Schema
-export const ManagedPrivateEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ManagedPrivateEndpointsDeleteOutput = Schema.Void;
 export type ManagedPrivateEndpointsDeleteOutput =
   typeof ManagedPrivateEndpointsDeleteOutput.Type;
 
@@ -1143,7 +1143,7 @@ export type ManagedPrivateEndpointsRefreshInput =
   typeof ManagedPrivateEndpointsRefreshInput.Type;
 
 // Output Schema
-export const ManagedPrivateEndpointsRefreshOutput = /*@__PURE__*/ Schema.Void;
+export const ManagedPrivateEndpointsRefreshOutput = Schema.Void;
 export type ManagedPrivateEndpointsRefreshOutput =
   typeof ManagedPrivateEndpointsRefreshOutput.Type;
 
@@ -1330,7 +1330,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 

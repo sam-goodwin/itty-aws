@@ -19,8 +19,7 @@ export type DeleteCustomersCustomerSourcesIdInput =
   typeof DeleteCustomersCustomerSourcesIdInput.Type;
 
 // Output Schema
-export const DeleteCustomersCustomerSourcesIdOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const DeleteCustomersCustomerSourcesIdOutput = Schema.Unknown;
 export type DeleteCustomersCustomerSourcesIdOutput =
   typeof DeleteCustomersCustomerSourcesIdOutput.Type;
 

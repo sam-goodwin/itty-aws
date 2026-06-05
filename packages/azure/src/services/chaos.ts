@@ -86,7 +86,7 @@ export const CapabilitiesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type CapabilitiesDeleteInput = typeof CapabilitiesDeleteInput.Type;
 
 // Output Schema
-export const CapabilitiesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CapabilitiesDeleteOutput = Schema.Void;
 export type CapabilitiesDeleteOutput = typeof CapabilitiesDeleteOutput.Type;
 
 // The operation
@@ -347,7 +347,7 @@ export const ExperimentsCancelInput = /*@__PURE__*/ Schema.Struct({
 export type ExperimentsCancelInput = typeof ExperimentsCancelInput.Type;
 
 // Output Schema
-export const ExperimentsCancelOutput = /*@__PURE__*/ Schema.Void;
+export const ExperimentsCancelOutput = Schema.Void;
 export type ExperimentsCancelOutput = typeof ExperimentsCancelOutput.Type;
 
 // The operation
@@ -429,7 +429,7 @@ export const ExperimentsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ExperimentsDeleteInput = typeof ExperimentsDeleteInput.Type;
 
 // Output Schema
-export const ExperimentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ExperimentsDeleteOutput = Schema.Void;
 export type ExperimentsDeleteOutput = typeof ExperimentsDeleteOutput.Type;
 
 // The operation
@@ -829,7 +829,7 @@ export const ExperimentsStartInput = /*@__PURE__*/ Schema.Struct({
 export type ExperimentsStartInput = typeof ExperimentsStartInput.Type;
 
 // Output Schema
-export const ExperimentsStartOutput = /*@__PURE__*/ Schema.Void;
+export const ExperimentsStartOutput = Schema.Void;
 export type ExperimentsStartOutput = typeof ExperimentsStartOutput.Type;
 
 // The operation
@@ -1097,7 +1097,7 @@ export const TargetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TargetsDeleteInput = typeof TargetsDeleteInput.Type;
 
 // Output Schema
-export const TargetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TargetsDeleteOutput = Schema.Void;
 export type TargetsDeleteOutput = typeof TargetsDeleteOutput.Type;
 
 // The operation

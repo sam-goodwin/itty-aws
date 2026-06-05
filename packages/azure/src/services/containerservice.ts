@@ -25,7 +25,7 @@ export type AgentPoolsAbortLatestOperationInput =
   typeof AgentPoolsAbortLatestOperationInput.Type;
 
 // Output Schema
-export const AgentPoolsAbortLatestOperationOutput = /*@__PURE__*/ Schema.Void;
+export const AgentPoolsAbortLatestOperationOutput = Schema.Void;
 export type AgentPoolsAbortLatestOperationOutput =
   typeof AgentPoolsAbortLatestOperationOutput.Type;
 
@@ -117,7 +117,7 @@ export const AgentPoolsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AgentPoolsDeleteInput = typeof AgentPoolsDeleteInput.Type;
 
 // Output Schema
-export const AgentPoolsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AgentPoolsDeleteOutput = Schema.Void;
 export type AgentPoolsDeleteOutput = typeof AgentPoolsDeleteOutput.Type;
 
 // The operation
@@ -153,7 +153,7 @@ export type AgentPoolsDeleteMachinesInput =
   typeof AgentPoolsDeleteMachinesInput.Type;
 
 // Output Schema
-export const AgentPoolsDeleteMachinesOutput = /*@__PURE__*/ Schema.Void;
+export const AgentPoolsDeleteMachinesOutput = Schema.Void;
 export type AgentPoolsDeleteMachinesOutput =
   typeof AgentPoolsDeleteMachinesOutput.Type;
 
@@ -401,8 +401,7 @@ export type AgentPoolsUpgradeNodeImageVersionInput =
   typeof AgentPoolsUpgradeNodeImageVersionInput.Type;
 
 // Output Schema
-export const AgentPoolsUpgradeNodeImageVersionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AgentPoolsUpgradeNodeImageVersionOutput = Schema.Void;
 export type AgentPoolsUpgradeNodeImageVersionOutput =
   typeof AgentPoolsUpgradeNodeImageVersionOutput.Type;
 
@@ -536,7 +535,7 @@ export type AutoUpgradeProfilesDeleteInput =
   typeof AutoUpgradeProfilesDeleteInput.Type;
 
 // Output Schema
-export const AutoUpgradeProfilesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AutoUpgradeProfilesDeleteOutput = Schema.Void;
 export type AutoUpgradeProfilesDeleteOutput =
   typeof AutoUpgradeProfilesDeleteOutput.Type;
 
@@ -734,7 +733,7 @@ export type DeploymentSafeguardsDeleteInput =
   typeof DeploymentSafeguardsDeleteInput.Type;
 
 // Output Schema
-export const DeploymentSafeguardsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentSafeguardsDeleteOutput = Schema.Void;
 export type DeploymentSafeguardsDeleteOutput =
   typeof DeploymentSafeguardsDeleteOutput.Type;
 
@@ -912,7 +911,7 @@ export const FleetMembersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FleetMembersDeleteInput = typeof FleetMembersDeleteInput.Type;
 
 // Output Schema
-export const FleetMembersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FleetMembersDeleteOutput = Schema.Void;
 export type FleetMembersDeleteOutput = typeof FleetMembersDeleteOutput.Type;
 
 // The operation
@@ -1155,7 +1154,7 @@ export const FleetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FleetsDeleteInput = typeof FleetsDeleteInput.Type;
 
 // Output Schema
-export const FleetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FleetsDeleteOutput = Schema.Void;
 export type FleetsDeleteOutput = typeof FleetsDeleteOutput.Type;
 
 // The operation
@@ -1494,7 +1493,7 @@ export type FleetUpdateStrategiesDeleteInput =
   typeof FleetUpdateStrategiesDeleteInput.Type;
 
 // Output Schema
-export const FleetUpdateStrategiesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FleetUpdateStrategiesDeleteOutput = Schema.Void;
 export type FleetUpdateStrategiesDeleteOutput =
   typeof FleetUpdateStrategiesDeleteOutput.Type;
 
@@ -1819,7 +1818,7 @@ export type MaintenanceConfigurationsDeleteInput =
   typeof MaintenanceConfigurationsDeleteInput.Type;
 
 // Output Schema
-export const MaintenanceConfigurationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MaintenanceConfigurationsDeleteOutput = Schema.Void;
 export type MaintenanceConfigurationsDeleteOutput =
   typeof MaintenanceConfigurationsDeleteOutput.Type;
 
@@ -1976,8 +1975,7 @@ export type ManagedClustersAbortLatestOperationInput =
   typeof ManagedClustersAbortLatestOperationInput.Type;
 
 // Output Schema
-export const ManagedClustersAbortLatestOperationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ManagedClustersAbortLatestOperationOutput = Schema.Void;
 export type ManagedClustersAbortLatestOperationOutput =
   typeof ManagedClustersAbortLatestOperationOutput.Type;
 
@@ -2066,7 +2064,7 @@ export const ManagedClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ManagedClustersDeleteInput = typeof ManagedClustersDeleteInput.Type;
 
 // Output Schema
-export const ManagedClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ManagedClustersDeleteOutput = Schema.Void;
 export type ManagedClustersDeleteOutput =
   typeof ManagedClustersDeleteOutput.Type;
 
@@ -2895,8 +2893,7 @@ export type ManagedClustersResetServicePrincipalProfileInput =
   typeof ManagedClustersResetServicePrincipalProfileInput.Type;
 
 // Output Schema
-export const ManagedClustersResetServicePrincipalProfileOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ManagedClustersResetServicePrincipalProfileOutput = Schema.Void;
 export type ManagedClustersResetServicePrincipalProfileOutput =
   typeof ManagedClustersResetServicePrincipalProfileOutput.Type;
 
@@ -2933,8 +2930,7 @@ export type ManagedClustersRotateClusterCertificatesInput =
   typeof ManagedClustersRotateClusterCertificatesInput.Type;
 
 // Output Schema
-export const ManagedClustersRotateClusterCertificatesOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ManagedClustersRotateClusterCertificatesOutput = Schema.Void;
 export type ManagedClustersRotateClusterCertificatesOutput =
   typeof ManagedClustersRotateClusterCertificatesOutput.Type;
 
@@ -2972,8 +2968,7 @@ export type ManagedClustersRotateServiceAccountSigningKeysInput =
   typeof ManagedClustersRotateServiceAccountSigningKeysInput.Type;
 
 // Output Schema
-export const ManagedClustersRotateServiceAccountSigningKeysOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ManagedClustersRotateServiceAccountSigningKeysOutput = Schema.Void;
 export type ManagedClustersRotateServiceAccountSigningKeysOutput =
   typeof ManagedClustersRotateServiceAccountSigningKeysOutput.Type;
 
@@ -3053,7 +3048,7 @@ export const ManagedClustersStartInput = /*@__PURE__*/ Schema.Struct({
 export type ManagedClustersStartInput = typeof ManagedClustersStartInput.Type;
 
 // Output Schema
-export const ManagedClustersStartOutput = /*@__PURE__*/ Schema.Void;
+export const ManagedClustersStartOutput = Schema.Void;
 export type ManagedClustersStartOutput = typeof ManagedClustersStartOutput.Type;
 
 // The operation
@@ -3086,7 +3081,7 @@ export const ManagedClustersStopInput = /*@__PURE__*/ Schema.Struct({
 export type ManagedClustersStopInput = typeof ManagedClustersStopInput.Type;
 
 // Output Schema
-export const ManagedClustersStopOutput = /*@__PURE__*/ Schema.Void;
+export const ManagedClustersStopOutput = Schema.Void;
 export type ManagedClustersStopOutput = typeof ManagedClustersStopOutput.Type;
 
 // The operation
@@ -3229,7 +3224,7 @@ export type ManagedNamespacesDeleteInput =
   typeof ManagedNamespacesDeleteInput.Type;
 
 // Output Schema
-export const ManagedNamespacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ManagedNamespacesDeleteOutput = Schema.Void;
 export type ManagedNamespacesDeleteOutput =
   typeof ManagedNamespacesDeleteOutput.Type;
 
@@ -3533,7 +3528,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -3889,7 +3884,7 @@ export const SnapshotsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SnapshotsDeleteInput = typeof SnapshotsDeleteInput.Type;
 
 // Output Schema
-export const SnapshotsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SnapshotsDeleteOutput = Schema.Void;
 export type SnapshotsDeleteOutput = typeof SnapshotsDeleteOutput.Type;
 
 // The operation
@@ -4183,7 +4178,7 @@ export type TrustedAccessRoleBindingsDeleteInput =
   typeof TrustedAccessRoleBindingsDeleteInput.Type;
 
 // Output Schema
-export const TrustedAccessRoleBindingsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TrustedAccessRoleBindingsDeleteOutput = Schema.Void;
 export type TrustedAccessRoleBindingsDeleteOutput =
   typeof TrustedAccessRoleBindingsDeleteOutput.Type;
 
@@ -4431,7 +4426,7 @@ export const UpdateRunsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type UpdateRunsDeleteInput = typeof UpdateRunsDeleteInput.Type;
 
 // Output Schema
-export const UpdateRunsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateRunsDeleteOutput = Schema.Void;
 export type UpdateRunsDeleteOutput = typeof UpdateRunsDeleteOutput.Type;
 
 // The operation

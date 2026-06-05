@@ -154,7 +154,7 @@ export type BackupOperationResultsGetInput =
   typeof BackupOperationResultsGetInput.Type;
 
 // Output Schema
-export const BackupOperationResultsGetOutput = /*@__PURE__*/ Schema.Void;
+export const BackupOperationResultsGetOutput = Schema.Void;
 export type BackupOperationResultsGetOutput =
   typeof BackupOperationResultsGetOutput.Type;
 
@@ -502,8 +502,7 @@ export type BackupResourceEncryptionConfigsUpdateInput =
   typeof BackupResourceEncryptionConfigsUpdateInput.Type;
 
 // Output Schema
-export const BackupResourceEncryptionConfigsUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BackupResourceEncryptionConfigsUpdateOutput = Schema.Void;
 export type BackupResourceEncryptionConfigsUpdateOutput =
   typeof BackupResourceEncryptionConfigsUpdateOutput.Type;
 
@@ -594,8 +593,7 @@ export type BackupResourceStorageConfigsNonCRRPatchInput =
   typeof BackupResourceStorageConfigsNonCRRPatchInput.Type;
 
 // Output Schema
-export const BackupResourceStorageConfigsNonCRRPatchOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BackupResourceStorageConfigsNonCRRPatchOutput = Schema.Void;
 export type BackupResourceStorageConfigsNonCRRPatchOutput =
   typeof BackupResourceStorageConfigsNonCRRPatchOutput.Type;
 
@@ -893,7 +891,7 @@ export const BackupsTriggerInput = /*@__PURE__*/ Schema.Struct({
 export type BackupsTriggerInput = typeof BackupsTriggerInput.Type;
 
 // Output Schema
-export const BackupsTriggerOutput = /*@__PURE__*/ Schema.Void;
+export const BackupsTriggerOutput = Schema.Void;
 export type BackupsTriggerOutput = typeof BackupsTriggerOutput.Type;
 
 // The operation
@@ -1011,7 +1009,7 @@ export const BMSPrepareDataMoveInput = /*@__PURE__*/ Schema.Struct({
 export type BMSPrepareDataMoveInput = typeof BMSPrepareDataMoveInput.Type;
 
 // Output Schema
-export const BMSPrepareDataMoveOutput = /*@__PURE__*/ Schema.Void;
+export const BMSPrepareDataMoveOutput = Schema.Void;
 export type BMSPrepareDataMoveOutput = typeof BMSPrepareDataMoveOutput.Type;
 
 // The operation
@@ -1083,7 +1081,7 @@ export const BMSTriggerDataMoveInput = /*@__PURE__*/ Schema.Struct({
 export type BMSTriggerDataMoveInput = typeof BMSTriggerDataMoveInput.Type;
 
 // Output Schema
-export const BMSTriggerDataMoveOutput = /*@__PURE__*/ Schema.Void;
+export const BMSTriggerDataMoveOutput = Schema.Void;
 export type BMSTriggerDataMoveOutput = typeof BMSTriggerDataMoveOutput.Type;
 
 // The operation
@@ -1422,8 +1420,7 @@ export type ItemLevelRecoveryConnectionsProvisionInput =
   typeof ItemLevelRecoveryConnectionsProvisionInput.Type;
 
 // Output Schema
-export const ItemLevelRecoveryConnectionsProvisionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ItemLevelRecoveryConnectionsProvisionOutput = Schema.Void;
 export type ItemLevelRecoveryConnectionsProvisionOutput =
   typeof ItemLevelRecoveryConnectionsProvisionOutput.Type;
 
@@ -1469,8 +1466,7 @@ export type ItemLevelRecoveryConnectionsRevokeInput =
   typeof ItemLevelRecoveryConnectionsRevokeInput.Type;
 
 // Output Schema
-export const ItemLevelRecoveryConnectionsRevokeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ItemLevelRecoveryConnectionsRevokeOutput = Schema.Void;
 export type ItemLevelRecoveryConnectionsRevokeOutput =
   typeof ItemLevelRecoveryConnectionsRevokeOutput.Type;
 
@@ -1511,7 +1507,7 @@ export type JobCancellationsTriggerInput =
   typeof JobCancellationsTriggerInput.Type;
 
 // Output Schema
-export const JobCancellationsTriggerOutput = /*@__PURE__*/ Schema.Void;
+export const JobCancellationsTriggerOutput = Schema.Void;
 export type JobCancellationsTriggerOutput =
   typeof JobCancellationsTriggerOutput.Type;
 
@@ -1599,7 +1595,7 @@ export type JobOperationResultsGetInput =
   typeof JobOperationResultsGetInput.Type;
 
 // Output Schema
-export const JobOperationResultsGetOutput = /*@__PURE__*/ Schema.Void;
+export const JobOperationResultsGetOutput = Schema.Void;
 export type JobOperationResultsGetOutput =
   typeof JobOperationResultsGetOutput.Type;
 
@@ -1634,7 +1630,7 @@ export const JobsExportInput = /*@__PURE__*/ Schema.Struct({
 export type JobsExportInput = typeof JobsExportInput.Type;
 
 // Output Schema
-export const JobsExportOutput = /*@__PURE__*/ Schema.Void;
+export const JobsExportOutput = Schema.Void;
 export type JobsExportOutput = typeof JobsExportOutput.Type;
 
 // The operation
@@ -1670,7 +1666,7 @@ export const MoveRecoveryPointInput = /*@__PURE__*/ Schema.Struct({
 export type MoveRecoveryPointInput = typeof MoveRecoveryPointInput.Type;
 
 // Output Schema
-export const MoveRecoveryPointOutput = /*@__PURE__*/ Schema.Void;
+export const MoveRecoveryPointOutput = Schema.Void;
 export type MoveRecoveryPointOutput = typeof MoveRecoveryPointOutput.Type;
 
 // The operation
@@ -1814,7 +1810,7 @@ export type PrivateEndpointConnectionDeleteInput =
   typeof PrivateEndpointConnectionDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionDeleteOutput =
   typeof PrivateEndpointConnectionDeleteOutput.Type;
 
@@ -2247,7 +2243,7 @@ export const ProtectedItemsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ProtectedItemsDeleteInput = typeof ProtectedItemsDeleteInput.Type;
 
 // Output Schema
-export const ProtectedItemsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ProtectedItemsDeleteOutput = Schema.Void;
 export type ProtectedItemsDeleteOutput = typeof ProtectedItemsDeleteOutput.Type;
 
 // The operation
@@ -2405,8 +2401,7 @@ export type ProtectionContainerRefreshOperationResultsGetInput =
   typeof ProtectionContainerRefreshOperationResultsGetInput.Type;
 
 // Output Schema
-export const ProtectionContainerRefreshOperationResultsGetOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ProtectionContainerRefreshOperationResultsGetOutput = Schema.Void;
 export type ProtectionContainerRefreshOperationResultsGetOutput =
   typeof ProtectionContainerRefreshOperationResultsGetOutput.Type;
 
@@ -2500,7 +2495,7 @@ export type ProtectionContainersInquireInput =
   typeof ProtectionContainersInquireInput.Type;
 
 // Output Schema
-export const ProtectionContainersInquireOutput = /*@__PURE__*/ Schema.Void;
+export const ProtectionContainersInquireOutput = Schema.Void;
 export type ProtectionContainersInquireOutput =
   typeof ProtectionContainersInquireOutput.Type;
 
@@ -2538,7 +2533,7 @@ export type ProtectionContainersRefreshInput =
   typeof ProtectionContainersRefreshInput.Type;
 
 // Output Schema
-export const ProtectionContainersRefreshOutput = /*@__PURE__*/ Schema.Void;
+export const ProtectionContainersRefreshOutput = Schema.Void;
 export type ProtectionContainersRefreshOutput =
   typeof ProtectionContainersRefreshOutput.Type;
 
@@ -2633,7 +2628,7 @@ export type ProtectionContainersUnregisterInput =
   typeof ProtectionContainersUnregisterInput.Type;
 
 // Output Schema
-export const ProtectionContainersUnregisterOutput = /*@__PURE__*/ Schema.Void;
+export const ProtectionContainersUnregisterOutput = Schema.Void;
 export type ProtectionContainersUnregisterOutput =
   typeof ProtectionContainersUnregisterOutput.Type;
 
@@ -2728,7 +2723,7 @@ export type ProtectionIntentDeleteInput =
   typeof ProtectionIntentDeleteInput.Type;
 
 // Output Schema
-export const ProtectionIntentDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ProtectionIntentDeleteOutput = Schema.Void;
 export type ProtectionIntentDeleteOutput =
   typeof ProtectionIntentDeleteOutput.Type;
 
@@ -2920,7 +2915,7 @@ export type ProtectionPoliciesDeleteInput =
   typeof ProtectionPoliciesDeleteInput.Type;
 
 // Output Schema
-export const ProtectionPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ProtectionPoliciesDeleteOutput = Schema.Void;
 export type ProtectionPoliciesDeleteOutput =
   typeof ProtectionPoliciesDeleteOutput.Type;
 
@@ -3315,7 +3310,7 @@ export type ResourceGuardProxyDeleteInput =
   typeof ResourceGuardProxyDeleteInput.Type;
 
 // Output Schema
-export const ResourceGuardProxyDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ResourceGuardProxyDeleteOutput = Schema.Void;
 export type ResourceGuardProxyDeleteOutput =
   typeof ResourceGuardProxyDeleteOutput.Type;
 
@@ -3492,7 +3487,7 @@ export const RestoresTriggerInput = /*@__PURE__*/ Schema.Struct({
 export type RestoresTriggerInput = typeof RestoresTriggerInput.Type;
 
 // Output Schema
-export const RestoresTriggerOutput = /*@__PURE__*/ Schema.Void;
+export const RestoresTriggerOutput = Schema.Void;
 export type RestoresTriggerOutput = typeof RestoresTriggerOutput.Type;
 
 // The operation
@@ -3734,7 +3729,7 @@ export type ValidateOperationTriggerInput =
   typeof ValidateOperationTriggerInput.Type;
 
 // Output Schema
-export const ValidateOperationTriggerOutput = /*@__PURE__*/ Schema.Void;
+export const ValidateOperationTriggerOutput = Schema.Void;
 export type ValidateOperationTriggerOutput =
   typeof ValidateOperationTriggerOutput.Type;
 

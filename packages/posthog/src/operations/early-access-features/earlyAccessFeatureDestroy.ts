@@ -17,7 +17,7 @@ export type EarlyAccessFeatureDestroyInput =
   typeof EarlyAccessFeatureDestroyInput.Type;
 
 // Output Schema
-export const EarlyAccessFeatureDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const EarlyAccessFeatureDestroyOutput = Schema.Void;
 export type EarlyAccessFeatureDestroyOutput =
   typeof EarlyAccessFeatureDestroyOutput.Type;
 

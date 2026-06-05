@@ -162,7 +162,7 @@ export const LabPlansDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type LabPlansDeleteInput = typeof LabPlansDeleteInput.Type;
 
 // Output Schema
-export const LabPlansDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const LabPlansDeleteOutput = Schema.Void;
 export type LabPlansDeleteOutput = typeof LabPlansDeleteOutput.Type;
 
 // The operation
@@ -288,7 +288,7 @@ export const LabPlansSaveImageInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type LabPlansSaveImageInput = typeof LabPlansSaveImageInput.Type;
 
 // Output Schema
-export const LabPlansSaveImageOutput = /*@__PURE__*/ Schema.Void;
+export const LabPlansSaveImageOutput = Schema.Void;
 export type LabPlansSaveImageOutput = typeof LabPlansSaveImageOutput.Type;
 
 // The operation
@@ -365,7 +365,7 @@ export const LabsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type LabsDeleteInput = typeof LabsDeleteInput.Type;
 
 // Output Schema
-export const LabsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const LabsDeleteOutput = Schema.Void;
 export type LabsDeleteOutput = typeof LabsDeleteOutput.Type;
 
 // The operation
@@ -489,7 +489,7 @@ export const LabsPublishInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type LabsPublishInput = typeof LabsPublishInput.Type;
 
 // Output Schema
-export const LabsPublishOutput = /*@__PURE__*/ Schema.Void;
+export const LabsPublishOutput = Schema.Void;
 export type LabsPublishOutput = typeof LabsPublishOutput.Type;
 
 // The operation
@@ -512,7 +512,7 @@ export const LabsSyncGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type LabsSyncGroupInput = typeof LabsSyncGroupInput.Type;
 
 // Output Schema
-export const LabsSyncGroupOutput = /*@__PURE__*/ Schema.Void;
+export const LabsSyncGroupOutput = Schema.Void;
 export type LabsSyncGroupOutput = typeof LabsSyncGroupOutput.Type;
 
 // The operation
@@ -707,7 +707,7 @@ export const SchedulesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type SchedulesDeleteInput = typeof SchedulesDeleteInput.Type;
 
 // Output Schema
-export const SchedulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SchedulesDeleteOutput = Schema.Void;
 export type SchedulesDeleteOutput = typeof SchedulesDeleteOutput.Type;
 
 // The operation
@@ -962,7 +962,7 @@ export const UsersDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;
 
 // Output Schema
-export const UsersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const UsersDeleteOutput = Schema.Void;
 export type UsersDeleteOutput = typeof UsersDeleteOutput.Type;
 
 // The operation
@@ -1012,7 +1012,7 @@ export const UsersInviteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type UsersInviteInput = typeof UsersInviteInput.Type;
 
 // Output Schema
-export const UsersInviteOutput = /*@__PURE__*/ Schema.Void;
+export const UsersInviteOutput = Schema.Void;
 export type UsersInviteOutput = typeof UsersInviteOutput.Type;
 
 // The operation
@@ -1164,7 +1164,7 @@ export type VirtualMachinesRedeployInput =
   typeof VirtualMachinesRedeployInput.Type;
 
 // Output Schema
-export const VirtualMachinesRedeployOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesRedeployOutput = Schema.Void;
 export type VirtualMachinesRedeployOutput =
   typeof VirtualMachinesRedeployOutput.Type;
 
@@ -1189,7 +1189,7 @@ export type VirtualMachinesReimageInput =
   typeof VirtualMachinesReimageInput.Type;
 
 // Output Schema
-export const VirtualMachinesReimageOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesReimageOutput = Schema.Void;
 export type VirtualMachinesReimageOutput =
   typeof VirtualMachinesReimageOutput.Type;
 
@@ -1216,7 +1216,7 @@ export type VirtualMachinesResetPasswordInput =
   typeof VirtualMachinesResetPasswordInput.Type;
 
 // Output Schema
-export const VirtualMachinesResetPasswordOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesResetPasswordOutput = Schema.Void;
 export type VirtualMachinesResetPasswordOutput =
   typeof VirtualMachinesResetPasswordOutput.Type;
 
@@ -1240,7 +1240,7 @@ export const VirtualMachinesStartInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
 
 // Output Schema
-export const VirtualMachinesStartOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesStartOutput = Schema.Void;
 export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
 
 // The operation
@@ -1263,7 +1263,7 @@ export const VirtualMachinesStopInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type VirtualMachinesStopInput = typeof VirtualMachinesStopInput.Type;
 
 // Output Schema
-export const VirtualMachinesStopOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesStopOutput = Schema.Void;
 export type VirtualMachinesStopOutput = typeof VirtualMachinesStopOutput.Type;
 
 // The operation

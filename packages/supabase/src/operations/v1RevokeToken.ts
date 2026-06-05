@@ -13,7 +13,7 @@ export const V1RevokeTokenInput = /*@__PURE__*/ Schema.Struct({
 export type V1RevokeTokenInput = typeof V1RevokeTokenInput.Type;
 
 // Output Schema
-export const V1RevokeTokenOutput = /*@__PURE__*/ Schema.Void;
+export const V1RevokeTokenOutput = Schema.Void;
 export type V1RevokeTokenOutput = typeof V1RevokeTokenOutput.Type;
 
 // The operation

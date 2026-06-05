@@ -32,7 +32,7 @@ export const V1SetupAReadReplicaInput = /*@__PURE__*/ Schema.Struct({
 export type V1SetupAReadReplicaInput = typeof V1SetupAReadReplicaInput.Type;
 
 // Output Schema
-export const V1SetupAReadReplicaOutput = /*@__PURE__*/ Schema.Void;
+export const V1SetupAReadReplicaOutput = Schema.Void;
 export type V1SetupAReadReplicaOutput = typeof V1SetupAReadReplicaOutput.Type;
 
 // The operation

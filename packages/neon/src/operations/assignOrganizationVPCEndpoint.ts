@@ -18,7 +18,7 @@ export type AssignOrganizationVPCEndpointInput =
   typeof AssignOrganizationVPCEndpointInput.Type;
 
 // Output Schema
-export const AssignOrganizationVPCEndpointOutput = /*@__PURE__*/ Schema.Void;
+export const AssignOrganizationVPCEndpointOutput = Schema.Void;
 export type AssignOrganizationVPCEndpointOutput =
   typeof AssignOrganizationVPCEndpointOutput.Type;
 

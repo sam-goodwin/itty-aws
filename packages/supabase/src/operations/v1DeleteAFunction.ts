@@ -16,7 +16,7 @@ export const V1DeleteAFunctionInput = /*@__PURE__*/ Schema.Struct({
 export type V1DeleteAFunctionInput = typeof V1DeleteAFunctionInput.Type;
 
 // Output Schema
-export const V1DeleteAFunctionOutput = /*@__PURE__*/ Schema.Void;
+export const V1DeleteAFunctionOutput = Schema.Void;
 export type V1DeleteAFunctionOutput = typeof V1DeleteAFunctionOutput.Type;
 
 // The operation

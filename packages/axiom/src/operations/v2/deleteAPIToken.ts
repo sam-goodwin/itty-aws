@@ -10,7 +10,7 @@ export const DeleteAPITokenInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteAPITokenInput = typeof DeleteAPITokenInput.Type;
 
 // Output Schema
-export const DeleteAPITokenOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteAPITokenOutput = Schema.Void;
 export type DeleteAPITokenOutput = typeof DeleteAPITokenOutput.Type;
 
 // The operation

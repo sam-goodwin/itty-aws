@@ -17,7 +17,7 @@ export type WarehouseTablesDestroyInput =
   typeof WarehouseTablesDestroyInput.Type;
 
 // Output Schema
-export const WarehouseTablesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const WarehouseTablesDestroyOutput = Schema.Void;
 export type WarehouseTablesDestroyOutput =
   typeof WarehouseTablesDestroyOutput.Type;
 

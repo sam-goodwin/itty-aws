@@ -10,7 +10,7 @@ export const DeleteStarredInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteStarredInput = typeof DeleteStarredInput.Type;
 
 // Output Schema
-export const DeleteStarredOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteStarredOutput = Schema.Void;
 export type DeleteStarredOutput = typeof DeleteStarredOutput.Type;
 
 // The operation

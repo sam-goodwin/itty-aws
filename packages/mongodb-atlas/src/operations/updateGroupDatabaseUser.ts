@@ -20,7 +20,7 @@ export type UpdateGroupDatabaseUserInput =
   typeof UpdateGroupDatabaseUserInput.Type;
 
 // Output Schema
-export const UpdateGroupDatabaseUserOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupDatabaseUserOutput = Schema.Void;
 export type UpdateGroupDatabaseUserOutput =
   typeof UpdateGroupDatabaseUserOutput.Type;
 

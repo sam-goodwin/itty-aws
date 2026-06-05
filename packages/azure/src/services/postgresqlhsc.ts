@@ -103,7 +103,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersDeleteOutput = Schema.Void;
 export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 
 // The operation
@@ -308,7 +308,7 @@ export type ClustersPromoteReadReplicaInput =
   typeof ClustersPromoteReadReplicaInput.Type;
 
 // Output Schema
-export const ClustersPromoteReadReplicaOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersPromoteReadReplicaOutput = Schema.Void;
 export type ClustersPromoteReadReplicaOutput =
   typeof ClustersPromoteReadReplicaOutput.Type;
 
@@ -338,7 +338,7 @@ export const ClustersRestartInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersRestartInput = typeof ClustersRestartInput.Type;
 
 // Output Schema
-export const ClustersRestartOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersRestartOutput = Schema.Void;
 export type ClustersRestartOutput = typeof ClustersRestartOutput.Type;
 
 // The operation
@@ -367,7 +367,7 @@ export const ClustersStartInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersStartInput = typeof ClustersStartInput.Type;
 
 // Output Schema
-export const ClustersStartOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersStartOutput = Schema.Void;
 export type ClustersStartOutput = typeof ClustersStartOutput.Type;
 
 // The operation
@@ -396,7 +396,7 @@ export const ClustersStopInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersStopInput = typeof ClustersStopInput.Type;
 
 // Output Schema
-export const ClustersStopOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersStopOutput = Schema.Void;
 export type ClustersStopOutput = typeof ClustersStopOutput.Type;
 
 // The operation
@@ -897,7 +897,7 @@ export const FirewallRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
 
 // Output Schema
-export const FirewallRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FirewallRulesDeleteOutput = Schema.Void;
 export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
 
 // The operation
@@ -1163,7 +1163,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1474,7 +1474,7 @@ export const RolesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RolesDeleteInput = typeof RolesDeleteInput.Type;
 
 // Output Schema
-export const RolesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RolesDeleteOutput = Schema.Void;
 export type RolesDeleteOutput = typeof RolesDeleteOutput.Type;
 
 // The operation

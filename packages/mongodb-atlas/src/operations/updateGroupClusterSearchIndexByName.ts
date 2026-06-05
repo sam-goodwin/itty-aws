@@ -23,8 +23,7 @@ export type UpdateGroupClusterSearchIndexByNameInput =
   typeof UpdateGroupClusterSearchIndexByNameInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterSearchIndexByNameOutput =
-  /*@__PURE__*/ Schema.Void;
+export const UpdateGroupClusterSearchIndexByNameOutput = Schema.Void;
 export type UpdateGroupClusterSearchIndexByNameOutput =
   typeof UpdateGroupClusterSearchIndexByNameOutput.Type;
 

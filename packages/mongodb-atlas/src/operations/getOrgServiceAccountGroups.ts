@@ -21,7 +21,7 @@ export type GetOrgServiceAccountGroupsInput =
   typeof GetOrgServiceAccountGroupsInput.Type;
 
 // Output Schema
-export const GetOrgServiceAccountGroupsOutput = /*@__PURE__*/ Schema.Void;
+export const GetOrgServiceAccountGroupsOutput = Schema.Void;
 export type GetOrgServiceAccountGroupsOutput =
   typeof GetOrgServiceAccountGroupsOutput.Type;
 

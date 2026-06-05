@@ -19,8 +19,7 @@ export type LogsAlertsDestinationsDeleteCreateInput =
   typeof LogsAlertsDestinationsDeleteCreateInput.Type;
 
 // Output Schema
-export const LogsAlertsDestinationsDeleteCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const LogsAlertsDestinationsDeleteCreateOutput = Schema.Void;
 export type LogsAlertsDestinationsDeleteCreateOutput =
   typeof LogsAlertsDestinationsDeleteCreateOutput.Type;
 

@@ -136,7 +136,7 @@ export type WorkspaceCollectionsDeleteInput =
   typeof WorkspaceCollectionsDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceCollectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WorkspaceCollectionsDeleteOutput = Schema.Void;
 export type WorkspaceCollectionsDeleteOutput =
   typeof WorkspaceCollectionsDeleteOutput.Type;
 
@@ -336,7 +336,7 @@ export type WorkspaceCollectionsMigrateInput =
   typeof WorkspaceCollectionsMigrateInput.Type;
 
 // Output Schema
-export const WorkspaceCollectionsMigrateOutput = /*@__PURE__*/ Schema.Void;
+export const WorkspaceCollectionsMigrateOutput = Schema.Void;
 export type WorkspaceCollectionsMigrateOutput =
   typeof WorkspaceCollectionsMigrateOutput.Type;
 

@@ -225,7 +225,7 @@ export type NetworkSecurityPerimeterConfigurationsReconcileInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsReconcileOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type NetworkSecurityPerimeterConfigurationsReconcileOutput =
   typeof NetworkSecurityPerimeterConfigurationsReconcileOutput.Type;
 
@@ -653,7 +653,7 @@ export const QueryKeysDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type QueryKeysDeleteInput = typeof QueryKeysDeleteInput.Type;
 
 // Output Schema
-export const QueryKeysDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const QueryKeysDeleteOutput = Schema.Void;
 export type QueryKeysDeleteOutput = typeof QueryKeysDeleteOutput.Type;
 
 // The operation
@@ -818,7 +818,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesDeleteOutput = Schema.Void;
 export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 
 // The operation
@@ -1193,7 +1193,7 @@ export type SharedPrivateLinkResourcesDeleteInput =
   typeof SharedPrivateLinkResourcesDeleteInput.Type;
 
 // Output Schema
-export const SharedPrivateLinkResourcesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SharedPrivateLinkResourcesDeleteOutput = Schema.Void;
 export type SharedPrivateLinkResourcesDeleteOutput =
   typeof SharedPrivateLinkResourcesDeleteOutput.Type;
 

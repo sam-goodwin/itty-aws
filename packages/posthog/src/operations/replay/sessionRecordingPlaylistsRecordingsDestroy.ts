@@ -19,8 +19,7 @@ export type SessionRecordingPlaylistsRecordingsDestroyInput =
   typeof SessionRecordingPlaylistsRecordingsDestroyInput.Type;
 
 // Output Schema
-export const SessionRecordingPlaylistsRecordingsDestroyOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SessionRecordingPlaylistsRecordingsDestroyOutput = Schema.Void;
 export type SessionRecordingPlaylistsRecordingsDestroyOutput =
   typeof SessionRecordingPlaylistsRecordingsDestroyOutput.Type;
 

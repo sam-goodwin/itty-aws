@@ -96,7 +96,7 @@ export const DpsCertificateDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DpsCertificateDeleteInput = typeof DpsCertificateDeleteInput.Type;
 
 // Output Schema
-export const DpsCertificateDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DpsCertificateDeleteOutput = Schema.Void;
 export type DpsCertificateDeleteOutput = typeof DpsCertificateDeleteOutput.Type;
 
 // The operation
@@ -558,7 +558,7 @@ export const IotDpsResourceDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type IotDpsResourceDeleteInput = typeof IotDpsResourceDeleteInput.Type;
 
 // Output Schema
-export const IotDpsResourceDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IotDpsResourceDeleteOutput = Schema.Void;
 export type IotDpsResourceDeleteOutput = typeof IotDpsResourceDeleteOutput.Type;
 
 // The operation

@@ -18,7 +18,7 @@ export type GroupsActivityRetrieveInput =
   typeof GroupsActivityRetrieveInput.Type;
 
 // Output Schema
-export const GroupsActivityRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const GroupsActivityRetrieveOutput = Schema.Void;
 export type GroupsActivityRetrieveOutput =
   typeof GroupsActivityRetrieveOutput.Type;
 

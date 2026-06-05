@@ -26,7 +26,7 @@ export type FileSystemUndoDeleteCreateInput =
   typeof FileSystemUndoDeleteCreateInput.Type;
 
 // Output Schema
-export const FileSystemUndoDeleteCreateOutput = /*@__PURE__*/ Schema.Void;
+export const FileSystemUndoDeleteCreateOutput = Schema.Void;
 export type FileSystemUndoDeleteCreateOutput =
   typeof FileSystemUndoDeleteCreateOutput.Type;
 

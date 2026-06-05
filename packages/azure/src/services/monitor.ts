@@ -118,7 +118,7 @@ export const PipelineGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PipelineGroupsDeleteInput = typeof PipelineGroupsDeleteInput.Type;
 
 // Output Schema
-export const PipelineGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PipelineGroupsDeleteOutput = Schema.Void;
 export type PipelineGroupsDeleteOutput = typeof PipelineGroupsDeleteOutput.Type;
 
 // The operation
@@ -543,7 +543,7 @@ export type ScheduledQueryRulesDeleteInput =
   typeof ScheduledQueryRulesDeleteInput.Type;
 
 // Output Schema
-export const ScheduledQueryRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ScheduledQueryRulesDeleteOutput = Schema.Void;
 export type ScheduledQueryRulesDeleteOutput =
   typeof ScheduledQueryRulesDeleteOutput.Type;
 

@@ -80,7 +80,7 @@ export type AlertRuleResourcesDeleteInput =
   typeof AlertRuleResourcesDeleteInput.Type;
 
 // Output Schema
-export const AlertRuleResourcesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AlertRuleResourcesDeleteOutput = Schema.Void;
 export type AlertRuleResourcesDeleteOutput =
   typeof AlertRuleResourcesDeleteOutput.Type;
 
@@ -500,7 +500,7 @@ export type SharedPrivateLinkResourcesDeleteInput =
   typeof SharedPrivateLinkResourcesDeleteInput.Type;
 
 // Output Schema
-export const SharedPrivateLinkResourcesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SharedPrivateLinkResourcesDeleteOutput = Schema.Void;
 export type SharedPrivateLinkResourcesDeleteOutput =
   typeof SharedPrivateLinkResourcesDeleteOutput.Type;
 
@@ -709,7 +709,7 @@ export const TargetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TargetsDeleteInput = typeof TargetsDeleteInput.Type;
 
 // Output Schema
-export const TargetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TargetsDeleteOutput = Schema.Void;
 export type TargetsDeleteOutput = typeof TargetsDeleteOutput.Type;
 
 // The operation
@@ -897,7 +897,7 @@ export const WatchersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type WatchersDeleteInput = typeof WatchersDeleteInput.Type;
 
 // Output Schema
-export const WatchersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WatchersDeleteOutput = Schema.Void;
 export type WatchersDeleteOutput = typeof WatchersDeleteOutput.Type;
 
 // The operation

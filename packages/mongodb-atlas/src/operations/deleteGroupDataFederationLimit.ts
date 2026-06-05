@@ -24,7 +24,7 @@ export type DeleteGroupDataFederationLimitInput =
   typeof DeleteGroupDataFederationLimitInput.Type;
 
 // Output Schema
-export const DeleteGroupDataFederationLimitOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupDataFederationLimitOutput = Schema.Void;
 export type DeleteGroupDataFederationLimitOutput =
   typeof DeleteGroupDataFederationLimitOutput.Type;
 

@@ -20,8 +20,7 @@ export type ListFederationSettingConnectedOrgConfigsInput =
   typeof ListFederationSettingConnectedOrgConfigsInput.Type;
 
 // Output Schema
-export const ListFederationSettingConnectedOrgConfigsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListFederationSettingConnectedOrgConfigsOutput = Schema.Void;
 export type ListFederationSettingConnectedOrgConfigsOutput =
   typeof ListFederationSettingConnectedOrgConfigsOutput.Type;
 

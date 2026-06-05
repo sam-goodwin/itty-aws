@@ -19,7 +19,7 @@ export type RestartGroupClusterPrimariesInput =
   typeof RestartGroupClusterPrimariesInput.Type;
 
 // Output Schema
-export const RestartGroupClusterPrimariesOutput = /*@__PURE__*/ Schema.Void;
+export const RestartGroupClusterPrimariesOutput = Schema.Void;
 export type RestartGroupClusterPrimariesOutput =
   typeof RestartGroupClusterPrimariesOutput.Type;
 

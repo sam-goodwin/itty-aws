@@ -15,7 +15,7 @@ export const GetOrgTeamInput = /*@__PURE__*/ Schema.Struct({
 export type GetOrgTeamInput = typeof GetOrgTeamInput.Type;
 
 // Output Schema
-export const GetOrgTeamOutput = /*@__PURE__*/ Schema.Void;
+export const GetOrgTeamOutput = Schema.Void;
 export type GetOrgTeamOutput = typeof GetOrgTeamOutput.Type;
 
 // The operation

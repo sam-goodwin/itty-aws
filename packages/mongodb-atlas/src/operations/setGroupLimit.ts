@@ -32,7 +32,7 @@ export const SetGroupLimitInput = /*@__PURE__*/ Schema.Struct({
 export type SetGroupLimitInput = typeof SetGroupLimitInput.Type;
 
 // Output Schema
-export const SetGroupLimitOutput = /*@__PURE__*/ Schema.Void;
+export const SetGroupLimitOutput = Schema.Void;
 export type SetGroupLimitOutput = typeof SetGroupLimitOutput.Type;
 
 // The operation

@@ -22,7 +22,7 @@ export type ListOrgApiKeyAccessListEntriesInput =
   typeof ListOrgApiKeyAccessListEntriesInput.Type;
 
 // Output Schema
-export const ListOrgApiKeyAccessListEntriesOutput = /*@__PURE__*/ Schema.Void;
+export const ListOrgApiKeyAccessListEntriesOutput = Schema.Void;
 export type ListOrgApiKeyAccessListEntriesOutput =
   typeof ListOrgApiKeyAccessListEntriesOutput.Type;
 

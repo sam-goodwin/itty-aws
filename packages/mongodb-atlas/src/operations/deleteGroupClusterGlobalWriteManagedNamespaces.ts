@@ -22,8 +22,7 @@ export type DeleteGroupClusterGlobalWriteManagedNamespacesInput =
   typeof DeleteGroupClusterGlobalWriteManagedNamespacesInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterGlobalWriteManagedNamespacesOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeleteGroupClusterGlobalWriteManagedNamespacesOutput = Schema.Void;
 export type DeleteGroupClusterGlobalWriteManagedNamespacesOutput =
   typeof DeleteGroupClusterGlobalWriteManagedNamespacesOutput.Type;
 

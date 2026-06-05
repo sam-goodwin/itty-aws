@@ -20,7 +20,7 @@ export type GroupsDeletePropertyCreateInput =
   typeof GroupsDeletePropertyCreateInput.Type;
 
 // Output Schema
-export const GroupsDeletePropertyCreateOutput = /*@__PURE__*/ Schema.Void;
+export const GroupsDeletePropertyCreateOutput = Schema.Void;
 export type GroupsDeletePropertyCreateOutput =
   typeof GroupsDeletePropertyCreateOutput.Type;
 

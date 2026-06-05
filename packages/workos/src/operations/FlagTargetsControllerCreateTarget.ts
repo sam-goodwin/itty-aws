@@ -18,8 +18,7 @@ export type FlagTargetsControllerCreateTargetInput =
   typeof FlagTargetsControllerCreateTargetInput.Type;
 
 // Output Schema
-export const FlagTargetsControllerCreateTargetOutput =
-  /*@__PURE__*/ Schema.Void;
+export const FlagTargetsControllerCreateTargetOutput = Schema.Void;
 export type FlagTargetsControllerCreateTargetOutput =
   typeof FlagTargetsControllerCreateTargetOutput.Type;
 

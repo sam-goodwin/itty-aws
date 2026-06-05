@@ -27,8 +27,7 @@ export type ErrorTrackingSymbolSetsBulkDeleteCreateInput =
   typeof ErrorTrackingSymbolSetsBulkDeleteCreateInput.Type;
 
 // Output Schema
-export const ErrorTrackingSymbolSetsBulkDeleteCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingSymbolSetsBulkDeleteCreateOutput = Schema.Void;
 export type ErrorTrackingSymbolSetsBulkDeleteCreateOutput =
   typeof ErrorTrackingSymbolSetsBulkDeleteCreateOutput.Type;
 

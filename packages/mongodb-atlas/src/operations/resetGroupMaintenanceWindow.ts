@@ -17,7 +17,7 @@ export type ResetGroupMaintenanceWindowInput =
   typeof ResetGroupMaintenanceWindowInput.Type;
 
 // Output Schema
-export const ResetGroupMaintenanceWindowOutput = /*@__PURE__*/ Schema.Void;
+export const ResetGroupMaintenanceWindowOutput = Schema.Void;
 export type ResetGroupMaintenanceWindowOutput =
   typeof ResetGroupMaintenanceWindowOutput.Type;
 

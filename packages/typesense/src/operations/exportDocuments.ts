@@ -16,7 +16,7 @@ export const ExportDocumentsInput = /*@__PURE__*/ Schema.Struct({
 export type ExportDocumentsInput = typeof ExportDocumentsInput.Type;
 
 // Output Schema
-export const ExportDocumentsOutput = /*@__PURE__*/ Schema.Void;
+export const ExportDocumentsOutput = Schema.Void;
 export type ExportDocumentsOutput = typeof ExportDocumentsOutput.Type;
 
 // The operation

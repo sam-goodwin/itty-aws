@@ -16,7 +16,7 @@ export const GetQuotesQuotePdfInput = /*@__PURE__*/ Schema.Struct({
 export type GetQuotesQuotePdfInput = typeof GetQuotesQuotePdfInput.Type;
 
 // Output Schema
-export const GetQuotesQuotePdfOutput = /*@__PURE__*/ Schema.Void;
+export const GetQuotesQuotePdfOutput = Schema.Void;
 export type GetQuotesQuotePdfOutput = typeof GetQuotesQuotePdfOutput.Type;
 
 // The operation

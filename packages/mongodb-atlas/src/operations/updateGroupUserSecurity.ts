@@ -18,7 +18,7 @@ export type UpdateGroupUserSecurityInput =
   typeof UpdateGroupUserSecurityInput.Type;
 
 // Output Schema
-export const UpdateGroupUserSecurityOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupUserSecurityOutput = Schema.Void;
 export type UpdateGroupUserSecurityOutput =
   typeof UpdateGroupUserSecurityOutput.Type;
 

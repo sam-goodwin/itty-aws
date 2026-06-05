@@ -19,7 +19,7 @@ export type DeleteQueryPatternsReportInput =
   typeof DeleteQueryPatternsReportInput.Type;
 
 // Output Schema
-export const DeleteQueryPatternsReportOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteQueryPatternsReportOutput = Schema.Void;
 export type DeleteQueryPatternsReportOutput =
   typeof DeleteQueryPatternsReportOutput.Type;
 

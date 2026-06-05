@@ -67,7 +67,7 @@ export const QueryAplInput = /*@__PURE__*/ Schema.Struct({
 export type QueryAplInput = typeof QueryAplInput.Type;
 
 // Output Schema
-export const QueryAplOutput = /*@__PURE__*/ Schema.Unknown;
+export const QueryAplOutput = Schema.Unknown;
 export type QueryAplOutput = typeof QueryAplOutput.Type;
 
 // The operation

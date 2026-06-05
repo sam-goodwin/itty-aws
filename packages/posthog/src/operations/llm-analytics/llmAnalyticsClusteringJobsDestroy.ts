@@ -18,8 +18,7 @@ export type LlmAnalyticsClusteringJobsDestroyInput =
   typeof LlmAnalyticsClusteringJobsDestroyInput.Type;
 
 // Output Schema
-export const LlmAnalyticsClusteringJobsDestroyOutput =
-  /*@__PURE__*/ Schema.Void;
+export const LlmAnalyticsClusteringJobsDestroyOutput = Schema.Void;
 export type LlmAnalyticsClusteringJobsDestroyOutput =
   typeof LlmAnalyticsClusteringJobsDestroyOutput.Type;
 

@@ -213,7 +213,7 @@ export type AzureTrafficCollectorsDeleteInput =
   typeof AzureTrafficCollectorsDeleteInput.Type;
 
 // Output Schema
-export const AzureTrafficCollectorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AzureTrafficCollectorsDeleteOutput = Schema.Void;
 export type AzureTrafficCollectorsDeleteOutput =
   typeof AzureTrafficCollectorsDeleteOutput.Type;
 
@@ -407,7 +407,7 @@ export type CollectorPoliciesDeleteInput =
   typeof CollectorPoliciesDeleteInput.Type;
 
 // Output Schema
-export const CollectorPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CollectorPoliciesDeleteOutput = Schema.Void;
 export type CollectorPoliciesDeleteOutput =
   typeof CollectorPoliciesDeleteOutput.Type;
 

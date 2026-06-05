@@ -1176,8 +1176,7 @@ export type EnvironmentsRotateSecretTokenPartialUpdateInput =
   typeof EnvironmentsRotateSecretTokenPartialUpdateInput.Type;
 
 // Output Schema
-export const EnvironmentsRotateSecretTokenPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EnvironmentsRotateSecretTokenPartialUpdateOutput = Schema.Void;
 export type EnvironmentsRotateSecretTokenPartialUpdateOutput =
   typeof EnvironmentsRotateSecretTokenPartialUpdateOutput.Type;
 

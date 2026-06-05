@@ -20,7 +20,7 @@ export type V1OauthAuthorizeProjectClaimInput =
   typeof V1OauthAuthorizeProjectClaimInput.Type;
 
 // Output Schema
-export const V1OauthAuthorizeProjectClaimOutput = /*@__PURE__*/ Schema.Void;
+export const V1OauthAuthorizeProjectClaimOutput = Schema.Void;
 export type V1OauthAuthorizeProjectClaimOutput =
   typeof V1OauthAuthorizeProjectClaimOutput.Type;
 

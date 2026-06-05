@@ -25,8 +25,7 @@ export type ListGroupProcessCollStatMeasurementsInput =
   typeof ListGroupProcessCollStatMeasurementsInput.Type;
 
 // Output Schema
-export const ListGroupProcessCollStatMeasurementsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListGroupProcessCollStatMeasurementsOutput = Schema.Void;
 export type ListGroupProcessCollStatMeasurementsOutput =
   typeof ListGroupProcessCollStatMeasurementsOutput.Type;
 

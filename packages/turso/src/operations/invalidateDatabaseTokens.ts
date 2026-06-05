@@ -17,7 +17,7 @@ export type InvalidateDatabaseTokensInput =
   typeof InvalidateDatabaseTokensInput.Type;
 
 // Output Schema
-export const InvalidateDatabaseTokensOutput = /*@__PURE__*/ Schema.Void;
+export const InvalidateDatabaseTokensOutput = Schema.Void;
 export type InvalidateDatabaseTokensOutput =
   typeof InvalidateDatabaseTokensOutput.Type;
 

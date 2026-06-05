@@ -16,7 +16,7 @@ export const DeleteDatabaseInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteDatabaseInput = typeof DeleteDatabaseInput.Type;
 
 // Output Schema
-export const DeleteDatabaseOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteDatabaseOutput = Schema.Void;
 export type DeleteDatabaseOutput = typeof DeleteDatabaseOutput.Type;
 
 // The operation

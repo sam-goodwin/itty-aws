@@ -17,7 +17,7 @@ export type GroupsControllerDeleteInput =
   typeof GroupsControllerDeleteInput.Type;
 
 // Output Schema
-export const GroupsControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GroupsControllerDeleteOutput = Schema.Void;
 export type GroupsControllerDeleteOutput =
   typeof GroupsControllerDeleteOutput.Type;
 

@@ -752,7 +752,7 @@ export type UsersVerifyEmailCreateInput =
   typeof UsersVerifyEmailCreateInput.Type;
 
 // Output Schema
-export const UsersVerifyEmailCreateOutput = /*@__PURE__*/ Schema.Void;
+export const UsersVerifyEmailCreateOutput = Schema.Void;
 export type UsersVerifyEmailCreateOutput =
   typeof UsersVerifyEmailCreateOutput.Type;
 

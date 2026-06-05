@@ -18,7 +18,7 @@ export type UserlandUserOrganizationMembershipsControllerDeleteInput =
 
 // Output Schema
 export const UserlandUserOrganizationMembershipsControllerDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type UserlandUserOrganizationMembershipsControllerDeleteOutput =
   typeof UserlandUserOrganizationMembershipsControllerDeleteOutput.Type;
 

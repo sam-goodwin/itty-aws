@@ -12,7 +12,7 @@ export const DeleteGroupInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteGroupInput = typeof DeleteGroupInput.Type;
 
 // Output Schema
-export const DeleteGroupOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupOutput = Schema.Void;
 export type DeleteGroupOutput = typeof DeleteGroupOutput.Type;
 
 // The operation

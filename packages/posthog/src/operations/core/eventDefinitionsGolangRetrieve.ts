@@ -16,7 +16,7 @@ export type EventDefinitionsGolangRetrieveInput =
   typeof EventDefinitionsGolangRetrieveInput.Type;
 
 // Output Schema
-export const EventDefinitionsGolangRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const EventDefinitionsGolangRetrieveOutput = Schema.Void;
 export type EventDefinitionsGolangRetrieveOutput =
   typeof EventDefinitionsGolangRetrieveOutput.Type;
 

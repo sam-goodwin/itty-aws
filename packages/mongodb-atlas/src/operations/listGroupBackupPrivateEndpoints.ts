@@ -24,7 +24,7 @@ export type ListGroupBackupPrivateEndpointsInput =
   typeof ListGroupBackupPrivateEndpointsInput.Type;
 
 // Output Schema
-export const ListGroupBackupPrivateEndpointsOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupBackupPrivateEndpointsOutput = Schema.Void;
 export type ListGroupBackupPrivateEndpointsOutput =
   typeof ListGroupBackupPrivateEndpointsOutput.Type;
 

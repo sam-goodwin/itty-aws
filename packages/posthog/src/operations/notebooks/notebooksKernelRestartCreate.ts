@@ -61,7 +61,7 @@ export type NotebooksKernelRestartCreateInput =
   typeof NotebooksKernelRestartCreateInput.Type;
 
 // Output Schema
-export const NotebooksKernelRestartCreateOutput = /*@__PURE__*/ Schema.Void;
+export const NotebooksKernelRestartCreateOutput = Schema.Void;
 export type NotebooksKernelRestartCreateOutput =
   typeof NotebooksKernelRestartCreateOutput.Type;
 

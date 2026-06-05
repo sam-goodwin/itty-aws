@@ -18,8 +18,7 @@ export type ErrorTrackingReleasesHashRetrieveInput =
   typeof ErrorTrackingReleasesHashRetrieveInput.Type;
 
 // Output Schema
-export const ErrorTrackingReleasesHashRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingReleasesHashRetrieveOutput = Schema.Void;
 export type ErrorTrackingReleasesHashRetrieveOutput =
   typeof ErrorTrackingReleasesHashRetrieveOutput.Type;
 

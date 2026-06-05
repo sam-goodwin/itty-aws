@@ -20,7 +20,7 @@ export type DeleteGroupDatabaseUserInput =
   typeof DeleteGroupDatabaseUserInput.Type;
 
 // Output Schema
-export const DeleteGroupDatabaseUserOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupDatabaseUserOutput = Schema.Void;
 export type DeleteGroupDatabaseUserOutput =
   typeof DeleteGroupDatabaseUserOutput.Type;
 

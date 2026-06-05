@@ -19,8 +19,7 @@ export type PersonsPropertiesTimelineRetrieveInput =
   typeof PersonsPropertiesTimelineRetrieveInput.Type;
 
 // Output Schema
-export const PersonsPropertiesTimelineRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PersonsPropertiesTimelineRetrieveOutput = Schema.Void;
 export type PersonsPropertiesTimelineRetrieveOutput =
   typeof PersonsPropertiesTimelineRetrieveOutput.Type;
 

@@ -17,7 +17,7 @@ export const DeleteBackupPolicyInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteBackupPolicyInput = typeof DeleteBackupPolicyInput.Type;
 
 // Output Schema
-export const DeleteBackupPolicyOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteBackupPolicyOutput = Schema.Void;
 export type DeleteBackupPolicyOutput = typeof DeleteBackupPolicyOutput.Type;
 
 // The operation

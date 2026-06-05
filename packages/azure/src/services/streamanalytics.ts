@@ -59,7 +59,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersDeleteOutput = Schema.Void;
 export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 
 // The operation
@@ -332,7 +332,7 @@ export const FunctionsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FunctionsDeleteInput = typeof FunctionsDeleteInput.Type;
 
 // Output Schema
-export const FunctionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FunctionsDeleteOutput = Schema.Void;
 export type FunctionsDeleteOutput = typeof FunctionsDeleteOutput.Type;
 
 // The operation
@@ -598,7 +598,7 @@ export const InputsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type InputsDeleteInput = typeof InputsDeleteInput.Type;
 
 // Output Schema
-export const InputsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const InputsDeleteOutput = Schema.Void;
 export type InputsDeleteOutput = typeof InputsDeleteOutput.Type;
 
 // The operation
@@ -867,7 +867,7 @@ export const OutputsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type OutputsDeleteInput = typeof OutputsDeleteInput.Type;
 
 // Output Schema
-export const OutputsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const OutputsDeleteOutput = Schema.Void;
 export type OutputsDeleteOutput = typeof OutputsDeleteOutput.Type;
 
 // The operation
@@ -1096,7 +1096,7 @@ export type PrivateEndpointsDeleteInput =
   typeof PrivateEndpointsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointsDeleteOutput = Schema.Void;
 export type PrivateEndpointsDeleteOutput =
   typeof PrivateEndpointsDeleteOutput.Type;
 
@@ -1246,7 +1246,7 @@ export const StreamingJobsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type StreamingJobsDeleteInput = typeof StreamingJobsDeleteInput.Type;
 
 // Output Schema
-export const StreamingJobsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StreamingJobsDeleteOutput = Schema.Void;
 export type StreamingJobsDeleteOutput = typeof StreamingJobsDeleteOutput.Type;
 
 // The operation
@@ -1400,7 +1400,7 @@ export const StreamingJobsScaleInput = /*@__PURE__*/ Schema.Struct({
 export type StreamingJobsScaleInput = typeof StreamingJobsScaleInput.Type;
 
 // Output Schema
-export const StreamingJobsScaleOutput = /*@__PURE__*/ Schema.Void;
+export const StreamingJobsScaleOutput = Schema.Void;
 export type StreamingJobsScaleOutput = typeof StreamingJobsScaleOutput.Type;
 
 // The operation
@@ -1431,7 +1431,7 @@ export const StreamingJobsStartInput = /*@__PURE__*/ Schema.Struct({
 export type StreamingJobsStartInput = typeof StreamingJobsStartInput.Type;
 
 // Output Schema
-export const StreamingJobsStartOutput = /*@__PURE__*/ Schema.Void;
+export const StreamingJobsStartOutput = Schema.Void;
 export type StreamingJobsStartOutput = typeof StreamingJobsStartOutput.Type;
 
 // The operation
@@ -1462,7 +1462,7 @@ export const StreamingJobsStopInput = /*@__PURE__*/ Schema.Struct({
 export type StreamingJobsStopInput = typeof StreamingJobsStopInput.Type;
 
 // Output Schema
-export const StreamingJobsStopOutput = /*@__PURE__*/ Schema.Void;
+export const StreamingJobsStopOutput = Schema.Void;
 export type StreamingJobsStopOutput = typeof StreamingJobsStopOutput.Type;
 
 // The operation

@@ -79,7 +79,7 @@ export const AddonsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AddonsDeleteInput = typeof AddonsDeleteInput.Type;
 
 // Output Schema
-export const AddonsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AddonsDeleteOutput = Schema.Void;
 export type AddonsDeleteOutput = typeof AddonsDeleteOutput.Type;
 
 // The operation
@@ -494,7 +494,7 @@ export type BandwidthSchedulesDeleteInput =
   typeof BandwidthSchedulesDeleteInput.Type;
 
 // Output Schema
-export const BandwidthSchedulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BandwidthSchedulesDeleteOutput = Schema.Void;
 export type BandwidthSchedulesDeleteOutput =
   typeof BandwidthSchedulesDeleteOutput.Type;
 
@@ -706,7 +706,7 @@ export const ContainersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ContainersDeleteInput = typeof ContainersDeleteInput.Type;
 
 // Output Schema
-export const ContainersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ContainersDeleteOutput = Schema.Void;
 export type ContainersDeleteOutput = typeof ContainersDeleteOutput.Type;
 
 // The operation
@@ -864,7 +864,7 @@ export const ContainersRefreshInput = /*@__PURE__*/ Schema.Struct({
 export type ContainersRefreshInput = typeof ContainersRefreshInput.Type;
 
 // Output Schema
-export const ContainersRefreshOutput = /*@__PURE__*/ Schema.Void;
+export const ContainersRefreshOutput = Schema.Void;
 export type ContainersRefreshOutput = typeof ContainersRefreshOutput.Type;
 
 // The operation
@@ -901,7 +901,7 @@ export type DeviceCapacityCheckCheckResourceCreationFeasibilityInput =
 
 // Output Schema
 export const DeviceCapacityCheckCheckResourceCreationFeasibilityOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type DeviceCapacityCheckCheckResourceCreationFeasibilityOutput =
   typeof DeviceCapacityCheckCheckResourceCreationFeasibilityOutput.Type;
 
@@ -1042,8 +1042,7 @@ export type DevicesCreateOrUpdateSecuritySettingsInput =
   typeof DevicesCreateOrUpdateSecuritySettingsInput.Type;
 
 // Output Schema
-export const DevicesCreateOrUpdateSecuritySettingsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DevicesCreateOrUpdateSecuritySettingsOutput = Schema.Void;
 export type DevicesCreateOrUpdateSecuritySettingsOutput =
   typeof DevicesCreateOrUpdateSecuritySettingsOutput.Type;
 
@@ -1077,7 +1076,7 @@ export const DevicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DevicesDeleteInput = typeof DevicesDeleteInput.Type;
 
 // Output Schema
-export const DevicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DevicesDeleteOutput = Schema.Void;
 export type DevicesDeleteOutput = typeof DevicesDeleteOutput.Type;
 
 // The operation
@@ -1109,7 +1108,7 @@ export type DevicesDownloadUpdatesInput =
   typeof DevicesDownloadUpdatesInput.Type;
 
 // Output Schema
-export const DevicesDownloadUpdatesOutput = /*@__PURE__*/ Schema.Void;
+export const DevicesDownloadUpdatesOutput = Schema.Void;
 export type DevicesDownloadUpdatesOutput =
   typeof DevicesDownloadUpdatesOutput.Type;
 
@@ -1366,7 +1365,7 @@ export const DevicesInstallUpdatesInput = /*@__PURE__*/ Schema.Struct({
 export type DevicesInstallUpdatesInput = typeof DevicesInstallUpdatesInput.Type;
 
 // Output Schema
-export const DevicesInstallUpdatesOutput = /*@__PURE__*/ Schema.Void;
+export const DevicesInstallUpdatesOutput = Schema.Void;
 export type DevicesInstallUpdatesOutput =
   typeof DevicesInstallUpdatesOutput.Type;
 
@@ -1508,7 +1507,7 @@ export const DevicesScanForUpdatesInput = /*@__PURE__*/ Schema.Struct({
 export type DevicesScanForUpdatesInput = typeof DevicesScanForUpdatesInput.Type;
 
 // Output Schema
-export const DevicesScanForUpdatesOutput = /*@__PURE__*/ Schema.Void;
+export const DevicesScanForUpdatesOutput = Schema.Void;
 export type DevicesScanForUpdatesOutput =
   typeof DevicesScanForUpdatesOutput.Type;
 
@@ -2000,7 +1999,7 @@ export type MonitoringConfigDeleteInput =
   typeof MonitoringConfigDeleteInput.Type;
 
 // Output Schema
-export const MonitoringConfigDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MonitoringConfigDeleteOutput = Schema.Void;
 export type MonitoringConfigDeleteOutput =
   typeof MonitoringConfigDeleteOutput.Type;
 
@@ -2411,7 +2410,7 @@ export const OrdersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type OrdersDeleteInput = typeof OrdersDeleteInput.Type;
 
 // Output Schema
-export const OrdersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const OrdersDeleteOutput = Schema.Void;
 export type OrdersDeleteOutput = typeof OrdersDeleteOutput.Type;
 
 // The operation
@@ -2638,7 +2637,7 @@ export const RolesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RolesDeleteInput = typeof RolesDeleteInput.Type;
 
 // Output Schema
-export const RolesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RolesDeleteOutput = Schema.Void;
 export type RolesDeleteOutput = typeof RolesDeleteOutput.Type;
 
 // The operation
@@ -2829,7 +2828,7 @@ export const SharesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SharesDeleteInput = typeof SharesDeleteInput.Type;
 
 // Output Schema
-export const SharesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SharesDeleteOutput = Schema.Void;
 export type SharesDeleteOutput = typeof SharesDeleteOutput.Type;
 
 // The operation
@@ -2969,7 +2968,7 @@ export const SharesRefreshInput = /*@__PURE__*/ Schema.Struct({
 export type SharesRefreshInput = typeof SharesRefreshInput.Type;
 
 // Output Schema
-export const SharesRefreshOutput = /*@__PURE__*/ Schema.Void;
+export const SharesRefreshOutput = Schema.Void;
 export type SharesRefreshOutput = typeof SharesRefreshOutput.Type;
 
 // The operation
@@ -3062,7 +3061,7 @@ export type StorageAccountCredentialsDeleteInput =
   typeof StorageAccountCredentialsDeleteInput.Type;
 
 // Output Schema
-export const StorageAccountCredentialsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StorageAccountCredentialsDeleteOutput = Schema.Void;
 export type StorageAccountCredentialsDeleteOutput =
   typeof StorageAccountCredentialsDeleteOutput.Type;
 
@@ -3271,7 +3270,7 @@ export const StorageAccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type StorageAccountsDeleteInput = typeof StorageAccountsDeleteInput.Type;
 
 // Output Schema
-export const StorageAccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StorageAccountsDeleteOutput = Schema.Void;
 export type StorageAccountsDeleteOutput =
   typeof StorageAccountsDeleteOutput.Type;
 
@@ -3427,8 +3426,7 @@ export type SupportPackagesTriggerSupportPackageInput =
   typeof SupportPackagesTriggerSupportPackageInput.Type;
 
 // Output Schema
-export const SupportPackagesTriggerSupportPackageOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SupportPackagesTriggerSupportPackageOutput = Schema.Void;
 export type SupportPackagesTriggerSupportPackageOutput =
   typeof SupportPackagesTriggerSupportPackageOutput.Type;
 
@@ -3516,7 +3514,7 @@ export const TriggersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
 
 // Output Schema
-export const TriggersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TriggersDeleteOutput = Schema.Void;
 export type TriggersDeleteOutput = typeof TriggersDeleteOutput.Type;
 
 // The operation
@@ -3722,7 +3720,7 @@ export const UsersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;
 
 // Output Schema
-export const UsersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const UsersDeleteOutput = Schema.Void;
 export type UsersDeleteOutput = typeof UsersDeleteOutput.Type;
 
 // The operation

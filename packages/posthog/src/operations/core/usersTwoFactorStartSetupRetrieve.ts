@@ -17,7 +17,7 @@ export type UsersTwoFactorStartSetupRetrieveInput =
   typeof UsersTwoFactorStartSetupRetrieveInput.Type;
 
 // Output Schema
-export const UsersTwoFactorStartSetupRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const UsersTwoFactorStartSetupRetrieveOutput = Schema.Void;
 export type UsersTwoFactorStartSetupRetrieveOutput =
   typeof UsersTwoFactorStartSetupRetrieveOutput.Type;
 

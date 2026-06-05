@@ -11,7 +11,7 @@ export const TokensRequestOIDCInput = /*@__PURE__*/ Schema.Struct({
 export type TokensRequestOIDCInput = typeof TokensRequestOIDCInput.Type;
 
 // Output Schema
-export const TokensRequestOIDCOutput = /*@__PURE__*/ Schema.String;
+export const TokensRequestOIDCOutput = Schema.String;
 export type TokensRequestOIDCOutput = typeof TokensRequestOIDCOutput.Type;
 
 // The operation

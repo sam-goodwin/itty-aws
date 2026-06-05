@@ -754,7 +754,7 @@ export type UsersTwoFactorDisableCreateInput =
   typeof UsersTwoFactorDisableCreateInput.Type;
 
 // Output Schema
-export const UsersTwoFactorDisableCreateOutput = /*@__PURE__*/ Schema.Void;
+export const UsersTwoFactorDisableCreateOutput = Schema.Void;
 export type UsersTwoFactorDisableCreateOutput =
   typeof UsersTwoFactorDisableCreateOutput.Type;
 

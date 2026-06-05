@@ -1001,7 +1001,7 @@ export type ExperimentsCreateExposureCohortForExperimentCreateInput =
 
 // Output Schema
 export const ExperimentsCreateExposureCohortForExperimentCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type ExperimentsCreateExposureCohortForExperimentCreateOutput =
   typeof ExperimentsCreateExposureCohortForExperimentCreateOutput.Type;
 

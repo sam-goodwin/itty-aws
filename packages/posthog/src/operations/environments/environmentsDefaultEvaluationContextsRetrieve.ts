@@ -18,8 +18,7 @@ export type EnvironmentsDefaultEvaluationContextsRetrieveInput =
   typeof EnvironmentsDefaultEvaluationContextsRetrieveInput.Type;
 
 // Output Schema
-export const EnvironmentsDefaultEvaluationContextsRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EnvironmentsDefaultEvaluationContextsRetrieveOutput = Schema.Void;
 export type EnvironmentsDefaultEvaluationContextsRetrieveOutput =
   typeof EnvironmentsDefaultEvaluationContextsRetrieveOutput.Type;
 

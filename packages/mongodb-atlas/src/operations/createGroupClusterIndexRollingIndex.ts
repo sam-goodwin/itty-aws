@@ -20,8 +20,7 @@ export type CreateGroupClusterIndexRollingIndexInput =
   typeof CreateGroupClusterIndexRollingIndexInput.Type;
 
 // Output Schema
-export const CreateGroupClusterIndexRollingIndexOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CreateGroupClusterIndexRollingIndexOutput = Schema.Void;
 export type CreateGroupClusterIndexRollingIndexOutput =
   typeof CreateGroupClusterIndexRollingIndexOutput.Type;
 

@@ -19,7 +19,7 @@ export type GetGroupClusterProcessArgsInput =
   typeof GetGroupClusterProcessArgsInput.Type;
 
 // Output Schema
-export const GetGroupClusterProcessArgsOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupClusterProcessArgsOutput = Schema.Void;
 export type GetGroupClusterProcessArgsOutput =
   typeof GetGroupClusterProcessArgsOutput.Type;
 

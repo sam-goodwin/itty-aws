@@ -18,7 +18,7 @@ export const GetOrgApiKeyInput = /*@__PURE__*/ Schema.Struct({
 export type GetOrgApiKeyInput = typeof GetOrgApiKeyInput.Type;
 
 // Output Schema
-export const GetOrgApiKeyOutput = /*@__PURE__*/ Schema.Void;
+export const GetOrgApiKeyOutput = Schema.Void;
 export type GetOrgApiKeyOutput = typeof GetOrgApiKeyOutput.Type;
 
 // The operation

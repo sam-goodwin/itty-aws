@@ -17,7 +17,7 @@ export const GetGroupUserSecurityInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupUserSecurityInput = typeof GetGroupUserSecurityInput.Type;
 
 // Output Schema
-export const GetGroupUserSecurityOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupUserSecurityOutput = Schema.Void;
 export type GetGroupUserSecurityOutput = typeof GetGroupUserSecurityOutput.Type;
 
 // The operation

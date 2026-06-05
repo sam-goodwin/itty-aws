@@ -1176,8 +1176,7 @@ export type EnvironmentsExperimentsConfigPartialUpdateInput =
   typeof EnvironmentsExperimentsConfigPartialUpdateInput.Type;
 
 // Output Schema
-export const EnvironmentsExperimentsConfigPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EnvironmentsExperimentsConfigPartialUpdateOutput = Schema.Void;
 export type EnvironmentsExperimentsConfigPartialUpdateOutput =
   typeof EnvironmentsExperimentsConfigPartialUpdateOutput.Type;
 

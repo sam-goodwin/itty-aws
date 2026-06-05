@@ -18,7 +18,7 @@ export const ListGroupAlertsInput = /*@__PURE__*/ Schema.Struct({
 export type ListGroupAlertsInput = typeof ListGroupAlertsInput.Type;
 
 // Output Schema
-export const ListGroupAlertsOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupAlertsOutput = Schema.Void;
 export type ListGroupAlertsOutput = typeof ListGroupAlertsOutput.Type;
 
 // The operation

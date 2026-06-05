@@ -20,8 +20,7 @@ export type ExperimentsTimeseriesResultsRetrieveInput =
   typeof ExperimentsTimeseriesResultsRetrieveInput.Type;
 
 // Output Schema
-export const ExperimentsTimeseriesResultsRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ExperimentsTimeseriesResultsRetrieveOutput = Schema.Void;
 export type ExperimentsTimeseriesResultsRetrieveOutput =
   typeof ExperimentsTimeseriesResultsRetrieveOutput.Type;
 

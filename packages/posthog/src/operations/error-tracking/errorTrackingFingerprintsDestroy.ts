@@ -18,7 +18,7 @@ export type ErrorTrackingFingerprintsDestroyInput =
   typeof ErrorTrackingFingerprintsDestroyInput.Type;
 
 // Output Schema
-export const ErrorTrackingFingerprintsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingFingerprintsDestroyOutput = Schema.Void;
 export type ErrorTrackingFingerprintsDestroyOutput =
   typeof ErrorTrackingFingerprintsDestroyOutput.Type;
 

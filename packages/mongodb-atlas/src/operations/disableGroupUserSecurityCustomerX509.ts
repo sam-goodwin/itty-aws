@@ -18,8 +18,7 @@ export type DisableGroupUserSecurityCustomerX509Input =
   typeof DisableGroupUserSecurityCustomerX509Input.Type;
 
 // Output Schema
-export const DisableGroupUserSecurityCustomerX509Output =
-  /*@__PURE__*/ Schema.Void;
+export const DisableGroupUserSecurityCustomerX509Output = Schema.Void;
 export type DisableGroupUserSecurityCustomerX509Output =
   typeof DisableGroupUserSecurityCustomerX509Output.Type;
 

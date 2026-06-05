@@ -86,7 +86,7 @@ export type AssociateTrafficFilterAssociateInput =
   typeof AssociateTrafficFilterAssociateInput.Type;
 
 // Output Schema
-export const AssociateTrafficFilterAssociateOutput = /*@__PURE__*/ Schema.Void;
+export const AssociateTrafficFilterAssociateOutput = Schema.Void;
 export type AssociateTrafficFilterAssociateOutput =
   typeof AssociateTrafficFilterAssociateOutput.Type;
 
@@ -226,7 +226,7 @@ export type CreateAndAssociateIPFilterCreateInput =
   typeof CreateAndAssociateIPFilterCreateInput.Type;
 
 // Output Schema
-export const CreateAndAssociateIPFilterCreateOutput = /*@__PURE__*/ Schema.Void;
+export const CreateAndAssociateIPFilterCreateOutput = Schema.Void;
 export type CreateAndAssociateIPFilterCreateOutput =
   typeof CreateAndAssociateIPFilterCreateOutput.Type;
 
@@ -265,7 +265,7 @@ export type CreateAndAssociatePLFilterCreateInput =
   typeof CreateAndAssociatePLFilterCreateInput.Type;
 
 // Output Schema
-export const CreateAndAssociatePLFilterCreateOutput = /*@__PURE__*/ Schema.Void;
+export const CreateAndAssociatePLFilterCreateOutput = Schema.Void;
 export type CreateAndAssociatePLFilterCreateOutput =
   typeof CreateAndAssociatePLFilterCreateOutput.Type;
 
@@ -359,8 +359,7 @@ export type DetachAndDeleteTrafficFilterDeleteInput =
   typeof DetachAndDeleteTrafficFilterDeleteInput.Type;
 
 // Output Schema
-export const DetachAndDeleteTrafficFilterDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DetachAndDeleteTrafficFilterDeleteOutput = Schema.Void;
 export type DetachAndDeleteTrafficFilterDeleteOutput =
   typeof DetachAndDeleteTrafficFilterDeleteOutput.Type;
 
@@ -397,7 +396,7 @@ export type DetachTrafficFilterUpdateInput =
   typeof DetachTrafficFilterUpdateInput.Type;
 
 // Output Schema
-export const DetachTrafficFilterUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const DetachTrafficFilterUpdateOutput = Schema.Void;
 export type DetachTrafficFilterUpdateOutput =
   typeof DetachTrafficFilterUpdateOutput.Type;
 
@@ -665,7 +664,7 @@ export type MonitoredSubscriptionsDeleteInput =
   typeof MonitoredSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const MonitoredSubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MonitoredSubscriptionsDeleteOutput = Schema.Void;
 export type MonitoredSubscriptionsDeleteOutput =
   typeof MonitoredSubscriptionsDeleteOutput.Type;
 
@@ -906,7 +905,7 @@ export const MonitorsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type MonitorsDeleteInput = typeof MonitorsDeleteInput.Type;
 
 // Output Schema
-export const MonitorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MonitorsDeleteOutput = Schema.Void;
 export type MonitorsDeleteOutput = typeof MonitorsDeleteOutput.Type;
 
 // The operation
@@ -1138,7 +1137,7 @@ export const MonitorUpgradeInput = /*@__PURE__*/ Schema.Struct({
 export type MonitorUpgradeInput = typeof MonitorUpgradeInput.Type;
 
 // Output Schema
-export const MonitorUpgradeOutput = /*@__PURE__*/ Schema.Void;
+export const MonitorUpgradeOutput = Schema.Void;
 export type MonitorUpgradeOutput = typeof MonitorUpgradeOutput.Type;
 
 // The operation
@@ -1219,7 +1218,7 @@ export const OpenAIDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type OpenAIDeleteInput = typeof OpenAIDeleteInput.Type;
 
 // Output Schema
-export const OpenAIDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const OpenAIDeleteOutput = Schema.Void;
 export type OpenAIDeleteOutput = typeof OpenAIDeleteOutput.Type;
 
 // The operation
@@ -1632,7 +1631,7 @@ export const TagRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TagRulesDeleteInput = typeof TagRulesDeleteInput.Type;
 
 // Output Schema
-export const TagRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TagRulesDeleteOutput = Schema.Void;
 export type TagRulesDeleteOutput = typeof TagRulesDeleteOutput.Type;
 
 // The operation
@@ -1770,7 +1769,7 @@ export const TrafficFiltersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TrafficFiltersDeleteInput = typeof TrafficFiltersDeleteInput.Type;
 
 // Output Schema
-export const TrafficFiltersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TrafficFiltersDeleteOutput = Schema.Void;
 export type TrafficFiltersDeleteOutput = typeof TrafficFiltersDeleteOutput.Type;
 
 // The operation
@@ -1838,7 +1837,7 @@ export const VMCollectionUpdateInput = /*@__PURE__*/ Schema.Struct({
 export type VMCollectionUpdateInput = typeof VMCollectionUpdateInput.Type;
 
 // Output Schema
-export const VMCollectionUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const VMCollectionUpdateOutput = Schema.Void;
 export type VMCollectionUpdateOutput = typeof VMCollectionUpdateOutput.Type;
 
 // The operation

@@ -237,7 +237,7 @@ export type AssociatedTenantsDeleteInput =
   typeof AssociatedTenantsDeleteInput.Type;
 
 // Output Schema
-export const AssociatedTenantsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AssociatedTenantsDeleteOutput = Schema.Void;
 export type AssociatedTenantsDeleteOutput =
   typeof AssociatedTenantsDeleteOutput.Type;
 
@@ -1529,7 +1529,7 @@ export const BillingProfilesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BillingProfilesDeleteInput = typeof BillingProfilesDeleteInput.Type;
 
 // Output Schema
-export const BillingProfilesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BillingProfilesDeleteOutput = Schema.Void;
 export type BillingProfilesDeleteOutput =
   typeof BillingProfilesDeleteOutput.Type;
 
@@ -2675,8 +2675,7 @@ export type BillingRoleAssignmentsDeleteByBillingAccountInput =
   typeof BillingRoleAssignmentsDeleteByBillingAccountInput.Type;
 
 // Output Schema
-export const BillingRoleAssignmentsDeleteByBillingAccountOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BillingRoleAssignmentsDeleteByBillingAccountOutput = Schema.Void;
 export type BillingRoleAssignmentsDeleteByBillingAccountOutput =
   typeof BillingRoleAssignmentsDeleteByBillingAccountOutput.Type;
 
@@ -2710,8 +2709,7 @@ export type BillingRoleAssignmentsDeleteByBillingProfileInput =
   typeof BillingRoleAssignmentsDeleteByBillingProfileInput.Type;
 
 // Output Schema
-export const BillingRoleAssignmentsDeleteByBillingProfileOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BillingRoleAssignmentsDeleteByBillingProfileOutput = Schema.Void;
 export type BillingRoleAssignmentsDeleteByBillingProfileOutput =
   typeof BillingRoleAssignmentsDeleteByBillingProfileOutput.Type;
 
@@ -2747,8 +2745,7 @@ export type BillingRoleAssignmentsDeleteByCustomerInput =
   typeof BillingRoleAssignmentsDeleteByCustomerInput.Type;
 
 // Output Schema
-export const BillingRoleAssignmentsDeleteByCustomerOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BillingRoleAssignmentsDeleteByCustomerOutput = Schema.Void;
 export type BillingRoleAssignmentsDeleteByCustomerOutput =
   typeof BillingRoleAssignmentsDeleteByCustomerOutput.Type;
 
@@ -2785,8 +2782,7 @@ export type BillingRoleAssignmentsDeleteByDepartmentInput =
   typeof BillingRoleAssignmentsDeleteByDepartmentInput.Type;
 
 // Output Schema
-export const BillingRoleAssignmentsDeleteByDepartmentOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BillingRoleAssignmentsDeleteByDepartmentOutput = Schema.Void;
 export type BillingRoleAssignmentsDeleteByDepartmentOutput =
   typeof BillingRoleAssignmentsDeleteByDepartmentOutput.Type;
 
@@ -2823,7 +2819,7 @@ export type BillingRoleAssignmentsDeleteByEnrollmentAccountInput =
 
 // Output Schema
 export const BillingRoleAssignmentsDeleteByEnrollmentAccountOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type BillingRoleAssignmentsDeleteByEnrollmentAccountOutput =
   typeof BillingRoleAssignmentsDeleteByEnrollmentAccountOutput.Type;
 
@@ -2859,8 +2855,7 @@ export type BillingRoleAssignmentsDeleteByInvoiceSectionInput =
   typeof BillingRoleAssignmentsDeleteByInvoiceSectionInput.Type;
 
 // Output Schema
-export const BillingRoleAssignmentsDeleteByInvoiceSectionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BillingRoleAssignmentsDeleteByInvoiceSectionOutput = Schema.Void;
 export type BillingRoleAssignmentsDeleteByInvoiceSectionOutput =
   typeof BillingRoleAssignmentsDeleteByInvoiceSectionOutput.Type;
 
@@ -4865,7 +4860,7 @@ export type BillingSubscriptionsCancelInput =
   typeof BillingSubscriptionsCancelInput.Type;
 
 // Output Schema
-export const BillingSubscriptionsCancelOutput = /*@__PURE__*/ Schema.Void;
+export const BillingSubscriptionsCancelOutput = Schema.Void;
 export type BillingSubscriptionsCancelOutput =
   typeof BillingSubscriptionsCancelOutput.Type;
 
@@ -4896,7 +4891,7 @@ export type BillingSubscriptionsDeleteInput =
   typeof BillingSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const BillingSubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BillingSubscriptionsDeleteOutput = Schema.Void;
 export type BillingSubscriptionsDeleteOutput =
   typeof BillingSubscriptionsDeleteOutput.Type;
 
@@ -6439,7 +6434,7 @@ export const InvoicesAmendInput = /*@__PURE__*/ Schema.Struct({
 export type InvoicesAmendInput = typeof InvoicesAmendInput.Type;
 
 // Output Schema
-export const InvoicesAmendOutput = /*@__PURE__*/ Schema.Void;
+export const InvoicesAmendOutput = Schema.Void;
 export type InvoicesAmendOutput = typeof InvoicesAmendOutput.Type;
 
 // The operation
@@ -6707,7 +6702,7 @@ export const InvoiceSectionsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type InvoiceSectionsDeleteInput = typeof InvoiceSectionsDeleteInput.Type;
 
 // Output Schema
-export const InvoiceSectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const InvoiceSectionsDeleteOutput = Schema.Void;
 export type InvoiceSectionsDeleteOutput =
   typeof InvoiceSectionsDeleteOutput.Type;
 
@@ -7540,7 +7535,7 @@ export type PaymentMethodsDeleteByUserInput =
   typeof PaymentMethodsDeleteByUserInput.Type;
 
 // Output Schema
-export const PaymentMethodsDeleteByUserOutput = /*@__PURE__*/ Schema.Void;
+export const PaymentMethodsDeleteByUserOutput = Schema.Void;
 export type PaymentMethodsDeleteByUserOutput =
   typeof PaymentMethodsDeleteByUserOutput.Type;
 

@@ -77,7 +77,7 @@ export const ApplicationsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
 
 // Output Schema
-export const ApplicationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsDeleteOutput = Schema.Void;
 export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
 
 // The operation
@@ -111,7 +111,7 @@ export type ApplicationsFetchHealthInput =
   typeof ApplicationsFetchHealthInput.Type;
 
 // Output Schema
-export const ApplicationsFetchHealthOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsFetchHealthOutput = Schema.Void;
 export type ApplicationsFetchHealthOutput =
   typeof ApplicationsFetchHealthOutput.Type;
 
@@ -251,7 +251,7 @@ export type ApplicationsReadUpgradeInput =
   typeof ApplicationsReadUpgradeInput.Type;
 
 // Output Schema
-export const ApplicationsReadUpgradeOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsReadUpgradeOutput = Schema.Void;
 export type ApplicationsReadUpgradeOutput =
   typeof ApplicationsReadUpgradeOutput.Type;
 
@@ -287,8 +287,7 @@ export type ApplicationsRestartDeployedCodePackageInput =
   typeof ApplicationsRestartDeployedCodePackageInput.Type;
 
 // Output Schema
-export const ApplicationsRestartDeployedCodePackageOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ApplicationsRestartDeployedCodePackageOutput = Schema.Void;
 export type ApplicationsRestartDeployedCodePackageOutput =
   typeof ApplicationsRestartDeployedCodePackageOutput.Type;
 
@@ -325,7 +324,7 @@ export type ApplicationsResumeUpgradeInput =
   typeof ApplicationsResumeUpgradeInput.Type;
 
 // Output Schema
-export const ApplicationsResumeUpgradeOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsResumeUpgradeOutput = Schema.Void;
 export type ApplicationsResumeUpgradeOutput =
   typeof ApplicationsResumeUpgradeOutput.Type;
 
@@ -360,7 +359,7 @@ export type ApplicationsStartRollbackInput =
   typeof ApplicationsStartRollbackInput.Type;
 
 // Output Schema
-export const ApplicationsStartRollbackOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsStartRollbackOutput = Schema.Void;
 export type ApplicationsStartRollbackOutput =
   typeof ApplicationsStartRollbackOutput.Type;
 
@@ -446,7 +445,7 @@ export type ApplicationsUpdateUpgradeInput =
   typeof ApplicationsUpdateUpgradeInput.Type;
 
 // Output Schema
-export const ApplicationsUpdateUpgradeOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsUpdateUpgradeOutput = Schema.Void;
 export type ApplicationsUpdateUpgradeOutput =
   typeof ApplicationsUpdateUpgradeOutput.Type;
 
@@ -536,7 +535,7 @@ export type ApplicationTypesDeleteInput =
   typeof ApplicationTypesDeleteInput.Type;
 
 // Output Schema
-export const ApplicationTypesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationTypesDeleteOutput = Schema.Void;
 export type ApplicationTypesDeleteOutput =
   typeof ApplicationTypesDeleteOutput.Type;
 
@@ -789,7 +788,7 @@ export type ApplicationTypeVersionsDeleteInput =
   typeof ApplicationTypeVersionsDeleteInput.Type;
 
 // Output Schema
-export const ApplicationTypeVersionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationTypeVersionsDeleteOutput = Schema.Void;
 export type ApplicationTypeVersionsDeleteOutput =
   typeof ApplicationTypeVersionsDeleteOutput.Type;
 
@@ -1006,8 +1005,7 @@ export type ManagedApplyMaintenanceWindowPostInput =
   typeof ManagedApplyMaintenanceWindowPostInput.Type;
 
 // Output Schema
-export const ManagedApplyMaintenanceWindowPostOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ManagedApplyMaintenanceWindowPostOutput = Schema.Void;
 export type ManagedApplyMaintenanceWindowPostOutput =
   typeof ManagedApplyMaintenanceWindowPostOutput.Type;
 
@@ -1135,7 +1133,7 @@ export const ManagedClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ManagedClustersDeleteInput = typeof ManagedClustersDeleteInput.Type;
 
 // Output Schema
-export const ManagedClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ManagedClustersDeleteOutput = Schema.Void;
 export type ManagedClustersDeleteOutput =
   typeof ManagedClustersDeleteOutput.Type;
 
@@ -1778,7 +1776,7 @@ export const NodeTypesDeallocateInput = /*@__PURE__*/ Schema.Struct({
 export type NodeTypesDeallocateInput = typeof NodeTypesDeallocateInput.Type;
 
 // Output Schema
-export const NodeTypesDeallocateOutput = /*@__PURE__*/ Schema.Void;
+export const NodeTypesDeallocateOutput = Schema.Void;
 export type NodeTypesDeallocateOutput = typeof NodeTypesDeallocateOutput.Type;
 
 // The operation
@@ -1811,7 +1809,7 @@ export const NodeTypesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NodeTypesDeleteInput = typeof NodeTypesDeleteInput.Type;
 
 // Output Schema
-export const NodeTypesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NodeTypesDeleteOutput = Schema.Void;
 export type NodeTypesDeleteOutput = typeof NodeTypesDeleteOutput.Type;
 
 // The operation
@@ -1844,7 +1842,7 @@ export const NodeTypesDeleteNodeInput = /*@__PURE__*/ Schema.Struct({
 export type NodeTypesDeleteNodeInput = typeof NodeTypesDeleteNodeInput.Type;
 
 // Output Schema
-export const NodeTypesDeleteNodeOutput = /*@__PURE__*/ Schema.Void;
+export const NodeTypesDeleteNodeOutput = Schema.Void;
 export type NodeTypesDeleteNodeOutput = typeof NodeTypesDeleteNodeOutput.Type;
 
 // The operation
@@ -2052,7 +2050,7 @@ export const NodeTypesRedeployInput = /*@__PURE__*/ Schema.Struct({
 export type NodeTypesRedeployInput = typeof NodeTypesRedeployInput.Type;
 
 // Output Schema
-export const NodeTypesRedeployOutput = /*@__PURE__*/ Schema.Void;
+export const NodeTypesRedeployOutput = Schema.Void;
 export type NodeTypesRedeployOutput = typeof NodeTypesRedeployOutput.Type;
 
 // The operation
@@ -2085,7 +2083,7 @@ export const NodeTypesReimageInput = /*@__PURE__*/ Schema.Struct({
 export type NodeTypesReimageInput = typeof NodeTypesReimageInput.Type;
 
 // Output Schema
-export const NodeTypesReimageOutput = /*@__PURE__*/ Schema.Void;
+export const NodeTypesReimageOutput = Schema.Void;
 export type NodeTypesReimageOutput = typeof NodeTypesReimageOutput.Type;
 
 // The operation
@@ -2118,7 +2116,7 @@ export const NodeTypesRestartInput = /*@__PURE__*/ Schema.Struct({
 export type NodeTypesRestartInput = typeof NodeTypesRestartInput.Type;
 
 // Output Schema
-export const NodeTypesRestartOutput = /*@__PURE__*/ Schema.Void;
+export const NodeTypesRestartOutput = Schema.Void;
 export type NodeTypesRestartOutput = typeof NodeTypesRestartOutput.Type;
 
 // The operation
@@ -2151,7 +2149,7 @@ export const NodeTypesStartInput = /*@__PURE__*/ Schema.Struct({
 export type NodeTypesStartInput = typeof NodeTypesStartInput.Type;
 
 // Output Schema
-export const NodeTypesStartOutput = /*@__PURE__*/ Schema.Void;
+export const NodeTypesStartOutput = Schema.Void;
 export type NodeTypesStartOutput = typeof NodeTypesStartOutput.Type;
 
 // The operation
@@ -2234,7 +2232,7 @@ export const OperationResultsGetInput = /*@__PURE__*/ Schema.Struct({
 export type OperationResultsGetInput = typeof OperationResultsGetInput.Type;
 
 // Output Schema
-export const OperationResultsGetOutput = /*@__PURE__*/ Schema.Void;
+export const OperationResultsGetOutput = Schema.Void;
 export type OperationResultsGetOutput = typeof OperationResultsGetOutput.Type;
 
 // The operation
@@ -2410,7 +2408,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesDeleteOutput = Schema.Void;
 export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 
 // The operation
@@ -2557,7 +2555,7 @@ export type ServicesRestartReplicaInput =
   typeof ServicesRestartReplicaInput.Type;
 
 // Output Schema
-export const ServicesRestartReplicaOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesRestartReplicaOutput = Schema.Void;
 export type ServicesRestartReplicaOutput =
   typeof ServicesRestartReplicaOutput.Type;
 

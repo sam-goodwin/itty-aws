@@ -18,7 +18,7 @@ export type GetOrgFederationSettingsInput =
   typeof GetOrgFederationSettingsInput.Type;
 
 // Output Schema
-export const GetOrgFederationSettingsOutput = /*@__PURE__*/ Schema.Void;
+export const GetOrgFederationSettingsOutput = Schema.Void;
 export type GetOrgFederationSettingsOutput =
   typeof GetOrgFederationSettingsOutput.Type;
 

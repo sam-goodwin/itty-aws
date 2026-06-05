@@ -21,8 +21,7 @@ export type GetGroupClusterBackupSnapshotShardedClusterInput =
   typeof GetGroupClusterBackupSnapshotShardedClusterInput.Type;
 
 // Output Schema
-export const GetGroupClusterBackupSnapshotShardedClusterOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GetGroupClusterBackupSnapshotShardedClusterOutput = Schema.Void;
 export type GetGroupClusterBackupSnapshotShardedClusterOutput =
   typeof GetGroupClusterBackupSnapshotShardedClusterOutput.Type;
 

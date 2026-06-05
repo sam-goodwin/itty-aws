@@ -18,7 +18,7 @@ export type InsightsAnalyzeRetrieveInput =
   typeof InsightsAnalyzeRetrieveInput.Type;
 
 // Output Schema
-export const InsightsAnalyzeRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const InsightsAnalyzeRetrieveOutput = Schema.Void;
 export type InsightsAnalyzeRetrieveOutput =
   typeof InsightsAnalyzeRetrieveOutput.Type;
 

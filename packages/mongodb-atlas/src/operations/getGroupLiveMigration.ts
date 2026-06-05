@@ -18,7 +18,7 @@ export const GetGroupLiveMigrationInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupLiveMigrationInput = typeof GetGroupLiveMigrationInput.Type;
 
 // Output Schema
-export const GetGroupLiveMigrationOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupLiveMigrationOutput = Schema.Void;
 export type GetGroupLiveMigrationOutput =
   typeof GetGroupLiveMigrationOutput.Type;
 

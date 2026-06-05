@@ -14,8 +14,7 @@ export type AuthorizationPermissionsControllerDeleteInput =
   typeof AuthorizationPermissionsControllerDeleteInput.Type;
 
 // Output Schema
-export const AuthorizationPermissionsControllerDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AuthorizationPermissionsControllerDeleteOutput = Schema.Void;
 export type AuthorizationPermissionsControllerDeleteOutput =
   typeof AuthorizationPermissionsControllerDeleteOutput.Type;
 

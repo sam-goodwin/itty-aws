@@ -18,7 +18,7 @@ export type ListGroupCustomDbRoleRolesInput =
   typeof ListGroupCustomDbRoleRolesInput.Type;
 
 // Output Schema
-export const ListGroupCustomDbRoleRolesOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupCustomDbRoleRolesOutput = Schema.Void;
 export type ListGroupCustomDbRoleRolesOutput =
   typeof ListGroupCustomDbRoleRolesOutput.Type;
 

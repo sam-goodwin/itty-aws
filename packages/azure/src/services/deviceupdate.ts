@@ -57,7 +57,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
 
 // Output Schema
-export const AccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AccountsDeleteOutput = Schema.Void;
 export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
 
 // The operation
@@ -346,7 +346,7 @@ export const InstancesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type InstancesDeleteInput = typeof InstancesDeleteInput.Type;
 
 // Output Schema
-export const InstancesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const InstancesDeleteOutput = Schema.Void;
 export type InstancesDeleteOutput = typeof InstancesDeleteOutput.Type;
 
 // The operation
@@ -650,8 +650,7 @@ export type PrivateEndpointConnectionProxiesDeleteInput =
   typeof PrivateEndpointConnectionProxiesDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionProxiesDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionProxiesDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionProxiesDeleteOutput =
   typeof PrivateEndpointConnectionProxiesDeleteOutput.Type;
 
@@ -892,7 +891,7 @@ export type PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesInput
 
 // Output Schema
 export const PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesOutput =
   typeof PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesOutput.Type;
 
@@ -919,8 +918,7 @@ export type PrivateEndpointConnectionProxiesValidateInput =
   typeof PrivateEndpointConnectionProxiesValidateInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionProxiesValidateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionProxiesValidateOutput = Schema.Void;
 export type PrivateEndpointConnectionProxiesValidateOutput =
   typeof PrivateEndpointConnectionProxiesValidateOutput.Type;
 
@@ -1016,7 +1014,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 

@@ -121,7 +121,7 @@ export type CustomerSubscriptionsDeleteInput =
   typeof CustomerSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const CustomerSubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CustomerSubscriptionsDeleteOutput = Schema.Void;
 export type CustomerSubscriptionsDeleteOutput =
   typeof CustomerSubscriptionsDeleteOutput.Type;
 
@@ -649,7 +649,7 @@ export const RegistrationsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RegistrationsDeleteInput = typeof RegistrationsDeleteInput.Type;
 
 // Output Schema
-export const RegistrationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RegistrationsDeleteOutput = Schema.Void;
 export type RegistrationsDeleteOutput = typeof RegistrationsDeleteOutput.Type;
 
 // The operation
@@ -681,8 +681,7 @@ export type RegistrationsEnableRemoteManagementInput =
   typeof RegistrationsEnableRemoteManagementInput.Type;
 
 // Output Schema
-export const RegistrationsEnableRemoteManagementOutput =
-  /*@__PURE__*/ Schema.Void;
+export const RegistrationsEnableRemoteManagementOutput = Schema.Void;
 export type RegistrationsEnableRemoteManagementOutput =
   typeof RegistrationsEnableRemoteManagementOutput.Type;
 

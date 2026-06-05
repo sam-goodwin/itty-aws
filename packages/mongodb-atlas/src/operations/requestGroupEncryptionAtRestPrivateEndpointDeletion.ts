@@ -22,7 +22,7 @@ export type RequestGroupEncryptionAtRestPrivateEndpointDeletionInput =
 
 // Output Schema
 export const RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput =
   typeof RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput.Type;
 

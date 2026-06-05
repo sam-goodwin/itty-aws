@@ -66,8 +66,7 @@ export type DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput =
   typeof DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput.Type;
 
 // Output Schema
-export const DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput = Schema.Void;
 export type DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput =
   typeof DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput.Type;
 
@@ -246,7 +245,7 @@ export type DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput =
 
 // Output Schema
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput =
   typeof DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput.Type;
 
@@ -379,7 +378,7 @@ export type DatabaseMigrationsSqlDbCancelInput =
   typeof DatabaseMigrationsSqlDbCancelInput.Type;
 
 // Output Schema
-export const DatabaseMigrationsSqlDbCancelOutput = /*@__PURE__*/ Schema.Void;
+export const DatabaseMigrationsSqlDbCancelOutput = Schema.Void;
 export type DatabaseMigrationsSqlDbCancelOutput =
   typeof DatabaseMigrationsSqlDbCancelOutput.Type;
 
@@ -452,7 +451,7 @@ export type DatabaseMigrationsSqlDbDeleteInput =
   typeof DatabaseMigrationsSqlDbDeleteInput.Type;
 
 // Output Schema
-export const DatabaseMigrationsSqlDbDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DatabaseMigrationsSqlDbDeleteOutput = Schema.Void;
 export type DatabaseMigrationsSqlDbDeleteOutput =
   typeof DatabaseMigrationsSqlDbDeleteOutput.Type;
 
@@ -528,7 +527,7 @@ export type DatabaseMigrationsSqlDbRetryInput =
   typeof DatabaseMigrationsSqlDbRetryInput.Type;
 
 // Output Schema
-export const DatabaseMigrationsSqlDbRetryOutput = /*@__PURE__*/ Schema.Void;
+export const DatabaseMigrationsSqlDbRetryOutput = Schema.Void;
 export type DatabaseMigrationsSqlDbRetryOutput =
   typeof DatabaseMigrationsSqlDbRetryOutput.Type;
 
@@ -555,7 +554,7 @@ export type DatabaseMigrationsSqlMiCancelInput =
   typeof DatabaseMigrationsSqlMiCancelInput.Type;
 
 // Output Schema
-export const DatabaseMigrationsSqlMiCancelOutput = /*@__PURE__*/ Schema.Void;
+export const DatabaseMigrationsSqlMiCancelOutput = Schema.Void;
 export type DatabaseMigrationsSqlMiCancelOutput =
   typeof DatabaseMigrationsSqlMiCancelOutput.Type;
 
@@ -627,7 +626,7 @@ export type DatabaseMigrationsSqlMiCutoverInput =
   typeof DatabaseMigrationsSqlMiCutoverInput.Type;
 
 // Output Schema
-export const DatabaseMigrationsSqlMiCutoverOutput = /*@__PURE__*/ Schema.Void;
+export const DatabaseMigrationsSqlMiCutoverOutput = Schema.Void;
 export type DatabaseMigrationsSqlMiCutoverOutput =
   typeof DatabaseMigrationsSqlMiCutoverOutput.Type;
 
@@ -746,7 +745,7 @@ export type DatabaseMigrationsSqlVmCancelInput =
   typeof DatabaseMigrationsSqlVmCancelInput.Type;
 
 // Output Schema
-export const DatabaseMigrationsSqlVmCancelOutput = /*@__PURE__*/ Schema.Void;
+export const DatabaseMigrationsSqlVmCancelOutput = Schema.Void;
 export type DatabaseMigrationsSqlVmCancelOutput =
   typeof DatabaseMigrationsSqlVmCancelOutput.Type;
 
@@ -818,7 +817,7 @@ export type DatabaseMigrationsSqlVmCutoverInput =
   typeof DatabaseMigrationsSqlVmCutoverInput.Type;
 
 // Output Schema
-export const DatabaseMigrationsSqlVmCutoverOutput = /*@__PURE__*/ Schema.Void;
+export const DatabaseMigrationsSqlVmCutoverOutput = Schema.Void;
 export type DatabaseMigrationsSqlVmCutoverOutput =
   typeof DatabaseMigrationsSqlVmCutoverOutput.Type;
 
@@ -975,7 +974,7 @@ export const FilesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type FilesDeleteInput = typeof FilesDeleteInput.Type;
 
 // Output Schema
-export const FilesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FilesDeleteOutput = Schema.Void;
 export type FilesDeleteOutput = typeof FilesDeleteOutput.Type;
 
 // The operation
@@ -1249,7 +1248,7 @@ export type MigrationServicesDeleteInput =
   typeof MigrationServicesDeleteInput.Type;
 
 // Output Schema
-export const MigrationServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MigrationServicesDeleteOutput = Schema.Void;
 export type MigrationServicesDeleteOutput =
   typeof MigrationServicesDeleteOutput.Type;
 
@@ -1624,7 +1623,7 @@ export const ProjectsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ProjectsDeleteInput = typeof ProjectsDeleteInput.Type;
 
 // Output Schema
-export const ProjectsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ProjectsDeleteOutput = Schema.Void;
 export type ProjectsDeleteOutput = typeof ProjectsDeleteOutput.Type;
 
 // The operation
@@ -2016,7 +2015,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesDeleteOutput = Schema.Void;
 export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 
 // The operation
@@ -2262,7 +2261,7 @@ export const ServicesStartInput = /*@__PURE__*/ Schema.Struct({
 export type ServicesStartInput = typeof ServicesStartInput.Type;
 
 // Output Schema
-export const ServicesStartOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesStartOutput = Schema.Void;
 export type ServicesStartOutput = typeof ServicesStartOutput.Type;
 
 // The operation
@@ -2289,7 +2288,7 @@ export const ServicesStopInput = /*@__PURE__*/ Schema.Struct({
 export type ServicesStopInput = typeof ServicesStopInput.Type;
 
 // Output Schema
-export const ServicesStopOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesStopOutput = Schema.Void;
 export type ServicesStopOutput = typeof ServicesStopOutput.Type;
 
 // The operation
@@ -2445,7 +2444,7 @@ export const ServiceTasksDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ServiceTasksDeleteInput = typeof ServiceTasksDeleteInput.Type;
 
 // Output Schema
-export const ServiceTasksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServiceTasksDeleteOutput = Schema.Void;
 export type ServiceTasksDeleteOutput = typeof ServiceTasksDeleteOutput.Type;
 
 // The operation
@@ -2664,7 +2663,7 @@ export type SqlMigrationServicesDeleteInput =
   typeof SqlMigrationServicesDeleteInput.Type;
 
 // Output Schema
-export const SqlMigrationServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlMigrationServicesDeleteOutput = Schema.Void;
 export type SqlMigrationServicesDeleteOutput =
   typeof SqlMigrationServicesDeleteOutput.Type;
 
@@ -3234,7 +3233,7 @@ export const TasksDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type TasksDeleteInput = typeof TasksDeleteInput.Type;
 
 // Output Schema
-export const TasksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TasksDeleteOutput = Schema.Void;
 export type TasksDeleteOutput = typeof TasksDeleteOutput.Type;
 
 // The operation

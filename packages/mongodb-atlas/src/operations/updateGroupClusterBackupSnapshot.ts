@@ -21,7 +21,7 @@ export type UpdateGroupClusterBackupSnapshotInput =
   typeof UpdateGroupClusterBackupSnapshotInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterBackupSnapshotOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupClusterBackupSnapshotOutput = Schema.Void;
 export type UpdateGroupClusterBackupSnapshotOutput =
   typeof UpdateGroupClusterBackupSnapshotOutput.Type;
 

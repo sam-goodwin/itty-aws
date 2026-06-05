@@ -17,7 +17,7 @@ export const DeleteWebhookInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteWebhookInput = typeof DeleteWebhookInput.Type;
 
 // Output Schema
-export const DeleteWebhookOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteWebhookOutput = Schema.Void;
 export type DeleteWebhookOutput = typeof DeleteWebhookOutput.Type;
 
 // The operation

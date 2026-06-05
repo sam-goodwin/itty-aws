@@ -17,7 +17,7 @@ export type DataColorThemesDestroyInput =
   typeof DataColorThemesDestroyInput.Type;
 
 // Output Schema
-export const DataColorThemesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const DataColorThemesDestroyOutput = Schema.Void;
 export type DataColorThemesDestroyOutput =
   typeof DataColorThemesDestroyOutput.Type;
 

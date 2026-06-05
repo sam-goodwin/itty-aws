@@ -140,8 +140,7 @@ export type AppServiceCertificateOrdersDeleteInput =
   typeof AppServiceCertificateOrdersDeleteInput.Type;
 
 // Output Schema
-export const AppServiceCertificateOrdersDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AppServiceCertificateOrdersDeleteOutput = Schema.Void;
 export type AppServiceCertificateOrdersDeleteOutput =
   typeof AppServiceCertificateOrdersDeleteOutput.Type;
 
@@ -178,8 +177,7 @@ export type AppServiceCertificateOrdersDeleteCertificateInput =
   typeof AppServiceCertificateOrdersDeleteCertificateInput.Type;
 
 // Output Schema
-export const AppServiceCertificateOrdersDeleteCertificateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AppServiceCertificateOrdersDeleteCertificateOutput = Schema.Void;
 export type AppServiceCertificateOrdersDeleteCertificateOutput =
   typeof AppServiceCertificateOrdersDeleteCertificateOutput.Type;
 
@@ -538,8 +536,7 @@ export type AppServiceCertificateOrdersReissueInput =
   typeof AppServiceCertificateOrdersReissueInput.Type;
 
 // Output Schema
-export const AppServiceCertificateOrdersReissueOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AppServiceCertificateOrdersReissueOutput = Schema.Void;
 export type AppServiceCertificateOrdersReissueOutput =
   typeof AppServiceCertificateOrdersReissueOutput.Type;
 
@@ -577,7 +574,7 @@ export type AppServiceCertificateOrdersRenewInput =
   typeof AppServiceCertificateOrdersRenewInput.Type;
 
 // Output Schema
-export const AppServiceCertificateOrdersRenewOutput = /*@__PURE__*/ Schema.Void;
+export const AppServiceCertificateOrdersRenewOutput = Schema.Void;
 export type AppServiceCertificateOrdersRenewOutput =
   typeof AppServiceCertificateOrdersRenewOutput.Type;
 
@@ -613,8 +610,7 @@ export type AppServiceCertificateOrdersResendEmailInput =
   typeof AppServiceCertificateOrdersResendEmailInput.Type;
 
 // Output Schema
-export const AppServiceCertificateOrdersResendEmailOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AppServiceCertificateOrdersResendEmailOutput = Schema.Void;
 export type AppServiceCertificateOrdersResendEmailOutput =
   typeof AppServiceCertificateOrdersResendEmailOutput.Type;
 
@@ -652,8 +648,7 @@ export type AppServiceCertificateOrdersResendRequestEmailsInput =
   typeof AppServiceCertificateOrdersResendRequestEmailsInput.Type;
 
 // Output Schema
-export const AppServiceCertificateOrdersResendRequestEmailsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AppServiceCertificateOrdersResendRequestEmailsOutput = Schema.Void;
 export type AppServiceCertificateOrdersResendRequestEmailsOutput =
   typeof AppServiceCertificateOrdersResendRequestEmailsOutput.Type;
 
@@ -947,7 +942,7 @@ export type AppServiceCertificateOrdersValidatePurchaseInformationInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersValidatePurchaseInformationOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type AppServiceCertificateOrdersValidatePurchaseInformationOutput =
   typeof AppServiceCertificateOrdersValidatePurchaseInformationOutput.Type;
 
@@ -983,7 +978,7 @@ export type AppServiceCertificateOrdersVerifyDomainOwnershipInput =
 
 // Output Schema
 export const AppServiceCertificateOrdersVerifyDomainOwnershipOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type AppServiceCertificateOrdersVerifyDomainOwnershipOutput =
   typeof AppServiceCertificateOrdersVerifyDomainOwnershipOutput.Type;
 

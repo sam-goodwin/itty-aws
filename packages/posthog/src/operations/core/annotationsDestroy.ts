@@ -16,7 +16,7 @@ export const AnnotationsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type AnnotationsDestroyInput = typeof AnnotationsDestroyInput.Type;
 
 // Output Schema
-export const AnnotationsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const AnnotationsDestroyOutput = Schema.Void;
 export type AnnotationsDestroyOutput = typeof AnnotationsDestroyOutput.Type;
 
 // The operation

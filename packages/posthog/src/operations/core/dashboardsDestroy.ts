@@ -17,7 +17,7 @@ export const DashboardsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type DashboardsDestroyInput = typeof DashboardsDestroyInput.Type;
 
 // Output Schema
-export const DashboardsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const DashboardsDestroyOutput = Schema.Void;
 export type DashboardsDestroyOutput = typeof DashboardsDestroyOutput.Type;
 
 // The operation

@@ -19,7 +19,7 @@ export type UpdateOrgServiceAccountInput =
   typeof UpdateOrgServiceAccountInput.Type;
 
 // Output Schema
-export const UpdateOrgServiceAccountOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateOrgServiceAccountOutput = Schema.Void;
 export type UpdateOrgServiceAccountOutput =
   typeof UpdateOrgServiceAccountOutput.Type;
 

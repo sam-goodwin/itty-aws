@@ -18,8 +18,7 @@ export type CreateFederationSettingIdentityProviderInput =
   typeof CreateFederationSettingIdentityProviderInput.Type;
 
 // Output Schema
-export const CreateFederationSettingIdentityProviderOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CreateFederationSettingIdentityProviderOutput = Schema.Void;
 export type CreateFederationSettingIdentityProviderOutput =
   typeof CreateFederationSettingIdentityProviderOutput.Type;
 

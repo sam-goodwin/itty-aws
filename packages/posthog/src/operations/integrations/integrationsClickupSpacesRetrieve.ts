@@ -18,8 +18,7 @@ export type IntegrationsClickupSpacesRetrieveInput =
   typeof IntegrationsClickupSpacesRetrieveInput.Type;
 
 // Output Schema
-export const IntegrationsClickupSpacesRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationsClickupSpacesRetrieveOutput = Schema.Void;
 export type IntegrationsClickupSpacesRetrieveOutput =
   typeof IntegrationsClickupSpacesRetrieveOutput.Type;
 

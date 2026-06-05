@@ -18,7 +18,7 @@ export const GetOrgResourcePolicyInput = /*@__PURE__*/ Schema.Struct({
 export type GetOrgResourcePolicyInput = typeof GetOrgResourcePolicyInput.Type;
 
 // Output Schema
-export const GetOrgResourcePolicyOutput = /*@__PURE__*/ Schema.Void;
+export const GetOrgResourcePolicyOutput = Schema.Void;
 export type GetOrgResourcePolicyOutput = typeof GetOrgResourcePolicyOutput.Type;
 
 // The operation

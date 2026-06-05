@@ -23,7 +23,7 @@ export const PersonsFunnelCreateInput = /*@__PURE__*/ Schema.Struct({
 export type PersonsFunnelCreateInput = typeof PersonsFunnelCreateInput.Type;
 
 // Output Schema
-export const PersonsFunnelCreateOutput = /*@__PURE__*/ Schema.Void;
+export const PersonsFunnelCreateOutput = Schema.Void;
 export type PersonsFunnelCreateOutput = typeof PersonsFunnelCreateOutput.Type;
 
 // The operation

@@ -68,7 +68,7 @@ export type ApplicationGroupDeleteInput =
   typeof ApplicationGroupDeleteInput.Type;
 
 // Output Schema
-export const ApplicationGroupDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationGroupDeleteOutput = Schema.Void;
 export type ApplicationGroupDeleteOutput =
   typeof ApplicationGroupDeleteOutput.Type;
 
@@ -224,7 +224,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersDeleteOutput = Schema.Void;
 export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 
 // The operation
@@ -599,7 +599,7 @@ export const ConsumerGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ConsumerGroupsDeleteInput = typeof ConsumerGroupsDeleteInput.Type;
 
 // Output Schema
-export const ConsumerGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConsumerGroupsDeleteOutput = Schema.Void;
 export type ConsumerGroupsDeleteOutput = typeof ConsumerGroupsDeleteOutput.Type;
 
 // The operation
@@ -726,8 +726,7 @@ export type DisasterRecoveryConfigsBreakPairingInput =
   typeof DisasterRecoveryConfigsBreakPairingInput.Type;
 
 // Output Schema
-export const DisasterRecoveryConfigsBreakPairingOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DisasterRecoveryConfigsBreakPairingOutput = Schema.Void;
 export type DisasterRecoveryConfigsBreakPairingOutput =
   typeof DisasterRecoveryConfigsBreakPairingOutput.Type;
 
@@ -857,7 +856,7 @@ export type DisasterRecoveryConfigsDeleteInput =
   typeof DisasterRecoveryConfigsDeleteInput.Type;
 
 // Output Schema
-export const DisasterRecoveryConfigsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DisasterRecoveryConfigsDeleteOutput = Schema.Void;
 export type DisasterRecoveryConfigsDeleteOutput =
   typeof DisasterRecoveryConfigsDeleteOutput.Type;
 
@@ -894,7 +893,7 @@ export type DisasterRecoveryConfigsFailOverInput =
   typeof DisasterRecoveryConfigsFailOverInput.Type;
 
 // Output Schema
-export const DisasterRecoveryConfigsFailOverOutput = /*@__PURE__*/ Schema.Void;
+export const DisasterRecoveryConfigsFailOverOutput = Schema.Void;
 export type DisasterRecoveryConfigsFailOverOutput =
   typeof DisasterRecoveryConfigsFailOverOutput.Type;
 
@@ -1242,7 +1241,7 @@ export const EventHubsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type EventHubsDeleteInput = typeof EventHubsDeleteInput.Type;
 
 // Output Schema
-export const EventHubsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const EventHubsDeleteOutput = Schema.Void;
 export type EventHubsDeleteOutput = typeof EventHubsDeleteOutput.Type;
 
 // The operation
@@ -1278,7 +1277,7 @@ export type EventHubsDeleteAuthorizationRuleInput =
   typeof EventHubsDeleteAuthorizationRuleInput.Type;
 
 // Output Schema
-export const EventHubsDeleteAuthorizationRuleOutput = /*@__PURE__*/ Schema.Void;
+export const EventHubsDeleteAuthorizationRuleOutput = Schema.Void;
 export type EventHubsDeleteAuthorizationRuleOutput =
   typeof EventHubsDeleteAuthorizationRuleOutput.Type;
 
@@ -1747,7 +1746,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
 
 // Output Schema
-export const NamespacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NamespacesDeleteOutput = Schema.Void;
 export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
 
 // The operation
@@ -1781,8 +1780,7 @@ export type NamespacesDeleteAuthorizationRuleInput =
   typeof NamespacesDeleteAuthorizationRuleInput.Type;
 
 // Output Schema
-export const NamespacesDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ Schema.Void;
+export const NamespacesDeleteAuthorizationRuleOutput = Schema.Void;
 export type NamespacesDeleteAuthorizationRuleOutput =
   typeof NamespacesDeleteAuthorizationRuleOutput.Type;
 
@@ -2273,7 +2271,7 @@ export type NetworkSecurityPerimeterConfigurationsCreateOrUpdateInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type NetworkSecurityPerimeterConfigurationsCreateOrUpdateOutput =
   typeof NetworkSecurityPerimeterConfigurationsCreateOrUpdateOutput.Type;
 
@@ -2441,7 +2439,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -2653,7 +2651,7 @@ export const SchemaRegistryDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SchemaRegistryDeleteInput = typeof SchemaRegistryDeleteInput.Type;
 
 // Output Schema
-export const SchemaRegistryDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SchemaRegistryDeleteOutput = Schema.Void;
 export type SchemaRegistryDeleteOutput = typeof SchemaRegistryDeleteOutput.Type;
 
 // The operation

@@ -27,8 +27,7 @@ export type GetGroupClusterCollStatNamespacesInput =
   typeof GetGroupClusterCollStatNamespacesInput.Type;
 
 // Output Schema
-export const GetGroupClusterCollStatNamespacesOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GetGroupClusterCollStatNamespacesOutput = Schema.Void;
 export type GetGroupClusterCollStatNamespacesOutput =
   typeof GetGroupClusterCollStatNamespacesOutput.Type;
 

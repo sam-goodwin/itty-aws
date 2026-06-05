@@ -16,7 +16,7 @@ export const ProxyRecordsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type ProxyRecordsDestroyInput = typeof ProxyRecordsDestroyInput.Type;
 
 // Output Schema
-export const ProxyRecordsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const ProxyRecordsDestroyOutput = Schema.Void;
 export type ProxyRecordsDestroyOutput = typeof ProxyRecordsDestroyOutput.Type;
 
 // The operation

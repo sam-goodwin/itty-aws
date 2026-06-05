@@ -77,7 +77,7 @@ export const AgentPoolsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AgentPoolsDeleteInput = typeof AgentPoolsDeleteInput.Type;
 
 // Output Schema
-export const AgentPoolsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AgentPoolsDeleteOutput = Schema.Void;
 export type AgentPoolsDeleteOutput = typeof AgentPoolsDeleteOutput.Type;
 
 // The operation
@@ -338,7 +338,7 @@ export type BareMetalMachineKeySetsDeleteInput =
   typeof BareMetalMachineKeySetsDeleteInput.Type;
 
 // Output Schema
-export const BareMetalMachineKeySetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BareMetalMachineKeySetsDeleteOutput = Schema.Void;
 export type BareMetalMachineKeySetsDeleteOutput =
   typeof BareMetalMachineKeySetsDeleteOutput.Type;
 
@@ -548,7 +548,7 @@ export type BareMetalMachinesCordonInput =
   typeof BareMetalMachinesCordonInput.Type;
 
 // Output Schema
-export const BareMetalMachinesCordonOutput = /*@__PURE__*/ Schema.Void;
+export const BareMetalMachinesCordonOutput = Schema.Void;
 export type BareMetalMachinesCordonOutput =
   typeof BareMetalMachinesCordonOutput.Type;
 
@@ -635,7 +635,7 @@ export type BareMetalMachinesDeleteInput =
   typeof BareMetalMachinesDeleteInput.Type;
 
 // Output Schema
-export const BareMetalMachinesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BareMetalMachinesDeleteOutput = Schema.Void;
 export type BareMetalMachinesDeleteOutput =
   typeof BareMetalMachinesDeleteOutput.Type;
 
@@ -851,7 +851,7 @@ export type BareMetalMachinesPowerOffInput =
   typeof BareMetalMachinesPowerOffInput.Type;
 
 // Output Schema
-export const BareMetalMachinesPowerOffOutput = /*@__PURE__*/ Schema.Void;
+export const BareMetalMachinesPowerOffOutput = Schema.Void;
 export type BareMetalMachinesPowerOffOutput =
   typeof BareMetalMachinesPowerOffOutput.Type;
 
@@ -884,7 +884,7 @@ export type BareMetalMachinesReimageInput =
   typeof BareMetalMachinesReimageInput.Type;
 
 // Output Schema
-export const BareMetalMachinesReimageOutput = /*@__PURE__*/ Schema.Void;
+export const BareMetalMachinesReimageOutput = Schema.Void;
 export type BareMetalMachinesReimageOutput =
   typeof BareMetalMachinesReimageOutput.Type;
 
@@ -917,7 +917,7 @@ export type BareMetalMachinesReplaceInput =
   typeof BareMetalMachinesReplaceInput.Type;
 
 // Output Schema
-export const BareMetalMachinesReplaceOutput = /*@__PURE__*/ Schema.Void;
+export const BareMetalMachinesReplaceOutput = Schema.Void;
 export type BareMetalMachinesReplaceOutput =
   typeof BareMetalMachinesReplaceOutput.Type;
 
@@ -950,7 +950,7 @@ export type BareMetalMachinesRestartInput =
   typeof BareMetalMachinesRestartInput.Type;
 
 // Output Schema
-export const BareMetalMachinesRestartOutput = /*@__PURE__*/ Schema.Void;
+export const BareMetalMachinesRestartOutput = Schema.Void;
 export type BareMetalMachinesRestartOutput =
   typeof BareMetalMachinesRestartOutput.Type;
 
@@ -983,7 +983,7 @@ export type BareMetalMachinesRunCommandInput =
   typeof BareMetalMachinesRunCommandInput.Type;
 
 // Output Schema
-export const BareMetalMachinesRunCommandOutput = /*@__PURE__*/ Schema.Void;
+export const BareMetalMachinesRunCommandOutput = Schema.Void;
 export type BareMetalMachinesRunCommandOutput =
   typeof BareMetalMachinesRunCommandOutput.Type;
 
@@ -1017,7 +1017,7 @@ export type BareMetalMachinesRunDataExtractsInput =
   typeof BareMetalMachinesRunDataExtractsInput.Type;
 
 // Output Schema
-export const BareMetalMachinesRunDataExtractsOutput = /*@__PURE__*/ Schema.Void;
+export const BareMetalMachinesRunDataExtractsOutput = Schema.Void;
 export type BareMetalMachinesRunDataExtractsOutput =
   typeof BareMetalMachinesRunDataExtractsOutput.Type;
 
@@ -1051,8 +1051,7 @@ export type BareMetalMachinesRunDataExtractsRestrictedInput =
   typeof BareMetalMachinesRunDataExtractsRestrictedInput.Type;
 
 // Output Schema
-export const BareMetalMachinesRunDataExtractsRestrictedOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BareMetalMachinesRunDataExtractsRestrictedOutput = Schema.Void;
 export type BareMetalMachinesRunDataExtractsRestrictedOutput =
   typeof BareMetalMachinesRunDataExtractsRestrictedOutput.Type;
 
@@ -1087,7 +1086,7 @@ export type BareMetalMachinesRunReadCommandsInput =
   typeof BareMetalMachinesRunReadCommandsInput.Type;
 
 // Output Schema
-export const BareMetalMachinesRunReadCommandsOutput = /*@__PURE__*/ Schema.Void;
+export const BareMetalMachinesRunReadCommandsOutput = Schema.Void;
 export type BareMetalMachinesRunReadCommandsOutput =
   typeof BareMetalMachinesRunReadCommandsOutput.Type;
 
@@ -1120,7 +1119,7 @@ export type BareMetalMachinesStartInput =
   typeof BareMetalMachinesStartInput.Type;
 
 // Output Schema
-export const BareMetalMachinesStartOutput = /*@__PURE__*/ Schema.Void;
+export const BareMetalMachinesStartOutput = Schema.Void;
 export type BareMetalMachinesStartOutput =
   typeof BareMetalMachinesStartOutput.Type;
 
@@ -1153,7 +1152,7 @@ export type BareMetalMachinesUncordonInput =
   typeof BareMetalMachinesUncordonInput.Type;
 
 // Output Schema
-export const BareMetalMachinesUncordonOutput = /*@__PURE__*/ Schema.Void;
+export const BareMetalMachinesUncordonOutput = Schema.Void;
 export type BareMetalMachinesUncordonOutput =
   typeof BareMetalMachinesUncordonOutput.Type;
 
@@ -1290,7 +1289,7 @@ export const BmcKeySetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BmcKeySetsDeleteInput = typeof BmcKeySetsDeleteInput.Type;
 
 // Output Schema
-export const BmcKeySetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BmcKeySetsDeleteOutput = Schema.Void;
 export type BmcKeySetsDeleteOutput = typeof BmcKeySetsDeleteOutput.Type;
 
 // The operation
@@ -1536,7 +1535,7 @@ export type CloudServicesNetworksDeleteInput =
   typeof CloudServicesNetworksDeleteInput.Type;
 
 // Output Schema
-export const CloudServicesNetworksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CloudServicesNetworksDeleteOutput = Schema.Void;
 export type CloudServicesNetworksDeleteOutput =
   typeof CloudServicesNetworksDeleteOutput.Type;
 
@@ -1855,7 +1854,7 @@ export const ClusterManagersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ClusterManagersDeleteInput = typeof ClusterManagersDeleteInput.Type;
 
 // Output Schema
-export const ClusterManagersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ClusterManagersDeleteOutput = Schema.Void;
 export type ClusterManagersDeleteOutput =
   typeof ClusterManagersDeleteOutput.Type;
 
@@ -2119,7 +2118,7 @@ export type ClustersContinueUpdateVersionInput =
   typeof ClustersContinueUpdateVersionInput.Type;
 
 // Output Schema
-export const ClustersContinueUpdateVersionOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersContinueUpdateVersionOutput = Schema.Void;
 export type ClustersContinueUpdateVersionOutput =
   typeof ClustersContinueUpdateVersionOutput.Type;
 
@@ -2202,7 +2201,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersDeleteOutput = Schema.Void;
 export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 
 // The operation
@@ -2233,7 +2232,7 @@ export const ClustersDeployInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersDeployInput = typeof ClustersDeployInput.Type;
 
 // Output Schema
-export const ClustersDeployOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersDeployOutput = Schema.Void;
 export type ClustersDeployOutput = typeof ClustersDeployOutput.Type;
 
 // The operation
@@ -2419,7 +2418,7 @@ export const ClustersScanRuntimeInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersScanRuntimeInput = typeof ClustersScanRuntimeInput.Type;
 
 // Output Schema
-export const ClustersScanRuntimeOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersScanRuntimeOutput = Schema.Void;
 export type ClustersScanRuntimeOutput = typeof ClustersScanRuntimeOutput.Type;
 
 // The operation
@@ -2499,7 +2498,7 @@ export const ClustersUpdateVersionInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersUpdateVersionInput = typeof ClustersUpdateVersionInput.Type;
 
 // Output Schema
-export const ClustersUpdateVersionOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersUpdateVersionOutput = Schema.Void;
 export type ClustersUpdateVersionOutput =
   typeof ClustersUpdateVersionOutput.Type;
 
@@ -2585,7 +2584,7 @@ export const ConsolesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ConsolesDeleteInput = typeof ConsolesDeleteInput.Type;
 
 // Output Schema
-export const ConsolesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConsolesDeleteOutput = Schema.Void;
 export type ConsolesDeleteOutput = typeof ConsolesDeleteOutput.Type;
 
 // The operation
@@ -2836,7 +2835,7 @@ export type KubernetesClusterFeaturesDeleteInput =
   typeof KubernetesClusterFeaturesDeleteInput.Type;
 
 // Output Schema
-export const KubernetesClusterFeaturesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const KubernetesClusterFeaturesDeleteOutput = Schema.Void;
 export type KubernetesClusterFeaturesDeleteOutput =
   typeof KubernetesClusterFeaturesDeleteOutput.Type;
 
@@ -3101,7 +3100,7 @@ export type KubernetesClustersDeleteInput =
   typeof KubernetesClustersDeleteInput.Type;
 
 // Output Schema
-export const KubernetesClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const KubernetesClustersDeleteOutput = Schema.Void;
 export type KubernetesClustersDeleteOutput =
   typeof KubernetesClustersDeleteOutput.Type;
 
@@ -3318,7 +3317,7 @@ export type KubernetesClustersRestartNodeInput =
   typeof KubernetesClustersRestartNodeInput.Type;
 
 // Output Schema
-export const KubernetesClustersRestartNodeOutput = /*@__PURE__*/ Schema.Void;
+export const KubernetesClustersRestartNodeOutput = Schema.Void;
 export type KubernetesClustersRestartNodeOutput =
   typeof KubernetesClustersRestartNodeOutput.Type;
 
@@ -3452,7 +3451,7 @@ export const L2NetworksDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type L2NetworksDeleteInput = typeof L2NetworksDeleteInput.Type;
 
 // Output Schema
-export const L2NetworksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const L2NetworksDeleteOutput = Schema.Void;
 export type L2NetworksDeleteOutput = typeof L2NetworksDeleteOutput.Type;
 
 // The operation
@@ -3738,7 +3737,7 @@ export const L3NetworksDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type L3NetworksDeleteInput = typeof L3NetworksDeleteInput.Type;
 
 // Output Schema
-export const L3NetworksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const L3NetworksDeleteOutput = Schema.Void;
 export type L3NetworksDeleteOutput = typeof L3NetworksDeleteOutput.Type;
 
 // The operation
@@ -4032,7 +4031,7 @@ export type MetricsConfigurationsDeleteInput =
   typeof MetricsConfigurationsDeleteInput.Type;
 
 // Output Schema
-export const MetricsConfigurationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MetricsConfigurationsDeleteOutput = Schema.Void;
 export type MetricsConfigurationsDeleteOutput =
   typeof MetricsConfigurationsDeleteOutput.Type;
 
@@ -4337,7 +4336,7 @@ export const RacksDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RacksDeleteInput = typeof RacksDeleteInput.Type;
 
 // Output Schema
-export const RacksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RacksDeleteOutput = Schema.Void;
 export type RacksDeleteOutput = typeof RacksDeleteOutput.Type;
 
 // The operation
@@ -4726,7 +4725,7 @@ export type StorageAppliancesDeleteInput =
   typeof StorageAppliancesDeleteInput.Type;
 
 // Output Schema
-export const StorageAppliancesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StorageAppliancesDeleteOutput = Schema.Void;
 export type StorageAppliancesDeleteOutput =
   typeof StorageAppliancesDeleteOutput.Type;
 
@@ -4760,8 +4759,7 @@ export type StorageAppliancesDisableRemoteVendorManagementInput =
   typeof StorageAppliancesDisableRemoteVendorManagementInput.Type;
 
 // Output Schema
-export const StorageAppliancesDisableRemoteVendorManagementOutput =
-  /*@__PURE__*/ Schema.Void;
+export const StorageAppliancesDisableRemoteVendorManagementOutput = Schema.Void;
 export type StorageAppliancesDisableRemoteVendorManagementOutput =
   typeof StorageAppliancesDisableRemoteVendorManagementOutput.Type;
 
@@ -4796,8 +4794,7 @@ export type StorageAppliancesEnableRemoteVendorManagementInput =
   typeof StorageAppliancesEnableRemoteVendorManagementInput.Type;
 
 // Output Schema
-export const StorageAppliancesEnableRemoteVendorManagementOutput =
-  /*@__PURE__*/ Schema.Void;
+export const StorageAppliancesEnableRemoteVendorManagementOutput = Schema.Void;
 export type StorageAppliancesEnableRemoteVendorManagementOutput =
   typeof StorageAppliancesEnableRemoteVendorManagementOutput.Type;
 
@@ -5015,7 +5012,7 @@ export type StorageAppliancesRunReadCommandsInput =
   typeof StorageAppliancesRunReadCommandsInput.Type;
 
 // Output Schema
-export const StorageAppliancesRunReadCommandsOutput = /*@__PURE__*/ Schema.Void;
+export const StorageAppliancesRunReadCommandsOutput = Schema.Void;
 export type StorageAppliancesRunReadCommandsOutput =
   typeof StorageAppliancesRunReadCommandsOutput.Type;
 
@@ -5149,7 +5146,7 @@ export const TrunkedNetworksDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TrunkedNetworksDeleteInput = typeof TrunkedNetworksDeleteInput.Type;
 
 // Output Schema
-export const TrunkedNetworksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TrunkedNetworksDeleteOutput = Schema.Void;
 export type TrunkedNetworksDeleteOutput =
   typeof TrunkedNetworksDeleteOutput.Type;
 
@@ -5413,7 +5410,7 @@ export type VirtualMachinesAssignRelayInput =
   typeof VirtualMachinesAssignRelayInput.Type;
 
 // Output Schema
-export const VirtualMachinesAssignRelayOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesAssignRelayOutput = Schema.Void;
 export type VirtualMachinesAssignRelayOutput =
   typeof VirtualMachinesAssignRelayOutput.Type;
 
@@ -5496,7 +5493,7 @@ export const VirtualMachinesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachinesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesDeleteOutput = Schema.Void;
 export type VirtualMachinesDeleteOutput =
   typeof VirtualMachinesDeleteOutput.Type;
 
@@ -5710,7 +5707,7 @@ export type VirtualMachinesPowerOffInput =
   typeof VirtualMachinesPowerOffInput.Type;
 
 // Output Schema
-export const VirtualMachinesPowerOffOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesPowerOffOutput = Schema.Void;
 export type VirtualMachinesPowerOffOutput =
   typeof VirtualMachinesPowerOffOutput.Type;
 
@@ -5743,7 +5740,7 @@ export type VirtualMachinesReimageInput =
   typeof VirtualMachinesReimageInput.Type;
 
 // Output Schema
-export const VirtualMachinesReimageOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesReimageOutput = Schema.Void;
 export type VirtualMachinesReimageOutput =
   typeof VirtualMachinesReimageOutput.Type;
 
@@ -5776,7 +5773,7 @@ export type VirtualMachinesRestartInput =
   typeof VirtualMachinesRestartInput.Type;
 
 // Output Schema
-export const VirtualMachinesRestartOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesRestartOutput = Schema.Void;
 export type VirtualMachinesRestartOutput =
   typeof VirtualMachinesRestartOutput.Type;
 
@@ -5808,7 +5805,7 @@ export const VirtualMachinesStartInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
 
 // Output Schema
-export const VirtualMachinesStartOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesStartOutput = Schema.Void;
 export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
 
 // The operation
@@ -5939,7 +5936,7 @@ export const VolumesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VolumesDeleteInput = typeof VolumesDeleteInput.Type;
 
 // Output Schema
-export const VolumesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesDeleteOutput = Schema.Void;
 export type VolumesDeleteOutput = typeof VolumesDeleteOutput.Type;
 
 // The operation

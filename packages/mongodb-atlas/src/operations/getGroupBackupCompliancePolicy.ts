@@ -18,7 +18,7 @@ export type GetGroupBackupCompliancePolicyInput =
   typeof GetGroupBackupCompliancePolicyInput.Type;
 
 // Output Schema
-export const GetGroupBackupCompliancePolicyOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupBackupCompliancePolicyOutput = Schema.Void;
 export type GetGroupBackupCompliancePolicyOutput =
   typeof GetGroupBackupCompliancePolicyOutput.Type;
 

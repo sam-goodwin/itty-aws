@@ -21,7 +21,7 @@ export type ApplicationsCreateOrUpdateInput =
   typeof ApplicationsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ApplicationsCreateOrUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsCreateOrUpdateOutput = Schema.Void;
 export type ApplicationsCreateOrUpdateOutput =
   typeof ApplicationsCreateOrUpdateOutput.Type;
 
@@ -45,7 +45,7 @@ export const ApplicationsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
 
 // Output Schema
-export const ApplicationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsDeleteOutput = Schema.Void;
 export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
 
 // The operation
@@ -155,7 +155,7 @@ export const ApplicationsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ApplicationsUpdateInput = typeof ApplicationsUpdateInput.Type;
 
 // Output Schema
-export const ApplicationsUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsUpdateOutput = Schema.Void;
 export type ApplicationsUpdateOutput = typeof ApplicationsUpdateOutput.Type;
 
 // The operation
@@ -225,7 +225,7 @@ export type ApplicationTypesDeleteInput =
   typeof ApplicationTypesDeleteInput.Type;
 
 // Output Schema
-export const ApplicationTypesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationTypesDeleteOutput = Schema.Void;
 export type ApplicationTypesDeleteOutput =
   typeof ApplicationTypesDeleteOutput.Type;
 
@@ -338,8 +338,7 @@ export type ApplicationTypeVersionsCreateOrUpdateInput =
   typeof ApplicationTypeVersionsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ApplicationTypeVersionsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ApplicationTypeVersionsCreateOrUpdateOutput = Schema.Void;
 export type ApplicationTypeVersionsCreateOrUpdateOutput =
   typeof ApplicationTypeVersionsCreateOrUpdateOutput.Type;
 
@@ -368,7 +367,7 @@ export type ApplicationTypeVersionsDeleteInput =
   typeof ApplicationTypeVersionsDeleteInput.Type;
 
 // Output Schema
-export const ApplicationTypeVersionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationTypeVersionsDeleteOutput = Schema.Void;
 export type ApplicationTypeVersionsDeleteOutput =
   typeof ApplicationTypeVersionsDeleteOutput.Type;
 
@@ -529,7 +528,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersDeleteOutput = Schema.Void;
 export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 
 // The operation
@@ -986,7 +985,7 @@ export type ServicesCreateOrUpdateInput =
   typeof ServicesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ServicesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesCreateOrUpdateOutput = Schema.Void;
 export type ServicesCreateOrUpdateOutput =
   typeof ServicesCreateOrUpdateOutput.Type;
 
@@ -1010,7 +1009,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesDeleteOutput = Schema.Void;
 export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 
 // The operation
@@ -1120,7 +1119,7 @@ export const ServicesUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
 
 // Output Schema
-export const ServicesUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesUpdateOutput = Schema.Void;
 export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
 
 // The operation

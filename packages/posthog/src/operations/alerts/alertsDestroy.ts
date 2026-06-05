@@ -13,7 +13,7 @@ export const AlertsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type AlertsDestroyInput = typeof AlertsDestroyInput.Type;
 
 // Output Schema
-export const AlertsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const AlertsDestroyOutput = Schema.Void;
 export type AlertsDestroyOutput = typeof AlertsDestroyOutput.Type;
 
 // The operation

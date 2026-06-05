@@ -10,7 +10,7 @@ export const CreateAnalyticsRuleInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type CreateAnalyticsRuleInput = typeof CreateAnalyticsRuleInput.Type;
 
 // Output Schema
-export const CreateAnalyticsRuleOutput = /*@__PURE__*/ Schema.Unknown;
+export const CreateAnalyticsRuleOutput = Schema.Unknown;
 export type CreateAnalyticsRuleOutput = typeof CreateAnalyticsRuleOutput.Type;
 
 // The operation

@@ -66,7 +66,7 @@ export type ApiPortalCustomDomainsDeleteInput =
   typeof ApiPortalCustomDomainsDeleteInput.Type;
 
 // Output Schema
-export const ApiPortalCustomDomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApiPortalCustomDomainsDeleteOutput = Schema.Void;
 export type ApiPortalCustomDomainsDeleteOutput =
   typeof ApiPortalCustomDomainsDeleteOutput.Type;
 
@@ -234,7 +234,7 @@ export const ApiPortalsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ApiPortalsDeleteInput = typeof ApiPortalsDeleteInput.Type;
 
 // Output Schema
-export const ApiPortalsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApiPortalsDeleteOutput = Schema.Void;
 export type ApiPortalsDeleteOutput = typeof ApiPortalsDeleteOutput.Type;
 
 // The operation
@@ -417,7 +417,7 @@ export const ApmsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ApmsDeleteInput = typeof ApmsDeleteInput.Type;
 
 // Output Schema
-export const ApmsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApmsDeleteOutput = Schema.Void;
 export type ApmsDeleteOutput = typeof ApmsDeleteOutput.Type;
 
 // The operation
@@ -604,7 +604,7 @@ export type ApplicationAcceleratorsDeleteInput =
   typeof ApplicationAcceleratorsDeleteInput.Type;
 
 // Output Schema
-export const ApplicationAcceleratorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationAcceleratorsDeleteOutput = Schema.Void;
 export type ApplicationAcceleratorsDeleteOutput =
   typeof ApplicationAcceleratorsDeleteOutput.Type;
 
@@ -777,7 +777,7 @@ export type ApplicationLiveViewsDeleteInput =
   typeof ApplicationLiveViewsDeleteInput.Type;
 
 // Output Schema
-export const ApplicationLiveViewsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationLiveViewsDeleteOutput = Schema.Void;
 export type ApplicationLiveViewsDeleteOutput =
   typeof ApplicationLiveViewsDeleteOutput.Type;
 
@@ -941,7 +941,7 @@ export const AppsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type AppsDeleteInput = typeof AppsDeleteInput.Type;
 
 // Output Schema
-export const AppsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AppsDeleteOutput = Schema.Void;
 export type AppsDeleteOutput = typeof AppsDeleteOutput.Type;
 
 // The operation
@@ -1236,7 +1236,7 @@ export const BindingsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type BindingsDeleteInput = typeof BindingsDeleteInput.Type;
 
 // Output Schema
-export const BindingsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BindingsDeleteOutput = Schema.Void;
 export type BindingsDeleteOutput = typeof BindingsDeleteOutput.Type;
 
 // The operation
@@ -1437,7 +1437,7 @@ export type BuildpackBindingDeleteInput =
   typeof BuildpackBindingDeleteInput.Type;
 
 // Output Schema
-export const BuildpackBindingDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BuildpackBindingDeleteOutput = Schema.Void;
 export type BuildpackBindingDeleteOutput =
   typeof BuildpackBindingDeleteOutput.Type;
 
@@ -1810,7 +1810,7 @@ export type BuildServiceBuilderDeleteInput =
   typeof BuildServiceBuilderDeleteInput.Type;
 
 // Output Schema
-export const BuildServiceBuilderDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BuildServiceBuilderDeleteOutput = Schema.Void;
 export type BuildServiceBuilderDeleteOutput =
   typeof BuildServiceBuilderDeleteOutput.Type;
 
@@ -2052,7 +2052,7 @@ export type BuildServiceDeleteBuildInput =
   typeof BuildServiceDeleteBuildInput.Type;
 
 // Output Schema
-export const BuildServiceDeleteBuildOutput = /*@__PURE__*/ Schema.Void;
+export const BuildServiceDeleteBuildOutput = Schema.Void;
 export type BuildServiceDeleteBuildOutput =
   typeof BuildServiceDeleteBuildOutput.Type;
 
@@ -2684,7 +2684,7 @@ export const CertificatesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type CertificatesDeleteInput = typeof CertificatesDeleteInput.Type;
 
 // Output Schema
-export const CertificatesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CertificatesDeleteOutput = Schema.Void;
 export type CertificatesDeleteOutput = typeof CertificatesDeleteOutput.Type;
 
 // The operation
@@ -3004,7 +3004,7 @@ export type ConfigurationServicesDeleteInput =
   typeof ConfigurationServicesDeleteInput.Type;
 
 // Output Schema
-export const ConfigurationServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConfigurationServicesDeleteOutput = Schema.Void;
 export type ConfigurationServicesDeleteOutput =
   typeof ConfigurationServicesDeleteOutput.Type;
 
@@ -3255,7 +3255,7 @@ export type ContainerRegistriesDeleteInput =
   typeof ContainerRegistriesDeleteInput.Type;
 
 // Output Schema
-export const ContainerRegistriesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ContainerRegistriesDeleteOutput = Schema.Void;
 export type ContainerRegistriesDeleteOutput =
   typeof ContainerRegistriesDeleteOutput.Type;
 
@@ -3449,7 +3449,7 @@ export const CustomDomainsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type CustomDomainsDeleteInput = typeof CustomDomainsDeleteInput.Type;
 
 // Output Schema
-export const CustomDomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CustomDomainsDeleteOutput = Schema.Void;
 export type CustomDomainsDeleteOutput = typeof CustomDomainsDeleteOutput.Type;
 
 // The operation
@@ -3652,7 +3652,7 @@ export type CustomizedAcceleratorsDeleteInput =
   typeof CustomizedAcceleratorsDeleteInput.Type;
 
 // Output Schema
-export const CustomizedAcceleratorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CustomizedAcceleratorsDeleteOutput = Schema.Void;
 export type CustomizedAcceleratorsDeleteOutput =
   typeof CustomizedAcceleratorsDeleteOutput.Type;
 
@@ -3850,7 +3850,7 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
 
 // Output Schema
-export const DeploymentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsDeleteOutput = Schema.Void;
 export type DeploymentsDeleteOutput = typeof DeploymentsDeleteOutput.Type;
 
 // The operation
@@ -3930,7 +3930,7 @@ export type DeploymentsGenerateHeapDumpInput =
   typeof DeploymentsGenerateHeapDumpInput.Type;
 
 // Output Schema
-export const DeploymentsGenerateHeapDumpOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsGenerateHeapDumpOutput = Schema.Void;
 export type DeploymentsGenerateHeapDumpOutput =
   typeof DeploymentsGenerateHeapDumpOutput.Type;
 
@@ -3955,7 +3955,7 @@ export type DeploymentsGenerateThreadDumpInput =
   typeof DeploymentsGenerateThreadDumpInput.Type;
 
 // Output Schema
-export const DeploymentsGenerateThreadDumpOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsGenerateThreadDumpOutput = Schema.Void;
 export type DeploymentsGenerateThreadDumpOutput =
   typeof DeploymentsGenerateThreadDumpOutput.Type;
 
@@ -4197,7 +4197,7 @@ export const DeploymentsRestartInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DeploymentsRestartInput = typeof DeploymentsRestartInput.Type;
 
 // Output Schema
-export const DeploymentsRestartOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsRestartOutput = Schema.Void;
 export type DeploymentsRestartOutput = typeof DeploymentsRestartOutput.Type;
 
 // The operation
@@ -4218,7 +4218,7 @@ export const DeploymentsStartInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DeploymentsStartInput = typeof DeploymentsStartInput.Type;
 
 // Output Schema
-export const DeploymentsStartOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsStartOutput = Schema.Void;
 export type DeploymentsStartOutput = typeof DeploymentsStartOutput.Type;
 
 // The operation
@@ -4239,7 +4239,7 @@ export const DeploymentsStartJFRInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DeploymentsStartJFRInput = typeof DeploymentsStartJFRInput.Type;
 
 // Output Schema
-export const DeploymentsStartJFROutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsStartJFROutput = Schema.Void;
 export type DeploymentsStartJFROutput = typeof DeploymentsStartJFROutput.Type;
 
 // The operation
@@ -4260,7 +4260,7 @@ export const DeploymentsStopInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DeploymentsStopInput = typeof DeploymentsStopInput.Type;
 
 // Output Schema
-export const DeploymentsStopOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsStopOutput = Schema.Void;
 export type DeploymentsStopOutput = typeof DeploymentsStopOutput.Type;
 
 // The operation
@@ -4363,7 +4363,7 @@ export const DevToolPortalsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DevToolPortalsDeleteInput = typeof DevToolPortalsDeleteInput.Type;
 
 // Output Schema
-export const DevToolPortalsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DevToolPortalsDeleteOutput = Schema.Void;
 export type DevToolPortalsDeleteOutput = typeof DevToolPortalsDeleteOutput.Type;
 
 // The operation
@@ -4527,7 +4527,7 @@ export type GatewayCustomDomainsDeleteInput =
   typeof GatewayCustomDomainsDeleteInput.Type;
 
 // Output Schema
-export const GatewayCustomDomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GatewayCustomDomainsDeleteOutput = Schema.Void;
 export type GatewayCustomDomainsDeleteOutput =
   typeof GatewayCustomDomainsDeleteOutput.Type;
 
@@ -4698,7 +4698,7 @@ export type GatewayRouteConfigsDeleteInput =
   typeof GatewayRouteConfigsDeleteInput.Type;
 
 // Output Schema
-export const GatewayRouteConfigsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GatewayRouteConfigsDeleteOutput = Schema.Void;
 export type GatewayRouteConfigsDeleteOutput =
   typeof GatewayRouteConfigsDeleteOutput.Type;
 
@@ -4862,7 +4862,7 @@ export const GatewaysDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type GatewaysDeleteInput = typeof GatewaysDeleteInput.Type;
 
 // Output Schema
-export const GatewaysDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GatewaysDeleteOutput = Schema.Void;
 export type GatewaysDeleteOutput = typeof GatewaysDeleteOutput.Type;
 
 // The operation
@@ -5004,7 +5004,7 @@ export const GatewaysRestartInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type GatewaysRestartInput = typeof GatewaysRestartInput.Type;
 
 // Output Schema
-export const GatewaysRestartOutput = /*@__PURE__*/ Schema.Void;
+export const GatewaysRestartOutput = Schema.Void;
 export type GatewaysRestartOutput = typeof GatewaysRestartOutput.Type;
 
 // The operation
@@ -5269,7 +5269,7 @@ export type PredefinedAcceleratorsDisableInput =
   typeof PredefinedAcceleratorsDisableInput.Type;
 
 // Output Schema
-export const PredefinedAcceleratorsDisableOutput = /*@__PURE__*/ Schema.Void;
+export const PredefinedAcceleratorsDisableOutput = Schema.Void;
 export type PredefinedAcceleratorsDisableOutput =
   typeof PredefinedAcceleratorsDisableOutput.Type;
 
@@ -5294,7 +5294,7 @@ export type PredefinedAcceleratorsEnableInput =
   typeof PredefinedAcceleratorsEnableInput.Type;
 
 // Output Schema
-export const PredefinedAcceleratorsEnableOutput = /*@__PURE__*/ Schema.Void;
+export const PredefinedAcceleratorsEnableOutput = Schema.Void;
 export type PredefinedAcceleratorsEnableOutput =
   typeof PredefinedAcceleratorsEnableOutput.Type;
 
@@ -5505,7 +5505,7 @@ export type ServiceRegistriesDeleteInput =
   typeof ServiceRegistriesDeleteInput.Type;
 
 // Output Schema
-export const ServiceRegistriesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServiceRegistriesDeleteOutput = Schema.Void;
 export type ServiceRegistriesDeleteOutput =
   typeof ServiceRegistriesDeleteOutput.Type;
 
@@ -5695,7 +5695,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesDeleteOutput = Schema.Void;
 export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 
 // The operation
@@ -5719,7 +5719,7 @@ export type ServicesDisableApmGloballyInput =
   typeof ServicesDisableApmGloballyInput.Type;
 
 // Output Schema
-export const ServicesDisableApmGloballyOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesDisableApmGloballyOutput = Schema.Void;
 export type ServicesDisableApmGloballyOutput =
   typeof ServicesDisableApmGloballyOutput.Type;
 
@@ -5744,7 +5744,7 @@ export type ServicesDisableTestEndpointInput =
   typeof ServicesDisableTestEndpointInput.Type;
 
 // Output Schema
-export const ServicesDisableTestEndpointOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesDisableTestEndpointOutput = Schema.Void;
 export type ServicesDisableTestEndpointOutput =
   typeof ServicesDisableTestEndpointOutput.Type;
 
@@ -5769,7 +5769,7 @@ export type ServicesEnableApmGloballyInput =
   typeof ServicesEnableApmGloballyInput.Type;
 
 // Output Schema
-export const ServicesEnableApmGloballyOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesEnableApmGloballyOutput = Schema.Void;
 export type ServicesEnableApmGloballyOutput =
   typeof ServicesEnableApmGloballyOutput.Type;
 
@@ -5825,7 +5825,7 @@ export type ServicesFlushVnetDnsSettingInput =
   typeof ServicesFlushVnetDnsSettingInput.Type;
 
 // Output Schema
-export const ServicesFlushVnetDnsSettingOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesFlushVnetDnsSettingOutput = Schema.Void;
 export type ServicesFlushVnetDnsSettingOutput =
   typeof ServicesFlushVnetDnsSettingOutput.Type;
 
@@ -6160,7 +6160,7 @@ export const ServicesStartInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ServicesStartInput = typeof ServicesStartInput.Type;
 
 // Output Schema
-export const ServicesStartOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesStartOutput = Schema.Void;
 export type ServicesStartOutput = typeof ServicesStartOutput.Type;
 
 // The operation
@@ -6181,7 +6181,7 @@ export const ServicesStopInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ServicesStopInput = typeof ServicesStopInput.Type;
 
 // Output Schema
-export const ServicesStopOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesStopOutput = Schema.Void;
 export type ServicesStopOutput = typeof ServicesStopOutput.Type;
 
 // The operation
@@ -6365,7 +6365,7 @@ export const StoragesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type StoragesDeleteInput = typeof StoragesDeleteInput.Type;
 
 // Output Schema
-export const StoragesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StoragesDeleteOutput = Schema.Void;
 export type StoragesDeleteOutput = typeof StoragesDeleteOutput.Type;
 
 // The operation

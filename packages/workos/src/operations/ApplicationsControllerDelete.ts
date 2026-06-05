@@ -11,7 +11,7 @@ export type ApplicationsControllerDeleteInput =
   typeof ApplicationsControllerDeleteInput.Type;
 
 // Output Schema
-export const ApplicationsControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsControllerDeleteOutput = Schema.Void;
 export type ApplicationsControllerDeleteOutput =
   typeof ApplicationsControllerDeleteOutput.Type;
 

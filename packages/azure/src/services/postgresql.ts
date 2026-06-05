@@ -26,8 +26,7 @@ export type AdministratorsMicrosoftEntraCreateOrUpdateInput =
   typeof AdministratorsMicrosoftEntraCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AdministratorsMicrosoftEntraCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AdministratorsMicrosoftEntraCreateOrUpdateOutput = Schema.Void;
 export type AdministratorsMicrosoftEntraCreateOrUpdateOutput =
   typeof AdministratorsMicrosoftEntraCreateOrUpdateOutput.Type;
 
@@ -64,8 +63,7 @@ export type AdministratorsMicrosoftEntraDeleteInput =
   typeof AdministratorsMicrosoftEntraDeleteInput.Type;
 
 // Output Schema
-export const AdministratorsMicrosoftEntraDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AdministratorsMicrosoftEntraDeleteOutput = Schema.Void;
 export type AdministratorsMicrosoftEntraDeleteOutput =
   typeof AdministratorsMicrosoftEntraDeleteOutput.Type;
 
@@ -355,8 +353,7 @@ export type BackupsAutomaticAndOnDemandCreateInput =
   typeof BackupsAutomaticAndOnDemandCreateInput.Type;
 
 // Output Schema
-export const BackupsAutomaticAndOnDemandCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BackupsAutomaticAndOnDemandCreateOutput = Schema.Void;
 export type BackupsAutomaticAndOnDemandCreateOutput =
   typeof BackupsAutomaticAndOnDemandCreateOutput.Type;
 
@@ -392,8 +389,7 @@ export type BackupsAutomaticAndOnDemandDeleteInput =
   typeof BackupsAutomaticAndOnDemandDeleteInput.Type;
 
 // Output Schema
-export const BackupsAutomaticAndOnDemandDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BackupsAutomaticAndOnDemandDeleteOutput = Schema.Void;
 export type BackupsAutomaticAndOnDemandDeleteOutput =
   typeof BackupsAutomaticAndOnDemandDeleteOutput.Type;
 
@@ -1010,7 +1006,7 @@ export const ConfigurationsPutInput = /*@__PURE__*/ Schema.Struct({
 export type ConfigurationsPutInput = typeof ConfigurationsPutInput.Type;
 
 // Output Schema
-export const ConfigurationsPutOutput = /*@__PURE__*/ Schema.Void;
+export const ConfigurationsPutOutput = Schema.Void;
 export type ConfigurationsPutOutput = typeof ConfigurationsPutOutput.Type;
 
 // The operation
@@ -1043,7 +1039,7 @@ export const ConfigurationsUpdateInput = /*@__PURE__*/ Schema.Struct({
 export type ConfigurationsUpdateInput = typeof ConfigurationsUpdateInput.Type;
 
 // Output Schema
-export const ConfigurationsUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const ConfigurationsUpdateOutput = Schema.Void;
 export type ConfigurationsUpdateOutput = typeof ConfigurationsUpdateOutput.Type;
 
 // The operation
@@ -1076,7 +1072,7 @@ export const DatabasesCreateInput = /*@__PURE__*/ Schema.Struct({
 export type DatabasesCreateInput = typeof DatabasesCreateInput.Type;
 
 // Output Schema
-export const DatabasesCreateOutput = /*@__PURE__*/ Schema.Void;
+export const DatabasesCreateOutput = Schema.Void;
 export type DatabasesCreateOutput = typeof DatabasesCreateOutput.Type;
 
 // The operation
@@ -1109,7 +1105,7 @@ export const DatabasesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
 
 // Output Schema
-export const DatabasesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DatabasesDeleteOutput = Schema.Void;
 export type DatabasesDeleteOutput = typeof DatabasesDeleteOutput.Type;
 
 // The operation
@@ -1249,7 +1245,7 @@ export type FirewallRulesCreateOrUpdateInput =
   typeof FirewallRulesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const FirewallRulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const FirewallRulesCreateOrUpdateOutput = Schema.Void;
 export type FirewallRulesCreateOrUpdateOutput =
   typeof FirewallRulesCreateOrUpdateOutput.Type;
 
@@ -1283,7 +1279,7 @@ export const FirewallRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
 
 // Output Schema
-export const FirewallRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FirewallRulesDeleteOutput = Schema.Void;
 export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
 
 // The operation
@@ -1883,7 +1879,7 @@ export type PrivateDnsZoneSuffixGetInput =
   typeof PrivateDnsZoneSuffixGetInput.Type;
 
 // Output Schema
-export const PrivateDnsZoneSuffixGetOutput = /*@__PURE__*/ Schema.String;
+export const PrivateDnsZoneSuffixGetOutput = Schema.String;
 export type PrivateDnsZoneSuffixGetOutput =
   typeof PrivateDnsZoneSuffixGetOutput.Type;
 
@@ -1915,7 +1911,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -2094,7 +2090,7 @@ export type PrivateEndpointConnectionsUpdateInput =
   typeof PrivateEndpointConnectionsUpdateInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsUpdateOutput = Schema.Void;
 export type PrivateEndpointConnectionsUpdateOutput =
   typeof PrivateEndpointConnectionsUpdateOutput.Type;
 
@@ -2348,7 +2344,7 @@ export const ServersCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
 export type ServersCreateOrUpdateInput = typeof ServersCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ServersCreateOrUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const ServersCreateOrUpdateOutput = Schema.Void;
 export type ServersCreateOrUpdateOutput =
   typeof ServersCreateOrUpdateOutput.Type;
 
@@ -2380,7 +2376,7 @@ export const ServersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ServersDeleteInput = typeof ServersDeleteInput.Type;
 
 // Output Schema
-export const ServersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServersDeleteOutput = Schema.Void;
 export type ServersDeleteOutput = typeof ServersDeleteOutput.Type;
 
 // The operation
@@ -2566,7 +2562,7 @@ export const ServersRestartInput = /*@__PURE__*/ Schema.Struct({
 export type ServersRestartInput = typeof ServersRestartInput.Type;
 
 // Output Schema
-export const ServersRestartOutput = /*@__PURE__*/ Schema.Void;
+export const ServersRestartOutput = Schema.Void;
 export type ServersRestartOutput = typeof ServersRestartOutput.Type;
 
 // The operation
@@ -2597,7 +2593,7 @@ export const ServersStartInput = /*@__PURE__*/ Schema.Struct({
 export type ServersStartInput = typeof ServersStartInput.Type;
 
 // Output Schema
-export const ServersStartOutput = /*@__PURE__*/ Schema.Void;
+export const ServersStartOutput = Schema.Void;
 export type ServersStartOutput = typeof ServersStartOutput.Type;
 
 // The operation
@@ -2628,7 +2624,7 @@ export const ServersStopInput = /*@__PURE__*/ Schema.Struct({
 export type ServersStopInput = typeof ServersStopInput.Type;
 
 // Output Schema
-export const ServersStopOutput = /*@__PURE__*/ Schema.Void;
+export const ServersStopOutput = Schema.Void;
 export type ServersStopOutput = typeof ServersStopOutput.Type;
 
 // The operation
@@ -2659,7 +2655,7 @@ export const ServersUpdateInput = /*@__PURE__*/ Schema.Struct({
 export type ServersUpdateInput = typeof ServersUpdateInput.Type;
 
 // Output Schema
-export const ServersUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const ServersUpdateOutput = Schema.Void;
 export type ServersUpdateOutput = typeof ServersUpdateOutput.Type;
 
 // The operation
@@ -2693,8 +2689,7 @@ export type ServerThreatProtectionSettingsCreateOrUpdateInput =
   typeof ServerThreatProtectionSettingsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ServerThreatProtectionSettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ServerThreatProtectionSettingsCreateOrUpdateOutput = Schema.Void;
 export type ServerThreatProtectionSettingsCreateOrUpdateOutput =
   typeof ServerThreatProtectionSettingsCreateOrUpdateOutput.Type;
 
@@ -2911,7 +2906,7 @@ export type VirtualEndpointsCreateInput =
   typeof VirtualEndpointsCreateInput.Type;
 
 // Output Schema
-export const VirtualEndpointsCreateOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualEndpointsCreateOutput = Schema.Void;
 export type VirtualEndpointsCreateOutput =
   typeof VirtualEndpointsCreateOutput.Type;
 
@@ -2946,7 +2941,7 @@ export type VirtualEndpointsDeleteInput =
   typeof VirtualEndpointsDeleteInput.Type;
 
 // Output Schema
-export const VirtualEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualEndpointsDeleteOutput = Schema.Void;
 export type VirtualEndpointsDeleteOutput =
   typeof VirtualEndpointsDeleteOutput.Type;
 
@@ -3088,7 +3083,7 @@ export type VirtualEndpointsUpdateInput =
   typeof VirtualEndpointsUpdateInput.Type;
 
 // Output Schema
-export const VirtualEndpointsUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualEndpointsUpdateOutput = Schema.Void;
 export type VirtualEndpointsUpdateOutput =
   typeof VirtualEndpointsUpdateOutput.Type;
 

@@ -17,8 +17,7 @@ export type EventDefinitionsTypescriptRetrieveInput =
   typeof EventDefinitionsTypescriptRetrieveInput.Type;
 
 // Output Schema
-export const EventDefinitionsTypescriptRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EventDefinitionsTypescriptRetrieveOutput = Schema.Void;
 export type EventDefinitionsTypescriptRetrieveOutput =
   typeof EventDefinitionsTypescriptRetrieveOutput.Type;
 

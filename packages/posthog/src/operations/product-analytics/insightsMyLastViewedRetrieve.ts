@@ -17,7 +17,7 @@ export type InsightsMyLastViewedRetrieveInput =
   typeof InsightsMyLastViewedRetrieveInput.Type;
 
 // Output Schema
-export const InsightsMyLastViewedRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const InsightsMyLastViewedRetrieveOutput = Schema.Void;
 export type InsightsMyLastViewedRetrieveOutput =
   typeof InsightsMyLastViewedRetrieveOutput.Type;
 

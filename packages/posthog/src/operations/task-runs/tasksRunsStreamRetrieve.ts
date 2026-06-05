@@ -18,7 +18,7 @@ export type TasksRunsStreamRetrieveInput =
   typeof TasksRunsStreamRetrieveInput.Type;
 
 // Output Schema
-export const TasksRunsStreamRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const TasksRunsStreamRetrieveOutput = Schema.Void;
 export type TasksRunsStreamRetrieveOutput =
   typeof TasksRunsStreamRetrieveOutput.Type;
 

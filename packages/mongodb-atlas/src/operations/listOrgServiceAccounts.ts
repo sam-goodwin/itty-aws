@@ -17,7 +17,7 @@ export type ListOrgServiceAccountsInput =
   typeof ListOrgServiceAccountsInput.Type;
 
 // Output Schema
-export const ListOrgServiceAccountsOutput = /*@__PURE__*/ Schema.Void;
+export const ListOrgServiceAccountsOutput = Schema.Void;
 export type ListOrgServiceAccountsOutput =
   typeof ListOrgServiceAccountsOutput.Type;
 

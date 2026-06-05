@@ -16,7 +16,7 @@ export const CommentsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type CommentsDestroyInput = typeof CommentsDestroyInput.Type;
 
 // Output Schema
-export const CommentsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const CommentsDestroyOutput = Schema.Void;
 export type CommentsDestroyOutput = typeof CommentsDestroyOutput.Type;
 
 // The operation

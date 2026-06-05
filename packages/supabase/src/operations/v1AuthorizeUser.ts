@@ -21,7 +21,7 @@ export const V1AuthorizeUserInput = /*@__PURE__*/ Schema.Struct({
 export type V1AuthorizeUserInput = typeof V1AuthorizeUserInput.Type;
 
 // Output Schema
-export const V1AuthorizeUserOutput = /*@__PURE__*/ Schema.Void;
+export const V1AuthorizeUserOutput = Schema.Void;
 export type V1AuthorizeUserOutput = typeof V1AuthorizeUserOutput.Type;
 
 // The operation

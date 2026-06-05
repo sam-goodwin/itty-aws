@@ -17,7 +17,7 @@ export type ObjectMediaPreviewsDestroyInput =
   typeof ObjectMediaPreviewsDestroyInput.Type;
 
 // Output Schema
-export const ObjectMediaPreviewsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const ObjectMediaPreviewsDestroyOutput = Schema.Void;
 export type ObjectMediaPreviewsDestroyOutput =
   typeof ObjectMediaPreviewsDestroyOutput.Type;
 

@@ -49,7 +49,7 @@ export const AccessPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type AccessPoliciesDeleteInput = typeof AccessPoliciesDeleteInput.Type;
 
 // Output Schema
-export const AccessPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AccessPoliciesDeleteOutput = Schema.Void;
 export type AccessPoliciesDeleteOutput = typeof AccessPoliciesDeleteOutput.Type;
 
 // The operation
@@ -187,7 +187,7 @@ export const EnvironmentsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type EnvironmentsDeleteInput = typeof EnvironmentsDeleteInput.Type;
 
 // Output Schema
-export const EnvironmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const EnvironmentsDeleteOutput = Schema.Void;
 export type EnvironmentsDeleteOutput = typeof EnvironmentsDeleteOutput.Type;
 
 // The operation
@@ -362,7 +362,7 @@ export const EventSourcesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type EventSourcesDeleteInput = typeof EventSourcesDeleteInput.Type;
 
 // Output Schema
-export const EventSourcesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const EventSourcesDeleteOutput = Schema.Void;
 export type EventSourcesDeleteOutput = typeof EventSourcesDeleteOutput.Type;
 
 // The operation
@@ -591,7 +591,7 @@ export type ReferenceDataSetsDeleteInput =
   typeof ReferenceDataSetsDeleteInput.Type;
 
 // Output Schema
-export const ReferenceDataSetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ReferenceDataSetsDeleteOutput = Schema.Void;
 export type ReferenceDataSetsDeleteOutput =
   typeof ReferenceDataSetsDeleteOutput.Type;
 

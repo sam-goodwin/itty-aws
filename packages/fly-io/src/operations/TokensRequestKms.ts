@@ -10,7 +10,7 @@ export const TokensRequestKmsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type TokensRequestKmsInput = typeof TokensRequestKmsInput.Type;
 
 // Output Schema
-export const TokensRequestKmsOutput = /*@__PURE__*/ Schema.String;
+export const TokensRequestKmsOutput = Schema.String;
 export type TokensRequestKmsOutput = typeof TokensRequestKmsOutput.Type;
 
 // The operation

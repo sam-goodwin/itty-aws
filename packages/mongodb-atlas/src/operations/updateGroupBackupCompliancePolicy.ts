@@ -20,8 +20,7 @@ export type UpdateGroupBackupCompliancePolicyInput =
   typeof UpdateGroupBackupCompliancePolicyInput.Type;
 
 // Output Schema
-export const UpdateGroupBackupCompliancePolicyOutput =
-  /*@__PURE__*/ Schema.Void;
+export const UpdateGroupBackupCompliancePolicyOutput = Schema.Void;
 export type UpdateGroupBackupCompliancePolicyOutput =
   typeof UpdateGroupBackupCompliancePolicyOutput.Type;
 

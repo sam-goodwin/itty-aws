@@ -12,8 +12,7 @@ export type DirectoriesControllerDeleteDirectoryInput =
   typeof DirectoriesControllerDeleteDirectoryInput.Type;
 
 // Output Schema
-export const DirectoriesControllerDeleteDirectoryOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DirectoriesControllerDeleteDirectoryOutput = Schema.Void;
 export type DirectoriesControllerDeleteDirectoryOutput =
   typeof DirectoriesControllerDeleteDirectoryOutput.Type;
 

@@ -19,7 +19,7 @@ export type ToggleGroupAlertConfigInput =
   typeof ToggleGroupAlertConfigInput.Type;
 
 // Output Schema
-export const ToggleGroupAlertConfigOutput = /*@__PURE__*/ Schema.Void;
+export const ToggleGroupAlertConfigOutput = Schema.Void;
 export type ToggleGroupAlertConfigOutput =
   typeof ToggleGroupAlertConfigOutput.Type;
 

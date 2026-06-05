@@ -23,7 +23,7 @@ export const EndpointsPurgeContentInput = /*@__PURE__*/ Schema.Struct({
 export type EndpointsPurgeContentInput = typeof EndpointsPurgeContentInput.Type;
 
 // Output Schema
-export const EndpointsPurgeContentOutput = /*@__PURE__*/ Schema.Void;
+export const EndpointsPurgeContentOutput = Schema.Void;
 export type EndpointsPurgeContentOutput =
   typeof EndpointsPurgeContentOutput.Type;
 
@@ -97,7 +97,7 @@ export const ExperimentsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ExperimentsDeleteInput = typeof ExperimentsDeleteInput.Type;
 
 // Output Schema
-export const ExperimentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ExperimentsDeleteOutput = Schema.Void;
 export type ExperimentsDeleteOutput = typeof ExperimentsDeleteOutput.Type;
 
 // The operation
@@ -365,7 +365,7 @@ export const FrontDoorsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FrontDoorsDeleteInput = typeof FrontDoorsDeleteInput.Type;
 
 // Output Schema
-export const FrontDoorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FrontDoorsDeleteOutput = Schema.Void;
 export type FrontDoorsDeleteOutput = typeof FrontDoorsDeleteOutput.Type;
 
 // The operation
@@ -554,7 +554,7 @@ export type FrontendEndpointsDisableHttpsInput =
   typeof FrontendEndpointsDisableHttpsInput.Type;
 
 // Output Schema
-export const FrontendEndpointsDisableHttpsOutput = /*@__PURE__*/ Schema.Void;
+export const FrontendEndpointsDisableHttpsOutput = Schema.Void;
 export type FrontendEndpointsDisableHttpsOutput =
   typeof FrontendEndpointsDisableHttpsOutput.Type;
 
@@ -589,7 +589,7 @@ export type FrontendEndpointsEnableHttpsInput =
   typeof FrontendEndpointsEnableHttpsInput.Type;
 
 // Output Schema
-export const FrontendEndpointsEnableHttpsOutput = /*@__PURE__*/ Schema.Void;
+export const FrontendEndpointsEnableHttpsOutput = Schema.Void;
 export type FrontendEndpointsEnableHttpsOutput =
   typeof FrontendEndpointsEnableHttpsOutput.Type;
 
@@ -787,7 +787,7 @@ export type NetworkExperimentProfilesDeleteInput =
   typeof NetworkExperimentProfilesDeleteInput.Type;
 
 // Output Schema
-export const NetworkExperimentProfilesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkExperimentProfilesDeleteOutput = Schema.Void;
 export type NetworkExperimentProfilesDeleteOutput =
   typeof NetworkExperimentProfilesDeleteOutput.Type;
 
@@ -1026,7 +1026,7 @@ export const PoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PoliciesDeleteInput = typeof PoliciesDeleteInput.Type;
 
 // Output Schema
-export const PoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PoliciesDeleteOutput = Schema.Void;
 export type PoliciesDeleteOutput = typeof PoliciesDeleteOutput.Type;
 
 // The operation
@@ -1398,7 +1398,7 @@ export const RulesEnginesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RulesEnginesDeleteInput = typeof RulesEnginesDeleteInput.Type;
 
 // Output Schema
-export const RulesEnginesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RulesEnginesDeleteOutput = Schema.Void;
 export type RulesEnginesDeleteOutput = typeof RulesEnginesDeleteOutput.Type;
 
 // The operation

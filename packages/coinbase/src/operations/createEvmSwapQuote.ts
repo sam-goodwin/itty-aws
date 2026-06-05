@@ -22,7 +22,7 @@ export const CreateEvmSwapQuoteInput = /*@__PURE__*/ Schema.Struct({
 export type CreateEvmSwapQuoteInput = typeof CreateEvmSwapQuoteInput.Type;
 
 // Output Schema
-export const CreateEvmSwapQuoteOutput = /*@__PURE__*/ Schema.Unknown;
+export const CreateEvmSwapQuoteOutput = Schema.Unknown;
 export type CreateEvmSwapQuoteOutput = typeof CreateEvmSwapQuoteOutput.Type;
 
 // The operation

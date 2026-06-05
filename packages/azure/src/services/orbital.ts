@@ -124,7 +124,7 @@ export const ContactProfilesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ContactProfilesDeleteInput = typeof ContactProfilesDeleteInput.Type;
 
 // Output Schema
-export const ContactProfilesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ContactProfilesDeleteOutput = Schema.Void;
 export type ContactProfilesDeleteOutput =
   typeof ContactProfilesDeleteOutput.Type;
 
@@ -427,7 +427,7 @@ export const ContactsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ContactsDeleteInput = typeof ContactsDeleteInput.Type;
 
 // Output Schema
-export const ContactsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ContactsDeleteOutput = Schema.Void;
 export type ContactsDeleteOutput = typeof ContactsDeleteOutput.Type;
 
 // The operation
@@ -616,7 +616,7 @@ export const EdgeSitesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type EdgeSitesDeleteInput = typeof EdgeSitesDeleteInput.Type;
 
 // Output Schema
-export const EdgeSitesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const EdgeSitesDeleteOutput = Schema.Void;
 export type EdgeSitesDeleteOutput = typeof EdgeSitesDeleteOutput.Type;
 
 // The operation
@@ -1023,7 +1023,7 @@ export const GroundStationsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type GroundStationsDeleteInput = typeof GroundStationsDeleteInput.Type;
 
 // Output Schema
-export const GroundStationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GroundStationsDeleteOutput = Schema.Void;
 export type GroundStationsDeleteOutput = typeof GroundStationsDeleteOutput.Type;
 
 // The operation
@@ -1370,7 +1370,7 @@ export const L2ConnectionsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type L2ConnectionsDeleteInput = typeof L2ConnectionsDeleteInput.Type;
 
 // Output Schema
-export const L2ConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const L2ConnectionsDeleteOutput = Schema.Void;
 export type L2ConnectionsDeleteOutput = typeof L2ConnectionsDeleteOutput.Type;
 
 // The operation
@@ -1768,7 +1768,7 @@ export const SpacecraftsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SpacecraftsDeleteInput = typeof SpacecraftsDeleteInput.Type;
 
 // Output Schema
-export const SpacecraftsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SpacecraftsDeleteOutput = Schema.Void;
 export type SpacecraftsDeleteOutput = typeof SpacecraftsDeleteOutput.Type;
 
 // The operation

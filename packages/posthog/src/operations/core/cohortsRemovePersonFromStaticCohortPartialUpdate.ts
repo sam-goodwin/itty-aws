@@ -20,7 +20,7 @@ export type CohortsRemovePersonFromStaticCohortPartialUpdateInput =
 
 // Output Schema
 export const CohortsRemovePersonFromStaticCohortPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type CohortsRemovePersonFromStaticCohortPartialUpdateOutput =
   typeof CohortsRemovePersonFromStaticCohortPartialUpdateOutput.Type;
 

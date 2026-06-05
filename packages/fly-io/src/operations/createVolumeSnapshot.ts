@@ -16,7 +16,7 @@ export const CreateVolumeSnapshotInput = /*@__PURE__*/ Schema.Struct({
 export type CreateVolumeSnapshotInput = typeof CreateVolumeSnapshotInput.Type;
 
 // Output Schema
-export const CreateVolumeSnapshotOutput = /*@__PURE__*/ Schema.Void;
+export const CreateVolumeSnapshotOutput = Schema.Void;
 export type CreateVolumeSnapshotOutput = typeof CreateVolumeSnapshotOutput.Type;
 
 // The operation

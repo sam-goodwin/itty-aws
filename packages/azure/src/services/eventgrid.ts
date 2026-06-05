@@ -59,7 +59,7 @@ export const CaCertificatesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type CaCertificatesDeleteInput = typeof CaCertificatesDeleteInput.Type;
 
 // Output Schema
-export const CaCertificatesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CaCertificatesDeleteOutput = Schema.Void;
 export type CaCertificatesDeleteOutput = typeof CaCertificatesDeleteOutput.Type;
 
 // The operation
@@ -204,7 +204,7 @@ export const ChannelsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ChannelsDeleteInput = typeof ChannelsDeleteInput.Type;
 
 // Output Schema
-export const ChannelsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ChannelsDeleteOutput = Schema.Void;
 export type ChannelsDeleteOutput = typeof ChannelsDeleteOutput.Type;
 
 // The operation
@@ -347,7 +347,7 @@ export const ChannelsUpdateInput = /*@__PURE__*/ Schema.Struct({
 export type ChannelsUpdateInput = typeof ChannelsUpdateInput.Type;
 
 // Output Schema
-export const ChannelsUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const ChannelsUpdateOutput = Schema.Void;
 export type ChannelsUpdateOutput = typeof ChannelsUpdateOutput.Type;
 
 // The operation
@@ -415,7 +415,7 @@ export const ClientGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ClientGroupsDeleteInput = typeof ClientGroupsDeleteInput.Type;
 
 // Output Schema
-export const ClientGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ClientGroupsDeleteOutput = Schema.Void;
 export type ClientGroupsDeleteOutput = typeof ClientGroupsDeleteOutput.Type;
 
 // The operation
@@ -559,7 +559,7 @@ export const ClientsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ClientsDeleteInput = typeof ClientsDeleteInput.Type;
 
 // Output Schema
-export const ClientsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ClientsDeleteOutput = Schema.Void;
 export type ClientsDeleteOutput = typeof ClientsDeleteOutput.Type;
 
 // The operation
@@ -709,7 +709,7 @@ export type DomainEventSubscriptionsDeleteInput =
   typeof DomainEventSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const DomainEventSubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DomainEventSubscriptionsDeleteOutput = Schema.Void;
 export type DomainEventSubscriptionsDeleteOutput =
   typeof DomainEventSubscriptionsDeleteOutput.Type;
 
@@ -976,7 +976,7 @@ export const DomainsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DomainsDeleteInput = typeof DomainsDeleteInput.Type;
 
 // Output Schema
-export const DomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DomainsDeleteOutput = Schema.Void;
 export type DomainsDeleteOutput = typeof DomainsDeleteOutput.Type;
 
 // The operation
@@ -1182,7 +1182,7 @@ export const DomainsUpdateInput = /*@__PURE__*/ Schema.Struct({
 export type DomainsUpdateInput = typeof DomainsUpdateInput.Type;
 
 // Output Schema
-export const DomainsUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const DomainsUpdateOutput = Schema.Void;
 export type DomainsUpdateOutput = typeof DomainsUpdateOutput.Type;
 
 // The operation
@@ -1257,8 +1257,7 @@ export type DomainTopicEventSubscriptionsDeleteInput =
   typeof DomainTopicEventSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const DomainTopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DomainTopicEventSubscriptionsDeleteOutput = Schema.Void;
 export type DomainTopicEventSubscriptionsDeleteOutput =
   typeof DomainTopicEventSubscriptionsDeleteOutput.Type;
 
@@ -1548,7 +1547,7 @@ export const DomainTopicsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DomainTopicsDeleteInput = typeof DomainTopicsDeleteInput.Type;
 
 // Output Schema
-export const DomainTopicsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DomainTopicsDeleteOutput = Schema.Void;
 export type DomainTopicsDeleteOutput = typeof DomainTopicsDeleteOutput.Type;
 
 // The operation
@@ -1693,7 +1692,7 @@ export type EventSubscriptionsDeleteInput =
   typeof EventSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const EventSubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const EventSubscriptionsDeleteOutput = Schema.Void;
 export type EventSubscriptionsDeleteOutput =
   typeof EventSubscriptionsDeleteOutput.Type;
 
@@ -2383,7 +2382,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
 
 // Output Schema
-export const NamespacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NamespacesDeleteOutput = Schema.Void;
 export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
 
 // The operation
@@ -2758,8 +2757,7 @@ export type NamespaceTopicEventSubscriptionsDeleteInput =
   typeof NamespaceTopicEventSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const NamespaceTopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const NamespaceTopicEventSubscriptionsDeleteOutput = Schema.Void;
 export type NamespaceTopicEventSubscriptionsDeleteOutput =
   typeof NamespaceTopicEventSubscriptionsDeleteOutput.Type;
 
@@ -3051,7 +3049,7 @@ export const NamespaceTopicsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NamespaceTopicsDeleteInput = typeof NamespaceTopicsDeleteInput.Type;
 
 // Output Schema
-export const NamespaceTopicsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NamespaceTopicsDeleteOutput = Schema.Void;
 export type NamespaceTopicsDeleteOutput =
   typeof NamespaceTopicsDeleteOutput.Type;
 
@@ -3386,7 +3384,7 @@ export type PartnerConfigurationsDeleteInput =
   typeof PartnerConfigurationsDeleteInput.Type;
 
 // Output Schema
-export const PartnerConfigurationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PartnerConfigurationsDeleteOutput = Schema.Void;
 export type PartnerConfigurationsDeleteOutput =
   typeof PartnerConfigurationsDeleteOutput.Type;
 
@@ -3641,7 +3639,7 @@ export type PartnerNamespacesDeleteInput =
   typeof PartnerNamespacesDeleteInput.Type;
 
 // Output Schema
-export const PartnerNamespacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PartnerNamespacesDeleteOutput = Schema.Void;
 export type PartnerNamespacesDeleteOutput =
   typeof PartnerNamespacesDeleteOutput.Type;
 
@@ -3863,7 +3861,7 @@ export type PartnerNamespacesUpdateInput =
   typeof PartnerNamespacesUpdateInput.Type;
 
 // Output Schema
-export const PartnerNamespacesUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const PartnerNamespacesUpdateOutput = Schema.Void;
 export type PartnerNamespacesUpdateOutput =
   typeof PartnerNamespacesUpdateOutput.Type;
 
@@ -3933,7 +3931,7 @@ export type PartnerRegistrationsDeleteInput =
   typeof PartnerRegistrationsDeleteInput.Type;
 
 // Output Schema
-export const PartnerRegistrationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PartnerRegistrationsDeleteOutput = Schema.Void;
 export type PartnerRegistrationsDeleteOutput =
   typeof PartnerRegistrationsDeleteOutput.Type;
 
@@ -4083,7 +4081,7 @@ export type PartnerRegistrationsUpdateInput =
   typeof PartnerRegistrationsUpdateInput.Type;
 
 // Output Schema
-export const PartnerRegistrationsUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const PartnerRegistrationsUpdateOutput = Schema.Void;
 export type PartnerRegistrationsUpdateOutput =
   typeof PartnerRegistrationsUpdateOutput.Type;
 
@@ -4156,8 +4154,7 @@ export type PartnerTopicEventSubscriptionsDeleteInput =
   typeof PartnerTopicEventSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const PartnerTopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PartnerTopicEventSubscriptionsDeleteOutput = Schema.Void;
 export type PartnerTopicEventSubscriptionsDeleteOutput =
   typeof PartnerTopicEventSubscriptionsDeleteOutput.Type;
 
@@ -4503,7 +4500,7 @@ export const PartnerTopicsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PartnerTopicsDeleteInput = typeof PartnerTopicsDeleteInput.Type;
 
 // Output Schema
-export const PartnerTopicsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PartnerTopicsDeleteOutput = Schema.Void;
 export type PartnerTopicsDeleteOutput = typeof PartnerTopicsDeleteOutput.Type;
 
 // The operation
@@ -4646,7 +4643,7 @@ export const PartnerTopicsUpdateInput = /*@__PURE__*/ Schema.Struct({
 export type PartnerTopicsUpdateInput = typeof PartnerTopicsUpdateInput.Type;
 
 // Output Schema
-export const PartnerTopicsUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const PartnerTopicsUpdateOutput = Schema.Void;
 export type PartnerTopicsUpdateOutput = typeof PartnerTopicsUpdateOutput.Type;
 
 // The operation
@@ -4716,7 +4713,7 @@ export type PermissionBindingsDeleteInput =
   typeof PermissionBindingsDeleteInput.Type;
 
 // Output Schema
-export const PermissionBindingsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PermissionBindingsDeleteOutput = Schema.Void;
 export type PermissionBindingsDeleteOutput =
   typeof PermissionBindingsDeleteOutput.Type;
 
@@ -4836,7 +4833,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -5157,8 +5154,7 @@ export type SystemTopicEventSubscriptionsDeleteInput =
   typeof SystemTopicEventSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const SystemTopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SystemTopicEventSubscriptionsDeleteOutput = Schema.Void;
 export type SystemTopicEventSubscriptionsDeleteOutput =
   typeof SystemTopicEventSubscriptionsDeleteOutput.Type;
 
@@ -5435,7 +5431,7 @@ export const SystemTopicsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SystemTopicsDeleteInput = typeof SystemTopicsDeleteInput.Type;
 
 // Output Schema
-export const SystemTopicsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SystemTopicsDeleteOutput = Schema.Void;
 export type SystemTopicsDeleteOutput = typeof SystemTopicsDeleteOutput.Type;
 
 // The operation
@@ -5656,7 +5652,7 @@ export type TopicEventSubscriptionsDeleteInput =
   typeof TopicEventSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const TopicEventSubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TopicEventSubscriptionsDeleteOutput = Schema.Void;
 export type TopicEventSubscriptionsDeleteOutput =
   typeof TopicEventSubscriptionsDeleteOutput.Type;
 
@@ -5918,7 +5914,7 @@ export const TopicsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TopicsDeleteInput = typeof TopicsDeleteInput.Type;
 
 // Output Schema
-export const TopicsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TopicsDeleteOutput = Schema.Void;
 export type TopicsDeleteOutput = typeof TopicsDeleteOutput.Type;
 
 // The operation
@@ -6173,7 +6169,7 @@ export const TopicSpacesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TopicSpacesDeleteInput = typeof TopicSpacesDeleteInput.Type;
 
 // Output Schema
-export const TopicSpacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TopicSpacesDeleteOutput = Schema.Void;
 export type TopicSpacesDeleteOutput = typeof TopicSpacesDeleteOutput.Type;
 
 // The operation
@@ -6312,7 +6308,7 @@ export const TopicsUpdateInput = /*@__PURE__*/ Schema.Struct({
 export type TopicsUpdateInput = typeof TopicsUpdateInput.Type;
 
 // Output Schema
-export const TopicsUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const TopicsUpdateOutput = Schema.Void;
 export type TopicsUpdateOutput = typeof TopicsUpdateOutput.Type;
 
 // The operation

@@ -18,7 +18,7 @@ export type GetGroupDataFederationInput =
   typeof GetGroupDataFederationInput.Type;
 
 // Output Schema
-export const GetGroupDataFederationOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupDataFederationOutput = Schema.Void;
 export type GetGroupDataFederationOutput =
   typeof GetGroupDataFederationOutput.Type;
 

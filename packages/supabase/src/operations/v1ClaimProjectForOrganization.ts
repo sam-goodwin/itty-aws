@@ -17,7 +17,7 @@ export type V1ClaimProjectForOrganizationInput =
   typeof V1ClaimProjectForOrganizationInput.Type;
 
 // Output Schema
-export const V1ClaimProjectForOrganizationOutput = /*@__PURE__*/ Schema.Void;
+export const V1ClaimProjectForOrganizationOutput = Schema.Void;
 export type V1ClaimProjectForOrganizationOutput =
   typeof V1ClaimProjectForOrganizationOutput.Type;
 

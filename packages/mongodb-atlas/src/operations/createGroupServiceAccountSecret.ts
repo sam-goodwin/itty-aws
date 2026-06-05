@@ -21,7 +21,7 @@ export type CreateGroupServiceAccountSecretInput =
   typeof CreateGroupServiceAccountSecretInput.Type;
 
 // Output Schema
-export const CreateGroupServiceAccountSecretOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupServiceAccountSecretOutput = Schema.Void;
 export type CreateGroupServiceAccountSecretOutput =
   typeof CreateGroupServiceAccountSecretOutput.Type;
 

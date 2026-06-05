@@ -17,8 +17,7 @@ export type PropertyDefinitionsSeenTogetherRetrieveInput =
   typeof PropertyDefinitionsSeenTogetherRetrieveInput.Type;
 
 // Output Schema
-export const PropertyDefinitionsSeenTogetherRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PropertyDefinitionsSeenTogetherRetrieveOutput = Schema.Void;
 export type PropertyDefinitionsSeenTogetherRetrieveOutput =
   typeof PropertyDefinitionsSeenTogetherRetrieveOutput.Type;
 

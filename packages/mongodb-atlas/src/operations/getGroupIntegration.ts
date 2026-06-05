@@ -29,7 +29,7 @@ export const GetGroupIntegrationInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupIntegrationInput = typeof GetGroupIntegrationInput.Type;
 
 // Output Schema
-export const GetGroupIntegrationOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupIntegrationOutput = Schema.Void;
 export type GetGroupIntegrationOutput = typeof GetGroupIntegrationOutput.Type;
 
 // The operation

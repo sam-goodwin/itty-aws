@@ -71,7 +71,7 @@ export const EvidenceDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type EvidenceDeleteInput = typeof EvidenceDeleteInput.Type;
 
 // Output Schema
-export const EvidenceDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const EvidenceDeleteOutput = Schema.Void;
 export type EvidenceDeleteOutput = typeof EvidenceDeleteOutput.Type;
 
 // The operation
@@ -554,7 +554,7 @@ export const ReportDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ReportDeleteInput = typeof ReportDeleteInput.Type;
 
 // Output Schema
-export const ReportDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ReportDeleteOutput = Schema.Void;
 export type ReportDeleteOutput = typeof ReportDeleteOutput.Type;
 
 // The operation
@@ -996,7 +996,7 @@ export type ScopingConfigurationDeleteInput =
   typeof ScopingConfigurationDeleteInput.Type;
 
 // Output Schema
-export const ScopingConfigurationDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ScopingConfigurationDeleteOutput = Schema.Void;
 export type ScopingConfigurationDeleteOutput =
   typeof ScopingConfigurationDeleteOutput.Type;
 
@@ -1351,7 +1351,7 @@ export const WebhookDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type WebhookDeleteInput = typeof WebhookDeleteInput.Type;
 
 // Output Schema
-export const WebhookDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WebhookDeleteOutput = Schema.Void;
 export type WebhookDeleteOutput = typeof WebhookDeleteOutput.Type;
 
 // The operation

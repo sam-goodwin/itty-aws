@@ -29,7 +29,7 @@ export type ListGroupProcessPerformanceAdvisorSuggestedIndexesInput =
 
 // Output Schema
 export const ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput =
   typeof ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput.Type;
 

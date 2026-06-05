@@ -1176,8 +1176,7 @@ export type EnvironmentsDefaultEvaluationContextsCreateInput =
   typeof EnvironmentsDefaultEvaluationContextsCreateInput.Type;
 
 // Output Schema
-export const EnvironmentsDefaultEvaluationContextsCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EnvironmentsDefaultEvaluationContextsCreateOutput = Schema.Void;
 export type EnvironmentsDefaultEvaluationContextsCreateOutput =
   typeof EnvironmentsDefaultEvaluationContextsCreateOutput.Type;
 

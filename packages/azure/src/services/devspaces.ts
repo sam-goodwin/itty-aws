@@ -78,7 +78,7 @@ export const ControllersDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ControllersDeleteInput = typeof ControllersDeleteInput.Type;
 
 // Output Schema
-export const ControllersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ControllersDeleteOutput = Schema.Void;
 export type ControllersDeleteOutput = typeof ControllersDeleteOutput.Type;
 
 // The operation

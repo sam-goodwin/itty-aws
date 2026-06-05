@@ -24,7 +24,7 @@ export type GetGroupDbAccessHistoryProcessInput =
   typeof GetGroupDbAccessHistoryProcessInput.Type;
 
 // Output Schema
-export const GetGroupDbAccessHistoryProcessOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupDbAccessHistoryProcessOutput = Schema.Void;
 export type GetGroupDbAccessHistoryProcessOutput =
   typeof GetGroupDbAccessHistoryProcessOutput.Type;
 

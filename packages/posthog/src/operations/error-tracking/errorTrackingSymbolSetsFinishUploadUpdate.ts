@@ -27,8 +27,7 @@ export type ErrorTrackingSymbolSetsFinishUploadUpdateInput =
   typeof ErrorTrackingSymbolSetsFinishUploadUpdateInput.Type;
 
 // Output Schema
-export const ErrorTrackingSymbolSetsFinishUploadUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingSymbolSetsFinishUploadUpdateOutput = Schema.Void;
 export type ErrorTrackingSymbolSetsFinishUploadUpdateOutput =
   typeof ErrorTrackingSymbolSetsFinishUploadUpdateOutput.Type;
 

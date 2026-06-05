@@ -16,7 +16,7 @@ export const FileSystemDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type FileSystemDestroyInput = typeof FileSystemDestroyInput.Type;
 
 // Output Schema
-export const FileSystemDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const FileSystemDestroyOutput = Schema.Void;
 export type FileSystemDestroyOutput = typeof FileSystemDestroyOutput.Type;
 
 // The operation

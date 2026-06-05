@@ -23,7 +23,7 @@ export type TasksRunsSessionLogsRetrieveInput =
   typeof TasksRunsSessionLogsRetrieveInput.Type;
 
 // Output Schema
-export const TasksRunsSessionLogsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const TasksRunsSessionLogsRetrieveOutput = Schema.Void;
 export type TasksRunsSessionLogsRetrieveOutput =
   typeof TasksRunsSessionLogsRetrieveOutput.Type;
 

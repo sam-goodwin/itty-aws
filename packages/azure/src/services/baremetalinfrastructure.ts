@@ -230,8 +230,7 @@ export type AzureBareMetalStorageInstancesDeleteInput =
   typeof AzureBareMetalStorageInstancesDeleteInput.Type;
 
 // Output Schema
-export const AzureBareMetalStorageInstancesDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AzureBareMetalStorageInstancesDeleteOutput = Schema.Void;
 export type AzureBareMetalStorageInstancesDeleteOutput =
   typeof AzureBareMetalStorageInstancesDeleteOutput.Type;
 

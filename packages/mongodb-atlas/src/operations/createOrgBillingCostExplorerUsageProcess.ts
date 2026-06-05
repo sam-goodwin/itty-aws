@@ -18,8 +18,7 @@ export type CreateOrgBillingCostExplorerUsageProcessInput =
   typeof CreateOrgBillingCostExplorerUsageProcessInput.Type;
 
 // Output Schema
-export const CreateOrgBillingCostExplorerUsageProcessOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CreateOrgBillingCostExplorerUsageProcessOutput = Schema.Void;
 export type CreateOrgBillingCostExplorerUsageProcessOutput =
   typeof CreateOrgBillingCostExplorerUsageProcessOutput.Type;
 

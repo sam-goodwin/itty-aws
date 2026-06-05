@@ -21,8 +21,7 @@ export type ListGroupStreamPrivateLinkConnectionsInput =
   typeof ListGroupStreamPrivateLinkConnectionsInput.Type;
 
 // Output Schema
-export const ListGroupStreamPrivateLinkConnectionsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListGroupStreamPrivateLinkConnectionsOutput = Schema.Void;
 export type ListGroupStreamPrivateLinkConnectionsOutput =
   typeof ListGroupStreamPrivateLinkConnectionsOutput.Type;
 

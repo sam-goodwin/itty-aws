@@ -19,7 +19,7 @@ export type SubscriptionsTestDeliveryCreateInput =
   typeof SubscriptionsTestDeliveryCreateInput.Type;
 
 // Output Schema
-export const SubscriptionsTestDeliveryCreateOutput = /*@__PURE__*/ Schema.Void;
+export const SubscriptionsTestDeliveryCreateOutput = Schema.Void;
 export type SubscriptionsTestDeliveryCreateOutput =
   typeof SubscriptionsTestDeliveryCreateOutput.Type;
 

@@ -100,7 +100,7 @@ export type InsightsGenerateMetadataCreateInput =
   typeof InsightsGenerateMetadataCreateInput.Type;
 
 // Output Schema
-export const InsightsGenerateMetadataCreateOutput = /*@__PURE__*/ Schema.Void;
+export const InsightsGenerateMetadataCreateOutput = Schema.Void;
 export type InsightsGenerateMetadataCreateOutput =
   typeof InsightsGenerateMetadataCreateOutput.Type;
 

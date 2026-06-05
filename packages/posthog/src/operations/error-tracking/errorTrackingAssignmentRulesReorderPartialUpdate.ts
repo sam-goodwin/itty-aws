@@ -32,7 +32,7 @@ export type ErrorTrackingAssignmentRulesReorderPartialUpdateInput =
 
 // Output Schema
 export const ErrorTrackingAssignmentRulesReorderPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type ErrorTrackingAssignmentRulesReorderPartialUpdateOutput =
   typeof ErrorTrackingAssignmentRulesReorderPartialUpdateOutput.Type;
 

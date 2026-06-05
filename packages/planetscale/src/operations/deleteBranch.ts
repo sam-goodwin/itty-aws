@@ -18,7 +18,7 @@ export const DeleteBranchInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteBranchInput = typeof DeleteBranchInput.Type;
 
 // Output Schema
-export const DeleteBranchOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteBranchOutput = Schema.Void;
 export type DeleteBranchOutput = typeof DeleteBranchOutput.Type;
 
 // The operation

@@ -35,8 +35,7 @@ export type ErrorTrackingStackFramesBatchGetCreateInput =
   typeof ErrorTrackingStackFramesBatchGetCreateInput.Type;
 
 // Output Schema
-export const ErrorTrackingStackFramesBatchGetCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingStackFramesBatchGetCreateOutput = Schema.Void;
 export type ErrorTrackingStackFramesBatchGetCreateOutput =
   typeof ErrorTrackingStackFramesBatchGetCreateOutput.Type;
 

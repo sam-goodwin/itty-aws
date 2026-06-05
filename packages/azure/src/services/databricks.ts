@@ -63,7 +63,7 @@ export type AccessConnectorsDeleteInput =
   typeof AccessConnectorsDeleteInput.Type;
 
 // Output Schema
-export const AccessConnectorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AccessConnectorsDeleteOutput = Schema.Void;
 export type AccessConnectorsDeleteOutput =
   typeof AccessConnectorsDeleteOutput.Type;
 
@@ -398,7 +398,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -645,7 +645,7 @@ export const VNetPeeringDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VNetPeeringDeleteInput = typeof VNetPeeringDeleteInput.Type;
 
 // Output Schema
-export const VNetPeeringDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VNetPeeringDeleteOutput = Schema.Void;
 export type VNetPeeringDeleteOutput = typeof VNetPeeringDeleteOutput.Type;
 
 // The operation
@@ -794,7 +794,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
 
 // Output Schema
-export const WorkspacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WorkspacesDeleteOutput = Schema.Void;
 export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
 
 // The operation

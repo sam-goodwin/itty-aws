@@ -993,7 +993,7 @@ export type FilesNoSubscriptionUploadInput =
   typeof FilesNoSubscriptionUploadInput.Type;
 
 // Output Schema
-export const FilesNoSubscriptionUploadOutput = /*@__PURE__*/ Schema.Void;
+export const FilesNoSubscriptionUploadOutput = Schema.Void;
 export type FilesNoSubscriptionUploadOutput =
   typeof FilesNoSubscriptionUploadOutput.Type;
 
@@ -1024,7 +1024,7 @@ export const FilesUploadInput = /*@__PURE__*/ Schema.Struct({
 export type FilesUploadInput = typeof FilesUploadInput.Type;
 
 // Output Schema
-export const FilesUploadOutput = /*@__PURE__*/ Schema.Void;
+export const FilesUploadOutput = Schema.Void;
 export type FilesUploadOutput = typeof FilesUploadOutput.Type;
 
 // The operation

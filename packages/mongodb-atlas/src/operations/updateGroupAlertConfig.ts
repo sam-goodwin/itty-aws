@@ -19,7 +19,7 @@ export type UpdateGroupAlertConfigInput =
   typeof UpdateGroupAlertConfigInput.Type;
 
 // Output Schema
-export const UpdateGroupAlertConfigOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupAlertConfigOutput = Schema.Void;
 export type UpdateGroupAlertConfigOutput =
   typeof UpdateGroupAlertConfigOutput.Type;
 

@@ -17,8 +17,7 @@ export type ExperimentsRequiresFlagImplementationRetrieveInput =
   typeof ExperimentsRequiresFlagImplementationRetrieveInput.Type;
 
 // Output Schema
-export const ExperimentsRequiresFlagImplementationRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ExperimentsRequiresFlagImplementationRetrieveOutput = Schema.Void;
 export type ExperimentsRequiresFlagImplementationRetrieveOutput =
   typeof ExperimentsRequiresFlagImplementationRetrieveOutput.Type;
 

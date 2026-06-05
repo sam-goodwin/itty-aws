@@ -16,7 +16,7 @@ export type EventDefinitionsPythonRetrieveInput =
   typeof EventDefinitionsPythonRetrieveInput.Type;
 
 // Output Schema
-export const EventDefinitionsPythonRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const EventDefinitionsPythonRetrieveOutput = Schema.Void;
 export type EventDefinitionsPythonRetrieveOutput =
   typeof EventDefinitionsPythonRetrieveOutput.Type;
 

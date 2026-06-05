@@ -15,7 +15,7 @@ export const DeleteSnapshotInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteSnapshotInput = typeof DeleteSnapshotInput.Type;
 
 // Output Schema
-export const DeleteSnapshotOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteSnapshotOutput = Schema.Void;
 export type DeleteSnapshotOutput = typeof DeleteSnapshotOutput.Type;
 
 // The operation

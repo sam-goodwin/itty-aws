@@ -10,7 +10,7 @@ export const UsersDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type UsersDestroyInput = typeof UsersDestroyInput.Type;
 
 // Output Schema
-export const UsersDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const UsersDestroyOutput = Schema.Void;
 export type UsersDestroyOutput = typeof UsersDestroyOutput.Type;
 
 // The operation

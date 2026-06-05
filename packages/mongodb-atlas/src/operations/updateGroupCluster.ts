@@ -18,7 +18,7 @@ export const UpdateGroupClusterInput = /*@__PURE__*/ Schema.Struct({
 export type UpdateGroupClusterInput = typeof UpdateGroupClusterInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupClusterOutput = Schema.Void;
 export type UpdateGroupClusterOutput = typeof UpdateGroupClusterOutput.Type;
 
 // The operation

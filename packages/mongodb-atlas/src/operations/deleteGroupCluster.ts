@@ -19,7 +19,7 @@ export const DeleteGroupClusterInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteGroupClusterInput = typeof DeleteGroupClusterInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupClusterOutput = Schema.Void;
 export type DeleteGroupClusterOutput = typeof DeleteGroupClusterOutput.Type;
 
 // The operation

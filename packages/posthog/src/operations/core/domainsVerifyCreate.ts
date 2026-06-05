@@ -30,7 +30,7 @@ export const DomainsVerifyCreateInput = /*@__PURE__*/ Schema.Struct({
 export type DomainsVerifyCreateInput = typeof DomainsVerifyCreateInput.Type;
 
 // Output Schema
-export const DomainsVerifyCreateOutput = /*@__PURE__*/ Schema.Void;
+export const DomainsVerifyCreateOutput = Schema.Void;
 export type DomainsVerifyCreateOutput = typeof DomainsVerifyCreateOutput.Type;
 
 // The operation

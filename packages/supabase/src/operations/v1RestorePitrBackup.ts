@@ -16,7 +16,7 @@ export const V1RestorePitrBackupInput = /*@__PURE__*/ Schema.Struct({
 export type V1RestorePitrBackupInput = typeof V1RestorePitrBackupInput.Type;
 
 // Output Schema
-export const V1RestorePitrBackupOutput = /*@__PURE__*/ Schema.Void;
+export const V1RestorePitrBackupOutput = Schema.Void;
 export type V1RestorePitrBackupOutput = typeof V1RestorePitrBackupOutput.Type;
 
 // The operation

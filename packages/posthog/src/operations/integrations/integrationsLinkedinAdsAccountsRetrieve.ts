@@ -18,8 +18,7 @@ export type IntegrationsLinkedinAdsAccountsRetrieveInput =
   typeof IntegrationsLinkedinAdsAccountsRetrieveInput.Type;
 
 // Output Schema
-export const IntegrationsLinkedinAdsAccountsRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationsLinkedinAdsAccountsRetrieveOutput = Schema.Void;
 export type IntegrationsLinkedinAdsAccountsRetrieveOutput =
   typeof IntegrationsLinkedinAdsAccountsRetrieveOutput.Type;
 

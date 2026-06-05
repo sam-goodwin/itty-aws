@@ -18,7 +18,7 @@ export type AddBranchNeonAuthTrustedDomainInput =
   typeof AddBranchNeonAuthTrustedDomainInput.Type;
 
 // Output Schema
-export const AddBranchNeonAuthTrustedDomainOutput = /*@__PURE__*/ Schema.Void;
+export const AddBranchNeonAuthTrustedDomainOutput = Schema.Void;
 export type AddBranchNeonAuthTrustedDomainOutput =
   typeof AddBranchNeonAuthTrustedDomainOutput.Type;
 

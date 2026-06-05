@@ -752,7 +752,7 @@ export type UsersValidate2faCreateInput =
   typeof UsersValidate2faCreateInput.Type;
 
 // Output Schema
-export const UsersValidate2faCreateOutput = /*@__PURE__*/ Schema.Void;
+export const UsersValidate2faCreateOutput = Schema.Void;
 export type UsersValidate2faCreateOutput =
   typeof UsersValidate2faCreateOutput.Type;
 

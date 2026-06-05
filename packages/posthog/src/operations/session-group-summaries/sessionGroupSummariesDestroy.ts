@@ -17,7 +17,7 @@ export type SessionGroupSummariesDestroyInput =
   typeof SessionGroupSummariesDestroyInput.Type;
 
 // Output Schema
-export const SessionGroupSummariesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const SessionGroupSummariesDestroyOutput = Schema.Void;
 export type SessionGroupSummariesDestroyOutput =
   typeof SessionGroupSummariesDestroyOutput.Type;
 

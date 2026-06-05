@@ -24,7 +24,7 @@ export type PersonsBatchByUuidsCreateInput =
   typeof PersonsBatchByUuidsCreateInput.Type;
 
 // Output Schema
-export const PersonsBatchByUuidsCreateOutput = /*@__PURE__*/ Schema.Void;
+export const PersonsBatchByUuidsCreateOutput = Schema.Void;
 export type PersonsBatchByUuidsCreateOutput =
   typeof PersonsBatchByUuidsCreateOutput.Type;
 

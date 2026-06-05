@@ -154,7 +154,7 @@ export const ConnectionsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ConnectionsDeleteInput = typeof ConnectionsDeleteInput.Type;
 
 // Output Schema
-export const ConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConnectionsDeleteOutput = Schema.Void;
 export type ConnectionsDeleteOutput = typeof ConnectionsDeleteOutput.Type;
 
 // The operation
@@ -502,7 +502,7 @@ export const FlowsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FlowsDeleteInput = typeof FlowsDeleteInput.Type;
 
 // Output Schema
-export const FlowsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FlowsDeleteOutput = Schema.Void;
 export type FlowsDeleteOutput = typeof FlowsDeleteOutput.Type;
 
 // The operation
@@ -1799,7 +1799,7 @@ export const PipelinesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PipelinesDeleteInput = typeof PipelinesDeleteInput.Type;
 
 // Output Schema
-export const PipelinesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PipelinesDeleteOutput = Schema.Void;
 export type PipelinesDeleteOutput = typeof PipelinesDeleteOutput.Type;
 
 // The operation

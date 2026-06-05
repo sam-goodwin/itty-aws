@@ -20,8 +20,7 @@ export type DeleteGroupClusterGlobalWriteCustomZoneMappingInput =
   typeof DeleteGroupClusterGlobalWriteCustomZoneMappingInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeleteGroupClusterGlobalWriteCustomZoneMappingOutput = Schema.Void;
 export type DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
   typeof DeleteGroupClusterGlobalWriteCustomZoneMappingOutput.Type;
 

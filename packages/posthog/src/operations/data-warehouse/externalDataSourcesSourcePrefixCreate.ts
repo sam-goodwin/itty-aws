@@ -189,8 +189,7 @@ export type ExternalDataSourcesSourcePrefixCreateInput =
   typeof ExternalDataSourcesSourcePrefixCreateInput.Type;
 
 // Output Schema
-export const ExternalDataSourcesSourcePrefixCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ExternalDataSourcesSourcePrefixCreateOutput = Schema.Void;
 export type ExternalDataSourcesSourcePrefixCreateOutput =
   typeof ExternalDataSourcesSourcePrefixCreateOutput.Type;
 

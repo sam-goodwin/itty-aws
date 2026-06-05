@@ -21,7 +21,7 @@ export type DeleteFederationSettingConnectedOrgConfigRoleMappingInput =
 
 // Output Schema
 export const DeleteFederationSettingConnectedOrgConfigRoleMappingOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type DeleteFederationSettingConnectedOrgConfigRoleMappingOutput =
   typeof DeleteFederationSettingConnectedOrgConfigRoleMappingOutput.Type;
 

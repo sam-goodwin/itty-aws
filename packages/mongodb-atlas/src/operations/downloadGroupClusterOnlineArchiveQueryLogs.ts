@@ -22,8 +22,7 @@ export type DownloadGroupClusterOnlineArchiveQueryLogsInput =
   typeof DownloadGroupClusterOnlineArchiveQueryLogsInput.Type;
 
 // Output Schema
-export const DownloadGroupClusterOnlineArchiveQueryLogsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DownloadGroupClusterOnlineArchiveQueryLogsOutput = Schema.Void;
 export type DownloadGroupClusterOnlineArchiveQueryLogsOutput =
   typeof DownloadGroupClusterOnlineArchiveQueryLogsOutput.Type;
 

@@ -28,8 +28,7 @@ export type ListGroupClusterQueryShapeInsightSummariesInput =
   typeof ListGroupClusterQueryShapeInsightSummariesInput.Type;
 
 // Output Schema
-export const ListGroupClusterQueryShapeInsightSummariesOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListGroupClusterQueryShapeInsightSummariesOutput = Schema.Void;
 export type ListGroupClusterQueryShapeInsightSummariesOutput =
   typeof ListGroupClusterQueryShapeInsightSummariesOutput.Type;
 

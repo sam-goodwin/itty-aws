@@ -27,7 +27,7 @@ export type AvailabilitySetsCancelMigrationToVirtualMachineScaleSetInput =
 
 // Output Schema
 export const AvailabilitySetsCancelMigrationToVirtualMachineScaleSetOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type AvailabilitySetsCancelMigrationToVirtualMachineScaleSetOutput =
   typeof AvailabilitySetsCancelMigrationToVirtualMachineScaleSetOutput.Type;
 
@@ -63,7 +63,7 @@ export type AvailabilitySetsConvertToVirtualMachineScaleSetInput =
 
 // Output Schema
 export const AvailabilitySetsConvertToVirtualMachineScaleSetOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type AvailabilitySetsConvertToVirtualMachineScaleSetOutput =
   typeof AvailabilitySetsConvertToVirtualMachineScaleSetOutput.Type;
 
@@ -150,7 +150,7 @@ export type AvailabilitySetsDeleteInput =
   typeof AvailabilitySetsDeleteInput.Type;
 
 // Output Schema
-export const AvailabilitySetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AvailabilitySetsDeleteOutput = Schema.Void;
 export type AvailabilitySetsDeleteOutput =
   typeof AvailabilitySetsDeleteOutput.Type;
 
@@ -405,7 +405,7 @@ export type AvailabilitySetsStartMigrationToVirtualMachineScaleSetInput =
 
 // Output Schema
 export const AvailabilitySetsStartMigrationToVirtualMachineScaleSetOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type AvailabilitySetsStartMigrationToVirtualMachineScaleSetOutput =
   typeof AvailabilitySetsStartMigrationToVirtualMachineScaleSetOutput.Type;
 
@@ -492,7 +492,7 @@ export type AvailabilitySetsValidateMigrationToVirtualMachineScaleSetInput =
 
 // Output Schema
 export const AvailabilitySetsValidateMigrationToVirtualMachineScaleSetOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type AvailabilitySetsValidateMigrationToVirtualMachineScaleSetOutput =
   typeof AvailabilitySetsValidateMigrationToVirtualMachineScaleSetOutput.Type;
 
@@ -584,7 +584,7 @@ export type CapacityReservationGroupsDeleteInput =
   typeof CapacityReservationGroupsDeleteInput.Type;
 
 // Output Schema
-export const CapacityReservationGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CapacityReservationGroupsDeleteOutput = Schema.Void;
 export type CapacityReservationGroupsDeleteOutput =
   typeof CapacityReservationGroupsDeleteOutput.Type;
 
@@ -936,7 +936,7 @@ export type CapacityReservationsDeleteInput =
   typeof CapacityReservationsDeleteInput.Type;
 
 // Output Schema
-export const CapacityReservationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CapacityReservationsDeleteOutput = Schema.Void;
 export type CapacityReservationsDeleteOutput =
   typeof CapacityReservationsDeleteOutput.Type;
 
@@ -1192,7 +1192,7 @@ export type ContainerServicesDeleteInput =
   typeof ContainerServicesDeleteInput.Type;
 
 // Output Schema
-export const ContainerServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ContainerServicesDeleteOutput = Schema.Void;
 export type ContainerServicesDeleteOutput =
   typeof ContainerServicesDeleteOutput.Type;
 
@@ -1396,7 +1396,7 @@ export type DedicatedHostGroupsDeleteInput =
   typeof DedicatedHostGroupsDeleteInput.Type;
 
 // Output Schema
-export const DedicatedHostGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DedicatedHostGroupsDeleteOutput = Schema.Void;
 export type DedicatedHostGroupsDeleteOutput =
   typeof DedicatedHostGroupsDeleteOutput.Type;
 
@@ -1722,7 +1722,7 @@ export const DedicatedHostsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DedicatedHostsDeleteInput = typeof DedicatedHostsDeleteInput.Type;
 
 // Output Schema
-export const DedicatedHostsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DedicatedHostsDeleteOutput = Schema.Void;
 export type DedicatedHostsDeleteOutput = typeof DedicatedHostsDeleteOutput.Type;
 
 // The operation
@@ -1907,7 +1907,7 @@ export type DedicatedHostsRedeployInput =
   typeof DedicatedHostsRedeployInput.Type;
 
 // Output Schema
-export const DedicatedHostsRedeployOutput = /*@__PURE__*/ Schema.Void;
+export const DedicatedHostsRedeployOutput = Schema.Void;
 export type DedicatedHostsRedeployOutput =
   typeof DedicatedHostsRedeployOutput.Type;
 
@@ -1941,7 +1941,7 @@ export const DedicatedHostsRestartInput = /*@__PURE__*/ Schema.Struct({
 export type DedicatedHostsRestartInput = typeof DedicatedHostsRestartInput.Type;
 
 // Output Schema
-export const DedicatedHostsRestartOutput = /*@__PURE__*/ Schema.Void;
+export const DedicatedHostsRestartOutput = Schema.Void;
 export type DedicatedHostsRestartOutput =
   typeof DedicatedHostsRestartOutput.Type;
 
@@ -2074,7 +2074,7 @@ export const ImagesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ImagesDeleteInput = typeof ImagesDeleteInput.Type;
 
 // Output Schema
-export const ImagesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ImagesDeleteOutput = Schema.Void;
 export type ImagesDeleteOutput = typeof ImagesDeleteOutput.Type;
 
 // The operation
@@ -2491,7 +2491,7 @@ export type ProximityPlacementGroupsDeleteInput =
   typeof ProximityPlacementGroupsDeleteInput.Type;
 
 // Output Schema
-export const ProximityPlacementGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ProximityPlacementGroupsDeleteOutput = Schema.Void;
 export type ProximityPlacementGroupsDeleteOutput =
   typeof ProximityPlacementGroupsDeleteOutput.Type;
 
@@ -2817,7 +2817,7 @@ export type RestorePointCollectionsDeleteInput =
   typeof RestorePointCollectionsDeleteInput.Type;
 
 // Output Schema
-export const RestorePointCollectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RestorePointCollectionsDeleteOutput = Schema.Void;
 export type RestorePointCollectionsDeleteOutput =
   typeof RestorePointCollectionsDeleteOutput.Type;
 
@@ -3123,7 +3123,7 @@ export const RestorePointsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RestorePointsDeleteInput = typeof RestorePointsDeleteInput.Type;
 
 // Output Schema
-export const RestorePointsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RestorePointsDeleteOutput = Schema.Void;
 export type RestorePointsDeleteOutput = typeof RestorePointsDeleteOutput.Type;
 
 // The operation
@@ -3359,7 +3359,7 @@ export const SshPublicKeysDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SshPublicKeysDeleteInput = typeof SshPublicKeysDeleteInput.Type;
 
 // Output Schema
-export const SshPublicKeysDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SshPublicKeysDeleteOutput = Schema.Void;
 export type SshPublicKeysDeleteOutput = typeof SshPublicKeysDeleteOutput.Type;
 
 // The operation
@@ -3928,7 +3928,7 @@ export type VirtualMachineExtensionsDeleteInput =
   typeof VirtualMachineExtensionsDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineExtensionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineExtensionsDeleteOutput = Schema.Void;
 export type VirtualMachineExtensionsDeleteOutput =
   typeof VirtualMachineExtensionsDeleteOutput.Type;
 
@@ -4673,7 +4673,7 @@ export type VirtualMachineRunCommandsDeleteInput =
   typeof VirtualMachineRunCommandsDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineRunCommandsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineRunCommandsDeleteOutput = Schema.Void;
 export type VirtualMachineRunCommandsDeleteOutput =
   typeof VirtualMachineRunCommandsDeleteOutput.Type;
 
@@ -5263,8 +5263,7 @@ export type VirtualMachineScaleSetExtensionsDeleteInput =
   typeof VirtualMachineScaleSetExtensionsDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetExtensionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetExtensionsDeleteOutput = Schema.Void;
 export type VirtualMachineScaleSetExtensionsDeleteOutput =
   typeof VirtualMachineScaleSetExtensionsDeleteOutput.Type;
 
@@ -5429,8 +5428,7 @@ export type VirtualMachineScaleSetRollingUpgradesCancelInput =
   typeof VirtualMachineScaleSetRollingUpgradesCancelInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetRollingUpgradesCancelOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetRollingUpgradesCancelOutput = Schema.Void;
 export type VirtualMachineScaleSetRollingUpgradesCancelOutput =
   typeof VirtualMachineScaleSetRollingUpgradesCancelOutput.Type;
 
@@ -5520,7 +5518,7 @@ export type VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeInput =
 
 // Output Schema
 export const VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeOutput =
   typeof VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeOutput.Type;
 
@@ -5558,7 +5556,7 @@ export type VirtualMachineScaleSetRollingUpgradesStartOSUpgradeInput =
 
 // Output Schema
 export const VirtualMachineScaleSetRollingUpgradesStartOSUpgradeOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type VirtualMachineScaleSetRollingUpgradesStartOSUpgradeOutput =
   typeof VirtualMachineScaleSetRollingUpgradesStartOSUpgradeOutput.Type;
 
@@ -5593,8 +5591,7 @@ export type VirtualMachineScaleSetsApproveRollingUpgradeInput =
   typeof VirtualMachineScaleSetsApproveRollingUpgradeInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsApproveRollingUpgradeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsApproveRollingUpgradeOutput = Schema.Void;
 export type VirtualMachineScaleSetsApproveRollingUpgradeOutput =
   typeof VirtualMachineScaleSetsApproveRollingUpgradeOutput.Type;
 
@@ -5630,7 +5627,7 @@ export type VirtualMachineScaleSetsConvertToSinglePlacementGroupInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsConvertToSinglePlacementGroupOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type VirtualMachineScaleSetsConvertToSinglePlacementGroupOutput =
   typeof VirtualMachineScaleSetsConvertToSinglePlacementGroupOutput.Type;
 
@@ -5723,8 +5720,7 @@ export type VirtualMachineScaleSetsDeallocateInput =
   typeof VirtualMachineScaleSetsDeallocateInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsDeallocateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsDeallocateOutput = Schema.Void;
 export type VirtualMachineScaleSetsDeallocateOutput =
   typeof VirtualMachineScaleSetsDeallocateOutput.Type;
 
@@ -5759,7 +5755,7 @@ export type VirtualMachineScaleSetsDeleteInput =
   typeof VirtualMachineScaleSetsDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsDeleteOutput = Schema.Void;
 export type VirtualMachineScaleSetsDeleteOutput =
   typeof VirtualMachineScaleSetsDeleteOutput.Type;
 
@@ -5795,8 +5791,7 @@ export type VirtualMachineScaleSetsDeleteInstancesInput =
   typeof VirtualMachineScaleSetsDeleteInstancesInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsDeleteInstancesOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsDeleteInstancesOutput = Schema.Void;
 export type VirtualMachineScaleSetsDeleteInstancesOutput =
   typeof VirtualMachineScaleSetsDeleteInstancesOutput.Type;
 
@@ -6399,8 +6394,7 @@ export type VirtualMachineScaleSetsPerformMaintenanceInput =
   typeof VirtualMachineScaleSetsPerformMaintenanceInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsPerformMaintenanceOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsPerformMaintenanceOutput = Schema.Void;
 export type VirtualMachineScaleSetsPerformMaintenanceOutput =
   typeof VirtualMachineScaleSetsPerformMaintenanceOutput.Type;
 
@@ -6438,7 +6432,7 @@ export type VirtualMachineScaleSetsPowerOffInput =
   typeof VirtualMachineScaleSetsPowerOffInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsPowerOffOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsPowerOffOutput = Schema.Void;
 export type VirtualMachineScaleSetsPowerOffOutput =
   typeof VirtualMachineScaleSetsPowerOffOutput.Type;
 
@@ -6472,7 +6466,7 @@ export type VirtualMachineScaleSetsReapplyInput =
   typeof VirtualMachineScaleSetsReapplyInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsReapplyOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsReapplyOutput = Schema.Void;
 export type VirtualMachineScaleSetsReapplyOutput =
   typeof VirtualMachineScaleSetsReapplyOutput.Type;
 
@@ -6507,7 +6501,7 @@ export type VirtualMachineScaleSetsRedeployInput =
   typeof VirtualMachineScaleSetsRedeployInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsRedeployOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsRedeployOutput = Schema.Void;
 export type VirtualMachineScaleSetsRedeployOutput =
   typeof VirtualMachineScaleSetsRedeployOutput.Type;
 
@@ -6540,7 +6534,7 @@ export type VirtualMachineScaleSetsReimageInput =
   typeof VirtualMachineScaleSetsReimageInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsReimageOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsReimageOutput = Schema.Void;
 export type VirtualMachineScaleSetsReimageOutput =
   typeof VirtualMachineScaleSetsReimageOutput.Type;
 
@@ -6574,8 +6568,7 @@ export type VirtualMachineScaleSetsReimageAllInput =
   typeof VirtualMachineScaleSetsReimageAllInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsReimageAllOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsReimageAllOutput = Schema.Void;
 export type VirtualMachineScaleSetsReimageAllOutput =
   typeof VirtualMachineScaleSetsReimageAllOutput.Type;
 
@@ -6608,7 +6601,7 @@ export type VirtualMachineScaleSetsRestartInput =
   typeof VirtualMachineScaleSetsRestartInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsRestartOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsRestartOutput = Schema.Void;
 export type VirtualMachineScaleSetsRestartOutput =
   typeof VirtualMachineScaleSetsRestartOutput.Type;
 
@@ -6643,7 +6636,7 @@ export type VirtualMachineScaleSetsScaleOutInput =
   typeof VirtualMachineScaleSetsScaleOutInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsScaleOutOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsScaleOutOutput = Schema.Void;
 export type VirtualMachineScaleSetsScaleOutOutput =
   typeof VirtualMachineScaleSetsScaleOutOutput.Type;
 
@@ -6678,7 +6671,7 @@ export type VirtualMachineScaleSetsSetOrchestrationServiceStateInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsSetOrchestrationServiceStateOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type VirtualMachineScaleSetsSetOrchestrationServiceStateOutput =
   typeof VirtualMachineScaleSetsSetOrchestrationServiceStateOutput.Type;
 
@@ -6712,7 +6705,7 @@ export type VirtualMachineScaleSetsStartInput =
   typeof VirtualMachineScaleSetsStartInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsStartOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsStartOutput = Schema.Void;
 export type VirtualMachineScaleSetsStartOutput =
   typeof VirtualMachineScaleSetsStartOutput.Type;
 
@@ -6799,8 +6792,7 @@ export type VirtualMachineScaleSetsUpdateInstancesInput =
   typeof VirtualMachineScaleSetsUpdateInstancesInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsUpdateInstancesOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsUpdateInstancesOutput = Schema.Void;
 export type VirtualMachineScaleSetsUpdateInstancesOutput =
   typeof VirtualMachineScaleSetsUpdateInstancesOutput.Type;
 
@@ -6880,8 +6872,7 @@ export type VirtualMachineScaleSetVMExtensionsDeleteInput =
   typeof VirtualMachineScaleSetVMExtensionsDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMExtensionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMExtensionsDeleteOutput = Schema.Void;
 export type VirtualMachineScaleSetVMExtensionsDeleteOutput =
   typeof VirtualMachineScaleSetVMExtensionsDeleteOutput.Type;
 
@@ -7116,8 +7107,7 @@ export type VirtualMachineScaleSetVMRunCommandsDeleteInput =
   typeof VirtualMachineScaleSetVMRunCommandsDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMRunCommandsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMRunCommandsDeleteOutput = Schema.Void;
 export type VirtualMachineScaleSetVMRunCommandsDeleteOutput =
   typeof VirtualMachineScaleSetVMRunCommandsDeleteOutput.Type;
 
@@ -7350,8 +7340,7 @@ export type VirtualMachineScaleSetVMsApproveRollingUpgradeInput =
   typeof VirtualMachineScaleSetVMsApproveRollingUpgradeInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsApproveRollingUpgradeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsApproveRollingUpgradeOutput = Schema.Void;
 export type VirtualMachineScaleSetVMsApproveRollingUpgradeOutput =
   typeof VirtualMachineScaleSetVMsApproveRollingUpgradeOutput.Type;
 
@@ -7542,8 +7531,7 @@ export type VirtualMachineScaleSetVMsDeallocateInput =
   typeof VirtualMachineScaleSetVMsDeallocateInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsDeallocateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsDeallocateOutput = Schema.Void;
 export type VirtualMachineScaleSetVMsDeallocateOutput =
   typeof VirtualMachineScaleSetVMsDeallocateOutput.Type;
 
@@ -7583,7 +7571,7 @@ export type VirtualMachineScaleSetVMsDeleteInput =
   typeof VirtualMachineScaleSetVMsDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsDeleteOutput = Schema.Void;
 export type VirtualMachineScaleSetVMsDeleteOutput =
   typeof VirtualMachineScaleSetVMsDeleteOutput.Type;
 
@@ -7964,8 +7952,7 @@ export type VirtualMachineScaleSetVMsPerformMaintenanceInput =
   typeof VirtualMachineScaleSetVMsPerformMaintenanceInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsPerformMaintenanceOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsPerformMaintenanceOutput = Schema.Void;
 export type VirtualMachineScaleSetVMsPerformMaintenanceOutput =
   typeof VirtualMachineScaleSetVMsPerformMaintenanceOutput.Type;
 
@@ -8003,8 +7990,7 @@ export type VirtualMachineScaleSetVMsPowerOffInput =
   typeof VirtualMachineScaleSetVMsPowerOffInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsPowerOffOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsPowerOffOutput = Schema.Void;
 export type VirtualMachineScaleSetVMsPowerOffOutput =
   typeof VirtualMachineScaleSetVMsPowerOffOutput.Type;
 
@@ -8041,8 +8027,7 @@ export type VirtualMachineScaleSetVMsRedeployInput =
   typeof VirtualMachineScaleSetVMsRedeployInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsRedeployOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsRedeployOutput = Schema.Void;
 export type VirtualMachineScaleSetVMsRedeployOutput =
   typeof VirtualMachineScaleSetVMsRedeployOutput.Type;
 
@@ -8078,7 +8063,7 @@ export type VirtualMachineScaleSetVMsReimageInput =
   typeof VirtualMachineScaleSetVMsReimageInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsReimageOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsReimageOutput = Schema.Void;
 export type VirtualMachineScaleSetVMsReimageOutput =
   typeof VirtualMachineScaleSetVMsReimageOutput.Type;
 
@@ -8114,8 +8099,7 @@ export type VirtualMachineScaleSetVMsReimageAllInput =
   typeof VirtualMachineScaleSetVMsReimageAllInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsReimageAllOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsReimageAllOutput = Schema.Void;
 export type VirtualMachineScaleSetVMsReimageAllOutput =
   typeof VirtualMachineScaleSetVMsReimageAllOutput.Type;
 
@@ -8153,7 +8137,7 @@ export type VirtualMachineScaleSetVMsRestartInput =
   typeof VirtualMachineScaleSetVMsRestartInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsRestartOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsRestartOutput = Schema.Void;
 export type VirtualMachineScaleSetVMsRestartOutput =
   typeof VirtualMachineScaleSetVMsRestartOutput.Type;
 
@@ -8283,8 +8267,7 @@ export type VirtualMachineScaleSetVMsSimulateEvictionInput =
   typeof VirtualMachineScaleSetVMsSimulateEvictionInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsSimulateEvictionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsSimulateEvictionOutput = Schema.Void;
 export type VirtualMachineScaleSetVMsSimulateEvictionOutput =
   typeof VirtualMachineScaleSetVMsSimulateEvictionOutput.Type;
 
@@ -8321,7 +8304,7 @@ export type VirtualMachineScaleSetVMsStartInput =
   typeof VirtualMachineScaleSetVMsStartInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsStartOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsStartOutput = Schema.Void;
 export type VirtualMachineScaleSetVMsStartOutput =
   typeof VirtualMachineScaleSetVMsStartOutput.Type;
 
@@ -8449,8 +8432,7 @@ export type VirtualMachinesConvertToManagedDisksInput =
   typeof VirtualMachinesConvertToManagedDisksInput.Type;
 
 // Output Schema
-export const VirtualMachinesConvertToManagedDisksOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesConvertToManagedDisksOutput = Schema.Void;
 export type VirtualMachinesConvertToManagedDisksOutput =
   typeof VirtualMachinesConvertToManagedDisksOutput.Type;
 
@@ -8539,7 +8521,7 @@ export type VirtualMachinesDeallocateInput =
   typeof VirtualMachinesDeallocateInput.Type;
 
 // Output Schema
-export const VirtualMachinesDeallocateOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesDeallocateOutput = Schema.Void;
 export type VirtualMachinesDeallocateOutput =
   typeof VirtualMachinesDeallocateOutput.Type;
 
@@ -8573,7 +8555,7 @@ export const VirtualMachinesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachinesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesDeleteOutput = Schema.Void;
 export type VirtualMachinesDeleteOutput =
   typeof VirtualMachinesDeleteOutput.Type;
 
@@ -8607,7 +8589,7 @@ export type VirtualMachinesGeneralizeInput =
   typeof VirtualMachinesGeneralizeInput.Type;
 
 // Output Schema
-export const VirtualMachinesGeneralizeOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesGeneralizeOutput = Schema.Void;
 export type VirtualMachinesGeneralizeOutput =
   typeof VirtualMachinesGeneralizeOutput.Type;
 
@@ -9377,8 +9359,7 @@ export type VirtualMachinesMigrateToVMScaleSetInput =
   typeof VirtualMachinesMigrateToVMScaleSetInput.Type;
 
 // Output Schema
-export const VirtualMachinesMigrateToVMScaleSetOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesMigrateToVMScaleSetOutput = Schema.Void;
 export type VirtualMachinesMigrateToVMScaleSetOutput =
   typeof VirtualMachinesMigrateToVMScaleSetOutput.Type;
 
@@ -9414,8 +9395,7 @@ export type VirtualMachinesPerformMaintenanceInput =
   typeof VirtualMachinesPerformMaintenanceInput.Type;
 
 // Output Schema
-export const VirtualMachinesPerformMaintenanceOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesPerformMaintenanceOutput = Schema.Void;
 export type VirtualMachinesPerformMaintenanceOutput =
   typeof VirtualMachinesPerformMaintenanceOutput.Type;
 
@@ -9449,7 +9429,7 @@ export type VirtualMachinesPowerOffInput =
   typeof VirtualMachinesPowerOffInput.Type;
 
 // Output Schema
-export const VirtualMachinesPowerOffOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesPowerOffOutput = Schema.Void;
 export type VirtualMachinesPowerOffOutput =
   typeof VirtualMachinesPowerOffOutput.Type;
 
@@ -9483,7 +9463,7 @@ export type VirtualMachinesReapplyInput =
   typeof VirtualMachinesReapplyInput.Type;
 
 // Output Schema
-export const VirtualMachinesReapplyOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesReapplyOutput = Schema.Void;
 export type VirtualMachinesReapplyOutput =
   typeof VirtualMachinesReapplyOutput.Type;
 
@@ -9516,7 +9496,7 @@ export type VirtualMachinesRedeployInput =
   typeof VirtualMachinesRedeployInput.Type;
 
 // Output Schema
-export const VirtualMachinesRedeployOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesRedeployOutput = Schema.Void;
 export type VirtualMachinesRedeployOutput =
   typeof VirtualMachinesRedeployOutput.Type;
 
@@ -9549,7 +9529,7 @@ export type VirtualMachinesReimageInput =
   typeof VirtualMachinesReimageInput.Type;
 
 // Output Schema
-export const VirtualMachinesReimageOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesReimageOutput = Schema.Void;
 export type VirtualMachinesReimageOutput =
   typeof VirtualMachinesReimageOutput.Type;
 
@@ -9582,7 +9562,7 @@ export type VirtualMachinesRestartInput =
   typeof VirtualMachinesRestartInput.Type;
 
 // Output Schema
-export const VirtualMachinesRestartOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesRestartOutput = Schema.Void;
 export type VirtualMachinesRestartOutput =
   typeof VirtualMachinesRestartOutput.Type;
 
@@ -9703,7 +9683,7 @@ export type VirtualMachinesSimulateEvictionInput =
   typeof VirtualMachinesSimulateEvictionInput.Type;
 
 // Output Schema
-export const VirtualMachinesSimulateEvictionOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesSimulateEvictionOutput = Schema.Void;
 export type VirtualMachinesSimulateEvictionOutput =
   typeof VirtualMachinesSimulateEvictionOutput.Type;
 
@@ -9735,7 +9715,7 @@ export const VirtualMachinesStartInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
 
 // Output Schema
-export const VirtualMachinesStartOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesStartOutput = Schema.Void;
 export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
 
 // The operation

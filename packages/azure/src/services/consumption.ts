@@ -274,7 +274,7 @@ export const BudgetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BudgetsDeleteInput = typeof BudgetsDeleteInput.Type;
 
 // Output Schema
-export const BudgetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BudgetsDeleteOutput = Schema.Void;
 export type BudgetsDeleteOutput = typeof BudgetsDeleteOutput.Type;
 
 // The operation

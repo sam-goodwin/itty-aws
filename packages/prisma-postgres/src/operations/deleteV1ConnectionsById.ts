@@ -11,7 +11,7 @@ export type DeleteV1ConnectionsByIdInput =
   typeof DeleteV1ConnectionsByIdInput.Type;
 
 // Output Schema
-export const DeleteV1ConnectionsByIdOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteV1ConnectionsByIdOutput = Schema.Void;
 export type DeleteV1ConnectionsByIdOutput =
   typeof DeleteV1ConnectionsByIdOutput.Type;
 

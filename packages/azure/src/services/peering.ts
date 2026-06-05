@@ -167,7 +167,7 @@ export type ConnectionMonitorTestsDeleteInput =
   typeof ConnectionMonitorTestsDeleteInput.Type;
 
 // Output Schema
-export const ConnectionMonitorTestsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConnectionMonitorTestsDeleteOutput = Schema.Void;
 export type ConnectionMonitorTestsDeleteOutput =
   typeof ConnectionMonitorTestsDeleteOutput.Type;
 
@@ -548,7 +548,7 @@ export const PeerAsnsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PeerAsnsDeleteInput = typeof PeerAsnsDeleteInput.Type;
 
 // Output Schema
-export const PeerAsnsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PeerAsnsDeleteOutput = Schema.Void;
 export type PeerAsnsDeleteOutput = typeof PeerAsnsDeleteOutput.Type;
 
 // The operation
@@ -794,7 +794,7 @@ export const PeeringsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PeeringsDeleteInput = typeof PeeringsDeleteInput.Type;
 
 // Output Schema
-export const PeeringsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PeeringsDeleteOutput = Schema.Void;
 export type PeeringsDeleteOutput = typeof PeeringsDeleteOutput.Type;
 
 // The operation
@@ -1034,7 +1034,7 @@ export const PeeringServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PeeringServicesDeleteInput = typeof PeeringServicesDeleteInput.Type;
 
 // Output Schema
-export const PeeringServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PeeringServicesDeleteOutput = Schema.Void;
 export type PeeringServicesDeleteOutput =
   typeof PeeringServicesDeleteOutput.Type;
 
@@ -1115,8 +1115,7 @@ export type PeeringServicesInitializeConnectionMonitorInput =
   typeof PeeringServicesInitializeConnectionMonitorInput.Type;
 
 // Output Schema
-export const PeeringServicesInitializeConnectionMonitorOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PeeringServicesInitializeConnectionMonitorOutput = Schema.Void;
 export type PeeringServicesInitializeConnectionMonitorOutput =
   typeof PeeringServicesInitializeConnectionMonitorOutput.Type;
 
@@ -1587,7 +1586,7 @@ export const PrefixesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PrefixesDeleteInput = typeof PrefixesDeleteInput.Type;
 
 // Output Schema
-export const PrefixesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrefixesDeleteOutput = Schema.Void;
 export type PrefixesDeleteOutput = typeof PrefixesDeleteOutput.Type;
 
 // The operation
@@ -1840,7 +1839,7 @@ export const RegisteredAsnsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RegisteredAsnsDeleteInput = typeof RegisteredAsnsDeleteInput.Type;
 
 // Output Schema
-export const RegisteredAsnsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RegisteredAsnsDeleteOutput = Schema.Void;
 export type RegisteredAsnsDeleteOutput = typeof RegisteredAsnsDeleteOutput.Type;
 
 // The operation
@@ -2036,7 +2035,7 @@ export type RegisteredPrefixesDeleteInput =
   typeof RegisteredPrefixesDeleteInput.Type;
 
 // Output Schema
-export const RegisteredPrefixesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RegisteredPrefixesDeleteOutput = Schema.Void;
 export type RegisteredPrefixesDeleteOutput =
   typeof RegisteredPrefixesDeleteOutput.Type;
 

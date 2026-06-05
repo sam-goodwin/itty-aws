@@ -16,7 +16,7 @@ export type BatchExportsTestRetrieveInput =
   typeof BatchExportsTestRetrieveInput.Type;
 
 // Output Schema
-export const BatchExportsTestRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const BatchExportsTestRetrieveOutput = Schema.Void;
 export type BatchExportsTestRetrieveOutput =
   typeof BatchExportsTestRetrieveOutput.Type;
 

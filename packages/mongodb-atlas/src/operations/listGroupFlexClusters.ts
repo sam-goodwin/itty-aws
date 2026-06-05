@@ -20,7 +20,7 @@ export const ListGroupFlexClustersInput = /*@__PURE__*/ Schema.Struct({
 export type ListGroupFlexClustersInput = typeof ListGroupFlexClustersInput.Type;
 
 // Output Schema
-export const ListGroupFlexClustersOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupFlexClustersOutput = Schema.Void;
 export type ListGroupFlexClustersOutput =
   typeof ListGroupFlexClustersOutput.Type;
 

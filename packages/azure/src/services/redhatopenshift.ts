@@ -81,7 +81,7 @@ export type OpenShiftClustersDeleteInput =
   typeof OpenShiftClustersDeleteInput.Type;
 
 // Output Schema
-export const OpenShiftClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const OpenShiftClustersDeleteOutput = Schema.Void;
 export type OpenShiftClustersDeleteOutput =
   typeof OpenShiftClustersDeleteOutput.Type;
 

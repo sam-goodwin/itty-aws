@@ -18,7 +18,7 @@ export const GetGroupProcessDiskInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupProcessDiskInput = typeof GetGroupProcessDiskInput.Type;
 
 // Output Schema
-export const GetGroupProcessDiskOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupProcessDiskOutput = Schema.Void;
 export type GetGroupProcessDiskOutput = typeof GetGroupProcessDiskOutput.Type;
 
 // The operation

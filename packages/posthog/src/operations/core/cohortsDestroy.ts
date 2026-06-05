@@ -16,7 +16,7 @@ export const CohortsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type CohortsDestroyInput = typeof CohortsDestroyInput.Type;
 
 // Output Schema
-export const CohortsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const CohortsDestroyOutput = Schema.Void;
 export type CohortsDestroyOutput = typeof CohortsDestroyOutput.Type;
 
 // The operation

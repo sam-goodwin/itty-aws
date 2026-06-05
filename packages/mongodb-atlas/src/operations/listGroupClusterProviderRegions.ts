@@ -25,7 +25,7 @@ export type ListGroupClusterProviderRegionsInput =
   typeof ListGroupClusterProviderRegionsInput.Type;
 
 // Output Schema
-export const ListGroupClusterProviderRegionsOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupClusterProviderRegionsOutput = Schema.Void;
 export type ListGroupClusterProviderRegionsOutput =
   typeof ListGroupClusterProviderRegionsOutput.Type;
 

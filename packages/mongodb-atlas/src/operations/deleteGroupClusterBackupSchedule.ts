@@ -19,7 +19,7 @@ export type DeleteGroupClusterBackupScheduleInput =
   typeof DeleteGroupClusterBackupScheduleInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterBackupScheduleOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupClusterBackupScheduleOutput = Schema.Void;
 export type DeleteGroupClusterBackupScheduleOutput =
   typeof DeleteGroupClusterBackupScheduleOutput.Type;
 

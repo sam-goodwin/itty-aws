@@ -19,7 +19,7 @@ export const ListRateLimitsInput = /*@__PURE__*/ Schema.Struct({
 export type ListRateLimitsInput = typeof ListRateLimitsInput.Type;
 
 // Output Schema
-export const ListRateLimitsOutput = /*@__PURE__*/ Schema.Void;
+export const ListRateLimitsOutput = Schema.Void;
 export type ListRateLimitsOutput = typeof ListRateLimitsOutput.Type;
 
 // The operation

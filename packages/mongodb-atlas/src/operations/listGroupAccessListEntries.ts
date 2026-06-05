@@ -18,7 +18,7 @@ export type ListGroupAccessListEntriesInput =
   typeof ListGroupAccessListEntriesInput.Type;
 
 // Output Schema
-export const ListGroupAccessListEntriesOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupAccessListEntriesOutput = Schema.Void;
 export type ListGroupAccessListEntriesOutput =
   typeof ListGroupAccessListEntriesOutput.Type;
 

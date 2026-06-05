@@ -18,7 +18,7 @@ export type DeleteOrgLiveMigrationLinkTokensInput =
   typeof DeleteOrgLiveMigrationLinkTokensInput.Type;
 
 // Output Schema
-export const DeleteOrgLiveMigrationLinkTokensOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteOrgLiveMigrationLinkTokensOutput = Schema.Void;
 export type DeleteOrgLiveMigrationLinkTokensOutput =
   typeof DeleteOrgLiveMigrationLinkTokensOutput.Type;
 

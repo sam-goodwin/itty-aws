@@ -253,7 +253,7 @@ export type StandbyContainerGroupPoolsDeleteInput =
   typeof StandbyContainerGroupPoolsDeleteInput.Type;
 
 // Output Schema
-export const StandbyContainerGroupPoolsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StandbyContainerGroupPoolsDeleteOutput = Schema.Void;
 export type StandbyContainerGroupPoolsDeleteOutput =
   typeof StandbyContainerGroupPoolsDeleteOutput.Type;
 
@@ -704,7 +704,7 @@ export type StandbyVirtualMachinePoolsDeleteInput =
   typeof StandbyVirtualMachinePoolsDeleteInput.Type;
 
 // Output Schema
-export const StandbyVirtualMachinePoolsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StandbyVirtualMachinePoolsDeleteOutput = Schema.Void;
 export type StandbyVirtualMachinePoolsDeleteOutput =
   typeof StandbyVirtualMachinePoolsDeleteOutput.Type;
 

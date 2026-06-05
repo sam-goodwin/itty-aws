@@ -16,7 +16,7 @@ export type HogFunctionsIconRetrieveInput =
   typeof HogFunctionsIconRetrieveInput.Type;
 
 // Output Schema
-export const HogFunctionsIconRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const HogFunctionsIconRetrieveOutput = Schema.Void;
 export type HogFunctionsIconRetrieveOutput =
   typeof HogFunctionsIconRetrieveOutput.Type;
 

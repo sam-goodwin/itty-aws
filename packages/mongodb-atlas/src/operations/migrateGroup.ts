@@ -13,7 +13,7 @@ export const MigrateGroupInput = /*@__PURE__*/ Schema.Struct({
 export type MigrateGroupInput = typeof MigrateGroupInput.Type;
 
 // Output Schema
-export const MigrateGroupOutput = /*@__PURE__*/ Schema.Void;
+export const MigrateGroupOutput = Schema.Void;
 export type MigrateGroupOutput = typeof MigrateGroupOutput.Type;
 
 // The operation

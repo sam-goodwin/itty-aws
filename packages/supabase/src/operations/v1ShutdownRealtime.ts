@@ -15,7 +15,7 @@ export const V1ShutdownRealtimeInput = /*@__PURE__*/ Schema.Struct({
 export type V1ShutdownRealtimeInput = typeof V1ShutdownRealtimeInput.Type;
 
 // Output Schema
-export const V1ShutdownRealtimeOutput = /*@__PURE__*/ Schema.Void;
+export const V1ShutdownRealtimeOutput = Schema.Void;
 export type V1ShutdownRealtimeOutput = typeof V1ShutdownRealtimeOutput.Type;
 
 // The operation

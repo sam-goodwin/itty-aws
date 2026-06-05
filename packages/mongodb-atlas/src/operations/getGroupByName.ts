@@ -14,7 +14,7 @@ export const GetGroupByNameInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupByNameInput = typeof GetGroupByNameInput.Type;
 
 // Output Schema
-export const GetGroupByNameOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupByNameOutput = Schema.Void;
 export type GetGroupByNameOutput = typeof GetGroupByNameOutput.Type;
 
 // The operation

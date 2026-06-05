@@ -39,7 +39,7 @@ export type ExternalDataSchemasCancelCreateInput =
   typeof ExternalDataSchemasCancelCreateInput.Type;
 
 // Output Schema
-export const ExternalDataSchemasCancelCreateOutput = /*@__PURE__*/ Schema.Void;
+export const ExternalDataSchemasCancelCreateOutput = Schema.Void;
 export type ExternalDataSchemasCancelCreateOutput =
   typeof ExternalDataSchemasCancelCreateOutput.Type;
 

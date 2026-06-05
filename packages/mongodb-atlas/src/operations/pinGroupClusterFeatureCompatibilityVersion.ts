@@ -20,8 +20,7 @@ export type PinGroupClusterFeatureCompatibilityVersionInput =
   typeof PinGroupClusterFeatureCompatibilityVersionInput.Type;
 
 // Output Schema
-export const PinGroupClusterFeatureCompatibilityVersionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PinGroupClusterFeatureCompatibilityVersionOutput = Schema.Void;
 export type PinGroupClusterFeatureCompatibilityVersionOutput =
   typeof PinGroupClusterFeatureCompatibilityVersionOutput.Type;
 

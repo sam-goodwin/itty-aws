@@ -458,7 +458,7 @@ export const GroupQuotasDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type GroupQuotasDeleteInput = typeof GroupQuotasDeleteInput.Type;
 
 // Output Schema
-export const GroupQuotasDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GroupQuotasDeleteOutput = Schema.Void;
 export type GroupQuotasDeleteOutput = typeof GroupQuotasDeleteOutput.Type;
 
 // The operation
@@ -1014,7 +1014,7 @@ export type GroupQuotaSubscriptionsDeleteInput =
   typeof GroupQuotaSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const GroupQuotaSubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GroupQuotaSubscriptionsDeleteOutput = Schema.Void;
 export type GroupQuotaSubscriptionsDeleteOutput =
   typeof GroupQuotaSubscriptionsDeleteOutput.Type;
 

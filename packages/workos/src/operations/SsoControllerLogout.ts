@@ -10,7 +10,7 @@ export const SsoControllerLogoutInput = /*@__PURE__*/ Schema.Struct({
 export type SsoControllerLogoutInput = typeof SsoControllerLogoutInput.Type;
 
 // Output Schema
-export const SsoControllerLogoutOutput = /*@__PURE__*/ Schema.Void;
+export const SsoControllerLogoutOutput = Schema.Void;
 export type SsoControllerLogoutOutput = typeof SsoControllerLogoutOutput.Type;
 
 // The operation

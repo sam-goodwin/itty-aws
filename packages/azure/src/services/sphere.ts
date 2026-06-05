@@ -107,7 +107,7 @@ export const CatalogsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type CatalogsDeleteInput = typeof CatalogsDeleteInput.Type;
 
 // Output Schema
-export const CatalogsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CatalogsDeleteOutput = Schema.Void;
 export type CatalogsDeleteOutput = typeof CatalogsDeleteOutput.Type;
 
 // The operation
@@ -555,7 +555,7 @@ export const CatalogsUploadImageInput = /*@__PURE__*/ Schema.Struct({
 export type CatalogsUploadImageInput = typeof CatalogsUploadImageInput.Type;
 
 // Output Schema
-export const CatalogsUploadImageOutput = /*@__PURE__*/ Schema.Void;
+export const CatalogsUploadImageOutput = Schema.Void;
 export type CatalogsUploadImageOutput = typeof CatalogsUploadImageOutput.Type;
 
 // The operation
@@ -848,7 +848,7 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
 
 // Output Schema
-export const DeploymentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsDeleteOutput = Schema.Void;
 export type DeploymentsDeleteOutput = typeof DeploymentsDeleteOutput.Type;
 
 // The operation
@@ -1000,7 +1000,7 @@ export type DeviceGroupsClaimDevicesInput =
   typeof DeviceGroupsClaimDevicesInput.Type;
 
 // Output Schema
-export const DeviceGroupsClaimDevicesOutput = /*@__PURE__*/ Schema.Void;
+export const DeviceGroupsClaimDevicesOutput = Schema.Void;
 export type DeviceGroupsClaimDevicesOutput =
   typeof DeviceGroupsClaimDevicesOutput.Type;
 
@@ -1130,7 +1130,7 @@ export const DeviceGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DeviceGroupsDeleteInput = typeof DeviceGroupsDeleteInput.Type;
 
 // Output Schema
-export const DeviceGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DeviceGroupsDeleteOutput = Schema.Void;
 export type DeviceGroupsDeleteOutput = typeof DeviceGroupsDeleteOutput.Type;
 
 // The operation
@@ -1386,7 +1386,7 @@ export const DevicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DevicesDeleteInput = typeof DevicesDeleteInput.Type;
 
 // Output Schema
-export const DevicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DevicesDeleteOutput = Schema.Void;
 export type DevicesDeleteOutput = typeof DevicesDeleteOutput.Type;
 
 // The operation
@@ -1685,7 +1685,7 @@ export const ImagesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ImagesDeleteInput = typeof ImagesDeleteInput.Type;
 
 // Output Schema
-export const ImagesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ImagesDeleteOutput = Schema.Void;
 export type ImagesDeleteOutput = typeof ImagesDeleteOutput.Type;
 
 // The operation
@@ -1958,7 +1958,7 @@ export const ProductsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ProductsDeleteInput = typeof ProductsDeleteInput.Type;
 
 // Output Schema
-export const ProductsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ProductsDeleteOutput = Schema.Void;
 export type ProductsDeleteOutput = typeof ProductsDeleteOutput.Type;
 
 // The operation

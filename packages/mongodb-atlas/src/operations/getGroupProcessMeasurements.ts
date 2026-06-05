@@ -24,7 +24,7 @@ export type GetGroupProcessMeasurementsInput =
   typeof GetGroupProcessMeasurementsInput.Type;
 
 // Output Schema
-export const GetGroupProcessMeasurementsOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupProcessMeasurementsOutput = Schema.Void;
 export type GetGroupProcessMeasurementsOutput =
   typeof GetGroupProcessMeasurementsOutput.Type;
 

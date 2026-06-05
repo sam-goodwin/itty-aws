@@ -1047,7 +1047,7 @@ export type ReplicationFabricsDeleteInput =
   typeof ReplicationFabricsDeleteInput.Type;
 
 // Output Schema
-export const ReplicationFabricsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ReplicationFabricsDeleteOutput = Schema.Void;
 export type ReplicationFabricsDeleteOutput =
   typeof ReplicationFabricsDeleteOutput.Type;
 
@@ -1198,7 +1198,7 @@ export type ReplicationFabricsMigrateToAadInput =
   typeof ReplicationFabricsMigrateToAadInput.Type;
 
 // Output Schema
-export const ReplicationFabricsMigrateToAadOutput = /*@__PURE__*/ Schema.Void;
+export const ReplicationFabricsMigrateToAadOutput = Schema.Void;
 export type ReplicationFabricsMigrateToAadOutput =
   typeof ReplicationFabricsMigrateToAadOutput.Type;
 
@@ -1235,7 +1235,7 @@ export type ReplicationFabricsPurgeInput =
   typeof ReplicationFabricsPurgeInput.Type;
 
 // Output Schema
-export const ReplicationFabricsPurgeOutput = /*@__PURE__*/ Schema.Void;
+export const ReplicationFabricsPurgeOutput = Schema.Void;
 export type ReplicationFabricsPurgeOutput =
   typeof ReplicationFabricsPurgeOutput.Type;
 
@@ -1331,7 +1331,7 @@ export type ReplicationFabricsRemoveInfraInput =
   typeof ReplicationFabricsRemoveInfraInput.Type;
 
 // Output Schema
-export const ReplicationFabricsRemoveInfraOutput = /*@__PURE__*/ Schema.Void;
+export const ReplicationFabricsRemoveInfraOutput = Schema.Void;
 export type ReplicationFabricsRemoveInfraOutput =
   typeof ReplicationFabricsRemoveInfraOutput.Type;
 
@@ -1948,7 +1948,7 @@ export type ReplicationMigrationItemsDeleteInput =
   typeof ReplicationMigrationItemsDeleteInput.Type;
 
 // Output Schema
-export const ReplicationMigrationItemsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ReplicationMigrationItemsDeleteOutput = Schema.Void;
 export type ReplicationMigrationItemsDeleteOutput =
   typeof ReplicationMigrationItemsDeleteOutput.Type;
 
@@ -2689,7 +2689,7 @@ export type ReplicationNetworkMappingsDeleteInput =
   typeof ReplicationNetworkMappingsDeleteInput.Type;
 
 // Output Schema
-export const ReplicationNetworkMappingsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ReplicationNetworkMappingsDeleteOutput = Schema.Void;
 export type ReplicationNetworkMappingsDeleteOutput =
   typeof ReplicationNetworkMappingsDeleteOutput.Type;
 
@@ -3236,7 +3236,7 @@ export type ReplicationPoliciesDeleteInput =
   typeof ReplicationPoliciesDeleteInput.Type;
 
 // Output Schema
-export const ReplicationPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ReplicationPoliciesDeleteOutput = Schema.Void;
 export type ReplicationPoliciesDeleteOutput =
   typeof ReplicationPoliciesDeleteOutput.Type;
 
@@ -3774,7 +3774,7 @@ export type ReplicationProtectedItemsDeleteInput =
   typeof ReplicationProtectedItemsDeleteInput.Type;
 
 // Output Schema
-export const ReplicationProtectedItemsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ReplicationProtectedItemsDeleteOutput = Schema.Void;
 export type ReplicationProtectedItemsDeleteOutput =
   typeof ReplicationProtectedItemsDeleteOutput.Type;
 
@@ -4202,7 +4202,7 @@ export type ReplicationProtectedItemsPurgeInput =
   typeof ReplicationProtectedItemsPurgeInput.Type;
 
 // Output Schema
-export const ReplicationProtectedItemsPurgeOutput = /*@__PURE__*/ Schema.Void;
+export const ReplicationProtectedItemsPurgeOutput = Schema.Void;
 export type ReplicationProtectedItemsPurgeOutput =
   typeof ReplicationProtectedItemsPurgeOutput.Type;
 
@@ -5456,8 +5456,7 @@ export type ReplicationProtectionClustersPurgeInput =
   typeof ReplicationProtectionClustersPurgeInput.Type;
 
 // Output Schema
-export const ReplicationProtectionClustersPurgeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ReplicationProtectionClustersPurgeOutput = Schema.Void;
 export type ReplicationProtectionClustersPurgeOutput =
   typeof ReplicationProtectionClustersPurgeOutput.Type;
 
@@ -5812,8 +5811,7 @@ export type ReplicationProtectionContainerMappingsDeleteInput =
   typeof ReplicationProtectionContainerMappingsDeleteInput.Type;
 
 // Output Schema
-export const ReplicationProtectionContainerMappingsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ReplicationProtectionContainerMappingsDeleteOutput = Schema.Void;
 export type ReplicationProtectionContainerMappingsDeleteOutput =
   typeof ReplicationProtectionContainerMappingsDeleteOutput.Type;
 
@@ -6067,8 +6065,7 @@ export type ReplicationProtectionContainerMappingsPurgeInput =
   typeof ReplicationProtectionContainerMappingsPurgeInput.Type;
 
 // Output Schema
-export const ReplicationProtectionContainerMappingsPurgeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ReplicationProtectionContainerMappingsPurgeOutput = Schema.Void;
 export type ReplicationProtectionContainerMappingsPurgeOutput =
   typeof ReplicationProtectionContainerMappingsPurgeOutput.Type;
 
@@ -6233,8 +6230,7 @@ export type ReplicationProtectionContainersDeleteInput =
   typeof ReplicationProtectionContainersDeleteInput.Type;
 
 // Output Schema
-export const ReplicationProtectionContainersDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ReplicationProtectionContainersDeleteOutput = Schema.Void;
 export type ReplicationProtectionContainersDeleteOutput =
   typeof ReplicationProtectionContainersDeleteOutput.Type;
 
@@ -6908,7 +6904,7 @@ export type ReplicationRecoveryPlansDeleteInput =
   typeof ReplicationRecoveryPlansDeleteInput.Type;
 
 // Output Schema
-export const ReplicationRecoveryPlansDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ReplicationRecoveryPlansDeleteOutput = Schema.Void;
 export type ReplicationRecoveryPlansDeleteOutput =
   typeof ReplicationRecoveryPlansDeleteOutput.Type;
 
@@ -7587,8 +7583,7 @@ export type ReplicationRecoveryServicesProvidersDeleteInput =
   typeof ReplicationRecoveryServicesProvidersDeleteInput.Type;
 
 // Output Schema
-export const ReplicationRecoveryServicesProvidersDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ReplicationRecoveryServicesProvidersDeleteOutput = Schema.Void;
 export type ReplicationRecoveryServicesProvidersDeleteOutput =
   typeof ReplicationRecoveryServicesProvidersDeleteOutput.Type;
 
@@ -7837,8 +7832,7 @@ export type ReplicationRecoveryServicesProvidersPurgeInput =
   typeof ReplicationRecoveryServicesProvidersPurgeInput.Type;
 
 // Output Schema
-export const ReplicationRecoveryServicesProvidersPurgeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ReplicationRecoveryServicesProvidersPurgeOutput = Schema.Void;
 export type ReplicationRecoveryServicesProvidersPurgeOutput =
   typeof ReplicationRecoveryServicesProvidersPurgeOutput.Type;
 
@@ -8003,8 +7997,7 @@ export type ReplicationStorageClassificationMappingsDeleteInput =
   typeof ReplicationStorageClassificationMappingsDeleteInput.Type;
 
 // Output Schema
-export const ReplicationStorageClassificationMappingsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ReplicationStorageClassificationMappingsDeleteOutput = Schema.Void;
 export type ReplicationStorageClassificationMappingsDeleteOutput =
   typeof ReplicationStorageClassificationMappingsDeleteOutput.Type;
 
@@ -8791,7 +8784,7 @@ export type ReplicationvCentersDeleteInput =
   typeof ReplicationvCentersDeleteInput.Type;
 
 // Output Schema
-export const ReplicationvCentersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ReplicationvCentersDeleteOutput = Schema.Void;
 export type ReplicationvCentersDeleteOutput =
   typeof ReplicationvCentersDeleteOutput.Type;
 

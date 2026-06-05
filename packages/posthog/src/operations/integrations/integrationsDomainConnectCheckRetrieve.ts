@@ -17,8 +17,7 @@ export type IntegrationsDomainConnectCheckRetrieveInput =
   typeof IntegrationsDomainConnectCheckRetrieveInput.Type;
 
 // Output Schema
-export const IntegrationsDomainConnectCheckRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationsDomainConnectCheckRetrieveOutput = Schema.Void;
 export type IntegrationsDomainConnectCheckRetrieveOutput =
   typeof IntegrationsDomainConnectCheckRetrieveOutput.Type;
 

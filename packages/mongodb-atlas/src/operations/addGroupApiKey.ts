@@ -18,7 +18,7 @@ export const AddGroupApiKeyInput = /*@__PURE__*/ Schema.Struct({
 export type AddGroupApiKeyInput = typeof AddGroupApiKeyInput.Type;
 
 // Output Schema
-export const AddGroupApiKeyOutput = /*@__PURE__*/ Schema.Void;
+export const AddGroupApiKeyOutput = Schema.Void;
 export type AddGroupApiKeyOutput = typeof AddGroupApiKeyOutput.Type;
 
 // The operation

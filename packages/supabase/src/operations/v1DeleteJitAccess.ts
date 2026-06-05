@@ -16,7 +16,7 @@ export const V1DeleteJitAccessInput = /*@__PURE__*/ Schema.Struct({
 export type V1DeleteJitAccessInput = typeof V1DeleteJitAccessInput.Type;
 
 // Output Schema
-export const V1DeleteJitAccessOutput = /*@__PURE__*/ Schema.Void;
+export const V1DeleteJitAccessOutput = Schema.Void;
 export type V1DeleteJitAccessOutput = typeof V1DeleteJitAccessOutput.Type;
 
 // The operation

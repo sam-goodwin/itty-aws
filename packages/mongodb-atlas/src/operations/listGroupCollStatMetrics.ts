@@ -17,7 +17,7 @@ export type ListGroupCollStatMetricsInput =
   typeof ListGroupCollStatMetricsInput.Type;
 
 // Output Schema
-export const ListGroupCollStatMetricsOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupCollStatMetricsOutput = Schema.Void;
 export type ListGroupCollStatMetricsOutput =
   typeof ListGroupCollStatMetricsOutput.Type;
 

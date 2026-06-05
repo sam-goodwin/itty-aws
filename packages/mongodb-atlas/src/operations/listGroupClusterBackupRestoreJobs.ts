@@ -23,8 +23,7 @@ export type ListGroupClusterBackupRestoreJobsInput =
   typeof ListGroupClusterBackupRestoreJobsInput.Type;
 
 // Output Schema
-export const ListGroupClusterBackupRestoreJobsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListGroupClusterBackupRestoreJobsOutput = Schema.Void;
 export type ListGroupClusterBackupRestoreJobsOutput =
   typeof ListGroupClusterBackupRestoreJobsOutput.Type;
 

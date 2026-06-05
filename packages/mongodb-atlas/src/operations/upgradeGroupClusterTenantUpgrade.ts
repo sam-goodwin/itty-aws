@@ -25,7 +25,7 @@ export type UpgradeGroupClusterTenantUpgradeInput =
   typeof UpgradeGroupClusterTenantUpgradeInput.Type;
 
 // Output Schema
-export const UpgradeGroupClusterTenantUpgradeOutput = /*@__PURE__*/ Schema.Void;
+export const UpgradeGroupClusterTenantUpgradeOutput = Schema.Void;
 export type UpgradeGroupClusterTenantUpgradeOutput =
   typeof UpgradeGroupClusterTenantUpgradeOutput.Type;
 

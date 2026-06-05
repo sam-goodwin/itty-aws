@@ -23,8 +23,7 @@ export type ListGroupFlexClusterBackupSnapshotsInput =
   typeof ListGroupFlexClusterBackupSnapshotsInput.Type;
 
 // Output Schema
-export const ListGroupFlexClusterBackupSnapshotsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListGroupFlexClusterBackupSnapshotsOutput = Schema.Void;
 export type ListGroupFlexClusterBackupSnapshotsOutput =
   typeof ListGroupFlexClusterBackupSnapshotsOutput.Type;
 

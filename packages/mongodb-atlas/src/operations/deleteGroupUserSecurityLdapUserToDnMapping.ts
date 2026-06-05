@@ -19,8 +19,7 @@ export type DeleteGroupUserSecurityLdapUserToDnMappingInput =
   typeof DeleteGroupUserSecurityLdapUserToDnMappingInput.Type;
 
 // Output Schema
-export const DeleteGroupUserSecurityLdapUserToDnMappingOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeleteGroupUserSecurityLdapUserToDnMappingOutput = Schema.Void;
 export type DeleteGroupUserSecurityLdapUserToDnMappingOutput =
   typeof DeleteGroupUserSecurityLdapUserToDnMappingOutput.Type;
 

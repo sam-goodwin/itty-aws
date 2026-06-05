@@ -600,7 +600,7 @@ export type RegisteredIdentitiesDeleteInput =
   typeof RegisteredIdentitiesDeleteInput.Type;
 
 // Output Schema
-export const RegisteredIdentitiesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RegisteredIdentitiesDeleteOutput = Schema.Void;
 export type RegisteredIdentitiesDeleteOutput =
   typeof RegisteredIdentitiesDeleteOutput.Type;
 
@@ -1008,7 +1008,7 @@ export const VaultsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VaultsDeleteInput = typeof VaultsDeleteInput.Type;
 
 // Output Schema
-export const VaultsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VaultsDeleteOutput = Schema.Void;
 export type VaultsDeleteOutput = typeof VaultsDeleteOutput.Type;
 
 // The operation

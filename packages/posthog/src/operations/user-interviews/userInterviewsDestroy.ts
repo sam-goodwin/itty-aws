@@ -16,7 +16,7 @@ export const UserInterviewsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type UserInterviewsDestroyInput = typeof UserInterviewsDestroyInput.Type;
 
 // Output Schema
-export const UserInterviewsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const UserInterviewsDestroyOutput = Schema.Void;
 export type UserInterviewsDestroyOutput =
   typeof UserInterviewsDestroyOutput.Type;
 

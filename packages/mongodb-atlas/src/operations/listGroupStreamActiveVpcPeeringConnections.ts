@@ -21,8 +21,7 @@ export type ListGroupStreamActiveVpcPeeringConnectionsInput =
   typeof ListGroupStreamActiveVpcPeeringConnectionsInput.Type;
 
 // Output Schema
-export const ListGroupStreamActiveVpcPeeringConnectionsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListGroupStreamActiveVpcPeeringConnectionsOutput = Schema.Void;
 export type ListGroupStreamActiveVpcPeeringConnectionsOutput =
   typeof ListGroupStreamActiveVpcPeeringConnectionsOutput.Type;
 

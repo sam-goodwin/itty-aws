@@ -16,7 +16,7 @@ export type V1EnableDatabaseWebhookInput =
   typeof V1EnableDatabaseWebhookInput.Type;
 
 // Output Schema
-export const V1EnableDatabaseWebhookOutput = /*@__PURE__*/ Schema.Void;
+export const V1EnableDatabaseWebhookOutput = Schema.Void;
 export type V1EnableDatabaseWebhookOutput =
   typeof V1EnableDatabaseWebhookOutput.Type;
 

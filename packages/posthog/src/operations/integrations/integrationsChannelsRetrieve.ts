@@ -17,7 +17,7 @@ export type IntegrationsChannelsRetrieveInput =
   typeof IntegrationsChannelsRetrieveInput.Type;
 
 // Output Schema
-export const IntegrationsChannelsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationsChannelsRetrieveOutput = Schema.Void;
 export type IntegrationsChannelsRetrieveOutput =
   typeof IntegrationsChannelsRetrieveOutput.Type;
 

@@ -131,7 +131,7 @@ export type SurveysSummarizeResponsesCreateInput =
   typeof SurveysSummarizeResponsesCreateInput.Type;
 
 // Output Schema
-export const SurveysSummarizeResponsesCreateOutput = /*@__PURE__*/ Schema.Void;
+export const SurveysSummarizeResponsesCreateOutput = Schema.Void;
 export type SurveysSummarizeResponsesCreateOutput =
   typeof SurveysSummarizeResponsesCreateOutput.Type;
 

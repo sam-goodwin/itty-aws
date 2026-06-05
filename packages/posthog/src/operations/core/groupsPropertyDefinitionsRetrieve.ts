@@ -17,8 +17,7 @@ export type GroupsPropertyDefinitionsRetrieveInput =
   typeof GroupsPropertyDefinitionsRetrieveInput.Type;
 
 // Output Schema
-export const GroupsPropertyDefinitionsRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GroupsPropertyDefinitionsRetrieveOutput = Schema.Void;
 export type GroupsPropertyDefinitionsRetrieveOutput =
   typeof GroupsPropertyDefinitionsRetrieveOutput.Type;
 

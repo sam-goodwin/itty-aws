@@ -18,8 +18,7 @@ export type EnvironmentsIsGeneratingDemoDataRetrieveInput =
   typeof EnvironmentsIsGeneratingDemoDataRetrieveInput.Type;
 
 // Output Schema
-export const EnvironmentsIsGeneratingDemoDataRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EnvironmentsIsGeneratingDemoDataRetrieveOutput = Schema.Void;
 export type EnvironmentsIsGeneratingDemoDataRetrieveOutput =
   typeof EnvironmentsIsGeneratingDemoDataRetrieveOutput.Type;
 

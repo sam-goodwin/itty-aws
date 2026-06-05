@@ -18,8 +18,7 @@ export type IntegrationsTwilioPhoneNumbersRetrieveInput =
   typeof IntegrationsTwilioPhoneNumbersRetrieveInput.Type;
 
 // Output Schema
-export const IntegrationsTwilioPhoneNumbersRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationsTwilioPhoneNumbersRetrieveOutput = Schema.Void;
 export type IntegrationsTwilioPhoneNumbersRetrieveOutput =
   typeof IntegrationsTwilioPhoneNumbersRetrieveOutput.Type;
 

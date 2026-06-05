@@ -17,7 +17,7 @@ export type DomainsScimLogsRetrieveInput =
   typeof DomainsScimLogsRetrieveInput.Type;
 
 // Output Schema
-export const DomainsScimLogsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const DomainsScimLogsRetrieveOutput = Schema.Void;
 export type DomainsScimLogsRetrieveOutput =
   typeof DomainsScimLogsRetrieveOutput.Type;
 

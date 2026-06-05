@@ -17,7 +17,7 @@ export type V1DisableReadonlyModeTemporarilyInput =
   typeof V1DisableReadonlyModeTemporarilyInput.Type;
 
 // Output Schema
-export const V1DisableReadonlyModeTemporarilyOutput = /*@__PURE__*/ Schema.Void;
+export const V1DisableReadonlyModeTemporarilyOutput = Schema.Void;
 export type V1DisableReadonlyModeTemporarilyOutput =
   typeof V1DisableReadonlyModeTemporarilyOutput.Type;
 

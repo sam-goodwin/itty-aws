@@ -18,7 +18,7 @@ export type CreateGroupLogIntegrationInput =
   typeof CreateGroupLogIntegrationInput.Type;
 
 // Output Schema
-export const CreateGroupLogIntegrationOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupLogIntegrationOutput = Schema.Void;
 export type CreateGroupLogIntegrationOutput =
   typeof CreateGroupLogIntegrationOutput.Type;
 

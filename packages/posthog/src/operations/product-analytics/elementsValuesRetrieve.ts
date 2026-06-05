@@ -16,7 +16,7 @@ export type ElementsValuesRetrieveInput =
   typeof ElementsValuesRetrieveInput.Type;
 
 // Output Schema
-export const ElementsValuesRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const ElementsValuesRetrieveOutput = Schema.Void;
 export type ElementsValuesRetrieveOutput =
   typeof ElementsValuesRetrieveOutput.Type;
 

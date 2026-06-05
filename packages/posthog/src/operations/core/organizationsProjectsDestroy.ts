@@ -17,7 +17,7 @@ export type OrganizationsProjectsDestroyInput =
   typeof OrganizationsProjectsDestroyInput.Type;
 
 // Output Schema
-export const OrganizationsProjectsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const OrganizationsProjectsDestroyOutput = Schema.Void;
 export type OrganizationsProjectsDestroyOutput =
   typeof OrganizationsProjectsDestroyOutput.Type;
 

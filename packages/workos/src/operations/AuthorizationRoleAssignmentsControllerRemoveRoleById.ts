@@ -19,7 +19,7 @@ export type AuthorizationRoleAssignmentsControllerRemoveRoleByIdInput =
 
 // Output Schema
 export const AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput =
   typeof AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput.Type;
 

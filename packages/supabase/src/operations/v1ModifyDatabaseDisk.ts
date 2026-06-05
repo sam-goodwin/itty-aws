@@ -11,7 +11,7 @@ export const V1ModifyDatabaseDiskInput = /*@__PURE__*/ Schema.Struct({
 export type V1ModifyDatabaseDiskInput = typeof V1ModifyDatabaseDiskInput.Type;
 
 // Output Schema
-export const V1ModifyDatabaseDiskOutput = /*@__PURE__*/ Schema.Void;
+export const V1ModifyDatabaseDiskOutput = Schema.Void;
 export type V1ModifyDatabaseDiskOutput = typeof V1ModifyDatabaseDiskOutput.Type;
 
 // The operation

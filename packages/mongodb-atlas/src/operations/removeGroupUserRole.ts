@@ -18,7 +18,7 @@ export const RemoveGroupUserRoleInput = /*@__PURE__*/ Schema.Struct({
 export type RemoveGroupUserRoleInput = typeof RemoveGroupUserRoleInput.Type;
 
 // Output Schema
-export const RemoveGroupUserRoleOutput = /*@__PURE__*/ Schema.Void;
+export const RemoveGroupUserRoleOutput = Schema.Void;
 export type RemoveGroupUserRoleOutput = typeof RemoveGroupUserRoleOutput.Type;
 
 // The operation

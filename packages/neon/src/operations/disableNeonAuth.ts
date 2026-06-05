@@ -16,7 +16,7 @@ export const DisableNeonAuthInput = /*@__PURE__*/ Schema.Struct({
 export type DisableNeonAuthInput = typeof DisableNeonAuthInput.Type;
 
 // Output Schema
-export const DisableNeonAuthOutput = /*@__PURE__*/ Schema.Void;
+export const DisableNeonAuthOutput = Schema.Void;
 export type DisableNeonAuthOutput = typeof DisableNeonAuthOutput.Type;
 
 // The operation

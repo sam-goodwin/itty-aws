@@ -20,7 +20,7 @@ export type DeleteOrgApiKeyAccessListEntryInput =
   typeof DeleteOrgApiKeyAccessListEntryInput.Type;
 
 // Output Schema
-export const DeleteOrgApiKeyAccessListEntryOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteOrgApiKeyAccessListEntryOutput = Schema.Void;
 export type DeleteOrgApiKeyAccessListEntryOutput =
   typeof DeleteOrgApiKeyAccessListEntryOutput.Type;
 

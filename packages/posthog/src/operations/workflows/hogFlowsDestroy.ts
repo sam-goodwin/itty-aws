@@ -16,7 +16,7 @@ export const HogFlowsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type HogFlowsDestroyInput = typeof HogFlowsDestroyInput.Type;
 
 // Output Schema
-export const HogFlowsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const HogFlowsDestroyOutput = Schema.Void;
 export type HogFlowsDestroyOutput = typeof HogFlowsDestroyOutput.Type;
 
 // The operation

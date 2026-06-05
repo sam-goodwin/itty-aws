@@ -336,7 +336,7 @@ export type StorageDiscoveryWorkspacesDeleteInput =
   typeof StorageDiscoveryWorkspacesDeleteInput.Type;
 
 // Output Schema
-export const StorageDiscoveryWorkspacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StorageDiscoveryWorkspacesDeleteOutput = Schema.Void;
 export type StorageDiscoveryWorkspacesDeleteOutput =
   typeof StorageDiscoveryWorkspacesDeleteOutput.Type;
 

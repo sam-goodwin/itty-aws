@@ -17,8 +17,7 @@ export type DeleteV1ComputeServicesByComputeServiceIdInput =
   typeof DeleteV1ComputeServicesByComputeServiceIdInput.Type;
 
 // Output Schema
-export const DeleteV1ComputeServicesByComputeServiceIdOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeleteV1ComputeServicesByComputeServiceIdOutput = Schema.Void;
 export type DeleteV1ComputeServicesByComputeServiceIdOutput =
   typeof DeleteV1ComputeServicesByComputeServiceIdOutput.Type;
 

@@ -16,7 +16,7 @@ export type SessionsValuesRetrieveInput =
   typeof SessionsValuesRetrieveInput.Type;
 
 // Output Schema
-export const SessionsValuesRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const SessionsValuesRetrieveOutput = Schema.Void;
 export type SessionsValuesRetrieveOutput =
   typeof SessionsValuesRetrieveOutput.Type;
 

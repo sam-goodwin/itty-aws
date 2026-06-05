@@ -65,7 +65,7 @@ export const AgentPoolDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AgentPoolDeleteInput = typeof AgentPoolDeleteInput.Type;
 
 // Output Schema
-export const AgentPoolDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AgentPoolDeleteOutput = Schema.Void;
 export type AgentPoolDeleteOutput = typeof AgentPoolDeleteOutput.Type;
 
 // The operation
@@ -198,7 +198,7 @@ export type DeleteKubernetesVersionsInput =
   typeof DeleteKubernetesVersionsInput.Type;
 
 // Output Schema
-export const DeleteKubernetesVersionsOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteKubernetesVersionsOutput = Schema.Void;
 export type DeleteKubernetesVersionsOutput =
   typeof DeleteKubernetesVersionsOutput.Type;
 
@@ -226,7 +226,7 @@ export const DeleteVMSkusInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteVMSkusInput = typeof DeleteVMSkusInput.Type;
 
 // Output Schema
-export const DeleteVMSkusOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteVMSkusOutput = Schema.Void;
 export type DeleteVMSkusOutput = typeof DeleteVMSkusOutput.Type;
 
 // The operation
@@ -343,7 +343,7 @@ export type HybridIdentityMetadataDeleteInput =
   typeof HybridIdentityMetadataDeleteInput.Type;
 
 // Output Schema
-export const HybridIdentityMetadataDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const HybridIdentityMetadataDeleteOutput = Schema.Void;
 export type HybridIdentityMetadataDeleteOutput =
   typeof HybridIdentityMetadataDeleteOutput.Type;
 
@@ -693,8 +693,7 @@ export type ProvisionedClusterInstancesDeleteInput =
   typeof ProvisionedClusterInstancesDeleteInput.Type;
 
 // Output Schema
-export const ProvisionedClusterInstancesDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ProvisionedClusterInstancesDeleteOutput = Schema.Void;
 export type ProvisionedClusterInstancesDeleteOutput =
   typeof ProvisionedClusterInstancesDeleteOutput.Type;
 
@@ -1148,7 +1147,7 @@ export const VirtualNetworksDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
 
 // Output Schema
-export const VirtualNetworksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualNetworksDeleteOutput = Schema.Void;
 export type VirtualNetworksDeleteOutput =
   typeof VirtualNetworksDeleteOutput.Type;
 

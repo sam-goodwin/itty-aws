@@ -38,8 +38,7 @@ export type ExternalDataSchemasIncrementalFieldsCreateInput =
   typeof ExternalDataSchemasIncrementalFieldsCreateInput.Type;
 
 // Output Schema
-export const ExternalDataSchemasIncrementalFieldsCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ExternalDataSchemasIncrementalFieldsCreateOutput = Schema.Void;
 export type ExternalDataSchemasIncrementalFieldsCreateOutput =
   typeof ExternalDataSchemasIncrementalFieldsCreateOutput.Type;
 

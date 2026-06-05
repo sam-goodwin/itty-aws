@@ -16,7 +16,7 @@ export const UpdateGroupDatabasesInput = /*@__PURE__*/ Schema.Struct({
 export type UpdateGroupDatabasesInput = typeof UpdateGroupDatabasesInput.Type;
 
 // Output Schema
-export const UpdateGroupDatabasesOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupDatabasesOutput = Schema.Void;
 export type UpdateGroupDatabasesOutput = typeof UpdateGroupDatabasesOutput.Type;
 
 // The operation

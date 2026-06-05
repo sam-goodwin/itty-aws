@@ -18,8 +18,7 @@ export type AuthorizedApplicationsControllerDeleteInput =
   typeof AuthorizedApplicationsControllerDeleteInput.Type;
 
 // Output Schema
-export const AuthorizedApplicationsControllerDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AuthorizedApplicationsControllerDeleteOutput = Schema.Void;
 export type AuthorizedApplicationsControllerDeleteOutput =
   typeof AuthorizedApplicationsControllerDeleteOutput.Type;
 

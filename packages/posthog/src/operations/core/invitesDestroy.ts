@@ -16,7 +16,7 @@ export const InvitesDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type InvitesDestroyInput = typeof InvitesDestroyInput.Type;
 
 // Output Schema
-export const InvitesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const InvitesDestroyOutput = Schema.Void;
 export type InvitesDestroyOutput = typeof InvitesDestroyOutput.Type;
 
 // The operation

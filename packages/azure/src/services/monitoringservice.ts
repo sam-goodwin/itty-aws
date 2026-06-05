@@ -72,7 +72,7 @@ export type AzureMonitorWorkspacesDeleteInput =
   typeof AzureMonitorWorkspacesDeleteInput.Type;
 
 // Output Schema
-export const AzureMonitorWorkspacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AzureMonitorWorkspacesDeleteOutput = Schema.Void;
 export type AzureMonitorWorkspacesDeleteOutput =
   typeof AzureMonitorWorkspacesDeleteOutput.Type;
 

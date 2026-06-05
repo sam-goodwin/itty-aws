@@ -9,7 +9,7 @@ export const GetSQLGrammarInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type GetSQLGrammarInput = typeof GetSQLGrammarInput.Type;
 
 // Output Schema
-export const GetSQLGrammarOutput = /*@__PURE__*/ Schema.String;
+export const GetSQLGrammarOutput = Schema.String;
 export type GetSQLGrammarOutput = typeof GetSQLGrammarOutput.Type;
 
 // The operation

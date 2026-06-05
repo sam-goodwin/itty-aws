@@ -11,7 +11,7 @@ export type V1DeleteProjectClaimTokenInput =
   typeof V1DeleteProjectClaimTokenInput.Type;
 
 // Output Schema
-export const V1DeleteProjectClaimTokenOutput = /*@__PURE__*/ Schema.Void;
+export const V1DeleteProjectClaimTokenOutput = Schema.Void;
 export type V1DeleteProjectClaimTokenOutput =
   typeof V1DeleteProjectClaimTokenOutput.Type;
 

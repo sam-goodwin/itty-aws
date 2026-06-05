@@ -20,8 +20,7 @@ export type CreateGroupClusterGlobalWriteManagedNamespaceInput =
   typeof CreateGroupClusterGlobalWriteManagedNamespaceInput.Type;
 
 // Output Schema
-export const CreateGroupClusterGlobalWriteManagedNamespaceOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CreateGroupClusterGlobalWriteManagedNamespaceOutput = Schema.Void;
 export type CreateGroupClusterGlobalWriteManagedNamespaceOutput =
   typeof CreateGroupClusterGlobalWriteManagedNamespaceOutput.Type;
 

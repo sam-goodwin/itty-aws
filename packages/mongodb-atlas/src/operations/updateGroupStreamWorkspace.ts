@@ -19,7 +19,7 @@ export type UpdateGroupStreamWorkspaceInput =
   typeof UpdateGroupStreamWorkspaceInput.Type;
 
 // Output Schema
-export const UpdateGroupStreamWorkspaceOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupStreamWorkspaceOutput = Schema.Void;
 export type UpdateGroupStreamWorkspaceOutput =
   typeof UpdateGroupStreamWorkspaceOutput.Type;
 

@@ -24,7 +24,7 @@ export type AccountsChangeKeyVaultInput =
   typeof AccountsChangeKeyVaultInput.Type;
 
 // Output Schema
-export const AccountsChangeKeyVaultOutput = /*@__PURE__*/ Schema.Void;
+export const AccountsChangeKeyVaultOutput = Schema.Void;
 export type AccountsChangeKeyVaultOutput =
   typeof AccountsChangeKeyVaultOutput.Type;
 
@@ -107,7 +107,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
 
 // Output Schema
-export const AccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AccountsDeleteOutput = Schema.Void;
 export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
 
 // The operation
@@ -345,7 +345,7 @@ export type AccountsRenewCredentialsInput =
   typeof AccountsRenewCredentialsInput.Type;
 
 // Output Schema
-export const AccountsRenewCredentialsOutput = /*@__PURE__*/ Schema.Void;
+export const AccountsRenewCredentialsOutput = Schema.Void;
 export type AccountsRenewCredentialsOutput =
   typeof AccountsRenewCredentialsOutput.Type;
 
@@ -378,7 +378,7 @@ export type AccountsTransitionToCmkInput =
   typeof AccountsTransitionToCmkInput.Type;
 
 // Output Schema
-export const AccountsTransitionToCmkOutput = /*@__PURE__*/ Schema.Void;
+export const AccountsTransitionToCmkOutput = Schema.Void;
 export type AccountsTransitionToCmkOutput =
   typeof AccountsTransitionToCmkOutput.Type;
 
@@ -511,7 +511,7 @@ export const BackupPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BackupPoliciesDeleteInput = typeof BackupPoliciesDeleteInput.Type;
 
 // Output Schema
-export const BackupPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BackupPoliciesDeleteOutput = Schema.Void;
 export type BackupPoliciesDeleteOutput = typeof BackupPoliciesDeleteOutput.Type;
 
 // The operation
@@ -754,7 +754,7 @@ export const BackupsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BackupsDeleteInput = typeof BackupsDeleteInput.Type;
 
 // Output Schema
-export const BackupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BackupsDeleteOutput = Schema.Void;
 export type BackupsDeleteOutput = typeof BackupsDeleteOutput.Type;
 
 // The operation
@@ -1003,8 +1003,7 @@ export type BackupsUnderAccountMigrateBackupsInput =
   typeof BackupsUnderAccountMigrateBackupsInput.Type;
 
 // Output Schema
-export const BackupsUnderAccountMigrateBackupsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BackupsUnderAccountMigrateBackupsOutput = Schema.Void;
 export type BackupsUnderAccountMigrateBackupsOutput =
   typeof BackupsUnderAccountMigrateBackupsOutput.Type;
 
@@ -1040,8 +1039,7 @@ export type BackupsUnderBackupVaultRestoreFilesInput =
   typeof BackupsUnderBackupVaultRestoreFilesInput.Type;
 
 // Output Schema
-export const BackupsUnderBackupVaultRestoreFilesOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BackupsUnderBackupVaultRestoreFilesOutput = Schema.Void;
 export type BackupsUnderBackupVaultRestoreFilesOutput =
   typeof BackupsUnderBackupVaultRestoreFilesOutput.Type;
 
@@ -1081,7 +1079,7 @@ export type BackupsUnderVolumeMigrateBackupsInput =
   typeof BackupsUnderVolumeMigrateBackupsInput.Type;
 
 // Output Schema
-export const BackupsUnderVolumeMigrateBackupsOutput = /*@__PURE__*/ Schema.Void;
+export const BackupsUnderVolumeMigrateBackupsOutput = Schema.Void;
 export type BackupsUnderVolumeMigrateBackupsOutput =
   typeof BackupsUnderVolumeMigrateBackupsOutput.Type;
 
@@ -1222,7 +1220,7 @@ export const BackupVaultsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BackupVaultsDeleteInput = typeof BackupVaultsDeleteInput.Type;
 
 // Output Schema
-export const BackupVaultsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BackupVaultsDeleteOutput = Schema.Void;
 export type BackupVaultsDeleteOutput = typeof BackupVaultsDeleteOutput.Type;
 
 // The operation
@@ -2301,7 +2299,7 @@ export const PoolsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PoolsDeleteInput = typeof PoolsDeleteInput.Type;
 
 // Output Schema
-export const PoolsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PoolsDeleteOutput = Schema.Void;
 export type PoolsDeleteOutput = typeof PoolsDeleteOutput.Type;
 
 // The operation
@@ -2493,7 +2491,7 @@ export type RansomwareReportsClearSuspectsInput =
   typeof RansomwareReportsClearSuspectsInput.Type;
 
 // Output Schema
-export const RansomwareReportsClearSuspectsOutput = /*@__PURE__*/ Schema.Void;
+export const RansomwareReportsClearSuspectsOutput = Schema.Void;
 export type RansomwareReportsClearSuspectsOutput =
   typeof RansomwareReportsClearSuspectsOutput.Type;
 
@@ -2703,7 +2701,7 @@ export type SnapshotPoliciesDeleteInput =
   typeof SnapshotPoliciesDeleteInput.Type;
 
 // Output Schema
-export const SnapshotPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SnapshotPoliciesDeleteOutput = Schema.Void;
 export type SnapshotPoliciesDeleteOutput =
   typeof SnapshotPoliciesDeleteOutput.Type;
 
@@ -3010,7 +3008,7 @@ export const SnapshotsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SnapshotsDeleteInput = typeof SnapshotsDeleteInput.Type;
 
 // Output Schema
-export const SnapshotsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SnapshotsDeleteOutput = Schema.Void;
 export type SnapshotsDeleteOutput = typeof SnapshotsDeleteOutput.Type;
 
 // The operation
@@ -3160,7 +3158,7 @@ export const SnapshotsRestoreFilesInput = /*@__PURE__*/ Schema.Struct({
 export type SnapshotsRestoreFilesInput = typeof SnapshotsRestoreFilesInput.Type;
 
 // Output Schema
-export const SnapshotsRestoreFilesOutput = /*@__PURE__*/ Schema.Void;
+export const SnapshotsRestoreFilesOutput = Schema.Void;
 export type SnapshotsRestoreFilesOutput =
   typeof SnapshotsRestoreFilesOutput.Type;
 
@@ -3308,7 +3306,7 @@ export const SubvolumesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SubvolumesDeleteInput = typeof SubvolumesDeleteInput.Type;
 
 // Output Schema
-export const SubvolumesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SubvolumesDeleteOutput = Schema.Void;
 export type SubvolumesDeleteOutput = typeof SubvolumesDeleteOutput.Type;
 
 // The operation
@@ -3620,7 +3618,7 @@ export const VolumeGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VolumeGroupsDeleteInput = typeof VolumeGroupsDeleteInput.Type;
 
 // Output Schema
-export const VolumeGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VolumeGroupsDeleteOutput = Schema.Void;
 export type VolumeGroupsDeleteOutput = typeof VolumeGroupsDeleteOutput.Type;
 
 // The operation
@@ -3833,7 +3831,7 @@ export type VolumeQuotaRulesDeleteInput =
   typeof VolumeQuotaRulesDeleteInput.Type;
 
 // Output Schema
-export const VolumeQuotaRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VolumeQuotaRulesDeleteOutput = Schema.Void;
 export type VolumeQuotaRulesDeleteOutput =
   typeof VolumeQuotaRulesDeleteOutput.Type;
 
@@ -4086,7 +4084,7 @@ export type VolumesAuthorizeReplicationInput =
   typeof VolumesAuthorizeReplicationInput.Type;
 
 // Output Schema
-export const VolumesAuthorizeReplicationOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesAuthorizeReplicationOutput = Schema.Void;
 export type VolumesAuthorizeReplicationOutput =
   typeof VolumesAuthorizeReplicationOutput.Type;
 
@@ -4122,7 +4120,7 @@ export const VolumesBreakFileLocksInput = /*@__PURE__*/ Schema.Struct({
 export type VolumesBreakFileLocksInput = typeof VolumesBreakFileLocksInput.Type;
 
 // Output Schema
-export const VolumesBreakFileLocksOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesBreakFileLocksOutput = Schema.Void;
 export type VolumesBreakFileLocksOutput =
   typeof VolumesBreakFileLocksOutput.Type;
 
@@ -4159,7 +4157,7 @@ export type VolumesBreakReplicationInput =
   typeof VolumesBreakReplicationInput.Type;
 
 // Output Schema
-export const VolumesBreakReplicationOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesBreakReplicationOutput = Schema.Void;
 export type VolumesBreakReplicationOutput =
   typeof VolumesBreakReplicationOutput.Type;
 
@@ -4250,7 +4248,7 @@ export const VolumesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VolumesDeleteInput = typeof VolumesDeleteInput.Type;
 
 // Output Schema
-export const VolumesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesDeleteOutput = Schema.Void;
 export type VolumesDeleteOutput = typeof VolumesDeleteOutput.Type;
 
 // The operation
@@ -4287,7 +4285,7 @@ export type VolumesDeleteReplicationInput =
   typeof VolumesDeleteReplicationInput.Type;
 
 // Output Schema
-export const VolumesDeleteReplicationOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesDeleteReplicationOutput = Schema.Void;
 export type VolumesDeleteReplicationOutput =
   typeof VolumesDeleteReplicationOutput.Type;
 
@@ -4325,8 +4323,7 @@ export type VolumesFinalizeExternalReplicationInput =
   typeof VolumesFinalizeExternalReplicationInput.Type;
 
 // Output Schema
-export const VolumesFinalizeExternalReplicationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VolumesFinalizeExternalReplicationOutput = Schema.Void;
 export type VolumesFinalizeExternalReplicationOutput =
   typeof VolumesFinalizeExternalReplicationOutput.Type;
 
@@ -4365,7 +4362,7 @@ export type VolumesFinalizeRelocationInput =
   typeof VolumesFinalizeRelocationInput.Type;
 
 // Output Schema
-export const VolumesFinalizeRelocationOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesFinalizeRelocationOutput = Schema.Void;
 export type VolumesFinalizeRelocationOutput =
   typeof VolumesFinalizeRelocationOutput.Type;
 
@@ -4710,8 +4707,7 @@ export type VolumesPerformReplicationTransferInput =
   typeof VolumesPerformReplicationTransferInput.Type;
 
 // Output Schema
-export const VolumesPerformReplicationTransferOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VolumesPerformReplicationTransferOutput = Schema.Void;
 export type VolumesPerformReplicationTransferOutput =
   typeof VolumesPerformReplicationTransferOutput.Type;
 
@@ -4747,7 +4743,7 @@ export const VolumesPoolChangeInput = /*@__PURE__*/ Schema.Struct({
 export type VolumesPoolChangeInput = typeof VolumesPoolChangeInput.Type;
 
 // Output Schema
-export const VolumesPoolChangeOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesPoolChangeOutput = Schema.Void;
 export type VolumesPoolChangeOutput = typeof VolumesPoolChangeOutput.Type;
 
 // The operation
@@ -4841,7 +4837,7 @@ export type VolumesReestablishReplicationInput =
   typeof VolumesReestablishReplicationInput.Type;
 
 // Output Schema
-export const VolumesReestablishReplicationOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesReestablishReplicationOutput = Schema.Void;
 export type VolumesReestablishReplicationOutput =
   typeof VolumesReestablishReplicationOutput.Type;
 
@@ -4878,7 +4874,7 @@ export type VolumesReInitializeReplicationInput =
   typeof VolumesReInitializeReplicationInput.Type;
 
 // Output Schema
-export const VolumesReInitializeReplicationOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesReInitializeReplicationOutput = Schema.Void;
 export type VolumesReInitializeReplicationOutput =
   typeof VolumesReInitializeReplicationOutput.Type;
 
@@ -4914,7 +4910,7 @@ export const VolumesRelocateInput = /*@__PURE__*/ Schema.Struct({
 export type VolumesRelocateInput = typeof VolumesRelocateInput.Type;
 
 // Output Schema
-export const VolumesRelocateOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesRelocateOutput = Schema.Void;
 export type VolumesRelocateOutput = typeof VolumesRelocateOutput.Type;
 
 // The operation
@@ -4997,7 +4993,7 @@ export type VolumesResetCifsPasswordInput =
   typeof VolumesResetCifsPasswordInput.Type;
 
 // Output Schema
-export const VolumesResetCifsPasswordOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesResetCifsPasswordOutput = Schema.Void;
 export type VolumesResetCifsPasswordOutput =
   typeof VolumesResetCifsPasswordOutput.Type;
 
@@ -5034,7 +5030,7 @@ export type VolumesResyncReplicationInput =
   typeof VolumesResyncReplicationInput.Type;
 
 // Output Schema
-export const VolumesResyncReplicationOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesResyncReplicationOutput = Schema.Void;
 export type VolumesResyncReplicationOutput =
   typeof VolumesResyncReplicationOutput.Type;
 
@@ -5070,7 +5066,7 @@ export const VolumesRevertInput = /*@__PURE__*/ Schema.Struct({
 export type VolumesRevertInput = typeof VolumesRevertInput.Type;
 
 // Output Schema
-export const VolumesRevertOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesRevertOutput = Schema.Void;
 export type VolumesRevertOutput = typeof VolumesRevertOutput.Type;
 
 // The operation
@@ -5106,7 +5102,7 @@ export type VolumesRevertRelocationInput =
   typeof VolumesRevertRelocationInput.Type;
 
 // Output Schema
-export const VolumesRevertRelocationOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesRevertRelocationOutput = Schema.Void;
 export type VolumesRevertRelocationOutput =
   typeof VolumesRevertRelocationOutput.Type;
 

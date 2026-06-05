@@ -19,7 +19,7 @@ export type ExternalDataSourcesJobsRetrieveInput =
   typeof ExternalDataSourcesJobsRetrieveInput.Type;
 
 // Output Schema
-export const ExternalDataSourcesJobsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const ExternalDataSourcesJobsRetrieveOutput = Schema.Void;
 export type ExternalDataSourcesJobsRetrieveOutput =
   typeof ExternalDataSourcesJobsRetrieveOutput.Type;
 

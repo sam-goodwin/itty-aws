@@ -79,7 +79,7 @@ export type AssetEndpointProfilesDeleteInput =
   typeof AssetEndpointProfilesDeleteInput.Type;
 
 // Output Schema
-export const AssetEndpointProfilesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AssetEndpointProfilesDeleteOutput = Schema.Void;
 export type AssetEndpointProfilesDeleteOutput =
   typeof AssetEndpointProfilesDeleteOutput.Type;
 
@@ -397,7 +397,7 @@ export const AssetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AssetsDeleteInput = typeof AssetsDeleteInput.Type;
 
 // Output Schema
-export const AssetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AssetsDeleteOutput = Schema.Void;
 export type AssetsDeleteOutput = typeof AssetsDeleteOutput.Type;
 
 // The operation
@@ -801,7 +801,7 @@ export const NamespaceAssetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NamespaceAssetsDeleteInput = typeof NamespaceAssetsDeleteInput.Type;
 
 // Output Schema
-export const NamespaceAssetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NamespaceAssetsDeleteOutput = Schema.Void;
 export type NamespaceAssetsDeleteOutput =
   typeof NamespaceAssetsDeleteOutput.Type;
 
@@ -1122,7 +1122,7 @@ export type NamespaceDevicesDeleteInput =
   typeof NamespaceDevicesDeleteInput.Type;
 
 // Output Schema
-export const NamespaceDevicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NamespaceDevicesDeleteOutput = Schema.Void;
 export type NamespaceDevicesDeleteOutput =
   typeof NamespaceDevicesDeleteOutput.Type;
 
@@ -1390,7 +1390,7 @@ export type NamespaceDiscoveredAssetsDeleteInput =
   typeof NamespaceDiscoveredAssetsDeleteInput.Type;
 
 // Output Schema
-export const NamespaceDiscoveredAssetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NamespaceDiscoveredAssetsDeleteOutput = Schema.Void;
 export type NamespaceDiscoveredAssetsDeleteOutput =
   typeof NamespaceDiscoveredAssetsDeleteOutput.Type;
 
@@ -1661,7 +1661,7 @@ export type NamespaceDiscoveredDevicesDeleteInput =
   typeof NamespaceDiscoveredDevicesDeleteInput.Type;
 
 // Output Schema
-export const NamespaceDiscoveredDevicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NamespaceDiscoveredDevicesDeleteOutput = Schema.Void;
 export type NamespaceDiscoveredDevicesDeleteOutput =
   typeof NamespaceDiscoveredDevicesDeleteOutput.Type;
 
@@ -1922,7 +1922,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
 
 // Output Schema
-export const NamespacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NamespacesDeleteOutput = Schema.Void;
 export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
 
 // The operation
@@ -2400,7 +2400,7 @@ export type SchemaRegistriesDeleteInput =
   typeof SchemaRegistriesDeleteInput.Type;
 
 // Output Schema
-export const SchemaRegistriesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SchemaRegistriesDeleteOutput = Schema.Void;
 export type SchemaRegistriesDeleteOutput =
   typeof SchemaRegistriesDeleteOutput.Type;
 
@@ -2720,7 +2720,7 @@ export const SchemasDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SchemasDeleteInput = typeof SchemasDeleteInput.Type;
 
 // Output Schema
-export const SchemasDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SchemasDeleteOutput = Schema.Void;
 export type SchemasDeleteOutput = typeof SchemasDeleteOutput.Type;
 
 // The operation
@@ -2916,7 +2916,7 @@ export const SchemaVersionsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SchemaVersionsDeleteInput = typeof SchemaVersionsDeleteInput.Type;
 
 // Output Schema
-export const SchemaVersionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SchemaVersionsDeleteOutput = Schema.Void;
 export type SchemaVersionsDeleteOutput = typeof SchemaVersionsDeleteOutput.Type;
 
 // The operation

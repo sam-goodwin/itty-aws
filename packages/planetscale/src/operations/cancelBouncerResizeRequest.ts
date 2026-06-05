@@ -19,7 +19,7 @@ export type CancelBouncerResizeRequestInput =
   typeof CancelBouncerResizeRequestInput.Type;
 
 // Output Schema
-export const CancelBouncerResizeRequestOutput = /*@__PURE__*/ Schema.Void;
+export const CancelBouncerResizeRequestOutput = Schema.Void;
 export type CancelBouncerResizeRequestOutput =
   typeof CancelBouncerResizeRequestOutput.Type;
 

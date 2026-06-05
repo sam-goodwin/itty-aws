@@ -22,7 +22,7 @@ export type ListGroupClusterBackupExportsInput =
   typeof ListGroupClusterBackupExportsInput.Type;
 
 // Output Schema
-export const ListGroupClusterBackupExportsOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupClusterBackupExportsOutput = Schema.Void;
 export type ListGroupClusterBackupExportsOutput =
   typeof ListGroupClusterBackupExportsOutput.Type;
 

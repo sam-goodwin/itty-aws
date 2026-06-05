@@ -18,7 +18,7 @@ export type GetGroupSampleDatasetLoadInput =
   typeof GetGroupSampleDatasetLoadInput.Type;
 
 // Output Schema
-export const GetGroupSampleDatasetLoadOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupSampleDatasetLoadOutput = Schema.Void;
 export type GetGroupSampleDatasetLoadOutput =
   typeof GetGroupSampleDatasetLoadOutput.Type;
 

@@ -14,7 +14,7 @@ export const UpdateGroupAuditLogInput = /*@__PURE__*/ Schema.Struct({
 export type UpdateGroupAuditLogInput = typeof UpdateGroupAuditLogInput.Type;
 
 // Output Schema
-export const UpdateGroupAuditLogOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupAuditLogOutput = Schema.Void;
 export type UpdateGroupAuditLogOutput = typeof UpdateGroupAuditLogOutput.Type;
 
 // The operation

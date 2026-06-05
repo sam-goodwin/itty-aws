@@ -17,8 +17,7 @@ export type ExperimentsEligibleFeatureFlagsRetrieveInput =
   typeof ExperimentsEligibleFeatureFlagsRetrieveInput.Type;
 
 // Output Schema
-export const ExperimentsEligibleFeatureFlagsRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ExperimentsEligibleFeatureFlagsRetrieveOutput = Schema.Void;
 export type ExperimentsEligibleFeatureFlagsRetrieveOutput =
   typeof ExperimentsEligibleFeatureFlagsRetrieveOutput.Type;
 

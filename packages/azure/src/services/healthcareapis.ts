@@ -72,7 +72,7 @@ export const DicomServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DicomServicesDeleteInput = typeof DicomServicesDeleteInput.Type;
 
 // Output Schema
-export const DicomServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DicomServicesDeleteOutput = Schema.Void;
 export type DicomServicesDeleteOutput = typeof DicomServicesDeleteOutput.Type;
 
 // The operation
@@ -351,7 +351,7 @@ export const FhirServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FhirServicesDeleteInput = typeof FhirServicesDeleteInput.Type;
 
 // Output Schema
-export const FhirServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FhirServicesDeleteOutput = Schema.Void;
 export type FhirServicesDeleteOutput = typeof FhirServicesDeleteOutput.Type;
 
 // The operation
@@ -574,8 +574,7 @@ export type IotConnectorFhirDestinationDeleteInput =
   typeof IotConnectorFhirDestinationDeleteInput.Type;
 
 // Output Schema
-export const IotConnectorFhirDestinationDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IotConnectorFhirDestinationDeleteOutput = Schema.Void;
 export type IotConnectorFhirDestinationDeleteOutput =
   typeof IotConnectorFhirDestinationDeleteOutput.Type;
 
@@ -690,7 +689,7 @@ export const IotConnectorsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type IotConnectorsDeleteInput = typeof IotConnectorsDeleteInput.Type;
 
 // Output Schema
-export const IotConnectorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IotConnectorsDeleteOutput = Schema.Void;
 export type IotConnectorsDeleteOutput = typeof IotConnectorsDeleteOutput.Type;
 
 // The operation
@@ -1077,7 +1076,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1337,7 +1336,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesDeleteOutput = Schema.Void;
 export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 
 // The operation
@@ -1589,8 +1588,7 @@ export type WorkspacePrivateEndpointConnectionsDeleteInput =
   typeof WorkspacePrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const WorkspacePrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WorkspacePrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type WorkspacePrivateEndpointConnectionsDeleteOutput =
   typeof WorkspacePrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1813,7 +1811,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
 
 // Output Schema
-export const WorkspacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WorkspacesDeleteOutput = Schema.Void;
 export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
 
 // The operation

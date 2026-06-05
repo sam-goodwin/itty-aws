@@ -17,7 +17,7 @@ export type UpdateGroupMaintenanceWindowInput =
   typeof UpdateGroupMaintenanceWindowInput.Type;
 
 // Output Schema
-export const UpdateGroupMaintenanceWindowOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupMaintenanceWindowOutput = Schema.Void;
 export type UpdateGroupMaintenanceWindowOutput =
   typeof UpdateGroupMaintenanceWindowOutput.Type;
 

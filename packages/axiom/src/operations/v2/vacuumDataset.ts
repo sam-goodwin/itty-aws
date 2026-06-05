@@ -9,7 +9,7 @@ export const VacuumDatasetInput = /*@__PURE__*/ Schema.Struct({
 export type VacuumDatasetInput = typeof VacuumDatasetInput.Type;
 
 // Output Schema
-export const VacuumDatasetOutput = /*@__PURE__*/ Schema.Void;
+export const VacuumDatasetOutput = Schema.Void;
 export type VacuumDatasetOutput = typeof VacuumDatasetOutput.Type;
 
 // The operation

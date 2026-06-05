@@ -20,7 +20,7 @@ export type GetGroupClusterQueryShapeInput =
   typeof GetGroupClusterQueryShapeInput.Type;
 
 // Output Schema
-export const GetGroupClusterQueryShapeOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupClusterQueryShapeOutput = Schema.Void;
 export type GetGroupClusterQueryShapeOutput =
   typeof GetGroupClusterQueryShapeOutput.Type;
 

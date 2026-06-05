@@ -78,7 +78,7 @@ export type AksAssessmentOperationsDeleteInput =
   typeof AksAssessmentOperationsDeleteInput.Type;
 
 // Output Schema
-export const AksAssessmentOperationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AksAssessmentOperationsDeleteOutput = Schema.Void;
 export type AksAssessmentOperationsDeleteOutput =
   typeof AksAssessmentOperationsDeleteOutput.Type;
 
@@ -1897,8 +1897,7 @@ export type AssessmentProjectsOperationsDeleteInput =
   typeof AssessmentProjectsOperationsDeleteInput.Type;
 
 // Output Schema
-export const AssessmentProjectsOperationsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AssessmentProjectsOperationsDeleteOutput = Schema.Void;
 export type AssessmentProjectsOperationsDeleteOutput =
   typeof AssessmentProjectsOperationsDeleteOutput.Type;
 
@@ -2358,7 +2357,7 @@ export type AssessmentsOperationsDeleteInput =
   typeof AssessmentsOperationsDeleteInput.Type;
 
 // Output Schema
-export const AssessmentsOperationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AssessmentsOperationsDeleteOutput = Schema.Void;
 export type AssessmentsOperationsDeleteOutput =
   typeof AssessmentsOperationsDeleteOutput.Type;
 
@@ -2885,7 +2884,7 @@ export type AvsAssessmentsOperationsDeleteInput =
   typeof AvsAssessmentsOperationsDeleteInput.Type;
 
 // Output Schema
-export const AvsAssessmentsOperationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AvsAssessmentsOperationsDeleteOutput = Schema.Void;
 export type AvsAssessmentsOperationsDeleteOutput =
   typeof AvsAssessmentsOperationsDeleteOutput.Type;
 
@@ -3382,8 +3381,7 @@ export type DependencyMapControllerClientGroupMembersInput =
   typeof DependencyMapControllerClientGroupMembersInput.Type;
 
 // Output Schema
-export const DependencyMapControllerClientGroupMembersOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const DependencyMapControllerClientGroupMembersOutput = Schema.Unknown;
 export type DependencyMapControllerClientGroupMembersOutput =
   typeof DependencyMapControllerClientGroupMembersOutput.Type;
 
@@ -3419,8 +3417,7 @@ export type DependencyMapControllerExportDependenciesInput =
   typeof DependencyMapControllerExportDependenciesInput.Type;
 
 // Output Schema
-export const DependencyMapControllerExportDependenciesOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const DependencyMapControllerExportDependenciesOutput = Schema.Unknown;
 export type DependencyMapControllerExportDependenciesOutput =
   typeof DependencyMapControllerExportDependenciesOutput.Type;
 
@@ -3456,8 +3453,7 @@ export type DependencyMapControllerGenerateCoarseMapInput =
   typeof DependencyMapControllerGenerateCoarseMapInput.Type;
 
 // Output Schema
-export const DependencyMapControllerGenerateCoarseMapOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const DependencyMapControllerGenerateCoarseMapOutput = Schema.Unknown;
 export type DependencyMapControllerGenerateCoarseMapOutput =
   typeof DependencyMapControllerGenerateCoarseMapOutput.Type;
 
@@ -3493,8 +3489,7 @@ export type DependencyMapControllerGenerateDetailedMapInput =
   typeof DependencyMapControllerGenerateDetailedMapInput.Type;
 
 // Output Schema
-export const DependencyMapControllerGenerateDetailedMapOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const DependencyMapControllerGenerateDetailedMapOutput = Schema.Unknown;
 export type DependencyMapControllerGenerateDetailedMapOutput =
   typeof DependencyMapControllerGenerateDetailedMapOutput.Type;
 
@@ -3529,8 +3524,7 @@ export type DependencyMapControllerServerGroupMembersInput =
   typeof DependencyMapControllerServerGroupMembersInput.Type;
 
 // Output Schema
-export const DependencyMapControllerServerGroupMembersOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const DependencyMapControllerServerGroupMembersOutput = Schema.Unknown;
 export type DependencyMapControllerServerGroupMembersOutput =
   typeof DependencyMapControllerServerGroupMembersOutput.Type;
 
@@ -3751,7 +3745,7 @@ export type GroupsOperationsDeleteInput =
   typeof GroupsOperationsDeleteInput.Type;
 
 // Output Schema
-export const GroupsOperationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GroupsOperationsDeleteOutput = Schema.Void;
 export type GroupsOperationsDeleteOutput =
   typeof GroupsOperationsDeleteOutput.Type;
 
@@ -4021,7 +4015,7 @@ export type HypervClusterControllerDeleteInput =
   typeof HypervClusterControllerDeleteInput.Type;
 
 // Output Schema
-export const HypervClusterControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const HypervClusterControllerDeleteOutput = Schema.Void;
 export type HypervClusterControllerDeleteOutput =
   typeof HypervClusterControllerDeleteOutput.Type;
 
@@ -4239,7 +4233,7 @@ export type HypervCollectorsOperationsDeleteInput =
   typeof HypervCollectorsOperationsDeleteInput.Type;
 
 // Output Schema
-export const HypervCollectorsOperationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const HypervCollectorsOperationsDeleteOutput = Schema.Void;
 export type HypervCollectorsOperationsDeleteOutput =
   typeof HypervCollectorsOperationsDeleteOutput.Type;
 
@@ -4397,7 +4391,7 @@ export type HypervDependencyMapControllerClientGroupMembersInput =
 
 // Output Schema
 export const HypervDependencyMapControllerClientGroupMembersOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type HypervDependencyMapControllerClientGroupMembersOutput =
   typeof HypervDependencyMapControllerClientGroupMembersOutput.Type;
 
@@ -4433,7 +4427,7 @@ export type HypervDependencyMapControllerExportDependenciesInput =
 
 // Output Schema
 export const HypervDependencyMapControllerExportDependenciesOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type HypervDependencyMapControllerExportDependenciesOutput =
   typeof HypervDependencyMapControllerExportDependenciesOutput.Type;
 
@@ -4469,7 +4463,7 @@ export type HypervDependencyMapControllerGenerateCoarseMapInput =
 
 // Output Schema
 export const HypervDependencyMapControllerGenerateCoarseMapOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type HypervDependencyMapControllerGenerateCoarseMapOutput =
   typeof HypervDependencyMapControllerGenerateCoarseMapOutput.Type;
 
@@ -4505,7 +4499,7 @@ export type HypervDependencyMapControllerGenerateDetailedMapInput =
 
 // Output Schema
 export const HypervDependencyMapControllerGenerateDetailedMapOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type HypervDependencyMapControllerGenerateDetailedMapOutput =
   typeof HypervDependencyMapControllerGenerateDetailedMapOutput.Type;
 
@@ -4541,7 +4535,7 @@ export type HypervDependencyMapControllerServerGroupMembersInput =
 
 // Output Schema
 export const HypervDependencyMapControllerServerGroupMembersOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type HypervDependencyMapControllerServerGroupMembersOutput =
   typeof HypervDependencyMapControllerServerGroupMembersOutput.Type;
 
@@ -4577,7 +4571,7 @@ export type HypervDependencyMapControllerUpdateDependencyMapStatusInput =
 
 // Output Schema
 export const HypervDependencyMapControllerUpdateDependencyMapStatusOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type HypervDependencyMapControllerUpdateDependencyMapStatusOutput =
   typeof HypervDependencyMapControllerUpdateDependencyMapStatusOutput.Type;
 
@@ -4666,7 +4660,7 @@ export type HypervHostControllerDeleteInput =
   typeof HypervHostControllerDeleteInput.Type;
 
 // Output Schema
-export const HypervHostControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const HypervHostControllerDeleteOutput = Schema.Void;
 export type HypervHostControllerDeleteOutput =
   typeof HypervHostControllerDeleteOutput.Type;
 
@@ -5242,8 +5236,7 @@ export type HypervMachinesControllerUpdatePropertiesInput =
   typeof HypervMachinesControllerUpdatePropertiesInput.Type;
 
 // Output Schema
-export const HypervMachinesControllerUpdatePropertiesOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const HypervMachinesControllerUpdatePropertiesOutput = Schema.Unknown;
 export type HypervMachinesControllerUpdatePropertiesOutput =
   typeof HypervMachinesControllerUpdatePropertiesOutput.Type;
 
@@ -5600,7 +5593,7 @@ export type HypervSitesControllerDeleteInput =
   typeof HypervSitesControllerDeleteInput.Type;
 
 // Output Schema
-export const HypervSitesControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const HypervSitesControllerDeleteOutput = Schema.Void;
 export type HypervSitesControllerDeleteOutput =
   typeof HypervSitesControllerDeleteOutput.Type;
 
@@ -5634,8 +5627,7 @@ export type HypervSitesControllerExportApplicationsInput =
   typeof HypervSitesControllerExportApplicationsInput.Type;
 
 // Output Schema
-export const HypervSitesControllerExportApplicationsOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const HypervSitesControllerExportApplicationsOutput = Schema.Unknown;
 export type HypervSitesControllerExportApplicationsOutput =
   typeof HypervSitesControllerExportApplicationsOutput.Type;
 
@@ -5672,8 +5664,7 @@ export type HypervSitesControllerExportMachineErrorsInput =
   typeof HypervSitesControllerExportMachineErrorsInput.Type;
 
 // Output Schema
-export const HypervSitesControllerExportMachineErrorsOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const HypervSitesControllerExportMachineErrorsOutput = Schema.Unknown;
 export type HypervSitesControllerExportMachineErrorsOutput =
   typeof HypervSitesControllerExportMachineErrorsOutput.Type;
 
@@ -6553,7 +6544,7 @@ export type ImportCollectorsOperationsDeleteInput =
   typeof ImportCollectorsOperationsDeleteInput.Type;
 
 // Output Schema
-export const ImportCollectorsOperationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ImportCollectorsOperationsDeleteOutput = Schema.Void;
 export type ImportCollectorsOperationsDeleteOutput =
   typeof ImportCollectorsOperationsDeleteOutput.Type;
 
@@ -7218,7 +7209,7 @@ export type ImportMachinesControllerDeleteInput =
   typeof ImportMachinesControllerDeleteInput.Type;
 
 // Output Schema
-export const ImportMachinesControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ImportMachinesControllerDeleteOutput = Schema.Void;
 export type ImportMachinesControllerDeleteOutput =
   typeof ImportMachinesControllerDeleteOutput.Type;
 
@@ -7434,7 +7425,7 @@ export type ImportSitesControllerDeleteInput =
   typeof ImportSitesControllerDeleteInput.Type;
 
 // Output Schema
-export const ImportSitesControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ImportSitesControllerDeleteOutput = Schema.Void;
 export type ImportSitesControllerDeleteOutput =
   typeof ImportSitesControllerDeleteOutput.Type;
 
@@ -8192,7 +8183,7 @@ export type MachinesControllerStartInput =
   typeof MachinesControllerStartInput.Type;
 
 // Output Schema
-export const MachinesControllerStartOutput = /*@__PURE__*/ Schema.Unknown;
+export const MachinesControllerStartOutput = Schema.Unknown;
 export type MachinesControllerStartOutput =
   typeof MachinesControllerStartOutput.Type;
 
@@ -8227,7 +8218,7 @@ export type MachinesControllerStopInput =
   typeof MachinesControllerStopInput.Type;
 
 // Output Schema
-export const MachinesControllerStopOutput = /*@__PURE__*/ Schema.Unknown;
+export const MachinesControllerStopOutput = Schema.Unknown;
 export type MachinesControllerStopOutput =
   typeof MachinesControllerStopOutput.Type;
 
@@ -8495,7 +8486,7 @@ export type MasterSitesControllerDeleteInput =
   typeof MasterSitesControllerDeleteInput.Type;
 
 // Output Schema
-export const MasterSitesControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MasterSitesControllerDeleteOutput = Schema.Void;
 export type MasterSitesControllerDeleteOutput =
   typeof MasterSitesControllerDeleteOutput.Type;
 
@@ -8875,8 +8866,7 @@ export type MigrateProjectsControllerDeleteMigrateProjectInput =
   typeof MigrateProjectsControllerDeleteMigrateProjectInput.Type;
 
 // Output Schema
-export const MigrateProjectsControllerDeleteMigrateProjectOutput =
-  /*@__PURE__*/ Schema.Void;
+export const MigrateProjectsControllerDeleteMigrateProjectOutput = Schema.Void;
 export type MigrateProjectsControllerDeleteMigrateProjectOutput =
   typeof MigrateProjectsControllerDeleteMigrateProjectOutput.Type;
 
@@ -9683,8 +9673,7 @@ export type PrivateEndpointConnectionControllerDeleteInput =
   typeof PrivateEndpointConnectionControllerDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionControllerDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionControllerDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionControllerDeleteOutput =
   typeof PrivateEndpointConnectionControllerDeleteOutput.Type;
 
@@ -10118,8 +10107,7 @@ export type PrivateEndpointConnectionOperationsDeleteInput =
   typeof PrivateEndpointConnectionOperationsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionOperationsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionOperationsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionOperationsDeleteOutput =
   typeof PrivateEndpointConnectionOperationsDeleteOutput.Type;
 
@@ -12006,7 +11994,7 @@ export type ServerCollectorsOperationsDeleteInput =
   typeof ServerCollectorsOperationsDeleteInput.Type;
 
 // Output Schema
-export const ServerCollectorsOperationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServerCollectorsOperationsDeleteOutput = Schema.Void;
 export type ServerCollectorsOperationsDeleteOutput =
   typeof ServerCollectorsOperationsDeleteOutput.Type;
 
@@ -12164,7 +12152,7 @@ export type ServerDependencyMapControllerClientGroupMembersInput =
 
 // Output Schema
 export const ServerDependencyMapControllerClientGroupMembersOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type ServerDependencyMapControllerClientGroupMembersOutput =
   typeof ServerDependencyMapControllerClientGroupMembersOutput.Type;
 
@@ -12200,7 +12188,7 @@ export type ServerDependencyMapControllerExportDependenciesInput =
 
 // Output Schema
 export const ServerDependencyMapControllerExportDependenciesOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type ServerDependencyMapControllerExportDependenciesOutput =
   typeof ServerDependencyMapControllerExportDependenciesOutput.Type;
 
@@ -12236,7 +12224,7 @@ export type ServerDependencyMapControllerGenerateCoarseMapInput =
 
 // Output Schema
 export const ServerDependencyMapControllerGenerateCoarseMapOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type ServerDependencyMapControllerGenerateCoarseMapOutput =
   typeof ServerDependencyMapControllerGenerateCoarseMapOutput.Type;
 
@@ -12272,7 +12260,7 @@ export type ServerDependencyMapControllerGenerateDetailedMapInput =
 
 // Output Schema
 export const ServerDependencyMapControllerGenerateDetailedMapOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type ServerDependencyMapControllerGenerateDetailedMapOutput =
   typeof ServerDependencyMapControllerGenerateDetailedMapOutput.Type;
 
@@ -12308,7 +12296,7 @@ export type ServerDependencyMapControllerServerGroupMembersInput =
 
 // Output Schema
 export const ServerDependencyMapControllerServerGroupMembersOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type ServerDependencyMapControllerServerGroupMembersOutput =
   typeof ServerDependencyMapControllerServerGroupMembersOutput.Type;
 
@@ -12646,7 +12634,7 @@ export type ServersControllerDeleteMachineInput =
   typeof ServersControllerDeleteMachineInput.Type;
 
 // Output Schema
-export const ServersControllerDeleteMachineOutput = /*@__PURE__*/ Schema.Void;
+export const ServersControllerDeleteMachineOutput = Schema.Void;
 export type ServersControllerDeleteMachineOutput =
   typeof ServersControllerDeleteMachineOutput.Type;
 
@@ -13005,7 +12993,7 @@ export type ServerSitesControllerDeleteInput =
   typeof ServerSitesControllerDeleteInput.Type;
 
 // Output Schema
-export const ServerSitesControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServerSitesControllerDeleteOutput = Schema.Void;
 export type ServerSitesControllerDeleteOutput =
   typeof ServerSitesControllerDeleteOutput.Type;
 
@@ -13039,8 +13027,7 @@ export type ServerSitesControllerExportApplicationsInput =
   typeof ServerSitesControllerExportApplicationsInput.Type;
 
 // Output Schema
-export const ServerSitesControllerExportApplicationsOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const ServerSitesControllerExportApplicationsOutput = Schema.Unknown;
 export type ServerSitesControllerExportApplicationsOutput =
   typeof ServerSitesControllerExportApplicationsOutput.Type;
 
@@ -13077,8 +13064,7 @@ export type ServerSitesControllerExportMachineErrorsInput =
   typeof ServerSitesControllerExportMachineErrorsInput.Type;
 
 // Output Schema
-export const ServerSitesControllerExportMachineErrorsOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const ServerSitesControllerExportMachineErrorsOutput = Schema.Unknown;
 export type ServerSitesControllerExportMachineErrorsOutput =
   typeof ServerSitesControllerExportMachineErrorsOutput.Type;
 
@@ -13363,8 +13349,7 @@ export type ServerSitesControllerRefreshSiteInput =
   typeof ServerSitesControllerRefreshSiteInput.Type;
 
 // Output Schema
-export const ServerSitesControllerRefreshSiteOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const ServerSitesControllerRefreshSiteOutput = Schema.Unknown;
 export type ServerSitesControllerRefreshSiteOutput =
   typeof ServerSitesControllerRefreshSiteOutput.Type;
 
@@ -13486,7 +13471,7 @@ export type ServerSitesControllerUpdateDependencyMapStatusInput =
 
 // Output Schema
 export const ServerSitesControllerUpdateDependencyMapStatusOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type ServerSitesControllerUpdateDependencyMapStatusOutput =
   typeof ServerSitesControllerUpdateDependencyMapStatusOutput.Type;
 
@@ -13522,8 +13507,7 @@ export type ServerSitesControllerUpdatePropertiesInput =
   typeof ServerSitesControllerUpdatePropertiesInput.Type;
 
 // Output Schema
-export const ServerSitesControllerUpdatePropertiesOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const ServerSitesControllerUpdatePropertiesOutput = Schema.Unknown;
 export type ServerSitesControllerUpdatePropertiesOutput =
   typeof ServerSitesControllerUpdatePropertiesOutput.Type;
 
@@ -13825,7 +13809,7 @@ export const SitesControllerDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SitesControllerDeleteInput = typeof SitesControllerDeleteInput.Type;
 
 // Output Schema
-export const SitesControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SitesControllerDeleteOutput = Schema.Void;
 export type SitesControllerDeleteOutput =
   typeof SitesControllerDeleteOutput.Type;
 
@@ -13859,8 +13843,7 @@ export type SitesControllerExportApplicationsInput =
   typeof SitesControllerExportApplicationsInput.Type;
 
 // Output Schema
-export const SitesControllerExportApplicationsOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const SitesControllerExportApplicationsOutput = Schema.Unknown;
 export type SitesControllerExportApplicationsOutput =
   typeof SitesControllerExportApplicationsOutput.Type;
 
@@ -13895,8 +13878,7 @@ export type SitesControllerExportMachineErrorsInput =
   typeof SitesControllerExportMachineErrorsInput.Type;
 
 // Output Schema
-export const SitesControllerExportMachineErrorsOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const SitesControllerExportMachineErrorsOutput = Schema.Unknown;
 export type SitesControllerExportMachineErrorsOutput =
   typeof SitesControllerExportMachineErrorsOutput.Type;
 
@@ -13932,7 +13914,7 @@ export type SitesControllerExportMachinesInput =
   typeof SitesControllerExportMachinesInput.Type;
 
 // Output Schema
-export const SitesControllerExportMachinesOutput = /*@__PURE__*/ Schema.Unknown;
+export const SitesControllerExportMachinesOutput = Schema.Unknown;
 export type SitesControllerExportMachinesOutput =
   typeof SitesControllerExportMachinesOutput.Type;
 
@@ -15019,7 +15001,7 @@ export type SqlAssessmentV2OperationsDeleteInput =
   typeof SqlAssessmentV2OperationsDeleteInput.Type;
 
 // Output Schema
-export const SqlAssessmentV2OperationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlAssessmentV2OperationsDeleteOutput = Schema.Void;
 export type SqlAssessmentV2OperationsDeleteOutput =
   typeof SqlAssessmentV2OperationsDeleteOutput.Type;
 
@@ -15553,7 +15535,7 @@ export type SqlCollectorOperationsDeleteInput =
   typeof SqlCollectorOperationsDeleteInput.Type;
 
 // Output Schema
-export const SqlCollectorOperationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlCollectorOperationsDeleteOutput = Schema.Void;
 export type SqlCollectorOperationsDeleteOutput =
   typeof SqlCollectorOperationsDeleteOutput.Type;
 
@@ -15905,8 +15887,7 @@ export type SqlDiscoverySiteDataSourceControllerDeleteInput =
   typeof SqlDiscoverySiteDataSourceControllerDeleteInput.Type;
 
 // Output Schema
-export const SqlDiscoverySiteDataSourceControllerDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SqlDiscoverySiteDataSourceControllerDeleteOutput = Schema.Void;
 export type SqlDiscoverySiteDataSourceControllerDeleteOutput =
   typeof SqlDiscoverySiteDataSourceControllerDeleteOutput.Type;
 
@@ -16625,7 +16606,7 @@ export type SqlSitesControllerDeleteInput =
   typeof SqlSitesControllerDeleteInput.Type;
 
 // Output Schema
-export const SqlSitesControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SqlSitesControllerDeleteOutput = Schema.Void;
 export type SqlSitesControllerDeleteOutput =
   typeof SqlSitesControllerDeleteOutput.Type;
 
@@ -16711,8 +16692,7 @@ export type SqlSitesControllerExportSqlServerErrorsInput =
   typeof SqlSitesControllerExportSqlServerErrorsInput.Type;
 
 // Output Schema
-export const SqlSitesControllerExportSqlServerErrorsOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const SqlSitesControllerExportSqlServerErrorsOutput = Schema.Unknown;
 export type SqlSitesControllerExportSqlServerErrorsOutput =
   typeof SqlSitesControllerExportSqlServerErrorsOutput.Type;
 
@@ -16750,8 +16730,7 @@ export type SqlSitesControllerExportSqlServersInput =
   typeof SqlSitesControllerExportSqlServersInput.Type;
 
 // Output Schema
-export const SqlSitesControllerExportSqlServersOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const SqlSitesControllerExportSqlServersOutput = Schema.Unknown;
 export type SqlSitesControllerExportSqlServersOutput =
   typeof SqlSitesControllerExportSqlServersOutput.Type;
 
@@ -16910,7 +16889,7 @@ export type SqlSitesControllerRefreshInput =
   typeof SqlSitesControllerRefreshInput.Type;
 
 // Output Schema
-export const SqlSitesControllerRefreshOutput = /*@__PURE__*/ Schema.Unknown;
+export const SqlSitesControllerRefreshOutput = Schema.Unknown;
 export type SqlSitesControllerRefreshOutput =
   typeof SqlSitesControllerRefreshOutput.Type;
 
@@ -17421,7 +17400,7 @@ export type VcenterControllerDeleteInput =
   typeof VcenterControllerDeleteInput.Type;
 
 // Output Schema
-export const VcenterControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VcenterControllerDeleteOutput = Schema.Void;
 export type VcenterControllerDeleteOutput =
   typeof VcenterControllerDeleteOutput.Type;
 
@@ -17800,7 +17779,7 @@ export type VmwareCollectorsOperationsDeleteInput =
   typeof VmwareCollectorsOperationsDeleteInput.Type;
 
 // Output Schema
-export const VmwareCollectorsOperationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VmwareCollectorsOperationsDeleteOutput = Schema.Void;
 export type VmwareCollectorsOperationsDeleteOutput =
   typeof VmwareCollectorsOperationsDeleteOutput.Type;
 
@@ -18136,7 +18115,7 @@ export type VmwarePropertiesControllerUpdateDependencyMapStatusInput =
 
 // Output Schema
 export const VmwarePropertiesControllerUpdateDependencyMapStatusOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type VmwarePropertiesControllerUpdateDependencyMapStatusOutput =
   typeof VmwarePropertiesControllerUpdateDependencyMapStatusOutput.Type;
 
@@ -18173,8 +18152,7 @@ export type VmwarePropertiesControllerUpdatePropertiesInput =
   typeof VmwarePropertiesControllerUpdatePropertiesInput.Type;
 
 // Output Schema
-export const VmwarePropertiesControllerUpdatePropertiesOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const VmwarePropertiesControllerUpdatePropertiesOutput = Schema.Unknown;
 export type VmwarePropertiesControllerUpdatePropertiesOutput =
   typeof VmwarePropertiesControllerUpdatePropertiesOutput.Type;
 
@@ -18210,7 +18188,7 @@ export type VmwarePropertiesControllerUpdateRunAsAccountInput =
 
 // Output Schema
 export const VmwarePropertiesControllerUpdateRunAsAccountOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type VmwarePropertiesControllerUpdateRunAsAccountOutput =
   typeof VmwarePropertiesControllerUpdateRunAsAccountOutput.Type;
 
@@ -18246,8 +18224,7 @@ export type VmwarePropertiesControllerUpdateTagsInput =
   typeof VmwarePropertiesControllerUpdateTagsInput.Type;
 
 // Output Schema
-export const VmwarePropertiesControllerUpdateTagsOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const VmwarePropertiesControllerUpdateTagsOutput = Schema.Unknown;
 export type VmwarePropertiesControllerUpdateTagsOutput =
   typeof VmwarePropertiesControllerUpdateTagsOutput.Type;
 
@@ -18604,8 +18581,7 @@ export type WebAppAssessmentV2OperationsDeleteInput =
   typeof WebAppAssessmentV2OperationsDeleteInput.Type;
 
 // Output Schema
-export const WebAppAssessmentV2OperationsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppAssessmentV2OperationsDeleteOutput = Schema.Void;
 export type WebAppAssessmentV2OperationsDeleteOutput =
   typeof WebAppAssessmentV2OperationsDeleteOutput.Type;
 
@@ -19013,7 +18989,7 @@ export type WebAppCollectorOperationsDeleteInput =
   typeof WebAppCollectorOperationsDeleteInput.Type;
 
 // Output Schema
-export const WebAppCollectorOperationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppCollectorOperationsDeleteOutput = Schema.Void;
 export type WebAppCollectorOperationsDeleteOutput =
   typeof WebAppCollectorOperationsDeleteOutput.Type;
 
@@ -19230,8 +19206,7 @@ export type WebAppDiscoverySiteDataSourcesControllerDeleteInput =
   typeof WebAppDiscoverySiteDataSourcesControllerDeleteInput.Type;
 
 // Output Schema
-export const WebAppDiscoverySiteDataSourcesControllerDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppDiscoverySiteDataSourcesControllerDeleteOutput = Schema.Void;
 export type WebAppDiscoverySiteDataSourcesControllerDeleteOutput =
   typeof WebAppDiscoverySiteDataSourcesControllerDeleteOutput.Type;
 
@@ -19617,8 +19592,7 @@ export type WebAppPropertiesControllerUpdatePropertiesInput =
   typeof WebAppPropertiesControllerUpdatePropertiesInput.Type;
 
 // Output Schema
-export const WebAppPropertiesControllerUpdatePropertiesOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const WebAppPropertiesControllerUpdatePropertiesOutput = Schema.Unknown;
 export type WebAppPropertiesControllerUpdatePropertiesOutput =
   typeof WebAppPropertiesControllerUpdatePropertiesOutput.Type;
 
@@ -19976,7 +19950,7 @@ export type WebAppSitesControllerDeleteInput =
   typeof WebAppSitesControllerDeleteInput.Type;
 
 // Output Schema
-export const WebAppSitesControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppSitesControllerDeleteOutput = Schema.Void;
 export type WebAppSitesControllerDeleteOutput =
   typeof WebAppSitesControllerDeleteOutput.Type;
 
@@ -20062,8 +20036,7 @@ export type WebAppSitesControllerExportInventoryInput =
   typeof WebAppSitesControllerExportInventoryInput.Type;
 
 // Output Schema
-export const WebAppSitesControllerExportInventoryOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const WebAppSitesControllerExportInventoryOutput = Schema.Unknown;
 export type WebAppSitesControllerExportInventoryOutput =
   typeof WebAppSitesControllerExportInventoryOutput.Type;
 
@@ -20223,7 +20196,7 @@ export type WebAppSitesControllerRefreshInput =
   typeof WebAppSitesControllerRefreshInput.Type;
 
 // Output Schema
-export const WebAppSitesControllerRefreshOutput = /*@__PURE__*/ Schema.Unknown;
+export const WebAppSitesControllerRefreshOutput = Schema.Unknown;
 export type WebAppSitesControllerRefreshOutput =
   typeof WebAppSitesControllerRefreshOutput.Type;
 

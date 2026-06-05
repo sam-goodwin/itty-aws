@@ -22,7 +22,7 @@ export const HogFlowsLogsRetrieveInput = /*@__PURE__*/ Schema.Struct({
 export type HogFlowsLogsRetrieveInput = typeof HogFlowsLogsRetrieveInput.Type;
 
 // Output Schema
-export const HogFlowsLogsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const HogFlowsLogsRetrieveOutput = Schema.Void;
 export type HogFlowsLogsRetrieveOutput = typeof HogFlowsLogsRetrieveOutput.Type;
 
 // The operation

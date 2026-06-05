@@ -237,8 +237,7 @@ export type WarehouseTablesUpdateSchemaCreateInput =
   typeof WarehouseTablesUpdateSchemaCreateInput.Type;
 
 // Output Schema
-export const WarehouseTablesUpdateSchemaCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WarehouseTablesUpdateSchemaCreateOutput = Schema.Void;
 export type WarehouseTablesUpdateSchemaCreateOutput =
   typeof WarehouseTablesUpdateSchemaCreateOutput.Type;
 

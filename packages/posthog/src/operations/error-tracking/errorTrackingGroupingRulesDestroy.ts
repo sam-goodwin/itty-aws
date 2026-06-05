@@ -18,8 +18,7 @@ export type ErrorTrackingGroupingRulesDestroyInput =
   typeof ErrorTrackingGroupingRulesDestroyInput.Type;
 
 // Output Schema
-export const ErrorTrackingGroupingRulesDestroyOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingGroupingRulesDestroyOutput = Schema.Void;
 export type ErrorTrackingGroupingRulesDestroyOutput =
   typeof ErrorTrackingGroupingRulesDestroyOutput.Type;
 

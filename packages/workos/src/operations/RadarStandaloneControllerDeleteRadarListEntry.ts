@@ -22,8 +22,7 @@ export type RadarStandaloneControllerDeleteRadarListEntryInput =
   typeof RadarStandaloneControllerDeleteRadarListEntryInput.Type;
 
 // Output Schema
-export const RadarStandaloneControllerDeleteRadarListEntryOutput =
-  /*@__PURE__*/ Schema.Void;
+export const RadarStandaloneControllerDeleteRadarListEntryOutput = Schema.Void;
 export type RadarStandaloneControllerDeleteRadarListEntryOutput =
   typeof RadarStandaloneControllerDeleteRadarListEntryOutput.Type;
 

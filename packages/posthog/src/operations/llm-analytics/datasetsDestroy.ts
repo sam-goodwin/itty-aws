@@ -16,7 +16,7 @@ export const DatasetsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type DatasetsDestroyInput = typeof DatasetsDestroyInput.Type;
 
 // Output Schema
-export const DatasetsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const DatasetsDestroyOutput = Schema.Void;
 export type DatasetsDestroyOutput = typeof DatasetsDestroyOutput.Type;
 
 // The operation

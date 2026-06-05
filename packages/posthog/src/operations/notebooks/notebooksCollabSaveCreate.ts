@@ -24,7 +24,7 @@ export type NotebooksCollabSaveCreateInput =
   typeof NotebooksCollabSaveCreateInput.Type;
 
 // Output Schema
-export const NotebooksCollabSaveCreateOutput = /*@__PURE__*/ Schema.Void;
+export const NotebooksCollabSaveCreateOutput = Schema.Void;
 export type NotebooksCollabSaveCreateOutput =
   typeof NotebooksCollabSaveCreateOutput.Type;
 

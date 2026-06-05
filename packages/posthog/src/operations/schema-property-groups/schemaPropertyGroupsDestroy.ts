@@ -17,7 +17,7 @@ export type SchemaPropertyGroupsDestroyInput =
   typeof SchemaPropertyGroupsDestroyInput.Type;
 
 // Output Schema
-export const SchemaPropertyGroupsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const SchemaPropertyGroupsDestroyOutput = Schema.Void;
 export type SchemaPropertyGroupsDestroyOutput =
   typeof SchemaPropertyGroupsDestroyOutput.Type;
 

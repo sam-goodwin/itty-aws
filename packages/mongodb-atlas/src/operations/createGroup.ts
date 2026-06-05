@@ -12,7 +12,7 @@ export const CreateGroupInput = /*@__PURE__*/ Schema.Struct({
 export type CreateGroupInput = typeof CreateGroupInput.Type;
 
 // Output Schema
-export const CreateGroupOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupOutput = Schema.Void;
 export type CreateGroupOutput = typeof CreateGroupOutput.Type;
 
 // The operation

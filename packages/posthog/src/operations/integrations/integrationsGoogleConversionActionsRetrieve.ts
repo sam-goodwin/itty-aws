@@ -18,8 +18,7 @@ export type IntegrationsGoogleConversionActionsRetrieveInput =
   typeof IntegrationsGoogleConversionActionsRetrieveInput.Type;
 
 // Output Schema
-export const IntegrationsGoogleConversionActionsRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationsGoogleConversionActionsRetrieveOutput = Schema.Void;
 export type IntegrationsGoogleConversionActionsRetrieveOutput =
   typeof IntegrationsGoogleConversionActionsRetrieveOutput.Type;
 

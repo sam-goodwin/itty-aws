@@ -18,8 +18,7 @@ export type EnvironmentsDefaultEvaluationContextsDestroyInput =
   typeof EnvironmentsDefaultEvaluationContextsDestroyInput.Type;
 
 // Output Schema
-export const EnvironmentsDefaultEvaluationContextsDestroyOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EnvironmentsDefaultEvaluationContextsDestroyOutput = Schema.Void;
 export type EnvironmentsDefaultEvaluationContextsDestroyOutput =
   typeof EnvironmentsDefaultEvaluationContextsDestroyOutput.Type;
 

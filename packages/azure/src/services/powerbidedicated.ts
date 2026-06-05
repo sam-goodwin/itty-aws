@@ -73,7 +73,7 @@ export const AutoScaleVCoresDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AutoScaleVCoresDeleteInput = typeof AutoScaleVCoresDeleteInput.Type;
 
 // Output Schema
-export const AutoScaleVCoresDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AutoScaleVCoresDeleteOutput = Schema.Void;
 export type AutoScaleVCoresDeleteOutput =
   typeof AutoScaleVCoresDeleteOutput.Type;
 
@@ -423,7 +423,7 @@ export const CapacitiesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type CapacitiesDeleteInput = typeof CapacitiesDeleteInput.Type;
 
 // Output Schema
-export const CapacitiesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CapacitiesDeleteOutput = Schema.Void;
 export type CapacitiesDeleteOutput = typeof CapacitiesDeleteOutput.Type;
 
 // The operation
@@ -696,7 +696,7 @@ export const CapacitiesResumeInput = /*@__PURE__*/ Schema.Struct({
 export type CapacitiesResumeInput = typeof CapacitiesResumeInput.Type;
 
 // Output Schema
-export const CapacitiesResumeOutput = /*@__PURE__*/ Schema.Void;
+export const CapacitiesResumeOutput = Schema.Void;
 export type CapacitiesResumeOutput = typeof CapacitiesResumeOutput.Type;
 
 // The operation
@@ -727,7 +727,7 @@ export const CapacitiesSuspendInput = /*@__PURE__*/ Schema.Struct({
 export type CapacitiesSuspendInput = typeof CapacitiesSuspendInput.Type;
 
 // Output Schema
-export const CapacitiesSuspendOutput = /*@__PURE__*/ Schema.Void;
+export const CapacitiesSuspendOutput = Schema.Void;
 export type CapacitiesSuspendOutput = typeof CapacitiesSuspendOutput.Type;
 
 // The operation

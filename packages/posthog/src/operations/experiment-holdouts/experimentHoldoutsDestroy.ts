@@ -17,7 +17,7 @@ export type ExperimentHoldoutsDestroyInput =
   typeof ExperimentHoldoutsDestroyInput.Type;
 
 // Output Schema
-export const ExperimentHoldoutsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const ExperimentHoldoutsDestroyOutput = Schema.Void;
 export type ExperimentHoldoutsDestroyOutput =
   typeof ExperimentHoldoutsDestroyOutput.Type;
 

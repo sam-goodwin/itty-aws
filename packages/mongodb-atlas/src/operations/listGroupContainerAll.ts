@@ -20,7 +20,7 @@ export const ListGroupContainerAllInput = /*@__PURE__*/ Schema.Struct({
 export type ListGroupContainerAllInput = typeof ListGroupContainerAllInput.Type;
 
 // Output Schema
-export const ListGroupContainerAllOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupContainerAllOutput = Schema.Void;
 export type ListGroupContainerAllOutput =
   typeof ListGroupContainerAllOutput.Type;
 

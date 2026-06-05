@@ -17,7 +17,7 @@ export type WarehouseSavedQueriesDestroyInput =
   typeof WarehouseSavedQueriesDestroyInput.Type;
 
 // Output Schema
-export const WarehouseSavedQueriesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const WarehouseSavedQueriesDestroyOutput = Schema.Void;
 export type WarehouseSavedQueriesDestroyOutput =
   typeof WarehouseSavedQueriesDestroyOutput.Type;
 

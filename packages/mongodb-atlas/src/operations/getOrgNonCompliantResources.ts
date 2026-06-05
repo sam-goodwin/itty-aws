@@ -18,7 +18,7 @@ export type GetOrgNonCompliantResourcesInput =
   typeof GetOrgNonCompliantResourcesInput.Type;
 
 // Output Schema
-export const GetOrgNonCompliantResourcesOutput = /*@__PURE__*/ Schema.Void;
+export const GetOrgNonCompliantResourcesOutput = Schema.Void;
 export type GetOrgNonCompliantResourcesOutput =
   typeof GetOrgNonCompliantResourcesOutput.Type;
 

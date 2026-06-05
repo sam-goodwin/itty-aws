@@ -56,7 +56,7 @@ export const BotConnectionDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type BotConnectionDeleteInput = typeof BotConnectionDeleteInput.Type;
 
 // Output Schema
-export const BotConnectionDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BotConnectionDeleteOutput = Schema.Void;
 export type BotConnectionDeleteOutput = typeof BotConnectionDeleteOutput.Type;
 
 // The operation
@@ -345,7 +345,7 @@ export const BotsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type BotsDeleteInput = typeof BotsDeleteInput.Type;
 
 // Output Schema
-export const BotsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BotsDeleteOutput = Schema.Void;
 export type BotsDeleteOutput = typeof BotsDeleteOutput.Type;
 
 // The operation
@@ -605,7 +605,7 @@ export const ChannelsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ChannelsDeleteInput = typeof ChannelsDeleteInput.Type;
 
 // Output Schema
-export const ChannelsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ChannelsDeleteOutput = Schema.Void;
 export type ChannelsDeleteOutput = typeof ChannelsDeleteOutput.Type;
 
 // The operation
@@ -1025,7 +1025,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 

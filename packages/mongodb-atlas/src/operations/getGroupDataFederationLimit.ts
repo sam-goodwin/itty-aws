@@ -25,7 +25,7 @@ export type GetGroupDataFederationLimitInput =
   typeof GetGroupDataFederationLimitInput.Type;
 
 // Output Schema
-export const GetGroupDataFederationLimitOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupDataFederationLimitOutput = Schema.Void;
 export type GetGroupDataFederationLimitOutput =
   typeof GetGroupDataFederationLimitOutput.Type;
 

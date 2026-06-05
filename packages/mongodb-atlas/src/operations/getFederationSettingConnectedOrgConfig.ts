@@ -19,8 +19,7 @@ export type GetFederationSettingConnectedOrgConfigInput =
   typeof GetFederationSettingConnectedOrgConfigInput.Type;
 
 // Output Schema
-export const GetFederationSettingConnectedOrgConfigOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GetFederationSettingConnectedOrgConfigOutput = Schema.Void;
 export type GetFederationSettingConnectedOrgConfigOutput =
   typeof GetFederationSettingConnectedOrgConfigOutput.Type;
 

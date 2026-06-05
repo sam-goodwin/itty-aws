@@ -15,7 +15,7 @@ export type ListControlPlaneIpAddressesInput =
   typeof ListControlPlaneIpAddressesInput.Type;
 
 // Output Schema
-export const ListControlPlaneIpAddressesOutput = /*@__PURE__*/ Schema.Void;
+export const ListControlPlaneIpAddressesOutput = Schema.Void;
 export type ListControlPlaneIpAddressesOutput =
   typeof ListControlPlaneIpAddressesOutput.Type;
 

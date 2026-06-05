@@ -13,7 +13,7 @@ export type UsersTwoFactorStatusRetrieveInput =
   typeof UsersTwoFactorStatusRetrieveInput.Type;
 
 // Output Schema
-export const UsersTwoFactorStatusRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const UsersTwoFactorStatusRetrieveOutput = Schema.Void;
 export type UsersTwoFactorStatusRetrieveOutput =
   typeof UsersTwoFactorStatusRetrieveOutput.Type;
 

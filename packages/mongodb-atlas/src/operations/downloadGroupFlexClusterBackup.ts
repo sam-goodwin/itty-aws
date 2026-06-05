@@ -19,7 +19,7 @@ export type DownloadGroupFlexClusterBackupInput =
   typeof DownloadGroupFlexClusterBackupInput.Type;
 
 // Output Schema
-export const DownloadGroupFlexClusterBackupOutput = /*@__PURE__*/ Schema.Void;
+export const DownloadGroupFlexClusterBackupOutput = Schema.Void;
 export type DownloadGroupFlexClusterBackupOutput =
   typeof DownloadGroupFlexClusterBackupOutput.Type;
 

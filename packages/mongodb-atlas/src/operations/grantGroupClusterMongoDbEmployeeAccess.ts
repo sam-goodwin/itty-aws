@@ -20,8 +20,7 @@ export type GrantGroupClusterMongoDbEmployeeAccessInput =
   typeof GrantGroupClusterMongoDbEmployeeAccessInput.Type;
 
 // Output Schema
-export const GrantGroupClusterMongoDbEmployeeAccessOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GrantGroupClusterMongoDbEmployeeAccessOutput = Schema.Void;
 export type GrantGroupClusterMongoDbEmployeeAccessOutput =
   typeof GrantGroupClusterMongoDbEmployeeAccessOutput.Type;
 

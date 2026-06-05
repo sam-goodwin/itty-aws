@@ -16,7 +16,7 @@ export const DeleteMapFieldInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteMapFieldInput = typeof DeleteMapFieldInput.Type;
 
 // Output Schema
-export const DeleteMapFieldOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteMapFieldOutput = Schema.Void;
 export type DeleteMapFieldOutput = typeof DeleteMapFieldOutput.Type;
 
 // The operation

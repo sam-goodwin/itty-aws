@@ -22,8 +22,7 @@ export type DownloadGroupStreamOperationalLogsInput =
   typeof DownloadGroupStreamOperationalLogsInput.Type;
 
 // Output Schema
-export const DownloadGroupStreamOperationalLogsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DownloadGroupStreamOperationalLogsOutput = Schema.Void;
 export type DownloadGroupStreamOperationalLogsOutput =
   typeof DownloadGroupStreamOperationalLogsOutput.Type;
 

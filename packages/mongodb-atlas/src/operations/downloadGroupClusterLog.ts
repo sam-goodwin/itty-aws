@@ -26,7 +26,7 @@ export type DownloadGroupClusterLogInput =
   typeof DownloadGroupClusterLogInput.Type;
 
 // Output Schema
-export const DownloadGroupClusterLogOutput = /*@__PURE__*/ Schema.Void;
+export const DownloadGroupClusterLogOutput = Schema.Void;
 export type DownloadGroupClusterLogOutput =
   typeof DownloadGroupClusterLogOutput.Type;
 

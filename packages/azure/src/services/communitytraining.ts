@@ -75,7 +75,7 @@ export type CommunityTrainingsDeleteInput =
   typeof CommunityTrainingsDeleteInput.Type;
 
 // Output Schema
-export const CommunityTrainingsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CommunityTrainingsDeleteOutput = Schema.Void;
 export type CommunityTrainingsDeleteOutput =
   typeof CommunityTrainingsDeleteOutput.Type;
 

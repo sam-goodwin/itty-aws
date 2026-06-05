@@ -17,7 +17,7 @@ export type CohortsActivityRetrieveInput =
   typeof CohortsActivityRetrieveInput.Type;
 
 // Output Schema
-export const CohortsActivityRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const CohortsActivityRetrieveOutput = Schema.Void;
 export type CohortsActivityRetrieveOutput =
   typeof CohortsActivityRetrieveOutput.Type;
 

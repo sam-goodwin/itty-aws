@@ -20,7 +20,7 @@ export const CreateGroupClusterInput = /*@__PURE__*/ Schema.Struct({
 export type CreateGroupClusterInput = typeof CreateGroupClusterInput.Type;
 
 // Output Schema
-export const CreateGroupClusterOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupClusterOutput = Schema.Void;
 export type CreateGroupClusterOutput = typeof CreateGroupClusterOutput.Type;
 
 // The operation

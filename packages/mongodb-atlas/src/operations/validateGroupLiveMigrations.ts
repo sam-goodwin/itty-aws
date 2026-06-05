@@ -18,7 +18,7 @@ export type ValidateGroupLiveMigrationsInput =
   typeof ValidateGroupLiveMigrationsInput.Type;
 
 // Output Schema
-export const ValidateGroupLiveMigrationsOutput = /*@__PURE__*/ Schema.Void;
+export const ValidateGroupLiveMigrationsOutput = Schema.Void;
 export type ValidateGroupLiveMigrationsOutput =
   typeof ValidateGroupLiveMigrationsOutput.Type;
 

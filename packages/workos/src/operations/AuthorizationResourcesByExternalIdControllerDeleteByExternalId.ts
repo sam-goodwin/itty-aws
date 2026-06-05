@@ -21,7 +21,7 @@ export type AuthorizationResourcesByExternalIdControllerDeleteByExternalIdInput 
 
 // Output Schema
 export const AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput =
   typeof AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput.Type;
 

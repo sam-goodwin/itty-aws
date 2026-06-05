@@ -76,7 +76,7 @@ export const WorkbooksDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type WorkbooksDeleteInput = typeof WorkbooksDeleteInput.Type;
 
 // Output Schema
-export const WorkbooksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WorkbooksDeleteOutput = Schema.Void;
 export type WorkbooksDeleteOutput = typeof WorkbooksDeleteOutput.Type;
 
 // The operation

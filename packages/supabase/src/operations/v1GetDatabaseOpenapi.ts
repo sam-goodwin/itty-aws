@@ -11,7 +11,7 @@ export const V1GetDatabaseOpenapiInput = /*@__PURE__*/ Schema.Struct({
 export type V1GetDatabaseOpenapiInput = typeof V1GetDatabaseOpenapiInput.Type;
 
 // Output Schema
-export const V1GetDatabaseOpenapiOutput = /*@__PURE__*/ Schema.Unknown;
+export const V1GetDatabaseOpenapiOutput = Schema.Unknown;
 export type V1GetDatabaseOpenapiOutput = typeof V1GetDatabaseOpenapiOutput.Type;
 
 // The operation

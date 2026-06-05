@@ -20,7 +20,7 @@ export type CreateOrgLiveMigrationLinkTokenInput =
   typeof CreateOrgLiveMigrationLinkTokenInput.Type;
 
 // Output Schema
-export const CreateOrgLiveMigrationLinkTokenOutput = /*@__PURE__*/ Schema.Void;
+export const CreateOrgLiveMigrationLinkTokenOutput = Schema.Void;
 export type CreateOrgLiveMigrationLinkTokenOutput =
   typeof CreateOrgLiveMigrationLinkTokenOutput.Type;
 

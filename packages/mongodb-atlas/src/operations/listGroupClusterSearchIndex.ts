@@ -21,7 +21,7 @@ export type ListGroupClusterSearchIndexInput =
   typeof ListGroupClusterSearchIndexInput.Type;
 
 // Output Schema
-export const ListGroupClusterSearchIndexOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupClusterSearchIndexOutput = Schema.Void;
 export type ListGroupClusterSearchIndexOutput =
   typeof ListGroupClusterSearchIndexOutput.Type;
 

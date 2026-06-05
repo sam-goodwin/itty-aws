@@ -19,8 +19,7 @@ export type DeleteGroupStreamVpcPeeringConnectionInput =
   typeof DeleteGroupStreamVpcPeeringConnectionInput.Type;
 
 // Output Schema
-export const DeleteGroupStreamVpcPeeringConnectionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeleteGroupStreamVpcPeeringConnectionOutput = Schema.Void;
 export type DeleteGroupStreamVpcPeeringConnectionOutput =
   typeof DeleteGroupStreamVpcPeeringConnectionOutput.Type;
 

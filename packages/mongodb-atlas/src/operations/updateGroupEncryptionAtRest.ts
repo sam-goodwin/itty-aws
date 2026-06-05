@@ -18,7 +18,7 @@ export type UpdateGroupEncryptionAtRestInput =
   typeof UpdateGroupEncryptionAtRestInput.Type;
 
 // Output Schema
-export const UpdateGroupEncryptionAtRestOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupEncryptionAtRestOutput = Schema.Void;
 export type UpdateGroupEncryptionAtRestOutput =
   typeof UpdateGroupEncryptionAtRestOutput.Type;
 

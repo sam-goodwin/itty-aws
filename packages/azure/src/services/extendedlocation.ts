@@ -59,7 +59,7 @@ export const CustomLocationsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type CustomLocationsDeleteInput = typeof CustomLocationsDeleteInput.Type;
 
 // Output Schema
-export const CustomLocationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CustomLocationsDeleteOutput = Schema.Void;
 export type CustomLocationsDeleteOutput =
   typeof CustomLocationsDeleteOutput.Type;
 

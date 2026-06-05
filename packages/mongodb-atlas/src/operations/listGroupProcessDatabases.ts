@@ -22,7 +22,7 @@ export type ListGroupProcessDatabasesInput =
   typeof ListGroupProcessDatabasesInput.Type;
 
 // Output Schema
-export const ListGroupProcessDatabasesOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupProcessDatabasesOutput = Schema.Void;
 export type ListGroupProcessDatabasesOutput =
   typeof ListGroupProcessDatabasesOutput.Type;
 

@@ -17,7 +17,7 @@ export type DesktopRecordingsDestroyInput =
   typeof DesktopRecordingsDestroyInput.Type;
 
 // Output Schema
-export const DesktopRecordingsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const DesktopRecordingsDestroyOutput = Schema.Void;
 export type DesktopRecordingsDestroyOutput =
   typeof DesktopRecordingsDestroyOutput.Type;
 

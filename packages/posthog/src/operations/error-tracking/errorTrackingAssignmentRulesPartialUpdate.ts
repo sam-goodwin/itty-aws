@@ -34,8 +34,7 @@ export type ErrorTrackingAssignmentRulesPartialUpdateInput =
   typeof ErrorTrackingAssignmentRulesPartialUpdateInput.Type;
 
 // Output Schema
-export const ErrorTrackingAssignmentRulesPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingAssignmentRulesPartialUpdateOutput = Schema.Void;
 export type ErrorTrackingAssignmentRulesPartialUpdateOutput =
   typeof ErrorTrackingAssignmentRulesPartialUpdateOutput.Type;
 

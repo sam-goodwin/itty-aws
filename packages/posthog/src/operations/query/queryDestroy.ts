@@ -13,7 +13,7 @@ export const QueryDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type QueryDestroyInput = typeof QueryDestroyInput.Type;
 
 // Output Schema
-export const QueryDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const QueryDestroyOutput = Schema.Void;
 export type QueryDestroyOutput = typeof QueryDestroyOutput.Type;
 
 // The operation

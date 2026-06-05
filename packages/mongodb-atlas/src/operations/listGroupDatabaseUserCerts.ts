@@ -22,7 +22,7 @@ export type ListGroupDatabaseUserCertsInput =
   typeof ListGroupDatabaseUserCertsInput.Type;
 
 // Output Schema
-export const ListGroupDatabaseUserCertsOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupDatabaseUserCertsOutput = Schema.Void;
 export type ListGroupDatabaseUserCertsOutput =
   typeof ListGroupDatabaseUserCertsOutput.Type;
 

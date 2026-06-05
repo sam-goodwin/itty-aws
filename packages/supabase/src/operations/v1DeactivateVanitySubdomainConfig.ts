@@ -14,8 +14,7 @@ export type V1DeactivateVanitySubdomainConfigInput =
   typeof V1DeactivateVanitySubdomainConfigInput.Type;
 
 // Output Schema
-export const V1DeactivateVanitySubdomainConfigOutput =
-  /*@__PURE__*/ Schema.Void;
+export const V1DeactivateVanitySubdomainConfigOutput = Schema.Void;
 export type V1DeactivateVanitySubdomainConfigOutput =
   typeof V1DeactivateVanitySubdomainConfigOutput.Type;
 

@@ -12,7 +12,7 @@ export const CommentsCountRetrieveInput = /*@__PURE__*/ Schema.Struct({
 export type CommentsCountRetrieveInput = typeof CommentsCountRetrieveInput.Type;
 
 // Output Schema
-export const CommentsCountRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const CommentsCountRetrieveOutput = Schema.Void;
 export type CommentsCountRetrieveOutput =
   typeof CommentsCountRetrieveOutput.Type;
 

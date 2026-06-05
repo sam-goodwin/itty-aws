@@ -12,8 +12,7 @@ export type AuthenticationFactorsControllerDeleteInput =
   typeof AuthenticationFactorsControllerDeleteInput.Type;
 
 // Output Schema
-export const AuthenticationFactorsControllerDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AuthenticationFactorsControllerDeleteOutput = Schema.Void;
 export type AuthenticationFactorsControllerDeleteOutput =
   typeof AuthenticationFactorsControllerDeleteOutput.Type;
 

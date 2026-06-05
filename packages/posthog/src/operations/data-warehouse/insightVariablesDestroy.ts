@@ -17,7 +17,7 @@ export type InsightVariablesDestroyInput =
   typeof InsightVariablesDestroyInput.Type;
 
 // Output Schema
-export const InsightVariablesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const InsightVariablesDestroyOutput = Schema.Void;
 export type InsightVariablesDestroyOutput =
   typeof InsightVariablesDestroyOutput.Type;
 

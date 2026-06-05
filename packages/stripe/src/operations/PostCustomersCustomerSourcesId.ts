@@ -49,8 +49,7 @@ export type PostCustomersCustomerSourcesIdInput =
   typeof PostCustomersCustomerSourcesIdInput.Type;
 
 // Output Schema
-export const PostCustomersCustomerSourcesIdOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const PostCustomersCustomerSourcesIdOutput = Schema.Unknown;
 export type PostCustomersCustomerSourcesIdOutput =
   typeof PostCustomersCustomerSourcesIdOutput.Type;
 

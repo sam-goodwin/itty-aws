@@ -22,8 +22,7 @@ export type ListGroupPrivateNetworkSettingEndpointIdsInput =
   typeof ListGroupPrivateNetworkSettingEndpointIdsInput.Type;
 
 // Output Schema
-export const ListGroupPrivateNetworkSettingEndpointIdsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListGroupPrivateNetworkSettingEndpointIdsOutput = Schema.Void;
 export type ListGroupPrivateNetworkSettingEndpointIdsOutput =
   typeof ListGroupPrivateNetworkSettingEndpointIdsOutput.Type;
 

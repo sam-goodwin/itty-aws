@@ -17,7 +17,7 @@ export type ProjectSecretApiKeysDestroyInput =
   typeof ProjectSecretApiKeysDestroyInput.Type;
 
 // Output Schema
-export const ProjectSecretApiKeysDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const ProjectSecretApiKeysDestroyOutput = Schema.Void;
 export type ProjectSecretApiKeysDestroyOutput =
   typeof ProjectSecretApiKeysDestroyOutput.Type;
 

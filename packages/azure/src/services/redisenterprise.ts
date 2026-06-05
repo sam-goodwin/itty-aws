@@ -62,7 +62,7 @@ export type AccessPolicyAssignmentDeleteInput =
   typeof AccessPolicyAssignmentDeleteInput.Type;
 
 // Output Schema
-export const AccessPolicyAssignmentDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AccessPolicyAssignmentDeleteOutput = Schema.Void;
 export type AccessPolicyAssignmentDeleteOutput =
   typeof AccessPolicyAssignmentDeleteOutput.Type;
 
@@ -202,7 +202,7 @@ export const DatabasesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
 
 // Output Schema
-export const DatabasesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DatabasesDeleteOutput = Schema.Void;
 export type DatabasesDeleteOutput = typeof DatabasesDeleteOutput.Type;
 
 // The operation
@@ -231,7 +231,7 @@ export const DatabasesExportInput = /*@__PURE__*/ Schema.Struct({
 export type DatabasesExportInput = typeof DatabasesExportInput.Type;
 
 // Output Schema
-export const DatabasesExportOutput = /*@__PURE__*/ Schema.Void;
+export const DatabasesExportOutput = Schema.Void;
 export type DatabasesExportOutput = typeof DatabasesExportOutput.Type;
 
 // The operation
@@ -260,7 +260,7 @@ export const DatabasesFlushInput = /*@__PURE__*/ Schema.Struct({
 export type DatabasesFlushInput = typeof DatabasesFlushInput.Type;
 
 // Output Schema
-export const DatabasesFlushOutput = /*@__PURE__*/ Schema.Void;
+export const DatabasesFlushOutput = Schema.Void;
 export type DatabasesFlushOutput = typeof DatabasesFlushOutput.Type;
 
 // The operation
@@ -291,8 +291,7 @@ export type DatabasesForceLinkToReplicationGroupInput =
   typeof DatabasesForceLinkToReplicationGroupInput.Type;
 
 // Output Schema
-export const DatabasesForceLinkToReplicationGroupOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DatabasesForceLinkToReplicationGroupOutput = Schema.Void;
 export type DatabasesForceLinkToReplicationGroupOutput =
   typeof DatabasesForceLinkToReplicationGroupOutput.Type;
 
@@ -324,7 +323,7 @@ export const DatabasesForceUnlinkInput = /*@__PURE__*/ Schema.Struct({
 export type DatabasesForceUnlinkInput = typeof DatabasesForceUnlinkInput.Type;
 
 // Output Schema
-export const DatabasesForceUnlinkOutput = /*@__PURE__*/ Schema.Void;
+export const DatabasesForceUnlinkOutput = Schema.Void;
 export type DatabasesForceUnlinkOutput = typeof DatabasesForceUnlinkOutput.Type;
 
 // The operation
@@ -386,7 +385,7 @@ export const DatabasesImportInput = /*@__PURE__*/ Schema.Struct({
 export type DatabasesImportInput = typeof DatabasesImportInput.Type;
 
 // Output Schema
-export const DatabasesImportOutput = /*@__PURE__*/ Schema.Void;
+export const DatabasesImportOutput = Schema.Void;
 export type DatabasesImportOutput = typeof DatabasesImportOutput.Type;
 
 // The operation
@@ -557,7 +556,7 @@ export type DatabasesUpgradeDBRedisVersionInput =
   typeof DatabasesUpgradeDBRedisVersionInput.Type;
 
 // Output Schema
-export const DatabasesUpgradeDBRedisVersionOutput = /*@__PURE__*/ Schema.Void;
+export const DatabasesUpgradeDBRedisVersionOutput = Schema.Void;
 export type DatabasesUpgradeDBRedisVersionOutput =
   typeof DatabasesUpgradeDBRedisVersionOutput.Type;
 
@@ -691,7 +690,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -936,7 +935,7 @@ export const RedisEnterpriseDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RedisEnterpriseDeleteInput = typeof RedisEnterpriseDeleteInput.Type;
 
 // Output Schema
-export const RedisEnterpriseDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RedisEnterpriseDeleteOutput = Schema.Void;
 export type RedisEnterpriseDeleteOutput =
   typeof RedisEnterpriseDeleteOutput.Type;
 

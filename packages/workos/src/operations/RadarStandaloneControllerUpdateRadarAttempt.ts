@@ -14,8 +14,7 @@ export type RadarStandaloneControllerUpdateRadarAttemptInput =
   typeof RadarStandaloneControllerUpdateRadarAttemptInput.Type;
 
 // Output Schema
-export const RadarStandaloneControllerUpdateRadarAttemptOutput =
-  /*@__PURE__*/ Schema.Void;
+export const RadarStandaloneControllerUpdateRadarAttemptOutput = Schema.Void;
 export type RadarStandaloneControllerUpdateRadarAttemptOutput =
   typeof RadarStandaloneControllerUpdateRadarAttemptOutput.Type;
 

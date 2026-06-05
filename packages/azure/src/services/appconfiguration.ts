@@ -51,7 +51,7 @@ export type ConfigurationStoresDeleteInput =
   typeof ConfigurationStoresDeleteInput.Type;
 
 // Output Schema
-export const ConfigurationStoresDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConfigurationStoresDeleteOutput = Schema.Void;
 export type ConfigurationStoresDeleteOutput =
   typeof ConfigurationStoresDeleteOutput.Type;
 
@@ -313,7 +313,7 @@ export type ConfigurationStoresPurgeDeletedInput =
   typeof ConfigurationStoresPurgeDeletedInput.Type;
 
 // Output Schema
-export const ConfigurationStoresPurgeDeletedOutput = /*@__PURE__*/ Schema.Void;
+export const ConfigurationStoresPurgeDeletedOutput = Schema.Void;
 export type ConfigurationStoresPurgeDeletedOutput =
   typeof ConfigurationStoresPurgeDeletedOutput.Type;
 
@@ -441,7 +441,7 @@ export const KeyValuesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type KeyValuesDeleteInput = typeof KeyValuesDeleteInput.Type;
 
 // Output Schema
-export const KeyValuesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const KeyValuesDeleteOutput = Schema.Void;
 export type KeyValuesDeleteOutput = typeof KeyValuesDeleteOutput.Type;
 
 // The operation
@@ -721,7 +721,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1014,7 +1014,7 @@ export const ReplicasDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ReplicasDeleteInput = typeof ReplicasDeleteInput.Type;
 
 // Output Schema
-export const ReplicasDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ReplicasDeleteOutput = Schema.Void;
 export type ReplicasDeleteOutput = typeof ReplicasDeleteOutput.Type;
 
 // The operation

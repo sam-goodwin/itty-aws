@@ -18,7 +18,7 @@ export type GetGroupBackupExportBucketInput =
   typeof GetGroupBackupExportBucketInput.Type;
 
 // Output Schema
-export const GetGroupBackupExportBucketOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupBackupExportBucketOutput = Schema.Void;
 export type GetGroupBackupExportBucketOutput =
   typeof GetGroupBackupExportBucketOutput.Type;
 

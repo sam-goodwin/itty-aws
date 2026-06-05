@@ -20,7 +20,7 @@ export type GroupsUpdatePropertyCreateInput =
   typeof GroupsUpdatePropertyCreateInput.Type;
 
 // Output Schema
-export const GroupsUpdatePropertyCreateOutput = /*@__PURE__*/ Schema.Void;
+export const GroupsUpdatePropertyCreateOutput = Schema.Void;
 export type GroupsUpdatePropertyCreateOutput =
   typeof GroupsUpdatePropertyCreateOutput.Type;
 

@@ -14,7 +14,7 @@ export const AddGroupTeamsInput = /*@__PURE__*/ Schema.Struct({
 export type AddGroupTeamsInput = typeof AddGroupTeamsInput.Type;
 
 // Output Schema
-export const AddGroupTeamsOutput = /*@__PURE__*/ Schema.Void;
+export const AddGroupTeamsOutput = Schema.Void;
 export type AddGroupTeamsOutput = typeof AddGroupTeamsOutput.Type;
 
 // The operation

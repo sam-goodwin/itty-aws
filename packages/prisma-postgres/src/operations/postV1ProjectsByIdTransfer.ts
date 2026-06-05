@@ -12,7 +12,7 @@ export type PostV1ProjectsByIdTransferInput =
   typeof PostV1ProjectsByIdTransferInput.Type;
 
 // Output Schema
-export const PostV1ProjectsByIdTransferOutput = /*@__PURE__*/ Schema.Void;
+export const PostV1ProjectsByIdTransferOutput = Schema.Void;
 export type PostV1ProjectsByIdTransferOutput =
   typeof PostV1ProjectsByIdTransferOutput.Type;
 

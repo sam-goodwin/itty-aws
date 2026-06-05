@@ -18,7 +18,7 @@ export type GetCustomersCustomerSourcesIdInput =
   typeof GetCustomersCustomerSourcesIdInput.Type;
 
 // Output Schema
-export const GetCustomersCustomerSourcesIdOutput = /*@__PURE__*/ Schema.Unknown;
+export const GetCustomersCustomerSourcesIdOutput = Schema.Unknown;
 export type GetCustomersCustomerSourcesIdOutput =
   typeof GetCustomersCustomerSourcesIdOutput.Type;
 

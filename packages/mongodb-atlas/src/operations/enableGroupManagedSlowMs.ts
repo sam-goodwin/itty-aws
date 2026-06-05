@@ -18,7 +18,7 @@ export type EnableGroupManagedSlowMsInput =
   typeof EnableGroupManagedSlowMsInput.Type;
 
 // Output Schema
-export const EnableGroupManagedSlowMsOutput = /*@__PURE__*/ Schema.Void;
+export const EnableGroupManagedSlowMsOutput = Schema.Void;
 export type EnableGroupManagedSlowMsOutput =
   typeof EnableGroupManagedSlowMsOutput.Type;
 

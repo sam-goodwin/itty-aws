@@ -20,7 +20,7 @@ export type PersonsUpdatePropertyCreateInput =
   typeof PersonsUpdatePropertyCreateInput.Type;
 
 // Output Schema
-export const PersonsUpdatePropertyCreateOutput = /*@__PURE__*/ Schema.Void;
+export const PersonsUpdatePropertyCreateOutput = Schema.Void;
 export type PersonsUpdatePropertyCreateOutput =
   typeof PersonsUpdatePropertyCreateOutput.Type;
 

@@ -23,7 +23,7 @@ export type DeleteGroupPrivateEndpointEndpointServiceEndpointInput =
 
 // Output Schema
 export const DeleteGroupPrivateEndpointEndpointServiceEndpointOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type DeleteGroupPrivateEndpointEndpointServiceEndpointOutput =
   typeof DeleteGroupPrivateEndpointEndpointServiceEndpointOutput.Type;
 

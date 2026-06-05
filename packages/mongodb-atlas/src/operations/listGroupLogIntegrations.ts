@@ -22,7 +22,7 @@ export type ListGroupLogIntegrationsInput =
   typeof ListGroupLogIntegrationsInput.Type;
 
 // Output Schema
-export const ListGroupLogIntegrationsOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupLogIntegrationsOutput = Schema.Void;
 export type ListGroupLogIntegrationsOutput =
   typeof ListGroupLogIntegrationsOutput.Type;
 

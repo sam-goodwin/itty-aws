@@ -18,8 +18,7 @@ export type EnvironmentsExperimentsConfigRetrieveInput =
   typeof EnvironmentsExperimentsConfigRetrieveInput.Type;
 
 // Output Schema
-export const EnvironmentsExperimentsConfigRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EnvironmentsExperimentsConfigRetrieveOutput = Schema.Void;
 export type EnvironmentsExperimentsConfigRetrieveOutput =
   typeof EnvironmentsExperimentsConfigRetrieveOutput.Type;
 

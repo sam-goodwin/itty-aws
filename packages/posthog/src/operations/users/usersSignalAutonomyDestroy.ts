@@ -13,7 +13,7 @@ export type UsersSignalAutonomyDestroyInput =
   typeof UsersSignalAutonomyDestroyInput.Type;
 
 // Output Schema
-export const UsersSignalAutonomyDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const UsersSignalAutonomyDestroyOutput = Schema.Void;
 export type UsersSignalAutonomyDestroyOutput =
   typeof UsersSignalAutonomyDestroyOutput.Type;
 

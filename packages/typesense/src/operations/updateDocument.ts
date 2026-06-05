@@ -17,7 +17,7 @@ export const UpdateDocumentInput = /*@__PURE__*/ Schema.Struct({
 export type UpdateDocumentInput = typeof UpdateDocumentInput.Type;
 
 // Output Schema
-export const UpdateDocumentOutput = /*@__PURE__*/ Schema.Unknown;
+export const UpdateDocumentOutput = Schema.Unknown;
 export type UpdateDocumentOutput = typeof UpdateDocumentOutput.Type;
 
 // The operation

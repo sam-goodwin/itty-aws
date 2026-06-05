@@ -24,8 +24,7 @@ export type GetGroupClusterQueryShapeInsightDetailsInput =
   typeof GetGroupClusterQueryShapeInsightDetailsInput.Type;
 
 // Output Schema
-export const GetGroupClusterQueryShapeInsightDetailsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GetGroupClusterQueryShapeInsightDetailsOutput = Schema.Void;
 export type GetGroupClusterQueryShapeInsightDetailsOutput =
   typeof GetGroupClusterQueryShapeInsightDetailsOutput.Type;
 

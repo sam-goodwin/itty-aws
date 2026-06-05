@@ -46,8 +46,7 @@ export type PostAccountsAccountExternalAccountsIdInput =
   typeof PostAccountsAccountExternalAccountsIdInput.Type;
 
 // Output Schema
-export const PostAccountsAccountExternalAccountsIdOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const PostAccountsAccountExternalAccountsIdOutput = Schema.Unknown;
 export type PostAccountsAccountExternalAccountsIdOutput =
   typeof PostAccountsAccountExternalAccountsIdOutput.Type;
 

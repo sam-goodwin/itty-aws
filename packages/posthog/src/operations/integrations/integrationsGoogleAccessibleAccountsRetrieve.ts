@@ -18,8 +18,7 @@ export type IntegrationsGoogleAccessibleAccountsRetrieveInput =
   typeof IntegrationsGoogleAccessibleAccountsRetrieveInput.Type;
 
 // Output Schema
-export const IntegrationsGoogleAccessibleAccountsRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationsGoogleAccessibleAccountsRetrieveOutput = Schema.Void;
 export type IntegrationsGoogleAccessibleAccountsRetrieveOutput =
   typeof IntegrationsGoogleAccessibleAccountsRetrieveOutput.Type;
 

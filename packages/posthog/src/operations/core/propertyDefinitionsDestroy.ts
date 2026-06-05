@@ -17,7 +17,7 @@ export type PropertyDefinitionsDestroyInput =
   typeof PropertyDefinitionsDestroyInput.Type;
 
 // Output Schema
-export const PropertyDefinitionsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const PropertyDefinitionsDestroyOutput = Schema.Void;
 export type PropertyDefinitionsDestroyOutput =
   typeof PropertyDefinitionsDestroyOutput.Type;
 

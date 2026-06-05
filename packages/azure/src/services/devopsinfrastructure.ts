@@ -209,7 +209,7 @@ export const PoolsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PoolsDeleteInput = typeof PoolsDeleteInput.Type;
 
 // Output Schema
-export const PoolsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PoolsDeleteOutput = Schema.Void;
 export type PoolsDeleteOutput = typeof PoolsDeleteOutput.Type;
 
 // The operation
@@ -240,7 +240,7 @@ export const PoolsDeleteResourcesInput = /*@__PURE__*/ Schema.Struct({
 export type PoolsDeleteResourcesInput = typeof PoolsDeleteResourcesInput.Type;
 
 // Output Schema
-export const PoolsDeleteResourcesOutput = /*@__PURE__*/ Schema.Void;
+export const PoolsDeleteResourcesOutput = Schema.Void;
 export type PoolsDeleteResourcesOutput = typeof PoolsDeleteResourcesOutput.Type;
 
 // The operation

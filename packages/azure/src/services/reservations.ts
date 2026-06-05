@@ -890,7 +890,7 @@ export const ReservationArchiveInput = /*@__PURE__*/ Schema.Struct({
 export type ReservationArchiveInput = typeof ReservationArchiveInput.Type;
 
 // Output Schema
-export const ReservationArchiveOutput = /*@__PURE__*/ Schema.Void;
+export const ReservationArchiveOutput = Schema.Void;
 export type ReservationArchiveOutput = typeof ReservationArchiveOutput.Type;
 
 // The operation
@@ -1609,7 +1609,7 @@ export const ReservationUnarchiveInput = /*@__PURE__*/ Schema.Struct({
 export type ReservationUnarchiveInput = typeof ReservationUnarchiveInput.Type;
 
 // Output Schema
-export const ReservationUnarchiveOutput = /*@__PURE__*/ Schema.Void;
+export const ReservationUnarchiveOutput = Schema.Void;
 export type ReservationUnarchiveOutput = typeof ReservationUnarchiveOutput.Type;
 
 // The operation

@@ -501,8 +501,7 @@ export type GuestConfigurationAssignmentsDeleteInput =
   typeof GuestConfigurationAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const GuestConfigurationAssignmentsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GuestConfigurationAssignmentsDeleteOutput = Schema.Void;
 export type GuestConfigurationAssignmentsDeleteOutput =
   typeof GuestConfigurationAssignmentsDeleteOutput.Type;
 
@@ -946,7 +945,7 @@ export type GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteInput =
 
 // Output Schema
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput =
   typeof GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput.Type;
 
@@ -1552,8 +1551,7 @@ export type GuestConfigurationHCRPAssignmentsDeleteInput =
   typeof GuestConfigurationHCRPAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const GuestConfigurationHCRPAssignmentsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GuestConfigurationHCRPAssignmentsDeleteOutput = Schema.Void;
 export type GuestConfigurationHCRPAssignmentsDeleteOutput =
   typeof GuestConfigurationHCRPAssignmentsDeleteOutput.Type;
 

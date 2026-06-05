@@ -22,7 +22,7 @@ export type DeleteGroupServiceAccountSecretInput =
   typeof DeleteGroupServiceAccountSecretInput.Type;
 
 // Output Schema
-export const DeleteGroupServiceAccountSecretOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupServiceAccountSecretOutput = Schema.Void;
 export type DeleteGroupServiceAccountSecretOutput =
   typeof DeleteGroupServiceAccountSecretOutput.Type;
 

@@ -16,7 +16,7 @@ export type DeleteProjectVPCEndpointInput =
   typeof DeleteProjectVPCEndpointInput.Type;
 
 // Output Schema
-export const DeleteProjectVPCEndpointOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteProjectVPCEndpointOutput = Schema.Void;
 export type DeleteProjectVPCEndpointOutput =
   typeof DeleteProjectVPCEndpointOutput.Type;
 

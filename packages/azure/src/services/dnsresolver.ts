@@ -81,7 +81,7 @@ export type DnsForwardingRulesetsDeleteInput =
   typeof DnsForwardingRulesetsDeleteInput.Type;
 
 // Output Schema
-export const DnsForwardingRulesetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DnsForwardingRulesetsDeleteOutput = Schema.Void;
 export type DnsForwardingRulesetsDeleteOutput =
   typeof DnsForwardingRulesetsDeleteOutput.Type;
 
@@ -507,7 +507,7 @@ export type DnsResolverDomainListsDeleteInput =
   typeof DnsResolverDomainListsDeleteInput.Type;
 
 // Output Schema
-export const DnsResolverDomainListsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DnsResolverDomainListsDeleteOutput = Schema.Void;
 export type DnsResolverDomainListsDeleteOutput =
   typeof DnsResolverDomainListsDeleteOutput.Type;
 
@@ -823,7 +823,7 @@ export type DnsResolverPoliciesDeleteInput =
   typeof DnsResolverPoliciesDeleteInput.Type;
 
 // Output Schema
-export const DnsResolverPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DnsResolverPoliciesDeleteOutput = Schema.Void;
 export type DnsResolverPoliciesDeleteOutput =
   typeof DnsResolverPoliciesDeleteOutput.Type;
 
@@ -1188,8 +1188,7 @@ export type DnsResolverPolicyVirtualNetworkLinksDeleteInput =
   typeof DnsResolverPolicyVirtualNetworkLinksDeleteInput.Type;
 
 // Output Schema
-export const DnsResolverPolicyVirtualNetworkLinksDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DnsResolverPolicyVirtualNetworkLinksDeleteOutput = Schema.Void;
 export type DnsResolverPolicyVirtualNetworkLinksDeleteOutput =
   typeof DnsResolverPolicyVirtualNetworkLinksDeleteOutput.Type;
 
@@ -1463,7 +1462,7 @@ export const DnsResolversDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DnsResolversDeleteInput = typeof DnsResolversDeleteInput.Type;
 
 // Output Schema
-export const DnsResolversDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DnsResolversDeleteOutput = Schema.Void;
 export type DnsResolversDeleteOutput = typeof DnsResolversDeleteOutput.Type;
 
 // The operation
@@ -1818,7 +1817,7 @@ export type DnsSecurityRulesDeleteInput =
   typeof DnsSecurityRulesDeleteInput.Type;
 
 // Output Schema
-export const DnsSecurityRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DnsSecurityRulesDeleteOutput = Schema.Void;
 export type DnsSecurityRulesDeleteOutput =
   typeof DnsSecurityRulesDeleteOutput.Type;
 
@@ -2069,7 +2068,7 @@ export const ForwardingRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ForwardingRulesDeleteInput = typeof ForwardingRulesDeleteInput.Type;
 
 // Output Schema
-export const ForwardingRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ForwardingRulesDeleteOutput = Schema.Void;
 export type ForwardingRulesDeleteOutput =
   typeof ForwardingRulesDeleteOutput.Type;
 
@@ -2322,7 +2321,7 @@ export type InboundEndpointsDeleteInput =
   typeof InboundEndpointsDeleteInput.Type;
 
 // Output Schema
-export const InboundEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const InboundEndpointsDeleteOutput = Schema.Void;
 export type InboundEndpointsDeleteOutput =
   typeof InboundEndpointsDeleteOutput.Type;
 
@@ -2577,7 +2576,7 @@ export type OutboundEndpointsDeleteInput =
   typeof OutboundEndpointsDeleteInput.Type;
 
 // Output Schema
-export const OutboundEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const OutboundEndpointsDeleteOutput = Schema.Void;
 export type OutboundEndpointsDeleteOutput =
   typeof OutboundEndpointsDeleteOutput.Type;
 
@@ -2832,7 +2831,7 @@ export type VirtualNetworkLinksDeleteInput =
   typeof VirtualNetworkLinksDeleteInput.Type;
 
 // Output Schema
-export const VirtualNetworkLinksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualNetworkLinksDeleteOutput = Schema.Void;
 export type VirtualNetworkLinksDeleteOutput =
   typeof VirtualNetworkLinksDeleteOutput.Type;
 

@@ -17,7 +17,7 @@ export type DeferGroupMaintenanceWindowInput =
   typeof DeferGroupMaintenanceWindowInput.Type;
 
 // Output Schema
-export const DeferGroupMaintenanceWindowOutput = /*@__PURE__*/ Schema.Void;
+export const DeferGroupMaintenanceWindowOutput = Schema.Void;
 export type DeferGroupMaintenanceWindowOutput =
   typeof DeferGroupMaintenanceWindowOutput.Type;
 

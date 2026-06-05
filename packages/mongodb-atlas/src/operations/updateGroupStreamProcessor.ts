@@ -20,7 +20,7 @@ export type UpdateGroupStreamProcessorInput =
   typeof UpdateGroupStreamProcessorInput.Type;
 
 // Output Schema
-export const UpdateGroupStreamProcessorOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupStreamProcessorOutput = Schema.Void;
 export type UpdateGroupStreamProcessorOutput =
   typeof UpdateGroupStreamProcessorOutput.Type;
 

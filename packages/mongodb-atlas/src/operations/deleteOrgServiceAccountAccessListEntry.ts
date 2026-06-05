@@ -21,8 +21,7 @@ export type DeleteOrgServiceAccountAccessListEntryInput =
   typeof DeleteOrgServiceAccountAccessListEntryInput.Type;
 
 // Output Schema
-export const DeleteOrgServiceAccountAccessListEntryOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeleteOrgServiceAccountAccessListEntryOutput = Schema.Void;
 export type DeleteOrgServiceAccountAccessListEntryOutput =
   typeof DeleteOrgServiceAccountAccessListEntryOutput.Type;
 

@@ -19,8 +19,7 @@ export type ListOrgLiveMigrationAvailableProjectsInput =
   typeof ListOrgLiveMigrationAvailableProjectsInput.Type;
 
 // Output Schema
-export const ListOrgLiveMigrationAvailableProjectsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListOrgLiveMigrationAvailableProjectsOutput = Schema.Void;
 export type ListOrgLiveMigrationAvailableProjectsOutput =
   typeof ListOrgLiveMigrationAvailableProjectsOutput.Type;
 

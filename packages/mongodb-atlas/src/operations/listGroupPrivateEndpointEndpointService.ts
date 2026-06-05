@@ -20,8 +20,7 @@ export type ListGroupPrivateEndpointEndpointServiceInput =
   typeof ListGroupPrivateEndpointEndpointServiceInput.Type;
 
 // Output Schema
-export const ListGroupPrivateEndpointEndpointServiceOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListGroupPrivateEndpointEndpointServiceOutput = Schema.Void;
 export type ListGroupPrivateEndpointEndpointServiceOutput =
   typeof ListGroupPrivateEndpointEndpointServiceOutput.Type;
 

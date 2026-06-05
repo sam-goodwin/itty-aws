@@ -42,7 +42,7 @@ export type UserlandSsoControllerAuthorizeInput =
   typeof UserlandSsoControllerAuthorizeInput.Type;
 
 // Output Schema
-export const UserlandSsoControllerAuthorizeOutput = /*@__PURE__*/ Schema.Void;
+export const UserlandSsoControllerAuthorizeOutput = Schema.Void;
 export type UserlandSsoControllerAuthorizeOutput =
   typeof UserlandSsoControllerAuthorizeOutput.Type;
 

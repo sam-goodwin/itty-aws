@@ -10,7 +10,7 @@ export const DeleteMonitorInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteMonitorInput = typeof DeleteMonitorInput.Type;
 
 // Output Schema
-export const DeleteMonitorOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteMonitorOutput = Schema.Void;
 export type DeleteMonitorOutput = typeof DeleteMonitorOutput.Type;
 
 // The operation

@@ -21,8 +21,7 @@ export type CancelGroupClusterBackupRestoreJobInput =
   typeof CancelGroupClusterBackupRestoreJobInput.Type;
 
 // Output Schema
-export const CancelGroupClusterBackupRestoreJobOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CancelGroupClusterBackupRestoreJobOutput = Schema.Void;
 export type CancelGroupClusterBackupRestoreJobOutput =
   typeof CancelGroupClusterBackupRestoreJobOutput.Type;
 

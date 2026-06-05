@@ -11,7 +11,7 @@ export type DeleteV1IntegrationsByIdInput =
   typeof DeleteV1IntegrationsByIdInput.Type;
 
 // Output Schema
-export const DeleteV1IntegrationsByIdOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteV1IntegrationsByIdOutput = Schema.Void;
 export type DeleteV1IntegrationsByIdOutput =
   typeof DeleteV1IntegrationsByIdOutput.Type;
 

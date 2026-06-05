@@ -17,7 +17,7 @@ export type NotebooksKernelStatusRetrieveInput =
   typeof NotebooksKernelStatusRetrieveInput.Type;
 
 // Output Schema
-export const NotebooksKernelStatusRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const NotebooksKernelStatusRetrieveOutput = Schema.Void;
 export type NotebooksKernelStatusRetrieveOutput =
   typeof NotebooksKernelStatusRetrieveOutput.Type;
 

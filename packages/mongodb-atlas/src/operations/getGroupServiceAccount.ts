@@ -19,7 +19,7 @@ export type GetGroupServiceAccountInput =
   typeof GetGroupServiceAccountInput.Type;
 
 // Output Schema
-export const GetGroupServiceAccountOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupServiceAccountOutput = Schema.Void;
 export type GetGroupServiceAccountOutput =
   typeof GetGroupServiceAccountOutput.Type;
 

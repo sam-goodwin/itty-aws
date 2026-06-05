@@ -18,8 +18,7 @@ export type DeleteAccountsAccountExternalAccountsIdInput =
   typeof DeleteAccountsAccountExternalAccountsIdInput.Type;
 
 // Output Schema
-export const DeleteAccountsAccountExternalAccountsIdOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const DeleteAccountsAccountExternalAccountsIdOutput = Schema.Unknown;
 export type DeleteAccountsAccountExternalAccountsIdOutput =
   typeof DeleteAccountsAccountExternalAccountsIdOutput.Type;
 

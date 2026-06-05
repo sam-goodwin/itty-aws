@@ -21,7 +21,7 @@ export type GetFederationSettingConnectedOrgConfigRoleMappingInput =
 
 // Output Schema
 export const GetFederationSettingConnectedOrgConfigRoleMappingOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type GetFederationSettingConnectedOrgConfigRoleMappingOutput =
   typeof GetFederationSettingConnectedOrgConfigRoleMappingOutput.Type;
 

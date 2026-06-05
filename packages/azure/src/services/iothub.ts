@@ -63,7 +63,7 @@ export const CertificatesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type CertificatesDeleteInput = typeof CertificatesDeleteInput.Type;
 
 // Output Schema
-export const CertificatesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CertificatesDeleteOutput = Schema.Void;
 export type CertificatesDeleteOutput = typeof CertificatesDeleteOutput.Type;
 
 // The operation
@@ -268,7 +268,7 @@ export const IotHubManualFailoverInput = /*@__PURE__*/ Schema.Struct({
 export type IotHubManualFailoverInput = typeof IotHubManualFailoverInput.Type;
 
 // Output Schema
-export const IotHubManualFailoverOutput = /*@__PURE__*/ Schema.Void;
+export const IotHubManualFailoverOutput = Schema.Void;
 export type IotHubManualFailoverOutput = typeof IotHubManualFailoverOutput.Type;
 
 // The operation
@@ -437,8 +437,7 @@ export type IotHubResourceDeleteEventHubConsumerGroupInput =
   typeof IotHubResourceDeleteEventHubConsumerGroupInput.Type;
 
 // Output Schema
-export const IotHubResourceDeleteEventHubConsumerGroupOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IotHubResourceDeleteEventHubConsumerGroupOutput = Schema.Void;
 export type IotHubResourceDeleteEventHubConsumerGroupOutput =
   typeof IotHubResourceDeleteEventHubConsumerGroupOutput.Type;
 

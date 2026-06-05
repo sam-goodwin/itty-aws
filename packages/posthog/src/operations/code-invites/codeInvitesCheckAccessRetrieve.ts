@@ -11,7 +11,7 @@ export type CodeInvitesCheckAccessRetrieveInput =
   typeof CodeInvitesCheckAccessRetrieveInput.Type;
 
 // Output Schema
-export const CodeInvitesCheckAccessRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const CodeInvitesCheckAccessRetrieveOutput = Schema.Void;
 export type CodeInvitesCheckAccessRetrieveOutput =
   typeof CodeInvitesCheckAccessRetrieveOutput.Type;
 

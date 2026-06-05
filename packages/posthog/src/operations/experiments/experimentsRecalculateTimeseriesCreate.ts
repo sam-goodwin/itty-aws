@@ -1000,8 +1000,7 @@ export type ExperimentsRecalculateTimeseriesCreateInput =
   typeof ExperimentsRecalculateTimeseriesCreateInput.Type;
 
 // Output Schema
-export const ExperimentsRecalculateTimeseriesCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ExperimentsRecalculateTimeseriesCreateOutput = Schema.Void;
 export type ExperimentsRecalculateTimeseriesCreateOutput =
   typeof ExperimentsRecalculateTimeseriesCreateOutput.Type;
 

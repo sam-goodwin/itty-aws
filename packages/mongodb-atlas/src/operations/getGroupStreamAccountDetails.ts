@@ -19,7 +19,7 @@ export type GetGroupStreamAccountDetailsInput =
   typeof GetGroupStreamAccountDetailsInput.Type;
 
 // Output Schema
-export const GetGroupStreamAccountDetailsOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupStreamAccountDetailsOutput = Schema.Void;
 export type GetGroupStreamAccountDetailsOutput =
   typeof GetGroupStreamAccountDetailsOutput.Type;
 

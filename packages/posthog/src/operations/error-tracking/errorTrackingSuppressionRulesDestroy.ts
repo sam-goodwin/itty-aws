@@ -18,8 +18,7 @@ export type ErrorTrackingSuppressionRulesDestroyInput =
   typeof ErrorTrackingSuppressionRulesDestroyInput.Type;
 
 // Output Schema
-export const ErrorTrackingSuppressionRulesDestroyOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingSuppressionRulesDestroyOutput = Schema.Void;
 export type ErrorTrackingSuppressionRulesDestroyOutput =
   typeof ErrorTrackingSuppressionRulesDestroyOutput.Type;
 

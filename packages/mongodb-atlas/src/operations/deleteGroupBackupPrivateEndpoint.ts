@@ -21,7 +21,7 @@ export type DeleteGroupBackupPrivateEndpointInput =
   typeof DeleteGroupBackupPrivateEndpointInput.Type;
 
 // Output Schema
-export const DeleteGroupBackupPrivateEndpointOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupBackupPrivateEndpointOutput = Schema.Void;
 export type DeleteGroupBackupPrivateEndpointOutput =
   typeof DeleteGroupBackupPrivateEndpointOutput.Type;
 

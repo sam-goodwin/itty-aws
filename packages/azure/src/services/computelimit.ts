@@ -361,7 +361,7 @@ export type GuestSubscriptionsDeleteInput =
   typeof GuestSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const GuestSubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GuestSubscriptionsDeleteOutput = Schema.Void;
 export type GuestSubscriptionsDeleteOutput =
   typeof GuestSubscriptionsDeleteOutput.Type;
 
@@ -606,7 +606,7 @@ export const SharedLimitsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SharedLimitsDeleteInput = typeof SharedLimitsDeleteInput.Type;
 
 // Output Schema
-export const SharedLimitsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SharedLimitsDeleteOutput = Schema.Void;
 export type SharedLimitsDeleteOutput = typeof SharedLimitsDeleteOutput.Type;
 
 // The operation

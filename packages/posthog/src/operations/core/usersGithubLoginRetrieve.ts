@@ -11,7 +11,7 @@ export type UsersGithubLoginRetrieveInput =
   typeof UsersGithubLoginRetrieveInput.Type;
 
 // Output Schema
-export const UsersGithubLoginRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const UsersGithubLoginRetrieveOutput = Schema.Void;
 export type UsersGithubLoginRetrieveOutput =
   typeof UsersGithubLoginRetrieveOutput.Type;
 

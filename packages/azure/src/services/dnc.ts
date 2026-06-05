@@ -57,7 +57,7 @@ export const ControllerDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ControllerDeleteInput = typeof ControllerDeleteInput.Type;
 
 // Output Schema
-export const ControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ControllerDeleteOutput = Schema.Void;
 export type ControllerDeleteOutput = typeof ControllerDeleteOutput.Type;
 
 // The operation
@@ -248,8 +248,7 @@ export type DelegatedSubnetServiceDeleteDetailsInput =
   typeof DelegatedSubnetServiceDeleteDetailsInput.Type;
 
 // Output Schema
-export const DelegatedSubnetServiceDeleteDetailsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DelegatedSubnetServiceDeleteDetailsOutput = Schema.Void;
 export type DelegatedSubnetServiceDeleteDetailsOutput =
   typeof DelegatedSubnetServiceDeleteDetailsOutput.Type;
 
@@ -586,8 +585,7 @@ export type OrchestratorInstanceServiceDeleteInput =
   typeof OrchestratorInstanceServiceDeleteInput.Type;
 
 // Output Schema
-export const OrchestratorInstanceServiceDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const OrchestratorInstanceServiceDeleteOutput = Schema.Void;
 export type OrchestratorInstanceServiceDeleteOutput =
   typeof OrchestratorInstanceServiceDeleteOutput.Type;
 

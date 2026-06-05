@@ -45,7 +45,7 @@ export const V1UpdateStorageConfigInput = /*@__PURE__*/ Schema.Struct({
 export type V1UpdateStorageConfigInput = typeof V1UpdateStorageConfigInput.Type;
 
 // Output Schema
-export const V1UpdateStorageConfigOutput = /*@__PURE__*/ Schema.Void;
+export const V1UpdateStorageConfigOutput = Schema.Void;
 export type V1UpdateStorageConfigOutput =
   typeof V1UpdateStorageConfigOutput.Type;
 

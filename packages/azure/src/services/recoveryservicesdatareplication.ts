@@ -431,7 +431,7 @@ export const FabricAgentDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FabricAgentDeleteInput = typeof FabricAgentDeleteInput.Type;
 
 // Output Schema
-export const FabricAgentDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FabricAgentDeleteOutput = Schema.Void;
 export type FabricAgentDeleteOutput = typeof FabricAgentDeleteOutput.Type;
 
 // The operation
@@ -617,7 +617,7 @@ export const FabricDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FabricDeleteInput = typeof FabricDeleteInput.Type;
 
 // Output Schema
-export const FabricDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FabricDeleteOutput = Schema.Void;
 export type FabricDeleteOutput = typeof FabricDeleteOutput.Type;
 
 // The operation
@@ -1146,7 +1146,7 @@ export const PolicyDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PolicyDeleteInput = typeof PolicyDeleteInput.Type;
 
 // Output Schema
-export const PolicyDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PolicyDeleteOutput = Schema.Void;
 export type PolicyDeleteOutput = typeof PolicyDeleteOutput.Type;
 
 // The operation
@@ -1343,8 +1343,7 @@ export type PrivateEndpointConnectionProxiesDeleteInput =
   typeof PrivateEndpointConnectionProxiesDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionProxiesDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionProxiesDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionProxiesDeleteOutput =
   typeof PrivateEndpointConnectionProxiesDeleteOutput.Type;
 
@@ -1566,7 +1565,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1937,7 +1936,7 @@ export const ProtectedItemDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ProtectedItemDeleteInput = typeof ProtectedItemDeleteInput.Type;
 
 // Output Schema
-export const ProtectedItemDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ProtectedItemDeleteOutput = Schema.Void;
 export type ProtectedItemDeleteOutput = typeof ProtectedItemDeleteOutput.Type;
 
 // The operation
@@ -2337,7 +2336,7 @@ export type ReplicationExtensionDeleteInput =
   typeof ReplicationExtensionDeleteInput.Type;
 
 // Output Schema
-export const ReplicationExtensionDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ReplicationExtensionDeleteOutput = Schema.Void;
 export type ReplicationExtensionDeleteOutput =
   typeof ReplicationExtensionDeleteOutput.Type;
 
@@ -2528,7 +2527,7 @@ export const VaultDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VaultDeleteInput = typeof VaultDeleteInput.Type;
 
 // Output Schema
-export const VaultDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VaultDeleteOutput = Schema.Void;
 export type VaultDeleteOutput = typeof VaultDeleteOutput.Type;
 
 // The operation

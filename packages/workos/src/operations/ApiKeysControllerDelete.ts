@@ -11,7 +11,7 @@ export type ApiKeysControllerDeleteInput =
   typeof ApiKeysControllerDeleteInput.Type;
 
 // Output Schema
-export const ApiKeysControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApiKeysControllerDeleteOutput = Schema.Void;
 export type ApiKeysControllerDeleteOutput =
   typeof ApiKeysControllerDeleteOutput.Type;
 

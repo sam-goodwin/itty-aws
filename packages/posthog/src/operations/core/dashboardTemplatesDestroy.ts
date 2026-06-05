@@ -17,7 +17,7 @@ export type DashboardTemplatesDestroyInput =
   typeof DashboardTemplatesDestroyInput.Type;
 
 // Output Schema
-export const DashboardTemplatesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const DashboardTemplatesDestroyOutput = Schema.Void;
 export type DashboardTemplatesDestroyOutput =
   typeof DashboardTemplatesDestroyOutput.Type;
 

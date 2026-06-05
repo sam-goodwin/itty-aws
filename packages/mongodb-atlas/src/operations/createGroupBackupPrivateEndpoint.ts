@@ -20,7 +20,7 @@ export type CreateGroupBackupPrivateEndpointInput =
   typeof CreateGroupBackupPrivateEndpointInput.Type;
 
 // Output Schema
-export const CreateGroupBackupPrivateEndpointOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupBackupPrivateEndpointOutput = Schema.Void;
 export type CreateGroupBackupPrivateEndpointOutput =
   typeof CreateGroupBackupPrivateEndpointOutput.Type;
 

@@ -10,7 +10,7 @@ export const V1PauseAProjectInput = /*@__PURE__*/ Schema.Struct({
 export type V1PauseAProjectInput = typeof V1PauseAProjectInput.Type;
 
 // Output Schema
-export const V1PauseAProjectOutput = /*@__PURE__*/ Schema.Void;
+export const V1PauseAProjectOutput = Schema.Void;
 export type V1PauseAProjectOutput = typeof V1PauseAProjectOutput.Type;
 
 // The operation

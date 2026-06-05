@@ -17,7 +17,7 @@ export type NotebooksActivityRetrieveInput =
   typeof NotebooksActivityRetrieveInput.Type;
 
 // Output Schema
-export const NotebooksActivityRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const NotebooksActivityRetrieveOutput = Schema.Void;
 export type NotebooksActivityRetrieveOutput =
   typeof NotebooksActivityRetrieveOutput.Type;
 

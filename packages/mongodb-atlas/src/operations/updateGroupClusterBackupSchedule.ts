@@ -20,7 +20,7 @@ export type UpdateGroupClusterBackupScheduleInput =
   typeof UpdateGroupClusterBackupScheduleInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterBackupScheduleOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupClusterBackupScheduleOutput = Schema.Void;
 export type UpdateGroupClusterBackupScheduleOutput =
   typeof UpdateGroupClusterBackupScheduleOutput.Type;
 

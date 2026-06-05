@@ -164,8 +164,7 @@ export type ExternalDataSourcesDatabaseSchemaCreateInput =
   typeof ExternalDataSourcesDatabaseSchemaCreateInput.Type;
 
 // Output Schema
-export const ExternalDataSourcesDatabaseSchemaCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ExternalDataSourcesDatabaseSchemaCreateOutput = Schema.Void;
 export type ExternalDataSourcesDatabaseSchemaCreateOutput =
   typeof ExternalDataSourcesDatabaseSchemaCreateOutput.Type;
 

@@ -18,7 +18,7 @@ export type PersonsFunnelCorrelationRetrieveInput =
   typeof PersonsFunnelCorrelationRetrieveInput.Type;
 
 // Output Schema
-export const PersonsFunnelCorrelationRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const PersonsFunnelCorrelationRetrieveOutput = Schema.Void;
 export type PersonsFunnelCorrelationRetrieveOutput =
   typeof PersonsFunnelCorrelationRetrieveOutput.Type;
 

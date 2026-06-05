@@ -16,7 +16,7 @@ export const InvalidateGroupTokensInput = /*@__PURE__*/ Schema.Struct({
 export type InvalidateGroupTokensInput = typeof InvalidateGroupTokensInput.Type;
 
 // Output Schema
-export const InvalidateGroupTokensOutput = /*@__PURE__*/ Schema.Void;
+export const InvalidateGroupTokensOutput = Schema.Void;
 export type InvalidateGroupTokensOutput =
   typeof InvalidateGroupTokensOutput.Type;
 

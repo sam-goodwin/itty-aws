@@ -17,7 +17,7 @@ export type AcceptProjectTransferRequestInput =
   typeof AcceptProjectTransferRequestInput.Type;
 
 // Output Schema
-export const AcceptProjectTransferRequestOutput = /*@__PURE__*/ Schema.Void;
+export const AcceptProjectTransferRequestOutput = Schema.Void;
 export type AcceptProjectTransferRequestOutput =
   typeof AcceptProjectTransferRequestOutput.Type;
 

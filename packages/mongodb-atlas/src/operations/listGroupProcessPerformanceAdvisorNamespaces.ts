@@ -22,8 +22,7 @@ export type ListGroupProcessPerformanceAdvisorNamespacesInput =
   typeof ListGroupProcessPerformanceAdvisorNamespacesInput.Type;
 
 // Output Schema
-export const ListGroupProcessPerformanceAdvisorNamespacesOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListGroupProcessPerformanceAdvisorNamespacesOutput = Schema.Void;
 export type ListGroupProcessPerformanceAdvisorNamespacesOutput =
   typeof ListGroupProcessPerformanceAdvisorNamespacesOutput.Type;
 

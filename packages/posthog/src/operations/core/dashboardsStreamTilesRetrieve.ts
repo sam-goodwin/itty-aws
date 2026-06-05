@@ -18,7 +18,7 @@ export type DashboardsStreamTilesRetrieveInput =
   typeof DashboardsStreamTilesRetrieveInput.Type;
 
 // Output Schema
-export const DashboardsStreamTilesRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const DashboardsStreamTilesRetrieveOutput = Schema.Void;
 export type DashboardsStreamTilesRetrieveOutput =
   typeof DashboardsStreamTilesRetrieveOutput.Type;
 

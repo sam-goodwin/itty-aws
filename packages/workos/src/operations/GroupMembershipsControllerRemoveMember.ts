@@ -19,8 +19,7 @@ export type GroupMembershipsControllerRemoveMemberInput =
   typeof GroupMembershipsControllerRemoveMemberInput.Type;
 
 // Output Schema
-export const GroupMembershipsControllerRemoveMemberOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GroupMembershipsControllerRemoveMemberOutput = Schema.Void;
 export type GroupMembershipsControllerRemoveMemberOutput =
   typeof GroupMembershipsControllerRemoveMemberOutput.Type;
 

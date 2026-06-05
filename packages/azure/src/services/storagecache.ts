@@ -23,7 +23,7 @@ export const AmlFilesystemsArchiveInput = /*@__PURE__*/ Schema.Struct({
 export type AmlFilesystemsArchiveInput = typeof AmlFilesystemsArchiveInput.Type;
 
 // Output Schema
-export const AmlFilesystemsArchiveOutput = /*@__PURE__*/ Schema.Void;
+export const AmlFilesystemsArchiveOutput = Schema.Void;
 export type AmlFilesystemsArchiveOutput =
   typeof AmlFilesystemsArchiveOutput.Type;
 
@@ -56,7 +56,7 @@ export type AmlFilesystemsCancelArchiveInput =
   typeof AmlFilesystemsCancelArchiveInput.Type;
 
 // Output Schema
-export const AmlFilesystemsCancelArchiveOutput = /*@__PURE__*/ Schema.Void;
+export const AmlFilesystemsCancelArchiveOutput = Schema.Void;
 export type AmlFilesystemsCancelArchiveOutput =
   typeof AmlFilesystemsCancelArchiveOutput.Type;
 
@@ -139,7 +139,7 @@ export const AmlFilesystemsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AmlFilesystemsDeleteInput = typeof AmlFilesystemsDeleteInput.Type;
 
 // Output Schema
-export const AmlFilesystemsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AmlFilesystemsDeleteOutput = Schema.Void;
 export type AmlFilesystemsDeleteOutput = typeof AmlFilesystemsDeleteOutput.Type;
 
 // The operation
@@ -546,7 +546,7 @@ export const AutoExportJobsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AutoExportJobsDeleteInput = typeof AutoExportJobsDeleteInput.Type;
 
 // Output Schema
-export const AutoExportJobsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AutoExportJobsDeleteOutput = Schema.Void;
 export type AutoExportJobsDeleteOutput = typeof AutoExportJobsDeleteOutput.Type;
 
 // The operation
@@ -804,7 +804,7 @@ export const AutoImportJobsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AutoImportJobsDeleteInput = typeof AutoImportJobsDeleteInput.Type;
 
 // Output Schema
-export const AutoImportJobsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AutoImportJobsDeleteOutput = Schema.Void;
 export type AutoImportJobsDeleteOutput = typeof AutoImportJobsDeleteOutput.Type;
 
 // The operation
@@ -1057,7 +1057,7 @@ export const CachesDebugInfoInput = /*@__PURE__*/ Schema.Struct({
 export type CachesDebugInfoInput = typeof CachesDebugInfoInput.Type;
 
 // Output Schema
-export const CachesDebugInfoOutput = /*@__PURE__*/ Schema.Void;
+export const CachesDebugInfoOutput = Schema.Void;
 export type CachesDebugInfoOutput = typeof CachesDebugInfoOutput.Type;
 
 // The operation
@@ -1088,7 +1088,7 @@ export const CachesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type CachesDeleteInput = typeof CachesDeleteInput.Type;
 
 // Output Schema
-export const CachesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CachesDeleteOutput = Schema.Void;
 export type CachesDeleteOutput = typeof CachesDeleteOutput.Type;
 
 // The operation
@@ -1119,7 +1119,7 @@ export const CachesFlushInput = /*@__PURE__*/ Schema.Struct({
 export type CachesFlushInput = typeof CachesFlushInput.Type;
 
 // Output Schema
-export const CachesFlushOutput = /*@__PURE__*/ Schema.Void;
+export const CachesFlushOutput = Schema.Void;
 export type CachesFlushOutput = typeof CachesFlushOutput.Type;
 
 // The operation
@@ -1327,7 +1327,7 @@ export const CachesPausePrimingJobInput = /*@__PURE__*/ Schema.Struct({
 export type CachesPausePrimingJobInput = typeof CachesPausePrimingJobInput.Type;
 
 // Output Schema
-export const CachesPausePrimingJobOutput = /*@__PURE__*/ Schema.Void;
+export const CachesPausePrimingJobOutput = Schema.Void;
 export type CachesPausePrimingJobOutput =
   typeof CachesPausePrimingJobOutput.Type;
 
@@ -1360,7 +1360,7 @@ export type CachesResumePrimingJobInput =
   typeof CachesResumePrimingJobInput.Type;
 
 // Output Schema
-export const CachesResumePrimingJobOutput = /*@__PURE__*/ Schema.Void;
+export const CachesResumePrimingJobOutput = Schema.Void;
 export type CachesResumePrimingJobOutput =
   typeof CachesResumePrimingJobOutput.Type;
 
@@ -1392,7 +1392,7 @@ export const CachesSpaceAllocationInput = /*@__PURE__*/ Schema.Struct({
 export type CachesSpaceAllocationInput = typeof CachesSpaceAllocationInput.Type;
 
 // Output Schema
-export const CachesSpaceAllocationOutput = /*@__PURE__*/ Schema.Void;
+export const CachesSpaceAllocationOutput = Schema.Void;
 export type CachesSpaceAllocationOutput =
   typeof CachesSpaceAllocationOutput.Type;
 
@@ -1424,7 +1424,7 @@ export const CachesStartInput = /*@__PURE__*/ Schema.Struct({
 export type CachesStartInput = typeof CachesStartInput.Type;
 
 // Output Schema
-export const CachesStartOutput = /*@__PURE__*/ Schema.Void;
+export const CachesStartOutput = Schema.Void;
 export type CachesStartOutput = typeof CachesStartOutput.Type;
 
 // The operation
@@ -1455,7 +1455,7 @@ export const CachesStartPrimingJobInput = /*@__PURE__*/ Schema.Struct({
 export type CachesStartPrimingJobInput = typeof CachesStartPrimingJobInput.Type;
 
 // Output Schema
-export const CachesStartPrimingJobOutput = /*@__PURE__*/ Schema.Void;
+export const CachesStartPrimingJobOutput = Schema.Void;
 export type CachesStartPrimingJobOutput =
   typeof CachesStartPrimingJobOutput.Type;
 
@@ -1487,7 +1487,7 @@ export const CachesStopInput = /*@__PURE__*/ Schema.Struct({
 export type CachesStopInput = typeof CachesStopInput.Type;
 
 // Output Schema
-export const CachesStopOutput = /*@__PURE__*/ Schema.Void;
+export const CachesStopOutput = Schema.Void;
 export type CachesStopOutput = typeof CachesStopOutput.Type;
 
 // The operation
@@ -1518,7 +1518,7 @@ export const CachesStopPrimingJobInput = /*@__PURE__*/ Schema.Struct({
 export type CachesStopPrimingJobInput = typeof CachesStopPrimingJobInput.Type;
 
 // Output Schema
-export const CachesStopPrimingJobOutput = /*@__PURE__*/ Schema.Void;
+export const CachesStopPrimingJobOutput = Schema.Void;
 export type CachesStopPrimingJobOutput = typeof CachesStopPrimingJobOutput.Type;
 
 // The operation
@@ -1598,7 +1598,7 @@ export const CachesUpgradeFirmwareInput = /*@__PURE__*/ Schema.Struct({
 export type CachesUpgradeFirmwareInput = typeof CachesUpgradeFirmwareInput.Type;
 
 // Output Schema
-export const CachesUpgradeFirmwareOutput = /*@__PURE__*/ Schema.Void;
+export const CachesUpgradeFirmwareOutput = Schema.Void;
 export type CachesUpgradeFirmwareOutput =
   typeof CachesUpgradeFirmwareOutput.Type;
 
@@ -1628,7 +1628,7 @@ export const CheckAmlFSSubnetsInput = /*@__PURE__*/ Schema.Struct({
 export type CheckAmlFSSubnetsInput = typeof CheckAmlFSSubnetsInput.Type;
 
 // Output Schema
-export const CheckAmlFSSubnetsOutput = /*@__PURE__*/ Schema.Void;
+export const CheckAmlFSSubnetsOutput = Schema.Void;
 export type CheckAmlFSSubnetsOutput = typeof CheckAmlFSSubnetsOutput.Type;
 
 // The operation
@@ -1711,7 +1711,7 @@ export const ExpansionJobsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ExpansionJobsDeleteInput = typeof ExpansionJobsDeleteInput.Type;
 
 // Output Schema
-export const ExpansionJobsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ExpansionJobsDeleteOutput = Schema.Void;
 export type ExpansionJobsDeleteOutput = typeof ExpansionJobsDeleteOutput.Type;
 
 // The operation
@@ -2000,7 +2000,7 @@ export const ImportJobsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ImportJobsDeleteInput = typeof ImportJobsDeleteInput.Type;
 
 // Output Schema
-export const ImportJobsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ImportJobsDeleteOutput = Schema.Void;
 export type ImportJobsDeleteOutput = typeof ImportJobsDeleteOutput.Type;
 
 // The operation
@@ -2365,7 +2365,7 @@ export const StorageTargetFlushInput = /*@__PURE__*/ Schema.Struct({
 export type StorageTargetFlushInput = typeof StorageTargetFlushInput.Type;
 
 // Output Schema
-export const StorageTargetFlushOutput = /*@__PURE__*/ Schema.Void;
+export const StorageTargetFlushOutput = Schema.Void;
 export type StorageTargetFlushOutput = typeof StorageTargetFlushOutput.Type;
 
 // The operation
@@ -2399,7 +2399,7 @@ export type StorageTargetInvalidateInput =
   typeof StorageTargetInvalidateInput.Type;
 
 // Output Schema
-export const StorageTargetInvalidateOutput = /*@__PURE__*/ Schema.Void;
+export const StorageTargetInvalidateOutput = Schema.Void;
 export type StorageTargetInvalidateOutput =
   typeof StorageTargetInvalidateOutput.Type;
 
@@ -2433,7 +2433,7 @@ export const StorageTargetResumeInput = /*@__PURE__*/ Schema.Struct({
 export type StorageTargetResumeInput = typeof StorageTargetResumeInput.Type;
 
 // Output Schema
-export const StorageTargetResumeOutput = /*@__PURE__*/ Schema.Void;
+export const StorageTargetResumeOutput = Schema.Void;
 export type StorageTargetResumeOutput = typeof StorageTargetResumeOutput.Type;
 
 // The operation
@@ -2520,7 +2520,7 @@ export const StorageTargetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type StorageTargetsDeleteInput = typeof StorageTargetsDeleteInput.Type;
 
 // Output Schema
-export const StorageTargetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StorageTargetsDeleteOutput = Schema.Void;
 export type StorageTargetsDeleteOutput = typeof StorageTargetsDeleteOutput.Type;
 
 // The operation
@@ -2555,7 +2555,7 @@ export type StorageTargetsDnsRefreshInput =
   typeof StorageTargetsDnsRefreshInput.Type;
 
 // Output Schema
-export const StorageTargetsDnsRefreshOutput = /*@__PURE__*/ Schema.Void;
+export const StorageTargetsDnsRefreshOutput = Schema.Void;
 export type StorageTargetsDnsRefreshOutput =
   typeof StorageTargetsDnsRefreshOutput.Type;
 
@@ -2709,7 +2709,7 @@ export type StorageTargetsRestoreDefaultsInput =
   typeof StorageTargetsRestoreDefaultsInput.Type;
 
 // Output Schema
-export const StorageTargetsRestoreDefaultsOutput = /*@__PURE__*/ Schema.Void;
+export const StorageTargetsRestoreDefaultsOutput = Schema.Void;
 export type StorageTargetsRestoreDefaultsOutput =
   typeof StorageTargetsRestoreDefaultsOutput.Type;
 
@@ -2743,7 +2743,7 @@ export const StorageTargetSuspendInput = /*@__PURE__*/ Schema.Struct({
 export type StorageTargetSuspendInput = typeof StorageTargetSuspendInput.Type;
 
 // Output Schema
-export const StorageTargetSuspendOutput = /*@__PURE__*/ Schema.Void;
+export const StorageTargetSuspendOutput = Schema.Void;
 export type StorageTargetSuspendOutput = typeof StorageTargetSuspendOutput.Type;
 
 // The operation

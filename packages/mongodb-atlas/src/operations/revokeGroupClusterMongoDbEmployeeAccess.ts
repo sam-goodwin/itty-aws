@@ -20,8 +20,7 @@ export type RevokeGroupClusterMongoDbEmployeeAccessInput =
   typeof RevokeGroupClusterMongoDbEmployeeAccessInput.Type;
 
 // Output Schema
-export const RevokeGroupClusterMongoDbEmployeeAccessOutput =
-  /*@__PURE__*/ Schema.Void;
+export const RevokeGroupClusterMongoDbEmployeeAccessOutput = Schema.Void;
 export type RevokeGroupClusterMongoDbEmployeeAccessOutput =
   typeof RevokeGroupClusterMongoDbEmployeeAccessOutput.Type;
 

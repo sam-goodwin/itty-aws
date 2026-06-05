@@ -1176,8 +1176,7 @@ export type EnvironmentsAddProductIntentPartialUpdateInput =
   typeof EnvironmentsAddProductIntentPartialUpdateInput.Type;
 
 // Output Schema
-export const EnvironmentsAddProductIntentPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EnvironmentsAddProductIntentPartialUpdateOutput = Schema.Void;
 export type EnvironmentsAddProductIntentPartialUpdateOutput =
   typeof EnvironmentsAddProductIntentPartialUpdateOutput.Type;
 

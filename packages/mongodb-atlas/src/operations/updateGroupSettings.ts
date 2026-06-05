@@ -14,7 +14,7 @@ export const UpdateGroupSettingsInput = /*@__PURE__*/ Schema.Struct({
 export type UpdateGroupSettingsInput = typeof UpdateGroupSettingsInput.Type;
 
 // Output Schema
-export const UpdateGroupSettingsOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupSettingsOutput = Schema.Void;
 export type UpdateGroupSettingsOutput = typeof UpdateGroupSettingsOutput.Type;
 
 // The operation

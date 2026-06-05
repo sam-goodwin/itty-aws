@@ -14,7 +14,7 @@ export const UpdateOrgSettingsInput = /*@__PURE__*/ Schema.Struct({
 export type UpdateOrgSettingsInput = typeof UpdateOrgSettingsInput.Type;
 
 // Output Schema
-export const UpdateOrgSettingsOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateOrgSettingsOutput = Schema.Void;
 export type UpdateOrgSettingsOutput = typeof UpdateOrgSettingsOutput.Type;
 
 // The operation

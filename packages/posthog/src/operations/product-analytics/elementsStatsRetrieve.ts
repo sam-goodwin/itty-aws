@@ -12,7 +12,7 @@ export const ElementsStatsRetrieveInput = /*@__PURE__*/ Schema.Struct({
 export type ElementsStatsRetrieveInput = typeof ElementsStatsRetrieveInput.Type;
 
 // Output Schema
-export const ElementsStatsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const ElementsStatsRetrieveOutput = Schema.Void;
 export type ElementsStatsRetrieveOutput =
   typeof ElementsStatsRetrieveOutput.Type;
 

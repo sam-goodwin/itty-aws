@@ -20,8 +20,7 @@ export type AuthorizeGroupCloudProviderAccessRoleInput =
   typeof AuthorizeGroupCloudProviderAccessRoleInput.Type;
 
 // Output Schema
-export const AuthorizeGroupCloudProviderAccessRoleOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AuthorizeGroupCloudProviderAccessRoleOutput = Schema.Void;
 export type AuthorizeGroupCloudProviderAccessRoleOutput =
   typeof AuthorizeGroupCloudProviderAccessRoleOutput.Type;
 

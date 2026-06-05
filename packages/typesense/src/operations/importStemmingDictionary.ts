@@ -11,7 +11,7 @@ export type ImportStemmingDictionaryInput =
   typeof ImportStemmingDictionaryInput.Type;
 
 // Output Schema
-export const ImportStemmingDictionaryOutput = /*@__PURE__*/ Schema.Void;
+export const ImportStemmingDictionaryOutput = Schema.Void;
 export type ImportStemmingDictionaryOutput =
   typeof ImportStemmingDictionaryOutput.Type;
 

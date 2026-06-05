@@ -26,8 +26,7 @@ export type GroupsTypesSetDefaultColumnsUpdateInput =
   typeof GroupsTypesSetDefaultColumnsUpdateInput.Type;
 
 // Output Schema
-export const GroupsTypesSetDefaultColumnsUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GroupsTypesSetDefaultColumnsUpdateOutput = Schema.Void;
 export type GroupsTypesSetDefaultColumnsUpdateOutput =
   typeof GroupsTypesSetDefaultColumnsUpdateOutput.Type;
 

@@ -17,7 +17,7 @@ export const TestWebhookInput = /*@__PURE__*/ Schema.Struct({
 export type TestWebhookInput = typeof TestWebhookInput.Type;
 
 // Output Schema
-export const TestWebhookOutput = /*@__PURE__*/ Schema.Void;
+export const TestWebhookOutput = Schema.Void;
 export type TestWebhookOutput = typeof TestWebhookOutput.Type;
 
 // The operation

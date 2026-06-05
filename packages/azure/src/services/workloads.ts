@@ -1917,7 +1917,7 @@ export type SapCentralServerInstancesDeleteInput =
   typeof SapCentralServerInstancesDeleteInput.Type;
 
 // Output Schema
-export const SapCentralServerInstancesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SapCentralServerInstancesDeleteOutput = Schema.Void;
 export type SapCentralServerInstancesDeleteOutput =
   typeof SapCentralServerInstancesDeleteOutput.Type;
 
@@ -3076,7 +3076,7 @@ export type SapLandscapeMonitorDeleteInput =
   typeof SapLandscapeMonitorDeleteInput.Type;
 
 // Output Schema
-export const SapLandscapeMonitorDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SapLandscapeMonitorDeleteOutput = Schema.Void;
 export type SapLandscapeMonitorDeleteOutput =
   typeof SapLandscapeMonitorDeleteOutput.Type;
 

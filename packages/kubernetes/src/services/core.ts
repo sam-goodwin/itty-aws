@@ -21,8 +21,7 @@ export type ConnectCoreV1DeleteNamespacedPodProxyInput =
   typeof ConnectCoreV1DeleteNamespacedPodProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1DeleteNamespacedPodProxyOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1DeleteNamespacedPodProxyOutput = Schema.String;
 export type ConnectCoreV1DeleteNamespacedPodProxyOutput =
   typeof ConnectCoreV1DeleteNamespacedPodProxyOutput.Type;
 
@@ -49,7 +48,7 @@ export type ConnectCoreV1DeleteNamespacedPodProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+  Schema.String;
 export type ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput =
   typeof ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput.Type;
 
@@ -74,8 +73,7 @@ export type ConnectCoreV1DeleteNamespacedServiceProxyInput =
   typeof ConnectCoreV1DeleteNamespacedServiceProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1DeleteNamespacedServiceProxyOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1DeleteNamespacedServiceProxyOutput = Schema.String;
 export type ConnectCoreV1DeleteNamespacedServiceProxyOutput =
   typeof ConnectCoreV1DeleteNamespacedServiceProxyOutput.Type;
 
@@ -102,7 +100,7 @@ export type ConnectCoreV1DeleteNamespacedServiceProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+  Schema.String;
 export type ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput =
   typeof ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput.Type;
 
@@ -123,7 +121,7 @@ export type ConnectCoreV1DeleteNodeProxyInput =
   typeof ConnectCoreV1DeleteNodeProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1DeleteNodeProxyOutput = /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1DeleteNodeProxyOutput = Schema.String;
 export type ConnectCoreV1DeleteNodeProxyOutput =
   typeof ConnectCoreV1DeleteNodeProxyOutput.Type;
 
@@ -144,8 +142,7 @@ export type ConnectCoreV1DeleteNodeProxyWithPathInput =
   typeof ConnectCoreV1DeleteNodeProxyWithPathInput.Type;
 
 // Output Schema
-export const ConnectCoreV1DeleteNodeProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1DeleteNodeProxyWithPathOutput = Schema.String;
 export type ConnectCoreV1DeleteNodeProxyWithPathOutput =
   typeof ConnectCoreV1DeleteNodeProxyWithPathOutput.Type;
 
@@ -171,8 +168,7 @@ export type ConnectCoreV1GetNamespacedPodAttachInput =
   typeof ConnectCoreV1GetNamespacedPodAttachInput.Type;
 
 // Output Schema
-export const ConnectCoreV1GetNamespacedPodAttachOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1GetNamespacedPodAttachOutput = Schema.String;
 export type ConnectCoreV1GetNamespacedPodAttachOutput =
   typeof ConnectCoreV1GetNamespacedPodAttachOutput.Type;
 
@@ -198,8 +194,7 @@ export type ConnectCoreV1GetNamespacedPodExecInput =
   typeof ConnectCoreV1GetNamespacedPodExecInput.Type;
 
 // Output Schema
-export const ConnectCoreV1GetNamespacedPodExecOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1GetNamespacedPodExecOutput = Schema.String;
 export type ConnectCoreV1GetNamespacedPodExecOutput =
   typeof ConnectCoreV1GetNamespacedPodExecOutput.Type;
 
@@ -223,8 +218,7 @@ export type ConnectCoreV1GetNamespacedPodPortforwardInput =
   typeof ConnectCoreV1GetNamespacedPodPortforwardInput.Type;
 
 // Output Schema
-export const ConnectCoreV1GetNamespacedPodPortforwardOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1GetNamespacedPodPortforwardOutput = Schema.String;
 export type ConnectCoreV1GetNamespacedPodPortforwardOutput =
   typeof ConnectCoreV1GetNamespacedPodPortforwardOutput.Type;
 
@@ -250,8 +244,7 @@ export type ConnectCoreV1GetNamespacedPodProxyInput =
   typeof ConnectCoreV1GetNamespacedPodProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1GetNamespacedPodProxyOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1GetNamespacedPodProxyOutput = Schema.String;
 export type ConnectCoreV1GetNamespacedPodProxyOutput =
   typeof ConnectCoreV1GetNamespacedPodProxyOutput.Type;
 
@@ -277,8 +270,7 @@ export type ConnectCoreV1GetNamespacedPodProxyWithPathInput =
   typeof ConnectCoreV1GetNamespacedPodProxyWithPathInput.Type;
 
 // Output Schema
-export const ConnectCoreV1GetNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1GetNamespacedPodProxyWithPathOutput = Schema.String;
 export type ConnectCoreV1GetNamespacedPodProxyWithPathOutput =
   typeof ConnectCoreV1GetNamespacedPodProxyWithPathOutput.Type;
 
@@ -303,8 +295,7 @@ export type ConnectCoreV1GetNamespacedServiceProxyInput =
   typeof ConnectCoreV1GetNamespacedServiceProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1GetNamespacedServiceProxyOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1GetNamespacedServiceProxyOutput = Schema.String;
 export type ConnectCoreV1GetNamespacedServiceProxyOutput =
   typeof ConnectCoreV1GetNamespacedServiceProxyOutput.Type;
 
@@ -331,7 +322,7 @@ export type ConnectCoreV1GetNamespacedServiceProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1GetNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+  Schema.String;
 export type ConnectCoreV1GetNamespacedServiceProxyWithPathOutput =
   typeof ConnectCoreV1GetNamespacedServiceProxyWithPathOutput.Type;
 
@@ -352,7 +343,7 @@ export type ConnectCoreV1GetNodeProxyInput =
   typeof ConnectCoreV1GetNodeProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1GetNodeProxyOutput = /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1GetNodeProxyOutput = Schema.String;
 export type ConnectCoreV1GetNodeProxyOutput =
   typeof ConnectCoreV1GetNodeProxyOutput.Type;
 
@@ -373,8 +364,7 @@ export type ConnectCoreV1GetNodeProxyWithPathInput =
   typeof ConnectCoreV1GetNodeProxyWithPathInput.Type;
 
 // Output Schema
-export const ConnectCoreV1GetNodeProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1GetNodeProxyWithPathOutput = Schema.String;
 export type ConnectCoreV1GetNodeProxyWithPathOutput =
   typeof ConnectCoreV1GetNodeProxyWithPathOutput.Type;
 
@@ -398,8 +388,7 @@ export type ConnectCoreV1PatchNamespacedPodProxyInput =
   typeof ConnectCoreV1PatchNamespacedPodProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PatchNamespacedPodProxyOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PatchNamespacedPodProxyOutput = Schema.String;
 export type ConnectCoreV1PatchNamespacedPodProxyOutput =
   typeof ConnectCoreV1PatchNamespacedPodProxyOutput.Type;
 
@@ -425,8 +414,7 @@ export type ConnectCoreV1PatchNamespacedPodProxyWithPathInput =
   typeof ConnectCoreV1PatchNamespacedPodProxyWithPathInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PatchNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PatchNamespacedPodProxyWithPathOutput = Schema.String;
 export type ConnectCoreV1PatchNamespacedPodProxyWithPathOutput =
   typeof ConnectCoreV1PatchNamespacedPodProxyWithPathOutput.Type;
 
@@ -451,8 +439,7 @@ export type ConnectCoreV1PatchNamespacedServiceProxyInput =
   typeof ConnectCoreV1PatchNamespacedServiceProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PatchNamespacedServiceProxyOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PatchNamespacedServiceProxyOutput = Schema.String;
 export type ConnectCoreV1PatchNamespacedServiceProxyOutput =
   typeof ConnectCoreV1PatchNamespacedServiceProxyOutput.Type;
 
@@ -479,7 +466,7 @@ export type ConnectCoreV1PatchNamespacedServiceProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+  Schema.String;
 export type ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput =
   typeof ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput.Type;
 
@@ -500,7 +487,7 @@ export type ConnectCoreV1PatchNodeProxyInput =
   typeof ConnectCoreV1PatchNodeProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PatchNodeProxyOutput = /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PatchNodeProxyOutput = Schema.String;
 export type ConnectCoreV1PatchNodeProxyOutput =
   typeof ConnectCoreV1PatchNodeProxyOutput.Type;
 
@@ -521,8 +508,7 @@ export type ConnectCoreV1PatchNodeProxyWithPathInput =
   typeof ConnectCoreV1PatchNodeProxyWithPathInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PatchNodeProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PatchNodeProxyWithPathOutput = Schema.String;
 export type ConnectCoreV1PatchNodeProxyWithPathOutput =
   typeof ConnectCoreV1PatchNodeProxyWithPathOutput.Type;
 
@@ -548,8 +534,7 @@ export type ConnectCoreV1PostNamespacedPodAttachInput =
   typeof ConnectCoreV1PostNamespacedPodAttachInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PostNamespacedPodAttachOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PostNamespacedPodAttachOutput = Schema.String;
 export type ConnectCoreV1PostNamespacedPodAttachOutput =
   typeof ConnectCoreV1PostNamespacedPodAttachOutput.Type;
 
@@ -575,8 +560,7 @@ export type ConnectCoreV1PostNamespacedPodExecInput =
   typeof ConnectCoreV1PostNamespacedPodExecInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PostNamespacedPodExecOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PostNamespacedPodExecOutput = Schema.String;
 export type ConnectCoreV1PostNamespacedPodExecOutput =
   typeof ConnectCoreV1PostNamespacedPodExecOutput.Type;
 
@@ -602,8 +586,7 @@ export type ConnectCoreV1PostNamespacedPodPortforwardInput =
   typeof ConnectCoreV1PostNamespacedPodPortforwardInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PostNamespacedPodPortforwardOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PostNamespacedPodPortforwardOutput = Schema.String;
 export type ConnectCoreV1PostNamespacedPodPortforwardOutput =
   typeof ConnectCoreV1PostNamespacedPodPortforwardOutput.Type;
 
@@ -629,8 +612,7 @@ export type ConnectCoreV1PostNamespacedPodProxyInput =
   typeof ConnectCoreV1PostNamespacedPodProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PostNamespacedPodProxyOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PostNamespacedPodProxyOutput = Schema.String;
 export type ConnectCoreV1PostNamespacedPodProxyOutput =
   typeof ConnectCoreV1PostNamespacedPodProxyOutput.Type;
 
@@ -656,8 +638,7 @@ export type ConnectCoreV1PostNamespacedPodProxyWithPathInput =
   typeof ConnectCoreV1PostNamespacedPodProxyWithPathInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PostNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PostNamespacedPodProxyWithPathOutput = Schema.String;
 export type ConnectCoreV1PostNamespacedPodProxyWithPathOutput =
   typeof ConnectCoreV1PostNamespacedPodProxyWithPathOutput.Type;
 
@@ -682,8 +663,7 @@ export type ConnectCoreV1PostNamespacedServiceProxyInput =
   typeof ConnectCoreV1PostNamespacedServiceProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PostNamespacedServiceProxyOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PostNamespacedServiceProxyOutput = Schema.String;
 export type ConnectCoreV1PostNamespacedServiceProxyOutput =
   typeof ConnectCoreV1PostNamespacedServiceProxyOutput.Type;
 
@@ -710,7 +690,7 @@ export type ConnectCoreV1PostNamespacedServiceProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1PostNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+  Schema.String;
 export type ConnectCoreV1PostNamespacedServiceProxyWithPathOutput =
   typeof ConnectCoreV1PostNamespacedServiceProxyWithPathOutput.Type;
 
@@ -731,7 +711,7 @@ export type ConnectCoreV1PostNodeProxyInput =
   typeof ConnectCoreV1PostNodeProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PostNodeProxyOutput = /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PostNodeProxyOutput = Schema.String;
 export type ConnectCoreV1PostNodeProxyOutput =
   typeof ConnectCoreV1PostNodeProxyOutput.Type;
 
@@ -752,8 +732,7 @@ export type ConnectCoreV1PostNodeProxyWithPathInput =
   typeof ConnectCoreV1PostNodeProxyWithPathInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PostNodeProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PostNodeProxyWithPathOutput = Schema.String;
 export type ConnectCoreV1PostNodeProxyWithPathOutput =
   typeof ConnectCoreV1PostNodeProxyWithPathOutput.Type;
 
@@ -779,8 +758,7 @@ export type ConnectCoreV1PutNamespacedPodProxyInput =
   typeof ConnectCoreV1PutNamespacedPodProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PutNamespacedPodProxyOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PutNamespacedPodProxyOutput = Schema.String;
 export type ConnectCoreV1PutNamespacedPodProxyOutput =
   typeof ConnectCoreV1PutNamespacedPodProxyOutput.Type;
 
@@ -806,8 +784,7 @@ export type ConnectCoreV1PutNamespacedPodProxyWithPathInput =
   typeof ConnectCoreV1PutNamespacedPodProxyWithPathInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PutNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PutNamespacedPodProxyWithPathOutput = Schema.String;
 export type ConnectCoreV1PutNamespacedPodProxyWithPathOutput =
   typeof ConnectCoreV1PutNamespacedPodProxyWithPathOutput.Type;
 
@@ -832,8 +809,7 @@ export type ConnectCoreV1PutNamespacedServiceProxyInput =
   typeof ConnectCoreV1PutNamespacedServiceProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PutNamespacedServiceProxyOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PutNamespacedServiceProxyOutput = Schema.String;
 export type ConnectCoreV1PutNamespacedServiceProxyOutput =
   typeof ConnectCoreV1PutNamespacedServiceProxyOutput.Type;
 
@@ -860,7 +836,7 @@ export type ConnectCoreV1PutNamespacedServiceProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1PutNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+  Schema.String;
 export type ConnectCoreV1PutNamespacedServiceProxyWithPathOutput =
   typeof ConnectCoreV1PutNamespacedServiceProxyWithPathOutput.Type;
 
@@ -881,7 +857,7 @@ export type ConnectCoreV1PutNodeProxyInput =
   typeof ConnectCoreV1PutNodeProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PutNodeProxyOutput = /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PutNodeProxyOutput = Schema.String;
 export type ConnectCoreV1PutNodeProxyOutput =
   typeof ConnectCoreV1PutNodeProxyOutput.Type;
 
@@ -902,8 +878,7 @@ export type ConnectCoreV1PutNodeProxyWithPathInput =
   typeof ConnectCoreV1PutNodeProxyWithPathInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PutNodeProxyWithPathOutput =
-  /*@__PURE__*/ Schema.String;
+export const ConnectCoreV1PutNodeProxyWithPathOutput = Schema.String;
 export type ConnectCoreV1PutNodeProxyWithPathOutput =
   typeof ConnectCoreV1PutNodeProxyWithPathOutput.Type;
 
@@ -18570,8 +18545,7 @@ export type GetServiceAccountIssuerOpenIDConfigurationInput =
   typeof GetServiceAccountIssuerOpenIDConfigurationInput.Type;
 
 // Output Schema
-export const GetServiceAccountIssuerOpenIDConfigurationOutput =
-  /*@__PURE__*/ Schema.String;
+export const GetServiceAccountIssuerOpenIDConfigurationOutput = Schema.String;
 export type GetServiceAccountIssuerOpenIDConfigurationOutput =
   typeof GetServiceAccountIssuerOpenIDConfigurationOutput.Type;
 
@@ -18593,8 +18567,7 @@ export type GetServiceAccountIssuerOpenIDKeysetInput =
   typeof GetServiceAccountIssuerOpenIDKeysetInput.Type;
 
 // Output Schema
-export const GetServiceAccountIssuerOpenIDKeysetOutput =
-  /*@__PURE__*/ Schema.String;
+export const GetServiceAccountIssuerOpenIDKeysetOutput = Schema.String;
 export type GetServiceAccountIssuerOpenIDKeysetOutput =
   typeof GetServiceAccountIssuerOpenIDKeysetOutput.Type;
 
@@ -38087,7 +38060,7 @@ export const LogFileHandlerInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type LogFileHandlerInput = typeof LogFileHandlerInput.Type;
 
 // Output Schema
-export const LogFileHandlerOutput = /*@__PURE__*/ Schema.Void;
+export const LogFileHandlerOutput = Schema.Void;
 export type LogFileHandlerOutput = typeof LogFileHandlerOutput.Type;
 
 // The operation
@@ -38102,7 +38075,7 @@ export const LogFileListHandlerInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type LogFileListHandlerInput = typeof LogFileListHandlerInput.Type;
 
 // Output Schema
-export const LogFileListHandlerOutput = /*@__PURE__*/ Schema.Void;
+export const LogFileListHandlerOutput = Schema.Void;
 export type LogFileListHandlerOutput = typeof LogFileListHandlerOutput.Type;
 
 // The operation
@@ -66570,7 +66543,7 @@ export type ReadCoreV1NamespacedPodLogInput =
   typeof ReadCoreV1NamespacedPodLogInput.Type;
 
 // Output Schema
-export const ReadCoreV1NamespacedPodLogOutput = /*@__PURE__*/ Schema.String;
+export const ReadCoreV1NamespacedPodLogOutput = Schema.String;
 export type ReadCoreV1NamespacedPodLogOutput =
   typeof ReadCoreV1NamespacedPodLogOutput.Type;
 

@@ -10,7 +10,7 @@ export const RemoveUserFromOrgInput = /*@__PURE__*/ Schema.Struct({
 export type RemoveUserFromOrgInput = typeof RemoveUserFromOrgInput.Type;
 
 // Output Schema
-export const RemoveUserFromOrgOutput = /*@__PURE__*/ Schema.Void;
+export const RemoveUserFromOrgOutput = Schema.Void;
 export type RemoveUserFromOrgOutput = typeof RemoveUserFromOrgOutput.Type;
 
 // The operation

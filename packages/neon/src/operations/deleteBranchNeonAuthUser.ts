@@ -17,7 +17,7 @@ export type DeleteBranchNeonAuthUserInput =
   typeof DeleteBranchNeonAuthUserInput.Type;
 
 // Output Schema
-export const DeleteBranchNeonAuthUserOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteBranchNeonAuthUserOutput = Schema.Void;
 export type DeleteBranchNeonAuthUserOutput =
   typeof DeleteBranchNeonAuthUserOutput.Type;
 

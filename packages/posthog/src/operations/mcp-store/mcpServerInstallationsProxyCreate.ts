@@ -32,8 +32,7 @@ export type McpServerInstallationsProxyCreateInput =
   typeof McpServerInstallationsProxyCreateInput.Type;
 
 // Output Schema
-export const McpServerInstallationsProxyCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const McpServerInstallationsProxyCreateOutput = Schema.Void;
 export type McpServerInstallationsProxyCreateOutput =
   typeof McpServerInstallationsProxyCreateOutput.Type;
 

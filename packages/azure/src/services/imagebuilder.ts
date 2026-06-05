@@ -116,7 +116,7 @@ export const TriggersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
 
 // Output Schema
-export const TriggersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TriggersDeleteOutput = Schema.Void;
 export type TriggersDeleteOutput = typeof TriggersDeleteOutput.Type;
 
 // The operation
@@ -248,8 +248,7 @@ export type VirtualMachineImageTemplatesCancelInput =
   typeof VirtualMachineImageTemplatesCancelInput.Type;
 
 // Output Schema
-export const VirtualMachineImageTemplatesCancelOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineImageTemplatesCancelOutput = Schema.Void;
 export type VirtualMachineImageTemplatesCancelOutput =
   typeof VirtualMachineImageTemplatesCancelOutput.Type;
 
@@ -335,8 +334,7 @@ export type VirtualMachineImageTemplatesDeleteInput =
   typeof VirtualMachineImageTemplatesDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineImageTemplatesDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const VirtualMachineImageTemplatesDeleteOutput = Schema.Void;
 export type VirtualMachineImageTemplatesDeleteOutput =
   typeof VirtualMachineImageTemplatesDeleteOutput.Type;
 
@@ -680,7 +678,7 @@ export type VirtualMachineImageTemplatesRunInput =
   typeof VirtualMachineImageTemplatesRunInput.Type;
 
 // Output Schema
-export const VirtualMachineImageTemplatesRunOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineImageTemplatesRunOutput = Schema.Void;
 export type VirtualMachineImageTemplatesRunOutput =
   typeof VirtualMachineImageTemplatesRunOutput.Type;
 

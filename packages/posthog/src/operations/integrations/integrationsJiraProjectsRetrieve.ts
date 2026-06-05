@@ -18,7 +18,7 @@ export type IntegrationsJiraProjectsRetrieveInput =
   typeof IntegrationsJiraProjectsRetrieveInput.Type;
 
 // Output Schema
-export const IntegrationsJiraProjectsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationsJiraProjectsRetrieveOutput = Schema.Void;
 export type IntegrationsJiraProjectsRetrieveOutput =
   typeof IntegrationsJiraProjectsRetrieveOutput.Type;
 

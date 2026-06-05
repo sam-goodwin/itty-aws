@@ -22,7 +22,7 @@ export type DeleteOrganizationTeamInput =
   typeof DeleteOrganizationTeamInput.Type;
 
 // Output Schema
-export const DeleteOrganizationTeamOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteOrganizationTeamOutput = Schema.Void;
 export type DeleteOrganizationTeamOutput =
   typeof DeleteOrganizationTeamOutput.Type;
 

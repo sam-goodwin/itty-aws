@@ -22,7 +22,7 @@ export type PersonsBulkDeleteCreateInput =
   typeof PersonsBulkDeleteCreateInput.Type;
 
 // Output Schema
-export const PersonsBulkDeleteCreateOutput = /*@__PURE__*/ Schema.Void;
+export const PersonsBulkDeleteCreateOutput = Schema.Void;
 export type PersonsBulkDeleteCreateOutput =
   typeof PersonsBulkDeleteCreateOutput.Type;
 

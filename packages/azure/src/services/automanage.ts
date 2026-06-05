@@ -305,8 +305,7 @@ export type ConfigurationProfileAssignmentsDeleteInput =
   typeof ConfigurationProfileAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const ConfigurationProfileAssignmentsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ConfigurationProfileAssignmentsDeleteOutput = Schema.Void;
 export type ConfigurationProfileAssignmentsDeleteOutput =
   typeof ConfigurationProfileAssignmentsDeleteOutput.Type;
 
@@ -642,8 +641,7 @@ export type ConfigurationProfileHCIAssignmentsDeleteInput =
   typeof ConfigurationProfileHCIAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const ConfigurationProfileHCIAssignmentsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ConfigurationProfileHCIAssignmentsDeleteOutput = Schema.Void;
 export type ConfigurationProfileHCIAssignmentsDeleteOutput =
   typeof ConfigurationProfileHCIAssignmentsDeleteOutput.Type;
 
@@ -760,8 +758,7 @@ export type ConfigurationProfileHCRPAssignmentsDeleteInput =
   typeof ConfigurationProfileHCRPAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const ConfigurationProfileHCRPAssignmentsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ConfigurationProfileHCRPAssignmentsDeleteOutput = Schema.Void;
 export type ConfigurationProfileHCRPAssignmentsDeleteOutput =
   typeof ConfigurationProfileHCRPAssignmentsDeleteOutput.Type;
 
@@ -878,7 +875,7 @@ export type ConfigurationProfilesDeleteInput =
   typeof ConfigurationProfilesDeleteInput.Type;
 
 // Output Schema
-export const ConfigurationProfilesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConfigurationProfilesDeleteOutput = Schema.Void;
 export type ConfigurationProfilesDeleteOutput =
   typeof ConfigurationProfilesDeleteOutput.Type;
 
@@ -1117,8 +1114,7 @@ export type ConfigurationProfilesVersionsDeleteInput =
   typeof ConfigurationProfilesVersionsDeleteInput.Type;
 
 // Output Schema
-export const ConfigurationProfilesVersionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ConfigurationProfilesVersionsDeleteOutput = Schema.Void;
 export type ConfigurationProfilesVersionsDeleteOutput =
   typeof ConfigurationProfilesVersionsDeleteOutput.Type;
 

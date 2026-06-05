@@ -23,7 +23,7 @@ export type HogFunctionsLogsRetrieveInput =
   typeof HogFunctionsLogsRetrieveInput.Type;
 
 // Output Schema
-export const HogFunctionsLogsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const HogFunctionsLogsRetrieveOutput = Schema.Void;
 export type HogFunctionsLogsRetrieveOutput =
   typeof HogFunctionsLogsRetrieveOutput.Type;
 

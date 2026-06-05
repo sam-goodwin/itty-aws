@@ -22,8 +22,7 @@ export type GetGroupProcessCollStatNamespacesInput =
   typeof GetGroupProcessCollStatNamespacesInput.Type;
 
 // Output Schema
-export const GetGroupProcessCollStatNamespacesOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GetGroupProcessCollStatNamespacesOutput = Schema.Void;
 export type GetGroupProcessCollStatNamespacesOutput =
   typeof GetGroupProcessCollStatNamespacesOutput.Type;
 

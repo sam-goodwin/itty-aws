@@ -17,8 +17,7 @@ export type NotebooksRecordingCommentsRetrieveInput =
   typeof NotebooksRecordingCommentsRetrieveInput.Type;
 
 // Output Schema
-export const NotebooksRecordingCommentsRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const NotebooksRecordingCommentsRetrieveOutput = Schema.Void;
 export type NotebooksRecordingCommentsRetrieveOutput =
   typeof NotebooksRecordingCommentsRetrieveOutput.Type;
 

@@ -21,8 +21,7 @@ export type DeleteGroupServiceAccountAccessListEntryInput =
   typeof DeleteGroupServiceAccountAccessListEntryInput.Type;
 
 // Output Schema
-export const DeleteGroupServiceAccountAccessListEntryOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeleteGroupServiceAccountAccessListEntryOutput = Schema.Void;
 export type DeleteGroupServiceAccountAccessListEntryOutput =
   typeof DeleteGroupServiceAccountAccessListEntryOutput.Type;
 

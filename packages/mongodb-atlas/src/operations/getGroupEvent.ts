@@ -19,7 +19,7 @@ export const GetGroupEventInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupEventInput = typeof GetGroupEventInput.Type;
 
 // Output Schema
-export const GetGroupEventOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupEventOutput = Schema.Void;
 export type GetGroupEventOutput = typeof GetGroupEventOutput.Type;
 
 // The operation

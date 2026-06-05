@@ -12,7 +12,7 @@ export const GetSkuInput = /*@__PURE__*/ Schema.Struct({
 export type GetSkuInput = typeof GetSkuInput.Type;
 
 // Output Schema
-export const GetSkuOutput = /*@__PURE__*/ Schema.Void;
+export const GetSkuOutput = Schema.Void;
 export type GetSkuOutput = typeof GetSkuOutput.Type;
 
 // The operation

@@ -97,8 +97,7 @@ export type FeatureFlagsCreateStaticCohortForFlagCreateInput =
   typeof FeatureFlagsCreateStaticCohortForFlagCreateInput.Type;
 
 // Output Schema
-export const FeatureFlagsCreateStaticCohortForFlagCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const FeatureFlagsCreateStaticCohortForFlagCreateOutput = Schema.Void;
 export type FeatureFlagsCreateStaticCohortForFlagCreateOutput =
   typeof FeatureFlagsCreateStaticCohortForFlagCreateOutput.Type;
 

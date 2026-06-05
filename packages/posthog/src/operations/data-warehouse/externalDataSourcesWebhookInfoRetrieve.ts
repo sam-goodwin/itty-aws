@@ -18,8 +18,7 @@ export type ExternalDataSourcesWebhookInfoRetrieveInput =
   typeof ExternalDataSourcesWebhookInfoRetrieveInput.Type;
 
 // Output Schema
-export const ExternalDataSourcesWebhookInfoRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ExternalDataSourcesWebhookInfoRetrieveOutput = Schema.Void;
 export type ExternalDataSourcesWebhookInfoRetrieveOutput =
   typeof ExternalDataSourcesWebhookInfoRetrieveOutput.Type;
 

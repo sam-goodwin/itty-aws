@@ -1177,7 +1177,7 @@ export type EnvironmentsDeleteSecretTokenBackupPartialUpdateInput =
 
 // Output Schema
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput =
   typeof EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput.Type;
 

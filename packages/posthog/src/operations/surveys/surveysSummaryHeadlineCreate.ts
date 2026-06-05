@@ -129,7 +129,7 @@ export type SurveysSummaryHeadlineCreateInput =
   typeof SurveysSummaryHeadlineCreateInput.Type;
 
 // Output Schema
-export const SurveysSummaryHeadlineCreateOutput = /*@__PURE__*/ Schema.Void;
+export const SurveysSummaryHeadlineCreateOutput = Schema.Void;
 export type SurveysSummaryHeadlineCreateOutput =
   typeof SurveysSummaryHeadlineCreateOutput.Type;
 

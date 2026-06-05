@@ -61,7 +61,7 @@ export type NotebooksHogqlExecuteCreateInput =
   typeof NotebooksHogqlExecuteCreateInput.Type;
 
 // Output Schema
-export const NotebooksHogqlExecuteCreateOutput = /*@__PURE__*/ Schema.Void;
+export const NotebooksHogqlExecuteCreateOutput = Schema.Void;
 export type NotebooksHogqlExecuteCreateOutput =
   typeof NotebooksHogqlExecuteCreateOutput.Type;
 

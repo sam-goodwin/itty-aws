@@ -18,7 +18,7 @@ export const AcknowledgeGroupAlertInput = /*@__PURE__*/ Schema.Struct({
 export type AcknowledgeGroupAlertInput = typeof AcknowledgeGroupAlertInput.Type;
 
 // Output Schema
-export const AcknowledgeGroupAlertOutput = /*@__PURE__*/ Schema.Void;
+export const AcknowledgeGroupAlertOutput = Schema.Void;
 export type AcknowledgeGroupAlertOutput =
   typeof AcknowledgeGroupAlertOutput.Type;
 

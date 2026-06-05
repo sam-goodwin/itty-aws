@@ -651,7 +651,7 @@ export const ManagedHsmsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ManagedHsmsDeleteInput = typeof ManagedHsmsDeleteInput.Type;
 
 // Output Schema
-export const ManagedHsmsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ManagedHsmsDeleteOutput = Schema.Void;
 export type ManagedHsmsDeleteOutput = typeof ManagedHsmsDeleteOutput.Type;
 
 // The operation
@@ -956,7 +956,7 @@ export type ManagedHsmsPurgeDeletedInput =
   typeof ManagedHsmsPurgeDeletedInput.Type;
 
 // Output Schema
-export const ManagedHsmsPurgeDeletedOutput = /*@__PURE__*/ Schema.Void;
+export const ManagedHsmsPurgeDeletedOutput = Schema.Void;
 export type ManagedHsmsPurgeDeletedOutput =
   typeof ManagedHsmsPurgeDeletedOutput.Type;
 
@@ -2076,7 +2076,7 @@ export const VaultsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VaultsDeleteInput = typeof VaultsDeleteInput.Type;
 
 // Output Schema
-export const VaultsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VaultsDeleteOutput = Schema.Void;
 export type VaultsDeleteOutput = typeof VaultsDeleteOutput.Type;
 
 // The operation
@@ -2416,7 +2416,7 @@ export const VaultsPurgeDeletedInput = /*@__PURE__*/ Schema.Struct({
 export type VaultsPurgeDeletedInput = typeof VaultsPurgeDeletedInput.Type;
 
 // Output Schema
-export const VaultsPurgeDeletedOutput = /*@__PURE__*/ Schema.Void;
+export const VaultsPurgeDeletedOutput = Schema.Void;
 export type VaultsPurgeDeletedOutput = typeof VaultsPurgeDeletedOutput.Type;
 
 // The operation

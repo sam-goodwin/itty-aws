@@ -18,7 +18,7 @@ export const GetGroupAlertInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupAlertInput = typeof GetGroupAlertInput.Type;
 
 // Output Schema
-export const GetGroupAlertOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupAlertOutput = Schema.Void;
 export type GetGroupAlertOutput = typeof GetGroupAlertOutput.Type;
 
 // The operation

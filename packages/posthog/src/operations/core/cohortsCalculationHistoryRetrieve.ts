@@ -18,8 +18,7 @@ export type CohortsCalculationHistoryRetrieveInput =
   typeof CohortsCalculationHistoryRetrieveInput.Type;
 
 // Output Schema
-export const CohortsCalculationHistoryRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CohortsCalculationHistoryRetrieveOutput = Schema.Void;
 export type CohortsCalculationHistoryRetrieveOutput =
   typeof CohortsCalculationHistoryRetrieveOutput.Type;
 

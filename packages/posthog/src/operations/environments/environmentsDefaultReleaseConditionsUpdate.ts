@@ -1176,8 +1176,7 @@ export type EnvironmentsDefaultReleaseConditionsUpdateInput =
   typeof EnvironmentsDefaultReleaseConditionsUpdateInput.Type;
 
 // Output Schema
-export const EnvironmentsDefaultReleaseConditionsUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EnvironmentsDefaultReleaseConditionsUpdateOutput = Schema.Void;
 export type EnvironmentsDefaultReleaseConditionsUpdateOutput =
   typeof EnvironmentsDefaultReleaseConditionsUpdateOutput.Type;
 

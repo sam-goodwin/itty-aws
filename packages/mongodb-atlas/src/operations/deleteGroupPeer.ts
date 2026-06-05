@@ -18,7 +18,7 @@ export const DeleteGroupPeerInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteGroupPeerInput = typeof DeleteGroupPeerInput.Type;
 
 // Output Schema
-export const DeleteGroupPeerOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupPeerOutput = Schema.Void;
 export type DeleteGroupPeerOutput = typeof DeleteGroupPeerOutput.Type;
 
 // The operation

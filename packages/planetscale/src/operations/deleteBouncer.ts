@@ -18,7 +18,7 @@ export const DeleteBouncerInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteBouncerInput = typeof DeleteBouncerInput.Type;
 
 // Output Schema
-export const DeleteBouncerOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteBouncerOutput = Schema.Void;
 export type DeleteBouncerOutput = typeof DeleteBouncerOutput.Type;
 
 // The operation

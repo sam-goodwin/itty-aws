@@ -82,7 +82,7 @@ export type AccessPolicyAssignmentDeleteInput =
   typeof AccessPolicyAssignmentDeleteInput.Type;
 
 // Output Schema
-export const AccessPolicyAssignmentDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AccessPolicyAssignmentDeleteOutput = Schema.Void;
 export type AccessPolicyAssignmentDeleteOutput =
   typeof AccessPolicyAssignmentDeleteOutput.Type;
 
@@ -278,7 +278,7 @@ export const AccessPolicyDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AccessPolicyDeleteInput = typeof AccessPolicyDeleteInput.Type;
 
 // Output Schema
-export const AccessPolicyDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AccessPolicyDeleteOutput = Schema.Void;
 export type AccessPolicyDeleteOutput = typeof AccessPolicyDeleteOutput.Type;
 
 // The operation
@@ -554,7 +554,7 @@ export const FirewallRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
 
 // Output Schema
-export const FirewallRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FirewallRulesDeleteOutput = Schema.Void;
 export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
 
 // The operation
@@ -743,7 +743,7 @@ export const LinkedServerDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type LinkedServerDeleteInput = typeof LinkedServerDeleteInput.Type;
 
 // Output Schema
-export const LinkedServerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const LinkedServerDeleteOutput = Schema.Void;
 export type LinkedServerDeleteOutput = typeof LinkedServerDeleteOutput.Type;
 
 // The operation
@@ -971,7 +971,7 @@ export const PatchSchedulesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PatchSchedulesDeleteInput = typeof PatchSchedulesDeleteInput.Type;
 
 // Output Schema
-export const PatchSchedulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PatchSchedulesDeleteOutput = Schema.Void;
 export type PatchSchedulesDeleteOutput = typeof PatchSchedulesDeleteOutput.Type;
 
 // The operation
@@ -1125,7 +1125,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1422,7 +1422,7 @@ export type RedisCheckNameAvailabilityInput =
   typeof RedisCheckNameAvailabilityInput.Type;
 
 // Output Schema
-export const RedisCheckNameAvailabilityOutput = /*@__PURE__*/ Schema.Void;
+export const RedisCheckNameAvailabilityOutput = Schema.Void;
 export type RedisCheckNameAvailabilityOutput =
   typeof RedisCheckNameAvailabilityOutput.Type;
 
@@ -1501,7 +1501,7 @@ export const RedisDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RedisDeleteInput = typeof RedisDeleteInput.Type;
 
 // Output Schema
-export const RedisDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RedisDeleteOutput = Schema.Void;
 export type RedisDeleteOutput = typeof RedisDeleteOutput.Type;
 
 // The operation
@@ -1532,7 +1532,7 @@ export const RedisExportDataInput = /*@__PURE__*/ Schema.Struct({
 export type RedisExportDataInput = typeof RedisExportDataInput.Type;
 
 // Output Schema
-export const RedisExportDataOutput = /*@__PURE__*/ Schema.Void;
+export const RedisExportDataOutput = Schema.Void;
 export type RedisExportDataOutput = typeof RedisExportDataOutput.Type;
 
 // The operation
@@ -1728,7 +1728,7 @@ export const RedisImportDataInput = /*@__PURE__*/ Schema.Struct({
 export type RedisImportDataInput = typeof RedisImportDataInput.Type;
 
 // Output Schema
-export const RedisImportDataOutput = /*@__PURE__*/ Schema.Void;
+export const RedisImportDataOutput = Schema.Void;
 export type RedisImportDataOutput = typeof RedisImportDataOutput.Type;
 
 // The operation

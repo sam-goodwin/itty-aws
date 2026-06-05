@@ -16,7 +16,7 @@ export const SubscriptionsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type SubscriptionsDestroyInput = typeof SubscriptionsDestroyInput.Type;
 
 // Output Schema
-export const SubscriptionsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const SubscriptionsDestroyOutput = Schema.Void;
 export type SubscriptionsDestroyOutput = typeof SubscriptionsDestroyOutput.Type;
 
 // The operation

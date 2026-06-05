@@ -34,7 +34,7 @@ export const MachinesSignalInput = /*@__PURE__*/ Schema.Struct({
 export type MachinesSignalInput = typeof MachinesSignalInput.Type;
 
 // Output Schema
-export const MachinesSignalOutput = /*@__PURE__*/ Schema.Void;
+export const MachinesSignalOutput = Schema.Void;
 export type MachinesSignalOutput = typeof MachinesSignalOutput.Type;
 
 // The operation

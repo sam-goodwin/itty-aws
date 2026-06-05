@@ -14,7 +14,7 @@ export const ListSkusInput = /*@__PURE__*/ Schema.Struct({
 export type ListSkusInput = typeof ListSkusInput.Type;
 
 // Output Schema
-export const ListSkusOutput = /*@__PURE__*/ Schema.Void;
+export const ListSkusOutput = Schema.Void;
 export type ListSkusOutput = typeof ListSkusOutput.Type;
 
 // The operation

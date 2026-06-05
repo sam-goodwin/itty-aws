@@ -18,7 +18,7 @@ export type GroupsTypesMetricsDestroyInput =
   typeof GroupsTypesMetricsDestroyInput.Type;
 
 // Output Schema
-export const GroupsTypesMetricsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const GroupsTypesMetricsDestroyOutput = Schema.Void;
 export type GroupsTypesMetricsDestroyOutput =
   typeof GroupsTypesMetricsDestroyOutput.Type;
 

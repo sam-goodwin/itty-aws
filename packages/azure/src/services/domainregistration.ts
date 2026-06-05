@@ -285,7 +285,7 @@ export const DomainsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DomainsDeleteInput = typeof DomainsDeleteInput.Type;
 
 // Output Schema
-export const DomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DomainsDeleteOutput = Schema.Void;
 export type DomainsDeleteOutput = typeof DomainsDeleteOutput.Type;
 
 // The operation
@@ -322,7 +322,7 @@ export type DomainsDeleteOwnershipIdentifierInput =
   typeof DomainsDeleteOwnershipIdentifierInput.Type;
 
 // Output Schema
-export const DomainsDeleteOwnershipIdentifierOutput = /*@__PURE__*/ Schema.Void;
+export const DomainsDeleteOwnershipIdentifierOutput = Schema.Void;
 export type DomainsDeleteOwnershipIdentifierOutput =
   typeof DomainsDeleteOwnershipIdentifierOutput.Type;
 
@@ -717,7 +717,7 @@ export const DomainsRenewInput = /*@__PURE__*/ Schema.Struct({
 export type DomainsRenewInput = typeof DomainsRenewInput.Type;
 
 // Output Schema
-export const DomainsRenewOutput = /*@__PURE__*/ Schema.Void;
+export const DomainsRenewOutput = Schema.Void;
 export type DomainsRenewOutput = typeof DomainsRenewOutput.Type;
 
 // The operation

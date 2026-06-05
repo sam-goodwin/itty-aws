@@ -130,7 +130,7 @@ export type SurveysResponsesArchiveCreateInput =
   typeof SurveysResponsesArchiveCreateInput.Type;
 
 // Output Schema
-export const SurveysResponsesArchiveCreateOutput = /*@__PURE__*/ Schema.Void;
+export const SurveysResponsesArchiveCreateOutput = Schema.Void;
 export type SurveysResponsesArchiveCreateOutput =
   typeof SurveysResponsesArchiveCreateOutput.Type;
 

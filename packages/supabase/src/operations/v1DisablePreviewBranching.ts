@@ -11,7 +11,7 @@ export type V1DisablePreviewBranchingInput =
   typeof V1DisablePreviewBranchingInput.Type;
 
 // Output Schema
-export const V1DisablePreviewBranchingOutput = /*@__PURE__*/ Schema.Void;
+export const V1DisablePreviewBranchingOutput = Schema.Void;
 export type V1DisablePreviewBranchingOutput =
   typeof V1DisablePreviewBranchingOutput.Type;
 

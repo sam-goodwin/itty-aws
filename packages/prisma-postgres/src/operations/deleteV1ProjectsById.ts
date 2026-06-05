@@ -10,7 +10,7 @@ export const DeleteV1ProjectsByIdInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteV1ProjectsByIdInput = typeof DeleteV1ProjectsByIdInput.Type;
 
 // Output Schema
-export const DeleteV1ProjectsByIdOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteV1ProjectsByIdOutput = Schema.Void;
 export type DeleteV1ProjectsByIdOutput = typeof DeleteV1ProjectsByIdOutput.Type;
 
 // The operation

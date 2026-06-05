@@ -100,7 +100,7 @@ export type InsightsSuggestionsCreateInput =
   typeof InsightsSuggestionsCreateInput.Type;
 
 // Output Schema
-export const InsightsSuggestionsCreateOutput = /*@__PURE__*/ Schema.Void;
+export const InsightsSuggestionsCreateOutput = Schema.Void;
 export type InsightsSuggestionsCreateOutput =
   typeof InsightsSuggestionsCreateOutput.Type;
 

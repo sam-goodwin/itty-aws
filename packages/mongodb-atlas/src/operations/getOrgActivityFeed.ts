@@ -16,7 +16,7 @@ export const GetOrgActivityFeedInput = /*@__PURE__*/ Schema.Struct({
 export type GetOrgActivityFeedInput = typeof GetOrgActivityFeedInput.Type;
 
 // Output Schema
-export const GetOrgActivityFeedOutput = /*@__PURE__*/ Schema.Void;
+export const GetOrgActivityFeedOutput = Schema.Void;
 export type GetOrgActivityFeedOutput = typeof GetOrgActivityFeedOutput.Type;
 
 // The operation

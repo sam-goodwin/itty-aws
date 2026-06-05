@@ -190,7 +190,7 @@ export type ExternalDataSourcesReloadCreateInput =
   typeof ExternalDataSourcesReloadCreateInput.Type;
 
 // Output Schema
-export const ExternalDataSourcesReloadCreateOutput = /*@__PURE__*/ Schema.Void;
+export const ExternalDataSourcesReloadCreateOutput = Schema.Void;
 export type ExternalDataSourcesReloadCreateOutput =
   typeof ExternalDataSourcesReloadCreateOutput.Type;
 

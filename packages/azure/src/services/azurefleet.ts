@@ -72,7 +72,7 @@ export const FleetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FleetsDeleteInput = typeof FleetsDeleteInput.Type;
 
 // Output Schema
-export const FleetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FleetsDeleteOutput = Schema.Void;
 export type FleetsDeleteOutput = typeof FleetsDeleteOutput.Type;
 
 // The operation

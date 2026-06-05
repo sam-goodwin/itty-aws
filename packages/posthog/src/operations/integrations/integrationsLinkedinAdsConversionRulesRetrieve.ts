@@ -18,8 +18,7 @@ export type IntegrationsLinkedinAdsConversionRulesRetrieveInput =
   typeof IntegrationsLinkedinAdsConversionRulesRetrieveInput.Type;
 
 // Output Schema
-export const IntegrationsLinkedinAdsConversionRulesRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationsLinkedinAdsConversionRulesRetrieveOutput = Schema.Void;
 export type IntegrationsLinkedinAdsConversionRulesRetrieveOutput =
   typeof IntegrationsLinkedinAdsConversionRulesRetrieveOutput.Type;
 

@@ -78,7 +78,7 @@ export type CertificateProfilesDeleteInput =
   typeof CertificateProfilesDeleteInput.Type;
 
 // Output Schema
-export const CertificateProfilesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CertificateProfilesDeleteOutput = Schema.Void;
 export type CertificateProfilesDeleteOutput =
   typeof CertificateProfilesDeleteOutput.Type;
 
@@ -236,8 +236,7 @@ export type CertificateProfilesRevokeCertificateInput =
   typeof CertificateProfilesRevokeCertificateInput.Type;
 
 // Output Schema
-export const CertificateProfilesRevokeCertificateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CertificateProfilesRevokeCertificateOutput = Schema.Void;
 export type CertificateProfilesRevokeCertificateOutput =
   typeof CertificateProfilesRevokeCertificateOutput.Type;
 
@@ -363,7 +362,7 @@ export type CodeSigningAccountsDeleteInput =
   typeof CodeSigningAccountsDeleteInput.Type;
 
 // Output Schema
-export const CodeSigningAccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CodeSigningAccountsDeleteOutput = Schema.Void;
 export type CodeSigningAccountsDeleteOutput =
   typeof CodeSigningAccountsDeleteOutput.Type;
 

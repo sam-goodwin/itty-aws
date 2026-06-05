@@ -17,7 +17,7 @@ export type AssignProjectVPCEndpointInput =
   typeof AssignProjectVPCEndpointInput.Type;
 
 // Output Schema
-export const AssignProjectVPCEndpointOutput = /*@__PURE__*/ Schema.Void;
+export const AssignProjectVPCEndpointOutput = Schema.Void;
 export type AssignProjectVPCEndpointOutput =
   typeof AssignProjectVPCEndpointOutput.Type;
 

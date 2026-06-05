@@ -19,7 +19,7 @@ export type UpdateGroupLogIntegrationInput =
   typeof UpdateGroupLogIntegrationInput.Type;
 
 // Output Schema
-export const UpdateGroupLogIntegrationOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupLogIntegrationOutput = Schema.Void;
 export type UpdateGroupLogIntegrationOutput =
   typeof UpdateGroupLogIntegrationOutput.Type;
 

@@ -20,7 +20,7 @@ export const GetGroupActivityFeedInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupActivityFeedInput = typeof GetGroupActivityFeedInput.Type;
 
 // Output Schema
-export const GetGroupActivityFeedOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupActivityFeedOutput = Schema.Void;
 export type GetGroupActivityFeedOutput = typeof GetGroupActivityFeedOutput.Type;
 
 // The operation

@@ -18,7 +18,7 @@ export type HogFlowsSchedulesDestroyInput =
   typeof HogFlowsSchedulesDestroyInput.Type;
 
 // Output Schema
-export const HogFlowsSchedulesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const HogFlowsSchedulesDestroyOutput = Schema.Void;
 export type HogFlowsSchedulesDestroyOutput =
   typeof HogFlowsSchedulesDestroyOutput.Type;
 

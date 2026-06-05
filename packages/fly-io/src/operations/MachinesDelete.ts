@@ -14,7 +14,7 @@ export const MachinesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type MachinesDeleteInput = typeof MachinesDeleteInput.Type;
 
 // Output Schema
-export const MachinesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MachinesDeleteOutput = Schema.Void;
 export type MachinesDeleteOutput = typeof MachinesDeleteOutput.Type;
 
 // The operation

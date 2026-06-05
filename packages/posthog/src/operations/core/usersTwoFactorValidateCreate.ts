@@ -754,7 +754,7 @@ export type UsersTwoFactorValidateCreateInput =
   typeof UsersTwoFactorValidateCreateInput.Type;
 
 // Output Schema
-export const UsersTwoFactorValidateCreateOutput = /*@__PURE__*/ Schema.Void;
+export const UsersTwoFactorValidateCreateOutput = Schema.Void;
 export type UsersTwoFactorValidateCreateOutput =
   typeof UsersTwoFactorValidateCreateOutput.Type;
 

@@ -18,7 +18,7 @@ export const GetGroupFlexClusterInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupFlexClusterInput = typeof GetGroupFlexClusterInput.Type;
 
 // Output Schema
-export const GetGroupFlexClusterOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupFlexClusterOutput = Schema.Void;
 export type GetGroupFlexClusterOutput = typeof GetGroupFlexClusterOutput.Type;
 
 // The operation

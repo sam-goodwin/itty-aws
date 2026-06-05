@@ -15,7 +15,7 @@ export type DeleteWebhookSubscriptionInput =
   typeof DeleteWebhookSubscriptionInput.Type;
 
 // Output Schema
-export const DeleteWebhookSubscriptionOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteWebhookSubscriptionOutput = Schema.Void;
 export type DeleteWebhookSubscriptionOutput =
   typeof DeleteWebhookSubscriptionOutput.Type;
 

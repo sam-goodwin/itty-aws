@@ -19,8 +19,7 @@ export type ToggleGroupPrivateEndpointRegionalModeInput =
   typeof ToggleGroupPrivateEndpointRegionalModeInput.Type;
 
 // Output Schema
-export const ToggleGroupPrivateEndpointRegionalModeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ToggleGroupPrivateEndpointRegionalModeOutput = Schema.Void;
 export type ToggleGroupPrivateEndpointRegionalModeOutput =
   typeof ToggleGroupPrivateEndpointRegionalModeOutput.Type;
 

@@ -18,7 +18,7 @@ export type ToggleGroupAwsCustomDnsInput =
   typeof ToggleGroupAwsCustomDnsInput.Type;
 
 // Output Schema
-export const ToggleGroupAwsCustomDnsOutput = /*@__PURE__*/ Schema.Void;
+export const ToggleGroupAwsCustomDnsOutput = Schema.Void;
 export type ToggleGroupAwsCustomDnsOutput =
   typeof ToggleGroupAwsCustomDnsOutput.Type;
 

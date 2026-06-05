@@ -19,7 +19,7 @@ export type IntegrationsLinearTeamsRetrieveInput =
   typeof IntegrationsLinearTeamsRetrieveInput.Type;
 
 // Output Schema
-export const IntegrationsLinearTeamsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationsLinearTeamsRetrieveOutput = Schema.Void;
 export type IntegrationsLinearTeamsRetrieveOutput =
   typeof IntegrationsLinearTeamsRetrieveOutput.Type;
 

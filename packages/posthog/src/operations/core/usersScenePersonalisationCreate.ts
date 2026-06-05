@@ -756,7 +756,7 @@ export type UsersScenePersonalisationCreateInput =
   typeof UsersScenePersonalisationCreateInput.Type;
 
 // Output Schema
-export const UsersScenePersonalisationCreateOutput = /*@__PURE__*/ Schema.Void;
+export const UsersScenePersonalisationCreateOutput = Schema.Void;
 export type UsersScenePersonalisationCreateOutput =
   typeof UsersScenePersonalisationCreateOutput.Type;
 

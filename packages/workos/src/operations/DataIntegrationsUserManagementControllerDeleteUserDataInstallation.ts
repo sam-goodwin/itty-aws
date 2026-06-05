@@ -20,7 +20,7 @@ export type DataIntegrationsUserManagementControllerDeleteUserDataInstallationIn
 
 // Output Schema
 export const DataIntegrationsUserManagementControllerDeleteUserDataInstallationOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type DataIntegrationsUserManagementControllerDeleteUserDataInstallationOutput =
   typeof DataIntegrationsUserManagementControllerDeleteUserDataInstallationOutput.Type;
 

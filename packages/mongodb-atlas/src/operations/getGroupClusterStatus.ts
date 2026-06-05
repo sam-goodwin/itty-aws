@@ -18,7 +18,7 @@ export const GetGroupClusterStatusInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupClusterStatusInput = typeof GetGroupClusterStatusInput.Type;
 
 // Output Schema
-export const GetGroupClusterStatusOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupClusterStatusOutput = Schema.Void;
 export type GetGroupClusterStatusOutput =
   typeof GetGroupClusterStatusOutput.Type;
 

@@ -64,8 +64,7 @@ export type IntegrationAccountAgreementsDeleteInput =
   typeof IntegrationAccountAgreementsDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountAgreementsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationAccountAgreementsDeleteOutput = Schema.Void;
 export type IntegrationAccountAgreementsDeleteOutput =
   typeof IntegrationAccountAgreementsDeleteOutput.Type;
 
@@ -276,8 +275,7 @@ export type IntegrationAccountAssembliesDeleteInput =
   typeof IntegrationAccountAssembliesDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountAssembliesDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationAccountAssembliesDeleteOutput = Schema.Void;
 export type IntegrationAccountAssembliesDeleteOutput =
   typeof IntegrationAccountAssembliesDeleteOutput.Type;
 
@@ -483,8 +481,7 @@ export type IntegrationAccountBatchConfigurationsDeleteInput =
   typeof IntegrationAccountBatchConfigurationsDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountBatchConfigurationsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationAccountBatchConfigurationsDeleteOutput = Schema.Void;
 export type IntegrationAccountBatchConfigurationsDeleteOutput =
   typeof IntegrationAccountBatchConfigurationsDeleteOutput.Type;
 
@@ -643,8 +640,7 @@ export type IntegrationAccountCertificatesDeleteInput =
   typeof IntegrationAccountCertificatesDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountCertificatesDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationAccountCertificatesDeleteOutput = Schema.Void;
 export type IntegrationAccountCertificatesDeleteOutput =
   typeof IntegrationAccountCertificatesDeleteOutput.Type;
 
@@ -805,7 +801,7 @@ export type IntegrationAccountMapsDeleteInput =
   typeof IntegrationAccountMapsDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountMapsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationAccountMapsDeleteOutput = Schema.Void;
 export type IntegrationAccountMapsDeleteOutput =
   typeof IntegrationAccountMapsDeleteOutput.Type;
 
@@ -1010,7 +1006,7 @@ export type IntegrationAccountPartnersDeleteInput =
   typeof IntegrationAccountPartnersDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountPartnersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationAccountPartnersDeleteOutput = Schema.Void;
 export type IntegrationAccountPartnersDeleteOutput =
   typeof IntegrationAccountPartnersDeleteOutput.Type;
 
@@ -1218,7 +1214,7 @@ export type IntegrationAccountSchemasDeleteInput =
   typeof IntegrationAccountSchemasDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountSchemasDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationAccountSchemasDeleteOutput = Schema.Void;
 export type IntegrationAccountSchemasDeleteOutput =
   typeof IntegrationAccountSchemasDeleteOutput.Type;
 
@@ -1417,7 +1413,7 @@ export type IntegrationAccountsDeleteInput =
   typeof IntegrationAccountsDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationAccountsDeleteOutput = Schema.Void;
 export type IntegrationAccountsDeleteOutput =
   typeof IntegrationAccountsDeleteOutput.Type;
 
@@ -1489,7 +1485,7 @@ export type IntegrationAccountSessionsDeleteInput =
   typeof IntegrationAccountSessionsDeleteInput.Type;
 
 // Output Schema
-export const IntegrationAccountSessionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationAccountSessionsDeleteOutput = Schema.Void;
 export type IntegrationAccountSessionsDeleteOutput =
   typeof IntegrationAccountSessionsDeleteOutput.Type;
 
@@ -1814,8 +1810,7 @@ export type IntegrationAccountsLogTrackingEventsInput =
   typeof IntegrationAccountsLogTrackingEventsInput.Type;
 
 // Output Schema
-export const IntegrationAccountsLogTrackingEventsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationAccountsLogTrackingEventsOutput = Schema.Void;
 export type IntegrationAccountsLogTrackingEventsOutput =
   typeof IntegrationAccountsLogTrackingEventsOutput.Type;
 
@@ -1969,8 +1964,7 @@ export type IntegrationServiceEnvironmentManagedApisDeleteInput =
   typeof IntegrationServiceEnvironmentManagedApisDeleteInput.Type;
 
 // Output Schema
-export const IntegrationServiceEnvironmentManagedApisDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationServiceEnvironmentManagedApisDeleteOutput = Schema.Void;
 export type IntegrationServiceEnvironmentManagedApisDeleteOutput =
   typeof IntegrationServiceEnvironmentManagedApisDeleteOutput.Type;
 
@@ -2271,8 +2265,7 @@ export type IntegrationServiceEnvironmentsDeleteInput =
   typeof IntegrationServiceEnvironmentsDeleteInput.Type;
 
 // Output Schema
-export const IntegrationServiceEnvironmentsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationServiceEnvironmentsDeleteOutput = Schema.Void;
 export type IntegrationServiceEnvironmentsDeleteOutput =
   typeof IntegrationServiceEnvironmentsDeleteOutput.Type;
 
@@ -2489,8 +2482,7 @@ export type IntegrationServiceEnvironmentsRestartInput =
   typeof IntegrationServiceEnvironmentsRestartInput.Type;
 
 // Output Schema
-export const IntegrationServiceEnvironmentsRestartOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationServiceEnvironmentsRestartOutput = Schema.Void;
 export type IntegrationServiceEnvironmentsRestartOutput =
   typeof IntegrationServiceEnvironmentsRestartOutput.Type;
 
@@ -3194,7 +3186,7 @@ export const WorkflowRunsCancelInput = /*@__PURE__*/ Schema.Struct({
 export type WorkflowRunsCancelInput = typeof WorkflowRunsCancelInput.Type;
 
 // Output Schema
-export const WorkflowRunsCancelOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowRunsCancelOutput = Schema.Void;
 export type WorkflowRunsCancelOutput = typeof WorkflowRunsCancelOutput.Type;
 
 // The operation
@@ -3328,7 +3320,7 @@ export const WorkflowsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type WorkflowsDeleteInput = typeof WorkflowsDeleteInput.Type;
 
 // Output Schema
-export const WorkflowsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowsDeleteOutput = Schema.Void;
 export type WorkflowsDeleteOutput = typeof WorkflowsDeleteOutput.Type;
 
 // The operation
@@ -3355,7 +3347,7 @@ export const WorkflowsDisableInput = /*@__PURE__*/ Schema.Struct({
 export type WorkflowsDisableInput = typeof WorkflowsDisableInput.Type;
 
 // Output Schema
-export const WorkflowsDisableOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowsDisableOutput = Schema.Void;
 export type WorkflowsDisableOutput = typeof WorkflowsDisableOutput.Type;
 
 // The operation
@@ -3382,7 +3374,7 @@ export const WorkflowsEnableInput = /*@__PURE__*/ Schema.Struct({
 export type WorkflowsEnableInput = typeof WorkflowsEnableInput.Type;
 
 // Output Schema
-export const WorkflowsEnableOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowsEnableOutput = Schema.Void;
 export type WorkflowsEnableOutput = typeof WorkflowsEnableOutput.Type;
 
 // The operation
@@ -3632,7 +3624,7 @@ export const WorkflowsMoveInput = /*@__PURE__*/ Schema.Struct({
 export type WorkflowsMoveInput = typeof WorkflowsMoveInput.Type;
 
 // Output Schema
-export const WorkflowsMoveOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowsMoveOutput = Schema.Void;
 export type WorkflowsMoveOutput = typeof WorkflowsMoveOutput.Type;
 
 // The operation
@@ -3660,7 +3652,7 @@ export type WorkflowsRegenerateAccessKeyInput =
   typeof WorkflowsRegenerateAccessKeyInput.Type;
 
 // Output Schema
-export const WorkflowsRegenerateAccessKeyOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowsRegenerateAccessKeyOutput = Schema.Void;
 export type WorkflowsRegenerateAccessKeyOutput =
   typeof WorkflowsRegenerateAccessKeyOutput.Type;
 
@@ -3723,7 +3715,7 @@ export type WorkflowsValidateByLocationInput =
   typeof WorkflowsValidateByLocationInput.Type;
 
 // Output Schema
-export const WorkflowsValidateByLocationOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowsValidateByLocationOutput = Schema.Void;
 export type WorkflowsValidateByLocationOutput =
   typeof WorkflowsValidateByLocationOutput.Type;
 
@@ -3754,7 +3746,7 @@ export type WorkflowsValidateByResourceGroupInput =
   typeof WorkflowsValidateByResourceGroupInput.Type;
 
 // Output Schema
-export const WorkflowsValidateByResourceGroupOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowsValidateByResourceGroupOutput = Schema.Void;
 export type WorkflowsValidateByResourceGroupOutput =
   typeof WorkflowsValidateByResourceGroupOutput.Type;
 
@@ -3865,7 +3857,7 @@ export type WorkflowTriggerHistoriesResubmitInput =
   typeof WorkflowTriggerHistoriesResubmitInput.Type;
 
 // Output Schema
-export const WorkflowTriggerHistoriesResubmitOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowTriggerHistoriesResubmitOutput = Schema.Void;
 export type WorkflowTriggerHistoriesResubmitOutput =
   typeof WorkflowTriggerHistoriesResubmitOutput.Type;
 
@@ -4050,7 +4042,7 @@ export const WorkflowTriggersResetInput = /*@__PURE__*/ Schema.Struct({
 export type WorkflowTriggersResetInput = typeof WorkflowTriggersResetInput.Type;
 
 // Output Schema
-export const WorkflowTriggersResetOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowTriggersResetOutput = Schema.Void;
 export type WorkflowTriggersResetOutput =
   typeof WorkflowTriggersResetOutput.Type;
 
@@ -4080,7 +4072,7 @@ export const WorkflowTriggersRunInput = /*@__PURE__*/ Schema.Struct({
 export type WorkflowTriggersRunInput = typeof WorkflowTriggersRunInput.Type;
 
 // Output Schema
-export const WorkflowTriggersRunOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowTriggersRunOutput = Schema.Void;
 export type WorkflowTriggersRunOutput = typeof WorkflowTriggersRunOutput.Type;
 
 // The operation
@@ -4110,7 +4102,7 @@ export type WorkflowTriggersSetStateInput =
   typeof WorkflowTriggersSetStateInput.Type;
 
 // Output Schema
-export const WorkflowTriggersSetStateOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowTriggersSetStateOutput = Schema.Void;
 export type WorkflowTriggersSetStateOutput =
   typeof WorkflowTriggersSetStateOutput.Type;
 

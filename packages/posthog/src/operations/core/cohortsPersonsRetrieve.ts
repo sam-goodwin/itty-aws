@@ -18,7 +18,7 @@ export type CohortsPersonsRetrieveInput =
   typeof CohortsPersonsRetrieveInput.Type;
 
 // Output Schema
-export const CohortsPersonsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const CohortsPersonsRetrieveOutput = Schema.Void;
 export type CohortsPersonsRetrieveOutput =
   typeof CohortsPersonsRetrieveOutput.Type;
 

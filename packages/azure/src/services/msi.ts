@@ -82,8 +82,7 @@ export type FederatedIdentityCredentialsDeleteInput =
   typeof FederatedIdentityCredentialsDeleteInput.Type;
 
 // Output Schema
-export const FederatedIdentityCredentialsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const FederatedIdentityCredentialsDeleteOutput = Schema.Void;
 export type FederatedIdentityCredentialsDeleteOutput =
   typeof FederatedIdentityCredentialsDeleteOutput.Type;
 
@@ -393,7 +392,7 @@ export type UserAssignedIdentitiesDeleteInput =
   typeof UserAssignedIdentitiesDeleteInput.Type;
 
 // Output Schema
-export const UserAssignedIdentitiesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const UserAssignedIdentitiesDeleteOutput = Schema.Void;
 export type UserAssignedIdentitiesDeleteOutput =
   typeof UserAssignedIdentitiesDeleteOutput.Type;
 

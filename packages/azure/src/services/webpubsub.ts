@@ -298,8 +298,7 @@ export type WebPubSubCustomCertificatesDeleteInput =
   typeof WebPubSubCustomCertificatesDeleteInput.Type;
 
 // Output Schema
-export const WebPubSubCustomCertificatesDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebPubSubCustomCertificatesDeleteOutput = Schema.Void;
 export type WebPubSubCustomCertificatesDeleteOutput =
   typeof WebPubSubCustomCertificatesDeleteOutput.Type;
 
@@ -509,7 +508,7 @@ export type WebPubSubCustomDomainsDeleteInput =
   typeof WebPubSubCustomDomainsDeleteInput.Type;
 
 // Output Schema
-export const WebPubSubCustomDomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WebPubSubCustomDomainsDeleteOutput = Schema.Void;
 export type WebPubSubCustomDomainsDeleteOutput =
   typeof WebPubSubCustomDomainsDeleteOutput.Type;
 
@@ -657,7 +656,7 @@ export const WebPubSubDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type WebPubSubDeleteInput = typeof WebPubSubDeleteInput.Type;
 
 // Output Schema
-export const WebPubSubDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WebPubSubDeleteOutput = Schema.Void;
 export type WebPubSubDeleteOutput = typeof WebPubSubDeleteOutput.Type;
 
 // The operation
@@ -785,7 +784,7 @@ export const WebPubSubHubsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type WebPubSubHubsDeleteInput = typeof WebPubSubHubsDeleteInput.Type;
 
 // Output Schema
-export const WebPubSubHubsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WebPubSubHubsDeleteOutput = Schema.Void;
 export type WebPubSubHubsDeleteOutput = typeof WebPubSubHubsDeleteOutput.Type;
 
 // The operation
@@ -1217,8 +1216,7 @@ export type WebPubSubPrivateEndpointConnectionsDeleteInput =
   typeof WebPubSubPrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const WebPubSubPrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebPubSubPrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type WebPubSubPrivateEndpointConnectionsDeleteOutput =
   typeof WebPubSubPrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1588,7 +1586,7 @@ export type WebPubSubReplicasDeleteInput =
   typeof WebPubSubReplicasDeleteInput.Type;
 
 // Output Schema
-export const WebPubSubReplicasDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WebPubSubReplicasDeleteOutput = Schema.Void;
 export type WebPubSubReplicasDeleteOutput =
   typeof WebPubSubReplicasDeleteOutput.Type;
 
@@ -1905,7 +1903,7 @@ export type WebPubSubReplicasRestartInput =
   typeof WebPubSubReplicasRestartInput.Type;
 
 // Output Schema
-export const WebPubSubReplicasRestartOutput = /*@__PURE__*/ Schema.Void;
+export const WebPubSubReplicasRestartOutput = Schema.Void;
 export type WebPubSubReplicasRestartOutput =
   typeof WebPubSubReplicasRestartOutput.Type;
 
@@ -1984,7 +1982,7 @@ export const WebPubSubRestartInput = /*@__PURE__*/ Schema.Struct({
 export type WebPubSubRestartInput = typeof WebPubSubRestartInput.Type;
 
 // Output Schema
-export const WebPubSubRestartOutput = /*@__PURE__*/ Schema.Void;
+export const WebPubSubRestartOutput = Schema.Void;
 export type WebPubSubRestartOutput = typeof WebPubSubRestartOutput.Type;
 
 // The operation
@@ -2067,8 +2065,7 @@ export type WebPubSubSharedPrivateLinkResourcesDeleteInput =
   typeof WebPubSubSharedPrivateLinkResourcesDeleteInput.Type;
 
 // Output Schema
-export const WebPubSubSharedPrivateLinkResourcesDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebPubSubSharedPrivateLinkResourcesDeleteOutput = Schema.Void;
 export type WebPubSubSharedPrivateLinkResourcesDeleteOutput =
   typeof WebPubSubSharedPrivateLinkResourcesDeleteOutput.Type;
 

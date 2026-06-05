@@ -19,7 +19,7 @@ export type UpdateGroupServiceAccountInput =
   typeof UpdateGroupServiceAccountInput.Type;
 
 // Output Schema
-export const UpdateGroupServiceAccountOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupServiceAccountOutput = Schema.Void;
 export type UpdateGroupServiceAccountOutput =
   typeof UpdateGroupServiceAccountOutput.Type;
 

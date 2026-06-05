@@ -10,7 +10,7 @@ export const DeleteVirtualFieldInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteVirtualFieldInput = typeof DeleteVirtualFieldInput.Type;
 
 // Output Schema
-export const DeleteVirtualFieldOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteVirtualFieldOutput = Schema.Void;
 export type DeleteVirtualFieldOutput = typeof DeleteVirtualFieldOutput.Type;
 
 // The operation

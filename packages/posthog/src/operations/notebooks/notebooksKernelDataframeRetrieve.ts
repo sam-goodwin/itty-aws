@@ -18,7 +18,7 @@ export type NotebooksKernelDataframeRetrieveInput =
   typeof NotebooksKernelDataframeRetrieveInput.Type;
 
 // Output Schema
-export const NotebooksKernelDataframeRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const NotebooksKernelDataframeRetrieveOutput = Schema.Void;
 export type NotebooksKernelDataframeRetrieveOutput =
   typeof NotebooksKernelDataframeRetrieveOutput.Type;
 

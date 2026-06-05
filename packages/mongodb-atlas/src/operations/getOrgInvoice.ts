@@ -18,7 +18,7 @@ export const GetOrgInvoiceInput = /*@__PURE__*/ Schema.Struct({
 export type GetOrgInvoiceInput = typeof GetOrgInvoiceInput.Type;
 
 // Output Schema
-export const GetOrgInvoiceOutput = /*@__PURE__*/ Schema.Void;
+export const GetOrgInvoiceOutput = Schema.Void;
 export type GetOrgInvoiceOutput = typeof GetOrgInvoiceOutput.Type;
 
 // The operation

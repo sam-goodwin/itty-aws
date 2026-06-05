@@ -530,7 +530,7 @@ export type RecommendationsGenerateInput =
   typeof RecommendationsGenerateInput.Type;
 
 // Output Schema
-export const RecommendationsGenerateOutput = /*@__PURE__*/ Schema.Void;
+export const RecommendationsGenerateOutput = Schema.Void;
 export type RecommendationsGenerateOutput =
   typeof RecommendationsGenerateOutput.Type;
 
@@ -601,7 +601,7 @@ export type RecommendationsGetGenerateStatusInput =
   typeof RecommendationsGetGenerateStatusInput.Type;
 
 // Output Schema
-export const RecommendationsGetGenerateStatusOutput = /*@__PURE__*/ Schema.Void;
+export const RecommendationsGetGenerateStatusOutput = Schema.Void;
 export type RecommendationsGetGenerateStatusOutput =
   typeof RecommendationsGetGenerateStatusOutput.Type;
 
@@ -740,7 +740,7 @@ export const SuppressionsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SuppressionsDeleteInput = typeof SuppressionsDeleteInput.Type;
 
 // Output Schema
-export const SuppressionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SuppressionsDeleteOutput = Schema.Void;
 export type SuppressionsDeleteOutput = typeof SuppressionsDeleteOutput.Type;
 
 // The operation

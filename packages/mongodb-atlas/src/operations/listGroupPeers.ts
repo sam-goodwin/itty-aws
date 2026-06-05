@@ -18,7 +18,7 @@ export const ListGroupPeersInput = /*@__PURE__*/ Schema.Struct({
 export type ListGroupPeersInput = typeof ListGroupPeersInput.Type;
 
 // Output Schema
-export const ListGroupPeersOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupPeersOutput = Schema.Void;
 export type ListGroupPeersOutput = typeof ListGroupPeersOutput.Type;
 
 // The operation

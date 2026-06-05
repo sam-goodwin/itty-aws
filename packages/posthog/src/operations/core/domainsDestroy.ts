@@ -16,7 +16,7 @@ export const DomainsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type DomainsDestroyInput = typeof DomainsDestroyInput.Type;
 
 // Output Schema
-export const DomainsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const DomainsDestroyOutput = Schema.Void;
 export type DomainsDestroyOutput = typeof DomainsDestroyOutput.Type;
 
 // The operation

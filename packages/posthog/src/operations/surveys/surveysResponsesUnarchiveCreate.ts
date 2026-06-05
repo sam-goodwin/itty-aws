@@ -132,7 +132,7 @@ export type SurveysResponsesUnarchiveCreateInput =
   typeof SurveysResponsesUnarchiveCreateInput.Type;
 
 // Output Schema
-export const SurveysResponsesUnarchiveCreateOutput = /*@__PURE__*/ Schema.Void;
+export const SurveysResponsesUnarchiveCreateOutput = Schema.Void;
 export type SurveysResponsesUnarchiveCreateOutput =
   typeof SurveysResponsesUnarchiveCreateOutput.Type;
 

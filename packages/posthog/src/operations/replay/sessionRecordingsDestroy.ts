@@ -17,7 +17,7 @@ export type SessionRecordingsDestroyInput =
   typeof SessionRecordingsDestroyInput.Type;
 
 // Output Schema
-export const SessionRecordingsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const SessionRecordingsDestroyOutput = Schema.Void;
 export type SessionRecordingsDestroyOutput =
   typeof SessionRecordingsDestroyOutput.Type;
 

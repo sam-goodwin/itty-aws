@@ -96,7 +96,7 @@ export type BatchExportsRunTestStepCreateInput =
   typeof BatchExportsRunTestStepCreateInput.Type;
 
 // Output Schema
-export const BatchExportsRunTestStepCreateOutput = /*@__PURE__*/ Schema.Void;
+export const BatchExportsRunTestStepCreateOutput = Schema.Void;
 export type BatchExportsRunTestStepCreateOutput =
   typeof BatchExportsRunTestStepCreateOutput.Type;
 

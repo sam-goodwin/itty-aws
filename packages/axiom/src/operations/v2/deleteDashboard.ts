@@ -10,7 +10,7 @@ export const DeleteDashboardInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteDashboardInput = typeof DeleteDashboardInput.Type;
 
 // Output Schema
-export const DeleteDashboardOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteDashboardOutput = Schema.Void;
 export type DeleteDashboardOutput = typeof DeleteDashboardOutput.Type;
 
 // The operation

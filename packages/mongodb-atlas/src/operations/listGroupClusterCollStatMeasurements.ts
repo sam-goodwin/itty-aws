@@ -30,8 +30,7 @@ export type ListGroupClusterCollStatMeasurementsInput =
   typeof ListGroupClusterCollStatMeasurementsInput.Type;
 
 // Output Schema
-export const ListGroupClusterCollStatMeasurementsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListGroupClusterCollStatMeasurementsOutput = Schema.Void;
 export type ListGroupClusterCollStatMeasurementsOutput =
   typeof ListGroupClusterCollStatMeasurementsOutput.Type;
 

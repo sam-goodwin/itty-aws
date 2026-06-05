@@ -22,8 +22,7 @@ export type GetGroupPrivateEndpointEndpointServiceEndpointInput =
   typeof GetGroupPrivateEndpointEndpointServiceEndpointInput.Type;
 
 // Output Schema
-export const GetGroupPrivateEndpointEndpointServiceEndpointOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GetGroupPrivateEndpointEndpointServiceEndpointOutput = Schema.Void;
 export type GetGroupPrivateEndpointEndpointServiceEndpointOutput =
   typeof GetGroupPrivateEndpointEndpointServiceEndpointOutput.Type;
 

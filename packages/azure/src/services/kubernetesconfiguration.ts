@@ -65,7 +65,7 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ExtensionsDeleteInput = typeof ExtensionsDeleteInput.Type;
 
 // Output Schema
-export const ExtensionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ExtensionsDeleteOutput = Schema.Void;
 export type ExtensionsDeleteOutput = typeof ExtensionsDeleteOutput.Type;
 
 // The operation
@@ -349,7 +349,7 @@ export type FluxConfigurationsDeleteInput =
   typeof FluxConfigurationsDeleteInput.Type;
 
 // Output Schema
-export const FluxConfigurationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FluxConfigurationsDeleteOutput = Schema.Void;
 export type FluxConfigurationsDeleteOutput =
   typeof FluxConfigurationsDeleteOutput.Type;
 
@@ -765,8 +765,7 @@ export type SourceControlConfigurationsDeleteInput =
   typeof SourceControlConfigurationsDeleteInput.Type;
 
 // Output Schema
-export const SourceControlConfigurationsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SourceControlConfigurationsDeleteOutput = Schema.Void;
 export type SourceControlConfigurationsDeleteOutput =
   typeof SourceControlConfigurationsDeleteOutput.Type;
 

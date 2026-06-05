@@ -16,7 +16,7 @@ export const DeleteDocumentInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteDocumentInput = typeof DeleteDocumentInput.Type;
 
 // Output Schema
-export const DeleteDocumentOutput = /*@__PURE__*/ Schema.Unknown;
+export const DeleteDocumentOutput = Schema.Unknown;
 export type DeleteDocumentOutput = typeof DeleteDocumentOutput.Type;
 
 // The operation

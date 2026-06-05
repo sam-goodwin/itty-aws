@@ -13,7 +13,7 @@ export type V1DeleteHostnameConfigInput =
   typeof V1DeleteHostnameConfigInput.Type;
 
 // Output Schema
-export const V1DeleteHostnameConfigOutput = /*@__PURE__*/ Schema.Void;
+export const V1DeleteHostnameConfigOutput = Schema.Void;
 export type V1DeleteHostnameConfigOutput =
   typeof V1DeleteHostnameConfigOutput.Type;
 

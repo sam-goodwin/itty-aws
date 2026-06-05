@@ -171,7 +171,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
 
 // Output Schema
-export const NamespacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NamespacesDeleteOutput = Schema.Void;
 export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
 
 // The operation
@@ -202,8 +202,7 @@ export type NamespacesDeleteAuthorizationRuleInput =
   typeof NamespacesDeleteAuthorizationRuleInput.Type;
 
 // Output Schema
-export const NamespacesDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ Schema.Void;
+export const NamespacesDeleteAuthorizationRuleOutput = Schema.Void;
 export type NamespacesDeleteAuthorizationRuleOutput =
   typeof NamespacesDeleteAuthorizationRuleOutput.Type;
 
@@ -906,7 +905,7 @@ export type NotificationHubsDeleteInput =
   typeof NotificationHubsDeleteInput.Type;
 
 // Output Schema
-export const NotificationHubsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NotificationHubsDeleteOutput = Schema.Void;
 export type NotificationHubsDeleteOutput =
   typeof NotificationHubsDeleteOutput.Type;
 
@@ -938,8 +937,7 @@ export type NotificationHubsDeleteAuthorizationRuleInput =
   typeof NotificationHubsDeleteAuthorizationRuleInput.Type;
 
 // Output Schema
-export const NotificationHubsDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ Schema.Void;
+export const NotificationHubsDeleteAuthorizationRuleOutput = Schema.Void;
 export type NotificationHubsDeleteAuthorizationRuleOutput =
   typeof NotificationHubsDeleteAuthorizationRuleOutput.Type;
 
@@ -1468,7 +1466,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 

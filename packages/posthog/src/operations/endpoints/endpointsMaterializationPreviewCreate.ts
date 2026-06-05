@@ -22,8 +22,7 @@ export type EndpointsMaterializationPreviewCreateInput =
   typeof EndpointsMaterializationPreviewCreateInput.Type;
 
 // Output Schema
-export const EndpointsMaterializationPreviewCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EndpointsMaterializationPreviewCreateOutput = Schema.Void;
 export type EndpointsMaterializationPreviewCreateOutput =
   typeof EndpointsMaterializationPreviewCreateOutput.Type;
 

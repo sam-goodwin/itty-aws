@@ -18,7 +18,7 @@ export type RolesRoleMembershipsDestroyInput =
   typeof RolesRoleMembershipsDestroyInput.Type;
 
 // Output Schema
-export const RolesRoleMembershipsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const RolesRoleMembershipsDestroyOutput = Schema.Void;
 export type RolesRoleMembershipsDestroyOutput =
   typeof RolesRoleMembershipsDestroyOutput.Type;
 

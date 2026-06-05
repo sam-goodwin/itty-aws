@@ -75,7 +75,7 @@ export type AttestationProvidersDeleteInput =
   typeof AttestationProvidersDeleteInput.Type;
 
 // Output Schema
-export const AttestationProvidersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AttestationProvidersDeleteOutput = Schema.Void;
 export type AttestationProvidersDeleteOutput =
   typeof AttestationProvidersDeleteOutput.Type;
 
@@ -651,7 +651,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 

@@ -18,7 +18,7 @@ export type ListGroupHostFtsMetricsInput =
   typeof ListGroupHostFtsMetricsInput.Type;
 
 // Output Schema
-export const ListGroupHostFtsMetricsOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupHostFtsMetricsOutput = Schema.Void;
 export type ListGroupHostFtsMetricsOutput =
   typeof ListGroupHostFtsMetricsOutput.Type;
 

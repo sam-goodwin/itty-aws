@@ -78,7 +78,7 @@ export const FirewallRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
 
 // Output Schema
-export const FirewallRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FirewallRulesDeleteOutput = Schema.Void;
 export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
 
 // The operation
@@ -324,7 +324,7 @@ export const MongoClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type MongoClustersDeleteInput = typeof MongoClustersDeleteInput.Type;
 
 // Output Schema
-export const MongoClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MongoClustersDeleteOutput = Schema.Void;
 export type MongoClustersDeleteOutput = typeof MongoClustersDeleteOutput.Type;
 
 // The operation
@@ -567,7 +567,7 @@ export const MongoClustersPromoteInput = /*@__PURE__*/ Schema.Struct({
 export type MongoClustersPromoteInput = typeof MongoClustersPromoteInput.Type;
 
 // Output Schema
-export const MongoClustersPromoteOutput = /*@__PURE__*/ Schema.Void;
+export const MongoClustersPromoteOutput = Schema.Void;
 export type MongoClustersPromoteOutput = typeof MongoClustersPromoteOutput.Type;
 
 // The operation
@@ -749,7 +749,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1078,7 +1078,7 @@ export const UsersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;
 
 // Output Schema
-export const UsersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const UsersDeleteOutput = Schema.Void;
 export type UsersDeleteOutput = typeof UsersDeleteOutput.Type;
 
 // The operation

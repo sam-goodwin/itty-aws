@@ -19,7 +19,7 @@ export type CreateGroupClusterSearchIndexInput =
   typeof CreateGroupClusterSearchIndexInput.Type;
 
 // Output Schema
-export const CreateGroupClusterSearchIndexOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupClusterSearchIndexOutput = Schema.Void;
 export type CreateGroupClusterSearchIndexOutput =
   typeof CreateGroupClusterSearchIndexOutput.Type;
 

@@ -26,8 +26,7 @@ export type GroupsTypesUpdateMetadataPartialUpdateInput =
   typeof GroupsTypesUpdateMetadataPartialUpdateInput.Type;
 
 // Output Schema
-export const GroupsTypesUpdateMetadataPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GroupsTypesUpdateMetadataPartialUpdateOutput = Schema.Void;
 export type GroupsTypesUpdateMetadataPartialUpdateOutput =
   typeof GroupsTypesUpdateMetadataPartialUpdateOutput.Type;
 

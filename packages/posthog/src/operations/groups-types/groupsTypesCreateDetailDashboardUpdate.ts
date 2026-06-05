@@ -26,8 +26,7 @@ export type GroupsTypesCreateDetailDashboardUpdateInput =
   typeof GroupsTypesCreateDetailDashboardUpdateInput.Type;
 
 // Output Schema
-export const GroupsTypesCreateDetailDashboardUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const GroupsTypesCreateDetailDashboardUpdateOutput = Schema.Void;
 export type GroupsTypesCreateDetailDashboardUpdateOutput =
   typeof GroupsTypesCreateDetailDashboardUpdateOutput.Type;
 

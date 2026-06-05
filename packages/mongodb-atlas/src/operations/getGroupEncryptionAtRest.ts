@@ -18,7 +18,7 @@ export type GetGroupEncryptionAtRestInput =
   typeof GetGroupEncryptionAtRestInput.Type;
 
 // Output Schema
-export const GetGroupEncryptionAtRestOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupEncryptionAtRestOutput = Schema.Void;
 export type GetGroupEncryptionAtRestOutput =
   typeof GetGroupEncryptionAtRestOutput.Type;
 

@@ -23,7 +23,7 @@ export const PersonsSplitCreateInput = /*@__PURE__*/ Schema.Struct({
 export type PersonsSplitCreateInput = typeof PersonsSplitCreateInput.Type;
 
 // Output Schema
-export const PersonsSplitCreateOutput = /*@__PURE__*/ Schema.Void;
+export const PersonsSplitCreateOutput = Schema.Void;
 export type PersonsSplitCreateOutput = typeof PersonsSplitCreateOutput.Type;
 
 // The operation

@@ -23,8 +23,7 @@ export type ListGroupServiceAccountAccessListInput =
   typeof ListGroupServiceAccountAccessListInput.Type;
 
 // Output Schema
-export const ListGroupServiceAccountAccessListOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListGroupServiceAccountAccessListOutput = Schema.Void;
 export type ListGroupServiceAccountAccessListOutput =
   typeof ListGroupServiceAccountAccessListOutput.Type;
 

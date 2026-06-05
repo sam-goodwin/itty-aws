@@ -16,7 +16,7 @@ export const AppCertificatesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AppCertificatesDeleteInput = typeof AppCertificatesDeleteInput.Type;
 
 // Output Schema
-export const AppCertificatesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AppCertificatesDeleteOutput = Schema.Void;
 export type AppCertificatesDeleteOutput =
   typeof AppCertificatesDeleteOutput.Type;
 

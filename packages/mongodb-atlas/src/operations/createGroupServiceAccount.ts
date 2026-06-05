@@ -18,7 +18,7 @@ export type CreateGroupServiceAccountInput =
   typeof CreateGroupServiceAccountInput.Type;
 
 // Output Schema
-export const CreateGroupServiceAccountOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupServiceAccountOutput = Schema.Void;
 export type CreateGroupServiceAccountOutput =
   typeof CreateGroupServiceAccountOutput.Type;
 

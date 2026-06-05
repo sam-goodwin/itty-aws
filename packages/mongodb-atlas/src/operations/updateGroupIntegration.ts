@@ -33,7 +33,7 @@ export type UpdateGroupIntegrationInput =
   typeof UpdateGroupIntegrationInput.Type;
 
 // Output Schema
-export const UpdateGroupIntegrationOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupIntegrationOutput = Schema.Void;
 export type UpdateGroupIntegrationOutput =
   typeof UpdateGroupIntegrationOutput.Type;
 

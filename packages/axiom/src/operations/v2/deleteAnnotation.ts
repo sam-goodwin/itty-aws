@@ -10,7 +10,7 @@ export const DeleteAnnotationInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteAnnotationInput = typeof DeleteAnnotationInput.Type;
 
 // Output Schema
-export const DeleteAnnotationOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteAnnotationOutput = Schema.Void;
 export type DeleteAnnotationOutput = typeof DeleteAnnotationOutput.Type;
 
 // The operation

@@ -19,7 +19,7 @@ export type ErrorTrackingStackFramesDestroyInput =
   typeof ErrorTrackingStackFramesDestroyInput.Type;
 
 // Output Schema
-export const ErrorTrackingStackFramesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingStackFramesDestroyOutput = Schema.Void;
 export type ErrorTrackingStackFramesDestroyOutput =
   typeof ErrorTrackingStackFramesDestroyOutput.Type;
 

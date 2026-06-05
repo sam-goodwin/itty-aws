@@ -10,7 +10,7 @@ export const DeleteViewInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteViewInput = typeof DeleteViewInput.Type;
 
 // Output Schema
-export const DeleteViewOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteViewOutput = Schema.Void;
 export type DeleteViewOutput = typeof DeleteViewOutput.Type;
 
 // The operation

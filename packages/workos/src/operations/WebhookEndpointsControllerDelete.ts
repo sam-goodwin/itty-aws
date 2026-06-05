@@ -12,7 +12,7 @@ export type WebhookEndpointsControllerDeleteInput =
   typeof WebhookEndpointsControllerDeleteInput.Type;
 
 // Output Schema
-export const WebhookEndpointsControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WebhookEndpointsControllerDeleteOutput = Schema.Void;
 export type WebhookEndpointsControllerDeleteOutput =
   typeof WebhookEndpointsControllerDeleteOutput.Type;
 

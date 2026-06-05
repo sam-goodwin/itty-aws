@@ -20,8 +20,7 @@ export type DownloadGroupDataFederationQueryLogsInput =
   typeof DownloadGroupDataFederationQueryLogsInput.Type;
 
 // Output Schema
-export const DownloadGroupDataFederationQueryLogsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DownloadGroupDataFederationQueryLogsOutput = Schema.Void;
 export type DownloadGroupDataFederationQueryLogsOutput =
   typeof DownloadGroupDataFederationQueryLogsOutput.Type;
 

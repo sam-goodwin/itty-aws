@@ -17,8 +17,7 @@ export type ExternalDataSourcesWizardRetrieveInput =
   typeof ExternalDataSourcesWizardRetrieveInput.Type;
 
 // Output Schema
-export const ExternalDataSourcesWizardRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ExternalDataSourcesWizardRetrieveOutput = Schema.Void;
 export type ExternalDataSourcesWizardRetrieveOutput =
   typeof ExternalDataSourcesWizardRetrieveOutput.Type;
 

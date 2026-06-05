@@ -17,7 +17,7 @@ export type CustomerProfileConfigsDestroyInput =
   typeof CustomerProfileConfigsDestroyInput.Type;
 
 // Output Schema
-export const CustomerProfileConfigsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const CustomerProfileConfigsDestroyOutput = Schema.Void;
 export type CustomerProfileConfigsDestroyOutput =
   typeof CustomerProfileConfigsDestroyOutput.Type;
 

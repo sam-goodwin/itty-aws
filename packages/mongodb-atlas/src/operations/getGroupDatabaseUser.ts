@@ -19,7 +19,7 @@ export const GetGroupDatabaseUserInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupDatabaseUserInput = typeof GetGroupDatabaseUserInput.Type;
 
 // Output Schema
-export const GetGroupDatabaseUserOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupDatabaseUserOutput = Schema.Void;
 export type GetGroupDatabaseUserOutput = typeof GetGroupDatabaseUserOutput.Type;
 
 // The operation

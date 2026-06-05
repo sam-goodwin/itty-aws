@@ -4013,7 +4013,7 @@ export const RevokeApiKeyPostInput = /*@__PURE__*/ Schema.Struct({
 export type RevokeApiKeyPostInput = typeof RevokeApiKeyPostInput.Type;
 
 // Output Schema
-export const RevokeApiKeyPostOutput = /*@__PURE__*/ Schema.Void;
+export const RevokeApiKeyPostOutput = Schema.Void;
 export type RevokeApiKeyPostOutput = typeof RevokeApiKeyPostOutput.Type;
 
 // The operation

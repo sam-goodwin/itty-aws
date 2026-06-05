@@ -76,7 +76,7 @@ export const PrivateZonesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PrivateZonesDeleteInput = typeof PrivateZonesDeleteInput.Type;
 
 // Output Schema
-export const PrivateZonesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateZonesDeleteOutput = Schema.Void;
 export type PrivateZonesDeleteOutput = typeof PrivateZonesDeleteOutput.Type;
 
 // The operation
@@ -405,7 +405,7 @@ export const RecordSetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RecordSetsDeleteInput = typeof RecordSetsDeleteInput.Type;
 
 // Output Schema
-export const RecordSetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RecordSetsDeleteOutput = Schema.Void;
 export type RecordSetsDeleteOutput = typeof RecordSetsDeleteOutput.Type;
 
 // The operation
@@ -750,7 +750,7 @@ export type VirtualNetworkLinksDeleteInput =
   typeof VirtualNetworkLinksDeleteInput.Type;
 
 // Output Schema
-export const VirtualNetworkLinksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualNetworkLinksDeleteOutput = Schema.Void;
 export type VirtualNetworkLinksDeleteOutput =
   typeof VirtualNetworkLinksDeleteOutput.Type;
 

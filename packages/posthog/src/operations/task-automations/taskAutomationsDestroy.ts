@@ -17,7 +17,7 @@ export type TaskAutomationsDestroyInput =
   typeof TaskAutomationsDestroyInput.Type;
 
 // Output Schema
-export const TaskAutomationsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const TaskAutomationsDestroyOutput = Schema.Void;
 export type TaskAutomationsDestroyOutput =
   typeof TaskAutomationsDestroyOutput.Type;
 

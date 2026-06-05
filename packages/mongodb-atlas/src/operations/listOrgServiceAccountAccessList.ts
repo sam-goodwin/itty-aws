@@ -24,7 +24,7 @@ export type ListOrgServiceAccountAccessListInput =
   typeof ListOrgServiceAccountAccessListInput.Type;
 
 // Output Schema
-export const ListOrgServiceAccountAccessListOutput = /*@__PURE__*/ Schema.Void;
+export const ListOrgServiceAccountAccessListOutput = Schema.Void;
 export type ListOrgServiceAccountAccessListOutput =
   typeof ListOrgServiceAccountAccessListOutput.Type;
 

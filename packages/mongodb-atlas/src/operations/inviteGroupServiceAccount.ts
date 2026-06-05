@@ -19,7 +19,7 @@ export type InviteGroupServiceAccountInput =
   typeof InviteGroupServiceAccountInput.Type;
 
 // Output Schema
-export const InviteGroupServiceAccountOutput = /*@__PURE__*/ Schema.Void;
+export const InviteGroupServiceAccountOutput = Schema.Void;
 export type InviteGroupServiceAccountOutput =
   typeof InviteGroupServiceAccountOutput.Type;
 

@@ -23,8 +23,7 @@ export type CreateOrgServiceAccountAccessListInput =
   typeof CreateOrgServiceAccountAccessListInput.Type;
 
 // Output Schema
-export const CreateOrgServiceAccountAccessListOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CreateOrgServiceAccountAccessListOutput = Schema.Void;
 export type CreateOrgServiceAccountAccessListOutput =
   typeof CreateOrgServiceAccountAccessListOutput.Type;
 

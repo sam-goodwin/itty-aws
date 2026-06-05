@@ -16,7 +16,7 @@ export const GetEvmSwapPriceInput = /*@__PURE__*/ Schema.Struct({
 export type GetEvmSwapPriceInput = typeof GetEvmSwapPriceInput.Type;
 
 // Output Schema
-export const GetEvmSwapPriceOutput = /*@__PURE__*/ Schema.Unknown;
+export const GetEvmSwapPriceOutput = Schema.Unknown;
 export type GetEvmSwapPriceOutput = typeof GetEvmSwapPriceOutput.Type;
 
 // The operation

@@ -18,7 +18,7 @@ export const DeleteOrgApiKeyInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteOrgApiKeyInput = typeof DeleteOrgApiKeyInput.Type;
 
 // Output Schema
-export const DeleteOrgApiKeyOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteOrgApiKeyOutput = Schema.Void;
 export type DeleteOrgApiKeyOutput = typeof DeleteOrgApiKeyOutput.Type;
 
 // The operation

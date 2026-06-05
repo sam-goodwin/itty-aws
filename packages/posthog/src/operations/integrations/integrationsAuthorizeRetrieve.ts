@@ -16,7 +16,7 @@ export type IntegrationsAuthorizeRetrieveInput =
   typeof IntegrationsAuthorizeRetrieveInput.Type;
 
 // Output Schema
-export const IntegrationsAuthorizeRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationsAuthorizeRetrieveOutput = Schema.Void;
 export type IntegrationsAuthorizeRetrieveOutput =
   typeof IntegrationsAuthorizeRetrieveOutput.Type;
 

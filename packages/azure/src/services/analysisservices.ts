@@ -164,7 +164,7 @@ export const ServersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ServersDeleteInput = typeof ServersDeleteInput.Type;
 
 // Output Schema
-export const ServersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServersDeleteOutput = Schema.Void;
 export type ServersDeleteOutput = typeof ServersDeleteOutput.Type;
 
 // The operation
@@ -190,7 +190,7 @@ export type ServersDissociateGatewayInput =
   typeof ServersDissociateGatewayInput.Type;
 
 // Output Schema
-export const ServersDissociateGatewayOutput = /*@__PURE__*/ Schema.Void;
+export const ServersDissociateGatewayOutput = Schema.Void;
 export type ServersDissociateGatewayOutput =
   typeof ServersDissociateGatewayOutput.Type;
 
@@ -365,7 +365,7 @@ export type ServersListOperationResultsInput =
   typeof ServersListOperationResultsInput.Type;
 
 // Output Schema
-export const ServersListOperationResultsOutput = /*@__PURE__*/ Schema.Void;
+export const ServersListOperationResultsOutput = Schema.Void;
 export type ServersListOperationResultsOutput =
   typeof ServersListOperationResultsOutput.Type;
 
@@ -524,7 +524,7 @@ export const ServersResumeInput = /*@__PURE__*/ Schema.Struct({
 export type ServersResumeInput = typeof ServersResumeInput.Type;
 
 // Output Schema
-export const ServersResumeOutput = /*@__PURE__*/ Schema.Void;
+export const ServersResumeOutput = Schema.Void;
 export type ServersResumeOutput = typeof ServersResumeOutput.Type;
 
 // The operation
@@ -549,7 +549,7 @@ export const ServersSuspendInput = /*@__PURE__*/ Schema.Struct({
 export type ServersSuspendInput = typeof ServersSuspendInput.Type;
 
 // Output Schema
-export const ServersSuspendOutput = /*@__PURE__*/ Schema.Void;
+export const ServersSuspendOutput = Schema.Void;
 export type ServersSuspendOutput = typeof ServersSuspendOutput.Type;
 
 // The operation

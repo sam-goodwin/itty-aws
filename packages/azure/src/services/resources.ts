@@ -61,7 +61,7 @@ export type ApplicationDefinitionsDeleteInput =
   typeof ApplicationDefinitionsDeleteInput.Type;
 
 // Output Schema
-export const ApplicationDefinitionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationDefinitionsDeleteOutput = Schema.Void;
 export type ApplicationDefinitionsDeleteOutput =
   typeof ApplicationDefinitionsDeleteOutput.Type;
 
@@ -233,7 +233,7 @@ export const ApplicationsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
 
 // Output Schema
-export const ApplicationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsDeleteOutput = Schema.Void;
 export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
 
 // The operation
@@ -255,7 +255,7 @@ export type ApplicationsDeleteByIdInput =
   typeof ApplicationsDeleteByIdInput.Type;
 
 // Output Schema
-export const ApplicationsDeleteByIdOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsDeleteByIdOutput = Schema.Void;
 export type ApplicationsDeleteByIdOutput =
   typeof ApplicationsDeleteByIdOutput.Type;
 
@@ -425,7 +425,7 @@ export type ApplicationsRefreshPermissionsInput =
   typeof ApplicationsRefreshPermissionsInput.Type;
 
 // Output Schema
-export const ApplicationsRefreshPermissionsOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsRefreshPermissionsOutput = Schema.Void;
 export type ApplicationsRefreshPermissionsOutput =
   typeof ApplicationsRefreshPermissionsOutput.Type;
 
@@ -2372,7 +2372,7 @@ export const DeploymentsCancelInput = /*@__PURE__*/ Schema.Struct({
 export type DeploymentsCancelInput = typeof DeploymentsCancelInput.Type;
 
 // Output Schema
-export const DeploymentsCancelOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsCancelOutput = Schema.Void;
 export type DeploymentsCancelOutput = typeof DeploymentsCancelOutput.Type;
 
 // The operation
@@ -2406,8 +2406,7 @@ export type DeploymentsCancelAtManagementGroupScopeInput =
   typeof DeploymentsCancelAtManagementGroupScopeInput.Type;
 
 // Output Schema
-export const DeploymentsCancelAtManagementGroupScopeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeploymentsCancelAtManagementGroupScopeOutput = Schema.Void;
 export type DeploymentsCancelAtManagementGroupScopeOutput =
   typeof DeploymentsCancelAtManagementGroupScopeOutput.Type;
 
@@ -2442,7 +2441,7 @@ export type DeploymentsCancelAtScopeInput =
   typeof DeploymentsCancelAtScopeInput.Type;
 
 // Output Schema
-export const DeploymentsCancelAtScopeOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsCancelAtScopeOutput = Schema.Void;
 export type DeploymentsCancelAtScopeOutput =
   typeof DeploymentsCancelAtScopeOutput.Type;
 
@@ -2476,8 +2475,7 @@ export type DeploymentsCancelAtSubscriptionScopeInput =
   typeof DeploymentsCancelAtSubscriptionScopeInput.Type;
 
 // Output Schema
-export const DeploymentsCancelAtSubscriptionScopeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeploymentsCancelAtSubscriptionScopeOutput = Schema.Void;
 export type DeploymentsCancelAtSubscriptionScopeOutput =
   typeof DeploymentsCancelAtSubscriptionScopeOutput.Type;
 
@@ -2511,7 +2509,7 @@ export type DeploymentsCancelAtTenantScopeInput =
   typeof DeploymentsCancelAtTenantScopeInput.Type;
 
 // Output Schema
-export const DeploymentsCancelAtTenantScopeOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsCancelAtTenantScopeOutput = Schema.Void;
 export type DeploymentsCancelAtTenantScopeOutput =
   typeof DeploymentsCancelAtTenantScopeOutput.Type;
 
@@ -2859,7 +2857,7 @@ export type DeploymentScriptsDeleteInput =
   typeof DeploymentScriptsDeleteInput.Type;
 
 // Output Schema
-export const DeploymentScriptsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentScriptsDeleteOutput = Schema.Void;
 export type DeploymentScriptsDeleteOutput =
   typeof DeploymentScriptsDeleteOutput.Type;
 
@@ -3241,7 +3239,7 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
 
 // Output Schema
-export const DeploymentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsDeleteOutput = Schema.Void;
 export type DeploymentsDeleteOutput = typeof DeploymentsDeleteOutput.Type;
 
 // The operation
@@ -3275,8 +3273,7 @@ export type DeploymentsDeleteAtManagementGroupScopeInput =
   typeof DeploymentsDeleteAtManagementGroupScopeInput.Type;
 
 // Output Schema
-export const DeploymentsDeleteAtManagementGroupScopeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeploymentsDeleteAtManagementGroupScopeOutput = Schema.Void;
 export type DeploymentsDeleteAtManagementGroupScopeOutput =
   typeof DeploymentsDeleteAtManagementGroupScopeOutput.Type;
 
@@ -3311,7 +3308,7 @@ export type DeploymentsDeleteAtScopeInput =
   typeof DeploymentsDeleteAtScopeInput.Type;
 
 // Output Schema
-export const DeploymentsDeleteAtScopeOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsDeleteAtScopeOutput = Schema.Void;
 export type DeploymentsDeleteAtScopeOutput =
   typeof DeploymentsDeleteAtScopeOutput.Type;
 
@@ -3345,8 +3342,7 @@ export type DeploymentsDeleteAtSubscriptionScopeInput =
   typeof DeploymentsDeleteAtSubscriptionScopeInput.Type;
 
 // Output Schema
-export const DeploymentsDeleteAtSubscriptionScopeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeploymentsDeleteAtSubscriptionScopeOutput = Schema.Void;
 export type DeploymentsDeleteAtSubscriptionScopeOutput =
   typeof DeploymentsDeleteAtSubscriptionScopeOutput.Type;
 
@@ -3380,7 +3376,7 @@ export type DeploymentsDeleteAtTenantScopeInput =
   typeof DeploymentsDeleteAtTenantScopeInput.Type;
 
 // Output Schema
-export const DeploymentsDeleteAtTenantScopeOutput = /*@__PURE__*/ Schema.Void;
+export const DeploymentsDeleteAtTenantScopeOutput = Schema.Void;
 export type DeploymentsDeleteAtTenantScopeOutput =
   typeof DeploymentsDeleteAtTenantScopeOutput.Type;
 
@@ -4313,8 +4309,7 @@ export type DeploymentStacksDeleteAtManagementGroupInput =
   typeof DeploymentStacksDeleteAtManagementGroupInput.Type;
 
 // Output Schema
-export const DeploymentStacksDeleteAtManagementGroupOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeploymentStacksDeleteAtManagementGroupOutput = Schema.Void;
 export type DeploymentStacksDeleteAtManagementGroupOutput =
   typeof DeploymentStacksDeleteAtManagementGroupOutput.Type;
 
@@ -4349,8 +4344,7 @@ export type DeploymentStacksDeleteAtResourceGroupInput =
   typeof DeploymentStacksDeleteAtResourceGroupInput.Type;
 
 // Output Schema
-export const DeploymentStacksDeleteAtResourceGroupOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeploymentStacksDeleteAtResourceGroupOutput = Schema.Void;
 export type DeploymentStacksDeleteAtResourceGroupOutput =
   typeof DeploymentStacksDeleteAtResourceGroupOutput.Type;
 
@@ -4385,8 +4379,7 @@ export type DeploymentStacksDeleteAtSubscriptionInput =
   typeof DeploymentStacksDeleteAtSubscriptionInput.Type;
 
 // Output Schema
-export const DeploymentStacksDeleteAtSubscriptionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeploymentStacksDeleteAtSubscriptionOutput = Schema.Void;
 export type DeploymentStacksDeleteAtSubscriptionOutput =
   typeof DeploymentStacksDeleteAtSubscriptionOutput.Type;
 
@@ -5600,7 +5593,7 @@ export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteInput =
 
 // Output Schema
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteOutput =
   typeof DeploymentStacksWhatIfResultsAtManagementGroupDeleteOutput.Type;
 
@@ -5860,7 +5853,7 @@ export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteInput =
 
 // Output Schema
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteOutput =
   typeof DeploymentStacksWhatIfResultsAtResourceGroupDeleteOutput.Type;
 
@@ -6123,7 +6116,7 @@ export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteInput =
 
 // Output Schema
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteOutput =
   typeof DeploymentStacksWhatIfResultsAtSubscriptionDeleteOutput.Type;
 
@@ -9618,7 +9611,7 @@ export const JitRequestsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type JitRequestsDeleteInput = typeof JitRequestsDeleteInput.Type;
 
 // Output Schema
-export const JitRequestsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const JitRequestsDeleteOutput = Schema.Void;
 export type JitRequestsDeleteOutput = typeof JitRequestsDeleteOutput.Type;
 
 // The operation
@@ -10093,8 +10086,7 @@ export type ManagementLocksDeleteAtResourceGroupLevelInput =
   typeof ManagementLocksDeleteAtResourceGroupLevelInput.Type;
 
 // Output Schema
-export const ManagementLocksDeleteAtResourceGroupLevelOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ManagementLocksDeleteAtResourceGroupLevelOutput = Schema.Void;
 export type ManagementLocksDeleteAtResourceGroupLevelOutput =
   typeof ManagementLocksDeleteAtResourceGroupLevelOutput.Type;
 
@@ -10134,8 +10126,7 @@ export type ManagementLocksDeleteAtResourceLevelInput =
   typeof ManagementLocksDeleteAtResourceLevelInput.Type;
 
 // Output Schema
-export const ManagementLocksDeleteAtResourceLevelOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ManagementLocksDeleteAtResourceLevelOutput = Schema.Void;
 export type ManagementLocksDeleteAtResourceLevelOutput =
   typeof ManagementLocksDeleteAtResourceLevelOutput.Type;
 
@@ -10174,8 +10165,7 @@ export type ManagementLocksDeleteAtSubscriptionLevelInput =
   typeof ManagementLocksDeleteAtSubscriptionLevelInput.Type;
 
 // Output Schema
-export const ManagementLocksDeleteAtSubscriptionLevelOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ManagementLocksDeleteAtSubscriptionLevelOutput = Schema.Void;
 export type ManagementLocksDeleteAtSubscriptionLevelOutput =
   typeof ManagementLocksDeleteAtSubscriptionLevelOutput.Type;
 
@@ -10209,7 +10199,7 @@ export type ManagementLocksDeleteByScopeInput =
   typeof ManagementLocksDeleteByScopeInput.Type;
 
 // Output Schema
-export const ManagementLocksDeleteByScopeOutput = /*@__PURE__*/ Schema.Void;
+export const ManagementLocksDeleteByScopeOutput = Schema.Void;
 export type ManagementLocksDeleteByScopeOutput =
   typeof ManagementLocksDeleteByScopeOutput.Type;
 
@@ -11458,7 +11448,7 @@ export type PolicyDefinitionsDeleteInput =
   typeof PolicyDefinitionsDeleteInput.Type;
 
 // Output Schema
-export const PolicyDefinitionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PolicyDefinitionsDeleteOutput = Schema.Void;
 export type PolicyDefinitionsDeleteOutput =
   typeof PolicyDefinitionsDeleteOutput.Type;
 
@@ -11490,8 +11480,7 @@ export type PolicyDefinitionsDeleteAtManagementGroupInput =
   typeof PolicyDefinitionsDeleteAtManagementGroupInput.Type;
 
 // Output Schema
-export const PolicyDefinitionsDeleteAtManagementGroupOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PolicyDefinitionsDeleteAtManagementGroupOutput = Schema.Void;
 export type PolicyDefinitionsDeleteAtManagementGroupOutput =
   typeof PolicyDefinitionsDeleteAtManagementGroupOutput.Type;
 
@@ -11960,7 +11949,7 @@ export type PolicyDefinitionVersionsDeleteInput =
   typeof PolicyDefinitionVersionsDeleteInput.Type;
 
 // Output Schema
-export const PolicyDefinitionVersionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PolicyDefinitionVersionsDeleteOutput = Schema.Void;
 export type PolicyDefinitionVersionsDeleteOutput =
   typeof PolicyDefinitionVersionsDeleteOutput.Type;
 
@@ -11995,7 +11984,7 @@ export type PolicyDefinitionVersionsDeleteAtManagementGroupInput =
 
 // Output Schema
 export const PolicyDefinitionVersionsDeleteAtManagementGroupOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type PolicyDefinitionVersionsDeleteAtManagementGroupOutput =
   typeof PolicyDefinitionVersionsDeleteAtManagementGroupOutput.Type;
 
@@ -12684,7 +12673,7 @@ export type PolicySetDefinitionsDeleteInput =
   typeof PolicySetDefinitionsDeleteInput.Type;
 
 // Output Schema
-export const PolicySetDefinitionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PolicySetDefinitionsDeleteOutput = Schema.Void;
 export type PolicySetDefinitionsDeleteOutput =
   typeof PolicySetDefinitionsDeleteOutput.Type;
 
@@ -12716,8 +12705,7 @@ export type PolicySetDefinitionsDeleteAtManagementGroupInput =
   typeof PolicySetDefinitionsDeleteAtManagementGroupInput.Type;
 
 // Output Schema
-export const PolicySetDefinitionsDeleteAtManagementGroupOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PolicySetDefinitionsDeleteAtManagementGroupOutput = Schema.Void;
 export type PolicySetDefinitionsDeleteAtManagementGroupOutput =
   typeof PolicySetDefinitionsDeleteAtManagementGroupOutput.Type;
 
@@ -13218,8 +13206,7 @@ export type PolicySetDefinitionVersionsDeleteInput =
   typeof PolicySetDefinitionVersionsDeleteInput.Type;
 
 // Output Schema
-export const PolicySetDefinitionVersionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PolicySetDefinitionVersionsDeleteOutput = Schema.Void;
 export type PolicySetDefinitionVersionsDeleteOutput =
   typeof PolicySetDefinitionVersionsDeleteOutput.Type;
 
@@ -13254,7 +13241,7 @@ export type PolicySetDefinitionVersionsDeleteAtManagementGroupInput =
 
 // Output Schema
 export const PolicySetDefinitionVersionsDeleteAtManagementGroupOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type PolicySetDefinitionVersionsDeleteAtManagementGroupOutput =
   typeof PolicySetDefinitionVersionsDeleteAtManagementGroupOutput.Type;
 
@@ -14051,7 +14038,7 @@ export type PrivateLinkAssociationDeleteInput =
   typeof PrivateLinkAssociationDeleteInput.Type;
 
 // Output Schema
-export const PrivateLinkAssociationDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateLinkAssociationDeleteOutput = Schema.Void;
 export type PrivateLinkAssociationDeleteOutput =
   typeof PrivateLinkAssociationDeleteOutput.Type;
 
@@ -15189,8 +15176,7 @@ export type ProvidersRegisterAtManagementGroupScopeInput =
   typeof ProvidersRegisterAtManagementGroupScopeInput.Type;
 
 // Output Schema
-export const ProvidersRegisterAtManagementGroupScopeOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ProvidersRegisterAtManagementGroupScopeOutput = Schema.Void;
 export type ProvidersRegisterAtManagementGroupScopeOutput =
   typeof ProvidersRegisterAtManagementGroupScopeOutput.Type;
 
@@ -15405,7 +15391,7 @@ export const ResourceGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ResourceGroupsDeleteInput = typeof ResourceGroupsDeleteInput.Type;
 
 // Output Schema
-export const ResourceGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ResourceGroupsDeleteOutput = Schema.Void;
 export type ResourceGroupsDeleteOutput = typeof ResourceGroupsDeleteOutput.Type;
 
 // The operation
@@ -15646,7 +15632,7 @@ export const ResourceLinksDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ResourceLinksDeleteInput = typeof ResourceLinksDeleteInput.Type;
 
 // Output Schema
-export const ResourceLinksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ResourceLinksDeleteOutput = Schema.Void;
 export type ResourceLinksDeleteOutput = typeof ResourceLinksDeleteOutput.Type;
 
 // The operation
@@ -15797,8 +15783,7 @@ export type ResourceManagementPrivateLinkDeleteInput =
   typeof ResourceManagementPrivateLinkDeleteInput.Type;
 
 // Output Schema
-export const ResourceManagementPrivateLinkDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ResourceManagementPrivateLinkDeleteOutput = Schema.Void;
 export type ResourceManagementPrivateLinkDeleteOutput =
   typeof ResourceManagementPrivateLinkDeleteOutput.Type;
 
@@ -16089,7 +16074,7 @@ export const ResourcesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ResourcesDeleteInput = typeof ResourcesDeleteInput.Type;
 
 // Output Schema
-export const ResourcesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ResourcesDeleteOutput = Schema.Void;
 export type ResourcesDeleteOutput = typeof ResourcesDeleteOutput.Type;
 
 // The operation
@@ -16115,7 +16100,7 @@ export const ResourcesDeleteByIdInput = /*@__PURE__*/ Schema.Struct({
 export type ResourcesDeleteByIdInput = typeof ResourcesDeleteByIdInput.Type;
 
 // Output Schema
-export const ResourcesDeleteByIdOutput = /*@__PURE__*/ Schema.Void;
+export const ResourcesDeleteByIdOutput = Schema.Void;
 export type ResourcesDeleteByIdOutput = typeof ResourcesDeleteByIdOutput.Type;
 
 // The operation
@@ -16320,7 +16305,7 @@ export type ResourcesMoveResourcesInput =
   typeof ResourcesMoveResourcesInput.Type;
 
 // Output Schema
-export const ResourcesMoveResourcesOutput = /*@__PURE__*/ Schema.Void;
+export const ResourcesMoveResourcesOutput = Schema.Void;
 export type ResourcesMoveResourcesOutput =
   typeof ResourcesMoveResourcesOutput.Type;
 
@@ -16430,7 +16415,7 @@ export type ResourcesValidateMoveResourcesInput =
   typeof ResourcesValidateMoveResourcesInput.Type;
 
 // Output Schema
-export const ResourcesValidateMoveResourcesOutput = /*@__PURE__*/ Schema.Void;
+export const ResourcesValidateMoveResourcesOutput = Schema.Void;
 export type ResourcesValidateMoveResourcesOutput =
   typeof ResourcesValidateMoveResourcesOutput.Type;
 
@@ -16523,8 +16508,7 @@ export type SubscriptionFeatureRegistrationsDeleteInput =
   typeof SubscriptionFeatureRegistrationsDeleteInput.Type;
 
 // Output Schema
-export const SubscriptionFeatureRegistrationsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SubscriptionFeatureRegistrationsDeleteOutput = Schema.Void;
 export type SubscriptionFeatureRegistrationsDeleteOutput =
   typeof SubscriptionFeatureRegistrationsDeleteOutput.Type;
 
@@ -17008,7 +16992,7 @@ export const TagsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TagsDeleteInput = typeof TagsDeleteInput.Type;
 
 // Output Schema
-export const TagsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TagsDeleteOutput = Schema.Void;
 export type TagsDeleteOutput = typeof TagsDeleteOutput.Type;
 
 // The operation
@@ -17033,7 +17017,7 @@ export const TagsDeleteAtScopeInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type TagsDeleteAtScopeInput = typeof TagsDeleteAtScopeInput.Type;
 
 // Output Schema
-export const TagsDeleteAtScopeOutput = /*@__PURE__*/ Schema.Void;
+export const TagsDeleteAtScopeOutput = Schema.Void;
 export type TagsDeleteAtScopeOutput = typeof TagsDeleteAtScopeOutput.Type;
 
 // The operation
@@ -17057,7 +17041,7 @@ export const TagsDeleteValueInput = /*@__PURE__*/ Schema.Struct({
 export type TagsDeleteValueInput = typeof TagsDeleteValueInput.Type;
 
 // Output Schema
-export const TagsDeleteValueOutput = /*@__PURE__*/ Schema.Void;
+export const TagsDeleteValueOutput = Schema.Void;
 export type TagsDeleteValueOutput = typeof TagsDeleteValueOutput.Type;
 
 // The operation
@@ -17234,7 +17218,7 @@ export const TemplateSpecsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type TemplateSpecsDeleteInput = typeof TemplateSpecsDeleteInput.Type;
 
 // Output Schema
-export const TemplateSpecsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TemplateSpecsDeleteOutput = Schema.Void;
 export type TemplateSpecsDeleteOutput = typeof TemplateSpecsDeleteOutput.Type;
 
 // The operation
@@ -17605,7 +17589,7 @@ export type TemplateSpecVersionsDeleteInput =
   typeof TemplateSpecVersionsDeleteInput.Type;
 
 // Output Schema
-export const TemplateSpecVersionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TemplateSpecVersionsDeleteOutput = Schema.Void;
 export type TemplateSpecVersionsDeleteOutput =
   typeof TemplateSpecVersionsDeleteOutput.Type;
 

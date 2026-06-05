@@ -55,7 +55,7 @@ export type PostTerminalLocationsLocationInput =
   typeof PostTerminalLocationsLocationInput.Type;
 
 // Output Schema
-export const PostTerminalLocationsLocationOutput = /*@__PURE__*/ Schema.Unknown;
+export const PostTerminalLocationsLocationOutput = Schema.Unknown;
 export type PostTerminalLocationsLocationOutput =
   typeof PostTerminalLocationsLocationOutput.Type;
 

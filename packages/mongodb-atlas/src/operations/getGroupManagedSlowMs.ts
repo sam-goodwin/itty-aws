@@ -17,7 +17,7 @@ export const GetGroupManagedSlowMsInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupManagedSlowMsInput = typeof GetGroupManagedSlowMsInput.Type;
 
 // Output Schema
-export const GetGroupManagedSlowMsOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupManagedSlowMsOutput = Schema.Void;
 export type GetGroupManagedSlowMsOutput =
   typeof GetGroupManagedSlowMsOutput.Type;
 

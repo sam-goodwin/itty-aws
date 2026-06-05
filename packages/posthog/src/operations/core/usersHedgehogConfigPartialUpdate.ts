@@ -755,7 +755,7 @@ export type UsersHedgehogConfigPartialUpdateInput =
   typeof UsersHedgehogConfigPartialUpdateInput.Type;
 
 // Output Schema
-export const UsersHedgehogConfigPartialUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const UsersHedgehogConfigPartialUpdateOutput = Schema.Void;
 export type UsersHedgehogConfigPartialUpdateOutput =
   typeof UsersHedgehogConfigPartialUpdateOutput.Type;
 

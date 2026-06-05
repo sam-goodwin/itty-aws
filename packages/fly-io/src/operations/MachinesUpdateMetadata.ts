@@ -20,7 +20,7 @@ export type MachinesUpdateMetadataInput =
   typeof MachinesUpdateMetadataInput.Type;
 
 // Output Schema
-export const MachinesUpdateMetadataOutput = /*@__PURE__*/ Schema.Void;
+export const MachinesUpdateMetadataOutput = Schema.Void;
 export type MachinesUpdateMetadataOutput =
   typeof MachinesUpdateMetadataOutput.Type;
 

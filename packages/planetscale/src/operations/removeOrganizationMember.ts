@@ -19,7 +19,7 @@ export type RemoveOrganizationMemberInput =
   typeof RemoveOrganizationMemberInput.Type;
 
 // Output Schema
-export const RemoveOrganizationMemberOutput = /*@__PURE__*/ Schema.Void;
+export const RemoveOrganizationMemberOutput = Schema.Void;
 export type RemoveOrganizationMemberOutput =
   typeof RemoveOrganizationMemberOutput.Type;
 

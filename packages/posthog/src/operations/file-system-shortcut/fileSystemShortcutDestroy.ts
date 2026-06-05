@@ -17,7 +17,7 @@ export type FileSystemShortcutDestroyInput =
   typeof FileSystemShortcutDestroyInput.Type;
 
 // Output Schema
-export const FileSystemShortcutDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const FileSystemShortcutDestroyOutput = Schema.Void;
 export type FileSystemShortcutDestroyOutput =
   typeof FileSystemShortcutDestroyOutput.Type;
 

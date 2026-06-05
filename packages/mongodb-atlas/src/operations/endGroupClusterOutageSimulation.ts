@@ -21,7 +21,7 @@ export type EndGroupClusterOutageSimulationInput =
   typeof EndGroupClusterOutageSimulationInput.Type;
 
 // Output Schema
-export const EndGroupClusterOutageSimulationOutput = /*@__PURE__*/ Schema.Void;
+export const EndGroupClusterOutageSimulationOutput = Schema.Void;
 export type EndGroupClusterOutageSimulationOutput =
   typeof EndGroupClusterOutageSimulationOutput.Type;
 

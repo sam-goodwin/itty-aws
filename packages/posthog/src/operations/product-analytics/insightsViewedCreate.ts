@@ -99,7 +99,7 @@ export const InsightsViewedCreateInput = /*@__PURE__*/ Schema.Struct({
 export type InsightsViewedCreateInput = typeof InsightsViewedCreateInput.Type;
 
 // Output Schema
-export const InsightsViewedCreateOutput = /*@__PURE__*/ Schema.Void;
+export const InsightsViewedCreateOutput = Schema.Void;
 export type InsightsViewedCreateOutput = typeof InsightsViewedCreateOutput.Type;
 
 // The operation

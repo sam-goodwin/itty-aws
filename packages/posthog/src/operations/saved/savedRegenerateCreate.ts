@@ -50,7 +50,7 @@ export const SavedRegenerateCreateInput = /*@__PURE__*/ Schema.Struct({
 export type SavedRegenerateCreateInput = typeof SavedRegenerateCreateInput.Type;
 
 // Output Schema
-export const SavedRegenerateCreateOutput = /*@__PURE__*/ Schema.Void;
+export const SavedRegenerateCreateOutput = Schema.Void;
 export type SavedRegenerateCreateOutput =
   typeof SavedRegenerateCreateOutput.Type;
 

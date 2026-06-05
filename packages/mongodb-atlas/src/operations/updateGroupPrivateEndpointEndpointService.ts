@@ -20,8 +20,7 @@ export type UpdateGroupPrivateEndpointEndpointServiceInput =
   typeof UpdateGroupPrivateEndpointEndpointServiceInput.Type;
 
 // Output Schema
-export const UpdateGroupPrivateEndpointEndpointServiceOutput =
-  /*@__PURE__*/ Schema.Void;
+export const UpdateGroupPrivateEndpointEndpointServiceOutput = Schema.Void;
 export type UpdateGroupPrivateEndpointEndpointServiceOutput =
   typeof UpdateGroupPrivateEndpointEndpointServiceOutput.Type;
 

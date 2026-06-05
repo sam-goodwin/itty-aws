@@ -11,7 +11,7 @@ export type ConnectionsControllerDeleteInput =
   typeof ConnectionsControllerDeleteInput.Type;
 
 // Output Schema
-export const ConnectionsControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConnectionsControllerDeleteOutput = Schema.Void;
 export type ConnectionsControllerDeleteOutput =
   typeof ConnectionsControllerDeleteOutput.Type;
 

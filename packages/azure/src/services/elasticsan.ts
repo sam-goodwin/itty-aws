@@ -72,7 +72,7 @@ export const ElasticSansDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ElasticSansDeleteInput = typeof ElasticSansDeleteInput.Type;
 
 // Output Schema
-export const ElasticSansDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ElasticSansDeleteOutput = Schema.Void;
 export type ElasticSansDeleteOutput = typeof ElasticSansDeleteOutput.Type;
 
 // The operation
@@ -421,7 +421,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -752,7 +752,7 @@ export const VolumeGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VolumeGroupsDeleteInput = typeof VolumeGroupsDeleteInput.Type;
 
 // Output Schema
-export const VolumeGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VolumeGroupsDeleteOutput = Schema.Void;
 export type VolumeGroupsDeleteOutput = typeof VolumeGroupsDeleteOutput.Type;
 
 // The operation
@@ -997,7 +997,7 @@ export const VolumesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VolumesDeleteInput = typeof VolumesDeleteInput.Type;
 
 // Output Schema
-export const VolumesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VolumesDeleteOutput = Schema.Void;
 export type VolumesDeleteOutput = typeof VolumesDeleteOutput.Type;
 
 // The operation
@@ -1199,7 +1199,7 @@ export const VolumeSnapshotsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VolumeSnapshotsDeleteInput = typeof VolumeSnapshotsDeleteInput.Type;
 
 // Output Schema
-export const VolumeSnapshotsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VolumeSnapshotsDeleteOutput = Schema.Void;
 export type VolumeSnapshotsDeleteOutput =
   typeof VolumeSnapshotsDeleteOutput.Type;
 

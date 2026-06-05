@@ -11,7 +11,7 @@ export const TrimDatasetInput = /*@__PURE__*/ Schema.Struct({
 export type TrimDatasetInput = typeof TrimDatasetInput.Type;
 
 // Output Schema
-export const TrimDatasetOutput = /*@__PURE__*/ Schema.Void;
+export const TrimDatasetOutput = Schema.Void;
 export type TrimDatasetOutput = typeof TrimDatasetOutput.Type;
 
 // The operation

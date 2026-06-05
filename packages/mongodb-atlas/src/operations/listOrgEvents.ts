@@ -19,7 +19,7 @@ export const ListOrgEventsInput = /*@__PURE__*/ Schema.Struct({
 export type ListOrgEventsInput = typeof ListOrgEventsInput.Type;
 
 // Output Schema
-export const ListOrgEventsOutput = /*@__PURE__*/ Schema.Void;
+export const ListOrgEventsOutput = Schema.Void;
 export type ListOrgEventsOutput = typeof ListOrgEventsOutput.Type;
 
 // The operation

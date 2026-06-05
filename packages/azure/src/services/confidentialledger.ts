@@ -92,7 +92,7 @@ export const LedgerDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type LedgerDeleteInput = typeof LedgerDeleteInput.Type;
 
 // Output Schema
-export const LedgerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const LedgerDeleteOutput = Schema.Void;
 export type LedgerDeleteOutput = typeof LedgerDeleteOutput.Type;
 
 // The operation

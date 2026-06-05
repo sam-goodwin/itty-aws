@@ -19,7 +19,7 @@ export type WithGroupStreamSampleConnectionsInput =
   typeof WithGroupStreamSampleConnectionsInput.Type;
 
 // Output Schema
-export const WithGroupStreamSampleConnectionsOutput = /*@__PURE__*/ Schema.Void;
+export const WithGroupStreamSampleConnectionsOutput = Schema.Void;
 export type WithGroupStreamSampleConnectionsOutput =
   typeof WithGroupStreamSampleConnectionsOutput.Type;
 

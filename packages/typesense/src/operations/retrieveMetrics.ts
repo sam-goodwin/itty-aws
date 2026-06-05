@@ -9,7 +9,7 @@ export const RetrieveMetricsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type RetrieveMetricsInput = typeof RetrieveMetricsInput.Type;
 
 // Output Schema
-export const RetrieveMetricsOutput = /*@__PURE__*/ Schema.Unknown;
+export const RetrieveMetricsOutput = Schema.Unknown;
 export type RetrieveMetricsOutput = typeof RetrieveMetricsOutput.Type;
 
 // The operation

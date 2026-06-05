@@ -462,7 +462,7 @@ export const GatewaysDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type GatewaysDeleteInput = typeof GatewaysDeleteInput.Type;
 
 // Output Schema
-export const GatewaysDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GatewaysDeleteOutput = Schema.Void;
 export type GatewaysDeleteOutput = typeof GatewaysDeleteOutput.Type;
 
 // The operation
@@ -867,7 +867,7 @@ export const LicenseProfilesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type LicenseProfilesDeleteInput = typeof LicenseProfilesDeleteInput.Type;
 
 // Output Schema
-export const LicenseProfilesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const LicenseProfilesDeleteOutput = Schema.Void;
 export type LicenseProfilesDeleteOutput =
   typeof LicenseProfilesDeleteOutput.Type;
 
@@ -1095,7 +1095,7 @@ export const LicensesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type LicensesDeleteInput = typeof LicensesDeleteInput.Type;
 
 // Output Schema
-export const LicensesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const LicensesDeleteOutput = Schema.Void;
 export type LicensesDeleteOutput = typeof LicensesDeleteOutput.Type;
 
 // The operation
@@ -1430,7 +1430,7 @@ export type MachineExtensionsDeleteInput =
   typeof MachineExtensionsDeleteInput.Type;
 
 // Output Schema
-export const MachineExtensionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MachineExtensionsDeleteOutput = Schema.Void;
 export type MachineExtensionsDeleteOutput =
   typeof MachineExtensionsDeleteOutput.Type;
 
@@ -1687,7 +1687,7 @@ export type MachineRunCommandsDeleteInput =
   typeof MachineRunCommandsDeleteInput.Type;
 
 // Output Schema
-export const MachineRunCommandsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MachineRunCommandsDeleteOutput = Schema.Void;
 export type MachineRunCommandsDeleteOutput =
   typeof MachineRunCommandsDeleteOutput.Type;
 
@@ -2033,7 +2033,7 @@ export const MachinesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type MachinesDeleteInput = typeof MachinesDeleteInput.Type;
 
 // Output Schema
-export const MachinesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MachinesDeleteOutput = Schema.Void;
 export type MachinesDeleteOutput = typeof MachinesDeleteOutput.Type;
 
 // The operation
@@ -2980,7 +2980,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -3290,7 +3290,7 @@ export type PrivateLinkScopesDeleteInput =
   typeof PrivateLinkScopesDeleteInput.Type;
 
 // Output Schema
-export const PrivateLinkScopesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateLinkScopesDeleteOutput = Schema.Void;
 export type PrivateLinkScopesDeleteOutput =
   typeof PrivateLinkScopesDeleteOutput.Type;
 
@@ -3785,7 +3785,7 @@ export const UpgradeExtensionsInput = /*@__PURE__*/ Schema.Struct({
 export type UpgradeExtensionsInput = typeof UpgradeExtensionsInput.Type;
 
 // Output Schema
-export const UpgradeExtensionsOutput = /*@__PURE__*/ Schema.Void;
+export const UpgradeExtensionsOutput = Schema.Void;
 export type UpgradeExtensionsOutput = typeof UpgradeExtensionsOutput.Type;
 
 // The operation

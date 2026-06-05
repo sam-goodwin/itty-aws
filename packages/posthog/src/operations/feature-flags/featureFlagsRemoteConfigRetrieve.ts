@@ -18,7 +18,7 @@ export type FeatureFlagsRemoteConfigRetrieveInput =
   typeof FeatureFlagsRemoteConfigRetrieveInput.Type;
 
 // Output Schema
-export const FeatureFlagsRemoteConfigRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const FeatureFlagsRemoteConfigRetrieveOutput = Schema.Void;
 export type FeatureFlagsRemoteConfigRetrieveOutput =
   typeof FeatureFlagsRemoteConfigRetrieveOutput.Type;
 

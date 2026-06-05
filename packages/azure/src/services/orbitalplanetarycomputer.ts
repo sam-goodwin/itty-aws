@@ -72,7 +72,7 @@ export const GeoCatalogsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type GeoCatalogsDeleteInput = typeof GeoCatalogsDeleteInput.Type;
 
 // Output Schema
-export const GeoCatalogsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GeoCatalogsDeleteOutput = Schema.Void;
 export type GeoCatalogsDeleteOutput = typeof GeoCatalogsDeleteOutput.Type;
 
 // The operation

@@ -18,8 +18,7 @@ export type DeleteBranchNeonAuthOauthProviderInput =
   typeof DeleteBranchNeonAuthOauthProviderInput.Type;
 
 // Output Schema
-export const DeleteBranchNeonAuthOauthProviderOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeleteBranchNeonAuthOauthProviderOutput = Schema.Void;
 export type DeleteBranchNeonAuthOauthProviderOutput =
   typeof DeleteBranchNeonAuthOauthProviderOutput.Type;
 

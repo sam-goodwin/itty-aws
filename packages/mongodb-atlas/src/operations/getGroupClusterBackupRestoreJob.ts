@@ -22,7 +22,7 @@ export type GetGroupClusterBackupRestoreJobInput =
   typeof GetGroupClusterBackupRestoreJobInput.Type;
 
 // Output Schema
-export const GetGroupClusterBackupRestoreJobOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupClusterBackupRestoreJobOutput = Schema.Void;
 export type GetGroupClusterBackupRestoreJobOutput =
   typeof GetGroupClusterBackupRestoreJobOutput.Type;
 

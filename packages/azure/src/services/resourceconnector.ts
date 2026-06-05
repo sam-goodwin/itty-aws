@@ -77,7 +77,7 @@ export const AppliancesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AppliancesDeleteInput = typeof AppliancesDeleteInput.Type;
 
 // Output Schema
-export const AppliancesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AppliancesDeleteOutput = Schema.Void;
 export type AppliancesDeleteOutput = typeof AppliancesDeleteOutput.Type;
 
 // The operation

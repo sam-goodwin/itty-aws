@@ -18,7 +18,7 @@ export const DeleteOrgTeamInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteOrgTeamInput = typeof DeleteOrgTeamInput.Type;
 
 // Output Schema
-export const DeleteOrgTeamOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteOrgTeamOutput = Schema.Void;
 export type DeleteOrgTeamOutput = typeof DeleteOrgTeamOutput.Type;
 
 // The operation

@@ -22,7 +22,7 @@ export type UpdateGroupApiKeyRolesInput =
   typeof UpdateGroupApiKeyRolesInput.Type;
 
 // Output Schema
-export const UpdateGroupApiKeyRolesOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupApiKeyRolesOutput = Schema.Void;
 export type UpdateGroupApiKeyRolesOutput =
   typeof UpdateGroupApiKeyRolesOutput.Type;
 

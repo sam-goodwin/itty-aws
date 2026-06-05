@@ -75,7 +75,7 @@ export const ApplicationDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ApplicationDeleteInput = typeof ApplicationDeleteInput.Type;
 
 // Output Schema
-export const ApplicationDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationDeleteOutput = Schema.Void;
 export type ApplicationDeleteOutput = typeof ApplicationDeleteOutput.Type;
 
 // The operation
@@ -327,7 +327,7 @@ export type ApplicationPackageDeleteInput =
   typeof ApplicationPackageDeleteInput.Type;
 
 // Output Schema
-export const ApplicationPackageDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationPackageDeleteOutput = Schema.Void;
 export type ApplicationPackageDeleteOutput =
   typeof ApplicationPackageDeleteOutput.Type;
 
@@ -575,7 +575,7 @@ export const BatchAccountDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BatchAccountDeleteInput = typeof BatchAccountDeleteInput.Type;
 
 // Output Schema
-export const BatchAccountDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BatchAccountDeleteOutput = Schema.Void;
 export type BatchAccountDeleteOutput = typeof BatchAccountDeleteOutput.Type;
 
 // The operation
@@ -1017,8 +1017,7 @@ export type BatchAccountSynchronizeAutoStorageKeysInput =
   typeof BatchAccountSynchronizeAutoStorageKeysInput.Type;
 
 // Output Schema
-export const BatchAccountSynchronizeAutoStorageKeysOutput =
-  /*@__PURE__*/ Schema.Void;
+export const BatchAccountSynchronizeAutoStorageKeysOutput = Schema.Void;
 export type BatchAccountSynchronizeAutoStorageKeysOutput =
   typeof BatchAccountSynchronizeAutoStorageKeysOutput.Type;
 
@@ -1356,8 +1355,7 @@ export type NetworkSecurityPerimeterReconcileConfigurationInput =
   typeof NetworkSecurityPerimeterReconcileConfigurationInput.Type;
 
 // Output Schema
-export const NetworkSecurityPerimeterReconcileConfigurationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const NetworkSecurityPerimeterReconcileConfigurationOutput = Schema.Void;
 export type NetworkSecurityPerimeterReconcileConfigurationOutput =
   typeof NetworkSecurityPerimeterReconcileConfigurationOutput.Type;
 
@@ -1485,7 +1483,7 @@ export const PoolDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PoolDeleteInput = typeof PoolDeleteInput.Type;
 
 // Output Schema
-export const PoolDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PoolDeleteOutput = Schema.Void;
 export type PoolDeleteOutput = typeof PoolDeleteOutput.Type;
 
 // The operation
@@ -1802,7 +1800,7 @@ export type PrivateEndpointConnectionDeleteInput =
   typeof PrivateEndpointConnectionDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionDeleteOutput =
   typeof PrivateEndpointConnectionDeleteOutput.Type;
 

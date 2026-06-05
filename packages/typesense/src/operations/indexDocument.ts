@@ -14,7 +14,7 @@ export const IndexDocumentInput = /*@__PURE__*/ Schema.Struct({
 export type IndexDocumentInput = typeof IndexDocumentInput.Type;
 
 // Output Schema
-export const IndexDocumentOutput = /*@__PURE__*/ Schema.Unknown;
+export const IndexDocumentOutput = Schema.Unknown;
 export type IndexDocumentOutput = typeof IndexDocumentOutput.Type;
 
 // The operation

@@ -18,7 +18,7 @@ export const RemoveOrgTeamUserInput = /*@__PURE__*/ Schema.Struct({
 export type RemoveOrgTeamUserInput = typeof RemoveOrgTeamUserInput.Type;
 
 // Output Schema
-export const RemoveOrgTeamUserOutput = /*@__PURE__*/ Schema.Void;
+export const RemoveOrgTeamUserOutput = Schema.Void;
 export type RemoveOrgTeamUserOutput = typeof RemoveOrgTeamUserOutput.Type;
 
 // The operation

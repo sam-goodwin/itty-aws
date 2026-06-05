@@ -178,8 +178,7 @@ export type PrivateEndpointConnectionsAdtAPIDeleteInput =
   typeof PrivateEndpointConnectionsAdtAPIDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsAdtAPIDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsAdtAPIDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsAdtAPIDeleteOutput =
   typeof PrivateEndpointConnectionsAdtAPIDeleteOutput.Type;
 
@@ -384,8 +383,7 @@ export type PrivateEndpointConnectionsCompDeleteInput =
   typeof PrivateEndpointConnectionsCompDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsCompDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsCompDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsCompDeleteOutput =
   typeof PrivateEndpointConnectionsCompDeleteOutput.Type;
 
@@ -588,8 +586,7 @@ export type PrivateEndpointConnectionsForEDMDeleteInput =
   typeof PrivateEndpointConnectionsForEDMDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsForEDMDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsForEDMDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsForEDMDeleteOutput =
   typeof PrivateEndpointConnectionsForEDMDeleteOutput.Type;
 
@@ -796,7 +793,7 @@ export type PrivateEndpointConnectionsForMIPPolicySyncDeleteInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput =
   typeof PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput.Type;
 
@@ -1001,7 +998,7 @@ export type PrivateEndpointConnectionsForSCCPowershellDeleteInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsForSCCPowershellDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type PrivateEndpointConnectionsForSCCPowershellDeleteOutput =
   typeof PrivateEndpointConnectionsForSCCPowershellDeleteOutput.Type;
 
@@ -1204,8 +1201,7 @@ export type PrivateEndpointConnectionsSecDeleteInput =
   typeof PrivateEndpointConnectionsSecDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsSecDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsSecDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsSecDeleteOutput =
   typeof PrivateEndpointConnectionsSecDeleteOutput.Type;
 
@@ -2293,7 +2289,7 @@ export type PrivateLinkServicesForM365ComplianceCenterDeleteInput =
 
 // Output Schema
 export const PrivateLinkServicesForM365ComplianceCenterDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type PrivateLinkServicesForM365ComplianceCenterDeleteOutput =
   typeof PrivateLinkServicesForM365ComplianceCenterDeleteOutput.Type;
 
@@ -2697,8 +2693,7 @@ export type PrivateLinkServicesForM365SecurityCenterDeleteInput =
   typeof PrivateLinkServicesForM365SecurityCenterDeleteInput.Type;
 
 // Output Schema
-export const PrivateLinkServicesForM365SecurityCenterDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateLinkServicesForM365SecurityCenterDeleteOutput = Schema.Void;
 export type PrivateLinkServicesForM365SecurityCenterDeleteOutput =
   typeof PrivateLinkServicesForM365SecurityCenterDeleteOutput.Type;
 
@@ -3102,8 +3097,7 @@ export type PrivateLinkServicesForMIPPolicySyncDeleteInput =
   typeof PrivateLinkServicesForMIPPolicySyncDeleteInput.Type;
 
 // Output Schema
-export const PrivateLinkServicesForMIPPolicySyncDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateLinkServicesForMIPPolicySyncDeleteOutput = Schema.Void;
 export type PrivateLinkServicesForMIPPolicySyncDeleteOutput =
   typeof PrivateLinkServicesForMIPPolicySyncDeleteOutput.Type;
 
@@ -3512,7 +3506,7 @@ export type PrivateLinkServicesForO365ManagementActivityAPIDeleteInput =
 
 // Output Schema
 export const PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput =
   typeof PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput.Type;
 
@@ -3916,8 +3910,7 @@ export type PrivateLinkServicesForSCCPowershellDeleteInput =
   typeof PrivateLinkServicesForSCCPowershellDeleteInput.Type;
 
 // Output Schema
-export const PrivateLinkServicesForSCCPowershellDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateLinkServicesForSCCPowershellDeleteOutput = Schema.Void;
 export type PrivateLinkServicesForSCCPowershellDeleteOutput =
   typeof PrivateLinkServicesForSCCPowershellDeleteOutput.Type;
 
@@ -4256,7 +4249,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesDeleteOutput = Schema.Void;
 export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 
 // The operation

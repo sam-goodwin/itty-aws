@@ -14,7 +14,7 @@ export const V1DiffABranchInput = /*@__PURE__*/ Schema.Struct({
 export type V1DiffABranchInput = typeof V1DiffABranchInput.Type;
 
 // Output Schema
-export const V1DiffABranchOutput = /*@__PURE__*/ Schema.Void;
+export const V1DiffABranchOutput = Schema.Void;
 export type V1DiffABranchOutput = typeof V1DiffABranchOutput.Type;
 
 // The operation

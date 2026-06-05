@@ -139,7 +139,7 @@ export type HybridConnectionsDeleteInput =
   typeof HybridConnectionsDeleteInput.Type;
 
 // Output Schema
-export const HybridConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const HybridConnectionsDeleteOutput = Schema.Void;
 export type HybridConnectionsDeleteOutput =
   typeof HybridConnectionsDeleteOutput.Type;
 
@@ -176,8 +176,7 @@ export type HybridConnectionsDeleteAuthorizationRuleInput =
   typeof HybridConnectionsDeleteAuthorizationRuleInput.Type;
 
 // Output Schema
-export const HybridConnectionsDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ Schema.Void;
+export const HybridConnectionsDeleteAuthorizationRuleOutput = Schema.Void;
 export type HybridConnectionsDeleteAuthorizationRuleOutput =
   typeof HybridConnectionsDeleteAuthorizationRuleOutput.Type;
 
@@ -760,7 +759,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
 
 // Output Schema
-export const NamespacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NamespacesDeleteOutput = Schema.Void;
 export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
 
 // The operation
@@ -794,8 +793,7 @@ export type NamespacesDeleteAuthorizationRuleInput =
   typeof NamespacesDeleteAuthorizationRuleInput.Type;
 
 // Output Schema
-export const NamespacesDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ Schema.Void;
+export const NamespacesDeleteAuthorizationRuleOutput = Schema.Void;
 export type NamespacesDeleteAuthorizationRuleOutput =
   typeof NamespacesDeleteAuthorizationRuleOutput.Type;
 
@@ -1388,7 +1386,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1764,7 +1762,7 @@ export const WCFRelaysDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type WCFRelaysDeleteInput = typeof WCFRelaysDeleteInput.Type;
 
 // Output Schema
-export const WCFRelaysDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WCFRelaysDeleteOutput = Schema.Void;
 export type WCFRelaysDeleteOutput = typeof WCFRelaysDeleteOutput.Type;
 
 // The operation
@@ -1800,7 +1798,7 @@ export type WCFRelaysDeleteAuthorizationRuleInput =
   typeof WCFRelaysDeleteAuthorizationRuleInput.Type;
 
 // Output Schema
-export const WCFRelaysDeleteAuthorizationRuleOutput = /*@__PURE__*/ Schema.Void;
+export const WCFRelaysDeleteAuthorizationRuleOutput = Schema.Void;
 export type WCFRelaysDeleteAuthorizationRuleOutput =
   typeof WCFRelaysDeleteAuthorizationRuleOutput.Type;
 

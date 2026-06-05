@@ -17,7 +17,7 @@ export type GetTerminalLocationsLocationInput =
   typeof GetTerminalLocationsLocationInput.Type;
 
 // Output Schema
-export const GetTerminalLocationsLocationOutput = /*@__PURE__*/ Schema.Unknown;
+export const GetTerminalLocationsLocationOutput = Schema.Unknown;
 export type GetTerminalLocationsLocationOutput =
   typeof GetTerminalLocationsLocationOutput.Type;
 

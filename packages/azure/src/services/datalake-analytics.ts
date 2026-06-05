@@ -77,7 +77,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
 
 // Output Schema
-export const AccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AccountsDeleteOutput = Schema.Void;
 export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
 
 // The operation
@@ -285,7 +285,7 @@ export const ComputePoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ComputePoliciesDeleteInput = typeof ComputePoliciesDeleteInput.Type;
 
 // Output Schema
-export const ComputePoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ComputePoliciesDeleteOutput = Schema.Void;
 export type ComputePoliciesDeleteOutput =
   typeof ComputePoliciesDeleteOutput.Type;
 
@@ -407,7 +407,7 @@ export type DataLakeStoreAccountsAddInput =
   typeof DataLakeStoreAccountsAddInput.Type;
 
 // Output Schema
-export const DataLakeStoreAccountsAddOutput = /*@__PURE__*/ Schema.Void;
+export const DataLakeStoreAccountsAddOutput = Schema.Void;
 export type DataLakeStoreAccountsAddOutput =
   typeof DataLakeStoreAccountsAddOutput.Type;
 
@@ -434,7 +434,7 @@ export type DataLakeStoreAccountsDeleteInput =
   typeof DataLakeStoreAccountsDeleteInput.Type;
 
 // Output Schema
-export const DataLakeStoreAccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DataLakeStoreAccountsDeleteOutput = Schema.Void;
 export type DataLakeStoreAccountsDeleteOutput =
   typeof DataLakeStoreAccountsDeleteOutput.Type;
 
@@ -574,7 +574,7 @@ export const FirewallRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
 
 // Output Schema
-export const FirewallRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FirewallRulesDeleteOutput = Schema.Void;
 export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
 
 // The operation
@@ -811,7 +811,7 @@ export const StorageAccountsAddInput = /*@__PURE__*/ Schema.Struct({
 export type StorageAccountsAddInput = typeof StorageAccountsAddInput.Type;
 
 // Output Schema
-export const StorageAccountsAddOutput = /*@__PURE__*/ Schema.Void;
+export const StorageAccountsAddOutput = Schema.Void;
 export type StorageAccountsAddOutput = typeof StorageAccountsAddOutput.Type;
 
 // The operation
@@ -836,7 +836,7 @@ export const StorageAccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type StorageAccountsDeleteInput = typeof StorageAccountsDeleteInput.Type;
 
 // Output Schema
-export const StorageAccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StorageAccountsDeleteOutput = Schema.Void;
 export type StorageAccountsDeleteOutput =
   typeof StorageAccountsDeleteOutput.Type;
 
@@ -1056,7 +1056,7 @@ export const StorageAccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
 export type StorageAccountsUpdateInput = typeof StorageAccountsUpdateInput.Type;
 
 // Output Schema
-export const StorageAccountsUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const StorageAccountsUpdateOutput = Schema.Void;
 export type StorageAccountsUpdateOutput =
   typeof StorageAccountsUpdateOutput.Type;
 

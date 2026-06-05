@@ -18,8 +18,7 @@ export type LlmAnalyticsEvaluationReportsGenerateCreateInput =
   typeof LlmAnalyticsEvaluationReportsGenerateCreateInput.Type;
 
 // Output Schema
-export const LlmAnalyticsEvaluationReportsGenerateCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const LlmAnalyticsEvaluationReportsGenerateCreateOutput = Schema.Void;
 export type LlmAnalyticsEvaluationReportsGenerateCreateOutput =
   typeof LlmAnalyticsEvaluationReportsGenerateCreateOutput.Type;
 

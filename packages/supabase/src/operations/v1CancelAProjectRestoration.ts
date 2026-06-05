@@ -11,7 +11,7 @@ export type V1CancelAProjectRestorationInput =
   typeof V1CancelAProjectRestorationInput.Type;
 
 // Output Schema
-export const V1CancelAProjectRestorationOutput = /*@__PURE__*/ Schema.Void;
+export const V1CancelAProjectRestorationOutput = Schema.Void;
 export type V1CancelAProjectRestorationOutput =
   typeof V1CancelAProjectRestorationOutput.Type;
 

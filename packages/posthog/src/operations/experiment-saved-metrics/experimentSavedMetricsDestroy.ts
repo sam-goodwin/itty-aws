@@ -17,7 +17,7 @@ export type ExperimentSavedMetricsDestroyInput =
   typeof ExperimentSavedMetricsDestroyInput.Type;
 
 // Output Schema
-export const ExperimentSavedMetricsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const ExperimentSavedMetricsDestroyOutput = Schema.Void;
 export type ExperimentSavedMetricsDestroyOutput =
   typeof ExperimentSavedMetricsDestroyOutput.Type;
 

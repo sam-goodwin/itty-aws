@@ -18,7 +18,7 @@ export type CreateGroupCloudProviderAccessInput =
   typeof CreateGroupCloudProviderAccessInput.Type;
 
 // Output Schema
-export const CreateGroupCloudProviderAccessOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupCloudProviderAccessOutput = Schema.Void;
 export type CreateGroupCloudProviderAccessOutput =
   typeof CreateGroupCloudProviderAccessOutput.Type;
 

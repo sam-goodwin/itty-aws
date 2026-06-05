@@ -161,7 +161,7 @@ export const StorageTasksDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type StorageTasksDeleteInput = typeof StorageTasksDeleteInput.Type;
 
 // Output Schema
-export const StorageTasksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StorageTasksDeleteOutput = Schema.Void;
 export type StorageTasksDeleteOutput = typeof StorageTasksDeleteOutput.Type;
 
 // The operation
@@ -514,7 +514,7 @@ export type StorageTasksStopAllAssignmentsInput =
   typeof StorageTasksStopAllAssignmentsInput.Type;
 
 // Output Schema
-export const StorageTasksStopAllAssignmentsOutput = /*@__PURE__*/ Schema.Void;
+export const StorageTasksStopAllAssignmentsOutput = Schema.Void;
 export type StorageTasksStopAllAssignmentsOutput =
   typeof StorageTasksStopAllAssignmentsOutput.Type;
 

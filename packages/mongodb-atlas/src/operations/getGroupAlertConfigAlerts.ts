@@ -22,7 +22,7 @@ export type GetGroupAlertConfigAlertsInput =
   typeof GetGroupAlertConfigAlertsInput.Type;
 
 // Output Schema
-export const GetGroupAlertConfigAlertsOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupAlertConfigAlertsOutput = Schema.Void;
 export type GetGroupAlertConfigAlertsOutput =
   typeof GetGroupAlertConfigAlertsOutput.Type;
 

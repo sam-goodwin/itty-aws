@@ -201,7 +201,7 @@ export type HierarchySettingsDeleteInput =
   typeof HierarchySettingsDeleteInput.Type;
 
 // Output Schema
-export const HierarchySettingsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const HierarchySettingsDeleteOutput = Schema.Void;
 export type HierarchySettingsDeleteOutput =
   typeof HierarchySettingsDeleteOutput.Type;
 
@@ -421,7 +421,7 @@ export type ManagementGroupsDeleteInput =
   typeof ManagementGroupsDeleteInput.Type;
 
 // Output Schema
-export const ManagementGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ManagementGroupsDeleteOutput = Schema.Void;
 export type ManagementGroupsDeleteOutput =
   typeof ManagementGroupsDeleteOutput.Type;
 
@@ -661,8 +661,7 @@ export type ManagementGroupSubscriptionsDeleteInput =
   typeof ManagementGroupSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const ManagementGroupSubscriptionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ManagementGroupSubscriptionsDeleteOutput = Schema.Void;
 export type ManagementGroupSubscriptionsDeleteOutput =
   typeof ManagementGroupSubscriptionsDeleteOutput.Type;
 

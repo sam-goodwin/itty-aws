@@ -19,7 +19,7 @@ export type UpdateBranchClusterConfigInput =
   typeof UpdateBranchClusterConfigInput.Type;
 
 // Output Schema
-export const UpdateBranchClusterConfigOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateBranchClusterConfigOutput = Schema.Void;
 export type UpdateBranchClusterConfigOutput =
   typeof UpdateBranchClusterConfigOutput.Type;
 

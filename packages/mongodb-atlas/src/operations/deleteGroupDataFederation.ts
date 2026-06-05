@@ -19,7 +19,7 @@ export type DeleteGroupDataFederationInput =
   typeof DeleteGroupDataFederationInput.Type;
 
 // Output Schema
-export const DeleteGroupDataFederationOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupDataFederationOutput = Schema.Void;
 export type DeleteGroupDataFederationOutput =
   typeof DeleteGroupDataFederationOutput.Type;
 

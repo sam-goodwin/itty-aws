@@ -22,8 +22,7 @@ export type ListFederationSettingIdentityProvidersInput =
   typeof ListFederationSettingIdentityProvidersInput.Type;
 
 // Output Schema
-export const ListFederationSettingIdentityProvidersOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListFederationSettingIdentityProvidersOutput = Schema.Void;
 export type ListFederationSettingIdentityProvidersOutput =
   typeof ListFederationSettingIdentityProvidersOutput.Type;
 

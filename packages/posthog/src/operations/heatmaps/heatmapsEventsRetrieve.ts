@@ -16,7 +16,7 @@ export type HeatmapsEventsRetrieveInput =
   typeof HeatmapsEventsRetrieveInput.Type;
 
 // Output Schema
-export const HeatmapsEventsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const HeatmapsEventsRetrieveOutput = Schema.Void;
 export type HeatmapsEventsRetrieveOutput =
   typeof HeatmapsEventsRetrieveOutput.Type;
 

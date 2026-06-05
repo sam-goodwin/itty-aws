@@ -759,7 +759,7 @@ export type UsersTwoFactorBackupCodesCreateInput =
   typeof UsersTwoFactorBackupCodesCreateInput.Type;
 
 // Output Schema
-export const UsersTwoFactorBackupCodesCreateOutput = /*@__PURE__*/ Schema.Void;
+export const UsersTwoFactorBackupCodesCreateOutput = Schema.Void;
 export type UsersTwoFactorBackupCodesCreateOutput =
   typeof UsersTwoFactorBackupCodesCreateOutput.Type;
 

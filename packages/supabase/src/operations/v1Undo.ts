@@ -13,7 +13,7 @@ export const V1UndoInput = /*@__PURE__*/ Schema.Struct({
 export type V1UndoInput = typeof V1UndoInput.Type;
 
 // Output Schema
-export const V1UndoOutput = /*@__PURE__*/ Schema.Void;
+export const V1UndoOutput = Schema.Void;
 export type V1UndoOutput = typeof V1UndoOutput.Type;
 
 // The operation

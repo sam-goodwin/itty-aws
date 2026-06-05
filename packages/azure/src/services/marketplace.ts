@@ -70,8 +70,7 @@ export type PrivateStoreAcknowledgeOfferNotificationInput =
   typeof PrivateStoreAcknowledgeOfferNotificationInput.Type;
 
 // Output Schema
-export const PrivateStoreAcknowledgeOfferNotificationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateStoreAcknowledgeOfferNotificationOutput = Schema.Void;
 export type PrivateStoreAcknowledgeOfferNotificationOutput =
   typeof PrivateStoreAcknowledgeOfferNotificationOutput.Type;
 
@@ -391,7 +390,7 @@ export type PrivateStoreCollectionDeleteInput =
   typeof PrivateStoreCollectionDeleteInput.Type;
 
 // Output Schema
-export const PrivateStoreCollectionDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateStoreCollectionDeleteOutput = Schema.Void;
 export type PrivateStoreCollectionDeleteOutput =
   typeof PrivateStoreCollectionDeleteOutput.Type;
 
@@ -699,8 +698,7 @@ export type PrivateStoreCollectionOfferDeleteInput =
   typeof PrivateStoreCollectionOfferDeleteInput.Type;
 
 // Output Schema
-export const PrivateStoreCollectionOfferDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PrivateStoreCollectionOfferDeleteOutput = Schema.Void;
 export type PrivateStoreCollectionOfferDeleteOutput =
   typeof PrivateStoreCollectionOfferDeleteOutput.Type;
 
@@ -946,7 +944,7 @@ export type PrivateStoreCollectionOfferPostInput =
   typeof PrivateStoreCollectionOfferPostInput.Type;
 
 // Output Schema
-export const PrivateStoreCollectionOfferPostOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateStoreCollectionOfferPostOutput = Schema.Void;
 export type PrivateStoreCollectionOfferPostOutput =
   typeof PrivateStoreCollectionOfferPostOutput.Type;
 
@@ -1032,7 +1030,7 @@ export type PrivateStoreCollectionPostInput =
   typeof PrivateStoreCollectionPostInput.Type;
 
 // Output Schema
-export const PrivateStoreCollectionPostOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateStoreCollectionPostOutput = Schema.Void;
 export type PrivateStoreCollectionPostOutput =
   typeof PrivateStoreCollectionPostOutput.Type;
 
@@ -1207,7 +1205,7 @@ export type PrivateStoreCreateOrUpdateInput =
   typeof PrivateStoreCreateOrUpdateInput.Type;
 
 // Output Schema
-export const PrivateStoreCreateOrUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateStoreCreateOrUpdateOutput = Schema.Void;
 export type PrivateStoreCreateOrUpdateOutput =
   typeof PrivateStoreCreateOrUpdateOutput.Type;
 
@@ -1235,7 +1233,7 @@ export const PrivateStoreDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PrivateStoreDeleteInput = typeof PrivateStoreDeleteInput.Type;
 
 // Output Schema
-export const PrivateStoreDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateStoreDeleteOutput = Schema.Void;
 export type PrivateStoreDeleteOutput = typeof PrivateStoreDeleteOutput.Type;
 
 // The operation
@@ -2107,7 +2105,7 @@ export type PrivateStoreWithdrawPlanInput =
   typeof PrivateStoreWithdrawPlanInput.Type;
 
 // Output Schema
-export const PrivateStoreWithdrawPlanOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateStoreWithdrawPlanOutput = Schema.Void;
 export type PrivateStoreWithdrawPlanOutput =
   typeof PrivateStoreWithdrawPlanOutput.Type;
 
@@ -2217,7 +2215,7 @@ export const SetCollectionRulesInput = /*@__PURE__*/ Schema.Struct({
 export type SetCollectionRulesInput = typeof SetCollectionRulesInput.Type;
 
 // Output Schema
-export const SetCollectionRulesOutput = /*@__PURE__*/ Schema.Void;
+export const SetCollectionRulesOutput = Schema.Void;
 export type SetCollectionRulesOutput = typeof SetCollectionRulesOutput.Type;
 
 // The operation

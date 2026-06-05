@@ -19,7 +19,7 @@ export const SecretkeyVerifyInput = /*@__PURE__*/ Schema.Struct({
 export type SecretkeyVerifyInput = typeof SecretkeyVerifyInput.Type;
 
 // Output Schema
-export const SecretkeyVerifyOutput = /*@__PURE__*/ Schema.Void;
+export const SecretkeyVerifyOutput = Schema.Void;
 export type SecretkeyVerifyOutput = typeof SecretkeyVerifyOutput.Type;
 
 // The operation

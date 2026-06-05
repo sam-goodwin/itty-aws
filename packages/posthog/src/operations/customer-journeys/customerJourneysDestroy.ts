@@ -17,7 +17,7 @@ export type CustomerJourneysDestroyInput =
   typeof CustomerJourneysDestroyInput.Type;
 
 // Output Schema
-export const CustomerJourneysDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const CustomerJourneysDestroyOutput = Schema.Void;
 export type CustomerJourneysDestroyOutput =
   typeof CustomerJourneysDestroyOutput.Type;
 

@@ -97,8 +97,7 @@ export type FeatureFlagsEnrichUsageDashboardCreateInput =
   typeof FeatureFlagsEnrichUsageDashboardCreateInput.Type;
 
 // Output Schema
-export const FeatureFlagsEnrichUsageDashboardCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const FeatureFlagsEnrichUsageDashboardCreateOutput = Schema.Void;
 export type FeatureFlagsEnrichUsageDashboardCreateOutput =
   typeof FeatureFlagsEnrichUsageDashboardCreateOutput.Type;
 

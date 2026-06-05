@@ -18,7 +18,7 @@ export type EnvironmentsSettingsAsOfRetrieveInput =
   typeof EnvironmentsSettingsAsOfRetrieveInput.Type;
 
 // Output Schema
-export const EnvironmentsSettingsAsOfRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const EnvironmentsSettingsAsOfRetrieveOutput = Schema.Void;
 export type EnvironmentsSettingsAsOfRetrieveOutput =
   typeof EnvironmentsSettingsAsOfRetrieveOutput.Type;
 

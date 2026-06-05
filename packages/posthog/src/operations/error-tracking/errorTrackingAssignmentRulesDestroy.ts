@@ -18,8 +18,7 @@ export type ErrorTrackingAssignmentRulesDestroyInput =
   typeof ErrorTrackingAssignmentRulesDestroyInput.Type;
 
 // Output Schema
-export const ErrorTrackingAssignmentRulesDestroyOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingAssignmentRulesDestroyOutput = Schema.Void;
 export type ErrorTrackingAssignmentRulesDestroyOutput =
   typeof ErrorTrackingAssignmentRulesDestroyOutput.Type;
 

@@ -44,7 +44,7 @@ export const InvitesBulkCreateInput = /*@__PURE__*/ Schema.Struct({
 export type InvitesBulkCreateInput = typeof InvitesBulkCreateInput.Type;
 
 // Output Schema
-export const InvitesBulkCreateOutput = /*@__PURE__*/ Schema.Void;
+export const InvitesBulkCreateOutput = Schema.Void;
 export type InvitesBulkCreateOutput = typeof InvitesBulkCreateOutput.Type;
 
 // The operation

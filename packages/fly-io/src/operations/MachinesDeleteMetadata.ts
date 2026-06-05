@@ -18,7 +18,7 @@ export type MachinesDeleteMetadataInput =
   typeof MachinesDeleteMetadataInput.Type;
 
 // Output Schema
-export const MachinesDeleteMetadataOutput = /*@__PURE__*/ Schema.Void;
+export const MachinesDeleteMetadataOutput = Schema.Void;
 export type MachinesDeleteMetadataOutput =
   typeof MachinesDeleteMetadataOutput.Type;
 

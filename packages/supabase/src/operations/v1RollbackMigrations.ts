@@ -13,7 +13,7 @@ export const V1RollbackMigrationsInput = /*@__PURE__*/ Schema.Struct({
 export type V1RollbackMigrationsInput = typeof V1RollbackMigrationsInput.Type;
 
 // Output Schema
-export const V1RollbackMigrationsOutput = /*@__PURE__*/ Schema.Void;
+export const V1RollbackMigrationsOutput = Schema.Void;
 export type V1RollbackMigrationsOutput = typeof V1RollbackMigrationsOutput.Type;
 
 // The operation

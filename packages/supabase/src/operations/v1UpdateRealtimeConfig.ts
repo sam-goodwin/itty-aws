@@ -24,7 +24,7 @@ export type V1UpdateRealtimeConfigInput =
   typeof V1UpdateRealtimeConfigInput.Type;
 
 // Output Schema
-export const V1UpdateRealtimeConfigOutput = /*@__PURE__*/ Schema.Void;
+export const V1UpdateRealtimeConfigOutput = Schema.Void;
 export type V1UpdateRealtimeConfigOutput =
   typeof V1UpdateRealtimeConfigOutput.Type;
 

@@ -49,7 +49,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -169,7 +169,7 @@ export type PrivateLinkForAzureAdDeleteInput =
   typeof PrivateLinkForAzureAdDeleteInput.Type;
 
 // Output Schema
-export const PrivateLinkForAzureAdDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateLinkForAzureAdDeleteOutput = Schema.Void;
 export type PrivateLinkForAzureAdDeleteOutput =
   typeof PrivateLinkForAzureAdDeleteOutput.Type;
 

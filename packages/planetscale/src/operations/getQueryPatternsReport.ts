@@ -19,7 +19,7 @@ export type GetQueryPatternsReportInput =
   typeof GetQueryPatternsReportInput.Type;
 
 // Output Schema
-export const GetQueryPatternsReportOutput = /*@__PURE__*/ Schema.Void;
+export const GetQueryPatternsReportOutput = Schema.Void;
 export type GetQueryPatternsReportOutput =
   typeof GetQueryPatternsReportOutput.Type;
 

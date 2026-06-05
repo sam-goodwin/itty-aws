@@ -47,7 +47,7 @@ export const DiskPoolsDeallocateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DiskPoolsDeallocateInput = typeof DiskPoolsDeallocateInput.Type;
 
 // Output Schema
-export const DiskPoolsDeallocateOutput = /*@__PURE__*/ Schema.Void;
+export const DiskPoolsDeallocateOutput = Schema.Void;
 export type DiskPoolsDeallocateOutput = typeof DiskPoolsDeallocateOutput.Type;
 
 // The operation
@@ -68,7 +68,7 @@ export const DiskPoolsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DiskPoolsDeleteInput = typeof DiskPoolsDeleteInput.Type;
 
 // Output Schema
-export const DiskPoolsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DiskPoolsDeleteOutput = Schema.Void;
 export type DiskPoolsDeleteOutput = typeof DiskPoolsDeleteOutput.Type;
 
 // The operation
@@ -232,7 +232,7 @@ export const DiskPoolsStartInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DiskPoolsStartInput = typeof DiskPoolsStartInput.Type;
 
 // Output Schema
-export const DiskPoolsStartOutput = /*@__PURE__*/ Schema.Void;
+export const DiskPoolsStartOutput = Schema.Void;
 export type DiskPoolsStartOutput = typeof DiskPoolsStartOutput.Type;
 
 // The operation
@@ -278,7 +278,7 @@ export const DiskPoolsUpgradeInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DiskPoolsUpgradeInput = typeof DiskPoolsUpgradeInput.Type;
 
 // Output Schema
-export const DiskPoolsUpgradeOutput = /*@__PURE__*/ Schema.Void;
+export const DiskPoolsUpgradeOutput = Schema.Void;
 export type DiskPoolsUpgradeOutput = typeof DiskPoolsUpgradeOutput.Type;
 
 // The operation
@@ -365,7 +365,7 @@ export const IscsiTargetsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type IscsiTargetsDeleteInput = typeof IscsiTargetsDeleteInput.Type;
 
 // Output Schema
-export const IscsiTargetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IscsiTargetsDeleteOutput = Schema.Void;
 export type IscsiTargetsDeleteOutput = typeof IscsiTargetsDeleteOutput.Type;
 
 // The operation

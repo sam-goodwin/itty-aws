@@ -18,8 +18,7 @@ export type SurveysArchivedResponseUuidsRetrieveInput =
   typeof SurveysArchivedResponseUuidsRetrieveInput.Type;
 
 // Output Schema
-export const SurveysArchivedResponseUuidsRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SurveysArchivedResponseUuidsRetrieveOutput = Schema.Void;
 export type SurveysArchivedResponseUuidsRetrieveOutput =
   typeof SurveysArchivedResponseUuidsRetrieveOutput.Type;
 

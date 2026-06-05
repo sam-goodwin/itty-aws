@@ -104,7 +104,7 @@ export const DomainServicesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type DomainServicesDeleteInput = typeof DomainServicesDeleteInput.Type;
 
 // Output Schema
-export const DomainServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DomainServicesDeleteOutput = Schema.Void;
 export type DomainServicesDeleteOutput = typeof DomainServicesDeleteOutput.Type;
 
 // The operation
@@ -385,7 +385,7 @@ export const OuContainerDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type OuContainerDeleteInput = typeof OuContainerDeleteInput.Type;
 
 // Output Schema
-export const OuContainerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const OuContainerDeleteOutput = Schema.Void;
 export type OuContainerDeleteOutput = typeof OuContainerDeleteOutput.Type;
 
 // The operation

@@ -84,7 +84,7 @@ export type ArtifactManifestsDeleteInput =
   typeof ArtifactManifestsDeleteInput.Type;
 
 // Output Schema
-export const ArtifactManifestsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ArtifactManifestsDeleteOutput = Schema.Void;
 export type ArtifactManifestsDeleteOutput =
   typeof ArtifactManifestsDeleteOutput.Type;
 
@@ -400,7 +400,7 @@ export type ArtifactStoresAddNetworkFabricControllerEndPointsInput =
 
 // Output Schema
 export const ArtifactStoresAddNetworkFabricControllerEndPointsOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type ArtifactStoresAddNetworkFabricControllerEndPointsOutput =
   typeof ArtifactStoresAddNetworkFabricControllerEndPointsOutput.Type;
 
@@ -437,8 +437,7 @@ export type ArtifactStoresApprovePrivateEndPointsInput =
   typeof ArtifactStoresApprovePrivateEndPointsInput.Type;
 
 // Output Schema
-export const ArtifactStoresApprovePrivateEndPointsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ArtifactStoresApprovePrivateEndPointsOutput = Schema.Void;
 export type ArtifactStoresApprovePrivateEndPointsOutput =
   typeof ArtifactStoresApprovePrivateEndPointsOutput.Type;
 
@@ -527,7 +526,7 @@ export const ArtifactStoresDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ArtifactStoresDeleteInput = typeof ArtifactStoresDeleteInput.Type;
 
 // Output Schema
-export const ArtifactStoresDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ArtifactStoresDeleteOutput = Schema.Void;
 export type ArtifactStoresDeleteOutput = typeof ArtifactStoresDeleteOutput.Type;
 
 // The operation
@@ -563,7 +562,7 @@ export type ArtifactStoresDeleteNetworkFabricControllerEndPointsInput =
 
 // Output Schema
 export const ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput =
   typeof ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput.Type;
 
@@ -827,8 +826,7 @@ export type ArtifactStoresRemovePrivateEndPointsInput =
   typeof ArtifactStoresRemovePrivateEndPointsInput.Type;
 
 // Output Schema
-export const ArtifactStoresRemovePrivateEndPointsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ArtifactStoresRemovePrivateEndPointsOutput = Schema.Void;
 export type ArtifactStoresRemovePrivateEndPointsOutput =
   typeof ArtifactStoresRemovePrivateEndPointsOutput.Type;
 
@@ -1099,7 +1097,7 @@ export type ConfigurationGroupSchemasDeleteInput =
   typeof ConfigurationGroupSchemasDeleteInput.Type;
 
 // Output Schema
-export const ConfigurationGroupSchemasDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConfigurationGroupSchemasDeleteOutput = Schema.Void;
 export type ConfigurationGroupSchemasDeleteOutput =
   typeof ConfigurationGroupSchemasDeleteOutput.Type;
 
@@ -1414,7 +1412,7 @@ export type ConfigurationGroupValuesDeleteInput =
   typeof ConfigurationGroupValuesDeleteInput.Type;
 
 // Output Schema
-export const ConfigurationGroupValuesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConfigurationGroupValuesDeleteOutput = Schema.Void;
 export type ConfigurationGroupValuesDeleteOutput =
   typeof ConfigurationGroupValuesDeleteOutput.Type;
 
@@ -1749,8 +1747,7 @@ export type NetworkFunctionDefinitionGroupsDeleteInput =
   typeof NetworkFunctionDefinitionGroupsDeleteInput.Type;
 
 // Output Schema
-export const NetworkFunctionDefinitionGroupsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const NetworkFunctionDefinitionGroupsDeleteOutput = Schema.Void;
 export type NetworkFunctionDefinitionGroupsDeleteOutput =
   typeof NetworkFunctionDefinitionGroupsDeleteOutput.Type;
 
@@ -2034,8 +2031,7 @@ export type NetworkFunctionDefinitionVersionsDeleteInput =
   typeof NetworkFunctionDefinitionVersionsDeleteInput.Type;
 
 // Output Schema
-export const NetworkFunctionDefinitionVersionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const NetworkFunctionDefinitionVersionsDeleteOutput = Schema.Void;
 export type NetworkFunctionDefinitionVersionsDeleteOutput =
   typeof NetworkFunctionDefinitionVersionsDeleteOutput.Type;
 
@@ -2371,7 +2367,7 @@ export type NetworkFunctionsDeleteInput =
   typeof NetworkFunctionsDeleteInput.Type;
 
 // Output Schema
-export const NetworkFunctionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkFunctionsDeleteOutput = Schema.Void;
 export type NetworkFunctionsDeleteOutput =
   typeof NetworkFunctionsDeleteOutput.Type;
 
@@ -2404,7 +2400,7 @@ export type NetworkFunctionsExecuteRequestInput =
   typeof NetworkFunctionsExecuteRequestInput.Type;
 
 // Output Schema
-export const NetworkFunctionsExecuteRequestOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkFunctionsExecuteRequestOutput = Schema.Void;
 export type NetworkFunctionsExecuteRequestOutput =
   typeof NetworkFunctionsExecuteRequestOutput.Type;
 
@@ -2736,7 +2732,7 @@ export type NetworkServiceDesignGroupsDeleteInput =
   typeof NetworkServiceDesignGroupsDeleteInput.Type;
 
 // Output Schema
-export const NetworkServiceDesignGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkServiceDesignGroupsDeleteOutput = Schema.Void;
 export type NetworkServiceDesignGroupsDeleteOutput =
   typeof NetworkServiceDesignGroupsDeleteOutput.Type;
 
@@ -3013,8 +3009,7 @@ export type NetworkServiceDesignVersionsDeleteInput =
   typeof NetworkServiceDesignVersionsDeleteInput.Type;
 
 // Output Schema
-export const NetworkServiceDesignVersionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const NetworkServiceDesignVersionsDeleteOutput = Schema.Void;
 export type NetworkServiceDesignVersionsDeleteOutput =
   typeof NetworkServiceDesignVersionsDeleteOutput.Type;
 
@@ -3582,7 +3577,7 @@ export const PublishersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PublishersDeleteInput = typeof PublishersDeleteInput.Type;
 
 // Output Schema
-export const PublishersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PublishersDeleteOutput = Schema.Void;
 export type PublishersDeleteOutput = typeof PublishersDeleteOutput.Type;
 
 // The operation
@@ -3897,7 +3892,7 @@ export type SiteNetworkServicesDeleteInput =
   typeof SiteNetworkServicesDeleteInput.Type;
 
 // Output Schema
-export const SiteNetworkServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SiteNetworkServicesDeleteOutput = Schema.Void;
 export type SiteNetworkServicesDeleteOutput =
   typeof SiteNetworkServicesDeleteOutput.Type;
 
@@ -4220,7 +4215,7 @@ export const SitesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SitesDeleteInput = typeof SitesDeleteInput.Type;
 
 // Output Schema
-export const SitesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SitesDeleteOutput = Schema.Void;
 export type SitesDeleteOutput = typeof SitesDeleteOutput.Type;
 
 // The operation

@@ -13,7 +13,7 @@ export const V1RemoveAReadReplicaInput = /*@__PURE__*/ Schema.Struct({
 export type V1RemoveAReadReplicaInput = typeof V1RemoveAReadReplicaInput.Type;
 
 // Output Schema
-export const V1RemoveAReadReplicaOutput = /*@__PURE__*/ Schema.Void;
+export const V1RemoveAReadReplicaOutput = Schema.Void;
 export type V1RemoveAReadReplicaOutput = typeof V1RemoveAReadReplicaOutput.Type;
 
 // The operation

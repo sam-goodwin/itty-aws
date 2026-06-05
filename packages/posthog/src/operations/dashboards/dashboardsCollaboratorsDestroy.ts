@@ -18,7 +18,7 @@ export type DashboardsCollaboratorsDestroyInput =
   typeof DashboardsCollaboratorsDestroyInput.Type;
 
 // Output Schema
-export const DashboardsCollaboratorsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const DashboardsCollaboratorsDestroyOutput = Schema.Void;
 export type DashboardsCollaboratorsDestroyOutput =
   typeof DashboardsCollaboratorsDestroyOutput.Type;
 

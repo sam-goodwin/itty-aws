@@ -18,8 +18,7 @@ export type ErrorTrackingIssuesActivityRetrieveInput =
   typeof ErrorTrackingIssuesActivityRetrieveInput.Type;
 
 // Output Schema
-export const ErrorTrackingIssuesActivityRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingIssuesActivityRetrieveOutput = Schema.Void;
 export type ErrorTrackingIssuesActivityRetrieveOutput =
   typeof ErrorTrackingIssuesActivityRetrieveOutput.Type;
 

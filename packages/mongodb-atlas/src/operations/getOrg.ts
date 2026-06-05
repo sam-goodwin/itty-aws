@@ -12,7 +12,7 @@ export const GetOrgInput = /*@__PURE__*/ Schema.Struct({
 export type GetOrgInput = typeof GetOrgInput.Type;
 
 // Output Schema
-export const GetOrgOutput = /*@__PURE__*/ Schema.Void;
+export const GetOrgOutput = Schema.Void;
 export type GetOrgOutput = typeof GetOrgOutput.Type;
 
 // The operation

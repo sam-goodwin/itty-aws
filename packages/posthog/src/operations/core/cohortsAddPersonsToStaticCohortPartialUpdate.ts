@@ -19,8 +19,7 @@ export type CohortsAddPersonsToStaticCohortPartialUpdateInput =
   typeof CohortsAddPersonsToStaticCohortPartialUpdateInput.Type;
 
 // Output Schema
-export const CohortsAddPersonsToStaticCohortPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CohortsAddPersonsToStaticCohortPartialUpdateOutput = Schema.Void;
 export type CohortsAddPersonsToStaticCohortPartialUpdateOutput =
   typeof CohortsAddPersonsToStaticCohortPartialUpdateOutput.Type;
 

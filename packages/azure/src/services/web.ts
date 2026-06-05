@@ -327,7 +327,7 @@ export type AppServiceEnvironmentsDeleteInput =
   typeof AppServiceEnvironmentsDeleteInput.Type;
 
 // Output Schema
-export const AppServiceEnvironmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AppServiceEnvironmentsDeleteOutput = Schema.Void;
 export type AppServiceEnvironmentsDeleteOutput =
   typeof AppServiceEnvironmentsDeleteOutput.Type;
 
@@ -365,7 +365,7 @@ export type AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationInput =
 
 // Output Schema
 export const AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationOutput =
   typeof AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationOutput.Type;
 
@@ -404,7 +404,7 @@ export type AppServiceEnvironmentsDeletePrivateEndpointConnectionInput =
 
 // Output Schema
 export const AppServiceEnvironmentsDeletePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type AppServiceEnvironmentsDeletePrivateEndpointConnectionOutput =
   typeof AppServiceEnvironmentsDeletePrivateEndpointConnectionOutput.Type;
 
@@ -2238,7 +2238,7 @@ export type AppServiceEnvironmentsRebootInput =
   typeof AppServiceEnvironmentsRebootInput.Type;
 
 // Output Schema
-export const AppServiceEnvironmentsRebootOutput = /*@__PURE__*/ Schema.Void;
+export const AppServiceEnvironmentsRebootOutput = Schema.Void;
 export type AppServiceEnvironmentsRebootOutput =
   typeof AppServiceEnvironmentsRebootOutput.Type;
 
@@ -2391,7 +2391,7 @@ export type AppServiceEnvironmentsTestUpgradeAvailableNotificationInput =
 
 // Output Schema
 export const AppServiceEnvironmentsTestUpgradeAvailableNotificationOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type AppServiceEnvironmentsTestUpgradeAvailableNotificationOutput =
   typeof AppServiceEnvironmentsTestUpgradeAvailableNotificationOutput.Type;
 
@@ -2706,7 +2706,7 @@ export type AppServiceEnvironmentsUpgradeInput =
   typeof AppServiceEnvironmentsUpgradeInput.Type;
 
 // Output Schema
-export const AppServiceEnvironmentsUpgradeOutput = /*@__PURE__*/ Schema.Void;
+export const AppServiceEnvironmentsUpgradeOutput = Schema.Void;
 export type AppServiceEnvironmentsUpgradeOutput =
   typeof AppServiceEnvironmentsUpgradeOutput.Type;
 
@@ -2854,7 +2854,7 @@ export const AppServicePlansDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AppServicePlansDeleteInput = typeof AppServicePlansDeleteInput.Type;
 
 // Output Schema
-export const AppServicePlansDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AppServicePlansDeleteOutput = Schema.Void;
 export type AppServicePlansDeleteOutput =
   typeof AppServicePlansDeleteOutput.Type;
 
@@ -2892,8 +2892,7 @@ export type AppServicePlansDeleteHybridConnectionInput =
   typeof AppServicePlansDeleteHybridConnectionInput.Type;
 
 // Output Schema
-export const AppServicePlansDeleteHybridConnectionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AppServicePlansDeleteHybridConnectionOutput = Schema.Void;
 export type AppServicePlansDeleteHybridConnectionOutput =
   typeof AppServicePlansDeleteHybridConnectionOutput.Type;
 
@@ -2934,7 +2933,7 @@ export type AppServicePlansDeleteVnetRouteInput =
   typeof AppServicePlansDeleteVnetRouteInput.Type;
 
 // Output Schema
-export const AppServicePlansDeleteVnetRouteOutput = /*@__PURE__*/ Schema.Void;
+export const AppServicePlansDeleteVnetRouteOutput = Schema.Void;
 export type AppServicePlansDeleteVnetRouteOutput =
   typeof AppServicePlansDeleteVnetRouteOutput.Type;
 
@@ -3291,8 +3290,7 @@ export type AppServicePlansGetServerFarmSkusInput =
   typeof AppServicePlansGetServerFarmSkusInput.Type;
 
 // Output Schema
-export const AppServicePlansGetServerFarmSkusOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const AppServicePlansGetServerFarmSkusOutput = Schema.Unknown;
 export type AppServicePlansGetServerFarmSkusOutput =
   typeof AppServicePlansGetServerFarmSkusOutput.Type;
 
@@ -4008,7 +4006,7 @@ export type AppServicePlansRebootWorkerInput =
   typeof AppServicePlansRebootWorkerInput.Type;
 
 // Output Schema
-export const AppServicePlansRebootWorkerOutput = /*@__PURE__*/ Schema.Void;
+export const AppServicePlansRebootWorkerOutput = Schema.Void;
 export type AppServicePlansRebootWorkerOutput =
   typeof AppServicePlansRebootWorkerOutput.Type;
 
@@ -4115,7 +4113,7 @@ export type AppServicePlansRestartWebAppsInput =
   typeof AppServicePlansRestartWebAppsInput.Type;
 
 // Output Schema
-export const AppServicePlansRestartWebAppsOutput = /*@__PURE__*/ Schema.Void;
+export const AppServicePlansRestartWebAppsOutput = Schema.Void;
 export type AppServicePlansRestartWebAppsOutput =
   typeof AppServicePlansRestartWebAppsOutput.Type;
 
@@ -4373,7 +4371,7 @@ export const CertificatesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type CertificatesDeleteInput = typeof CertificatesDeleteInput.Type;
 
 // Output Schema
-export const CertificatesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CertificatesDeleteOutput = Schema.Void;
 export type CertificatesDeleteOutput = typeof CertificatesDeleteOutput.Type;
 
 // The operation
@@ -6634,7 +6632,7 @@ export type GlobalGetSubscriptionOperationWithAsyncResponseInput =
 
 // Output Schema
 export const GlobalGetSubscriptionOperationWithAsyncResponseOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type GlobalGetSubscriptionOperationWithAsyncResponseOutput =
   typeof GlobalGetSubscriptionOperationWithAsyncResponseOutput.Type;
 
@@ -6725,7 +6723,7 @@ export type KubeEnvironmentsDeleteInput =
   typeof KubeEnvironmentsDeleteInput.Type;
 
 // Output Schema
-export const KubeEnvironmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const KubeEnvironmentsDeleteOutput = Schema.Void;
 export type KubeEnvironmentsDeleteOutput =
   typeof KubeEnvironmentsDeleteOutput.Type;
 
@@ -7405,7 +7403,7 @@ export const MoveInput = /*@__PURE__*/ Schema.Struct({
 export type MoveInput = typeof MoveInput.Type;
 
 // Output Schema
-export const MoveOutput = /*@__PURE__*/ Schema.Void;
+export const MoveOutput = Schema.Void;
 export type MoveOutput = typeof MoveOutput.Type;
 
 // The operation
@@ -7813,8 +7811,7 @@ export type RecommendationsDisableAllForHostingEnvironmentInput =
   typeof RecommendationsDisableAllForHostingEnvironmentInput.Type;
 
 // Output Schema
-export const RecommendationsDisableAllForHostingEnvironmentOutput =
-  /*@__PURE__*/ Schema.Void;
+export const RecommendationsDisableAllForHostingEnvironmentOutput = Schema.Void;
 export type RecommendationsDisableAllForHostingEnvironmentOutput =
   typeof RecommendationsDisableAllForHostingEnvironmentOutput.Type;
 
@@ -7852,8 +7849,7 @@ export type RecommendationsDisableAllForWebAppInput =
   typeof RecommendationsDisableAllForWebAppInput.Type;
 
 // Output Schema
-export const RecommendationsDisableAllForWebAppOutput =
-  /*@__PURE__*/ Schema.Void;
+export const RecommendationsDisableAllForWebAppOutput = Schema.Void;
 export type RecommendationsDisableAllForWebAppOutput =
   typeof RecommendationsDisableAllForWebAppOutput.Type;
 
@@ -7894,7 +7890,7 @@ export type RecommendationsDisableRecommendationForHostingEnvironmentInput =
 
 // Output Schema
 export const RecommendationsDisableRecommendationForHostingEnvironmentOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type RecommendationsDisableRecommendationForHostingEnvironmentOutput =
   typeof RecommendationsDisableRecommendationForHostingEnvironmentOutput.Type;
 
@@ -7935,8 +7931,7 @@ export type RecommendationsDisableRecommendationForSiteInput =
   typeof RecommendationsDisableRecommendationForSiteInput.Type;
 
 // Output Schema
-export const RecommendationsDisableRecommendationForSiteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const RecommendationsDisableRecommendationForSiteOutput = Schema.Void;
 export type RecommendationsDisableRecommendationForSiteOutput =
   typeof RecommendationsDisableRecommendationForSiteOutput.Type;
 
@@ -7974,7 +7969,7 @@ export type RecommendationsDisableRecommendationForSubscriptionInput =
 
 // Output Schema
 export const RecommendationsDisableRecommendationForSubscriptionOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type RecommendationsDisableRecommendationForSubscriptionOutput =
   typeof RecommendationsDisableRecommendationForSubscriptionOutput.Type;
 
@@ -8385,7 +8380,7 @@ export type RecommendationsResetAllFiltersInput =
   typeof RecommendationsResetAllFiltersInput.Type;
 
 // Output Schema
-export const RecommendationsResetAllFiltersOutput = /*@__PURE__*/ Schema.Void;
+export const RecommendationsResetAllFiltersOutput = Schema.Void;
 export type RecommendationsResetAllFiltersOutput =
   typeof RecommendationsResetAllFiltersOutput.Type;
 
@@ -8421,7 +8416,7 @@ export type RecommendationsResetAllFiltersForHostingEnvironmentInput =
 
 // Output Schema
 export const RecommendationsResetAllFiltersForHostingEnvironmentOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type RecommendationsResetAllFiltersForHostingEnvironmentOutput =
   typeof RecommendationsResetAllFiltersForHostingEnvironmentOutput.Type;
 
@@ -8459,8 +8454,7 @@ export type RecommendationsResetAllFiltersForWebAppInput =
   typeof RecommendationsResetAllFiltersForWebAppInput.Type;
 
 // Output Schema
-export const RecommendationsResetAllFiltersForWebAppOutput =
-  /*@__PURE__*/ Schema.Void;
+export const RecommendationsResetAllFiltersForWebAppOutput = Schema.Void;
 export type RecommendationsResetAllFiltersForWebAppOutput =
   typeof RecommendationsResetAllFiltersForWebAppOutput.Type;
 
@@ -9031,7 +9025,7 @@ export type SiteCertificatesDeleteInput =
   typeof SiteCertificatesDeleteInput.Type;
 
 // Output Schema
-export const SiteCertificatesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SiteCertificatesDeleteOutput = Schema.Void;
 export type SiteCertificatesDeleteOutput =
   typeof SiteCertificatesDeleteOutput.Type;
 
@@ -9067,7 +9061,7 @@ export type SiteCertificatesDeleteSlotInput =
   typeof SiteCertificatesDeleteSlotInput.Type;
 
 // Output Schema
-export const SiteCertificatesDeleteSlotOutput = /*@__PURE__*/ Schema.Void;
+export const SiteCertificatesDeleteSlotOutput = Schema.Void;
 export type SiteCertificatesDeleteSlotOutput =
   typeof SiteCertificatesDeleteSlotOutput.Type;
 
@@ -10001,8 +9995,7 @@ export type StaticSitesCreateZipDeploymentForStaticSiteInput =
   typeof StaticSitesCreateZipDeploymentForStaticSiteInput.Type;
 
 // Output Schema
-export const StaticSitesCreateZipDeploymentForStaticSiteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const StaticSitesCreateZipDeploymentForStaticSiteOutput = Schema.Void;
 export type StaticSitesCreateZipDeploymentForStaticSiteOutput =
   typeof StaticSitesCreateZipDeploymentForStaticSiteOutput.Type;
 
@@ -10041,7 +10034,7 @@ export type StaticSitesCreateZipDeploymentForStaticSiteBuildInput =
 
 // Output Schema
 export const StaticSitesCreateZipDeploymentForStaticSiteBuildOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type StaticSitesCreateZipDeploymentForStaticSiteBuildOutput =
   typeof StaticSitesCreateZipDeploymentForStaticSiteBuildOutput.Type;
 
@@ -10081,8 +10074,7 @@ export type StaticSitesDeleteBuildDatabaseConnectionInput =
   typeof StaticSitesDeleteBuildDatabaseConnectionInput.Type;
 
 // Output Schema
-export const StaticSitesDeleteBuildDatabaseConnectionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const StaticSitesDeleteBuildDatabaseConnectionOutput = Schema.Void;
 export type StaticSitesDeleteBuildDatabaseConnectionOutput =
   typeof StaticSitesDeleteBuildDatabaseConnectionOutput.Type;
 
@@ -10121,8 +10113,7 @@ export type StaticSitesDeleteDatabaseConnectionInput =
   typeof StaticSitesDeleteDatabaseConnectionInput.Type;
 
 // Output Schema
-export const StaticSitesDeleteDatabaseConnectionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const StaticSitesDeleteDatabaseConnectionOutput = Schema.Void;
 export type StaticSitesDeleteDatabaseConnectionOutput =
   typeof StaticSitesDeleteDatabaseConnectionOutput.Type;
 
@@ -10160,8 +10151,7 @@ export type StaticSitesDeletePrivateEndpointConnectionInput =
   typeof StaticSitesDeletePrivateEndpointConnectionInput.Type;
 
 // Output Schema
-export const StaticSitesDeletePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const StaticSitesDeletePrivateEndpointConnectionOutput = Schema.Unknown;
 export type StaticSitesDeletePrivateEndpointConnectionOutput =
   typeof StaticSitesDeletePrivateEndpointConnectionOutput.Type;
 
@@ -10198,7 +10188,7 @@ export type StaticSitesDeleteStaticSiteInput =
   typeof StaticSitesDeleteStaticSiteInput.Type;
 
 // Output Schema
-export const StaticSitesDeleteStaticSiteOutput = /*@__PURE__*/ Schema.Void;
+export const StaticSitesDeleteStaticSiteOutput = Schema.Void;
 export type StaticSitesDeleteStaticSiteOutput =
   typeof StaticSitesDeleteStaticSiteOutput.Type;
 
@@ -10235,7 +10225,7 @@ export type StaticSitesDeleteStaticSiteBuildInput =
   typeof StaticSitesDeleteStaticSiteBuildInput.Type;
 
 // Output Schema
-export const StaticSitesDeleteStaticSiteBuildOutput = /*@__PURE__*/ Schema.Void;
+export const StaticSitesDeleteStaticSiteBuildOutput = Schema.Void;
 export type StaticSitesDeleteStaticSiteBuildOutput =
   typeof StaticSitesDeleteStaticSiteBuildOutput.Type;
 
@@ -10273,8 +10263,7 @@ export type StaticSitesDeleteStaticSiteCustomDomainInput =
   typeof StaticSitesDeleteStaticSiteCustomDomainInput.Type;
 
 // Output Schema
-export const StaticSitesDeleteStaticSiteCustomDomainOutput =
-  /*@__PURE__*/ Schema.Void;
+export const StaticSitesDeleteStaticSiteCustomDomainOutput = Schema.Void;
 export type StaticSitesDeleteStaticSiteCustomDomainOutput =
   typeof StaticSitesDeleteStaticSiteCustomDomainOutput.Type;
 
@@ -10316,7 +10305,7 @@ export type StaticSitesDeleteStaticSiteUserInput =
   typeof StaticSitesDeleteStaticSiteUserInput.Type;
 
 // Output Schema
-export const StaticSitesDeleteStaticSiteUserOutput = /*@__PURE__*/ Schema.Void;
+export const StaticSitesDeleteStaticSiteUserOutput = Schema.Void;
 export type StaticSitesDeleteStaticSiteUserOutput =
   typeof StaticSitesDeleteStaticSiteUserOutput.Type;
 
@@ -10350,7 +10339,7 @@ export type StaticSitesDetachStaticSiteInput =
   typeof StaticSitesDetachStaticSiteInput.Type;
 
 // Output Schema
-export const StaticSitesDetachStaticSiteOutput = /*@__PURE__*/ Schema.Void;
+export const StaticSitesDetachStaticSiteOutput = Schema.Void;
 export type StaticSitesDetachStaticSiteOutput =
   typeof StaticSitesDetachStaticSiteOutput.Type;
 
@@ -10388,7 +10377,7 @@ export type StaticSitesDetachUserProvidedFunctionAppFromStaticSiteInput =
 
 // Output Schema
 export const StaticSitesDetachUserProvidedFunctionAppFromStaticSiteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type StaticSitesDetachUserProvidedFunctionAppFromStaticSiteOutput =
   typeof StaticSitesDetachUserProvidedFunctionAppFromStaticSiteOutput.Type;
 
@@ -10429,7 +10418,7 @@ export type StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildInput =
 
 // Output Schema
 export const StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildOutput =
   typeof StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildOutput.Type;
 
@@ -12890,7 +12879,7 @@ export type StaticSitesResetStaticSiteApiKeyInput =
   typeof StaticSitesResetStaticSiteApiKeyInput.Type;
 
 // Output Schema
-export const StaticSitesResetStaticSiteApiKeyOutput = /*@__PURE__*/ Schema.Void;
+export const StaticSitesResetStaticSiteApiKeyOutput = Schema.Void;
 export type StaticSitesResetStaticSiteApiKeyOutput =
   typeof StaticSitesResetStaticSiteApiKeyOutput.Type;
 
@@ -12927,7 +12916,7 @@ export type StaticSitesUnlinkBackendInput =
   typeof StaticSitesUnlinkBackendInput.Type;
 
 // Output Schema
-export const StaticSitesUnlinkBackendOutput = /*@__PURE__*/ Schema.Void;
+export const StaticSitesUnlinkBackendOutput = Schema.Void;
 export type StaticSitesUnlinkBackendOutput =
   typeof StaticSitesUnlinkBackendOutput.Type;
 
@@ -12966,8 +12955,7 @@ export type StaticSitesUnlinkBackendFromBuildInput =
   typeof StaticSitesUnlinkBackendFromBuildInput.Type;
 
 // Output Schema
-export const StaticSitesUnlinkBackendFromBuildOutput =
-  /*@__PURE__*/ Schema.Void;
+export const StaticSitesUnlinkBackendFromBuildOutput = Schema.Void;
 export type StaticSitesUnlinkBackendFromBuildOutput =
   typeof StaticSitesUnlinkBackendFromBuildOutput.Type;
 
@@ -13221,7 +13209,7 @@ export type StaticSitesValidateBackendInput =
   typeof StaticSitesValidateBackendInput.Type;
 
 // Output Schema
-export const StaticSitesValidateBackendOutput = /*@__PURE__*/ Schema.Void;
+export const StaticSitesValidateBackendOutput = Schema.Void;
 export type StaticSitesValidateBackendOutput =
   typeof StaticSitesValidateBackendOutput.Type;
 
@@ -13258,8 +13246,7 @@ export type StaticSitesValidateBackendForBuildInput =
   typeof StaticSitesValidateBackendForBuildInput.Type;
 
 // Output Schema
-export const StaticSitesValidateBackendForBuildOutput =
-  /*@__PURE__*/ Schema.Void;
+export const StaticSitesValidateBackendForBuildOutput = Schema.Void;
 export type StaticSitesValidateBackendForBuildOutput =
   typeof StaticSitesValidateBackendForBuildOutput.Type;
 
@@ -13299,7 +13286,7 @@ export type StaticSitesValidateCustomDomainCanBeAddedToStaticSiteInput =
 
 // Output Schema
 export const StaticSitesValidateCustomDomainCanBeAddedToStaticSiteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type StaticSitesValidateCustomDomainCanBeAddedToStaticSiteOutput =
   typeof StaticSitesValidateCustomDomainCanBeAddedToStaticSiteOutput.Type;
 
@@ -13465,7 +13452,7 @@ export const ValidateMoveInput = /*@__PURE__*/ Schema.Struct({
 export type ValidateMoveInput = typeof ValidateMoveInput.Type;
 
 // Output Schema
-export const ValidateMoveOutput = /*@__PURE__*/ Schema.Void;
+export const ValidateMoveOutput = Schema.Void;
 export type ValidateMoveOutput = typeof ValidateMoveOutput.Type;
 
 // The operation
@@ -13735,8 +13722,7 @@ export type WebAppsApplySlotConfigToProductionInput =
   typeof WebAppsApplySlotConfigToProductionInput.Type;
 
 // Output Schema
-export const WebAppsApplySlotConfigToProductionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsApplySlotConfigToProductionOutput = Schema.Void;
 export type WebAppsApplySlotConfigToProductionOutput =
   typeof WebAppsApplySlotConfigToProductionOutput.Type;
 
@@ -13775,8 +13761,7 @@ export type WebAppsApplySlotConfigurationSlotInput =
   typeof WebAppsApplySlotConfigurationSlotInput.Type;
 
 // Output Schema
-export const WebAppsApplySlotConfigurationSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsApplySlotConfigurationSlotOutput = Schema.Void;
 export type WebAppsApplySlotConfigurationSlotOutput =
   typeof WebAppsApplySlotConfigurationSlotOutput.Type;
 
@@ -14494,8 +14479,7 @@ export type WebAppsCreateOneDeployOperationInput =
   typeof WebAppsCreateOneDeployOperationInput.Type;
 
 // Output Schema
-export const WebAppsCreateOneDeployOperationOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const WebAppsCreateOneDeployOperationOutput = Schema.Unknown;
 export type WebAppsCreateOneDeployOperationOutput =
   typeof WebAppsCreateOneDeployOperationOutput.Type;
 
@@ -16129,7 +16113,7 @@ export const WebAppsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsDeleteInput = typeof WebAppsDeleteInput.Type;
 
 // Output Schema
-export const WebAppsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteOutput = Schema.Void;
 export type WebAppsDeleteOutput = typeof WebAppsDeleteOutput.Type;
 
 // The operation
@@ -16165,7 +16149,7 @@ export const WebAppsDeleteBackupInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsDeleteBackupInput = typeof WebAppsDeleteBackupInput.Type;
 
 // Output Schema
-export const WebAppsDeleteBackupOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteBackupOutput = Schema.Void;
 export type WebAppsDeleteBackupOutput = typeof WebAppsDeleteBackupOutput.Type;
 
 // The operation
@@ -16201,7 +16185,7 @@ export type WebAppsDeleteBackupConfigurationInput =
   typeof WebAppsDeleteBackupConfigurationInput.Type;
 
 // Output Schema
-export const WebAppsDeleteBackupConfigurationOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteBackupConfigurationOutput = Schema.Void;
 export type WebAppsDeleteBackupConfigurationOutput =
   typeof WebAppsDeleteBackupConfigurationOutput.Type;
 
@@ -16238,8 +16222,7 @@ export type WebAppsDeleteBackupConfigurationSlotInput =
   typeof WebAppsDeleteBackupConfigurationSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteBackupConfigurationSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteBackupConfigurationSlotOutput = Schema.Void;
 export type WebAppsDeleteBackupConfigurationSlotOutput =
   typeof WebAppsDeleteBackupConfigurationSlotOutput.Type;
 
@@ -16279,7 +16262,7 @@ export type WebAppsDeleteBackupSlotInput =
   typeof WebAppsDeleteBackupSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteBackupSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteBackupSlotOutput = Schema.Void;
 export type WebAppsDeleteBackupSlotOutput =
   typeof WebAppsDeleteBackupSlotOutput.Type;
 
@@ -16317,7 +16300,7 @@ export type WebAppsDeleteContinuousWebJobInput =
   typeof WebAppsDeleteContinuousWebJobInput.Type;
 
 // Output Schema
-export const WebAppsDeleteContinuousWebJobOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteContinuousWebJobOutput = Schema.Void;
 export type WebAppsDeleteContinuousWebJobOutput =
   typeof WebAppsDeleteContinuousWebJobOutput.Type;
 
@@ -16356,8 +16339,7 @@ export type WebAppsDeleteContinuousWebJobSlotInput =
   typeof WebAppsDeleteContinuousWebJobSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteContinuousWebJobSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteContinuousWebJobSlotOutput = Schema.Void;
 export type WebAppsDeleteContinuousWebJobSlotOutput =
   typeof WebAppsDeleteContinuousWebJobSlotOutput.Type;
 
@@ -16395,7 +16377,7 @@ export type WebAppsDeleteDeploymentInput =
   typeof WebAppsDeleteDeploymentInput.Type;
 
 // Output Schema
-export const WebAppsDeleteDeploymentOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteDeploymentOutput = Schema.Void;
 export type WebAppsDeleteDeploymentOutput =
   typeof WebAppsDeleteDeploymentOutput.Type;
 
@@ -16433,7 +16415,7 @@ export type WebAppsDeleteDeploymentSlotInput =
   typeof WebAppsDeleteDeploymentSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteDeploymentSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteDeploymentSlotOutput = Schema.Void;
 export type WebAppsDeleteDeploymentSlotOutput =
   typeof WebAppsDeleteDeploymentSlotOutput.Type;
 
@@ -16472,8 +16454,7 @@ export type WebAppsDeleteDomainOwnershipIdentifierInput =
   typeof WebAppsDeleteDomainOwnershipIdentifierInput.Type;
 
 // Output Schema
-export const WebAppsDeleteDomainOwnershipIdentifierOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteDomainOwnershipIdentifierOutput = Schema.Void;
 export type WebAppsDeleteDomainOwnershipIdentifierOutput =
   typeof WebAppsDeleteDomainOwnershipIdentifierOutput.Type;
 
@@ -16514,8 +16495,7 @@ export type WebAppsDeleteDomainOwnershipIdentifierSlotInput =
   typeof WebAppsDeleteDomainOwnershipIdentifierSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteDomainOwnershipIdentifierSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteDomainOwnershipIdentifierSlotOutput = Schema.Void;
 export type WebAppsDeleteDomainOwnershipIdentifierSlotOutput =
   typeof WebAppsDeleteDomainOwnershipIdentifierSlotOutput.Type;
 
@@ -16553,7 +16533,7 @@ export const WebAppsDeleteFunctionInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsDeleteFunctionInput = typeof WebAppsDeleteFunctionInput.Type;
 
 // Output Schema
-export const WebAppsDeleteFunctionOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteFunctionOutput = Schema.Void;
 export type WebAppsDeleteFunctionOutput =
   typeof WebAppsDeleteFunctionOutput.Type;
 
@@ -16591,7 +16571,7 @@ export type WebAppsDeleteFunctionSecretInput =
   typeof WebAppsDeleteFunctionSecretInput.Type;
 
 // Output Schema
-export const WebAppsDeleteFunctionSecretOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteFunctionSecretOutput = Schema.Void;
 export type WebAppsDeleteFunctionSecretOutput =
   typeof WebAppsDeleteFunctionSecretOutput.Type;
 
@@ -16630,7 +16610,7 @@ export type WebAppsDeleteFunctionSecretSlotInput =
   typeof WebAppsDeleteFunctionSecretSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteFunctionSecretSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteFunctionSecretSlotOutput = Schema.Void;
 export type WebAppsDeleteFunctionSecretSlotOutput =
   typeof WebAppsDeleteFunctionSecretSlotOutput.Type;
 
@@ -16665,7 +16645,7 @@ export type WebAppsDeleteHostNameBindingInput =
   typeof WebAppsDeleteHostNameBindingInput.Type;
 
 // Output Schema
-export const WebAppsDeleteHostNameBindingOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteHostNameBindingOutput = Schema.Void;
 export type WebAppsDeleteHostNameBindingOutput =
   typeof WebAppsDeleteHostNameBindingOutput.Type;
 
@@ -16704,7 +16684,7 @@ export type WebAppsDeleteHostNameBindingSlotInput =
   typeof WebAppsDeleteHostNameBindingSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteHostNameBindingSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteHostNameBindingSlotOutput = Schema.Void;
 export type WebAppsDeleteHostNameBindingSlotOutput =
   typeof WebAppsDeleteHostNameBindingSlotOutput.Type;
 
@@ -16743,7 +16723,7 @@ export type WebAppsDeleteHostSecretInput =
   typeof WebAppsDeleteHostSecretInput.Type;
 
 // Output Schema
-export const WebAppsDeleteHostSecretOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteHostSecretOutput = Schema.Void;
 export type WebAppsDeleteHostSecretOutput =
   typeof WebAppsDeleteHostSecretOutput.Type;
 
@@ -16783,7 +16763,7 @@ export type WebAppsDeleteHostSecretSlotInput =
   typeof WebAppsDeleteHostSecretSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteHostSecretSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteHostSecretSlotOutput = Schema.Void;
 export type WebAppsDeleteHostSecretSlotOutput =
   typeof WebAppsDeleteHostSecretSlotOutput.Type;
 
@@ -16823,7 +16803,7 @@ export type WebAppsDeleteHybridConnectionInput =
   typeof WebAppsDeleteHybridConnectionInput.Type;
 
 // Output Schema
-export const WebAppsDeleteHybridConnectionOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteHybridConnectionOutput = Schema.Void;
 export type WebAppsDeleteHybridConnectionOutput =
   typeof WebAppsDeleteHybridConnectionOutput.Type;
 
@@ -16864,8 +16844,7 @@ export type WebAppsDeleteHybridConnectionSlotInput =
   typeof WebAppsDeleteHybridConnectionSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteHybridConnectionSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteHybridConnectionSlotOutput = Schema.Void;
 export type WebAppsDeleteHybridConnectionSlotOutput =
   typeof WebAppsDeleteHybridConnectionSlotOutput.Type;
 
@@ -16906,8 +16885,7 @@ export type WebAppsDeleteInstanceFunctionSlotInput =
   typeof WebAppsDeleteInstanceFunctionSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteInstanceFunctionSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteInstanceFunctionSlotOutput = Schema.Void;
 export type WebAppsDeleteInstanceFunctionSlotOutput =
   typeof WebAppsDeleteInstanceFunctionSlotOutput.Type;
 
@@ -16946,7 +16924,7 @@ export type WebAppsDeleteInstanceProcessInput =
   typeof WebAppsDeleteInstanceProcessInput.Type;
 
 // Output Schema
-export const WebAppsDeleteInstanceProcessOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteInstanceProcessOutput = Schema.Void;
 export type WebAppsDeleteInstanceProcessOutput =
   typeof WebAppsDeleteInstanceProcessOutput.Type;
 
@@ -16987,7 +16965,7 @@ export type WebAppsDeleteInstanceProcessSlotInput =
   typeof WebAppsDeleteInstanceProcessSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteInstanceProcessSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteInstanceProcessSlotOutput = Schema.Void;
 export type WebAppsDeleteInstanceProcessSlotOutput =
   typeof WebAppsDeleteInstanceProcessSlotOutput.Type;
 
@@ -17026,7 +17004,7 @@ export type WebAppsDeletePremierAddOnInput =
   typeof WebAppsDeletePremierAddOnInput.Type;
 
 // Output Schema
-export const WebAppsDeletePremierAddOnOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeletePremierAddOnOutput = Schema.Void;
 export type WebAppsDeletePremierAddOnOutput =
   typeof WebAppsDeletePremierAddOnOutput.Type;
 
@@ -17064,7 +17042,7 @@ export type WebAppsDeletePremierAddOnSlotInput =
   typeof WebAppsDeletePremierAddOnSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeletePremierAddOnSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeletePremierAddOnSlotOutput = Schema.Void;
 export type WebAppsDeletePremierAddOnSlotOutput =
   typeof WebAppsDeletePremierAddOnSlotOutput.Type;
 
@@ -17103,8 +17081,7 @@ export type WebAppsDeletePrivateEndpointConnectionInput =
   typeof WebAppsDeletePrivateEndpointConnectionInput.Type;
 
 // Output Schema
-export const WebAppsDeletePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const WebAppsDeletePrivateEndpointConnectionOutput = Schema.Unknown;
 export type WebAppsDeletePrivateEndpointConnectionOutput =
   typeof WebAppsDeletePrivateEndpointConnectionOutput.Type;
 
@@ -17145,8 +17122,7 @@ export type WebAppsDeletePrivateEndpointConnectionSlotInput =
   typeof WebAppsDeletePrivateEndpointConnectionSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeletePrivateEndpointConnectionSlotOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const WebAppsDeletePrivateEndpointConnectionSlotOutput = Schema.Unknown;
 export type WebAppsDeletePrivateEndpointConnectionSlotOutput =
   typeof WebAppsDeletePrivateEndpointConnectionSlotOutput.Type;
 
@@ -17184,7 +17160,7 @@ export const WebAppsDeleteProcessInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsDeleteProcessInput = typeof WebAppsDeleteProcessInput.Type;
 
 // Output Schema
-export const WebAppsDeleteProcessOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteProcessOutput = Schema.Void;
 export type WebAppsDeleteProcessOutput = typeof WebAppsDeleteProcessOutput.Type;
 
 // The operation
@@ -17221,7 +17197,7 @@ export type WebAppsDeleteProcessSlotInput =
   typeof WebAppsDeleteProcessSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteProcessSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteProcessSlotOutput = Schema.Void;
 export type WebAppsDeleteProcessSlotOutput =
   typeof WebAppsDeleteProcessSlotOutput.Type;
 
@@ -17259,7 +17235,7 @@ export type WebAppsDeletePublicCertificateInput =
   typeof WebAppsDeletePublicCertificateInput.Type;
 
 // Output Schema
-export const WebAppsDeletePublicCertificateOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeletePublicCertificateOutput = Schema.Void;
 export type WebAppsDeletePublicCertificateOutput =
   typeof WebAppsDeletePublicCertificateOutput.Type;
 
@@ -17298,8 +17274,7 @@ export type WebAppsDeletePublicCertificateSlotInput =
   typeof WebAppsDeletePublicCertificateSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeletePublicCertificateSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsDeletePublicCertificateSlotOutput = Schema.Void;
 export type WebAppsDeletePublicCertificateSlotOutput =
   typeof WebAppsDeletePublicCertificateSlotOutput.Type;
 
@@ -17340,8 +17315,7 @@ export type WebAppsDeleteRelayServiceConnectionInput =
   typeof WebAppsDeleteRelayServiceConnectionInput.Type;
 
 // Output Schema
-export const WebAppsDeleteRelayServiceConnectionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteRelayServiceConnectionOutput = Schema.Void;
 export type WebAppsDeleteRelayServiceConnectionOutput =
   typeof WebAppsDeleteRelayServiceConnectionOutput.Type;
 
@@ -17382,8 +17356,7 @@ export type WebAppsDeleteRelayServiceConnectionSlotInput =
   typeof WebAppsDeleteRelayServiceConnectionSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteRelayServiceConnectionSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteRelayServiceConnectionSlotOutput = Schema.Void;
 export type WebAppsDeleteRelayServiceConnectionSlotOutput =
   typeof WebAppsDeleteRelayServiceConnectionSlotOutput.Type;
 
@@ -17423,7 +17396,7 @@ export type WebAppsDeleteSiteContainerInput =
   typeof WebAppsDeleteSiteContainerInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSiteContainerOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteSiteContainerOutput = Schema.Void;
 export type WebAppsDeleteSiteContainerOutput =
   typeof WebAppsDeleteSiteContainerOutput.Type;
 
@@ -17459,7 +17432,7 @@ export type WebAppsDeleteSiteContainerSlotInput =
   typeof WebAppsDeleteSiteContainerSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSiteContainerSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteSiteContainerSlotOutput = Schema.Void;
 export type WebAppsDeleteSiteContainerSlotOutput =
   typeof WebAppsDeleteSiteContainerSlotOutput.Type;
 
@@ -17495,7 +17468,7 @@ export type WebAppsDeleteSiteExtensionInput =
   typeof WebAppsDeleteSiteExtensionInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSiteExtensionOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteSiteExtensionOutput = Schema.Void;
 export type WebAppsDeleteSiteExtensionOutput =
   typeof WebAppsDeleteSiteExtensionOutput.Type;
 
@@ -17533,7 +17506,7 @@ export type WebAppsDeleteSiteExtensionSlotInput =
   typeof WebAppsDeleteSiteExtensionSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSiteExtensionSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteSiteExtensionSlotOutput = Schema.Void;
 export type WebAppsDeleteSiteExtensionSlotOutput =
   typeof WebAppsDeleteSiteExtensionSlotOutput.Type;
 
@@ -17572,7 +17545,7 @@ export const WebAppsDeleteSlotInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsDeleteSlotInput = typeof WebAppsDeleteSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteSlotOutput = Schema.Void;
 export type WebAppsDeleteSlotOutput = typeof WebAppsDeleteSlotOutput.Type;
 
 // The operation
@@ -17610,7 +17583,7 @@ export type WebAppsDeleteSourceControlInput =
   typeof WebAppsDeleteSourceControlInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSourceControlOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteSourceControlOutput = Schema.Void;
 export type WebAppsDeleteSourceControlOutput =
   typeof WebAppsDeleteSourceControlOutput.Type;
 
@@ -17647,7 +17620,7 @@ export type WebAppsDeleteSourceControlSlotInput =
   typeof WebAppsDeleteSourceControlSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSourceControlSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteSourceControlSlotOutput = Schema.Void;
 export type WebAppsDeleteSourceControlSlotOutput =
   typeof WebAppsDeleteSourceControlSlotOutput.Type;
 
@@ -17684,7 +17657,7 @@ export type WebAppsDeleteSwiftVirtualNetworkInput =
   typeof WebAppsDeleteSwiftVirtualNetworkInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSwiftVirtualNetworkOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteSwiftVirtualNetworkOutput = Schema.Void;
 export type WebAppsDeleteSwiftVirtualNetworkOutput =
   typeof WebAppsDeleteSwiftVirtualNetworkOutput.Type;
 
@@ -17721,8 +17694,7 @@ export type WebAppsDeleteSwiftVirtualNetworkSlotInput =
   typeof WebAppsDeleteSwiftVirtualNetworkSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSwiftVirtualNetworkSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteSwiftVirtualNetworkSlotOutput = Schema.Void;
 export type WebAppsDeleteSwiftVirtualNetworkSlotOutput =
   typeof WebAppsDeleteSwiftVirtualNetworkSlotOutput.Type;
 
@@ -17761,7 +17733,7 @@ export type WebAppsDeleteTriggeredWebJobInput =
   typeof WebAppsDeleteTriggeredWebJobInput.Type;
 
 // Output Schema
-export const WebAppsDeleteTriggeredWebJobOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteTriggeredWebJobOutput = Schema.Void;
 export type WebAppsDeleteTriggeredWebJobOutput =
   typeof WebAppsDeleteTriggeredWebJobOutput.Type;
 
@@ -17800,7 +17772,7 @@ export type WebAppsDeleteTriggeredWebJobSlotInput =
   typeof WebAppsDeleteTriggeredWebJobSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteTriggeredWebJobSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteTriggeredWebJobSlotOutput = Schema.Void;
 export type WebAppsDeleteTriggeredWebJobSlotOutput =
   typeof WebAppsDeleteTriggeredWebJobSlotOutput.Type;
 
@@ -17838,7 +17810,7 @@ export type WebAppsDeleteVnetConnectionInput =
   typeof WebAppsDeleteVnetConnectionInput.Type;
 
 // Output Schema
-export const WebAppsDeleteVnetConnectionOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteVnetConnectionOutput = Schema.Void;
 export type WebAppsDeleteVnetConnectionOutput =
   typeof WebAppsDeleteVnetConnectionOutput.Type;
 
@@ -17878,7 +17850,7 @@ export type WebAppsDeleteVnetConnectionSlotInput =
   typeof WebAppsDeleteVnetConnectionSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteVnetConnectionSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeleteVnetConnectionSlotOutput = Schema.Void;
 export type WebAppsDeleteVnetConnectionSlotOutput =
   typeof WebAppsDeleteVnetConnectionSlotOutput.Type;
 
@@ -17915,7 +17887,7 @@ export type WebAppsDeployWorkflowArtifactsInput =
   typeof WebAppsDeployWorkflowArtifactsInput.Type;
 
 // Output Schema
-export const WebAppsDeployWorkflowArtifactsOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsDeployWorkflowArtifactsOutput = Schema.Void;
 export type WebAppsDeployWorkflowArtifactsOutput =
   typeof WebAppsDeployWorkflowArtifactsOutput.Type;
 
@@ -17952,8 +17924,7 @@ export type WebAppsDeployWorkflowArtifactsSlotInput =
   typeof WebAppsDeployWorkflowArtifactsSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeployWorkflowArtifactsSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsDeployWorkflowArtifactsSlotOutput = Schema.Void;
 export type WebAppsDeployWorkflowArtifactsSlotOutput =
   typeof WebAppsDeployWorkflowArtifactsSlotOutput.Type;
 
@@ -18073,8 +18044,7 @@ export type WebAppsGenerateNewSitePublishingPasswordInput =
   typeof WebAppsGenerateNewSitePublishingPasswordInput.Type;
 
 // Output Schema
-export const WebAppsGenerateNewSitePublishingPasswordOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsGenerateNewSitePublishingPasswordOutput = Schema.Void;
 export type WebAppsGenerateNewSitePublishingPasswordOutput =
   typeof WebAppsGenerateNewSitePublishingPasswordOutput.Type;
 
@@ -18113,8 +18083,7 @@ export type WebAppsGenerateNewSitePublishingPasswordSlotInput =
   typeof WebAppsGenerateNewSitePublishingPasswordSlotInput.Type;
 
 // Output Schema
-export const WebAppsGenerateNewSitePublishingPasswordSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsGenerateNewSitePublishingPasswordSlotOutput = Schema.Void;
 export type WebAppsGenerateNewSitePublishingPasswordSlotOutput =
   typeof WebAppsGenerateNewSitePublishingPasswordSlotOutput.Type;
 
@@ -19191,7 +19160,7 @@ export type WebAppsGetContainerLogsZipInput =
   typeof WebAppsGetContainerLogsZipInput.Type;
 
 // Output Schema
-export const WebAppsGetContainerLogsZipOutput = /*@__PURE__*/ Schema.Unknown;
+export const WebAppsGetContainerLogsZipOutput = Schema.Unknown;
 export type WebAppsGetContainerLogsZipOutput =
   typeof WebAppsGetContainerLogsZipOutput.Type;
 
@@ -19227,8 +19196,7 @@ export type WebAppsGetContainerLogsZipSlotInput =
   typeof WebAppsGetContainerLogsZipSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetContainerLogsZipSlotOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const WebAppsGetContainerLogsZipSlotOutput = Schema.Unknown;
 export type WebAppsGetContainerLogsZipSlotOutput =
   typeof WebAppsGetContainerLogsZipSlotOutput.Type;
 
@@ -19882,7 +19850,7 @@ export type WebAppsGetFunctionsAdminTokenInput =
   typeof WebAppsGetFunctionsAdminTokenInput.Type;
 
 // Output Schema
-export const WebAppsGetFunctionsAdminTokenOutput = /*@__PURE__*/ Schema.String;
+export const WebAppsGetFunctionsAdminTokenOutput = Schema.String;
 export type WebAppsGetFunctionsAdminTokenOutput =
   typeof WebAppsGetFunctionsAdminTokenOutput.Type;
 
@@ -19919,8 +19887,7 @@ export type WebAppsGetFunctionsAdminTokenSlotInput =
   typeof WebAppsGetFunctionsAdminTokenSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetFunctionsAdminTokenSlotOutput =
-  /*@__PURE__*/ Schema.String;
+export const WebAppsGetFunctionsAdminTokenSlotOutput = Schema.String;
 export type WebAppsGetFunctionsAdminTokenSlotOutput =
   typeof WebAppsGetFunctionsAdminTokenSlotOutput.Type;
 
@@ -20620,7 +20587,7 @@ export type WebAppsGetInstanceProcessDumpInput =
   typeof WebAppsGetInstanceProcessDumpInput.Type;
 
 // Output Schema
-export const WebAppsGetInstanceProcessDumpOutput = /*@__PURE__*/ Schema.Unknown;
+export const WebAppsGetInstanceProcessDumpOutput = Schema.Unknown;
 export type WebAppsGetInstanceProcessDumpOutput =
   typeof WebAppsGetInstanceProcessDumpOutput.Type;
 
@@ -20661,8 +20628,7 @@ export type WebAppsGetInstanceProcessDumpSlotInput =
   typeof WebAppsGetInstanceProcessDumpSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetInstanceProcessDumpSlotOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const WebAppsGetInstanceProcessDumpSlotOutput = Schema.Unknown;
 export type WebAppsGetInstanceProcessDumpSlotOutput =
   typeof WebAppsGetInstanceProcessDumpSlotOutput.Type;
 
@@ -21606,7 +21572,7 @@ export type WebAppsGetOneDeployStatusInput =
   typeof WebAppsGetOneDeployStatusInput.Type;
 
 // Output Schema
-export const WebAppsGetOneDeployStatusOutput = /*@__PURE__*/ Schema.Unknown;
+export const WebAppsGetOneDeployStatusOutput = Schema.Unknown;
 export type WebAppsGetOneDeployStatusOutput =
   typeof WebAppsGetOneDeployStatusOutput.Type;
 
@@ -22283,7 +22249,7 @@ export const WebAppsGetProcessDumpInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsGetProcessDumpInput = typeof WebAppsGetProcessDumpInput.Type;
 
 // Output Schema
-export const WebAppsGetProcessDumpOutput = /*@__PURE__*/ Schema.Unknown;
+export const WebAppsGetProcessDumpOutput = Schema.Unknown;
 export type WebAppsGetProcessDumpOutput =
   typeof WebAppsGetProcessDumpOutput.Type;
 
@@ -22321,7 +22287,7 @@ export type WebAppsGetProcessDumpSlotInput =
   typeof WebAppsGetProcessDumpSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetProcessDumpSlotOutput = /*@__PURE__*/ Schema.Unknown;
+export const WebAppsGetProcessDumpSlotOutput = Schema.Unknown;
 export type WebAppsGetProcessDumpSlotOutput =
   typeof WebAppsGetProcessDumpSlotOutput.Type;
 
@@ -24399,8 +24365,7 @@ export type WebAppsGetWebSiteContainerLogsInput =
   typeof WebAppsGetWebSiteContainerLogsInput.Type;
 
 // Output Schema
-export const WebAppsGetWebSiteContainerLogsOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const WebAppsGetWebSiteContainerLogsOutput = Schema.Unknown;
 export type WebAppsGetWebSiteContainerLogsOutput =
   typeof WebAppsGetWebSiteContainerLogsOutput.Type;
 
@@ -24437,8 +24402,7 @@ export type WebAppsGetWebSiteContainerLogsSlotInput =
   typeof WebAppsGetWebSiteContainerLogsSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetWebSiteContainerLogsSlotOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const WebAppsGetWebSiteContainerLogsSlotOutput = Schema.Unknown;
 export type WebAppsGetWebSiteContainerLogsSlotOutput =
   typeof WebAppsGetWebSiteContainerLogsSlotOutput.Type;
 
@@ -28538,8 +28502,7 @@ export type WebAppsListPublishingProfileXmlWithSecretsInput =
   typeof WebAppsListPublishingProfileXmlWithSecretsInput.Type;
 
 // Output Schema
-export const WebAppsListPublishingProfileXmlWithSecretsOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const WebAppsListPublishingProfileXmlWithSecretsOutput = Schema.Unknown;
 export type WebAppsListPublishingProfileXmlWithSecretsOutput =
   typeof WebAppsListPublishingProfileXmlWithSecretsOutput.Type;
 
@@ -28578,7 +28541,7 @@ export type WebAppsListPublishingProfileXmlWithSecretsSlotInput =
 
 // Output Schema
 export const WebAppsListPublishingProfileXmlWithSecretsSlotOutput =
-  /*@__PURE__*/ Schema.Unknown;
+  Schema.Unknown;
 export type WebAppsListPublishingProfileXmlWithSecretsSlotOutput =
   typeof WebAppsListPublishingProfileXmlWithSecretsSlotOutput.Type;
 
@@ -29721,7 +29684,7 @@ export const WebAppsListSyncStatusInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsListSyncStatusInput = typeof WebAppsListSyncStatusInput.Type;
 
 // Output Schema
-export const WebAppsListSyncStatusOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsListSyncStatusOutput = Schema.Void;
 export type WebAppsListSyncStatusOutput =
   typeof WebAppsListSyncStatusOutput.Type;
 
@@ -29757,7 +29720,7 @@ export type WebAppsListSyncStatusSlotInput =
   typeof WebAppsListSyncStatusSlotInput.Type;
 
 // Output Schema
-export const WebAppsListSyncStatusSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsListSyncStatusSlotOutput = Schema.Void;
 export type WebAppsListSyncStatusSlotOutput =
   typeof WebAppsListSyncStatusSlotOutput.Type;
 
@@ -30787,8 +30750,7 @@ export type WebAppsRecoverSiteConfigurationSnapshotInput =
   typeof WebAppsRecoverSiteConfigurationSnapshotInput.Type;
 
 // Output Schema
-export const WebAppsRecoverSiteConfigurationSnapshotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsRecoverSiteConfigurationSnapshotOutput = Schema.Void;
 export type WebAppsRecoverSiteConfigurationSnapshotOutput =
   typeof WebAppsRecoverSiteConfigurationSnapshotOutput.Type;
 
@@ -30829,8 +30791,7 @@ export type WebAppsRecoverSiteConfigurationSnapshotSlotInput =
   typeof WebAppsRecoverSiteConfigurationSnapshotSlotInput.Type;
 
 // Output Schema
-export const WebAppsRecoverSiteConfigurationSnapshotSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsRecoverSiteConfigurationSnapshotSlotOutput = Schema.Void;
 export type WebAppsRecoverSiteConfigurationSnapshotSlotOutput =
   typeof WebAppsRecoverSiteConfigurationSnapshotSlotOutput.Type;
 
@@ -30869,7 +30830,7 @@ export type WebAppsResetProductionSlotConfigInput =
   typeof WebAppsResetProductionSlotConfigInput.Type;
 
 // Output Schema
-export const WebAppsResetProductionSlotConfigOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsResetProductionSlotConfigOutput = Schema.Void;
 export type WebAppsResetProductionSlotConfigOutput =
   typeof WebAppsResetProductionSlotConfigOutput.Type;
 
@@ -30906,8 +30867,7 @@ export type WebAppsResetSlotConfigurationSlotInput =
   typeof WebAppsResetSlotConfigurationSlotInput.Type;
 
 // Output Schema
-export const WebAppsResetSlotConfigurationSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsResetSlotConfigurationSlotOutput = Schema.Void;
 export type WebAppsResetSlotConfigurationSlotOutput =
   typeof WebAppsResetSlotConfigurationSlotOutput.Type;
 
@@ -30944,7 +30904,7 @@ export const WebAppsRestartInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsRestartInput = typeof WebAppsRestartInput.Type;
 
 // Output Schema
-export const WebAppsRestartOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsRestartOutput = Schema.Void;
 export type WebAppsRestartOutput = typeof WebAppsRestartOutput.Type;
 
 // The operation
@@ -30982,7 +30942,7 @@ export const WebAppsRestartSlotInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsRestartSlotInput = typeof WebAppsRestartSlotInput.Type;
 
 // Output Schema
-export const WebAppsRestartSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsRestartSlotOutput = Schema.Void;
 export type WebAppsRestartSlotOutput = typeof WebAppsRestartSlotOutput.Type;
 
 // The operation
@@ -31019,7 +30979,7 @@ export const WebAppsRestoreInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsRestoreInput = typeof WebAppsRestoreInput.Type;
 
 // Output Schema
-export const WebAppsRestoreOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsRestoreOutput = Schema.Void;
 export type WebAppsRestoreOutput = typeof WebAppsRestoreOutput.Type;
 
 // The operation
@@ -31054,7 +31014,7 @@ export type WebAppsRestoreFromBackupBlobInput =
   typeof WebAppsRestoreFromBackupBlobInput.Type;
 
 // Output Schema
-export const WebAppsRestoreFromBackupBlobOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsRestoreFromBackupBlobOutput = Schema.Void;
 export type WebAppsRestoreFromBackupBlobOutput =
   typeof WebAppsRestoreFromBackupBlobOutput.Type;
 
@@ -31091,7 +31051,7 @@ export type WebAppsRestoreFromBackupBlobSlotInput =
   typeof WebAppsRestoreFromBackupBlobSlotInput.Type;
 
 // Output Schema
-export const WebAppsRestoreFromBackupBlobSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsRestoreFromBackupBlobSlotOutput = Schema.Void;
 export type WebAppsRestoreFromBackupBlobSlotOutput =
   typeof WebAppsRestoreFromBackupBlobSlotOutput.Type;
 
@@ -31127,7 +31087,7 @@ export type WebAppsRestoreFromDeletedAppInput =
   typeof WebAppsRestoreFromDeletedAppInput.Type;
 
 // Output Schema
-export const WebAppsRestoreFromDeletedAppOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsRestoreFromDeletedAppOutput = Schema.Void;
 export type WebAppsRestoreFromDeletedAppOutput =
   typeof WebAppsRestoreFromDeletedAppOutput.Type;
 
@@ -31164,7 +31124,7 @@ export type WebAppsRestoreFromDeletedAppSlotInput =
   typeof WebAppsRestoreFromDeletedAppSlotInput.Type;
 
 // Output Schema
-export const WebAppsRestoreFromDeletedAppSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsRestoreFromDeletedAppSlotOutput = Schema.Void;
 export type WebAppsRestoreFromDeletedAppSlotOutput =
   typeof WebAppsRestoreFromDeletedAppSlotOutput.Type;
 
@@ -31201,7 +31161,7 @@ export const WebAppsRestoreSlotInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsRestoreSlotInput = typeof WebAppsRestoreSlotInput.Type;
 
 // Output Schema
-export const WebAppsRestoreSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsRestoreSlotOutput = Schema.Void;
 export type WebAppsRestoreSlotOutput = typeof WebAppsRestoreSlotOutput.Type;
 
 // The operation
@@ -31237,7 +31197,7 @@ export type WebAppsRestoreSnapshotInput =
   typeof WebAppsRestoreSnapshotInput.Type;
 
 // Output Schema
-export const WebAppsRestoreSnapshotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsRestoreSnapshotOutput = Schema.Void;
 export type WebAppsRestoreSnapshotOutput =
   typeof WebAppsRestoreSnapshotOutput.Type;
 
@@ -31273,7 +31233,7 @@ export type WebAppsRestoreSnapshotSlotInput =
   typeof WebAppsRestoreSnapshotSlotInput.Type;
 
 // Output Schema
-export const WebAppsRestoreSnapshotSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsRestoreSnapshotSlotOutput = Schema.Void;
 export type WebAppsRestoreSnapshotSlotOutput =
   typeof WebAppsRestoreSnapshotSlotOutput.Type;
 
@@ -31310,7 +31270,7 @@ export type WebAppsRunTriggeredWebJobInput =
   typeof WebAppsRunTriggeredWebJobInput.Type;
 
 // Output Schema
-export const WebAppsRunTriggeredWebJobOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsRunTriggeredWebJobOutput = Schema.Void;
 export type WebAppsRunTriggeredWebJobOutput =
   typeof WebAppsRunTriggeredWebJobOutput.Type;
 
@@ -31348,7 +31308,7 @@ export type WebAppsRunTriggeredWebJobSlotInput =
   typeof WebAppsRunTriggeredWebJobSlotInput.Type;
 
 // Output Schema
-export const WebAppsRunTriggeredWebJobSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsRunTriggeredWebJobSlotOutput = Schema.Void;
 export type WebAppsRunTriggeredWebJobSlotOutput =
   typeof WebAppsRunTriggeredWebJobSlotOutput.Type;
 
@@ -31384,7 +31344,7 @@ export const WebAppsStartInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsStartInput = typeof WebAppsStartInput.Type;
 
 // Output Schema
-export const WebAppsStartOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsStartOutput = Schema.Void;
 export type WebAppsStartOutput = typeof WebAppsStartOutput.Type;
 
 // The operation
@@ -31419,7 +31379,7 @@ export type WebAppsStartContinuousWebJobInput =
   typeof WebAppsStartContinuousWebJobInput.Type;
 
 // Output Schema
-export const WebAppsStartContinuousWebJobOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsStartContinuousWebJobOutput = Schema.Void;
 export type WebAppsStartContinuousWebJobOutput =
   typeof WebAppsStartContinuousWebJobOutput.Type;
 
@@ -31458,7 +31418,7 @@ export type WebAppsStartContinuousWebJobSlotInput =
   typeof WebAppsStartContinuousWebJobSlotInput.Type;
 
 // Output Schema
-export const WebAppsStartContinuousWebJobSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsStartContinuousWebJobSlotOutput = Schema.Void;
 export type WebAppsStartContinuousWebJobSlotOutput =
   typeof WebAppsStartContinuousWebJobSlotOutput.Type;
 
@@ -31591,7 +31551,7 @@ export const WebAppsStartSlotInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsStartSlotInput = typeof WebAppsStartSlotInput.Type;
 
 // Output Schema
-export const WebAppsStartSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsStartSlotOutput = Schema.Void;
 export type WebAppsStartSlotOutput = typeof WebAppsStartSlotOutput.Type;
 
 // The operation
@@ -31631,8 +31591,7 @@ export type WebAppsStartWebSiteNetworkTraceInput =
   typeof WebAppsStartWebSiteNetworkTraceInput.Type;
 
 // Output Schema
-export const WebAppsStartWebSiteNetworkTraceOutput =
-  /*@__PURE__*/ Schema.String;
+export const WebAppsStartWebSiteNetworkTraceOutput = Schema.String;
 export type WebAppsStartWebSiteNetworkTraceOutput =
   typeof WebAppsStartWebSiteNetworkTraceOutput.Type;
 
@@ -31778,8 +31737,7 @@ export type WebAppsStartWebSiteNetworkTraceSlotInput =
   typeof WebAppsStartWebSiteNetworkTraceSlotInput.Type;
 
 // Output Schema
-export const WebAppsStartWebSiteNetworkTraceSlotOutput =
-  /*@__PURE__*/ Schema.String;
+export const WebAppsStartWebSiteNetworkTraceSlotOutput = Schema.String;
 export type WebAppsStartWebSiteNetworkTraceSlotOutput =
   typeof WebAppsStartWebSiteNetworkTraceSlotOutput.Type;
 
@@ -31819,7 +31777,7 @@ export const WebAppsStopInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsStopInput = typeof WebAppsStopInput.Type;
 
 // Output Schema
-export const WebAppsStopOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsStopOutput = Schema.Void;
 export type WebAppsStopOutput = typeof WebAppsStopOutput.Type;
 
 // The operation
@@ -31854,7 +31812,7 @@ export type WebAppsStopContinuousWebJobInput =
   typeof WebAppsStopContinuousWebJobInput.Type;
 
 // Output Schema
-export const WebAppsStopContinuousWebJobOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsStopContinuousWebJobOutput = Schema.Void;
 export type WebAppsStopContinuousWebJobOutput =
   typeof WebAppsStopContinuousWebJobOutput.Type;
 
@@ -31894,7 +31852,7 @@ export type WebAppsStopContinuousWebJobSlotInput =
   typeof WebAppsStopContinuousWebJobSlotInput.Type;
 
 // Output Schema
-export const WebAppsStopContinuousWebJobSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsStopContinuousWebJobSlotOutput = Schema.Void;
 export type WebAppsStopContinuousWebJobSlotOutput =
   typeof WebAppsStopContinuousWebJobSlotOutput.Type;
 
@@ -31931,7 +31889,7 @@ export type WebAppsStopNetworkTraceInput =
   typeof WebAppsStopNetworkTraceInput.Type;
 
 // Output Schema
-export const WebAppsStopNetworkTraceOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsStopNetworkTraceOutput = Schema.Void;
 export type WebAppsStopNetworkTraceOutput =
   typeof WebAppsStopNetworkTraceOutput.Type;
 
@@ -31967,7 +31925,7 @@ export type WebAppsStopNetworkTraceSlotInput =
   typeof WebAppsStopNetworkTraceSlotInput.Type;
 
 // Output Schema
-export const WebAppsStopNetworkTraceSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsStopNetworkTraceSlotOutput = Schema.Void;
 export type WebAppsStopNetworkTraceSlotOutput =
   typeof WebAppsStopNetworkTraceSlotOutput.Type;
 
@@ -32003,7 +31961,7 @@ export const WebAppsStopSlotInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsStopSlotInput = typeof WebAppsStopSlotInput.Type;
 
 // Output Schema
-export const WebAppsStopSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsStopSlotOutput = Schema.Void;
 export type WebAppsStopSlotOutput = typeof WebAppsStopSlotOutput.Type;
 
 // The operation
@@ -32038,7 +31996,7 @@ export type WebAppsStopWebSiteNetworkTraceInput =
   typeof WebAppsStopWebSiteNetworkTraceInput.Type;
 
 // Output Schema
-export const WebAppsStopWebSiteNetworkTraceOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsStopWebSiteNetworkTraceOutput = Schema.Void;
 export type WebAppsStopWebSiteNetworkTraceOutput =
   typeof WebAppsStopWebSiteNetworkTraceOutput.Type;
 
@@ -32075,8 +32033,7 @@ export type WebAppsStopWebSiteNetworkTraceSlotInput =
   typeof WebAppsStopWebSiteNetworkTraceSlotInput.Type;
 
 // Output Schema
-export const WebAppsStopWebSiteNetworkTraceSlotOutput =
-  /*@__PURE__*/ Schema.Void;
+export const WebAppsStopWebSiteNetworkTraceSlotOutput = Schema.Void;
 export type WebAppsStopWebSiteNetworkTraceSlotOutput =
   typeof WebAppsStopWebSiteNetworkTraceSlotOutput.Type;
 
@@ -32114,7 +32071,7 @@ export const WebAppsSwapSlotSlotInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsSwapSlotSlotInput = typeof WebAppsSwapSlotSlotInput.Type;
 
 // Output Schema
-export const WebAppsSwapSlotSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsSwapSlotSlotOutput = Schema.Void;
 export type WebAppsSwapSlotSlotOutput = typeof WebAppsSwapSlotSlotOutput.Type;
 
 // The operation
@@ -32149,7 +32106,7 @@ export type WebAppsSwapSlotWithProductionInput =
   typeof WebAppsSwapSlotWithProductionInput.Type;
 
 // Output Schema
-export const WebAppsSwapSlotWithProductionOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsSwapSlotWithProductionOutput = Schema.Void;
 export type WebAppsSwapSlotWithProductionOutput =
   typeof WebAppsSwapSlotWithProductionOutput.Type;
 
@@ -32183,7 +32140,7 @@ export const WebAppsSyncFunctionsInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsSyncFunctionsInput = typeof WebAppsSyncFunctionsInput.Type;
 
 // Output Schema
-export const WebAppsSyncFunctionsOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsSyncFunctionsOutput = Schema.Void;
 export type WebAppsSyncFunctionsOutput = typeof WebAppsSyncFunctionsOutput.Type;
 
 // The operation
@@ -32218,7 +32175,7 @@ export type WebAppsSyncFunctionsSlotInput =
   typeof WebAppsSyncFunctionsSlotInput.Type;
 
 // Output Schema
-export const WebAppsSyncFunctionsSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsSyncFunctionsSlotOutput = Schema.Void;
 export type WebAppsSyncFunctionsSlotOutput =
   typeof WebAppsSyncFunctionsSlotOutput.Type;
 
@@ -32254,7 +32211,7 @@ export type WebAppsSyncFunctionTriggersInput =
   typeof WebAppsSyncFunctionTriggersInput.Type;
 
 // Output Schema
-export const WebAppsSyncFunctionTriggersOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsSyncFunctionTriggersOutput = Schema.Void;
 export type WebAppsSyncFunctionTriggersOutput =
   typeof WebAppsSyncFunctionTriggersOutput.Type;
 
@@ -32292,7 +32249,7 @@ export type WebAppsSyncFunctionTriggersSlotInput =
   typeof WebAppsSyncFunctionTriggersSlotInput.Type;
 
 // Output Schema
-export const WebAppsSyncFunctionTriggersSlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsSyncFunctionTriggersSlotOutput = Schema.Void;
 export type WebAppsSyncFunctionTriggersSlotOutput =
   typeof WebAppsSyncFunctionTriggersSlotOutput.Type;
 
@@ -32327,7 +32284,7 @@ export const WebAppsSyncRepositoryInput = /*@__PURE__*/ Schema.Struct({
 export type WebAppsSyncRepositoryInput = typeof WebAppsSyncRepositoryInput.Type;
 
 // Output Schema
-export const WebAppsSyncRepositoryOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsSyncRepositoryOutput = Schema.Void;
 export type WebAppsSyncRepositoryOutput =
   typeof WebAppsSyncRepositoryOutput.Type;
 
@@ -32363,7 +32320,7 @@ export type WebAppsSyncRepositorySlotInput =
   typeof WebAppsSyncRepositorySlotInput.Type;
 
 // Output Schema
-export const WebAppsSyncRepositorySlotOutput = /*@__PURE__*/ Schema.Void;
+export const WebAppsSyncRepositorySlotOutput = Schema.Void;
 export type WebAppsSyncRepositorySlotOutput =
   typeof WebAppsSyncRepositorySlotOutput.Type;
 
@@ -33563,7 +33520,7 @@ export type WebAppsUpdateMachineKeyInput =
   typeof WebAppsUpdateMachineKeyInput.Type;
 
 // Output Schema
-export const WebAppsUpdateMachineKeyOutput = /*@__PURE__*/ Schema.Unknown;
+export const WebAppsUpdateMachineKeyOutput = Schema.Unknown;
 export type WebAppsUpdateMachineKeyOutput =
   typeof WebAppsUpdateMachineKeyOutput.Type;
 
@@ -35335,7 +35292,7 @@ export const WorkflowRunsCancelInput = /*@__PURE__*/ Schema.Struct({
 export type WorkflowRunsCancelInput = typeof WorkflowRunsCancelInput.Type;
 
 // Output Schema
-export const WorkflowRunsCancelOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowRunsCancelOutput = Schema.Void;
 export type WorkflowRunsCancelOutput = typeof WorkflowRunsCancelOutput.Type;
 
 // The operation
@@ -35483,7 +35440,7 @@ export type WorkflowsRegenerateAccessKeyInput =
   typeof WorkflowsRegenerateAccessKeyInput.Type;
 
 // Output Schema
-export const WorkflowsRegenerateAccessKeyOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowsRegenerateAccessKeyOutput = Schema.Void;
 export type WorkflowsRegenerateAccessKeyOutput =
   typeof WorkflowsRegenerateAccessKeyOutput.Type;
 
@@ -35517,7 +35474,7 @@ export const WorkflowsValidateInput = /*@__PURE__*/ Schema.Struct({
 export type WorkflowsValidateInput = typeof WorkflowsValidateInput.Type;
 
 // Output Schema
-export const WorkflowsValidateOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowsValidateOutput = Schema.Void;
 export type WorkflowsValidateOutput = typeof WorkflowsValidateOutput.Type;
 
 // The operation
@@ -35675,7 +35632,7 @@ export type WorkflowTriggerHistoriesResubmitInput =
   typeof WorkflowTriggerHistoriesResubmitInput.Type;
 
 // Output Schema
-export const WorkflowTriggerHistoriesResubmitOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowTriggerHistoriesResubmitOutput = Schema.Void;
 export type WorkflowTriggerHistoriesResubmitOutput =
   typeof WorkflowTriggerHistoriesResubmitOutput.Type;
 
@@ -35920,7 +35877,7 @@ export const WorkflowTriggersRunInput = /*@__PURE__*/ Schema.Struct({
 export type WorkflowTriggersRunInput = typeof WorkflowTriggersRunInput.Type;
 
 // Output Schema
-export const WorkflowTriggersRunOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowTriggersRunOutput = Schema.Void;
 export type WorkflowTriggersRunOutput = typeof WorkflowTriggersRunOutput.Type;
 
 // The operation

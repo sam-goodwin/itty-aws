@@ -20,7 +20,7 @@ export type SearchOrgInvoiceLineItemsInput =
   typeof SearchOrgInvoiceLineItemsInput.Type;
 
 // Output Schema
-export const SearchOrgInvoiceLineItemsOutput = /*@__PURE__*/ Schema.Void;
+export const SearchOrgInvoiceLineItemsOutput = Schema.Void;
 export type SearchOrgInvoiceLineItemsOutput =
   typeof SearchOrgInvoiceLineItemsOutput.Type;
 

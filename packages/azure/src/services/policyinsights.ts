@@ -132,7 +132,7 @@ export type AttestationsDeleteAtResourceInput =
   typeof AttestationsDeleteAtResourceInput.Type;
 
 // Output Schema
-export const AttestationsDeleteAtResourceOutput = /*@__PURE__*/ Schema.Void;
+export const AttestationsDeleteAtResourceOutput = Schema.Void;
 export type AttestationsDeleteAtResourceOutput =
   typeof AttestationsDeleteAtResourceOutput.Type;
 
@@ -162,8 +162,7 @@ export type AttestationsDeleteAtResourceGroupInput =
   typeof AttestationsDeleteAtResourceGroupInput.Type;
 
 // Output Schema
-export const AttestationsDeleteAtResourceGroupOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AttestationsDeleteAtResourceGroupOutput = Schema.Void;
 export type AttestationsDeleteAtResourceGroupOutput =
   typeof AttestationsDeleteAtResourceGroupOutput.Type;
 
@@ -194,7 +193,7 @@ export type AttestationsDeleteAtSubscriptionInput =
   typeof AttestationsDeleteAtSubscriptionInput.Type;
 
 // Output Schema
-export const AttestationsDeleteAtSubscriptionOutput = /*@__PURE__*/ Schema.Void;
+export const AttestationsDeleteAtSubscriptionOutput = Schema.Void;
 export type AttestationsDeleteAtSubscriptionOutput =
   typeof AttestationsDeleteAtSubscriptionOutput.Type;
 
@@ -4415,8 +4414,7 @@ export type PolicyStatesTriggerResourceGroupEvaluationInput =
   typeof PolicyStatesTriggerResourceGroupEvaluationInput.Type;
 
 // Output Schema
-export const PolicyStatesTriggerResourceGroupEvaluationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PolicyStatesTriggerResourceGroupEvaluationOutput = Schema.Void;
 export type PolicyStatesTriggerResourceGroupEvaluationOutput =
   typeof PolicyStatesTriggerResourceGroupEvaluationOutput.Type;
 
@@ -4441,8 +4439,7 @@ export type PolicyStatesTriggerSubscriptionEvaluationInput =
   typeof PolicyStatesTriggerSubscriptionEvaluationInput.Type;
 
 // Output Schema
-export const PolicyStatesTriggerSubscriptionEvaluationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PolicyStatesTriggerSubscriptionEvaluationOutput = Schema.Void;
 export type PolicyStatesTriggerSubscriptionEvaluationOutput =
   typeof PolicyStatesTriggerSubscriptionEvaluationOutput.Type;
 

@@ -19,7 +19,7 @@ export type ListGroupDataFederationInput =
   typeof ListGroupDataFederationInput.Type;
 
 // Output Schema
-export const ListGroupDataFederationOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupDataFederationOutput = Schema.Void;
 export type ListGroupDataFederationOutput =
   typeof ListGroupDataFederationOutput.Type;
 

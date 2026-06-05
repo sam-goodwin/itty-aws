@@ -989,7 +989,7 @@ export type ExperimentsDuplicateCreateInput =
   typeof ExperimentsDuplicateCreateInput.Type;
 
 // Output Schema
-export const ExperimentsDuplicateCreateOutput = /*@__PURE__*/ Schema.Void;
+export const ExperimentsDuplicateCreateOutput = Schema.Void;
 export type ExperimentsDuplicateCreateOutput =
   typeof ExperimentsDuplicateCreateOutput.Type;
 

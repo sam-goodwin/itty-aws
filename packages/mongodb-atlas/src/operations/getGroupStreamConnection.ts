@@ -19,7 +19,7 @@ export type GetGroupStreamConnectionInput =
   typeof GetGroupStreamConnectionInput.Type;
 
 // Output Schema
-export const GetGroupStreamConnectionOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupStreamConnectionOutput = Schema.Void;
 export type GetGroupStreamConnectionOutput =
   typeof GetGroupStreamConnectionOutput.Type;
 

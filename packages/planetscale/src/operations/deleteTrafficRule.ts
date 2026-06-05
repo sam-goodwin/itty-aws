@@ -19,7 +19,7 @@ export const DeleteTrafficRuleInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteTrafficRuleInput = typeof DeleteTrafficRuleInput.Type;
 
 // Output Schema
-export const DeleteTrafficRuleOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteTrafficRuleOutput = Schema.Void;
 export type DeleteTrafficRuleOutput = typeof DeleteTrafficRuleOutput.Type;
 
 // The operation

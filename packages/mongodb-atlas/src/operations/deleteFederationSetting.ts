@@ -16,7 +16,7 @@ export type DeleteFederationSettingInput =
   typeof DeleteFederationSettingInput.Type;
 
 // Output Schema
-export const DeleteFederationSettingOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteFederationSettingOutput = Schema.Void;
 export type DeleteFederationSettingOutput =
   typeof DeleteFederationSettingOutput.Type;
 

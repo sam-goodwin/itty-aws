@@ -14,7 +14,7 @@ export const GroupsRelatedRetrieveInput = /*@__PURE__*/ Schema.Struct({
 export type GroupsRelatedRetrieveInput = typeof GroupsRelatedRetrieveInput.Type;
 
 // Output Schema
-export const GroupsRelatedRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const GroupsRelatedRetrieveOutput = Schema.Void;
 export type GroupsRelatedRetrieveOutput =
   typeof GroupsRelatedRetrieveOutput.Type;
 

@@ -79,7 +79,7 @@ export type CommunicationsGatewaysDeleteInput =
   typeof CommunicationsGatewaysDeleteInput.Type;
 
 // Output Schema
-export const CommunicationsGatewaysDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CommunicationsGatewaysDeleteOutput = Schema.Void;
 export type CommunicationsGatewaysDeleteOutput =
   typeof CommunicationsGatewaysDeleteOutput.Type;
 
@@ -483,7 +483,7 @@ export const TestLinesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TestLinesDeleteInput = typeof TestLinesDeleteInput.Type;
 
 // Output Schema
-export const TestLinesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TestLinesDeleteOutput = Schema.Void;
 export type TestLinesDeleteOutput = typeof TestLinesDeleteOutput.Type;
 
 // The operation

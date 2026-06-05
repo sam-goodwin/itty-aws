@@ -189,8 +189,7 @@ export type ExternalDataSourcesRefreshSchemasCreateInput =
   typeof ExternalDataSourcesRefreshSchemasCreateInput.Type;
 
 // Output Schema
-export const ExternalDataSourcesRefreshSchemasCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ExternalDataSourcesRefreshSchemasCreateOutput = Schema.Void;
 export type ExternalDataSourcesRefreshSchemasCreateOutput =
   typeof ExternalDataSourcesRefreshSchemasCreateOutput.Type;
 

@@ -123,8 +123,7 @@ export type AttachedDatabaseConfigurationsDeleteInput =
   typeof AttachedDatabaseConfigurationsDeleteInput.Type;
 
 // Output Schema
-export const AttachedDatabaseConfigurationsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AttachedDatabaseConfigurationsDeleteOutput = Schema.Void;
 export type AttachedDatabaseConfigurationsDeleteOutput =
   typeof AttachedDatabaseConfigurationsDeleteOutput.Type;
 
@@ -386,8 +385,7 @@ export type ClusterPrincipalAssignmentsDeleteInput =
   typeof ClusterPrincipalAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const ClusterPrincipalAssignmentsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ClusterPrincipalAssignmentsDeleteOutput = Schema.Void;
 export type ClusterPrincipalAssignmentsDeleteOutput =
   typeof ClusterPrincipalAssignmentsDeleteOutput.Type;
 
@@ -547,7 +545,7 @@ export type ClustersAddCalloutPoliciesInput =
   typeof ClustersAddCalloutPoliciesInput.Type;
 
 // Output Schema
-export const ClustersAddCalloutPoliciesOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersAddCalloutPoliciesOutput = Schema.Void;
 export type ClustersAddCalloutPoliciesOutput =
   typeof ClustersAddCalloutPoliciesOutput.Type;
 
@@ -580,7 +578,7 @@ export type ClustersAddLanguageExtensionsInput =
   typeof ClustersAddLanguageExtensionsInput.Type;
 
 // Output Schema
-export const ClustersAddLanguageExtensionsOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersAddLanguageExtensionsOutput = Schema.Void;
 export type ClustersAddLanguageExtensionsOutput =
   typeof ClustersAddLanguageExtensionsOutput.Type;
 
@@ -701,7 +699,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersDeleteOutput = Schema.Void;
 export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 
 // The operation
@@ -735,7 +733,7 @@ export type ClustersDetachFollowerDatabasesInput =
   typeof ClustersDetachFollowerDatabasesInput.Type;
 
 // Output Schema
-export const ClustersDetachFollowerDatabasesOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersDetachFollowerDatabasesOutput = Schema.Void;
 export type ClustersDetachFollowerDatabasesOutput =
   typeof ClustersDetachFollowerDatabasesOutput.Type;
 
@@ -1492,7 +1490,7 @@ export const ClustersMigrateInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersMigrateInput = typeof ClustersMigrateInput.Type;
 
 // Output Schema
-export const ClustersMigrateOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersMigrateOutput = Schema.Void;
 export type ClustersMigrateOutput = typeof ClustersMigrateOutput.Type;
 
 // The operation
@@ -1524,7 +1522,7 @@ export type ClustersRemoveCalloutPolicyInput =
   typeof ClustersRemoveCalloutPolicyInput.Type;
 
 // Output Schema
-export const ClustersRemoveCalloutPolicyOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersRemoveCalloutPolicyOutput = Schema.Void;
 export type ClustersRemoveCalloutPolicyOutput =
   typeof ClustersRemoveCalloutPolicyOutput.Type;
 
@@ -1558,7 +1556,7 @@ export type ClustersRemoveLanguageExtensionsInput =
   typeof ClustersRemoveLanguageExtensionsInput.Type;
 
 // Output Schema
-export const ClustersRemoveLanguageExtensionsOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersRemoveLanguageExtensionsOutput = Schema.Void;
 export type ClustersRemoveLanguageExtensionsOutput =
   typeof ClustersRemoveLanguageExtensionsOutput.Type;
 
@@ -1590,7 +1588,7 @@ export const ClustersStartInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersStartInput = typeof ClustersStartInput.Type;
 
 // Output Schema
-export const ClustersStartOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersStartOutput = Schema.Void;
 export type ClustersStartOutput = typeof ClustersStartOutput.Type;
 
 // The operation
@@ -1621,7 +1619,7 @@ export const ClustersStopInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersStopInput = typeof ClustersStopInput.Type;
 
 // Output Schema
-export const ClustersStopOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersStopOutput = Schema.Void;
 export type ClustersStopOutput = typeof ClustersStopOutput.Type;
 
 // The operation
@@ -1844,8 +1842,7 @@ export type DatabasePrincipalAssignmentsDeleteInput =
   typeof DatabasePrincipalAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const DatabasePrincipalAssignmentsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DatabasePrincipalAssignmentsDeleteOutput = Schema.Void;
 export type DatabasePrincipalAssignmentsDeleteOutput =
   typeof DatabasePrincipalAssignmentsDeleteOutput.Type;
 
@@ -2164,7 +2161,7 @@ export const DatabasesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
 
 // Output Schema
-export const DatabasesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DatabasesDeleteOutput = Schema.Void;
 export type DatabasesDeleteOutput = typeof DatabasesDeleteOutput.Type;
 
 // The operation
@@ -2622,7 +2619,7 @@ export const DataConnectionsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DataConnectionsDeleteInput = typeof DataConnectionsDeleteInput.Type;
 
 // Output Schema
-export const DataConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DataConnectionsDeleteOutput = Schema.Void;
 export type DataConnectionsDeleteOutput =
   typeof DataConnectionsDeleteOutput.Type;
 
@@ -2933,7 +2930,7 @@ export type ManagedPrivateEndpointsDeleteInput =
   typeof ManagedPrivateEndpointsDeleteInput.Type;
 
 // Output Schema
-export const ManagedPrivateEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ManagedPrivateEndpointsDeleteOutput = Schema.Void;
 export type ManagedPrivateEndpointsDeleteOutput =
   typeof ManagedPrivateEndpointsDeleteOutput.Type;
 
@@ -3304,7 +3301,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -3680,7 +3677,7 @@ export type SandboxCustomImagesDeleteInput =
   typeof SandboxCustomImagesDeleteInput.Type;
 
 // Output Schema
-export const SandboxCustomImagesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SandboxCustomImagesDeleteOutput = Schema.Void;
 export type SandboxCustomImagesDeleteOutput =
   typeof SandboxCustomImagesDeleteOutput.Type;
 
@@ -3983,7 +3980,7 @@ export const ScriptsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ScriptsDeleteInput = typeof ScriptsDeleteInput.Type;
 
 // Output Schema
-export const ScriptsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ScriptsDeleteOutput = Schema.Void;
 export type ScriptsDeleteOutput = typeof ScriptsDeleteOutput.Type;
 
 // The operation

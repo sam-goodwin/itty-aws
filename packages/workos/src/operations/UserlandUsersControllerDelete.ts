@@ -11,7 +11,7 @@ export type UserlandUsersControllerDeleteInput =
   typeof UserlandUsersControllerDeleteInput.Type;
 
 // Output Schema
-export const UserlandUsersControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const UserlandUsersControllerDeleteOutput = Schema.Void;
 export type UserlandUsersControllerDeleteOutput =
   typeof UserlandUsersControllerDeleteOutput.Type;
 

@@ -17,7 +17,7 @@ export type CommentsThreadRetrieveInput =
   typeof CommentsThreadRetrieveInput.Type;
 
 // Output Schema
-export const CommentsThreadRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const CommentsThreadRetrieveOutput = Schema.Void;
 export type CommentsThreadRetrieveOutput =
   typeof CommentsThreadRetrieveOutput.Type;
 

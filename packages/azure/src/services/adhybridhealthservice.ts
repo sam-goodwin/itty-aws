@@ -198,7 +198,7 @@ export type AddsServiceMembersDeleteInput =
   typeof AddsServiceMembersDeleteInput.Type;
 
 // Output Schema
-export const AddsServiceMembersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AddsServiceMembersDeleteOutput = Schema.Void;
 export type AddsServiceMembersDeleteOutput =
   typeof AddsServiceMembersDeleteOutput.Type;
 
@@ -492,7 +492,7 @@ export const AddsServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AddsServicesDeleteInput = typeof AddsServicesDeleteInput.Type;
 
 // Output Schema
-export const AddsServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AddsServicesDeleteOutput = Schema.Void;
 export type AddsServicesDeleteOutput = typeof AddsServicesDeleteOutput.Type;
 
 // The operation
@@ -1465,7 +1465,7 @@ export type AddsServicesUserPreferenceAddInput =
   typeof AddsServicesUserPreferenceAddInput.Type;
 
 // Output Schema
-export const AddsServicesUserPreferenceAddOutput = /*@__PURE__*/ Schema.Void;
+export const AddsServicesUserPreferenceAddOutput = Schema.Void;
 export type AddsServicesUserPreferenceAddOutput =
   typeof AddsServicesUserPreferenceAddOutput.Type;
 
@@ -1495,7 +1495,7 @@ export type AddsServicesUserPreferenceDeleteInput =
   typeof AddsServicesUserPreferenceDeleteInput.Type;
 
 // Output Schema
-export const AddsServicesUserPreferenceDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AddsServicesUserPreferenceDeleteOutput = Schema.Void;
 export type AddsServicesUserPreferenceDeleteOutput =
   typeof AddsServicesUserPreferenceDeleteOutput.Type;
 
@@ -2140,7 +2140,7 @@ export const ServiceMembersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ServiceMembersDeleteInput = typeof ServiceMembersDeleteInput.Type;
 
 // Output Schema
-export const ServiceMembersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServiceMembersDeleteOutput = Schema.Void;
 export type ServiceMembersDeleteOutput = typeof ServiceMembersDeleteOutput.Type;
 
 // The operation
@@ -2169,7 +2169,7 @@ export type ServiceMembersDeleteDataInput =
   typeof ServiceMembersDeleteDataInput.Type;
 
 // Output Schema
-export const ServiceMembersDeleteDataOutput = /*@__PURE__*/ Schema.Void;
+export const ServiceMembersDeleteDataOutput = Schema.Void;
 export type ServiceMembersDeleteDataOutput =
   typeof ServiceMembersDeleteDataOutput.Type;
 
@@ -2922,7 +2922,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServicesDeleteOutput = Schema.Void;
 export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 
 // The operation
@@ -3979,8 +3979,7 @@ export type ServicesUpdateMonitoringConfigurationInput =
   typeof ServicesUpdateMonitoringConfigurationInput.Type;
 
 // Output Schema
-export const ServicesUpdateMonitoringConfigurationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ServicesUpdateMonitoringConfigurationOutput = Schema.Void;
 export type ServicesUpdateMonitoringConfigurationOutput =
   typeof ServicesUpdateMonitoringConfigurationOutput.Type;
 

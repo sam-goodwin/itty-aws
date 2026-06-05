@@ -65,7 +65,7 @@ export const CopilotSettingsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type CopilotSettingsDeleteInput = typeof CopilotSettingsDeleteInput.Type;
 
 // Output Schema
-export const CopilotSettingsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CopilotSettingsDeleteOutput = Schema.Void;
 export type CopilotSettingsDeleteOutput =
   typeof CopilotSettingsDeleteOutput.Type;
 

@@ -17,8 +17,7 @@ export type SessionsPropertyDefinitionsRetrieveInput =
   typeof SessionsPropertyDefinitionsRetrieveInput.Type;
 
 // Output Schema
-export const SessionsPropertyDefinitionsRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SessionsPropertyDefinitionsRetrieveOutput = Schema.Void;
 export type SessionsPropertyDefinitionsRetrieveOutput =
   typeof SessionsPropertyDefinitionsRetrieveOutput.Type;
 

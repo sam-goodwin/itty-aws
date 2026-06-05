@@ -17,7 +17,7 @@ export type LlmSkillsNameArchiveCreateInput =
   typeof LlmSkillsNameArchiveCreateInput.Type;
 
 // Output Schema
-export const LlmSkillsNameArchiveCreateOutput = /*@__PURE__*/ Schema.Void;
+export const LlmSkillsNameArchiveCreateOutput = Schema.Void;
 export type LlmSkillsNameArchiveCreateOutput =
   typeof LlmSkillsNameArchiveCreateOutput.Type;
 

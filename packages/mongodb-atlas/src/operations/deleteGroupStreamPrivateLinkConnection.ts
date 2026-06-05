@@ -20,8 +20,7 @@ export type DeleteGroupStreamPrivateLinkConnectionInput =
   typeof DeleteGroupStreamPrivateLinkConnectionInput.Type;
 
 // Output Schema
-export const DeleteGroupStreamPrivateLinkConnectionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeleteGroupStreamPrivateLinkConnectionOutput = Schema.Void;
 export type DeleteGroupStreamPrivateLinkConnectionOutput =
   typeof DeleteGroupStreamPrivateLinkConnectionOutput.Type;
 

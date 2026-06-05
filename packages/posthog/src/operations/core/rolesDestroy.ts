@@ -16,7 +16,7 @@ export const RolesDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type RolesDestroyInput = typeof RolesDestroyInput.Type;
 
 // Output Schema
-export const RolesDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const RolesDestroyOutput = Schema.Void;
 export type RolesDestroyOutput = typeof RolesDestroyOutput.Type;
 
 // The operation

@@ -16,7 +16,7 @@ export const FeatureFlagsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type FeatureFlagsDestroyInput = typeof FeatureFlagsDestroyInput.Type;
 
 // Output Schema
-export const FeatureFlagsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const FeatureFlagsDestroyOutput = Schema.Void;
 export type FeatureFlagsDestroyOutput = typeof FeatureFlagsDestroyOutput.Type;
 
 // The operation

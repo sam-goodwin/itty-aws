@@ -61,7 +61,7 @@ export type ErrorTrackingIssuesBulkCreateInput =
   typeof ErrorTrackingIssuesBulkCreateInput.Type;
 
 // Output Schema
-export const ErrorTrackingIssuesBulkCreateOutput = /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingIssuesBulkCreateOutput = Schema.Void;
 export type ErrorTrackingIssuesBulkCreateOutput =
   typeof ErrorTrackingIssuesBulkCreateOutput.Type;
 

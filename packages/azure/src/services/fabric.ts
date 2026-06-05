@@ -120,7 +120,7 @@ export type FabricCapacitiesDeleteInput =
   typeof FabricCapacitiesDeleteInput.Type;
 
 // Output Schema
-export const FabricCapacitiesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FabricCapacitiesDeleteOutput = Schema.Void;
 export type FabricCapacitiesDeleteOutput =
   typeof FabricCapacitiesDeleteOutput.Type;
 
@@ -422,7 +422,7 @@ export type FabricCapacitiesResumeInput =
   typeof FabricCapacitiesResumeInput.Type;
 
 // Output Schema
-export const FabricCapacitiesResumeOutput = /*@__PURE__*/ Schema.Void;
+export const FabricCapacitiesResumeOutput = Schema.Void;
 export type FabricCapacitiesResumeOutput =
   typeof FabricCapacitiesResumeOutput.Type;
 
@@ -455,7 +455,7 @@ export type FabricCapacitiesSuspendInput =
   typeof FabricCapacitiesSuspendInput.Type;
 
 // Output Schema
-export const FabricCapacitiesSuspendOutput = /*@__PURE__*/ Schema.Void;
+export const FabricCapacitiesSuspendOutput = Schema.Void;
 export type FabricCapacitiesSuspendOutput =
   typeof FabricCapacitiesSuspendOutput.Type;
 

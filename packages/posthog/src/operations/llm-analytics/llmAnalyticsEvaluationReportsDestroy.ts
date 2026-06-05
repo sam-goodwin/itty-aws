@@ -18,8 +18,7 @@ export type LlmAnalyticsEvaluationReportsDestroyInput =
   typeof LlmAnalyticsEvaluationReportsDestroyInput.Type;
 
 // Output Schema
-export const LlmAnalyticsEvaluationReportsDestroyOutput =
-  /*@__PURE__*/ Schema.Void;
+export const LlmAnalyticsEvaluationReportsDestroyOutput = Schema.Void;
 export type LlmAnalyticsEvaluationReportsDestroyOutput =
   typeof LlmAnalyticsEvaluationReportsDestroyOutput.Type;
 

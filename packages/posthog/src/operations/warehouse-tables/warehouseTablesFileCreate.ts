@@ -237,7 +237,7 @@ export type WarehouseTablesFileCreateInput =
   typeof WarehouseTablesFileCreateInput.Type;
 
 // Output Schema
-export const WarehouseTablesFileCreateOutput = /*@__PURE__*/ Schema.Void;
+export const WarehouseTablesFileCreateOutput = Schema.Void;
 export type WarehouseTablesFileCreateOutput =
   typeof WarehouseTablesFileCreateOutput.Type;
 

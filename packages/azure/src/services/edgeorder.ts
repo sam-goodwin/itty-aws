@@ -73,7 +73,7 @@ export const AddressesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AddressesDeleteInput = typeof AddressesDeleteInput.Type;
 
 // Output Schema
-export const AddressesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AddressesDeleteOutput = Schema.Void;
 export type AddressesDeleteOutput = typeof AddressesDeleteOutput.Type;
 
 // The operation
@@ -365,7 +365,7 @@ export const OrderItemsCancelInput = /*@__PURE__*/ Schema.Struct({
 export type OrderItemsCancelInput = typeof OrderItemsCancelInput.Type;
 
 // Output Schema
-export const OrderItemsCancelOutput = /*@__PURE__*/ Schema.Void;
+export const OrderItemsCancelOutput = Schema.Void;
 export type OrderItemsCancelOutput = typeof OrderItemsCancelOutput.Type;
 
 // The operation
@@ -446,7 +446,7 @@ export const OrderItemsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type OrderItemsDeleteInput = typeof OrderItemsDeleteInput.Type;
 
 // Output Schema
-export const OrderItemsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const OrderItemsDeleteOutput = Schema.Void;
 export type OrderItemsDeleteOutput = typeof OrderItemsDeleteOutput.Type;
 
 // The operation
@@ -650,7 +650,7 @@ export const OrderItemsReturnInput = /*@__PURE__*/ Schema.Struct({
 export type OrderItemsReturnInput = typeof OrderItemsReturnInput.Type;
 
 // Output Schema
-export const OrderItemsReturnOutput = /*@__PURE__*/ Schema.Void;
+export const OrderItemsReturnOutput = Schema.Void;
 export type OrderItemsReturnOutput = typeof OrderItemsReturnOutput.Type;
 
 // The operation

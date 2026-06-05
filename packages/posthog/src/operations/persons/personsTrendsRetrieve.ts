@@ -13,7 +13,7 @@ export const PersonsTrendsRetrieveInput = /*@__PURE__*/ Schema.Struct({
 export type PersonsTrendsRetrieveInput = typeof PersonsTrendsRetrieveInput.Type;
 
 // Output Schema
-export const PersonsTrendsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const PersonsTrendsRetrieveOutput = Schema.Void;
 export type PersonsTrendsRetrieveOutput =
   typeof PersonsTrendsRetrieveOutput.Type;
 

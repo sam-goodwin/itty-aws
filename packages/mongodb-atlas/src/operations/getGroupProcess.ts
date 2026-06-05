@@ -18,7 +18,7 @@ export const GetGroupProcessInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupProcessInput = typeof GetGroupProcessInput.Type;
 
 // Output Schema
-export const GetGroupProcessOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupProcessOutput = Schema.Void;
 export type GetGroupProcessOutput = typeof GetGroupProcessOutput.Type;
 
 // The operation

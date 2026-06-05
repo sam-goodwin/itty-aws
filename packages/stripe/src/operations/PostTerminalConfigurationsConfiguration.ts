@@ -29,8 +29,7 @@ export type PostTerminalConfigurationsConfigurationInput =
   typeof PostTerminalConfigurationsConfigurationInput.Type;
 
 // Output Schema
-export const PostTerminalConfigurationsConfigurationOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const PostTerminalConfigurationsConfigurationOutput = Schema.Unknown;
 export type PostTerminalConfigurationsConfigurationOutput =
   typeof PostTerminalConfigurationsConfigurationOutput.Type;
 

@@ -22,7 +22,7 @@ export type GetGroupStreamProcessorsInput =
   typeof GetGroupStreamProcessorsInput.Type;
 
 // Output Schema
-export const GetGroupStreamProcessorsOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupStreamProcessorsOutput = Schema.Void;
 export type GetGroupStreamProcessorsOutput =
   typeof GetGroupStreamProcessorsOutput.Type;
 

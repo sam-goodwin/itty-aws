@@ -11,7 +11,7 @@ export type CodeInvitesRedeemCreateInput =
   typeof CodeInvitesRedeemCreateInput.Type;
 
 // Output Schema
-export const CodeInvitesRedeemCreateOutput = /*@__PURE__*/ Schema.Void;
+export const CodeInvitesRedeemCreateOutput = Schema.Void;
 export type CodeInvitesRedeemCreateOutput =
   typeof CodeInvitesRedeemCreateOutput.Type;
 

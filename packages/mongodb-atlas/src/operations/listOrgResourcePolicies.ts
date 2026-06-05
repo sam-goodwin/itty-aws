@@ -18,7 +18,7 @@ export type ListOrgResourcePoliciesInput =
   typeof ListOrgResourcePoliciesInput.Type;
 
 // Output Schema
-export const ListOrgResourcePoliciesOutput = /*@__PURE__*/ Schema.Void;
+export const ListOrgResourcePoliciesOutput = Schema.Void;
 export type ListOrgResourcePoliciesOutput =
   typeof ListOrgResourcePoliciesOutput.Type;
 

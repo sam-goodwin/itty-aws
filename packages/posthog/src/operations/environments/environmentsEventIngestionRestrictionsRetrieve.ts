@@ -18,8 +18,7 @@ export type EnvironmentsEventIngestionRestrictionsRetrieveInput =
   typeof EnvironmentsEventIngestionRestrictionsRetrieveInput.Type;
 
 // Output Schema
-export const EnvironmentsEventIngestionRestrictionsRetrieveOutput =
-  /*@__PURE__*/ Schema.Void;
+export const EnvironmentsEventIngestionRestrictionsRetrieveOutput = Schema.Void;
 export type EnvironmentsEventIngestionRestrictionsRetrieveOutput =
   typeof EnvironmentsEventIngestionRestrictionsRetrieveOutput.Type;
 

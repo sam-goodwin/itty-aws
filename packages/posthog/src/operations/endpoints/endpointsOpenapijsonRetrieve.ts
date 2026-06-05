@@ -18,7 +18,7 @@ export type EndpointsOpenapijsonRetrieveInput =
   typeof EndpointsOpenapijsonRetrieveInput.Type;
 
 // Output Schema
-export const EndpointsOpenapijsonRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const EndpointsOpenapijsonRetrieveOutput = Schema.Void;
 export type EndpointsOpenapijsonRetrieveOutput =
   typeof EndpointsOpenapijsonRetrieveOutput.Type;
 

@@ -15,7 +15,7 @@ export const V1UpsertAMigrationInput = /*@__PURE__*/ Schema.Struct({
 export type V1UpsertAMigrationInput = typeof V1UpsertAMigrationInput.Type;
 
 // Output Schema
-export const V1UpsertAMigrationOutput = /*@__PURE__*/ Schema.Void;
+export const V1UpsertAMigrationOutput = Schema.Void;
 export type V1UpsertAMigrationOutput = typeof V1UpsertAMigrationOutput.Type;
 
 // The operation

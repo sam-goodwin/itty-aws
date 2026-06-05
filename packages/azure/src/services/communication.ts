@@ -119,7 +119,7 @@ export type CommunicationServicesDeleteInput =
   typeof CommunicationServicesDeleteInput.Type;
 
 // Output Schema
-export const CommunicationServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CommunicationServicesDeleteOutput = Schema.Void;
 export type CommunicationServicesDeleteOutput =
   typeof CommunicationServicesDeleteOutput.Type;
 
@@ -524,7 +524,7 @@ export type DomainsCancelVerificationInput =
   typeof DomainsCancelVerificationInput.Type;
 
 // Output Schema
-export const DomainsCancelVerificationOutput = /*@__PURE__*/ Schema.Void;
+export const DomainsCancelVerificationOutput = Schema.Void;
 export type DomainsCancelVerificationOutput =
   typeof DomainsCancelVerificationOutput.Type;
 
@@ -614,7 +614,7 @@ export const DomainsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DomainsDeleteInput = typeof DomainsDeleteInput.Type;
 
 // Output Schema
-export const DomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DomainsDeleteOutput = Schema.Void;
 export type DomainsDeleteOutput = typeof DomainsDeleteOutput.Type;
 
 // The operation
@@ -703,7 +703,7 @@ export type DomainsInitiateVerificationInput =
   typeof DomainsInitiateVerificationInput.Type;
 
 // Output Schema
-export const DomainsInitiateVerificationOutput = /*@__PURE__*/ Schema.Void;
+export const DomainsInitiateVerificationOutput = Schema.Void;
 export type DomainsInitiateVerificationOutput =
   typeof DomainsInitiateVerificationOutput.Type;
 
@@ -914,7 +914,7 @@ export const EmailServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type EmailServicesDeleteInput = typeof EmailServicesDeleteInput.Type;
 
 // Output Schema
-export const EmailServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const EmailServicesDeleteOutput = Schema.Void;
 export type EmailServicesDeleteOutput = typeof EmailServicesDeleteOutput.Type;
 
 // The operation
@@ -1326,7 +1326,7 @@ export const SenderUsernamesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SenderUsernamesDeleteInput = typeof SenderUsernamesDeleteInput.Type;
 
 // Output Schema
-export const SenderUsernamesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SenderUsernamesDeleteOutput = Schema.Void;
 export type SenderUsernamesDeleteOutput =
   typeof SenderUsernamesDeleteOutput.Type;
 
@@ -1533,7 +1533,7 @@ export const SmtpUsernamesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SmtpUsernamesDeleteInput = typeof SmtpUsernamesDeleteInput.Type;
 
 // Output Schema
-export const SmtpUsernamesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SmtpUsernamesDeleteOutput = Schema.Void;
 export type SmtpUsernamesDeleteOutput = typeof SmtpUsernamesDeleteOutput.Type;
 
 // The operation
@@ -1743,7 +1743,7 @@ export type SuppressionListAddressesDeleteInput =
   typeof SuppressionListAddressesDeleteInput.Type;
 
 // Output Schema
-export const SuppressionListAddressesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SuppressionListAddressesDeleteOutput = Schema.Void;
 export type SuppressionListAddressesDeleteOutput =
   typeof SuppressionListAddressesDeleteOutput.Type;
 
@@ -1963,7 +1963,7 @@ export type SuppressionListsDeleteInput =
   typeof SuppressionListsDeleteInput.Type;
 
 // Output Schema
-export const SuppressionListsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SuppressionListsDeleteOutput = Schema.Void;
 export type SuppressionListsDeleteOutput =
   typeof SuppressionListsDeleteOutput.Type;
 

@@ -18,8 +18,7 @@ export type ToggleGroupMaintenanceWindowAutoDeferInput =
   typeof ToggleGroupMaintenanceWindowAutoDeferInput.Type;
 
 // Output Schema
-export const ToggleGroupMaintenanceWindowAutoDeferOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ToggleGroupMaintenanceWindowAutoDeferOutput = Schema.Void;
 export type ToggleGroupMaintenanceWindowAutoDeferOutput =
   typeof ToggleGroupMaintenanceWindowAutoDeferOutput.Type;
 

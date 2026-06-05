@@ -74,7 +74,7 @@ export const InstancesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type InstancesDeleteInput = typeof InstancesDeleteInput.Type;
 
 // Output Schema
-export const InstancesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const InstancesDeleteOutput = Schema.Void;
 export type InstancesDeleteOutput = typeof InstancesDeleteOutput.Type;
 
 // The operation

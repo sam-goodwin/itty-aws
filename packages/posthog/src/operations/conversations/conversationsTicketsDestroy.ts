@@ -17,7 +17,7 @@ export type ConversationsTicketsDestroyInput =
   typeof ConversationsTicketsDestroyInput.Type;
 
 // Output Schema
-export const ConversationsTicketsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const ConversationsTicketsDestroyOutput = Schema.Void;
 export type ConversationsTicketsDestroyOutput =
   typeof ConversationsTicketsDestroyOutput.Type;
 

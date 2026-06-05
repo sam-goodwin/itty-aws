@@ -18,7 +18,7 @@ export type CancelBranchChangeRequestInput =
   typeof CancelBranchChangeRequestInput.Type;
 
 // Output Schema
-export const CancelBranchChangeRequestOutput = /*@__PURE__*/ Schema.Void;
+export const CancelBranchChangeRequestOutput = Schema.Void;
 export type CancelBranchChangeRequestOutput =
   typeof CancelBranchChangeRequestOutput.Type;
 

@@ -172,7 +172,7 @@ export const BlobContainersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BlobContainersDeleteInput = typeof BlobContainersDeleteInput.Type;
 
 // Output Schema
-export const BlobContainersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BlobContainersDeleteOutput = Schema.Void;
 export type BlobContainersDeleteOutput = typeof BlobContainersDeleteOutput.Type;
 
 // The operation
@@ -585,7 +585,7 @@ export type BlobContainersObjectLevelWormInput =
   typeof BlobContainersObjectLevelWormInput.Type;
 
 // Output Schema
-export const BlobContainersObjectLevelWormOutput = /*@__PURE__*/ Schema.Void;
+export const BlobContainersObjectLevelWormOutput = Schema.Void;
 export type BlobContainersObjectLevelWormOutput =
   typeof BlobContainersObjectLevelWormOutput.Type;
 
@@ -767,7 +767,7 @@ export type BlobInventoryPoliciesDeleteInput =
   typeof BlobInventoryPoliciesDeleteInput.Type;
 
 // Output Schema
-export const BlobInventoryPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BlobInventoryPoliciesDeleteOutput = Schema.Void;
 export type BlobInventoryPoliciesDeleteOutput =
   typeof BlobInventoryPoliciesDeleteOutput.Type;
 
@@ -1145,7 +1145,7 @@ export const ConnectorsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ConnectorsDeleteInput = typeof ConnectorsDeleteInput.Type;
 
 // Output Schema
-export const ConnectorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ConnectorsDeleteOutput = Schema.Void;
 export type ConnectorsDeleteOutput = typeof ConnectorsDeleteOutput.Type;
 
 // The operation
@@ -1443,7 +1443,7 @@ export const DataSharesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DataSharesDeleteInput = typeof DataSharesDeleteInput.Type;
 
 // Output Schema
-export const DataSharesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DataSharesDeleteOutput = Schema.Void;
 export type DataSharesDeleteOutput = typeof DataSharesDeleteOutput.Type;
 
 // The operation
@@ -2293,7 +2293,7 @@ export const FileSharesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FileSharesDeleteInput = typeof FileSharesDeleteInput.Type;
 
 // Output Schema
-export const FileSharesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FileSharesDeleteOutput = Schema.Void;
 export type FileSharesDeleteOutput = typeof FileSharesDeleteOutput.Type;
 
 // The operation
@@ -2479,7 +2479,7 @@ export const FileSharesRestoreInput = /*@__PURE__*/ Schema.Struct({
 export type FileSharesRestoreInput = typeof FileSharesRestoreInput.Type;
 
 // Output Schema
-export const FileSharesRestoreOutput = /*@__PURE__*/ Schema.Void;
+export const FileSharesRestoreOutput = Schema.Void;
 export type FileSharesRestoreOutput = typeof FileSharesRestoreOutput.Type;
 
 // The operation
@@ -2616,7 +2616,7 @@ export const LocalUsersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type LocalUsersDeleteInput = typeof LocalUsersDeleteInput.Type;
 
 // Output Schema
-export const LocalUsersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const LocalUsersDeleteOutput = Schema.Void;
 export type LocalUsersDeleteOutput = typeof LocalUsersDeleteOutput.Type;
 
 // The operation
@@ -2896,7 +2896,7 @@ export type ManagementPoliciesDeleteInput =
   typeof ManagementPoliciesDeleteInput.Type;
 
 // Output Schema
-export const ManagementPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ManagementPoliciesDeleteOutput = Schema.Void;
 export type ManagementPoliciesDeleteOutput =
   typeof ManagementPoliciesDeleteOutput.Type;
 
@@ -3115,7 +3115,7 @@ export type NetworkSecurityPerimeterConfigurationsReconcileInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsReconcileOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type NetworkSecurityPerimeterConfigurationsReconcileOutput =
   typeof NetworkSecurityPerimeterConfigurationsReconcileOutput.Type;
 
@@ -3210,7 +3210,7 @@ export type ObjectReplicationPoliciesDeleteInput =
   typeof ObjectReplicationPoliciesDeleteInput.Type;
 
 // Output Schema
-export const ObjectReplicationPoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ObjectReplicationPoliciesDeleteOutput = Schema.Void;
 export type ObjectReplicationPoliciesDeleteOutput =
   typeof ObjectReplicationPoliciesDeleteOutput.Type;
 
@@ -3439,7 +3439,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -3771,7 +3771,7 @@ export const QueueDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type QueueDeleteInput = typeof QueueDeleteInput.Type;
 
 // Output Schema
-export const QueueDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const QueueDeleteOutput = Schema.Void;
 export type QueueDeleteOutput = typeof QueueDeleteOutput.Type;
 
 // The operation
@@ -4227,7 +4227,7 @@ export type StorageAccountsAbortHierarchicalNamespaceMigrationInput =
 
 // Output Schema
 export const StorageAccountsAbortHierarchicalNamespaceMigrationOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type StorageAccountsAbortHierarchicalNamespaceMigrationOutput =
   typeof StorageAccountsAbortHierarchicalNamespaceMigrationOutput.Type;
 
@@ -4351,8 +4351,7 @@ export type StorageAccountsCustomerInitiatedMigrationInput =
   typeof StorageAccountsCustomerInitiatedMigrationInput.Type;
 
 // Output Schema
-export const StorageAccountsCustomerInitiatedMigrationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const StorageAccountsCustomerInitiatedMigrationOutput = Schema.Void;
 export type StorageAccountsCustomerInitiatedMigrationOutput =
   typeof StorageAccountsCustomerInitiatedMigrationOutput.Type;
 
@@ -4386,7 +4385,7 @@ export const StorageAccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type StorageAccountsDeleteInput = typeof StorageAccountsDeleteInput.Type;
 
 // Output Schema
-export const StorageAccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StorageAccountsDeleteOutput = Schema.Void;
 export type StorageAccountsDeleteOutput =
   typeof StorageAccountsDeleteOutput.Type;
 
@@ -4420,7 +4419,7 @@ export type StorageAccountsFailoverInput =
   typeof StorageAccountsFailoverInput.Type;
 
 // Output Schema
-export const StorageAccountsFailoverOutput = /*@__PURE__*/ Schema.Void;
+export const StorageAccountsFailoverOutput = Schema.Void;
 export type StorageAccountsFailoverOutput =
   typeof StorageAccountsFailoverOutput.Type;
 
@@ -4567,8 +4566,7 @@ export type StorageAccountsHierarchicalNamespaceMigrationInput =
   typeof StorageAccountsHierarchicalNamespaceMigrationInput.Type;
 
 // Output Schema
-export const StorageAccountsHierarchicalNamespaceMigrationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const StorageAccountsHierarchicalNamespaceMigrationOutput = Schema.Void;
 export type StorageAccountsHierarchicalNamespaceMigrationOutput =
   typeof StorageAccountsHierarchicalNamespaceMigrationOutput.Type;
 
@@ -4934,8 +4932,7 @@ export type StorageAccountsRevokeUserDelegationKeysInput =
   typeof StorageAccountsRevokeUserDelegationKeysInput.Type;
 
 // Output Schema
-export const StorageAccountsRevokeUserDelegationKeysOutput =
-  /*@__PURE__*/ Schema.Void;
+export const StorageAccountsRevokeUserDelegationKeysOutput = Schema.Void;
 export type StorageAccountsRevokeUserDelegationKeysOutput =
   typeof StorageAccountsRevokeUserDelegationKeysOutput.Type;
 
@@ -5150,7 +5147,7 @@ export type StorageTaskAssignmentsDeleteInput =
   typeof StorageTaskAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const StorageTaskAssignmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StorageTaskAssignmentsDeleteOutput = Schema.Void;
 export type StorageTaskAssignmentsDeleteOutput =
   typeof StorageTaskAssignmentsDeleteOutput.Type;
 
@@ -5371,8 +5368,7 @@ export type StorageTaskAssignmentsStopAssignmentInput =
   typeof StorageTaskAssignmentsStopAssignmentInput.Type;
 
 // Output Schema
-export const StorageTaskAssignmentsStopAssignmentOutput =
-  /*@__PURE__*/ Schema.Void;
+export const StorageTaskAssignmentsStopAssignmentOutput = Schema.Void;
 export type StorageTaskAssignmentsStopAssignmentOutput =
   typeof StorageTaskAssignmentsStopAssignmentOutput.Type;
 
@@ -5512,7 +5508,7 @@ export const TableDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TableDeleteInput = typeof TableDeleteInput.Type;
 
 // Output Schema
-export const TableDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TableDeleteOutput = Schema.Void;
 export type TableDeleteOutput = typeof TableDeleteOutput.Type;
 
 // The operation

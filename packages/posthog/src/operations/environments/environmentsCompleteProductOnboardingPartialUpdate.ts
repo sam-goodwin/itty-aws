@@ -1177,7 +1177,7 @@ export type EnvironmentsCompleteProductOnboardingPartialUpdateInput =
 
 // Output Schema
 export const EnvironmentsCompleteProductOnboardingPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type EnvironmentsCompleteProductOnboardingPartialUpdateOutput =
   typeof EnvironmentsCompleteProductOnboardingPartialUpdateOutput.Type;
 

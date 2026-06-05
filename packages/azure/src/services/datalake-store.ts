@@ -76,7 +76,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
 
 // Output Schema
-export const AccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AccountsDeleteOutput = Schema.Void;
 export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
 
 // The operation
@@ -98,7 +98,7 @@ export type AccountsEnableKeyVaultInput =
   typeof AccountsEnableKeyVaultInput.Type;
 
 // Output Schema
-export const AccountsEnableKeyVaultOutput = /*@__PURE__*/ Schema.Void;
+export const AccountsEnableKeyVaultOutput = Schema.Void;
 export type AccountsEnableKeyVaultOutput =
   typeof AccountsEnableKeyVaultOutput.Type;
 
@@ -305,7 +305,7 @@ export const FirewallRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
 
 // Output Schema
-export const FirewallRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FirewallRulesDeleteOutput = Schema.Void;
 export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
 
 // The operation
@@ -591,7 +591,7 @@ export type TrustedIdProvidersDeleteInput =
   typeof TrustedIdProvidersDeleteInput.Type;
 
 // Output Schema
-export const TrustedIdProvidersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TrustedIdProvidersDeleteOutput = Schema.Void;
 export type TrustedIdProvidersDeleteOutput =
   typeof TrustedIdProvidersDeleteOutput.Type;
 
@@ -749,7 +749,7 @@ export type VirtualNetworkRulesDeleteInput =
   typeof VirtualNetworkRulesDeleteInput.Type;
 
 // Output Schema
-export const VirtualNetworkRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualNetworkRulesDeleteOutput = Schema.Void;
 export type VirtualNetworkRulesDeleteOutput =
   typeof VirtualNetworkRulesDeleteOutput.Type;
 

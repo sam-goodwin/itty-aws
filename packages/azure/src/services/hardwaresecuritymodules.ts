@@ -165,7 +165,7 @@ export type CloudHsmClusterPrivateEndpointConnectionsDeleteInput =
 
 // Output Schema
 export const CloudHsmClusterPrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+  Schema.Void;
 export type CloudHsmClusterPrivateEndpointConnectionsDeleteOutput =
   typeof CloudHsmClusterPrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -542,7 +542,7 @@ export type CloudHsmClustersDeleteInput =
   typeof CloudHsmClustersDeleteInput.Type;
 
 // Output Schema
-export const CloudHsmClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CloudHsmClustersDeleteOutput = Schema.Void;
 export type CloudHsmClustersDeleteOutput =
   typeof CloudHsmClustersDeleteOutput.Type;
 
@@ -1105,7 +1105,7 @@ export const DedicatedHsmDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DedicatedHsmDeleteInput = typeof DedicatedHsmDeleteInput.Type;
 
 // Output Schema
-export const DedicatedHsmDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DedicatedHsmDeleteOutput = Schema.Void;
 export type DedicatedHsmDeleteOutput = typeof DedicatedHsmDeleteOutput.Type;
 
 // The operation

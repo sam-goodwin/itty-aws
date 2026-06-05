@@ -11,7 +11,7 @@ export type DeleteV1DatabasesByDatabaseIdInput =
   typeof DeleteV1DatabasesByDatabaseIdInput.Type;
 
 // Output Schema
-export const DeleteV1DatabasesByDatabaseIdOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteV1DatabasesByDatabaseIdOutput = Schema.Void;
 export type DeleteV1DatabasesByDatabaseIdOutput =
   typeof DeleteV1DatabasesByDatabaseIdOutput.Type;
 

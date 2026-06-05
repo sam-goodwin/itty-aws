@@ -18,7 +18,7 @@ export type ListAlertConfigMatcherFieldNamesInput =
   typeof ListAlertConfigMatcherFieldNamesInput.Type;
 
 // Output Schema
-export const ListAlertConfigMatcherFieldNamesOutput = /*@__PURE__*/ Schema.Void;
+export const ListAlertConfigMatcherFieldNamesOutput = Schema.Void;
 export type ListAlertConfigMatcherFieldNamesOutput =
   typeof ListAlertConfigMatcherFieldNamesOutput.Type;
 

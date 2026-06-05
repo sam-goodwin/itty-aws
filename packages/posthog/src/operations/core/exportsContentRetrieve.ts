@@ -17,7 +17,7 @@ export type ExportsContentRetrieveInput =
   typeof ExportsContentRetrieveInput.Type;
 
 // Output Schema
-export const ExportsContentRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const ExportsContentRetrieveOutput = Schema.Void;
 export type ExportsContentRetrieveOutput =
   typeof ExportsContentRetrieveOutput.Type;
 

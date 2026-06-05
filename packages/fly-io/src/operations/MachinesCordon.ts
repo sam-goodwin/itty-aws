@@ -16,7 +16,7 @@ export const MachinesCordonInput = /*@__PURE__*/ Schema.Struct({
 export type MachinesCordonInput = typeof MachinesCordonInput.Type;
 
 // Output Schema
-export const MachinesCordonOutput = /*@__PURE__*/ Schema.Void;
+export const MachinesCordonOutput = Schema.Void;
 export type MachinesCordonOutput = typeof MachinesCordonOutput.Type;
 
 // The operation

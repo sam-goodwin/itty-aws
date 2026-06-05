@@ -12,7 +12,7 @@ export const CreateOrgApiKeyInput = /*@__PURE__*/ Schema.Struct({
 export type CreateOrgApiKeyInput = typeof CreateOrgApiKeyInput.Type;
 
 // Output Schema
-export const CreateOrgApiKeyOutput = /*@__PURE__*/ Schema.Void;
+export const CreateOrgApiKeyOutput = Schema.Void;
 export type CreateOrgApiKeyOutput = typeof CreateOrgApiKeyOutput.Type;
 
 // The operation

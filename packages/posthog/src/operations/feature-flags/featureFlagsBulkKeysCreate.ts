@@ -94,7 +94,7 @@ export type FeatureFlagsBulkKeysCreateInput =
   typeof FeatureFlagsBulkKeysCreateInput.Type;
 
 // Output Schema
-export const FeatureFlagsBulkKeysCreateOutput = /*@__PURE__*/ Schema.Void;
+export const FeatureFlagsBulkKeysCreateOutput = Schema.Void;
 export type FeatureFlagsBulkKeysCreateOutput =
   typeof FeatureFlagsBulkKeysCreateOutput.Type;
 

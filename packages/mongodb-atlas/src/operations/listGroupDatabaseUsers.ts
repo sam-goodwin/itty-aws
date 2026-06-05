@@ -21,7 +21,7 @@ export type ListGroupDatabaseUsersInput =
   typeof ListGroupDatabaseUsersInput.Type;
 
 // Output Schema
-export const ListGroupDatabaseUsersOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupDatabaseUsersOutput = Schema.Void;
 export type ListGroupDatabaseUsersOutput =
   typeof ListGroupDatabaseUsersOutput.Type;
 

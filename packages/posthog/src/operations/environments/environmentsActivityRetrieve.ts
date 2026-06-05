@@ -17,7 +17,7 @@ export type EnvironmentsActivityRetrieveInput =
   typeof EnvironmentsActivityRetrieveInput.Type;
 
 // Output Schema
-export const EnvironmentsActivityRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const EnvironmentsActivityRetrieveOutput = Schema.Void;
 export type EnvironmentsActivityRetrieveOutput =
   typeof EnvironmentsActivityRetrieveOutput.Type;
 

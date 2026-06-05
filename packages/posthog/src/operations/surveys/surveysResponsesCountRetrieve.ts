@@ -16,7 +16,7 @@ export type SurveysResponsesCountRetrieveInput =
   typeof SurveysResponsesCountRetrieveInput.Type;
 
 // Output Schema
-export const SurveysResponsesCountRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const SurveysResponsesCountRetrieveOutput = Schema.Void;
 export type SurveysResponsesCountRetrieveOutput =
   typeof SurveysResponsesCountRetrieveOutput.Type;
 

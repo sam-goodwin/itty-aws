@@ -13,7 +13,7 @@ export type UserlandSessionsControllerLogoutInput =
   typeof UserlandSessionsControllerLogoutInput.Type;
 
 // Output Schema
-export const UserlandSessionsControllerLogoutOutput = /*@__PURE__*/ Schema.Void;
+export const UserlandSessionsControllerLogoutOutput = Schema.Void;
 export type UserlandSessionsControllerLogoutOutput =
   typeof UserlandSessionsControllerLogoutOutput.Type;
 

@@ -13,7 +13,7 @@ export const V1RunAQueryInput = /*@__PURE__*/ Schema.Struct({
 export type V1RunAQueryInput = typeof V1RunAQueryInput.Type;
 
 // Output Schema
-export const V1RunAQueryOutput = /*@__PURE__*/ Schema.Void;
+export const V1RunAQueryOutput = Schema.Void;
 export type V1RunAQueryOutput = typeof V1RunAQueryOutput.Type;
 
 // The operation

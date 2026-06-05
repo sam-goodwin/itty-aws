@@ -75,7 +75,7 @@ export type AccessControlListsDeleteInput =
   typeof AccessControlListsDeleteInput.Type;
 
 // Output Schema
-export const AccessControlListsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AccessControlListsDeleteOutput = Schema.Void;
 export type AccessControlListsDeleteOutput =
   typeof AccessControlListsDeleteOutput.Type;
 
@@ -643,7 +643,7 @@ export type ExternalNetworksDeleteInput =
   typeof ExternalNetworksDeleteInput.Type;
 
 // Output Schema
-export const ExternalNetworksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ExternalNetworksDeleteOutput = Schema.Void;
 export type ExternalNetworksDeleteOutput =
   typeof ExternalNetworksDeleteOutput.Type;
 
@@ -1340,7 +1340,7 @@ export type InternalNetworksDeleteInput =
   typeof InternalNetworksDeleteInput.Type;
 
 // Output Schema
-export const InternalNetworksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const InternalNetworksDeleteOutput = Schema.Void;
 export type InternalNetworksDeleteOutput =
   typeof InternalNetworksDeleteOutput.Type;
 
@@ -2194,7 +2194,7 @@ export type InternetGatewayRulesDeleteInput =
   typeof InternetGatewayRulesDeleteInput.Type;
 
 // Output Schema
-export const InternetGatewayRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const InternetGatewayRulesDeleteOutput = Schema.Void;
 export type InternetGatewayRulesDeleteOutput =
   typeof InternetGatewayRulesDeleteOutput.Type;
 
@@ -2514,7 +2514,7 @@ export type InternetGatewaysDeleteInput =
   typeof InternetGatewaysDeleteInput.Type;
 
 // Output Schema
-export const InternetGatewaysDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const InternetGatewaysDeleteOutput = Schema.Void;
 export type InternetGatewaysDeleteOutput =
   typeof InternetGatewaysDeleteOutput.Type;
 
@@ -2829,7 +2829,7 @@ export const IpCommunitiesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type IpCommunitiesDeleteInput = typeof IpCommunitiesDeleteInput.Type;
 
 // Output Schema
-export const IpCommunitiesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IpCommunitiesDeleteOutput = Schema.Void;
 export type IpCommunitiesDeleteOutput = typeof IpCommunitiesDeleteOutput.Type;
 
 // The operation
@@ -3141,7 +3141,7 @@ export type IpExtendedCommunitiesDeleteInput =
   typeof IpExtendedCommunitiesDeleteInput.Type;
 
 // Output Schema
-export const IpExtendedCommunitiesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IpExtendedCommunitiesDeleteOutput = Schema.Void;
 export type IpExtendedCommunitiesDeleteOutput =
   typeof IpExtendedCommunitiesDeleteOutput.Type;
 
@@ -3458,7 +3458,7 @@ export const IpPrefixesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type IpPrefixesDeleteInput = typeof IpPrefixesDeleteInput.Type;
 
 // Output Schema
-export const IpPrefixesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const IpPrefixesDeleteOutput = Schema.Void;
 export type IpPrefixesDeleteOutput = typeof IpPrefixesDeleteOutput.Type;
 
 // The operation
@@ -3799,7 +3799,7 @@ export type L2IsolationDomainsDeleteInput =
   typeof L2IsolationDomainsDeleteInput.Type;
 
 // Output Schema
-export const L2IsolationDomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const L2IsolationDomainsDeleteOutput = Schema.Void;
 export type L2IsolationDomainsDeleteOutput =
   typeof L2IsolationDomainsDeleteOutput.Type;
 
@@ -4368,7 +4368,7 @@ export type L3IsolationDomainsDeleteInput =
   typeof L3IsolationDomainsDeleteInput.Type;
 
 // Output Schema
-export const L3IsolationDomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const L3IsolationDomainsDeleteOutput = Schema.Void;
 export type L3IsolationDomainsDeleteOutput =
   typeof L3IsolationDomainsDeleteOutput.Type;
 
@@ -4880,7 +4880,7 @@ export const NeighborGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NeighborGroupsDeleteInput = typeof NeighborGroupsDeleteInput.Type;
 
 // Output Schema
-export const NeighborGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NeighborGroupsDeleteOutput = Schema.Void;
 export type NeighborGroupsDeleteOutput = typeof NeighborGroupsDeleteOutput.Type;
 
 // The operation
@@ -5322,7 +5322,7 @@ export type NetworkBootstrapDevicesDeleteInput =
   typeof NetworkBootstrapDevicesDeleteInput.Type;
 
 // Output Schema
-export const NetworkBootstrapDevicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkBootstrapDevicesDeleteOutput = Schema.Void;
 export type NetworkBootstrapDevicesDeleteOutput =
   typeof NetworkBootstrapDevicesDeleteOutput.Type;
 
@@ -6326,7 +6326,7 @@ export type NetworkBootstrapInterfacesDeleteInput =
   typeof NetworkBootstrapInterfacesDeleteInput.Type;
 
 // Output Schema
-export const NetworkBootstrapInterfacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkBootstrapInterfacesDeleteOutput = Schema.Void;
 export type NetworkBootstrapInterfacesDeleteOutput =
   typeof NetworkBootstrapInterfacesDeleteOutput.Type;
 
@@ -6640,7 +6640,7 @@ export const NetworkDevicesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NetworkDevicesDeleteInput = typeof NetworkDevicesDeleteInput.Type;
 
 // Output Schema
-export const NetworkDevicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkDevicesDeleteOutput = Schema.Void;
 export type NetworkDevicesDeleteOutput = typeof NetworkDevicesDeleteOutput.Type;
 
 // The operation
@@ -8034,7 +8034,7 @@ export type NetworkFabricControllersDeleteInput =
   typeof NetworkFabricControllersDeleteInput.Type;
 
 // Output Schema
-export const NetworkFabricControllersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkFabricControllersDeleteOutput = Schema.Void;
 export type NetworkFabricControllersDeleteOutput =
   typeof NetworkFabricControllersDeleteOutput.Type;
 
@@ -8777,7 +8777,7 @@ export const NetworkFabricsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NetworkFabricsDeleteInput = typeof NetworkFabricsDeleteInput.Type;
 
 // Output Schema
-export const NetworkFabricsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkFabricsDeleteOutput = Schema.Void;
 export type NetworkFabricsDeleteOutput = typeof NetworkFabricsDeleteOutput.Type;
 
 // The operation
@@ -10948,7 +10948,7 @@ export type NetworkInterfacesDeleteInput =
   typeof NetworkInterfacesDeleteInput.Type;
 
 // Output Schema
-export const NetworkInterfacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkInterfacesDeleteOutput = Schema.Void;
 export type NetworkInterfacesDeleteOutput =
   typeof NetworkInterfacesDeleteOutput.Type;
 
@@ -11349,7 +11349,7 @@ export const NetworkMonitorsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NetworkMonitorsDeleteInput = typeof NetworkMonitorsDeleteInput.Type;
 
 // Output Schema
-export const NetworkMonitorsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkMonitorsDeleteOutput = Schema.Void;
 export type NetworkMonitorsDeleteOutput =
   typeof NetworkMonitorsDeleteOutput.Type;
 
@@ -11718,7 +11718,7 @@ export type NetworkPacketBrokersDeleteInput =
   typeof NetworkPacketBrokersDeleteInput.Type;
 
 // Output Schema
-export const NetworkPacketBrokersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkPacketBrokersDeleteOutput = Schema.Void;
 export type NetworkPacketBrokersDeleteOutput =
   typeof NetworkPacketBrokersDeleteOutput.Type;
 
@@ -12035,7 +12035,7 @@ export const NetworkRacksDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NetworkRacksDeleteInput = typeof NetworkRacksDeleteInput.Type;
 
 // Output Schema
-export const NetworkRacksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkRacksDeleteOutput = Schema.Void;
 export type NetworkRacksDeleteOutput = typeof NetworkRacksDeleteOutput.Type;
 
 // The operation
@@ -12345,7 +12345,7 @@ export const NetworkTapRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NetworkTapRulesDeleteInput = typeof NetworkTapRulesDeleteInput.Type;
 
 // Output Schema
-export const NetworkTapRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkTapRulesDeleteOutput = Schema.Void;
 export type NetworkTapRulesDeleteOutput =
   typeof NetworkTapRulesDeleteOutput.Type;
 
@@ -12897,7 +12897,7 @@ export const NetworkTapsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NetworkTapsDeleteInput = typeof NetworkTapsDeleteInput.Type;
 
 // Output Schema
-export const NetworkTapsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NetworkTapsDeleteOutput = Schema.Void;
 export type NetworkTapsDeleteOutput = typeof NetworkTapsDeleteOutput.Type;
 
 // The operation
@@ -13478,8 +13478,7 @@ export type NetworkToNetworkInterconnectsDeleteInput =
   typeof NetworkToNetworkInterconnectsDeleteInput.Type;
 
 // Output Schema
-export const NetworkToNetworkInterconnectsDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const NetworkToNetworkInterconnectsDeleteOutput = Schema.Void;
 export type NetworkToNetworkInterconnectsDeleteOutput =
   typeof NetworkToNetworkInterconnectsDeleteOutput.Type;
 
@@ -14280,7 +14279,7 @@ export const RoutePoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RoutePoliciesDeleteInput = typeof RoutePoliciesDeleteInput.Type;
 
 // Output Schema
-export const RoutePoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RoutePoliciesDeleteOutput = Schema.Void;
 export type RoutePoliciesDeleteOutput = typeof RoutePoliciesDeleteOutput.Type;
 
 // The operation

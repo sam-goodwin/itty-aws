@@ -13,8 +13,7 @@ export type UserlandSessionsControllerRevokeSessionInput =
   typeof UserlandSessionsControllerRevokeSessionInput.Type;
 
 // Output Schema
-export const UserlandSessionsControllerRevokeSessionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const UserlandSessionsControllerRevokeSessionOutput = Schema.Void;
 export type UserlandSessionsControllerRevokeSessionOutput =
   typeof UserlandSessionsControllerRevokeSessionOutput.Type;
 

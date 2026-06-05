@@ -618,7 +618,7 @@ export type RegistrationAssignmentsDeleteInput =
   typeof RegistrationAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const RegistrationAssignmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RegistrationAssignmentsDeleteOutput = Schema.Void;
 export type RegistrationAssignmentsDeleteOutput =
   typeof RegistrationAssignmentsDeleteOutput.Type;
 
@@ -1118,7 +1118,7 @@ export type RegistrationDefinitionsDeleteInput =
   typeof RegistrationDefinitionsDeleteInput.Type;
 
 // Output Schema
-export const RegistrationDefinitionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RegistrationDefinitionsDeleteOutput = Schema.Void;
 export type RegistrationDefinitionsDeleteOutput =
   typeof RegistrationDefinitionsDeleteOutput.Type;
 

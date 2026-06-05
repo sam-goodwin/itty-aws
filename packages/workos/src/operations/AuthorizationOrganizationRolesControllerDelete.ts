@@ -18,8 +18,7 @@ export type AuthorizationOrganizationRolesControllerDeleteInput =
   typeof AuthorizationOrganizationRolesControllerDeleteInput.Type;
 
 // Output Schema
-export const AuthorizationOrganizationRolesControllerDeleteOutput =
-  /*@__PURE__*/ Schema.Void;
+export const AuthorizationOrganizationRolesControllerDeleteOutput = Schema.Void;
 export type AuthorizationOrganizationRolesControllerDeleteOutput =
   typeof AuthorizationOrganizationRolesControllerDeleteOutput.Type;
 

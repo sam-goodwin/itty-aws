@@ -18,7 +18,7 @@ export const AddOrgTeamUserInput = /*@__PURE__*/ Schema.Struct({
 export type AddOrgTeamUserInput = typeof AddOrgTeamUserInput.Type;
 
 // Output Schema
-export const AddOrgTeamUserOutput = /*@__PURE__*/ Schema.Void;
+export const AddOrgTeamUserOutput = Schema.Void;
 export type AddOrgTeamUserOutput = typeof AddOrgTeamUserOutput.Type;
 
 // The operation

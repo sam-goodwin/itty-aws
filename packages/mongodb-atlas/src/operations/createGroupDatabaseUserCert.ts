@@ -19,7 +19,7 @@ export type CreateGroupDatabaseUserCertInput =
   typeof CreateGroupDatabaseUserCertInput.Type;
 
 // Output Schema
-export const CreateGroupDatabaseUserCertOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupDatabaseUserCertOutput = Schema.Void;
 export type CreateGroupDatabaseUserCertOutput =
   typeof CreateGroupDatabaseUserCertOutput.Type;
 

@@ -130,7 +130,7 @@ export type SurveysDuplicateToProjectsCreateInput =
   typeof SurveysDuplicateToProjectsCreateInput.Type;
 
 // Output Schema
-export const SurveysDuplicateToProjectsCreateOutput = /*@__PURE__*/ Schema.Void;
+export const SurveysDuplicateToProjectsCreateOutput = Schema.Void;
 export type SurveysDuplicateToProjectsCreateOutput =
   typeof SurveysDuplicateToProjectsCreateOutput.Type;
 

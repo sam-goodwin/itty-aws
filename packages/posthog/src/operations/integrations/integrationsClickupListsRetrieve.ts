@@ -18,7 +18,7 @@ export type IntegrationsClickupListsRetrieveInput =
   typeof IntegrationsClickupListsRetrieveInput.Type;
 
 // Output Schema
-export const IntegrationsClickupListsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const IntegrationsClickupListsRetrieveOutput = Schema.Void;
 export type IntegrationsClickupListsRetrieveOutput =
   typeof IntegrationsClickupListsRetrieveOutput.Type;
 

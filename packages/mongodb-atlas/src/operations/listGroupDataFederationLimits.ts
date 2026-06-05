@@ -19,7 +19,7 @@ export type ListGroupDataFederationLimitsInput =
   typeof ListGroupDataFederationLimitsInput.Type;
 
 // Output Schema
-export const ListGroupDataFederationLimitsOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupDataFederationLimitsOutput = Schema.Void;
 export type ListGroupDataFederationLimitsOutput =
   typeof ListGroupDataFederationLimitsOutput.Type;
 

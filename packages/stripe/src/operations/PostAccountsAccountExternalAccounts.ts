@@ -21,8 +21,7 @@ export type PostAccountsAccountExternalAccountsInput =
   typeof PostAccountsAccountExternalAccountsInput.Type;
 
 // Output Schema
-export const PostAccountsAccountExternalAccountsOutput =
-  /*@__PURE__*/ Schema.Unknown;
+export const PostAccountsAccountExternalAccountsOutput = Schema.Unknown;
 export type PostAccountsAccountExternalAccountsOutput =
   typeof PostAccountsAccountExternalAccountsOutput.Type;
 

@@ -21,8 +21,7 @@ export type DeauthorizeGroupCloudProviderAccessRoleInput =
   typeof DeauthorizeGroupCloudProviderAccessRoleInput.Type;
 
 // Output Schema
-export const DeauthorizeGroupCloudProviderAccessRoleOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DeauthorizeGroupCloudProviderAccessRoleOutput = Schema.Void;
 export type DeauthorizeGroupCloudProviderAccessRoleOutput =
   typeof DeauthorizeGroupCloudProviderAccessRoleOutput.Type;
 

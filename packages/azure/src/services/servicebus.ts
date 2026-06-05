@@ -26,8 +26,7 @@ export type DisasterRecoveryConfigsBreakPairingInput =
   typeof DisasterRecoveryConfigsBreakPairingInput.Type;
 
 // Output Schema
-export const DisasterRecoveryConfigsBreakPairingOutput =
-  /*@__PURE__*/ Schema.Void;
+export const DisasterRecoveryConfigsBreakPairingOutput = Schema.Void;
 export type DisasterRecoveryConfigsBreakPairingOutput =
   typeof DisasterRecoveryConfigsBreakPairingOutput.Type;
 
@@ -157,7 +156,7 @@ export type DisasterRecoveryConfigsDeleteInput =
   typeof DisasterRecoveryConfigsDeleteInput.Type;
 
 // Output Schema
-export const DisasterRecoveryConfigsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DisasterRecoveryConfigsDeleteOutput = Schema.Void;
 export type DisasterRecoveryConfigsDeleteOutput =
   typeof DisasterRecoveryConfigsDeleteOutput.Type;
 
@@ -194,7 +193,7 @@ export type DisasterRecoveryConfigsFailOverInput =
   typeof DisasterRecoveryConfigsFailOverInput.Type;
 
 // Output Schema
-export const DisasterRecoveryConfigsFailOverOutput = /*@__PURE__*/ Schema.Void;
+export const DisasterRecoveryConfigsFailOverOutput = Schema.Void;
 export type DisasterRecoveryConfigsFailOverOutput =
   typeof DisasterRecoveryConfigsFailOverOutput.Type;
 
@@ -458,8 +457,7 @@ export type MigrationConfigsCompleteMigrationInput =
   typeof MigrationConfigsCompleteMigrationInput.Type;
 
 // Output Schema
-export const MigrationConfigsCompleteMigrationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const MigrationConfigsCompleteMigrationOutput = Schema.Void;
 export type MigrationConfigsCompleteMigrationOutput =
   typeof MigrationConfigsCompleteMigrationOutput.Type;
 
@@ -538,7 +536,7 @@ export type MigrationConfigsDeleteInput =
   typeof MigrationConfigsDeleteInput.Type;
 
 // Output Schema
-export const MigrationConfigsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const MigrationConfigsDeleteOutput = Schema.Void;
 export type MigrationConfigsDeleteOutput =
   typeof MigrationConfigsDeleteOutput.Type;
 
@@ -654,7 +652,7 @@ export type MigrationConfigsRevertInput =
   typeof MigrationConfigsRevertInput.Type;
 
 // Output Schema
-export const MigrationConfigsRevertOutput = /*@__PURE__*/ Schema.Void;
+export const MigrationConfigsRevertOutput = Schema.Void;
 export type MigrationConfigsRevertOutput =
   typeof MigrationConfigsRevertOutput.Type;
 
@@ -855,7 +853,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
 
 // Output Schema
-export const NamespacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NamespacesDeleteOutput = Schema.Void;
 export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
 
 // The operation
@@ -889,8 +887,7 @@ export type NamespacesDeleteAuthorizationRuleInput =
   typeof NamespacesDeleteAuthorizationRuleInput.Type;
 
 // Output Schema
-export const NamespacesDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ Schema.Void;
+export const NamespacesDeleteAuthorizationRuleOutput = Schema.Void;
 export type NamespacesDeleteAuthorizationRuleOutput =
   typeof NamespacesDeleteAuthorizationRuleOutput.Type;
 
@@ -1418,7 +1415,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1674,7 +1671,7 @@ export const QueuesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type QueuesDeleteInput = typeof QueuesDeleteInput.Type;
 
 // Output Schema
-export const QueuesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const QueuesDeleteOutput = Schema.Void;
 export type QueuesDeleteOutput = typeof QueuesDeleteOutput.Type;
 
 // The operation
@@ -1709,7 +1706,7 @@ export type QueuesDeleteAuthorizationRuleInput =
   typeof QueuesDeleteAuthorizationRuleInput.Type;
 
 // Output Schema
-export const QueuesDeleteAuthorizationRuleOutput = /*@__PURE__*/ Schema.Void;
+export const QueuesDeleteAuthorizationRuleOutput = Schema.Void;
 export type QueuesDeleteAuthorizationRuleOutput =
   typeof QueuesDeleteAuthorizationRuleOutput.Type;
 
@@ -2049,7 +2046,7 @@ export const RulesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RulesDeleteInput = typeof RulesDeleteInput.Type;
 
 // Output Schema
-export const RulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RulesDeleteOutput = Schema.Void;
 export type RulesDeleteOutput = typeof RulesDeleteOutput.Type;
 
 // The operation
@@ -2222,7 +2219,7 @@ export const SubscriptionsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SubscriptionsDeleteInput = typeof SubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const SubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SubscriptionsDeleteOutput = Schema.Void;
 export type SubscriptionsDeleteOutput = typeof SubscriptionsDeleteOutput.Type;
 
 // The operation
@@ -2431,7 +2428,7 @@ export const TopicsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type TopicsDeleteInput = typeof TopicsDeleteInput.Type;
 
 // Output Schema
-export const TopicsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TopicsDeleteOutput = Schema.Void;
 export type TopicsDeleteOutput = typeof TopicsDeleteOutput.Type;
 
 // The operation
@@ -2466,7 +2463,7 @@ export type TopicsDeleteAuthorizationRuleInput =
   typeof TopicsDeleteAuthorizationRuleInput.Type;
 
 // Output Schema
-export const TopicsDeleteAuthorizationRuleOutput = /*@__PURE__*/ Schema.Void;
+export const TopicsDeleteAuthorizationRuleOutput = Schema.Void;
 export type TopicsDeleteAuthorizationRuleOutput =
   typeof TopicsDeleteAuthorizationRuleOutput.Type;
 

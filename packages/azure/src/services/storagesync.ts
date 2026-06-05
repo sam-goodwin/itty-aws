@@ -121,7 +121,7 @@ export const CloudEndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type CloudEndpointsDeleteInput = typeof CloudEndpointsDeleteInput.Type;
 
 // Output Schema
-export const CloudEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CloudEndpointsDeleteOutput = Schema.Void;
 export type CloudEndpointsDeleteOutput = typeof CloudEndpointsDeleteOutput.Type;
 
 // The operation
@@ -323,7 +323,7 @@ export type CloudEndpointsPostRestoreInput =
   typeof CloudEndpointsPostRestoreInput.Type;
 
 // Output Schema
-export const CloudEndpointsPostRestoreOutput = /*@__PURE__*/ Schema.Void;
+export const CloudEndpointsPostRestoreOutput = Schema.Void;
 export type CloudEndpointsPostRestoreOutput =
   typeof CloudEndpointsPostRestoreOutput.Type;
 
@@ -360,7 +360,7 @@ export type CloudEndpointsPreBackupInput =
   typeof CloudEndpointsPreBackupInput.Type;
 
 // Output Schema
-export const CloudEndpointsPreBackupOutput = /*@__PURE__*/ Schema.Void;
+export const CloudEndpointsPreBackupOutput = Schema.Void;
 export type CloudEndpointsPreBackupOutput =
   typeof CloudEndpointsPreBackupOutput.Type;
 
@@ -397,7 +397,7 @@ export type CloudEndpointsPreRestoreInput =
   typeof CloudEndpointsPreRestoreInput.Type;
 
 // Output Schema
-export const CloudEndpointsPreRestoreOutput = /*@__PURE__*/ Schema.Void;
+export const CloudEndpointsPreRestoreOutput = Schema.Void;
 export type CloudEndpointsPreRestoreOutput =
   typeof CloudEndpointsPreRestoreOutput.Type;
 
@@ -434,7 +434,7 @@ export type CloudEndpointsRestoreheartbeatInput =
   typeof CloudEndpointsRestoreheartbeatInput.Type;
 
 // Output Schema
-export const CloudEndpointsRestoreheartbeatOutput = /*@__PURE__*/ Schema.Void;
+export const CloudEndpointsRestoreheartbeatOutput = Schema.Void;
 export type CloudEndpointsRestoreheartbeatOutput =
   typeof CloudEndpointsRestoreheartbeatOutput.Type;
 
@@ -472,8 +472,7 @@ export type CloudEndpointsTriggerChangeDetectionInput =
   typeof CloudEndpointsTriggerChangeDetectionInput.Type;
 
 // Output Schema
-export const CloudEndpointsTriggerChangeDetectionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CloudEndpointsTriggerChangeDetectionOutput = Schema.Void;
 export type CloudEndpointsTriggerChangeDetectionOutput =
   typeof CloudEndpointsTriggerChangeDetectionOutput.Type;
 
@@ -798,7 +797,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1080,7 +1079,7 @@ export type RegisteredServersDeleteInput =
   typeof RegisteredServersDeleteInput.Type;
 
 // Output Schema
-export const RegisteredServersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RegisteredServersDeleteOutput = Schema.Void;
 export type RegisteredServersDeleteOutput =
   typeof RegisteredServersDeleteOutput.Type;
 
@@ -1239,7 +1238,7 @@ export type RegisteredServersTriggerRolloverInput =
   typeof RegisteredServersTriggerRolloverInput.Type;
 
 // Output Schema
-export const RegisteredServersTriggerRolloverOutput = /*@__PURE__*/ Schema.Void;
+export const RegisteredServersTriggerRolloverOutput = Schema.Void;
 export type RegisteredServersTriggerRolloverOutput =
   typeof RegisteredServersTriggerRolloverOutput.Type;
 
@@ -1381,7 +1380,7 @@ export const ServerEndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ServerEndpointsDeleteInput = typeof ServerEndpointsDeleteInput.Type;
 
 // Output Schema
-export const ServerEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServerEndpointsDeleteOutput = Schema.Void;
 export type ServerEndpointsDeleteOutput =
   typeof ServerEndpointsDeleteOutput.Type;
 
@@ -1543,7 +1542,7 @@ export type ServerEndpointsRecallActionInput =
   typeof ServerEndpointsRecallActionInput.Type;
 
 // Output Schema
-export const ServerEndpointsRecallActionOutput = /*@__PURE__*/ Schema.Void;
+export const ServerEndpointsRecallActionOutput = Schema.Void;
 export type ServerEndpointsRecallActionOutput =
   typeof ServerEndpointsRecallActionOutput.Type;
 
@@ -1722,7 +1721,7 @@ export type StorageSyncServicesDeleteInput =
   typeof StorageSyncServicesDeleteInput.Type;
 
 // Output Schema
-export const StorageSyncServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const StorageSyncServicesDeleteOutput = Schema.Void;
 export type StorageSyncServicesDeleteOutput =
   typeof StorageSyncServicesDeleteOutput.Type;
 
@@ -2046,7 +2045,7 @@ export const SyncGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SyncGroupsDeleteInput = typeof SyncGroupsDeleteInput.Type;
 
 // Output Schema
-export const SyncGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SyncGroupsDeleteOutput = Schema.Void;
 export type SyncGroupsDeleteOutput = typeof SyncGroupsDeleteOutput.Type;
 
 // The operation
@@ -2202,7 +2201,7 @@ export const WorkflowsAbortInput = /*@__PURE__*/ Schema.Struct({
 export type WorkflowsAbortInput = typeof WorkflowsAbortInput.Type;
 
 // Output Schema
-export const WorkflowsAbortOutput = /*@__PURE__*/ Schema.Void;
+export const WorkflowsAbortOutput = Schema.Void;
 export type WorkflowsAbortOutput = typeof WorkflowsAbortOutput.Type;
 
 // The operation

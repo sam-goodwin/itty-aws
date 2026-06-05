@@ -17,7 +17,7 @@ export type LiveDebuggerBreakpointsDestroyInput =
   typeof LiveDebuggerBreakpointsDestroyInput.Type;
 
 // Output Schema
-export const LiveDebuggerBreakpointsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const LiveDebuggerBreakpointsDestroyOutput = Schema.Void;
 export type LiveDebuggerBreakpointsDestroyOutput =
   typeof LiveDebuggerBreakpointsDestroyOutput.Type;
 

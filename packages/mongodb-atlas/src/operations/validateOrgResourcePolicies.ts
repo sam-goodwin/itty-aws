@@ -18,7 +18,7 @@ export type ValidateOrgResourcePoliciesInput =
   typeof ValidateOrgResourcePoliciesInput.Type;
 
 // Output Schema
-export const ValidateOrgResourcePoliciesOutput = /*@__PURE__*/ Schema.Void;
+export const ValidateOrgResourcePoliciesOutput = Schema.Void;
 export type ValidateOrgResourcePoliciesOutput =
   typeof ValidateOrgResourcePoliciesOutput.Type;
 

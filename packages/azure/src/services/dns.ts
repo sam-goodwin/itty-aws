@@ -226,7 +226,7 @@ export const RecordSetsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type RecordSetsDeleteInput = typeof RecordSetsDeleteInput.Type;
 
 // Output Schema
-export const RecordSetsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RecordSetsDeleteOutput = Schema.Void;
 export type RecordSetsDeleteOutput = typeof RecordSetsDeleteOutput.Type;
 
 // The operation
@@ -993,7 +993,7 @@ export const ZonesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ZonesDeleteInput = typeof ZonesDeleteInput.Type;
 
 // Output Schema
-export const ZonesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ZonesDeleteOutput = Schema.Void;
 export type ZonesDeleteOutput = typeof ZonesDeleteOutput.Type;
 
 // The operation

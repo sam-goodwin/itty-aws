@@ -19,8 +19,7 @@ export type ListGroupClusterCollStatPinnedNamespacesInput =
   typeof ListGroupClusterCollStatPinnedNamespacesInput.Type;
 
 // Output Schema
-export const ListGroupClusterCollStatPinnedNamespacesOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListGroupClusterCollStatPinnedNamespacesOutput = Schema.Void;
 export type ListGroupClusterCollStatPinnedNamespacesOutput =
   typeof ListGroupClusterCollStatPinnedNamespacesOutput.Type;
 

@@ -19,7 +19,7 @@ export const DeleteRoleInput = /*@__PURE__*/ Schema.Struct({
 export type DeleteRoleInput = typeof DeleteRoleInput.Type;
 
 // Output Schema
-export const DeleteRoleOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteRoleOutput = Schema.Void;
 export type DeleteRoleOutput = typeof DeleteRoleOutput.Type;
 
 // The operation

@@ -18,7 +18,7 @@ export type GetGroupMaintenanceWindowInput =
   typeof GetGroupMaintenanceWindowInput.Type;
 
 // Output Schema
-export const GetGroupMaintenanceWindowOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupMaintenanceWindowOutput = Schema.Void;
 export type GetGroupMaintenanceWindowOutput =
   typeof GetGroupMaintenanceWindowOutput.Type;
 

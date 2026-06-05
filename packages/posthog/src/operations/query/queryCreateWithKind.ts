@@ -16,7 +16,7 @@ export const QueryCreateWithKindInput = /*@__PURE__*/ Schema.Struct({
 export type QueryCreateWithKindInput = typeof QueryCreateWithKindInput.Type;
 
 // Output Schema
-export const QueryCreateWithKindOutput = /*@__PURE__*/ Schema.Void;
+export const QueryCreateWithKindOutput = Schema.Void;
 export type QueryCreateWithKindOutput = typeof QueryCreateWithKindOutput.Type;
 
 // The operation

@@ -80,7 +80,7 @@ export const AkriConnectorDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AkriConnectorDeleteInput = typeof AkriConnectorDeleteInput.Type;
 
 // Output Schema
-export const AkriConnectorDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AkriConnectorDeleteOutput = Schema.Void;
 export type AkriConnectorDeleteOutput = typeof AkriConnectorDeleteOutput.Type;
 
 // The operation
@@ -283,7 +283,7 @@ export type AkriConnectorTemplateDeleteInput =
   typeof AkriConnectorTemplateDeleteInput.Type;
 
 // Output Schema
-export const AkriConnectorTemplateDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AkriConnectorTemplateDeleteOutput = Schema.Void;
 export type AkriConnectorTemplateDeleteOutput =
   typeof AkriConnectorTemplateDeleteOutput.Type;
 
@@ -492,7 +492,7 @@ export const AkriServiceDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AkriServiceDeleteInput = typeof AkriServiceDeleteInput.Type;
 
 // Output Schema
-export const AkriServiceDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AkriServiceDeleteOutput = Schema.Void;
 export type AkriServiceDeleteOutput = typeof AkriServiceDeleteOutput.Type;
 
 // The operation
@@ -705,7 +705,7 @@ export type BrokerAuthenticationDeleteInput =
   typeof BrokerAuthenticationDeleteInput.Type;
 
 // Output Schema
-export const BrokerAuthenticationDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BrokerAuthenticationDeleteOutput = Schema.Void;
 export type BrokerAuthenticationDeleteOutput =
   typeof BrokerAuthenticationDeleteOutput.Type;
 
@@ -926,7 +926,7 @@ export type BrokerAuthorizationDeleteInput =
   typeof BrokerAuthorizationDeleteInput.Type;
 
 // Output Schema
-export const BrokerAuthorizationDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BrokerAuthorizationDeleteOutput = Schema.Void;
 export type BrokerAuthorizationDeleteOutput =
   typeof BrokerAuthorizationDeleteOutput.Type;
 
@@ -1139,7 +1139,7 @@ export const BrokerDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BrokerDeleteInput = typeof BrokerDeleteInput.Type;
 
 // Output Schema
-export const BrokerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BrokerDeleteOutput = Schema.Void;
 export type BrokerDeleteOutput = typeof BrokerDeleteOutput.Type;
 
 // The operation
@@ -1335,7 +1335,7 @@ export const BrokerListenerDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type BrokerListenerDeleteInput = typeof BrokerListenerDeleteInput.Type;
 
 // Output Schema
-export const BrokerListenerDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const BrokerListenerDeleteOutput = Schema.Void;
 export type BrokerListenerDeleteOutput = typeof BrokerListenerDeleteOutput.Type;
 
 // The operation
@@ -1548,7 +1548,7 @@ export const DataflowDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DataflowDeleteInput = typeof DataflowDeleteInput.Type;
 
 // Output Schema
-export const DataflowDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DataflowDeleteOutput = Schema.Void;
 export type DataflowDeleteOutput = typeof DataflowDeleteOutput.Type;
 
 // The operation
@@ -1638,7 +1638,7 @@ export type DataflowEndpointDeleteInput =
   typeof DataflowEndpointDeleteInput.Type;
 
 // Output Schema
-export const DataflowEndpointDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DataflowEndpointDeleteOutput = Schema.Void;
 export type DataflowEndpointDeleteOutput =
   typeof DataflowEndpointDeleteOutput.Type;
 
@@ -1902,7 +1902,7 @@ export const DataflowGraphDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DataflowGraphDeleteInput = typeof DataflowGraphDeleteInput.Type;
 
 // Output Schema
-export const DataflowGraphDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DataflowGraphDeleteOutput = Schema.Void;
 export type DataflowGraphDeleteOutput = typeof DataflowGraphDeleteOutput.Type;
 
 // The operation
@@ -2172,7 +2172,7 @@ export const DataflowProfileDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DataflowProfileDeleteInput = typeof DataflowProfileDeleteInput.Type;
 
 // Output Schema
-export const DataflowProfileDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DataflowProfileDeleteOutput = Schema.Void;
 export type DataflowProfileDeleteOutput =
   typeof DataflowProfileDeleteOutput.Type;
 
@@ -2377,7 +2377,7 @@ export const InstanceDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type InstanceDeleteInput = typeof InstanceDeleteInput.Type;
 
 // Output Schema
-export const InstanceDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const InstanceDeleteOutput = Schema.Void;
 export type InstanceDeleteOutput = typeof InstanceDeleteOutput.Type;
 
 // The operation
@@ -2716,7 +2716,7 @@ export type RegistryEndpointDeleteInput =
   typeof RegistryEndpointDeleteInput.Type;
 
 // Output Schema
-export const RegistryEndpointDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const RegistryEndpointDeleteOutput = Schema.Void;
 export type RegistryEndpointDeleteOutput =
   typeof RegistryEndpointDeleteOutput.Type;
 

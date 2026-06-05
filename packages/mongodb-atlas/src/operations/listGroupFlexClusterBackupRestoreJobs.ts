@@ -23,8 +23,7 @@ export type ListGroupFlexClusterBackupRestoreJobsInput =
   typeof ListGroupFlexClusterBackupRestoreJobsInput.Type;
 
 // Output Schema
-export const ListGroupFlexClusterBackupRestoreJobsOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ListGroupFlexClusterBackupRestoreJobsOutput = Schema.Void;
 export type ListGroupFlexClusterBackupRestoreJobsOutput =
   typeof ListGroupFlexClusterBackupRestoreJobsOutput.Type;
 

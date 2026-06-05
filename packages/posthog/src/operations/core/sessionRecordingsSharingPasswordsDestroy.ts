@@ -19,8 +19,7 @@ export type SessionRecordingsSharingPasswordsDestroyInput =
   typeof SessionRecordingsSharingPasswordsDestroyInput.Type;
 
 // Output Schema
-export const SessionRecordingsSharingPasswordsDestroyOutput =
-  /*@__PURE__*/ Schema.Void;
+export const SessionRecordingsSharingPasswordsDestroyOutput = Schema.Void;
 export type SessionRecordingsSharingPasswordsDestroyOutput =
   typeof SessionRecordingsSharingPasswordsDestroyOutput.Type;
 

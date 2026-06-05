@@ -189,8 +189,7 @@ export type ExternalDataSourcesUpdateWebhookInputsCreateInput =
   typeof ExternalDataSourcesUpdateWebhookInputsCreateInput.Type;
 
 // Output Schema
-export const ExternalDataSourcesUpdateWebhookInputsCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ExternalDataSourcesUpdateWebhookInputsCreateOutput = Schema.Void;
 export type ExternalDataSourcesUpdateWebhookInputsCreateOutput =
   typeof ExternalDataSourcesUpdateWebhookInputsCreateOutput.Type;
 

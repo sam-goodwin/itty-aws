@@ -20,8 +20,7 @@ export type UpdateGroupClusterSearchDeploymentInput =
   typeof UpdateGroupClusterSearchDeploymentInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterSearchDeploymentOutput =
-  /*@__PURE__*/ Schema.Void;
+export const UpdateGroupClusterSearchDeploymentOutput = Schema.Void;
 export type UpdateGroupClusterSearchDeploymentOutput =
   typeof UpdateGroupClusterSearchDeploymentOutput.Type;
 

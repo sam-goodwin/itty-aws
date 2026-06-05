@@ -46,7 +46,7 @@ export type HybridUseBenefitDeleteInput =
   typeof HybridUseBenefitDeleteInput.Type;
 
 // Output Schema
-export const HybridUseBenefitDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const HybridUseBenefitDeleteOutput = Schema.Void;
 export type HybridUseBenefitDeleteOutput =
   typeof HybridUseBenefitDeleteOutput.Type;
 
@@ -235,7 +235,7 @@ export const SoftwarePlanRegisterInput = /*@__PURE__*/ Schema.Struct({
 export type SoftwarePlanRegisterInput = typeof SoftwarePlanRegisterInput.Type;
 
 // Output Schema
-export const SoftwarePlanRegisterOutput = /*@__PURE__*/ Schema.Void;
+export const SoftwarePlanRegisterOutput = Schema.Void;
 export type SoftwarePlanRegisterOutput = typeof SoftwarePlanRegisterOutput.Type;
 
 // The operation

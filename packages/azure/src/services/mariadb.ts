@@ -22,7 +22,7 @@ export const ServersStartInput = /*@__PURE__*/ Schema.Struct({
 export type ServersStartInput = typeof ServersStartInput.Type;
 
 // Output Schema
-export const ServersStartOutput = /*@__PURE__*/ Schema.Void;
+export const ServersStartOutput = Schema.Void;
 export type ServersStartOutput = typeof ServersStartOutput.Type;
 
 // The operation
@@ -51,7 +51,7 @@ export const ServersStopInput = /*@__PURE__*/ Schema.Struct({
 export type ServersStopInput = typeof ServersStopInput.Type;
 
 // Output Schema
-export const ServersStopOutput = /*@__PURE__*/ Schema.Void;
+export const ServersStopOutput = Schema.Void;
 export type ServersStopOutput = typeof ServersStopOutput.Type;
 
 // The operation

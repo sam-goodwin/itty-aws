@@ -21,7 +21,7 @@ export const ListGroupProcessDisksInput = /*@__PURE__*/ Schema.Struct({
 export type ListGroupProcessDisksInput = typeof ListGroupProcessDisksInput.Type;
 
 // Output Schema
-export const ListGroupProcessDisksOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupProcessDisksOutput = Schema.Void;
 export type ListGroupProcessDisksOutput =
   typeof ListGroupProcessDisksOutput.Type;
 

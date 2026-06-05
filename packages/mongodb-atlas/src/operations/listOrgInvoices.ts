@@ -21,7 +21,7 @@ export const ListOrgInvoicesInput = /*@__PURE__*/ Schema.Struct({
 export type ListOrgInvoicesInput = typeof ListOrgInvoicesInput.Type;
 
 // Output Schema
-export const ListOrgInvoicesOutput = /*@__PURE__*/ Schema.Void;
+export const ListOrgInvoicesOutput = Schema.Void;
 export type ListOrgInvoicesOutput = typeof ListOrgInvoicesOutput.Type;
 
 // The operation

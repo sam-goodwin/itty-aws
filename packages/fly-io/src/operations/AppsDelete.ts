@@ -10,7 +10,7 @@ export const AppsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type AppsDeleteInput = typeof AppsDeleteInput.Type;
 
 // Output Schema
-export const AppsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AppsDeleteOutput = Schema.Void;
 export type AppsDeleteOutput = typeof AppsDeleteOutput.Type;
 
 // The operation

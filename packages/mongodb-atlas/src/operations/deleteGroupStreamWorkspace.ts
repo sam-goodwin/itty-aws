@@ -19,7 +19,7 @@ export type DeleteGroupStreamWorkspaceInput =
   typeof DeleteGroupStreamWorkspaceInput.Type;
 
 // Output Schema
-export const DeleteGroupStreamWorkspaceOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupStreamWorkspaceOutput = Schema.Void;
 export type DeleteGroupStreamWorkspaceOutput =
   typeof DeleteGroupStreamWorkspaceOutput.Type;
 

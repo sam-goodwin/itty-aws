@@ -13,7 +13,7 @@ export const AppsCreateInput = /*@__PURE__*/ Schema.Struct({
 export type AppsCreateInput = typeof AppsCreateInput.Type;
 
 // Output Schema
-export const AppsCreateOutput = /*@__PURE__*/ Schema.Void;
+export const AppsCreateOutput = Schema.Void;
 export type AppsCreateOutput = typeof AppsCreateOutput.Type;
 
 // The operation

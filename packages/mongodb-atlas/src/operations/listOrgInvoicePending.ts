@@ -17,7 +17,7 @@ export const ListOrgInvoicePendingInput = /*@__PURE__*/ Schema.Struct({
 export type ListOrgInvoicePendingInput = typeof ListOrgInvoicePendingInput.Type;
 
 // Output Schema
-export const ListOrgInvoicePendingOutput = /*@__PURE__*/ Schema.Void;
+export const ListOrgInvoicePendingOutput = Schema.Void;
 export type ListOrgInvoicePendingOutput =
   typeof ListOrgInvoicePendingOutput.Type;
 

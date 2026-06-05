@@ -17,7 +17,7 @@ export const V1ReadOnlyQueryInput = /*@__PURE__*/ Schema.Struct({
 export type V1ReadOnlyQueryInput = typeof V1ReadOnlyQueryInput.Type;
 
 // Output Schema
-export const V1ReadOnlyQueryOutput = /*@__PURE__*/ Schema.Void;
+export const V1ReadOnlyQueryOutput = Schema.Void;
 export type V1ReadOnlyQueryOutput = typeof V1ReadOnlyQueryOutput.Type;
 
 // The operation

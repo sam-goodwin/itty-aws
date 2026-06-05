@@ -21,7 +21,7 @@ export type AccountsAddRootCollectionAdminInput =
   typeof AccountsAddRootCollectionAdminInput.Type;
 
 // Output Schema
-export const AccountsAddRootCollectionAdminOutput = /*@__PURE__*/ Schema.Void;
+export const AccountsAddRootCollectionAdminOutput = Schema.Void;
 export type AccountsAddRootCollectionAdminOutput =
   typeof AccountsAddRootCollectionAdminOutput.Type;
 
@@ -139,7 +139,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
 
 // Output Schema
-export const AccountsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AccountsDeleteOutput = Schema.Void;
 export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
 
 // The operation
@@ -498,7 +498,7 @@ export const DefaultAccountsRemoveInput = /*@__PURE__*/ Schema.Struct({
 export type DefaultAccountsRemoveInput = typeof DefaultAccountsRemoveInput.Type;
 
 // Output Schema
-export const DefaultAccountsRemoveOutput = /*@__PURE__*/ Schema.Void;
+export const DefaultAccountsRemoveOutput = Schema.Void;
 export type DefaultAccountsRemoveOutput =
   typeof DefaultAccountsRemoveOutput.Type;
 
@@ -664,7 +664,7 @@ export type KafkaConfigurationsDeleteInput =
   typeof KafkaConfigurationsDeleteInput.Type;
 
 // Output Schema
-export const KafkaConfigurationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const KafkaConfigurationsDeleteOutput = Schema.Void;
 export type KafkaConfigurationsDeleteOutput =
   typeof KafkaConfigurationsDeleteOutput.Type;
 
@@ -944,7 +944,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 

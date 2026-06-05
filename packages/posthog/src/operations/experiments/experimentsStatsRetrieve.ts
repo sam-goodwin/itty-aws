@@ -16,7 +16,7 @@ export type ExperimentsStatsRetrieveInput =
   typeof ExperimentsStatsRetrieveInput.Type;
 
 // Output Schema
-export const ExperimentsStatsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const ExperimentsStatsRetrieveOutput = Schema.Void;
 export type ExperimentsStatsRetrieveOutput =
   typeof ExperimentsStatsRetrieveOutput.Type;
 

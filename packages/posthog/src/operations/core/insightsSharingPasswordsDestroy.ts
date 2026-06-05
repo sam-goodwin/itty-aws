@@ -20,7 +20,7 @@ export type InsightsSharingPasswordsDestroyInput =
   typeof InsightsSharingPasswordsDestroyInput.Type;
 
 // Output Schema
-export const InsightsSharingPasswordsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const InsightsSharingPasswordsDestroyOutput = Schema.Void;
 export type InsightsSharingPasswordsDestroyOutput =
   typeof InsightsSharingPasswordsDestroyOutput.Type;
 

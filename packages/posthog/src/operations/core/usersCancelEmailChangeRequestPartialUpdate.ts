@@ -758,8 +758,7 @@ export type UsersCancelEmailChangeRequestPartialUpdateInput =
   typeof UsersCancelEmailChangeRequestPartialUpdateInput.Type;
 
 // Output Schema
-export const UsersCancelEmailChangeRequestPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const UsersCancelEmailChangeRequestPartialUpdateOutput = Schema.Void;
 export type UsersCancelEmailChangeRequestPartialUpdateOutput =
   typeof UsersCancelEmailChangeRequestPartialUpdateOutput.Type;
 

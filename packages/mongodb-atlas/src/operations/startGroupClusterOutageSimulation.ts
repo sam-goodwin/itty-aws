@@ -20,8 +20,7 @@ export type StartGroupClusterOutageSimulationInput =
   typeof StartGroupClusterOutageSimulationInput.Type;
 
 // Output Schema
-export const StartGroupClusterOutageSimulationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const StartGroupClusterOutageSimulationOutput = Schema.Void;
 export type StartGroupClusterOutageSimulationOutput =
   typeof StartGroupClusterOutageSimulationOutput.Type;
 

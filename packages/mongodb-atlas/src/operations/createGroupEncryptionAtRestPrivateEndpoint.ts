@@ -20,8 +20,7 @@ export type CreateGroupEncryptionAtRestPrivateEndpointInput =
   typeof CreateGroupEncryptionAtRestPrivateEndpointInput.Type;
 
 // Output Schema
-export const CreateGroupEncryptionAtRestPrivateEndpointOutput =
-  /*@__PURE__*/ Schema.Void;
+export const CreateGroupEncryptionAtRestPrivateEndpointOutput = Schema.Void;
 export type CreateGroupEncryptionAtRestPrivateEndpointOutput =
   typeof CreateGroupEncryptionAtRestPrivateEndpointOutput.Type;
 

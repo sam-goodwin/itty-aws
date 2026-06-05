@@ -22,7 +22,7 @@ export type UpdateGroupClusterOnlineArchiveInput =
   typeof UpdateGroupClusterOnlineArchiveInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterOnlineArchiveOutput = /*@__PURE__*/ Schema.Void;
+export const UpdateGroupClusterOnlineArchiveOutput = Schema.Void;
 export type UpdateGroupClusterOnlineArchiveOutput =
   typeof UpdateGroupClusterOnlineArchiveOutput.Type;
 

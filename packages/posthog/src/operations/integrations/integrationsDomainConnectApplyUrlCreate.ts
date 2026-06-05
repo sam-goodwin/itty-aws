@@ -75,8 +75,7 @@ export type IntegrationsDomainConnectApplyUrlCreateInput =
   typeof IntegrationsDomainConnectApplyUrlCreateInput.Type;
 
 // Output Schema
-export const IntegrationsDomainConnectApplyUrlCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const IntegrationsDomainConnectApplyUrlCreateOutput = Schema.Void;
 export type IntegrationsDomainConnectApplyUrlCreateOutput =
   typeof IntegrationsDomainConnectApplyUrlCreateOutput.Type;
 

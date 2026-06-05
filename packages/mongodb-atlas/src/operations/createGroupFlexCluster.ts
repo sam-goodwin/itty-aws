@@ -24,7 +24,7 @@ export type CreateGroupFlexClusterInput =
   typeof CreateGroupFlexClusterInput.Type;
 
 // Output Schema
-export const CreateGroupFlexClusterOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupFlexClusterOutput = Schema.Void;
 export type CreateGroupFlexClusterOutput =
   typeof CreateGroupFlexClusterOutput.Type;
 

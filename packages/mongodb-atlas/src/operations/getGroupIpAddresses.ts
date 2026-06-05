@@ -14,7 +14,7 @@ export const GetGroupIpAddressesInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupIpAddressesInput = typeof GetGroupIpAddressesInput.Type;
 
 // Output Schema
-export const GetGroupIpAddressesOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupIpAddressesOutput = Schema.Void;
 export type GetGroupIpAddressesOutput = typeof GetGroupIpAddressesOutput.Type;
 
 // The operation

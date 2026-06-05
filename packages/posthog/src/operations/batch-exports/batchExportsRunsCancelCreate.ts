@@ -45,7 +45,7 @@ export type BatchExportsRunsCancelCreateInput =
   typeof BatchExportsRunsCancelCreateInput.Type;
 
 // Output Schema
-export const BatchExportsRunsCancelCreateOutput = /*@__PURE__*/ Schema.Void;
+export const BatchExportsRunsCancelCreateOutput = Schema.Void;
 export type BatchExportsRunsCancelCreateOutput =
   typeof BatchExportsRunsCancelCreateOutput.Type;
 

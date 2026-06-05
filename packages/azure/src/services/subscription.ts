@@ -77,7 +77,7 @@ export const AliasDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type AliasDeleteInput = typeof AliasDeleteInput.Type;
 
 // Output Schema
-export const AliasDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AliasDeleteOutput = Schema.Void;
 export type AliasDeleteOutput = typeof AliasDeleteOutput.Type;
 
 // The operation
@@ -330,7 +330,7 @@ export type SubscriptionAcceptOwnershipInput =
   typeof SubscriptionAcceptOwnershipInput.Type;
 
 // Output Schema
-export const SubscriptionAcceptOwnershipOutput = /*@__PURE__*/ Schema.Void;
+export const SubscriptionAcceptOwnershipOutput = Schema.Void;
 export type SubscriptionAcceptOwnershipOutput =
   typeof SubscriptionAcceptOwnershipOutput.Type;
 

@@ -355,7 +355,7 @@ export const ArtifactSourcesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ArtifactSourcesDeleteInput = typeof ArtifactSourcesDeleteInput.Type;
 
 // Output Schema
-export const ArtifactSourcesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ArtifactSourcesDeleteOutput = Schema.Void;
 export type ArtifactSourcesDeleteOutput =
   typeof ArtifactSourcesDeleteOutput.Type;
 
@@ -713,7 +713,7 @@ export const CustomImagesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type CustomImagesDeleteInput = typeof CustomImagesDeleteInput.Type;
 
 // Output Schema
-export const CustomImagesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const CustomImagesDeleteOutput = Schema.Void;
 export type CustomImagesDeleteOutput = typeof CustomImagesDeleteOutput.Type;
 
 // The operation
@@ -913,7 +913,7 @@ export const DisksAttachInput = /*@__PURE__*/ Schema.Struct({
 export type DisksAttachInput = typeof DisksAttachInput.Type;
 
 // Output Schema
-export const DisksAttachOutput = /*@__PURE__*/ Schema.Void;
+export const DisksAttachOutput = Schema.Void;
 export type DisksAttachOutput = typeof DisksAttachOutput.Type;
 
 // The operation
@@ -1001,7 +1001,7 @@ export const DisksDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type DisksDeleteInput = typeof DisksDeleteInput.Type;
 
 // Output Schema
-export const DisksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const DisksDeleteOutput = Schema.Void;
 export type DisksDeleteOutput = typeof DisksDeleteOutput.Type;
 
 // The operation
@@ -1036,7 +1036,7 @@ export const DisksDetachInput = /*@__PURE__*/ Schema.Struct({
 export type DisksDetachInput = typeof DisksDetachInput.Type;
 
 // Output Schema
-export const DisksDetachOutput = /*@__PURE__*/ Schema.Void;
+export const DisksDetachOutput = Schema.Void;
 export type DisksDetachOutput = typeof DisksDetachOutput.Type;
 
 // The operation
@@ -1298,7 +1298,7 @@ export const EnvironmentsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type EnvironmentsDeleteInput = typeof EnvironmentsDeleteInput.Type;
 
 // Output Schema
-export const EnvironmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const EnvironmentsDeleteOutput = Schema.Void;
 export type EnvironmentsDeleteOutput = typeof EnvironmentsDeleteOutput.Type;
 
 // The operation
@@ -1557,7 +1557,7 @@ export const FormulasDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FormulasDeleteInput = typeof FormulasDeleteInput.Type;
 
 // Output Schema
-export const FormulasDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FormulasDeleteOutput = Schema.Void;
 export type FormulasDeleteOutput = typeof FormulasDeleteOutput.Type;
 
 // The operation
@@ -1868,7 +1868,7 @@ export const GlobalSchedulesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type GlobalSchedulesDeleteInput = typeof GlobalSchedulesDeleteInput.Type;
 
 // Output Schema
-export const GlobalSchedulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GlobalSchedulesDeleteOutput = Schema.Void;
 export type GlobalSchedulesDeleteOutput =
   typeof GlobalSchedulesDeleteOutput.Type;
 
@@ -1901,7 +1901,7 @@ export type GlobalSchedulesExecuteInput =
   typeof GlobalSchedulesExecuteInput.Type;
 
 // Output Schema
-export const GlobalSchedulesExecuteOutput = /*@__PURE__*/ Schema.Void;
+export const GlobalSchedulesExecuteOutput = Schema.Void;
 export type GlobalSchedulesExecuteOutput =
   typeof GlobalSchedulesExecuteOutput.Type;
 
@@ -2133,7 +2133,7 @@ export type GlobalSchedulesRetargetInput =
   typeof GlobalSchedulesRetargetInput.Type;
 
 // Output Schema
-export const GlobalSchedulesRetargetOutput = /*@__PURE__*/ Schema.Void;
+export const GlobalSchedulesRetargetOutput = Schema.Void;
 export type GlobalSchedulesRetargetOutput =
   typeof GlobalSchedulesRetargetOutput.Type;
 
@@ -2215,7 +2215,7 @@ export const LabsClaimAnyVmInput = /*@__PURE__*/ Schema.Struct({
 export type LabsClaimAnyVmInput = typeof LabsClaimAnyVmInput.Type;
 
 // Output Schema
-export const LabsClaimAnyVmOutput = /*@__PURE__*/ Schema.Void;
+export const LabsClaimAnyVmOutput = Schema.Void;
 export type LabsClaimAnyVmOutput = typeof LabsClaimAnyVmOutput.Type;
 
 // The operation
@@ -2246,7 +2246,7 @@ export const LabsCreateEnvironmentInput = /*@__PURE__*/ Schema.Struct({
 export type LabsCreateEnvironmentInput = typeof LabsCreateEnvironmentInput.Type;
 
 // Output Schema
-export const LabsCreateEnvironmentOutput = /*@__PURE__*/ Schema.Void;
+export const LabsCreateEnvironmentOutput = Schema.Void;
 export type LabsCreateEnvironmentOutput =
   typeof LabsCreateEnvironmentOutput.Type;
 
@@ -2327,7 +2327,7 @@ export const LabsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type LabsDeleteInput = typeof LabsDeleteInput.Type;
 
 // Output Schema
-export const LabsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const LabsDeleteOutput = Schema.Void;
 export type LabsDeleteOutput = typeof LabsDeleteOutput.Type;
 
 // The operation
@@ -2359,7 +2359,7 @@ export type LabsExportResourceUsageInput =
   typeof LabsExportResourceUsageInput.Type;
 
 // Output Schema
-export const LabsExportResourceUsageOutput = /*@__PURE__*/ Schema.Void;
+export const LabsExportResourceUsageOutput = Schema.Void;
 export type LabsExportResourceUsageOutput =
   typeof LabsExportResourceUsageOutput.Type;
 
@@ -2477,7 +2477,7 @@ export type LabsImportVirtualMachineInput =
   typeof LabsImportVirtualMachineInput.Type;
 
 // Output Schema
-export const LabsImportVirtualMachineOutput = /*@__PURE__*/ Schema.Void;
+export const LabsImportVirtualMachineOutput = Schema.Void;
 export type LabsImportVirtualMachineOutput =
   typeof LabsImportVirtualMachineOutput.Type;
 
@@ -2777,7 +2777,7 @@ export type NotificationChannelsDeleteInput =
   typeof NotificationChannelsDeleteInput.Type;
 
 // Output Schema
-export const NotificationChannelsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const NotificationChannelsDeleteOutput = Schema.Void;
 export type NotificationChannelsDeleteOutput =
   typeof NotificationChannelsDeleteOutput.Type;
 
@@ -2931,7 +2931,7 @@ export type NotificationChannelsNotifyInput =
   typeof NotificationChannelsNotifyInput.Type;
 
 // Output Schema
-export const NotificationChannelsNotifyOutput = /*@__PURE__*/ Schema.Void;
+export const NotificationChannelsNotifyOutput = Schema.Void;
 export type NotificationChannelsNotifyOutput =
   typeof NotificationChannelsNotifyOutput.Type;
 
@@ -3164,7 +3164,7 @@ export const PoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type PoliciesDeleteInput = typeof PoliciesDeleteInput.Type;
 
 // Output Schema
-export const PoliciesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PoliciesDeleteOutput = Schema.Void;
 export type PoliciesDeleteOutput = typeof PoliciesDeleteOutput.Type;
 
 // The operation
@@ -3520,7 +3520,7 @@ export const SchedulesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SchedulesDeleteInput = typeof SchedulesDeleteInput.Type;
 
 // Output Schema
-export const SchedulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SchedulesDeleteOutput = Schema.Void;
 export type SchedulesDeleteOutput = typeof SchedulesDeleteOutput.Type;
 
 // The operation
@@ -3553,7 +3553,7 @@ export const SchedulesExecuteInput = /*@__PURE__*/ Schema.Struct({
 export type SchedulesExecuteInput = typeof SchedulesExecuteInput.Type;
 
 // Output Schema
-export const SchedulesExecuteOutput = /*@__PURE__*/ Schema.Void;
+export const SchedulesExecuteOutput = Schema.Void;
 export type SchedulesExecuteOutput = typeof SchedulesExecuteOutput.Type;
 
 // The operation
@@ -3865,7 +3865,7 @@ export const SecretsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type SecretsDeleteInput = typeof SecretsDeleteInput.Type;
 
 // Output Schema
-export const SecretsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SecretsDeleteOutput = Schema.Void;
 export type SecretsDeleteOutput = typeof SecretsDeleteOutput.Type;
 
 // The operation
@@ -4135,7 +4135,7 @@ export type ServiceFabricSchedulesDeleteInput =
   typeof ServiceFabricSchedulesDeleteInput.Type;
 
 // Output Schema
-export const ServiceFabricSchedulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServiceFabricSchedulesDeleteOutput = Schema.Void;
 export type ServiceFabricSchedulesDeleteOutput =
   typeof ServiceFabricSchedulesDeleteOutput.Type;
 
@@ -4174,7 +4174,7 @@ export type ServiceFabricSchedulesExecuteInput =
   typeof ServiceFabricSchedulesExecuteInput.Type;
 
 // Output Schema
-export const ServiceFabricSchedulesExecuteOutput = /*@__PURE__*/ Schema.Void;
+export const ServiceFabricSchedulesExecuteOutput = Schema.Void;
 export type ServiceFabricSchedulesExecuteOutput =
   typeof ServiceFabricSchedulesExecuteOutput.Type;
 
@@ -4450,7 +4450,7 @@ export const ServiceFabricsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ServiceFabricsDeleteInput = typeof ServiceFabricsDeleteInput.Type;
 
 // Output Schema
-export const ServiceFabricsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServiceFabricsDeleteOutput = Schema.Void;
 export type ServiceFabricsDeleteOutput = typeof ServiceFabricsDeleteOutput.Type;
 
 // The operation
@@ -4663,7 +4663,7 @@ export const ServiceFabricsStartInput = /*@__PURE__*/ Schema.Struct({
 export type ServiceFabricsStartInput = typeof ServiceFabricsStartInput.Type;
 
 // Output Schema
-export const ServiceFabricsStartOutput = /*@__PURE__*/ Schema.Void;
+export const ServiceFabricsStartOutput = Schema.Void;
 export type ServiceFabricsStartOutput = typeof ServiceFabricsStartOutput.Type;
 
 // The operation
@@ -4698,7 +4698,7 @@ export const ServiceFabricsStopInput = /*@__PURE__*/ Schema.Struct({
 export type ServiceFabricsStopInput = typeof ServiceFabricsStopInput.Type;
 
 // Output Schema
-export const ServiceFabricsStopOutput = /*@__PURE__*/ Schema.Void;
+export const ServiceFabricsStopOutput = Schema.Void;
 export type ServiceFabricsStopOutput = typeof ServiceFabricsStopOutput.Type;
 
 // The operation
@@ -4838,7 +4838,7 @@ export const ServiceRunnersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ServiceRunnersDeleteInput = typeof ServiceRunnersDeleteInput.Type;
 
 // Output Schema
-export const ServiceRunnersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ServiceRunnersDeleteOutput = Schema.Void;
 export type ServiceRunnersDeleteOutput = typeof ServiceRunnersDeleteOutput.Type;
 
 // The operation
@@ -4973,7 +4973,7 @@ export const UsersDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;
 
 // Output Schema
-export const UsersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const UsersDeleteOutput = Schema.Void;
 export type UsersDeleteOutput = typeof UsersDeleteOutput.Type;
 
 // The operation
@@ -5173,7 +5173,7 @@ export type VirtualMachinesAddDataDiskInput =
   typeof VirtualMachinesAddDataDiskInput.Type;
 
 // Output Schema
-export const VirtualMachinesAddDataDiskOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesAddDataDiskOutput = Schema.Void;
 export type VirtualMachinesAddDataDiskOutput =
   typeof VirtualMachinesAddDataDiskOutput.Type;
 
@@ -5208,7 +5208,7 @@ export type VirtualMachinesApplyArtifactsInput =
   typeof VirtualMachinesApplyArtifactsInput.Type;
 
 // Output Schema
-export const VirtualMachinesApplyArtifactsOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesApplyArtifactsOutput = Schema.Void;
 export type VirtualMachinesApplyArtifactsOutput =
   typeof VirtualMachinesApplyArtifactsOutput.Type;
 
@@ -5303,7 +5303,7 @@ export type VirtualMachineSchedulesDeleteInput =
   typeof VirtualMachineSchedulesDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineSchedulesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineSchedulesDeleteOutput = Schema.Void;
 export type VirtualMachineSchedulesDeleteOutput =
   typeof VirtualMachineSchedulesDeleteOutput.Type;
 
@@ -5340,7 +5340,7 @@ export type VirtualMachineSchedulesExecuteInput =
   typeof VirtualMachineSchedulesExecuteInput.Type;
 
 // Output Schema
-export const VirtualMachineSchedulesExecuteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachineSchedulesExecuteOutput = Schema.Void;
 export type VirtualMachineSchedulesExecuteOutput =
   typeof VirtualMachineSchedulesExecuteOutput.Type;
 
@@ -5553,7 +5553,7 @@ export const VirtualMachinesClaimInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualMachinesClaimInput = typeof VirtualMachinesClaimInput.Type;
 
 // Output Schema
-export const VirtualMachinesClaimOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesClaimOutput = Schema.Void;
 export type VirtualMachinesClaimOutput = typeof VirtualMachinesClaimOutput.Type;
 
 // The operation
@@ -5639,7 +5639,7 @@ export const VirtualMachinesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachinesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesDeleteOutput = Schema.Void;
 export type VirtualMachinesDeleteOutput =
   typeof VirtualMachinesDeleteOutput.Type;
 
@@ -5674,7 +5674,7 @@ export type VirtualMachinesDetachDataDiskInput =
   typeof VirtualMachinesDetachDataDiskInput.Type;
 
 // Output Schema
-export const VirtualMachinesDetachDataDiskOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesDetachDataDiskOutput = Schema.Void;
 export type VirtualMachinesDetachDataDiskOutput =
   typeof VirtualMachinesDetachDataDiskOutput.Type;
 
@@ -5920,7 +5920,7 @@ export type VirtualMachinesRedeployInput =
   typeof VirtualMachinesRedeployInput.Type;
 
 // Output Schema
-export const VirtualMachinesRedeployOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesRedeployOutput = Schema.Void;
 export type VirtualMachinesRedeployOutput =
   typeof VirtualMachinesRedeployOutput.Type;
 
@@ -5954,7 +5954,7 @@ export const VirtualMachinesResizeInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualMachinesResizeInput = typeof VirtualMachinesResizeInput.Type;
 
 // Output Schema
-export const VirtualMachinesResizeOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesResizeOutput = Schema.Void;
 export type VirtualMachinesResizeOutput =
   typeof VirtualMachinesResizeOutput.Type;
 
@@ -5989,7 +5989,7 @@ export type VirtualMachinesRestartInput =
   typeof VirtualMachinesRestartInput.Type;
 
 // Output Schema
-export const VirtualMachinesRestartOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesRestartOutput = Schema.Void;
 export type VirtualMachinesRestartOutput =
   typeof VirtualMachinesRestartOutput.Type;
 
@@ -6023,7 +6023,7 @@ export const VirtualMachinesStartInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
 
 // Output Schema
-export const VirtualMachinesStartOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesStartOutput = Schema.Void;
 export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
 
 // The operation
@@ -6056,7 +6056,7 @@ export const VirtualMachinesStopInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualMachinesStopInput = typeof VirtualMachinesStopInput.Type;
 
 // Output Schema
-export const VirtualMachinesStopOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesStopOutput = Schema.Void;
 export type VirtualMachinesStopOutput = typeof VirtualMachinesStopOutput.Type;
 
 // The operation
@@ -6090,7 +6090,7 @@ export type VirtualMachinesTransferDisksInput =
   typeof VirtualMachinesTransferDisksInput.Type;
 
 // Output Schema
-export const VirtualMachinesTransferDisksOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesTransferDisksOutput = Schema.Void;
 export type VirtualMachinesTransferDisksOutput =
   typeof VirtualMachinesTransferDisksOutput.Type;
 
@@ -6125,7 +6125,7 @@ export type VirtualMachinesUnClaimInput =
   typeof VirtualMachinesUnClaimInput.Type;
 
 // Output Schema
-export const VirtualMachinesUnClaimOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesUnClaimOutput = Schema.Void;
 export type VirtualMachinesUnClaimOutput =
   typeof VirtualMachinesUnClaimOutput.Type;
 
@@ -6264,7 +6264,7 @@ export const VirtualNetworksDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
 
 // Output Schema
-export const VirtualNetworksDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualNetworksDeleteOutput = Schema.Void;
 export type VirtualNetworksDeleteOutput =
   typeof VirtualNetworksDeleteOutput.Type;
 

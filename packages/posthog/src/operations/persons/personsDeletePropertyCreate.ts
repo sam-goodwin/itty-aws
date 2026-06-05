@@ -19,7 +19,7 @@ export type PersonsDeletePropertyCreateInput =
   typeof PersonsDeletePropertyCreateInput.Type;
 
 // Output Schema
-export const PersonsDeletePropertyCreateOutput = /*@__PURE__*/ Schema.Void;
+export const PersonsDeletePropertyCreateOutput = Schema.Void;
 export type PersonsDeletePropertyCreateOutput =
   typeof PersonsDeletePropertyCreateOutput.Type;
 

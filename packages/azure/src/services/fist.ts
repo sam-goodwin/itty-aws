@@ -317,7 +317,7 @@ export const FirmwaresDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type FirmwaresDeleteInput = typeof FirmwaresDeleteInput.Type;
 
 // Output Schema
-export const FirmwaresDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FirmwaresDeleteOutput = Schema.Void;
 export type FirmwaresDeleteOutput = typeof FirmwaresDeleteOutput.Type;
 
 // The operation
@@ -943,7 +943,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
 
 // Output Schema
-export const WorkspacesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const WorkspacesDeleteOutput = Schema.Void;
 export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
 
 // The operation

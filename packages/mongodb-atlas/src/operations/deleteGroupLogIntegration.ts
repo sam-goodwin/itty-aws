@@ -19,7 +19,7 @@ export type DeleteGroupLogIntegrationInput =
   typeof DeleteGroupLogIntegrationInput.Type;
 
 // Output Schema
-export const DeleteGroupLogIntegrationOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupLogIntegrationOutput = Schema.Void;
 export type DeleteGroupLogIntegrationOutput =
   typeof DeleteGroupLogIntegrationOutput.Type;
 

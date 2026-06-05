@@ -26,8 +26,7 @@ export type UnpinGroupClusterFeatureCompatibilityVersionInput =
   typeof UnpinGroupClusterFeatureCompatibilityVersionInput.Type;
 
 // Output Schema
-export const UnpinGroupClusterFeatureCompatibilityVersionOutput =
-  /*@__PURE__*/ Schema.Void;
+export const UnpinGroupClusterFeatureCompatibilityVersionOutput = Schema.Void;
 export type UnpinGroupClusterFeatureCompatibilityVersionOutput =
   typeof UnpinGroupClusterFeatureCompatibilityVersionOutput.Type;
 

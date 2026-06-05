@@ -74,7 +74,7 @@ export const GraphQueryDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type GraphQueryDeleteInput = typeof GraphQueryDeleteInput.Type;
 
 // Output Schema
-export const GraphQueryDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const GraphQueryDeleteOutput = Schema.Void;
 export type GraphQueryDeleteOutput = typeof GraphQueryDeleteOutput.Type;
 
 // The operation

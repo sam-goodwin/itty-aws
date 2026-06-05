@@ -79,7 +79,7 @@ export type ApplicationDefinitionsDeleteInput =
   typeof ApplicationDefinitionsDeleteInput.Type;
 
 // Output Schema
-export const ApplicationDefinitionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationDefinitionsDeleteOutput = Schema.Void;
 export type ApplicationDefinitionsDeleteOutput =
   typeof ApplicationDefinitionsDeleteOutput.Type;
 
@@ -450,7 +450,7 @@ export const ApplicationsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
 
 // Output Schema
-export const ApplicationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsDeleteOutput = Schema.Void;
 export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
 
 // The operation
@@ -474,7 +474,7 @@ export type ApplicationsDeleteByIdInput =
   typeof ApplicationsDeleteByIdInput.Type;
 
 // Output Schema
-export const ApplicationsDeleteByIdOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsDeleteByIdOutput = Schema.Void;
 export type ApplicationsDeleteByIdOutput =
   typeof ApplicationsDeleteByIdOutput.Type;
 
@@ -828,7 +828,7 @@ export type ApplicationsRefreshPermissionsInput =
   typeof ApplicationsRefreshPermissionsInput.Type;
 
 // Output Schema
-export const ApplicationsRefreshPermissionsOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsRefreshPermissionsOutput = Schema.Void;
 export type ApplicationsRefreshPermissionsOutput =
   typeof ApplicationsRefreshPermissionsOutput.Type;
 
@@ -909,7 +909,7 @@ export type ApplicationsUpdateAccessInput =
   typeof ApplicationsUpdateAccessInput.Type;
 
 // Output Schema
-export const ApplicationsUpdateAccessOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsUpdateAccessOutput = Schema.Void;
 export type ApplicationsUpdateAccessOutput =
   typeof ApplicationsUpdateAccessOutput.Type;
 
@@ -1035,7 +1035,7 @@ export const JitRequestsDeleteInput = /*@__PURE__*/ Schema.Struct({
 export type JitRequestsDeleteInput = typeof JitRequestsDeleteInput.Type;
 
 // Output Schema
-export const JitRequestsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const JitRequestsDeleteOutput = Schema.Void;
 export type JitRequestsDeleteOutput = typeof JitRequestsDeleteOutput.Type;
 
 // The operation

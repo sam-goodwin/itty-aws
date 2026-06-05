@@ -19,7 +19,7 @@ export type GetGroupCustomDbRoleRoleInput =
   typeof GetGroupCustomDbRoleRoleInput.Type;
 
 // Output Schema
-export const GetGroupCustomDbRoleRoleOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupCustomDbRoleRoleOutput = Schema.Void;
 export type GetGroupCustomDbRoleRoleOutput =
   typeof GetGroupCustomDbRoleRoleOutput.Type;
 

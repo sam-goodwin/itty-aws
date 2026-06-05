@@ -25,8 +25,7 @@ export type PersonsResetPersonDistinctIdCreateInput =
   typeof PersonsResetPersonDistinctIdCreateInput.Type;
 
 // Output Schema
-export const PersonsResetPersonDistinctIdCreateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const PersonsResetPersonDistinctIdCreateOutput = Schema.Void;
 export type PersonsResetPersonDistinctIdCreateOutput =
   typeof PersonsResetPersonDistinctIdCreateOutput.Type;
 

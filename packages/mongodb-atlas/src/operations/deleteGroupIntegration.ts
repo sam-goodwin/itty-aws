@@ -30,7 +30,7 @@ export type DeleteGroupIntegrationInput =
   typeof DeleteGroupIntegrationInput.Type;
 
 // Output Schema
-export const DeleteGroupIntegrationOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteGroupIntegrationOutput = Schema.Void;
 export type DeleteGroupIntegrationOutput =
   typeof DeleteGroupIntegrationOutput.Type;
 

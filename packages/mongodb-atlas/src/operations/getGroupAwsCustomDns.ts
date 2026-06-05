@@ -17,7 +17,7 @@ export const GetGroupAwsCustomDnsInput = /*@__PURE__*/ Schema.Struct({
 export type GetGroupAwsCustomDnsInput = typeof GetGroupAwsCustomDnsInput.Type;
 
 // Output Schema
-export const GetGroupAwsCustomDnsOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupAwsCustomDnsOutput = Schema.Void;
 export type GetGroupAwsCustomDnsOutput = typeof GetGroupAwsCustomDnsOutput.Type;
 
 // The operation

@@ -44,7 +44,7 @@ export const ApplicationsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
 
 // Output Schema
-export const ApplicationsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ApplicationsDeleteOutput = Schema.Void;
 export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
 
 // The operation
@@ -188,7 +188,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersDeleteOutput = Schema.Void;
 export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 
 // The operation
@@ -223,7 +223,7 @@ export type ClustersExecuteScriptActionsInput =
   typeof ClustersExecuteScriptActionsInput.Type;
 
 // Output Schema
-export const ClustersExecuteScriptActionsOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersExecuteScriptActionsOutput = Schema.Void;
 export type ClustersExecuteScriptActionsOutput =
   typeof ClustersExecuteScriptActionsOutput.Type;
 
@@ -408,7 +408,7 @@ export const ClustersResizeInput = /*@__PURE__*/ Schema.Struct({
 export type ClustersResizeInput = typeof ClustersResizeInput.Type;
 
 // Output Schema
-export const ClustersResizeOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersResizeOutput = Schema.Void;
 export type ClustersResizeOutput = typeof ClustersResizeOutput.Type;
 
 // The operation
@@ -434,7 +434,7 @@ export type ClustersRotateDiskEncryptionKeyInput =
   typeof ClustersRotateDiskEncryptionKeyInput.Type;
 
 // Output Schema
-export const ClustersRotateDiskEncryptionKeyOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersRotateDiskEncryptionKeyOutput = Schema.Void;
 export type ClustersRotateDiskEncryptionKeyOutput =
   typeof ClustersRotateDiskEncryptionKeyOutput.Type;
 
@@ -485,8 +485,7 @@ export type ClustersUpdateAutoScaleConfigurationInput =
   typeof ClustersUpdateAutoScaleConfigurationInput.Type;
 
 // Output Schema
-export const ClustersUpdateAutoScaleConfigurationOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ClustersUpdateAutoScaleConfigurationOutput = Schema.Void;
 export type ClustersUpdateAutoScaleConfigurationOutput =
   typeof ClustersUpdateAutoScaleConfigurationOutput.Type;
 
@@ -515,7 +514,7 @@ export type ClustersUpdateGatewaySettingsInput =
   typeof ClustersUpdateGatewaySettingsInput.Type;
 
 // Output Schema
-export const ClustersUpdateGatewaySettingsOutput = /*@__PURE__*/ Schema.Void;
+export const ClustersUpdateGatewaySettingsOutput = Schema.Void;
 export type ClustersUpdateGatewaySettingsOutput =
   typeof ClustersUpdateGatewaySettingsOutput.Type;
 
@@ -539,8 +538,7 @@ export type ClustersUpdateIdentityCertificateInput =
   typeof ClustersUpdateIdentityCertificateInput.Type;
 
 // Output Schema
-export const ClustersUpdateIdentityCertificateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ClustersUpdateIdentityCertificateOutput = Schema.Void;
 export type ClustersUpdateIdentityCertificateOutput =
   typeof ClustersUpdateIdentityCertificateOutput.Type;
 
@@ -611,7 +609,7 @@ export const ExtensionsCreateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ExtensionsCreateInput = typeof ExtensionsCreateInput.Type;
 
 // Output Schema
-export const ExtensionsCreateOutput = /*@__PURE__*/ Schema.Void;
+export const ExtensionsCreateOutput = Schema.Void;
 export type ExtensionsCreateOutput = typeof ExtensionsCreateOutput.Type;
 
 // The operation
@@ -632,7 +630,7 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ExtensionsDeleteInput = typeof ExtensionsDeleteInput.Type;
 
 // Output Schema
-export const ExtensionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ExtensionsDeleteOutput = Schema.Void;
 export type ExtensionsDeleteOutput = typeof ExtensionsDeleteOutput.Type;
 
 // The operation
@@ -656,7 +654,7 @@ export type ExtensionsDisableAzureMonitorInput =
   typeof ExtensionsDisableAzureMonitorInput.Type;
 
 // Output Schema
-export const ExtensionsDisableAzureMonitorOutput = /*@__PURE__*/ Schema.Void;
+export const ExtensionsDisableAzureMonitorOutput = Schema.Void;
 export type ExtensionsDisableAzureMonitorOutput =
   typeof ExtensionsDisableAzureMonitorOutput.Type;
 
@@ -681,7 +679,7 @@ export type ExtensionsDisableMonitoringInput =
   typeof ExtensionsDisableMonitoringInput.Type;
 
 // Output Schema
-export const ExtensionsDisableMonitoringOutput = /*@__PURE__*/ Schema.Void;
+export const ExtensionsDisableMonitoringOutput = Schema.Void;
 export type ExtensionsDisableMonitoringOutput =
   typeof ExtensionsDisableMonitoringOutput.Type;
 
@@ -706,7 +704,7 @@ export type ExtensionsEnableAzureMonitorInput =
   typeof ExtensionsEnableAzureMonitorInput.Type;
 
 // Output Schema
-export const ExtensionsEnableAzureMonitorOutput = /*@__PURE__*/ Schema.Void;
+export const ExtensionsEnableAzureMonitorOutput = Schema.Void;
 export type ExtensionsEnableAzureMonitorOutput =
   typeof ExtensionsEnableAzureMonitorOutput.Type;
 
@@ -731,7 +729,7 @@ export type ExtensionsEnableMonitoringInput =
   typeof ExtensionsEnableMonitoringInput.Type;
 
 // Output Schema
-export const ExtensionsEnableMonitoringOutput = /*@__PURE__*/ Schema.Void;
+export const ExtensionsEnableMonitoringOutput = Schema.Void;
 export type ExtensionsEnableMonitoringOutput =
   typeof ExtensionsEnableMonitoringOutput.Type;
 
@@ -1328,7 +1326,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -1481,7 +1479,7 @@ export const ScriptActionsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
 export type ScriptActionsDeleteInput = typeof ScriptActionsDeleteInput.Type;
 
 // Output Schema
-export const ScriptActionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const ScriptActionsDeleteOutput = Schema.Void;
 export type ScriptActionsDeleteOutput = typeof ScriptActionsDeleteOutput.Type;
 
 // The operation
@@ -1651,7 +1649,7 @@ export type ScriptExecutionHistoryPromoteInput =
   typeof ScriptExecutionHistoryPromoteInput.Type;
 
 // Output Schema
-export const ScriptExecutionHistoryPromoteOutput = /*@__PURE__*/ Schema.Void;
+export const ScriptExecutionHistoryPromoteOutput = Schema.Void;
 export type ScriptExecutionHistoryPromoteOutput =
   typeof ScriptExecutionHistoryPromoteOutput.Type;
 
@@ -1744,7 +1742,7 @@ export type VirtualMachinesRestartHostsInput =
   typeof VirtualMachinesRestartHostsInput.Type;
 
 // Output Schema
-export const VirtualMachinesRestartHostsOutput = /*@__PURE__*/ Schema.Void;
+export const VirtualMachinesRestartHostsOutput = Schema.Void;
 export type VirtualMachinesRestartHostsOutput =
   typeof VirtualMachinesRestartHostsOutput.Type;
 

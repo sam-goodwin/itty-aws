@@ -63,7 +63,7 @@ export type ErrorTrackingIssuesCohortUpdateInput =
   typeof ErrorTrackingIssuesCohortUpdateInput.Type;
 
 // Output Schema
-export const ErrorTrackingIssuesCohortUpdateOutput = /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingIssuesCohortUpdateOutput = Schema.Void;
 export type ErrorTrackingIssuesCohortUpdateOutput =
   typeof ErrorTrackingIssuesCohortUpdateOutput.Type;
 

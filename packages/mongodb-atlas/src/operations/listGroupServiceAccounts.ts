@@ -20,7 +20,7 @@ export type ListGroupServiceAccountsInput =
   typeof ListGroupServiceAccountsInput.Type;
 
 // Output Schema
-export const ListGroupServiceAccountsOutput = /*@__PURE__*/ Schema.Void;
+export const ListGroupServiceAccountsOutput = Schema.Void;
 export type ListGroupServiceAccountsOutput =
   typeof ListGroupServiceAccountsOutput.Type;
 

@@ -20,7 +20,7 @@ export type GetGroupProcessDatabaseInput =
   typeof GetGroupProcessDatabaseInput.Type;
 
 // Output Schema
-export const GetGroupProcessDatabaseOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupProcessDatabaseOutput = Schema.Void;
 export type GetGroupProcessDatabaseOutput =
   typeof GetGroupProcessDatabaseOutput.Type;
 

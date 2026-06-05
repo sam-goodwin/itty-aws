@@ -18,7 +18,7 @@ export const GetRateLimitInput = /*@__PURE__*/ Schema.Struct({
 export type GetRateLimitInput = typeof GetRateLimitInput.Type;
 
 // Output Schema
-export const GetRateLimitOutput = /*@__PURE__*/ Schema.Void;
+export const GetRateLimitOutput = Schema.Void;
 export type GetRateLimitOutput = typeof GetRateLimitOutput.Type;
 
 // The operation

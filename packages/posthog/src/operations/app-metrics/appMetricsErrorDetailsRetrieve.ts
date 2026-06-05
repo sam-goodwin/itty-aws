@@ -17,7 +17,7 @@ export type AppMetricsErrorDetailsRetrieveInput =
   typeof AppMetricsErrorDetailsRetrieveInput.Type;
 
 // Output Schema
-export const AppMetricsErrorDetailsRetrieveOutput = /*@__PURE__*/ Schema.Void;
+export const AppMetricsErrorDetailsRetrieveOutput = Schema.Void;
 export type AppMetricsErrorDetailsRetrieveOutput =
   typeof AppMetricsErrorDetailsRetrieveOutput.Type;
 

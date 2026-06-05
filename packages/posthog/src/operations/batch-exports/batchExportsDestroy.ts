@@ -16,7 +16,7 @@ export const BatchExportsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type BatchExportsDestroyInput = typeof BatchExportsDestroyInput.Type;
 
 // Output Schema
-export const BatchExportsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const BatchExportsDestroyOutput = Schema.Void;
 export type BatchExportsDestroyOutput = typeof BatchExportsDestroyOutput.Type;
 
 // The operation

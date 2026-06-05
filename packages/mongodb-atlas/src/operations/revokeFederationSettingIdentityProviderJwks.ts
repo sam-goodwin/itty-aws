@@ -19,8 +19,7 @@ export type RevokeFederationSettingIdentityProviderJwksInput =
   typeof RevokeFederationSettingIdentityProviderJwksInput.Type;
 
 // Output Schema
-export const RevokeFederationSettingIdentityProviderJwksOutput =
-  /*@__PURE__*/ Schema.Void;
+export const RevokeFederationSettingIdentityProviderJwksOutput = Schema.Void;
 export type RevokeFederationSettingIdentityProviderJwksOutput =
   typeof RevokeFederationSettingIdentityProviderJwksOutput.Type;
 

@@ -18,7 +18,7 @@ export type CreateGroupDatabaseUserInput =
   typeof CreateGroupDatabaseUserInput.Type;
 
 // Output Schema
-export const CreateGroupDatabaseUserOutput = /*@__PURE__*/ Schema.Void;
+export const CreateGroupDatabaseUserOutput = Schema.Void;
 export type CreateGroupDatabaseUserOutput =
   typeof CreateGroupDatabaseUserOutput.Type;
 

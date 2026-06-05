@@ -16,7 +16,7 @@ export const EndpointsDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type EndpointsDestroyInput = typeof EndpointsDestroyInput.Type;
 
 // Output Schema
-export const EndpointsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const EndpointsDestroyOutput = Schema.Void;
 export type EndpointsDestroyOutput = typeof EndpointsDestroyOutput.Type;
 
 // The operation

@@ -20,7 +20,7 @@ export type DeleteOrgServiceAccountSecretInput =
   typeof DeleteOrgServiceAccountSecretInput.Type;
 
 // Output Schema
-export const DeleteOrgServiceAccountSecretOutput = /*@__PURE__*/ Schema.Void;
+export const DeleteOrgServiceAccountSecretOutput = Schema.Void;
 export type DeleteOrgServiceAccountSecretOutput =
   typeof DeleteOrgServiceAccountSecretOutput.Type;
 

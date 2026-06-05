@@ -16,7 +16,7 @@ export const SandboxDestroyInput = /*@__PURE__*/ Schema.Struct({
 export type SandboxDestroyInput = typeof SandboxDestroyInput.Type;
 
 // Output Schema
-export const SandboxDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const SandboxDestroyOutput = Schema.Void;
 export type SandboxDestroyOutput = typeof SandboxDestroyOutput.Type;
 
 // The operation

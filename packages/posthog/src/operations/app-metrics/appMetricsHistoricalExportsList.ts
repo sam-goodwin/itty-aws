@@ -19,7 +19,7 @@ export type AppMetricsHistoricalExportsListInput =
   typeof AppMetricsHistoricalExportsListInput.Type;
 
 // Output Schema
-export const AppMetricsHistoricalExportsListOutput = /*@__PURE__*/ Schema.Void;
+export const AppMetricsHistoricalExportsListOutput = Schema.Void;
 export type AppMetricsHistoricalExportsListOutput =
   typeof AppMetricsHistoricalExportsListOutput.Type;
 

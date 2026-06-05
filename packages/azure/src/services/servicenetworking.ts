@@ -82,7 +82,7 @@ export type AssociationsInterfaceDeleteInput =
   typeof AssociationsInterfaceDeleteInput.Type;
 
 // Output Schema
-export const AssociationsInterfaceDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const AssociationsInterfaceDeleteOutput = Schema.Void;
 export type AssociationsInterfaceDeleteOutput =
   typeof AssociationsInterfaceDeleteOutput.Type;
 
@@ -347,7 +347,7 @@ export type FrontendsInterfaceDeleteInput =
   typeof FrontendsInterfaceDeleteInput.Type;
 
 // Output Schema
-export const FrontendsInterfaceDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const FrontendsInterfaceDeleteOutput = Schema.Void;
 export type FrontendsInterfaceDeleteOutput =
   typeof FrontendsInterfaceDeleteOutput.Type;
 
@@ -663,7 +663,7 @@ export type SecurityPoliciesInterfaceDeleteInput =
   typeof SecurityPoliciesInterfaceDeleteInput.Type;
 
 // Output Schema
-export const SecurityPoliciesInterfaceDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const SecurityPoliciesInterfaceDeleteOutput = Schema.Void;
 export type SecurityPoliciesInterfaceDeleteOutput =
   typeof SecurityPoliciesInterfaceDeleteOutput.Type;
 
@@ -931,7 +931,7 @@ export type TrafficControllerInterfaceDeleteInput =
   typeof TrafficControllerInterfaceDeleteInput.Type;
 
 // Output Schema
-export const TrafficControllerInterfaceDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const TrafficControllerInterfaceDeleteOutput = Schema.Void;
 export type TrafficControllerInterfaceDeleteOutput =
   typeof TrafficControllerInterfaceDeleteOutput.Type;
 

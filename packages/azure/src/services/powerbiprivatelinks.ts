@@ -173,7 +173,7 @@ export type PowerBIResourcesDeleteInput =
   typeof PowerBIResourcesDeleteInput.Type;
 
 // Output Schema
-export const PowerBIResourcesDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PowerBIResourcesDeleteOutput = Schema.Void;
 export type PowerBIResourcesDeleteOutput =
   typeof PowerBIResourcesDeleteOutput.Type;
 
@@ -509,7 +509,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 

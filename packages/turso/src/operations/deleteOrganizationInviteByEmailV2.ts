@@ -18,8 +18,7 @@ export type DeleteOrganizationInviteByEmailV2Input =
   typeof DeleteOrganizationInviteByEmailV2Input.Type;
 
 // Output Schema
-export const DeleteOrganizationInviteByEmailV2Output =
-  /*@__PURE__*/ Schema.Void;
+export const DeleteOrganizationInviteByEmailV2Output = Schema.Void;
 export type DeleteOrganizationInviteByEmailV2Output =
   typeof DeleteOrganizationInviteByEmailV2Output.Type;
 

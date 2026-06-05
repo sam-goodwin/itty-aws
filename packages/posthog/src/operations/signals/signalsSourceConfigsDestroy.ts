@@ -17,7 +17,7 @@ export type SignalsSourceConfigsDestroyInput =
   typeof SignalsSourceConfigsDestroyInput.Type;
 
 // Output Schema
-export const SignalsSourceConfigsDestroyOutput = /*@__PURE__*/ Schema.Void;
+export const SignalsSourceConfigsDestroyOutput = Schema.Void;
 export type SignalsSourceConfigsDestroyOutput =
   typeof SignalsSourceConfigsDestroyOutput.Type;
 

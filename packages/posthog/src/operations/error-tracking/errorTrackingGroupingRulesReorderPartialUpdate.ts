@@ -35,8 +35,7 @@ export type ErrorTrackingGroupingRulesReorderPartialUpdateInput =
   typeof ErrorTrackingGroupingRulesReorderPartialUpdateInput.Type;
 
 // Output Schema
-export const ErrorTrackingGroupingRulesReorderPartialUpdateOutput =
-  /*@__PURE__*/ Schema.Void;
+export const ErrorTrackingGroupingRulesReorderPartialUpdateOutput = Schema.Void;
 export type ErrorTrackingGroupingRulesReorderPartialUpdateOutput =
   typeof ErrorTrackingGroupingRulesReorderPartialUpdateOutput.Type;
 

@@ -25,7 +25,7 @@ export type GetGroupMongoDbVersionsInput =
   typeof GetGroupMongoDbVersionsInput.Type;
 
 // Output Schema
-export const GetGroupMongoDbVersionsOutput = /*@__PURE__*/ Schema.Void;
+export const GetGroupMongoDbVersionsOutput = Schema.Void;
 export type GetGroupMongoDbVersionsOutput =
   typeof GetGroupMongoDbVersionsOutput.Type;
 

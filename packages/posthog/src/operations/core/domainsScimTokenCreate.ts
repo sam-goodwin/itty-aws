@@ -31,7 +31,7 @@ export type DomainsScimTokenCreateInput =
   typeof DomainsScimTokenCreateInput.Type;
 
 // Output Schema
-export const DomainsScimTokenCreateOutput = /*@__PURE__*/ Schema.Void;
+export const DomainsScimTokenCreateOutput = Schema.Void;
 export type DomainsScimTokenCreateOutput =
   typeof DomainsScimTokenCreateOutput.Type;
 
