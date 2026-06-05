@@ -168,7 +168,7 @@ export type ActStatus =
   | "FAILED"
   | "TIMED_OUT"
   | (string & {});
-export const ActStatus = /*@__PURE__*/ S.String;
+export const ActStatus = S.String;
 export interface CreateActResponse {
   actId: string;
   status: ActStatus;
@@ -182,13 +182,13 @@ export type InternalServerExceptionReason =
   | "InvalidModelGeneration"
   | "RequestTokenLimitExceeded"
   | (string & {});
-export const InternalServerExceptionReason = /*@__PURE__*/ S.String;
+export const InternalServerExceptionReason = S.String;
 export type ValidationExceptionReason =
   | "FieldValidationFailed"
   | "InvalidStatus"
   | "GuardrailIntervened"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -203,7 +203,7 @@ export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export type SortOrder = "Ascending" | "Descending" | (string & {});
-export const SortOrder = /*@__PURE__*/ S.String;
+export const SortOrder = S.String;
 export interface ListActsRequest {
   workflowDefinitionName: string;
   workflowRunId?: string;
@@ -239,7 +239,7 @@ export const ListActsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListActsRequest",
 }) as any as S.Schema<ListActsRequest>;
 export type TraceLocationType = "S3" | (string & {});
-export const TraceLocationType = /*@__PURE__*/ S.String;
+export const TraceLocationType = S.String;
 export interface TraceLocation {
   locationType: TraceLocationType;
   location: string;
@@ -420,7 +420,7 @@ export type ModelStatus =
   | "DEPRECATED"
   | "PREVIEW"
   | (string & {});
-export const ModelStatus = /*@__PURE__*/ S.String;
+export const ModelStatus = S.String;
 export interface ModelLifecycle {
   status: ModelStatus;
 }
@@ -608,7 +608,7 @@ export const CreateWorkflowDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateWorkflowDefinitionRequest",
 }) as any as S.Schema<CreateWorkflowDefinitionRequest>;
 export type WorkflowDefinitionStatus = "ACTIVE" | "DELETING" | (string & {});
-export const WorkflowDefinitionStatus = /*@__PURE__*/ S.String;
+export const WorkflowDefinitionStatus = S.String;
 export interface CreateWorkflowDefinitionResponse {
   status: WorkflowDefinitionStatus;
 }
@@ -797,7 +797,7 @@ export type WorkflowRunStatus =
   | "TIMED_OUT"
   | "DELETING"
   | (string & {});
-export const WorkflowRunStatus = /*@__PURE__*/ S.String;
+export const WorkflowRunStatus = S.String;
 export interface CreateWorkflowRunResponse {
   workflowRunId: string;
   status: WorkflowRunStatus;

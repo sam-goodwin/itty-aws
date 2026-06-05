@@ -330,7 +330,7 @@ export type StandardUnit =
   | "Count/Second"
   | "None"
   | (string & {});
-export const StandardUnit = /*@__PURE__*/ S.String;
+export const StandardUnit = S.String;
 export interface MetricStat {
   Metric?: Metric;
   Period?: number;
@@ -571,7 +571,7 @@ export const DescribeAlarmContributorsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAlarmContributorsOutput",
 }) as any as S.Schema<DescribeAlarmContributorsOutput>;
 export type AlarmType = "CompositeAlarm" | "MetricAlarm" | (string & {});
-export const AlarmType = /*@__PURE__*/ S.String;
+export const AlarmType = S.String;
 export type AlarmTypes = AlarmType[];
 export const AlarmTypes = /*@__PURE__*/ S.Array(AlarmType);
 export type HistoryItemType =
@@ -581,12 +581,12 @@ export type HistoryItemType =
   | "AlarmContributorStateUpdate"
   | "AlarmContributorAction"
   | (string & {});
-export const HistoryItemType = /*@__PURE__*/ S.String;
+export const HistoryItemType = S.String;
 export type ScanBy =
   | "TimestampDescending"
   | "TimestampAscending"
   | (string & {});
-export const ScanBy = /*@__PURE__*/ S.String;
+export const ScanBy = S.String;
 export interface DescribeAlarmHistoryInput {
   AlarmName?: string;
   AlarmContributorId?: string;
@@ -662,7 +662,7 @@ export const DescribeAlarmHistoryOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAlarmHistoryOutput",
 }) as any as S.Schema<DescribeAlarmHistoryOutput>;
 export type StateValue = "OK" | "ALARM" | "INSUFFICIENT_DATA" | (string & {});
-export const StateValue = /*@__PURE__*/ S.String;
+export const StateValue = S.String;
 export interface DescribeAlarmsInput {
   AlarmNames?: string[];
   AlarmNamePrefix?: string;
@@ -706,7 +706,7 @@ export type ActionsSuppressedBy =
   | "ExtensionPeriod"
   | "Alarm"
   | (string & {});
-export const ActionsSuppressedBy = /*@__PURE__*/ S.String;
+export const ActionsSuppressedBy = S.String;
 export interface CompositeAlarm {
   ActionsEnabled?: boolean;
   AlarmActions?: string[];
@@ -766,7 +766,7 @@ export type Statistic =
   | "Minimum"
   | "Maximum"
   | (string & {});
-export const Statistic = /*@__PURE__*/ S.String;
+export const Statistic = S.String;
 export type ComparisonOperator =
   | "GreaterThanOrEqualToThreshold"
   | "GreaterThanThreshold"
@@ -776,13 +776,13 @@ export type ComparisonOperator =
   | "LessThanLowerThreshold"
   | "GreaterThanUpperThreshold"
   | (string & {});
-export const ComparisonOperator = /*@__PURE__*/ S.String;
+export const ComparisonOperator = S.String;
 export type EvaluationState =
   | "PARTIAL_DATA"
   | "EVALUATION_FAILURE"
   | "EVALUATION_ERROR"
   | (string & {});
-export const EvaluationState = /*@__PURE__*/ S.String;
+export const EvaluationState = S.String;
 export interface AlarmPromQLCriteria {
   Query?: string;
   PendingPeriod?: number;
@@ -965,7 +965,7 @@ export type AnomalyDetectorType =
   | "SINGLE_METRIC"
   | "METRIC_MATH"
   | (string & {});
-export const AnomalyDetectorType = /*@__PURE__*/ S.String;
+export const AnomalyDetectorType = S.String;
 export type AnomalyDetectorTypes = AnomalyDetectorType[];
 export const AnomalyDetectorTypes = /*@__PURE__*/ S.Array(AnomalyDetectorType);
 export interface DescribeAnomalyDetectorsInput {
@@ -1027,7 +1027,7 @@ export type AnomalyDetectorStateValue =
   | "TRAINED_INSUFFICIENT_DATA"
   | "TRAINED"
   | (string & {});
-export const AnomalyDetectorStateValue = /*@__PURE__*/ S.String;
+export const AnomalyDetectorStateValue = S.String;
 export interface MetricCharacteristics {
   PeriodicSpikes?: boolean;
 }
@@ -1310,7 +1310,7 @@ export type AlarmMuteRuleStatus =
   | "ACTIVE"
   | "EXPIRED"
   | (string & {});
-export const AlarmMuteRuleStatus = /*@__PURE__*/ S.String;
+export const AlarmMuteRuleStatus = S.String;
 export interface GetAlarmMuteRuleOutput {
   Name?: string;
   AlarmMuteRuleArn?: string;
@@ -1553,7 +1553,7 @@ export type StatusCode =
   | "PartialData"
   | "Forbidden"
   | (string & {});
-export const StatusCode = /*@__PURE__*/ S.String;
+export const StatusCode = S.String;
 export interface MessageData {
   Code?: string;
   Value?: string;
@@ -1719,7 +1719,7 @@ export type MetricStreamOutputFormat =
   | "opentelemetry0.7"
   | "opentelemetry1.0"
   | (string & {});
-export const MetricStreamOutputFormat = /*@__PURE__*/ S.String;
+export const MetricStreamOutputFormat = S.String;
 export interface MetricStreamStatisticsMetric {
   Namespace?: string;
   MetricName?: string;
@@ -1845,7 +1845,7 @@ export const GetOTelEnrichmentInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOTelEnrichmentInput",
 }) as any as S.Schema<GetOTelEnrichmentInput>;
 export type OTelEnrichmentStatus = "Running" | "Stopped" | (string & {});
-export const OTelEnrichmentStatus = /*@__PURE__*/ S.String;
+export const OTelEnrichmentStatus = S.String;
 export interface GetOTelEnrichmentOutput {
   Status: OTelEnrichmentStatus;
 }
@@ -2047,7 +2047,7 @@ export const DimensionFilter = /*@__PURE__*/ S.suspend(() =>
 export type DimensionFilters = DimensionFilter[];
 export const DimensionFilters = /*@__PURE__*/ S.Array(DimensionFilter);
 export type RecentlyActive = "PT3H" | (string & {});
-export const RecentlyActive = /*@__PURE__*/ S.String;
+export const RecentlyActive = S.String;
 export interface ListMetricsInput {
   Namespace?: string;
   MetricName?: string;

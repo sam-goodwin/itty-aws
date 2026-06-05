@@ -159,7 +159,7 @@ export type LifeCycleState =
   | "error"
   | "updating"
   | (string & {});
-export const LifeCycleState = /*@__PURE__*/ S.String;
+export const LifeCycleState = S.String;
 export interface CreateAccessPointResponse {
   accessPointArn: string;
   accessPointId: string;
@@ -259,7 +259,7 @@ export type IpAddressType =
   | "IPV6_ONLY"
   | "DUAL_STACK"
   | (string & {});
-export const IpAddressType = /*@__PURE__*/ S.String;
+export const IpAddressType = S.String;
 export type SecurityGroups = string[];
 export const SecurityGroups = /*@__PURE__*/ S.Array(S.String);
 export interface CreateMountTargetRequest {
@@ -625,7 +625,7 @@ export type ImportTrigger =
   | "ON_DIRECTORY_FIRST_ACCESS"
   | "ON_FILE_ACCESS"
   | (string & {});
-export const ImportTrigger = /*@__PURE__*/ S.String;
+export const ImportTrigger = S.String;
 export interface ImportDataRule {
   prefix: string;
   trigger: ImportTrigger;

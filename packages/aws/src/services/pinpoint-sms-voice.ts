@@ -144,7 +144,7 @@ export type EventType =
   | "FAILED"
   | "NO_ANSWER"
   | (string & {});
-export const EventType = /*@__PURE__*/ S.String;
+export const EventType = S.String;
 export type EventTypes = EventType[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
 export interface SnsDestination {

@@ -133,7 +133,7 @@ export type SentimentValue =
   | "NEUTRAL"
   | "NEGATIVE"
   | (string & {});
-export const SentimentValue = /*@__PURE__*/ S.String;
+export const SentimentValue = S.String;
 export interface CharacterOffsets {
   BeginOffsetChar?: number;
   EndOffsetChar?: number;
@@ -216,7 +216,7 @@ export const Categories = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Categories" }) as any as S.Schema<Categories>;
 export type PostContactSummaryStatus = "FAILED" | "COMPLETED" | (string & {});
-export const PostContactSummaryStatus = /*@__PURE__*/ S.String;
+export const PostContactSummaryStatus = S.String;
 export type PostContactSummaryFailureCode =
   | "QUOTA_EXCEEDED"
   | "INSUFFICIENT_CONVERSATION_CONTENT"
@@ -224,7 +224,7 @@ export type PostContactSummaryFailureCode =
   | "INVALID_ANALYSIS_CONFIGURATION"
   | "INTERNAL_ERROR"
   | (string & {});
-export const PostContactSummaryFailureCode = /*@__PURE__*/ S.String;
+export const PostContactSummaryFailureCode = S.String;
 export interface PostContactSummary {
   Content?: string;
   Status?: PostContactSummaryStatus;

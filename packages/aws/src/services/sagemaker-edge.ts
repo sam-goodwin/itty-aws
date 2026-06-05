@@ -119,14 +119,14 @@ export const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDeploymentsRequest",
 }) as any as S.Schema<GetDeploymentsRequest>;
 export type DeploymentType = "Model" | (string & {});
-export const DeploymentType = /*@__PURE__*/ S.String;
+export const DeploymentType = S.String;
 export type FailureHandlingPolicy =
   | "ROLLBACK_ON_FAILURE"
   | "DO_NOTHING"
   | (string & {});
-export const FailureHandlingPolicy = /*@__PURE__*/ S.String;
+export const FailureHandlingPolicy = S.String;
 export type ChecksumType = "SHA1" | (string & {});
-export const ChecksumType = /*@__PURE__*/ S.String;
+export const ChecksumType = S.String;
 export interface Checksum {
   Type?: ChecksumType;
   Sum?: string;
@@ -135,7 +135,7 @@ export const Checksum = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(ChecksumType), Sum: S.optional(S.String) }),
 ).annotate({ identifier: "Checksum" }) as any as S.Schema<Checksum>;
 export type ModelState = "DEPLOY" | "UNDEPLOY" | (string & {});
-export const ModelState = /*@__PURE__*/ S.String;
+export const ModelState = S.String;
 export interface Definition {
   ModelHandle?: string;
   S3Url?: string;
@@ -248,7 +248,7 @@ export const Model = /*@__PURE__*/ S.suspend(() =>
 export type Models = Model[];
 export const Models = /*@__PURE__*/ S.Array(Model);
 export type DeploymentStatus = "SUCCESS" | "FAIL" | (string & {});
-export const DeploymentStatus = /*@__PURE__*/ S.String;
+export const DeploymentStatus = S.String;
 export interface DeploymentModel {
   ModelHandle?: string;
   ModelName?: string;

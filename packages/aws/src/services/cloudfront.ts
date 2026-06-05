@@ -433,14 +433,14 @@ export type OriginProtocolPolicy =
   | "match-viewer"
   | "https-only"
   | (string & {});
-export const OriginProtocolPolicy = /*@__PURE__*/ S.String;
+export const OriginProtocolPolicy = S.String;
 export type SslProtocol =
   | "SSLv3"
   | "TLSv1"
   | "TLSv1.1"
   | "TLSv1.2"
   | (string & {});
-export const SslProtocol = /*@__PURE__*/ S.String;
+export const SslProtocol = S.String;
 export type SslProtocolsList = SslProtocol[];
 export const SslProtocolsList = /*@__PURE__*/ S.Array(
   SslProtocol.pipe(T.XmlName("SslProtocol")),
@@ -455,7 +455,7 @@ export const OriginSslProtocols = /*@__PURE__*/ S.suspend(() =>
   identifier: "OriginSslProtocols",
 }) as any as S.Schema<OriginSslProtocols>;
 export type IpAddressType = "ipv4" | "ipv6" | "dualstack" | (string & {});
-export const IpAddressType = /*@__PURE__*/ S.String;
+export const IpAddressType = S.String;
 export interface OriginMtlsConfig {
   ClientCertificateArn: string;
 }
@@ -598,7 +598,7 @@ export type OriginGroupSelectionCriteria =
   | "default"
   | "media-quality-based"
   | (string & {});
-export const OriginGroupSelectionCriteria = /*@__PURE__*/ S.String;
+export const OriginGroupSelectionCriteria = S.String;
 export interface OriginGroup {
   Id: string;
   FailoverCriteria: OriginGroupFailoverCriteria;
@@ -665,7 +665,7 @@ export type ViewerProtocolPolicy =
   | "https-only"
   | "redirect-to-https"
   | (string & {});
-export const ViewerProtocolPolicy = /*@__PURE__*/ S.String;
+export const ViewerProtocolPolicy = S.String;
 export type Method =
   | "GET"
   | "HEAD"
@@ -675,7 +675,7 @@ export type Method =
   | "OPTIONS"
   | "DELETE"
   | (string & {});
-export const Method = /*@__PURE__*/ S.String;
+export const Method = S.String;
 export type MethodsList = Method[];
 export const MethodsList = /*@__PURE__*/ S.Array(
   Method.pipe(T.XmlName("Method")),
@@ -705,7 +705,7 @@ export type EventType =
   | "origin-request"
   | "origin-response"
   | (string & {});
-export const EventType = /*@__PURE__*/ S.String;
+export const EventType = S.String;
 export interface LambdaFunctionAssociation {
   LambdaFunctionARN: string;
   EventType: EventType;
@@ -769,7 +769,7 @@ export const GrpcConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Enabled: S.Boolean }),
 ).annotate({ identifier: "GrpcConfig" }) as any as S.Schema<GrpcConfig>;
 export type ItemSelection = "none" | "whitelist" | "all" | (string & {});
-export const ItemSelection = /*@__PURE__*/ S.String;
+export const ItemSelection = S.String;
 export type CookieNameList = string[];
 export const CookieNameList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Name")),
@@ -989,9 +989,9 @@ export type PriceClass =
   | "PriceClass_All"
   | "None"
   | (string & {});
-export const PriceClass = /*@__PURE__*/ S.String;
+export const PriceClass = S.String;
 export type SSLSupportMethod = "sni-only" | "vip" | "static-ip" | (string & {});
-export const SSLSupportMethod = /*@__PURE__*/ S.String;
+export const SSLSupportMethod = S.String;
 export type MinimumProtocolVersion =
   | "SSLv3"
   | "TLSv1"
@@ -1003,9 +1003,9 @@ export type MinimumProtocolVersion =
   | "TLSv1.3_2025"
   | "TLSv1.2_2025"
   | (string & {});
-export const MinimumProtocolVersion = /*@__PURE__*/ S.String;
+export const MinimumProtocolVersion = S.String;
 export type CertificateSource = "cloudfront" | "iam" | "acm" | (string & {});
-export const CertificateSource = /*@__PURE__*/ S.String;
+export const CertificateSource = S.String;
 export interface ViewerCertificate {
   CloudFrontDefaultCertificate?: boolean;
   IAMCertificateId?: string;
@@ -1033,7 +1033,7 @@ export type GeoRestrictionType =
   | "whitelist"
   | "none"
   | (string & {});
-export const GeoRestrictionType = /*@__PURE__*/ S.String;
+export const GeoRestrictionType = S.String;
 export type LocationList = string[];
 export const LocationList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Location")),
@@ -1066,7 +1066,7 @@ export type HttpVersion =
   | "HTTP3"
   | "HTTP2AND3"
   | (string & {});
-export const HttpVersion = /*@__PURE__*/ S.String;
+export const HttpVersion = S.String;
 export interface StringSchemaConfig {
   Comment?: string | redacted.Redacted<string>;
   DefaultValue?: string;
@@ -1107,9 +1107,9 @@ export const TenantConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ParameterDefinitions: S.optional(ParameterDefinitions) }),
 ).annotate({ identifier: "TenantConfig" }) as any as S.Schema<TenantConfig>;
 export type ConnectionMode = "direct" | "tenant-only" | (string & {});
-export const ConnectionMode = /*@__PURE__*/ S.String;
+export const ConnectionMode = S.String;
 export type ViewerMtlsMode = "required" | "optional" | (string & {});
-export const ViewerMtlsMode = /*@__PURE__*/ S.String;
+export const ViewerMtlsMode = S.String;
 export interface TrustStoreConfig {
   TrustStoreId: string;
   AdvertiseTrustStoreCaNames?: boolean;
@@ -1205,7 +1205,7 @@ export type ICPRecordalStatus =
   | "SUSPENDED"
   | "PENDING"
   | (string & {});
-export const ICPRecordalStatus = /*@__PURE__*/ S.String;
+export const ICPRecordalStatus = S.String;
 export interface AliasICPRecordal {
   CNAME?: string;
   ICPRecordalStatus?: ICPRecordalStatus;
@@ -1297,7 +1297,7 @@ export type IpamCidrStatus =
   | "failed-withdraw"
   | "withdrawing"
   | (string & {});
-export const IpamCidrStatus = /*@__PURE__*/ S.String;
+export const IpamCidrStatus = S.String;
 export interface IpamCidrConfig {
   Cidr: string;
   IpamPoolArn: string;
@@ -1396,7 +1396,7 @@ export const CreateAnycastIpListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAnycastIpListResult",
 }) as any as S.Schema<CreateAnycastIpListResult>;
 export type CachePolicyHeaderBehavior = "none" | "whitelist" | (string & {});
-export const CachePolicyHeaderBehavior = /*@__PURE__*/ S.String;
+export const CachePolicyHeaderBehavior = S.String;
 export interface CachePolicyHeadersConfig {
   HeaderBehavior: CachePolicyHeaderBehavior;
   Headers?: Headers;
@@ -1415,7 +1415,7 @@ export type CachePolicyCookieBehavior =
   | "allExcept"
   | "all"
   | (string & {});
-export const CachePolicyCookieBehavior = /*@__PURE__*/ S.String;
+export const CachePolicyCookieBehavior = S.String;
 export interface CachePolicyCookiesConfig {
   CookieBehavior: CachePolicyCookieBehavior;
   Cookies?: CookieNames;
@@ -1434,7 +1434,7 @@ export type CachePolicyQueryStringBehavior =
   | "allExcept"
   | "all"
   | (string & {});
-export const CachePolicyQueryStringBehavior = /*@__PURE__*/ S.String;
+export const CachePolicyQueryStringBehavior = S.String;
 export type QueryStringNamesList = string[];
 export const QueryStringNamesList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Name")),
@@ -1626,7 +1626,7 @@ export type FunctionRuntime =
   | "cloudfront-js-1.0"
   | "cloudfront-js-2.0"
   | (string & {});
-export const FunctionRuntime = /*@__PURE__*/ S.String;
+export const FunctionRuntime = S.String;
 export interface KeyValueStoreAssociation {
   KeyValueStoreARN: string;
 }
@@ -1692,7 +1692,7 @@ export const CreateConnectionFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConnectionFunctionRequest",
 }) as any as S.Schema<CreateConnectionFunctionRequest>;
 export type FunctionStage = "DEVELOPMENT" | "LIVE" | (string & {});
-export const FunctionStage = /*@__PURE__*/ S.String;
+export const FunctionStage = S.String;
 export interface ConnectionFunctionSummary {
   Name: string;
   Id: string;
@@ -1858,7 +1858,7 @@ export type ContinuousDeploymentPolicyType =
   | "SingleWeight"
   | "SingleHeader"
   | (string & {});
-export const ContinuousDeploymentPolicyType = /*@__PURE__*/ S.String;
+export const ContinuousDeploymentPolicyType = S.String;
 export interface TrafficConfig {
   SingleWeightConfig?: ContinuousDeploymentSingleWeightConfig;
   SingleHeaderConfig?: ContinuousDeploymentSingleHeaderConfig;
@@ -1991,7 +1991,7 @@ export const DomainItem = /*@__PURE__*/ S.suspend(() =>
 export type DomainList = DomainItem[];
 export const DomainList = /*@__PURE__*/ S.Array(DomainItem);
 export type CustomizationActionType = "override" | "disable" | (string & {});
-export const CustomizationActionType = /*@__PURE__*/ S.String;
+export const CustomizationActionType = S.String;
 export interface WebAclCustomization {
   Action: CustomizationActionType;
   Arn?: string;
@@ -2041,12 +2041,12 @@ export const Parameter = /*@__PURE__*/ S.suspend(() =>
 export type Parameters = Parameter[];
 export const Parameters = /*@__PURE__*/ S.Array(Parameter);
 export type ValidationTokenHost = "cloudfront" | "self-hosted" | (string & {});
-export const ValidationTokenHost = /*@__PURE__*/ S.String;
+export const ValidationTokenHost = S.String;
 export type CertificateTransparencyLoggingPreference =
   | "enabled"
   | "disabled"
   | (string & {});
-export const CertificateTransparencyLoggingPreference = /*@__PURE__*/ S.String;
+export const CertificateTransparencyLoggingPreference = S.String;
 export interface ManagedCertificateRequest {
   ValidationTokenHost: ValidationTokenHost;
   PrimaryDomainName?: string;
@@ -2100,7 +2100,7 @@ export const CreateDistributionTenantRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDistributionTenantRequest",
 }) as any as S.Schema<CreateDistributionTenantRequest>;
 export type DomainStatus = "active" | "inactive" | (string & {});
-export const DomainStatus = /*@__PURE__*/ S.String;
+export const DomainStatus = S.String;
 export interface DomainResult {
   Domain: string;
   Status?: DomainStatus;
@@ -2243,7 +2243,7 @@ export const QueryArgProfileConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryArgProfileConfig",
 }) as any as S.Schema<QueryArgProfileConfig>;
 export type Format = "URLEncoded" | (string & {});
-export const Format = /*@__PURE__*/ S.String;
+export const Format = S.String;
 export interface ContentTypeProfile {
   Format: Format;
   ProfileId?: string;
@@ -2728,7 +2728,7 @@ export const CreateKeyGroupResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateKeyGroupResult",
 }) as any as S.Schema<CreateKeyGroupResult>;
 export type ImportSourceType = "S3" | (string & {});
-export const ImportSourceType = /*@__PURE__*/ S.String;
+export const ImportSourceType = S.String;
 export interface ImportSource {
   SourceType: ImportSourceType;
   SourceARN: string;
@@ -2798,7 +2798,7 @@ export type RealtimeMetricsSubscriptionStatus =
   | "Enabled"
   | "Disabled"
   | (string & {});
-export const RealtimeMetricsSubscriptionStatus = /*@__PURE__*/ S.String;
+export const RealtimeMetricsSubscriptionStatus = S.String;
 export interface RealtimeMetricsSubscriptionConfig {
   RealtimeMetricsSubscriptionStatus: RealtimeMetricsSubscriptionStatus;
 }
@@ -2862,20 +2862,20 @@ export const CreateMonitoringSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMonitoringSubscriptionResult",
 }) as any as S.Schema<CreateMonitoringSubscriptionResult>;
 export type OriginAccessControlSigningProtocols = "sigv4" | (string & {});
-export const OriginAccessControlSigningProtocols = /*@__PURE__*/ S.String;
+export const OriginAccessControlSigningProtocols = S.String;
 export type OriginAccessControlSigningBehaviors =
   | "never"
   | "always"
   | "no-override"
   | (string & {});
-export const OriginAccessControlSigningBehaviors = /*@__PURE__*/ S.String;
+export const OriginAccessControlSigningBehaviors = S.String;
 export type OriginAccessControlOriginTypes =
   | "s3"
   | "mediastore"
   | "mediapackagev2"
   | "lambda"
   | (string & {});
-export const OriginAccessControlOriginTypes = /*@__PURE__*/ S.String;
+export const OriginAccessControlOriginTypes = S.String;
 export interface OriginAccessControlConfig {
   Name: string;
   Description?: string;
@@ -2952,7 +2952,7 @@ export type OriginRequestPolicyHeaderBehavior =
   | "allViewerAndWhitelistCloudFront"
   | "allExcept"
   | (string & {});
-export const OriginRequestPolicyHeaderBehavior = /*@__PURE__*/ S.String;
+export const OriginRequestPolicyHeaderBehavior = S.String;
 export interface OriginRequestPolicyHeadersConfig {
   HeaderBehavior: OriginRequestPolicyHeaderBehavior;
   Headers?: Headers;
@@ -2971,7 +2971,7 @@ export type OriginRequestPolicyCookieBehavior =
   | "all"
   | "allExcept"
   | (string & {});
-export const OriginRequestPolicyCookieBehavior = /*@__PURE__*/ S.String;
+export const OriginRequestPolicyCookieBehavior = S.String;
 export interface OriginRequestPolicyCookiesConfig {
   CookieBehavior: OriginRequestPolicyCookieBehavior;
   Cookies?: CookieNames;
@@ -2990,7 +2990,7 @@ export type OriginRequestPolicyQueryStringBehavior =
   | "all"
   | "allExcept"
   | (string & {});
-export const OriginRequestPolicyQueryStringBehavior = /*@__PURE__*/ S.String;
+export const OriginRequestPolicyQueryStringBehavior = S.String;
 export interface OriginRequestPolicyQueryStringsConfig {
   QueryStringBehavior: OriginRequestPolicyQueryStringBehavior;
   QueryStrings?: QueryStringNames;
@@ -3257,8 +3257,7 @@ export type ResponseHeadersPolicyAccessControlAllowMethodsValues =
   | "HEAD"
   | "ALL"
   | (string & {});
-export const ResponseHeadersPolicyAccessControlAllowMethodsValues =
-  /*@__PURE__*/ S.String;
+export const ResponseHeadersPolicyAccessControlAllowMethodsValues = S.String;
 export type AccessControlAllowMethodsList =
   ResponseHeadersPolicyAccessControlAllowMethodsValues[];
 export const AccessControlAllowMethodsList = /*@__PURE__*/ S.Array(
@@ -3334,7 +3333,7 @@ export const ResponseHeadersPolicyXSSProtection = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResponseHeadersPolicyXSSProtection",
 }) as any as S.Schema<ResponseHeadersPolicyXSSProtection>;
 export type FrameOptionsList = "DENY" | "SAMEORIGIN" | (string & {});
-export const FrameOptionsList = /*@__PURE__*/ S.String;
+export const FrameOptionsList = S.String;
 export interface ResponseHeadersPolicyFrameOptions {
   Override: boolean;
   FrameOption: FrameOptionsList;
@@ -3354,7 +3353,7 @@ export type ReferrerPolicyList =
   | "strict-origin-when-cross-origin"
   | "unsafe-url"
   | (string & {});
-export const ReferrerPolicyList = /*@__PURE__*/ S.String;
+export const ReferrerPolicyList = S.String;
 export interface ResponseHeadersPolicyReferrerPolicy {
   Override: boolean;
   ReferrerPolicy: ReferrerPolicyList;
@@ -3777,7 +3776,7 @@ export const CreateTrustStoreRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateTrustStoreRequest",
 }) as any as S.Schema<CreateTrustStoreRequest>;
 export type TrustStoreStatus = "pending" | "active" | "failed" | (string & {});
-export const TrustStoreStatus = /*@__PURE__*/ S.String;
+export const TrustStoreStatus = S.String;
 export interface TrustStore {
   Id?: string;
   Arn?: string;
@@ -5586,7 +5585,7 @@ export type ManagedCertificateStatus =
   | "revoked"
   | "failed"
   | (string & {});
-export const ManagedCertificateStatus = /*@__PURE__*/ S.String;
+export const ManagedCertificateStatus = S.String;
 export interface ValidationTokenDetail {
   Domain: string;
   RedirectTo?: string;
@@ -6215,7 +6214,7 @@ export const ListAnycastIpListsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAnycastIpListsResult",
 }) as any as S.Schema<ListAnycastIpListsResult>;
 export type CachePolicyType = "managed" | "custom" | (string & {});
-export const CachePolicyType = /*@__PURE__*/ S.String;
+export const CachePolicyType = S.String;
 export interface ListCachePoliciesRequest {
   Type?: CachePolicyType;
   Marker?: string;
@@ -7470,7 +7469,7 @@ export type DistributionResourceType =
   | "distribution"
   | "distribution-tenant"
   | (string & {});
-export const DistributionResourceType = /*@__PURE__*/ S.String;
+export const DistributionResourceType = S.String;
 export interface DomainConflict {
   Domain: string;
   ResourceType: DistributionResourceType;
@@ -8034,7 +8033,7 @@ export const ListOriginAccessControlsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOriginAccessControlsResult",
 }) as any as S.Schema<ListOriginAccessControlsResult>;
 export type OriginRequestPolicyType = "managed" | "custom" | (string & {});
-export const OriginRequestPolicyType = /*@__PURE__*/ S.String;
+export const OriginRequestPolicyType = S.String;
 export interface ListOriginRequestPoliciesRequest {
   Type?: OriginRequestPolicyType;
   Marker?: string;
@@ -8232,7 +8231,7 @@ export const ListRealtimeLogConfigsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRealtimeLogConfigsResult",
 }) as any as S.Schema<ListRealtimeLogConfigsResult>;
 export type ResponseHeadersPolicyType = "managed" | "custom" | (string & {});
-export const ResponseHeadersPolicyType = /*@__PURE__*/ S.String;
+export const ResponseHeadersPolicyType = S.String;
 export interface ListResponseHeadersPoliciesRequest {
   Type?: ResponseHeadersPolicyType;
   Marker?: string;
@@ -9846,7 +9845,7 @@ export type DnsConfigurationStatus =
   | "invalid-configuration"
   | "unknown-configuration"
   | (string & {});
-export const DnsConfigurationStatus = /*@__PURE__*/ S.String;
+export const DnsConfigurationStatus = S.String;
 export interface DnsConfiguration {
   Domain: string;
   Status: DnsConfigurationStatus;

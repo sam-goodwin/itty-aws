@@ -139,7 +139,7 @@ export type BillingAdjustmentReasonCode =
   | "BUYER_DISSATISFACTION"
   | "OTHER"
   | (string & {});
-export const BillingAdjustmentReasonCode = /*@__PURE__*/ S.String;
+export const BillingAdjustmentReasonCode = S.String;
 export interface BatchCreateBillingAdjustmentRequestEntry {
   agreementId: string;
   originalInvoiceId: string;
@@ -201,7 +201,7 @@ export type BillingAdjustmentErrorCode =
   | "RESOURCE_NOT_FOUND_EXCEPTION"
   | "INTERNAL_FAILURE"
   | (string & {});
-export const BillingAdjustmentErrorCode = /*@__PURE__*/ S.String;
+export const BillingAdjustmentErrorCode = S.String;
 export interface BatchCreateBillingAdjustmentError {
   code: BillingAdjustmentErrorCode;
   message: string;
@@ -239,7 +239,7 @@ export type ResourceType =
   | "Charge"
   | "PaymentRequest"
   | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
+export const ResourceType = S.String;
 export type ValidationExceptionReason =
   | "INVALID_AGREEMENT_ID"
   | "MISSING_AGREEMENT_ID"
@@ -266,7 +266,7 @@ export type ValidationExceptionReason =
   | "INVALID_PAYMENT_REQUEST_STATUS"
   | "OTHER"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -307,7 +307,7 @@ export type AgreementCancellationRequestReasonCode =
   | "BUYER_DISSATISFACTION"
   | "OTHER"
   | (string & {});
-export const AgreementCancellationRequestReasonCode = /*@__PURE__*/ S.String;
+export const AgreementCancellationRequestReasonCode = S.String;
 export type AgreementCancellationRequestStatus =
   | "PENDING_APPROVAL"
   | "APPROVED"
@@ -315,7 +315,7 @@ export type AgreementCancellationRequestStatus =
   | "CANCELLED"
   | "VALIDATION_FAILED"
   | (string & {});
-export const AgreementCancellationRequestStatus = /*@__PURE__*/ S.String;
+export const AgreementCancellationRequestStatus = S.String;
 export interface CancelAgreementCancellationRequestOutput {
   agreementCancellationRequestId?: string;
   agreementId?: string;
@@ -360,7 +360,7 @@ export type PaymentRequestStatus =
   | "REJECTED"
   | "CANCELLED"
   | (string & {});
-export const PaymentRequestStatus = /*@__PURE__*/ S.String;
+export const PaymentRequestStatus = S.String;
 export interface CancelAgreementPaymentRequestOutput {
   paymentRequestId?: string;
   agreementId?: string;
@@ -455,7 +455,7 @@ export type AgreementStatus =
   | "SUPERSEDED"
   | "TERMINATED"
   | (string & {});
-export const AgreementStatus = /*@__PURE__*/ S.String;
+export const AgreementStatus = S.String;
 export interface DescribeAgreementOutput {
   agreementId?: string;
   acceptor?: Acceptor;
@@ -848,7 +848,7 @@ export type PaymentRequestApprovalStrategy =
   | "AUTO_APPROVE_ON_EXPIRATION"
   | "WAIT_FOR_APPROVAL"
   | (string & {});
-export const PaymentRequestApprovalStrategy = /*@__PURE__*/ S.String;
+export const PaymentRequestApprovalStrategy = S.String;
 export interface VariablePaymentTermConfiguration {
   paymentRequestApprovalStrategy: PaymentRequestApprovalStrategy;
   expirationDuration?: string;
@@ -1093,7 +1093,7 @@ export type BillingAdjustmentStatus =
   | "VALIDATION_FAILED"
   | "COMPLETED"
   | (string & {});
-export const BillingAdjustmentStatus = /*@__PURE__*/ S.String;
+export const BillingAdjustmentStatus = S.String;
 export interface GetBillingAdjustmentRequestOutput {
   billingAdjustmentRequestId: string;
   agreementId: string;
@@ -1192,9 +1192,9 @@ export const ListAgreementCancellationRequestsOutput = /*@__PURE__*/ S.suspend(
   identifier: "ListAgreementCancellationRequestsOutput",
 }) as any as S.Schema<ListAgreementCancellationRequestsOutput>;
 export type LineItemGroupBy = "INVOICE_ID" | (string & {});
-export const LineItemGroupBy = /*@__PURE__*/ S.String;
+export const LineItemGroupBy = S.String;
 export type InvoiceType = "INVOICE" | "CREDIT_MEMO" | (string & {});
-export const InvoiceType = /*@__PURE__*/ S.String;
+export const InvoiceType = S.String;
 export interface InvoiceBillingPeriod {
   month: number;
   year: number;
@@ -1452,7 +1452,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 export type FilterList = Filter[];
 export const FilterList = /*@__PURE__*/ S.Array(Filter);
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-export const SortOrder = /*@__PURE__*/ S.String;
+export const SortOrder = S.String;
 export interface Sort {
   sortBy?: string;
   sortOrder?: SortOrder;

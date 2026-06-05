@@ -171,19 +171,19 @@ export type DataIntegrationEventType =
   | "scn.data.supplyplan"
   | "scn.data.dataset"
   | (string & {});
-export const DataIntegrationEventType = /*@__PURE__*/ S.String;
+export const DataIntegrationEventType = S.String;
 export type DataIntegrationEventDatasetOperationType =
   | "APPEND"
   | "UPSERT"
   | "DELETE"
   | (string & {});
-export const DataIntegrationEventDatasetOperationType = /*@__PURE__*/ S.String;
+export const DataIntegrationEventDatasetOperationType = S.String;
 export type DataIntegrationEventDatasetLoadStatus =
   | "SUCCEEDED"
   | "IN_PROGRESS"
   | "FAILED"
   | (string & {});
-export const DataIntegrationEventDatasetLoadStatus = /*@__PURE__*/ S.String;
+export const DataIntegrationEventDatasetLoadStatus = S.String;
 export interface DataIntegrationEventDatasetLoadExecutionDetails {
   status: DataIntegrationEventDatasetLoadStatus;
   message?: string;
@@ -272,9 +272,9 @@ export type DataIntegrationFlowExecutionStatus =
   | "IN_PROGRESS"
   | "FAILED"
   | (string & {});
-export const DataIntegrationFlowExecutionStatus = /*@__PURE__*/ S.String;
+export const DataIntegrationFlowExecutionStatus = S.String;
 export type DataIntegrationFlowSourceType = "S3" | "DATASET" | (string & {});
-export const DataIntegrationFlowSourceType = /*@__PURE__*/ S.String;
+export const DataIntegrationFlowSourceType = S.String;
 export interface DataIntegrationFlowS3Source {
   bucketName: string;
   key: string;
@@ -648,7 +648,7 @@ export type ConfigurationJobStatus =
   | "QUEUED"
   | "SUCCESS"
   | (string & {});
-export const ConfigurationJobStatus = /*@__PURE__*/ S.String;
+export const ConfigurationJobStatus = S.String;
 export interface BillOfMaterialsImportJob {
   instanceId: string;
   jobId: string;
@@ -680,7 +680,7 @@ export type DataIntegrationFlowFileType =
   | "PARQUET"
   | "JSON"
   | (string & {});
-export const DataIntegrationFlowFileType = /*@__PURE__*/ S.String;
+export const DataIntegrationFlowFileType = S.String;
 export interface DataIntegrationFlowS3Options {
   fileType?: DataIntegrationFlowFileType;
 }
@@ -708,17 +708,16 @@ export type DataIntegrationFlowLoadType =
   | "INCREMENTAL"
   | "REPLACE"
   | (string & {});
-export const DataIntegrationFlowLoadType = /*@__PURE__*/ S.String;
+export const DataIntegrationFlowLoadType = S.String;
 export type DataIntegrationFlowDedupeStrategyType =
   | "FIELD_PRIORITY"
   | (string & {});
-export const DataIntegrationFlowDedupeStrategyType = /*@__PURE__*/ S.String;
+export const DataIntegrationFlowDedupeStrategyType = S.String;
 export type DataIntegrationFlowFieldPriorityDedupeSortOrder =
   | "ASC"
   | "DESC"
   | (string & {});
-export const DataIntegrationFlowFieldPriorityDedupeSortOrder =
-  /*@__PURE__*/ S.String;
+export const DataIntegrationFlowFieldPriorityDedupeSortOrder = S.String;
 export interface DataIntegrationFlowFieldPriorityDedupeField {
   name: string;
   sortOrder: DataIntegrationFlowFieldPriorityDedupeSortOrder;
@@ -810,7 +809,7 @@ export type DataIntegrationFlowTransformationType =
   | "SQL"
   | "NONE"
   | (string & {});
-export const DataIntegrationFlowTransformationType = /*@__PURE__*/ S.String;
+export const DataIntegrationFlowTransformationType = S.String;
 export interface DataIntegrationFlowSQLTransformationConfiguration {
   query: string | redacted.Redacted<string>;
 }
@@ -833,7 +832,7 @@ export const DataIntegrationFlowTransformation = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataIntegrationFlowTransformation",
 }) as any as S.Schema<DataIntegrationFlowTransformation>;
 export type DataIntegrationFlowTargetType = "S3" | "DATASET" | (string & {});
-export const DataIntegrationFlowTargetType = /*@__PURE__*/ S.String;
+export const DataIntegrationFlowTargetType = S.String;
 export interface DataIntegrationFlowS3TargetConfiguration {
   bucketName: string;
   prefix: string;
@@ -1087,7 +1086,7 @@ export type DataLakeDatasetSchemaFieldType =
   | "TIMESTAMP"
   | "LONG"
   | (string & {});
-export const DataLakeDatasetSchemaFieldType = /*@__PURE__*/ S.String;
+export const DataLakeDatasetSchemaFieldType = S.String;
 export interface DataLakeDatasetSchemaField {
   name: string;
   type: DataLakeDatasetSchemaFieldType;
@@ -1140,7 +1139,7 @@ export type DataLakeDatasetPartitionTransformType =
   | "HOUR"
   | "IDENTITY"
   | (string & {});
-export const DataLakeDatasetPartitionTransformType = /*@__PURE__*/ S.String;
+export const DataLakeDatasetPartitionTransformType = S.String;
 export interface DataLakeDatasetPartitionFieldTransform {
   type: DataLakeDatasetPartitionTransformType;
 }
@@ -1618,7 +1617,7 @@ export type InstanceState =
   | "Deleting"
   | "Deleted"
   | (string & {});
-export const InstanceState = /*@__PURE__*/ S.String;
+export const InstanceState = S.String;
 export interface Instance {
   instanceId: string;
   awsAccountId: string;

@@ -187,7 +187,7 @@ export type EncryptionConfigurationType =
   | "AWS_OWNED_KEY"
   | "CUSTOMER_MANAGED_KMS_KEY"
   | (string & {});
-export const EncryptionConfigurationType = /*@__PURE__*/ S.String;
+export const EncryptionConfigurationType = S.String;
 export interface EncryptionConfiguration {
   type?: EncryptionConfigurationType;
   kmsKeyId?: string;

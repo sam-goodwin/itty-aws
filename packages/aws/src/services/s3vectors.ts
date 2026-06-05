@@ -165,7 +165,7 @@ export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceOutput",
 }) as any as S.Schema<UntagResourceOutput>;
 export type SseType = "AES256" | "aws:kms" | (string & {});
-export const SseType = /*@__PURE__*/ S.String;
+export const SseType = S.String;
 export interface EncryptionConfiguration {
   sseType?: SseType;
   kmsKeyArn?: string;
@@ -414,9 +414,9 @@ export const PutVectorBucketPolicyOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutVectorBucketPolicyOutput",
 }) as any as S.Schema<PutVectorBucketPolicyOutput>;
 export type DataType = "float32" | (string & {});
-export const DataType = /*@__PURE__*/ S.String;
+export const DataType = S.String;
 export type DistanceMetric = "euclidean" | "cosine" | (string & {});
-export const DistanceMetric = /*@__PURE__*/ S.String;
+export const DistanceMetric = S.String;
 export type NonFilterableMetadataKeys = string[];
 export const NonFilterableMetadataKeys = /*@__PURE__*/ S.Array(S.String);
 export interface MetadataConfiguration {

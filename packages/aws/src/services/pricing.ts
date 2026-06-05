@@ -214,7 +214,7 @@ export type FilterType =
   | "ANY_OF"
   | "NONE_OF"
   | (string & {});
-export const FilterType = /*@__PURE__*/ S.String;
+export const FilterType = S.String;
 export interface Filter {
   Type: FilterType;
   Field: string;

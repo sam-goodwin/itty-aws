@@ -164,7 +164,7 @@ export type FilterNameStringType =
   | "owning-service"
   | "all"
   | (string & {});
-export const FilterNameStringType = /*@__PURE__*/ S.String;
+export const FilterNameStringType = S.String;
 export type FilterValuesStringList = string[];
 export const FilterValuesStringList = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
@@ -327,7 +327,7 @@ export const CreateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSecretRequest",
 }) as any as S.Schema<CreateSecretRequest>;
 export type StatusType = "InSync" | "Failed" | "InProgress" | (string & {});
-export const StatusType = /*@__PURE__*/ S.String;
+export const StatusType = S.String;
 export interface ReplicationStatusType {
   Region?: string;
   KmsKeyId?: string;
@@ -619,14 +619,14 @@ export const GetSecretValueResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSecretValueResponse",
 }) as any as S.Schema<GetSecretValueResponse>;
 export type SortOrderType = "asc" | "desc" | (string & {});
-export const SortOrderType = /*@__PURE__*/ S.String;
+export const SortOrderType = S.String;
 export type SortByType =
   | "created-date"
   | "last-accessed-date"
   | "last-changed-date"
   | "name"
   | (string & {});
-export const SortByType = /*@__PURE__*/ S.String;
+export const SortByType = S.String;
 export interface ListSecretsRequest {
   IncludePlannedDeletion?: boolean;
   MaxResults?: number;

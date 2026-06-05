@@ -166,7 +166,7 @@ export type TagValue = string;
 
 //# Schemas
 export type Approval = "approve" | "decline" | (string & {});
-export const Approval = /*@__PURE__*/ S.String;
+export const Approval = S.String;
 export interface ApprovePlanExecutionStepRequest {
   planArn: string;
   executionId: string;
@@ -237,13 +237,13 @@ export type EvaluationStatus =
   | "pendingEvaluation"
   | "unknown"
   | (string & {});
-export const EvaluationStatus = /*@__PURE__*/ S.String;
+export const EvaluationStatus = S.String;
 export type ExecutionAction =
   | "activate"
   | "deactivate"
   | "postRecovery"
   | (string & {});
-export const ExecutionAction = /*@__PURE__*/ S.String;
+export const ExecutionAction = S.String;
 export interface MinimalWorkflow {
   action?: ExecutionAction;
   name?: string;
@@ -254,7 +254,7 @@ export const MinimalWorkflow = /*@__PURE__*/ S.suspend(() =>
   identifier: "MinimalWorkflow",
 }) as any as S.Schema<MinimalWorkflow>;
 export type ResourceWarningStatus = "active" | "resolved" | (string & {});
-export const ResourceWarningStatus = /*@__PURE__*/ S.String;
+export const ResourceWarningStatus = S.String;
 export interface ResourceWarning {
   workflow?: MinimalWorkflow;
   version: string;
@@ -322,7 +322,7 @@ export const GetPlanExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPlanExecutionRequest",
 }) as any as S.Schema<GetPlanExecutionRequest>;
 export type ExecutionMode = "graceful" | "ungraceful" | (string & {});
-export const ExecutionMode = /*@__PURE__*/ S.String;
+export const ExecutionMode = S.String;
 export type ExecutionState =
   | "inProgress"
   | "pausedByFailedStep"
@@ -336,7 +336,7 @@ export type ExecutionState =
   | "pending"
   | "completedMonitoringApplicationHealth"
   | (string & {});
-export const ExecutionState = /*@__PURE__*/ S.String;
+export const ExecutionState = S.String;
 export type StepStatus =
   | "notStarted"
   | "running"
@@ -346,7 +346,7 @@ export type StepStatus =
   | "skipped"
   | "pendingApproval"
   | (string & {});
-export const StepStatus = /*@__PURE__*/ S.String;
+export const StepStatus = S.String;
 export interface StepState {
   name?: string;
   status?: StepStatus;
@@ -385,9 +385,9 @@ export type RegionToRunIn =
   | "activeRegion"
   | "inactiveRegion"
   | (string & {});
-export const RegionToRunIn = /*@__PURE__*/ S.String;
+export const RegionToRunIn = S.String;
 export type LambdaUngracefulBehavior = "skip" | (string & {});
-export const LambdaUngracefulBehavior = /*@__PURE__*/ S.String;
+export const LambdaUngracefulBehavior = S.String;
 export interface LambdaUngraceful {
   behavior?: LambdaUngracefulBehavior;
 }
@@ -438,7 +438,7 @@ export type Ec2AsgCapacityMonitoringApproach =
   | "sampledMaxInLast24Hours"
   | "autoscalingMaxInLast24Hours"
   | (string & {});
-export const Ec2AsgCapacityMonitoringApproach = /*@__PURE__*/ S.String;
+export const Ec2AsgCapacityMonitoringApproach = S.String;
 export interface Ec2AsgCapacityIncreaseConfiguration {
   timeoutMinutes?: number;
   asgs: Asg[];
@@ -467,7 +467,7 @@ export const ExecutionApprovalConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutionApprovalConfiguration",
 }) as any as S.Schema<ExecutionApprovalConfiguration>;
 export type RoutingControlStateChange = "On" | "Off" | (string & {});
-export const RoutingControlStateChange = /*@__PURE__*/ S.String;
+export const RoutingControlStateChange = S.String;
 export interface ArcRoutingControlState {
   routingControlArn: string;
   state: RoutingControlStateChange;
@@ -510,9 +510,9 @@ export type GlobalAuroraDefaultBehavior =
   | "switchoverOnly"
   | "failover"
   | (string & {});
-export const GlobalAuroraDefaultBehavior = /*@__PURE__*/ S.String;
+export const GlobalAuroraDefaultBehavior = S.String;
 export type GlobalAuroraUngracefulBehavior = "failover" | (string & {});
-export const GlobalAuroraUngracefulBehavior = /*@__PURE__*/ S.String;
+export const GlobalAuroraUngracefulBehavior = S.String;
 export interface GlobalAuroraUngraceful {
   ungraceful?: GlobalAuroraUngracefulBehavior;
 }
@@ -593,7 +593,7 @@ export type EcsCapacityMonitoringApproach =
   | "sampledMaxInLast24Hours"
   | "containerInsightsMaxInLast24Hours"
   | (string & {});
-export const EcsCapacityMonitoringApproach = /*@__PURE__*/ S.String;
+export const EcsCapacityMonitoringApproach = S.String;
 export interface EcsCapacityIncreaseConfiguration {
   timeoutMinutes?: number;
   services: Service[];
@@ -684,7 +684,7 @@ export const EksResourceScalingUngraceful = /*@__PURE__*/ S.suspend(() =>
 export type EksCapacityMonitoringApproach =
   | "sampledMaxInLast24Hours"
   | (string & {});
-export const EksCapacityMonitoringApproach = /*@__PURE__*/ S.String;
+export const EksCapacityMonitoringApproach = S.String;
 export interface EksResourceScalingConfiguration {
   timeoutMinutes?: number;
   kubernetesResourceType: KubernetesResourceType;
@@ -751,9 +751,9 @@ export type DocumentDbDefaultBehavior =
   | "switchoverOnly"
   | "failover"
   | (string & {});
-export const DocumentDbDefaultBehavior = /*@__PURE__*/ S.String;
+export const DocumentDbDefaultBehavior = S.String;
 export type DocumentDbUngracefulBehavior = "failover" | (string & {});
-export const DocumentDbUngracefulBehavior = /*@__PURE__*/ S.String;
+export const DocumentDbUngracefulBehavior = S.String;
 export interface DocumentDbUngraceful {
   ungraceful?: DocumentDbUngracefulBehavior;
 }
@@ -1060,7 +1060,7 @@ export type ExecutionBlockType =
   | "RdsPromoteReadReplica"
   | "RdsCreateCrossRegionReplica"
   | (string & {});
-export const ExecutionBlockType = /*@__PURE__*/ S.String;
+export const ExecutionBlockType = S.String;
 export interface Step {
   name: string;
   description?: string;
@@ -1086,7 +1086,7 @@ export type WorkflowTargetAction =
   | "deactivate"
   | "postRecovery"
   | (string & {});
-export const WorkflowTargetAction = /*@__PURE__*/ S.String;
+export const WorkflowTargetAction = S.String;
 export interface Workflow {
   steps?: Step[];
   workflowTargetAction: WorkflowTargetAction;
@@ -1104,7 +1104,7 @@ export const Workflow = /*@__PURE__*/ S.suspend(() =>
 export type WorkflowList = Workflow[];
 export const WorkflowList = /*@__PURE__*/ S.Array(Workflow);
 export type AlarmType = "applicationHealth" | "trigger" | (string & {});
-export const AlarmType = /*@__PURE__*/ S.String;
+export const AlarmType = S.String;
 export interface AssociatedAlarm {
   crossAccountRole?: string;
   externalId?: string;
@@ -1127,7 +1127,7 @@ export const AssociatedAlarmMap = /*@__PURE__*/ S.Record(
   AssociatedAlarm.pipe(S.optional),
 );
 export type AlarmCondition = "red" | "green" | (string & {});
-export const AlarmCondition = /*@__PURE__*/ S.String;
+export const AlarmCondition = S.String;
 export interface TriggerCondition {
   associatedAlarmName: string;
   condition: AlarmCondition;
@@ -1190,7 +1190,7 @@ export const ReportConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type RegionList = string[];
 export const RegionList = /*@__PURE__*/ S.Array(S.String);
 export type RecoveryApproach = "activeActive" | "activePassive" | (string & {});
-export const RecoveryApproach = /*@__PURE__*/ S.String;
+export const RecoveryApproach = S.String;
 export interface Plan {
   arn: string;
   description?: string;
@@ -1238,7 +1238,7 @@ export type FailedReportErrorCode =
   | "invalidResource"
   | "configurationError"
   | (string & {});
-export const FailedReportErrorCode = /*@__PURE__*/ S.String;
+export const FailedReportErrorCode = S.String;
 export interface FailedReportOutput {
   errorCode?: FailedReportErrorCode;
   errorMessage?: string;
@@ -1382,7 +1382,7 @@ export type ExecutionEventType =
   | "stepPendingApplicationHealthMonitor"
   | "planEvaluationWarning"
   | (string & {});
-export const ExecutionEventType = /*@__PURE__*/ S.String;
+export const ExecutionEventType = S.String;
 export type Resources = string[];
 export const Resources = /*@__PURE__*/ S.Array(S.String);
 export interface ExecutionEvent {
@@ -1580,7 +1580,7 @@ export type Route53HealthCheckStatus =
   | "unhealthy"
   | "unknown"
   | (string & {});
-export const Route53HealthCheckStatus = /*@__PURE__*/ S.String;
+export const Route53HealthCheckStatus = S.String;
 export interface Route53HealthCheck {
   hostedZoneId: string;
   recordName: string;
@@ -1695,7 +1695,7 @@ export type UpdatePlanExecutionAction =
   | "pause"
   | "resume"
   | (string & {});
-export const UpdatePlanExecutionAction = /*@__PURE__*/ S.String;
+export const UpdatePlanExecutionAction = S.String;
 export interface UpdatePlanExecutionRequest {
   planArn: string;
   executionId: string;
@@ -1724,7 +1724,7 @@ export type UpdatePlanExecutionStepAction =
   | "switchToUngraceful"
   | "skip"
   | (string & {});
-export const UpdatePlanExecutionStepAction = /*@__PURE__*/ S.String;
+export const UpdatePlanExecutionStepAction = S.String;
 export interface UpdatePlanExecutionStepRequest {
   planArn: string;
   executionId: string;

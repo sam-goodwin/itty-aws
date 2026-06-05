@@ -360,11 +360,11 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export type JSModule = "es2020" | "esnext" | (string & {});
-export const JSModule = /*@__PURE__*/ S.String;
+export const JSModule = S.String;
 export type JSTarget = "es2015" | "es2020" | (string & {});
-export const JSTarget = /*@__PURE__*/ S.String;
+export const JSTarget = S.String;
 export type JSScript = "jsx" | "tsx" | "js" | (string & {});
-export const JSScript = /*@__PURE__*/ S.String;
+export const JSScript = S.String;
 export interface GraphQLRenderConfig {
   typesFilePath: string;
   queriesFilePath: string;
@@ -448,7 +448,7 @@ export const CodegenJobRenderConfig = /*@__PURE__*/ S.Union([
   S.Struct({ react: ReactStartCodegenJobData }),
 ]);
 export type CodegenJobGenericDataSourceType = "DataStore" | (string & {});
-export const CodegenJobGenericDataSourceType = /*@__PURE__*/ S.String;
+export const CodegenJobGenericDataSourceType = S.String;
 export type CodegenGenericDataFieldDataType =
   | "ID"
   | "String"
@@ -468,13 +468,13 @@ export type CodegenGenericDataFieldDataType =
   | "Model"
   | "NonModel"
   | (string & {});
-export const CodegenGenericDataFieldDataType = /*@__PURE__*/ S.String;
+export const CodegenGenericDataFieldDataType = S.String;
 export type GenericDataRelationshipType =
   | "HAS_MANY"
   | "HAS_ONE"
   | "BELONGS_TO"
   | (string & {});
-export const GenericDataRelationshipType = /*@__PURE__*/ S.String;
+export const GenericDataRelationshipType = S.String;
 export type RelatedModelFieldsList = string[];
 export const RelatedModelFieldsList = /*@__PURE__*/ S.Array(S.String);
 export type AssociatedFieldsList = string[];
@@ -678,7 +678,7 @@ export type CodegenJobStatus =
   | "failed"
   | "succeeded"
   | (string & {});
-export const CodegenJobStatus = /*@__PURE__*/ S.String;
+export const CodegenJobStatus = S.String;
 export interface CodegenJobAsset {
   downloadUrl?: string;
 }
@@ -1164,7 +1164,7 @@ export const ComponentBindingProperties = /*@__PURE__*/ S.Record(
   ComponentBindingPropertiesValue.pipe(S.optional),
 );
 export type SortDirection = "ASC" | "DESC" | (string & {});
-export const SortDirection = /*@__PURE__*/ S.String;
+export const SortDirection = S.String;
 export interface SortProperty {
   field: string;
   direction: SortDirection;
@@ -1589,9 +1589,9 @@ export const FormDataTypeConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "FormDataTypeConfig",
 }) as any as S.Schema<FormDataTypeConfig>;
 export type FormActionType = "create" | "update" | (string & {});
-export const FormActionType = /*@__PURE__*/ S.String;
+export const FormActionType = S.String;
 export type FixedPosition = "first" | (string & {});
-export const FixedPosition = /*@__PURE__*/ S.String;
+export const FixedPosition = S.String;
 export type FieldPosition =
   | { fixed: FixedPosition; rightOf?: never; below?: never }
   | { fixed?: never; rightOf: string; below?: never }
@@ -1691,7 +1691,7 @@ export type StorageAccessLevel =
   | "protected"
   | "private"
   | (string & {});
-export const StorageAccessLevel = /*@__PURE__*/ S.String;
+export const StorageAccessLevel = S.String;
 export type StrValues = string[];
 export const StrValues = /*@__PURE__*/ S.Array(S.String);
 export interface FileUploaderFieldConfig {
@@ -1848,7 +1848,7 @@ export type FormButtonsPosition =
   | "bottom"
   | "top_and_bottom"
   | (string & {});
-export const FormButtonsPosition = /*@__PURE__*/ S.String;
+export const FormButtonsPosition = S.String;
 export interface FormButton {
   excluded?: boolean;
   children?: string;

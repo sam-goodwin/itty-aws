@@ -337,7 +337,7 @@ export const GetS3AccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetS3AccessPolicyRequest",
 }) as any as S.Schema<GetS3AccessPolicyRequest>;
 export type StoreType = "SEQUENCE_STORE" | "REFERENCE_STORE" | (string & {});
-export const StoreType = /*@__PURE__*/ S.String;
+export const StoreType = S.String;
 export interface GetS3AccessPolicyResponse {
   s3AccessPointArn?: string;
   storeId?: string;

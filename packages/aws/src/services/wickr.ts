@@ -637,7 +637,7 @@ export const CreateDataRetentionBotChallengeResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateDataRetentionBotChallengeResponse",
 }) as any as S.Schema<CreateDataRetentionBotChallengeResponse>;
 export type AccessLevel = "STANDARD" | "PREMIUM" | (string & {});
-export const AccessLevel = /*@__PURE__*/ S.String;
+export const AccessLevel = S.String;
 export interface CreateNetworkRequest {
   networkName: string;
   accessLevel: AccessLevel;
@@ -1528,7 +1528,7 @@ export const GetUsersCountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUsersCountResponse",
 }) as any as S.Schema<GetUsersCountResponse>;
 export type SortDirection = "ASC" | "DESC" | (string & {});
-export const SortDirection = /*@__PURE__*/ S.String;
+export const SortDirection = S.String;
 export interface ListBlockedGuestUsersRequest {
   networkId: string;
   maxResults?: number;
@@ -2191,7 +2191,7 @@ export type DataRetentionActionType =
   | "DISABLE"
   | "PUBKEY_MSG_ACK"
   | (string & {});
-export const DataRetentionActionType = /*@__PURE__*/ S.String;
+export const DataRetentionActionType = S.String;
 export interface UpdateDataRetentionRequest {
   networkId: string;
   actionType: DataRetentionActionType;
@@ -2295,7 +2295,7 @@ export const UpdateNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateNetworkResponse",
 }) as any as S.Schema<UpdateNetworkResponse>;
 export type Status = "DISABLED" | "ENABLED" | "FORCE_ENABLED" | (string & {});
-export const Status = /*@__PURE__*/ S.String;
+export const Status = S.String;
 export interface ReadReceiptConfig {
   status?: Status;
 }

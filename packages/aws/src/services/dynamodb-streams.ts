@@ -164,7 +164,7 @@ export type PositiveLongObject = number;
 
 //# Schemas
 export type ShardFilterType = "CHILD_SHARDS" | (string & {});
-export const ShardFilterType = /*@__PURE__*/ S.String;
+export const ShardFilterType = S.String;
 export interface ShardFilter {
   Type?: ShardFilterType;
   ShardId?: string;
@@ -207,16 +207,16 @@ export type StreamStatus =
   | "DISABLING"
   | "DISABLED"
   | (string & {});
-export const StreamStatus = /*@__PURE__*/ S.String;
+export const StreamStatus = S.String;
 export type StreamViewType =
   | "NEW_IMAGE"
   | "OLD_IMAGE"
   | "NEW_AND_OLD_IMAGES"
   | "KEYS_ONLY"
   | (string & {});
-export const StreamViewType = /*@__PURE__*/ S.String;
+export const StreamViewType = S.String;
 export type KeyType = "HASH" | "RANGE" | (string & {});
-export const KeyType = /*@__PURE__*/ S.String;
+export const KeyType = S.String;
 export interface KeySchemaElement {
   AttributeName: string;
   KeyType: KeyType;
@@ -310,7 +310,7 @@ export const GetRecordsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRecordsInput",
 }) as any as S.Schema<GetRecordsInput>;
 export type OperationType = "INSERT" | "MODIFY" | "REMOVE" | (string & {});
-export const OperationType = /*@__PURE__*/ S.String;
+export const OperationType = S.String;
 export type StringSetAttributeValue = string[];
 export const StringSetAttributeValue = /*@__PURE__*/ S.Array(S.String);
 export type NumberSetAttributeValue = string[];
@@ -545,7 +545,7 @@ export type ShardIteratorType =
   | "AT_SEQUENCE_NUMBER"
   | "AFTER_SEQUENCE_NUMBER"
   | (string & {});
-export const ShardIteratorType = /*@__PURE__*/ S.String;
+export const ShardIteratorType = S.String;
 export interface GetShardIteratorInput {
   StreamArn: string;
   ShardId: string;

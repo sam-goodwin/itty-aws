@@ -149,7 +149,7 @@ export type AssociationStatus =
   | "FAILED"
   | "SUCCESS"
   | (string & {});
-export const AssociationStatus = /*@__PURE__*/ S.String;
+export const AssociationStatus = S.String;
 export interface ApiAssociation {
   domainName?: string;
   apiId?: string;
@@ -173,7 +173,7 @@ export const AssociateApiResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateApiResponse",
 }) as any as S.Schema<AssociateApiResponse>;
 export type BadRequestReason = "CODE_ERROR" | (string & {});
-export const BadRequestReason = /*@__PURE__*/ S.String;
+export const BadRequestReason = S.String;
 export interface CodeErrorLocation {
   line?: number;
   column?: number;
@@ -211,7 +211,7 @@ export const BadRequestDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "BadRequestDetail",
 }) as any as S.Schema<BadRequestDetail>;
 export type MergeType = "MANUAL_MERGE" | "AUTO_MERGE" | (string & {});
-export const MergeType = /*@__PURE__*/ S.String;
+export const MergeType = S.String;
 export interface SourceApiAssociationConfig {
   mergeType?: MergeType;
 }
@@ -259,7 +259,7 @@ export type SourceApiAssociationStatus =
   | "DELETION_IN_PROGRESS"
   | "DELETION_FAILED"
   | (string & {});
-export const SourceApiAssociationStatus = /*@__PURE__*/ S.String;
+export const SourceApiAssociationStatus = S.String;
 export interface SourceApiAssociation {
   associationId?: string;
   associationArn?: string;
@@ -349,7 +349,7 @@ export type AuthenticationType =
   | "OPENID_CONNECT"
   | "AWS_LAMBDA"
   | (string & {});
-export const AuthenticationType = /*@__PURE__*/ S.String;
+export const AuthenticationType = S.String;
 export interface CognitoConfig {
   userPoolId: string;
   awsRegion: string;
@@ -423,7 +423,7 @@ export type EventLogLevel =
   | "INFO"
   | "DEBUG"
   | (string & {});
-export const EventLogLevel = /*@__PURE__*/ S.String;
+export const EventLogLevel = S.String;
 export interface EventLogConfig {
   logLevel: EventLogLevel;
   cloudWatchLogsRoleArn: string;
@@ -517,7 +517,7 @@ export type ApiCachingBehavior =
   | "PER_RESOLVER_CACHING"
   | "OPERATION_LEVEL_CACHING"
   | (string & {});
-export const ApiCachingBehavior = /*@__PURE__*/ S.String;
+export const ApiCachingBehavior = S.String;
 export type ApiCacheType =
   | "T2_SMALL"
   | "T2_MEDIUM"
@@ -535,9 +535,9 @@ export type ApiCacheType =
   | "LARGE_8X"
   | "LARGE_12X"
   | (string & {});
-export const ApiCacheType = /*@__PURE__*/ S.String;
+export const ApiCacheType = S.String;
 export type CacheHealthMetricsConfig = "ENABLED" | "DISABLED" | (string & {});
-export const CacheHealthMetricsConfig = /*@__PURE__*/ S.String;
+export const CacheHealthMetricsConfig = S.String;
 export interface CreateApiCacheRequest {
   apiId: string;
   ttl: number;
@@ -577,7 +577,7 @@ export type ApiCacheStatus =
   | "MODIFYING"
   | "FAILED"
   | (string & {});
-export const ApiCacheStatus = /*@__PURE__*/ S.String;
+export const ApiCacheStatus = S.String;
 export interface ApiCache {
   ttl?: number;
   apiCachingBehavior?: ApiCachingBehavior;
@@ -653,9 +653,9 @@ export const CreateApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateApiKeyResponse",
 }) as any as S.Schema<CreateApiKeyResponse>;
 export type HandlerBehavior = "CODE" | "DIRECT" | (string & {});
-export const HandlerBehavior = /*@__PURE__*/ S.String;
+export const HandlerBehavior = S.String;
 export type InvokeType = "REQUEST_RESPONSE" | "EVENT" | (string & {});
-export const InvokeType = /*@__PURE__*/ S.String;
+export const InvokeType = S.String;
 export interface LambdaConfig {
   invokeType?: InvokeType;
 }
@@ -768,7 +768,7 @@ export type DataSourceType =
   | "AMAZON_EVENTBRIDGE"
   | "AMAZON_BEDROCK_RUNTIME"
   | (string & {});
-export const DataSourceType = /*@__PURE__*/ S.String;
+export const DataSourceType = S.String;
 export interface DeltaSyncConfig {
   baseTableTTL?: number;
   deltaSyncTableName?: string;
@@ -828,7 +828,7 @@ export const OpenSearchServiceDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "OpenSearchServiceDataSourceConfig",
 }) as any as S.Schema<OpenSearchServiceDataSourceConfig>;
 export type AuthorizationType = "AWS_IAM" | (string & {});
-export const AuthorizationType = /*@__PURE__*/ S.String;
+export const AuthorizationType = S.String;
 export interface AwsIamConfig {
   signingRegion?: string;
   signingServiceName?: string;
@@ -864,7 +864,7 @@ export const HttpDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpDataSourceConfig",
 }) as any as S.Schema<HttpDataSourceConfig>;
 export type RelationalDatabaseSourceType = "RDS_HTTP_ENDPOINT" | (string & {});
-export const RelationalDatabaseSourceType = /*@__PURE__*/ S.String;
+export const RelationalDatabaseSourceType = S.String;
 export interface RdsHttpEndpointConfig {
   awsRegion?: string;
   dbClusterIdentifier?: string;
@@ -907,7 +907,7 @@ export type DataSourceLevelMetricsConfig =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
-export const DataSourceLevelMetricsConfig = /*@__PURE__*/ S.String;
+export const DataSourceLevelMetricsConfig = S.String;
 export interface CreateDataSourceRequest {
   apiId: string;
   name: string;
@@ -1054,9 +1054,9 @@ export type ConflictHandlerType =
   | "AUTOMERGE"
   | "NONE"
   | (string & {});
-export const ConflictHandlerType = /*@__PURE__*/ S.String;
+export const ConflictHandlerType = S.String;
 export type ConflictDetectionType = "VERSION" | "NONE" | (string & {});
-export const ConflictDetectionType = /*@__PURE__*/ S.String;
+export const ConflictDetectionType = S.String;
 export interface LambdaConflictHandlerConfig {
   lambdaConflictHandlerArn?: string;
 }
@@ -1078,7 +1078,7 @@ export const SyncConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SyncConfig" }) as any as S.Schema<SyncConfig>;
 export type RuntimeName = "APPSYNC_JS" | (string & {});
-export const RuntimeName = /*@__PURE__*/ S.String;
+export const RuntimeName = S.String;
 export interface AppSyncRuntime {
   name: RuntimeName;
   runtimeVersion: string;
@@ -1175,7 +1175,7 @@ export type FieldLogLevel =
   | "INFO"
   | "DEBUG"
   | (string & {});
-export const FieldLogLevel = /*@__PURE__*/ S.String;
+export const FieldLogLevel = S.String;
 export interface LogConfig {
   fieldLogLevel: FieldLogLevel;
   cloudWatchLogsRoleArn: string;
@@ -1189,7 +1189,7 @@ export const LogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogConfig" }) as any as S.Schema<LogConfig>;
 export type DefaultAction = "ALLOW" | "DENY" | (string & {});
-export const DefaultAction = /*@__PURE__*/ S.String;
+export const DefaultAction = S.String;
 export interface UserPoolConfig {
   userPoolId: string;
   awsRegion: string;
@@ -1240,29 +1240,29 @@ export const AdditionalAuthenticationProviders = /*@__PURE__*/ S.Array(
   AdditionalAuthenticationProvider,
 );
 export type GraphQLApiType = "GRAPHQL" | "MERGED" | (string & {});
-export const GraphQLApiType = /*@__PURE__*/ S.String;
+export const GraphQLApiType = S.String;
 export type GraphQLApiVisibility = "GLOBAL" | "PRIVATE" | (string & {});
-export const GraphQLApiVisibility = /*@__PURE__*/ S.String;
+export const GraphQLApiVisibility = S.String;
 export type GraphQLApiIntrospectionConfig =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
-export const GraphQLApiIntrospectionConfig = /*@__PURE__*/ S.String;
+export const GraphQLApiIntrospectionConfig = S.String;
 export type ResolverLevelMetricsBehavior =
   | "FULL_REQUEST_RESOLVER_METRICS"
   | "PER_RESOLVER_METRICS"
   | (string & {});
-export const ResolverLevelMetricsBehavior = /*@__PURE__*/ S.String;
+export const ResolverLevelMetricsBehavior = S.String;
 export type DataSourceLevelMetricsBehavior =
   | "FULL_REQUEST_DATA_SOURCE_METRICS"
   | "PER_DATA_SOURCE_METRICS"
   | (string & {});
-export const DataSourceLevelMetricsBehavior = /*@__PURE__*/ S.String;
+export const DataSourceLevelMetricsBehavior = S.String;
 export type OperationLevelMetricsConfig =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
-export const OperationLevelMetricsConfig = /*@__PURE__*/ S.String;
+export const OperationLevelMetricsConfig = S.String;
 export interface EnhancedMetricsConfig {
   resolverLevelMetricsBehavior: ResolverLevelMetricsBehavior;
   dataSourceLevelMetricsBehavior: DataSourceLevelMetricsBehavior;
@@ -1394,7 +1394,7 @@ export const CreateGraphqlApiResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGraphqlApiResponse",
 }) as any as S.Schema<CreateGraphqlApiResponse>;
 export type ResolverKind = "UNIT" | "PIPELINE" | (string & {});
-export const ResolverKind = /*@__PURE__*/ S.String;
+export const ResolverKind = S.String;
 export type FunctionsIds = string[];
 export const FunctionsIds = /*@__PURE__*/ S.Array(S.String);
 export interface PipelineConfig {
@@ -1413,7 +1413,7 @@ export const CachingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ttl: S.Number, cachingKeys: S.optional(CachingKeys) }),
 ).annotate({ identifier: "CachingConfig" }) as any as S.Schema<CachingConfig>;
 export type ResolverLevelMetricsConfig = "ENABLED" | "DISABLED" | (string & {});
-export const ResolverLevelMetricsConfig = /*@__PURE__*/ S.String;
+export const ResolverLevelMetricsConfig = S.String;
 export interface CreateResolverRequest {
   apiId: string;
   typeName: string;
@@ -1506,7 +1506,7 @@ export const CreateResolverResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResolverResponse",
 }) as any as S.Schema<CreateResolverResponse>;
 export type TypeDefinitionFormat = "SDL" | "JSON" | (string & {});
-export const TypeDefinitionFormat = /*@__PURE__*/ S.String;
+export const TypeDefinitionFormat = S.String;
 export interface CreateTypeRequest {
   apiId: string;
   definition: string;
@@ -2230,7 +2230,7 @@ export type DataSourceIntrospectionStatus =
   | "FAILED"
   | "SUCCESS"
   | (string & {});
-export const DataSourceIntrospectionStatus = /*@__PURE__*/ S.String;
+export const DataSourceIntrospectionStatus = S.String;
 export type DataSourceIntrospectionModelFieldTypeValues = string[];
 export const DataSourceIntrospectionModelFieldTypeValues =
   /*@__PURE__*/ S.Array(S.String);
@@ -2466,7 +2466,7 @@ export const GetGraphqlApiEnvironmentVariablesResponse =
     identifier: "GetGraphqlApiEnvironmentVariablesResponse",
   }) as any as S.Schema<GetGraphqlApiEnvironmentVariablesResponse>;
 export type OutputType = "SDL" | "JSON" | (string & {});
-export const OutputType = /*@__PURE__*/ S.String;
+export const OutputType = S.String;
 export interface GetIntrospectionSchemaRequest {
   apiId: string;
   format: OutputType;
@@ -2564,7 +2564,7 @@ export type SchemaStatus =
   | "SUCCESS"
   | "NOT_APPLICABLE"
   | (string & {});
-export const SchemaStatus = /*@__PURE__*/ S.String;
+export const SchemaStatus = S.String;
 export interface GetSchemaCreationStatusResponse {
   status?: SchemaStatus;
   details?: string;
@@ -2864,7 +2864,7 @@ export const ListFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFunctionsResponse",
 }) as any as S.Schema<ListFunctionsResponse>;
 export type Ownership = "CURRENT_ACCOUNT" | "OTHER_ACCOUNTS" | (string & {});
-export const Ownership = /*@__PURE__*/ S.String;
+export const Ownership = S.String;
 export interface ListGraphqlApisRequest {
   nextToken?: string;
   maxResults?: number;

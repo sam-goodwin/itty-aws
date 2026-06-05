@@ -121,7 +121,7 @@ export type DataSetType =
   | "sales_compensation_billed_revenue"
   | "us_sales_and_use_tax_records"
   | (string & {});
-export const DataSetType = /*@__PURE__*/ S.String;
+export const DataSetType = S.String;
 export type CustomerDefinedValues = { [key: string]: string | undefined };
 export const CustomerDefinedValues = /*@__PURE__*/ S.Record(
   S.String,
@@ -163,7 +163,7 @@ export type SupportDataSetType =
   | "customer_support_contacts_data"
   | "test_customer_support_contacts_data"
   | (string & {});
-export const SupportDataSetType = /*@__PURE__*/ S.String;
+export const SupportDataSetType = S.String;
 export interface StartSupportDataExportRequest {
   dataSetType: SupportDataSetType;
   fromDate: Date;

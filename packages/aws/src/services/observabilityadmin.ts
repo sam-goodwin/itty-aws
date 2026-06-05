@@ -119,7 +119,7 @@ export type ListTelemetryPipelinesMaxResults = number;
 export type Regions = string[];
 export const Regions = /*@__PURE__*/ S.Array(S.String);
 export type EncryptedLogGroupStrategy = "ALLOW" | "SKIP" | (string & {});
-export const EncryptedLogGroupStrategy = /*@__PURE__*/ S.String;
+export const EncryptedLogGroupStrategy = S.String;
 export interface SourceLogsConfiguration {
   LogGroupSelectionCriteria?: string;
   DataSourceSelectionCriteria?: string;
@@ -152,12 +152,12 @@ export type EncryptionStrategy =
   | "CUSTOMER_MANAGED"
   | "AWS_OWNED"
   | (string & {});
-export const EncryptionStrategy = /*@__PURE__*/ S.String;
+export const EncryptionStrategy = S.String;
 export type EncryptionConflictResolutionStrategy =
   | "ALLOW"
   | "SKIP"
   | (string & {});
-export const EncryptionConflictResolutionStrategy = /*@__PURE__*/ S.String;
+export const EncryptionConflictResolutionStrategy = S.String;
 export interface LogsEncryptionConfiguration {
   EncryptionStrategy: EncryptionStrategy;
   KmsKeyArn?: string;
@@ -294,7 +294,7 @@ export const ValidationError = /*@__PURE__*/ S.suspend(() =>
 export type ValidationErrors = ValidationError[];
 export const ValidationErrors = /*@__PURE__*/ S.Array(ValidationError);
 export type SSEAlgorithm = "aws:kms" | "AES256" | (string & {});
-export const SSEAlgorithm = /*@__PURE__*/ S.String;
+export const SSEAlgorithm = S.String;
 export interface Encryption {
   SseAlgorithm: SSEAlgorithm;
   KmsKeyArn?: string;
@@ -350,9 +350,9 @@ export type ResourceType =
   | "AWS::SecurityHub::Hub"
   | "AWS::CloudFront::Distribution"
   | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
+export const ResourceType = S.String;
 export type TelemetryType = "Logs" | "Metrics" | "Traces" | (string & {});
-export const TelemetryType = /*@__PURE__*/ S.String;
+export const TelemetryType = S.String;
 export type TelemetrySourceType =
   | "VPC_FLOW_LOGS"
   | "ROUTE53_RESOLVER_QUERY_LOGS"
@@ -362,11 +362,11 @@ export type TelemetrySourceType =
   | "EKS_SCHEDULER_LOGS"
   | "EKS_API_LOGS"
   | (string & {});
-export const TelemetrySourceType = /*@__PURE__*/ S.String;
+export const TelemetrySourceType = S.String;
 export type TelemetrySourceTypes = TelemetrySourceType[];
 export const TelemetrySourceTypes = /*@__PURE__*/ S.Array(TelemetrySourceType);
 export type DestinationType = "cloud-watch-logs" | (string & {});
-export const DestinationType = /*@__PURE__*/ S.String;
+export const DestinationType = S.String;
 export interface VPCFlowLogParameters {
   LogFormat?: string;
   TrafficType?: string;
@@ -429,7 +429,7 @@ export const CloudtrailParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "CloudtrailParameters",
 }) as any as S.Schema<CloudtrailParameters>;
 export type OutputFormat = "plain" | "json" | (string & {});
-export const OutputFormat = /*@__PURE__*/ S.String;
+export const OutputFormat = S.String;
 export interface ELBLoadBalancerLoggingParameters {
   OutputFormat?: OutputFormat;
   FieldDelimiter?: string;
@@ -465,9 +465,9 @@ export const FieldToMatch = /*@__PURE__*/ S.suspend(() =>
 export type RedactedFields = FieldToMatch[];
 export const RedactedFields = /*@__PURE__*/ S.Array(FieldToMatch);
 export type FilterBehavior = "KEEP" | "DROP" | (string & {});
-export const FilterBehavior = /*@__PURE__*/ S.String;
+export const FilterBehavior = S.String;
 export type FilterRequirement = "MEETS_ALL" | "MEETS_ANY" | (string & {});
-export const FilterRequirement = /*@__PURE__*/ S.String;
+export const FilterRequirement = S.String;
 export type Action =
   | "ALLOW"
   | "BLOCK"
@@ -476,7 +476,7 @@ export type Action =
   | "CHALLENGE"
   | "EXCLUDED_AS_COUNT"
   | (string & {});
-export const Action = /*@__PURE__*/ S.String;
+export const Action = S.String;
 export interface ActionCondition {
   Action?: Action;
 }
@@ -530,7 +530,7 @@ export const LoggingFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LoggingFilter" }) as any as S.Schema<LoggingFilter>;
 export type WAFLogType = "WAF_LOGS" | (string & {});
-export const WAFLogType = /*@__PURE__*/ S.String;
+export const WAFLogType = S.String;
 export interface WAFLoggingParameters {
   RedactedFields?: FieldToMatch[];
   LoggingFilter?: LoggingFilter;
@@ -552,7 +552,7 @@ export type LogType =
   | "ACCESS_LOGS"
   | "CONNECTION_LOGS"
   | (string & {});
-export const LogType = /*@__PURE__*/ S.String;
+export const LogType = S.String;
 export type LogTypes = LogType[];
 export const LogTypes = /*@__PURE__*/ S.Array(LogType);
 export interface LogDeliveryParameters {
@@ -795,13 +795,13 @@ export type RuleHealth =
   | "Unhealthy"
   | "Provisioning"
   | (string & {});
-export const RuleHealth = /*@__PURE__*/ S.String;
+export const RuleHealth = S.String;
 export type CentralizationFailureReason =
   | "TRUSTED_ACCESS_NOT_ENABLED"
   | "DESTINATION_ACCOUNT_NOT_IN_ORGANIZATION"
   | "INTERNAL_SERVER_ERROR"
   | (string & {});
-export const CentralizationFailureReason = /*@__PURE__*/ S.String;
+export const CentralizationFailureReason = S.String;
 export interface GetCentralizationRuleForOrganizationOutput {
   RuleName?: string;
   RuleArn?: string;
@@ -847,7 +847,7 @@ export const GetS3TableIntegrationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetS3TableIntegrationInput",
 }) as any as S.Schema<GetS3TableIntegrationInput>;
 export type IntegrationStatus = "ACTIVE" | "DELETING" | (string & {});
-export const IntegrationStatus = /*@__PURE__*/ S.String;
+export const IntegrationStatus = S.String;
 export interface GetS3TableIntegrationOutput {
   Arn?: string;
   RoleArn?: string;
@@ -881,7 +881,7 @@ export type TelemetryEnrichmentStatus =
   | "Stopped"
   | "Impaired"
   | (string & {});
-export const TelemetryEnrichmentStatus = /*@__PURE__*/ S.String;
+export const TelemetryEnrichmentStatus = S.String;
 export interface GetTelemetryEnrichmentStatusOutput {
   Status?: TelemetryEnrichmentStatus;
   AwsResourceExplorerManagedViewArn?: string;
@@ -911,7 +911,7 @@ export type Status =
   | "FAILED_STOP"
   | "STOPPED"
   | (string & {});
-export const Status = /*@__PURE__*/ S.String;
+export const Status = S.String;
 export interface RegionStatus {
   Region?: string;
   Status?: string;
@@ -1135,7 +1135,7 @@ export type TelemetryState =
   | "Disabled"
   | "NotApplicable"
   | (string & {});
-export const TelemetryState = /*@__PURE__*/ S.String;
+export const TelemetryState = S.String;
 export type TelemetryConfigurationState = {
   [key in TelemetryType]?: TelemetryState;
 };
@@ -1586,7 +1586,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type RecordFormat = "STRING" | "JSON" | (string & {});
-export const RecordFormat = /*@__PURE__*/ S.String;
+export const RecordFormat = S.String;
 export interface Record {
   Data?: string;
   Type?: RecordFormat;
@@ -1849,7 +1849,7 @@ export type TelemetryPipelineStatus =
   | "CREATE_FAILED"
   | "UPDATE_FAILED"
   | (string & {});
-export const TelemetryPipelineStatus = /*@__PURE__*/ S.String;
+export const TelemetryPipelineStatus = S.String;
 export interface TelemetryPipelineStatusReason {
   Description?: string;
 }

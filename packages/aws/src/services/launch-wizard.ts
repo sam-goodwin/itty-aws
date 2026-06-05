@@ -261,7 +261,7 @@ export type DeploymentStatus =
   | "UPDATE_ROLLBACK_COMPLETED"
   | "UPDATE_ROLLBACK_FAILED"
   | (string & {});
-export const DeploymentStatus = /*@__PURE__*/ S.String;
+export const DeploymentStatus = S.String;
 export interface DeploymentData {
   name?: string;
   id?: string;
@@ -392,7 +392,7 @@ export type DeploymentFilterKey =
   | "WORKLOAD_NAME"
   | "DEPLOYMENT_STATUS"
   | (string & {});
-export const DeploymentFilterKey = /*@__PURE__*/ S.String;
+export const DeploymentFilterKey = S.String;
 export type DeploymentFilterValues = string[];
 export const DeploymentFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface DeploymentFilter {
@@ -481,7 +481,7 @@ export type EventStatus =
   | "PENDING"
   | "TIMED_OUT"
   | (string & {});
-export const EventStatus = /*@__PURE__*/ S.String;
+export const EventStatus = S.String;
 export interface DeploymentEventDataSummary {
   name?: string;
   description?: string;
@@ -539,7 +539,7 @@ export type WorkloadStatus =
   | "DISABLED"
   | "DELETED"
   | (string & {});
-export const WorkloadStatus = /*@__PURE__*/ S.String;
+export const WorkloadStatus = S.String;
 export interface WorkloadData {
   workloadName?: string;
   displayName?: string;
@@ -642,7 +642,7 @@ export type WorkloadDeploymentPatternStatus =
   | "DISABLED"
   | "DELETED"
   | (string & {});
-export const WorkloadDeploymentPatternStatus = /*@__PURE__*/ S.String;
+export const WorkloadDeploymentPatternStatus = S.String;
 export type AllowedValues = string[];
 export const AllowedValues = /*@__PURE__*/ S.Array(S.String);
 export interface DeploymentConditionalField {
@@ -843,7 +843,7 @@ export const GetDeploymentPatternVersionOutput = /*@__PURE__*/ S.suspend(() =>
 export type DeploymentPatternVersionFilterKey =
   | "updateFromVersion"
   | (string & {});
-export const DeploymentPatternVersionFilterKey = /*@__PURE__*/ S.String;
+export const DeploymentPatternVersionFilterKey = S.String;
 export type DeploymentPatternVersionFilterValues = string[];
 export const DeploymentPatternVersionFilterValues = /*@__PURE__*/ S.Array(
   S.String,

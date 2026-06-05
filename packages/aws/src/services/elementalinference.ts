@@ -198,7 +198,7 @@ export const OutputConfig = /*@__PURE__*/ S.Union([
   S.Struct({ clipping: ClippingConfig }),
 ]);
 export type OutputStatus = "ENABLED" | "DISABLED" | (string & {});
-export const OutputStatus = /*@__PURE__*/ S.String;
+export const OutputStatus = S.String;
 export interface CreateOutput {
   name: string;
   outputConfig: OutputConfig;
@@ -267,7 +267,7 @@ export type FeedStatus =
   | "DELETED"
   | "ARCHIVED"
   | (string & {});
-export const FeedStatus = /*@__PURE__*/ S.String;
+export const FeedStatus = S.String;
 export interface FeedAssociation {
   associatedResourceName: string;
 }

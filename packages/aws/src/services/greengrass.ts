@@ -438,7 +438,7 @@ export type DeploymentType =
   | "ResetDeployment"
   | "ForceResetDeployment"
   | (string & {});
-export const DeploymentType = /*@__PURE__*/ S.String;
+export const DeploymentType = S.String;
 export interface CreateDeploymentRequest {
   AmznClientToken?: string;
   DeploymentId?: string;
@@ -606,7 +606,7 @@ export type FunctionIsolationMode =
   | "GreengrassContainer"
   | "NoContainer"
   | (string & {});
-export const FunctionIsolationMode = /*@__PURE__*/ S.String;
+export const FunctionIsolationMode = S.String;
 export interface FunctionRunAsConfig {
   Gid?: number;
   Uid?: number;
@@ -637,7 +637,7 @@ export const FunctionDefaultConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunctionDefaultConfig",
 }) as any as S.Schema<FunctionDefaultConfig>;
 export type EncodingType = "binary" | "json" | (string & {});
-export const EncodingType = /*@__PURE__*/ S.String;
+export const EncodingType = S.String;
 export interface FunctionExecutionConfig {
   IsolationMode?: FunctionIsolationMode;
   RunAs?: FunctionRunAsConfig;
@@ -651,7 +651,7 @@ export const FunctionExecutionConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunctionExecutionConfig",
 }) as any as S.Schema<FunctionExecutionConfig>;
 export type Permission = "ro" | "rw" | (string & {});
-export const Permission = /*@__PURE__*/ S.String;
+export const Permission = S.String;
 export interface ResourceAccessPolicy {
   Permission?: Permission;
   ResourceId?: string;
@@ -988,7 +988,7 @@ export const CreateGroupVersionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGroupVersionResponse",
 }) as any as S.Schema<CreateGroupVersionResponse>;
 export type LoggerComponent = "GreengrassSystem" | "Lambda" | (string & {});
-export const LoggerComponent = /*@__PURE__*/ S.String;
+export const LoggerComponent = S.String;
 export type LoggerLevel =
   | "DEBUG"
   | "INFO"
@@ -996,9 +996,9 @@ export type LoggerLevel =
   | "ERROR"
   | "FATAL"
   | (string & {});
-export const LoggerLevel = /*@__PURE__*/ S.String;
+export const LoggerLevel = S.String;
 export type LoggerType = "FileSystem" | "AWSCloudWatch" | (string & {});
-export const LoggerType = /*@__PURE__*/ S.String;
+export const LoggerType = S.String;
 export interface Logger {
   Component?: LoggerComponent;
   Id?: string;
@@ -1355,7 +1355,7 @@ export const CreateResourceDefinitionVersionResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateResourceDefinitionVersionResponse",
 }) as any as S.Schema<CreateResourceDefinitionVersionResponse>;
 export type SoftwareToUpdate = "core" | "ota_agent" | (string & {});
-export const SoftwareToUpdate = /*@__PURE__*/ S.String;
+export const SoftwareToUpdate = S.String;
 export type UpdateAgentLogLevel =
   | "NONE"
   | "TRACE"
@@ -1366,7 +1366,7 @@ export type UpdateAgentLogLevel =
   | "ERROR"
   | "FATAL"
   | (string & {});
-export const UpdateAgentLogLevel = /*@__PURE__*/ S.String;
+export const UpdateAgentLogLevel = S.String;
 export type UpdateTargets = string[];
 export const UpdateTargets = /*@__PURE__*/ S.Array(S.String);
 export type UpdateTargetsArchitecture =
@@ -1375,14 +1375,14 @@ export type UpdateTargetsArchitecture =
   | "x86_64"
   | "aarch64"
   | (string & {});
-export const UpdateTargetsArchitecture = /*@__PURE__*/ S.String;
+export const UpdateTargetsArchitecture = S.String;
 export type UpdateTargetsOperatingSystem =
   | "ubuntu"
   | "raspbian"
   | "amazon_linux"
   | "openwrt"
   | (string & {});
-export const UpdateTargetsOperatingSystem = /*@__PURE__*/ S.String;
+export const UpdateTargetsOperatingSystem = S.String;
 export interface CreateSoftwareUpdateJobRequest {
   AmznClientToken?: string;
   S3UrlSignerRole?: string;
@@ -1896,7 +1896,7 @@ export type BulkDeploymentStatus =
   | "Stopped"
   | "Failed"
   | (string & {});
-export const BulkDeploymentStatus = /*@__PURE__*/ S.String;
+export const BulkDeploymentStatus = S.String;
 export interface GetBulkDeploymentStatusResponse {
   BulkDeploymentMetrics?: BulkDeploymentMetrics;
   BulkDeploymentStatus?: BulkDeploymentStatus;
@@ -2933,9 +2933,9 @@ export const GetThingRuntimeConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetThingRuntimeConfigurationRequest",
 }) as any as S.Schema<GetThingRuntimeConfigurationRequest>;
 export type ConfigurationSyncStatus = "InSync" | "OutOfSync" | (string & {});
-export const ConfigurationSyncStatus = /*@__PURE__*/ S.String;
+export const ConfigurationSyncStatus = S.String;
 export type Telemetry = "On" | "Off" | (string & {});
-export const Telemetry = /*@__PURE__*/ S.String;
+export const Telemetry = S.String;
 export interface TelemetryConfiguration {
   ConfigurationSyncStatus?: ConfigurationSyncStatus;
   Telemetry?: Telemetry;

@@ -129,7 +129,7 @@ export type ResultStatus =
   | "FAILED"
   | "EXPIRED"
   | (string & {});
-export const ResultStatus = /*@__PURE__*/ S.String;
+export const ResultStatus = S.String;
 export interface TaskError {
   errorCode?: string;
   errorMessage?: string;
@@ -189,7 +189,7 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -251,7 +251,7 @@ export type AppAuthorizationStatus =
   | "ConnectionValidationFailed"
   | "TokenAutoRotationFailed"
   | (string & {});
-export const AppAuthorizationStatus = /*@__PURE__*/ S.String;
+export const AppAuthorizationStatus = S.String;
 export interface AppAuthorizationSummary {
   appAuthorizationArn: string;
   appBundleArn: string;
@@ -305,7 +305,7 @@ export const Credential = /*@__PURE__*/ S.Union([
   S.Struct({ apiKeyCredential: ApiKeyCredential }),
 ]);
 export type AuthType = "oauth2" | "apiKey" | (string & {});
-export const AuthType = /*@__PURE__*/ S.String;
+export const AuthType = S.String;
 export interface Tag {
   key: string;
   value: string;
@@ -350,7 +350,7 @@ export const CreateAppAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAppAuthorizationRequest",
 }) as any as S.Schema<CreateAppAuthorizationRequest>;
 export type Persona = "admin" | "endUser" | (string & {});
-export const Persona = /*@__PURE__*/ S.String;
+export const Persona = S.String;
 export interface AppAuthorization {
   appAuthorizationArn: string;
   appBundleArn: string;
@@ -426,7 +426,7 @@ export const CreateAppBundleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAppBundleResponse",
 }) as any as S.Schema<CreateAppBundleResponse>;
 export type IngestionType = "auditLog" | (string & {});
-export const IngestionType = /*@__PURE__*/ S.String;
+export const IngestionType = S.String;
 export interface CreateIngestionRequest {
   appBundleIdentifier: string;
   app: string;
@@ -460,7 +460,7 @@ export const CreateIngestionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateIngestionRequest",
 }) as any as S.Schema<CreateIngestionRequest>;
 export type IngestionState = "enabled" | "disabled" | (string & {});
-export const IngestionState = /*@__PURE__*/ S.String;
+export const IngestionState = S.String;
 export interface Ingestion {
   arn: string;
   appBundleArn: string;
@@ -492,9 +492,9 @@ export const CreateIngestionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateIngestionResponse",
 }) as any as S.Schema<CreateIngestionResponse>;
 export type Schema = "ocsf" | "raw" | (string & {});
-export const Schema = /*@__PURE__*/ S.String;
+export const Schema = S.String;
 export type Format = "json" | "parquet" | (string & {});
-export const Format = /*@__PURE__*/ S.String;
+export const Format = S.String;
 export interface AuditLogProcessingConfiguration {
   schema: Schema;
   format: Format;
@@ -577,7 +577,7 @@ export const CreateIngestionDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateIngestionDestinationRequest",
 }) as any as S.Schema<CreateIngestionDestinationRequest>;
 export type IngestionDestinationStatus = "Active" | "Failed" | (string & {});
-export const IngestionDestinationStatus = /*@__PURE__*/ S.String;
+export const IngestionDestinationStatus = S.String;
 export interface IngestionDestination {
   arn: string;
   ingestionArn: string;

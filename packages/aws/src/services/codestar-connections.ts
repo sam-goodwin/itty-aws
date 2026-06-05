@@ -133,7 +133,7 @@ export type ProviderType =
   | "GitLab"
   | "GitLabSelfManaged"
   | (string & {});
-export const ProviderType = /*@__PURE__*/ S.String;
+export const ProviderType = S.String;
 export interface Tag {
   Key: string;
   Value: string;
@@ -270,14 +270,14 @@ export const CreateRepositoryLinkOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRepositoryLinkOutput",
 }) as any as S.Schema<CreateRepositoryLinkOutput>;
 export type SyncConfigurationType = "CFN_STACK_SYNC" | (string & {});
-export const SyncConfigurationType = /*@__PURE__*/ S.String;
+export const SyncConfigurationType = S.String;
 export type PublishDeploymentStatus = "ENABLED" | "DISABLED" | (string & {});
-export const PublishDeploymentStatus = /*@__PURE__*/ S.String;
+export const PublishDeploymentStatus = S.String;
 export type TriggerResourceUpdateOn =
   | "ANY_CHANGE"
   | "FILE_CHANGE"
   | (string & {});
-export const TriggerResourceUpdateOn = /*@__PURE__*/ S.String;
+export const TriggerResourceUpdateOn = S.String;
 export interface CreateSyncConfigurationInput {
   Branch: string;
   ConfigFile: string;
@@ -422,7 +422,7 @@ export type ConnectionStatus =
   | "AVAILABLE"
   | "ERROR"
   | (string & {});
-export const ConnectionStatus = /*@__PURE__*/ S.String;
+export const ConnectionStatus = S.String;
 export interface Connection {
   ConnectionName?: string;
   ConnectionArn?: string;
@@ -514,7 +514,7 @@ export type RepositorySyncStatus =
   | "SUCCEEDED"
   | "QUEUED"
   | (string & {});
-export const RepositorySyncStatus = /*@__PURE__*/ S.String;
+export const RepositorySyncStatus = S.String;
 export interface RepositorySyncEvent {
   Event: string;
   ExternalId?: string;
@@ -609,7 +609,7 @@ export type ResourceSyncStatus =
   | "IN_PROGRESS"
   | "SUCCEEDED"
   | (string & {});
-export const ResourceSyncStatus = /*@__PURE__*/ S.String;
+export const ResourceSyncStatus = S.String;
 export interface ResourceSyncAttempt {
   Events: ResourceSyncEvent[];
   InitialRevision: Revision;
@@ -656,9 +656,9 @@ export const GetSyncBlockerSummaryInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSyncBlockerSummaryInput",
 }) as any as S.Schema<GetSyncBlockerSummaryInput>;
 export type BlockerType = "AUTOMATED" | (string & {});
-export const BlockerType = /*@__PURE__*/ S.String;
+export const BlockerType = S.String;
 export type BlockerStatus = "ACTIVE" | "RESOLVED" | (string & {});
-export const BlockerStatus = /*@__PURE__*/ S.String;
+export const BlockerStatus = S.String;
 export interface SyncBlockerContext {
   Key: string;
   Value: string;

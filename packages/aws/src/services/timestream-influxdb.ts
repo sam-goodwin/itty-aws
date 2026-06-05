@@ -189,23 +189,23 @@ export type DbInstanceType =
   | "db.influx.16xlarge"
   | "db.influx.24xlarge"
   | (string & {});
-export const DbInstanceType = /*@__PURE__*/ S.String;
+export const DbInstanceType = S.String;
 export type DbStorageType =
   | "InfluxIOIncludedT1"
   | "InfluxIOIncludedT2"
   | "InfluxIOIncludedT3"
   | (string & {});
-export const DbStorageType = /*@__PURE__*/ S.String;
+export const DbStorageType = S.String;
 export type NetworkType = "IPV4" | "DUAL" | (string & {});
-export const NetworkType = /*@__PURE__*/ S.String;
+export const NetworkType = S.String;
 export type VpcSubnetIdList = string[];
 export const VpcSubnetIdList = /*@__PURE__*/ S.Array(S.String);
 export type VpcSecurityGroupIdList = string[];
 export const VpcSecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
 export type ClusterDeploymentType = "MULTI_NODE_READ_REPLICAS" | (string & {});
-export const ClusterDeploymentType = /*@__PURE__*/ S.String;
+export const ClusterDeploymentType = S.String;
 export type FailoverMode = "AUTOMATIC" | "NO_FAILOVER" | (string & {});
-export const FailoverMode = /*@__PURE__*/ S.String;
+export const FailoverMode = S.String;
 export interface S3Configuration {
   bucketName: string;
   enabled: boolean;
@@ -293,7 +293,7 @@ export type ClusterStatus =
   | "REBOOT_FAILED"
   | "PARTIALLY_AVAILABLE"
   | (string & {});
-export const ClusterStatus = /*@__PURE__*/ S.String;
+export const ClusterStatus = S.String;
 export interface CreateDbClusterOutput {
   dbClusterId?: string;
   dbClusterStatus?: ClusterStatus;
@@ -310,7 +310,7 @@ export type ValidationExceptionReason =
   | "FIELD_VALIDATION_FAILED"
   | "OTHER"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface GetDbClusterInput {
   dbClusterId: string;
 }
@@ -326,7 +326,7 @@ export type EngineType =
   | "INFLUXDB_V3_CORE"
   | "INFLUXDB_V3_ENTERPRISE"
   | (string & {});
-export const EngineType = /*@__PURE__*/ S.String;
+export const EngineType = S.String;
 export interface ClusterConfiguration {
   ingestQueryInstances?: number;
   queryOnlyInstances?: number;
@@ -540,12 +540,12 @@ export type Status =
   | "REBOOTING"
   | "REBOOT_FAILED"
   | (string & {});
-export const Status = /*@__PURE__*/ S.String;
+export const Status = S.String;
 export type DeploymentType =
   | "SINGLE_AZ"
   | "WITH_MULTIAZ_STANDBY"
   | (string & {});
-export const DeploymentType = /*@__PURE__*/ S.String;
+export const DeploymentType = S.String;
 export type InstanceMode =
   | "PRIMARY"
   | "STANDBY"
@@ -555,7 +555,7 @@ export type InstanceMode =
   | "COMPACT"
   | "PROCESS"
   | (string & {});
-export const InstanceMode = /*@__PURE__*/ S.String;
+export const InstanceMode = S.String;
 export type InstanceModeList = InstanceMode[];
 export const InstanceModeList = /*@__PURE__*/ S.Array(InstanceMode);
 export interface DbInstanceForClusterSummary {
@@ -1102,9 +1102,9 @@ export const RebootDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RebootDbInstanceOutput",
 }) as any as S.Schema<RebootDbInstanceOutput>;
 export type LogLevel = "debug" | "info" | "error" | (string & {});
-export const LogLevel = /*@__PURE__*/ S.String;
+export const LogLevel = S.String;
 export type TracingType = "log" | "jaeger" | "disabled" | (string & {});
-export const TracingType = /*@__PURE__*/ S.String;
+export const TracingType = S.String;
 export type DurationType =
   | "hours"
   | "minutes"
@@ -1112,7 +1112,7 @@ export type DurationType =
   | "milliseconds"
   | "days"
   | (string & {});
-export const DurationType = /*@__PURE__*/ S.String;
+export const DurationType = S.String;
 export interface Duration {
   durationType: DurationType;
   value: number;
@@ -1197,12 +1197,12 @@ export const InfluxDBv2Parameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "InfluxDBv2Parameters",
 }) as any as S.Schema<InfluxDBv2Parameters>;
 export type LogFormats = "full" | (string & {});
-export const LogFormats = /*@__PURE__*/ S.String;
+export const LogFormats = S.String;
 export type DataFusionRuntimeType =
   | "multi-thread"
   | "multi-thread-alt"
   | (string & {});
-export const DataFusionRuntimeType = /*@__PURE__*/ S.String;
+export const DataFusionRuntimeType = S.String;
 export type PercentOrAbsoluteLong =
   | { percent: string; absolute?: never }
   | { percent?: never; absolute: number };

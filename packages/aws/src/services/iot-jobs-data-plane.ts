@@ -154,7 +154,7 @@ export type JobExecutionStatus =
   | "REMOVED"
   | "CANCELED"
   | (string & {});
-export const JobExecutionStatus = /*@__PURE__*/ S.String;
+export const JobExecutionStatus = S.String;
 export type DetailsMap = { [key: string]: string | undefined };
 export const DetailsMap = /*@__PURE__*/ S.Record(
   S.String,

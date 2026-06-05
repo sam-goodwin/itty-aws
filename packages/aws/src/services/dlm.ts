@@ -126,15 +126,15 @@ export type PolicyArn = string;
 
 //# Schemas
 export type SettablePolicyStateValues = "ENABLED" | "DISABLED" | (string & {});
-export const SettablePolicyStateValues = /*@__PURE__*/ S.String;
+export const SettablePolicyStateValues = S.String;
 export type PolicyTypeValues =
   | "EBS_SNAPSHOT_MANAGEMENT"
   | "IMAGE_MANAGEMENT"
   | "EVENT_BASED_POLICY"
   | (string & {});
-export const PolicyTypeValues = /*@__PURE__*/ S.String;
+export const PolicyTypeValues = S.String;
 export type ResourceTypeValues = "VOLUME" | "INSTANCE" | (string & {});
-export const ResourceTypeValues = /*@__PURE__*/ S.String;
+export const ResourceTypeValues = S.String;
 export type ResourceTypeValuesList = ResourceTypeValues[];
 export const ResourceTypeValuesList = /*@__PURE__*/ S.Array(ResourceTypeValues);
 export type ResourceLocationValues =
@@ -142,7 +142,7 @@ export type ResourceLocationValues =
   | "OUTPOST"
   | "LOCAL_ZONE"
   | (string & {});
-export const ResourceLocationValues = /*@__PURE__*/ S.String;
+export const ResourceLocationValues = S.String;
 export type ResourceLocationList = ResourceLocationValues[];
 export const ResourceLocationList = /*@__PURE__*/ S.Array(
   ResourceLocationValues,
@@ -165,19 +165,19 @@ export type LocationValues =
   | "OUTPOST_LOCAL"
   | "LOCAL_ZONE"
   | (string & {});
-export const LocationValues = /*@__PURE__*/ S.String;
+export const LocationValues = S.String;
 export type IntervalUnitValues = "HOURS" | (string & {});
-export const IntervalUnitValues = /*@__PURE__*/ S.String;
+export const IntervalUnitValues = S.String;
 export type TimesList = string[];
 export const TimesList = /*@__PURE__*/ S.Array(S.String);
 export type StageValues = "PRE" | "POST" | (string & {});
-export const StageValues = /*@__PURE__*/ S.String;
+export const StageValues = S.String;
 export type StagesList = StageValues[];
 export const StagesList = /*@__PURE__*/ S.Array(StageValues);
 export type ExecutionHandlerServiceValues =
   | "AWS_SYSTEMS_MANAGER"
   | (string & {});
-export const ExecutionHandlerServiceValues = /*@__PURE__*/ S.String;
+export const ExecutionHandlerServiceValues = S.String;
 export interface Script {
   Stages?: StageValues[];
   ExecutionHandlerService?: ExecutionHandlerServiceValues;
@@ -222,7 +222,7 @@ export type RetentionIntervalUnitValues =
   | "MONTHS"
   | "YEARS"
   | (string & {});
-export const RetentionIntervalUnitValues = /*@__PURE__*/ S.String;
+export const RetentionIntervalUnitValues = S.String;
 export interface RetainRule {
   Count?: number;
   Interval?: number;
@@ -406,9 +406,9 @@ export const Parameters = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Parameters" }) as any as S.Schema<Parameters>;
 export type EventSourceValues = "MANAGED_CWE" | (string & {});
-export const EventSourceValues = /*@__PURE__*/ S.String;
+export const EventSourceValues = S.String;
 export type EventTypeValues = "shareSnapshot" | (string & {});
-export const EventTypeValues = /*@__PURE__*/ S.String;
+export const EventTypeValues = S.String;
 export type SnapshotOwnerList = string[];
 export const SnapshotOwnerList = /*@__PURE__*/ S.Array(S.String);
 export interface EventParameters {
@@ -475,7 +475,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 export type ActionList = Action[];
 export const ActionList = /*@__PURE__*/ S.Array(Action);
 export type PolicyLanguageValues = "SIMPLIFIED" | "STANDARD" | (string & {});
-export const PolicyLanguageValues = /*@__PURE__*/ S.String;
+export const PolicyLanguageValues = S.String;
 export interface CrossRegionCopyTarget {
   TargetRegion?: string;
 }
@@ -548,7 +548,7 @@ export const TagMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type DefaultPolicyTypeValues = "VOLUME" | "INSTANCE" | (string & {});
-export const DefaultPolicyTypeValues = /*@__PURE__*/ S.String;
+export const DefaultPolicyTypeValues = S.String;
 export interface CreateLifecyclePolicyRequest {
   ExecutionRoleArn?: string;
   Description?: string;
@@ -630,7 +630,7 @@ export type GettablePolicyStateValues =
   | "DISABLED"
   | "ERROR"
   | (string & {});
-export const GettablePolicyStateValues = /*@__PURE__*/ S.String;
+export const GettablePolicyStateValues = S.String;
 export type TargetTagsFilterList = string[];
 export const TargetTagsFilterList = /*@__PURE__*/ S.Array(S.String);
 export type TagsToAddFilterList = string[];
@@ -640,7 +640,7 @@ export type DefaultPoliciesTypeValues =
   | "INSTANCE"
   | "ALL"
   | (string & {});
-export const DefaultPoliciesTypeValues = /*@__PURE__*/ S.String;
+export const DefaultPoliciesTypeValues = S.String;
 export interface GetLifecyclePoliciesRequest {
   PolicyIds?: string[];
   State?: GettablePolicyStateValues;

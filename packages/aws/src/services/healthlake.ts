@@ -106,12 +106,12 @@ export type AmazonResourceName = string;
 
 //# Schemas
 export type FHIRVersion = "R4" | (string & {});
-export const FHIRVersion = /*@__PURE__*/ S.String;
+export const FHIRVersion = S.String;
 export type CmkType =
   | "CUSTOMER_MANAGED_KMS_KEY"
   | "AWS_OWNED_KMS_KEY"
   | (string & {});
-export const CmkType = /*@__PURE__*/ S.String;
+export const CmkType = S.String;
 export interface KmsEncryptionConfig {
   CmkType: CmkType;
   KmsKeyId?: string;
@@ -130,7 +130,7 @@ export const SseConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SseConfiguration",
 }) as any as S.Schema<SseConfiguration>;
 export type PreloadDataType = "SYNTHEA" | (string & {});
-export const PreloadDataType = /*@__PURE__*/ S.String;
+export const PreloadDataType = S.String;
 export interface PreloadDataConfig {
   PreloadDataType: PreloadDataType;
 }
@@ -153,7 +153,7 @@ export type AuthorizationStrategy =
   | "SMART_ON_FHIR"
   | "AWS_AUTH"
   | (string & {});
-export const AuthorizationStrategy = /*@__PURE__*/ S.String;
+export const AuthorizationStrategy = S.String;
 export interface IdentityProviderConfiguration {
   AuthorizationStrategy: AuthorizationStrategy;
   FineGrainedAuthorizationEnabled?: boolean;
@@ -201,7 +201,7 @@ export type DatastoreStatus =
   | "DELETED"
   | "CREATE_FAILED"
   | (string & {});
-export const DatastoreStatus = /*@__PURE__*/ S.String;
+export const DatastoreStatus = S.String;
 export interface CreateFHIRDatastoreResponse {
   DatastoreId: string;
   DatastoreArn: string;
@@ -258,7 +258,7 @@ export type ErrorCategory =
   | "RETRYABLE_ERROR"
   | "NON_RETRYABLE_ERROR"
   | (string & {});
-export const ErrorCategory = /*@__PURE__*/ S.String;
+export const ErrorCategory = S.String;
 export interface ErrorCause {
   ErrorMessage?: string;
   ErrorCategory?: ErrorCategory;
@@ -330,7 +330,7 @@ export type JobStatus =
   | "CANCEL_COMPLETED"
   | "CANCEL_FAILED"
   | (string & {});
-export const JobStatus = /*@__PURE__*/ S.String;
+export const JobStatus = S.String;
 export interface S3Configuration {
   S3Uri: string;
   KmsKeyId: string;
@@ -422,7 +422,7 @@ export type ValidationLevel =
   | "structure-only"
   | "minimal"
   | (string & {});
-export const ValidationLevel = /*@__PURE__*/ S.String;
+export const ValidationLevel = S.String;
 export interface ImportJobProperties {
   JobId: string;
   JobName?: string;

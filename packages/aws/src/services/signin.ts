@@ -205,7 +205,7 @@ export type OAuth2ErrorCode =
   | "server_error"
   | "INVALID_REQUEST"
   | (string & {});
-export const OAuth2ErrorCode = /*@__PURE__*/ S.String;
+export const OAuth2ErrorCode = S.String;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(

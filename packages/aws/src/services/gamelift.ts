@@ -214,7 +214,7 @@ export type DnsNameInput = string;
 export type PlayerIdsForAcceptMatch = string | redacted.Redacted<string>[];
 export const PlayerIdsForAcceptMatch = /*@__PURE__*/ S.Array(SensitiveString);
 export type AcceptanceType = "ACCEPT" | "REJECT" | (string & {});
-export const AcceptanceType = /*@__PURE__*/ S.String;
+export const AcceptanceType = S.String;
 export interface AcceptMatchInput {
   TicketId?: string;
   PlayerIds?: string | redacted.Redacted<string>[];
@@ -246,7 +246,7 @@ export const AcceptMatchOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceptMatchOutput",
 }) as any as S.Schema<AcceptMatchOutput>;
 export type FilterInstanceStatus = "ACTIVE" | "DRAINING" | (string & {});
-export const FilterInstanceStatus = /*@__PURE__*/ S.String;
+export const FilterInstanceStatus = S.String;
 export type FilterInstanceStatuses = FilterInstanceStatus[];
 export const FilterInstanceStatuses =
   /*@__PURE__*/ S.Array(FilterInstanceStatus);
@@ -285,12 +285,12 @@ export const ClaimGameServerInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClaimGameServerInput",
 }) as any as S.Schema<ClaimGameServerInput>;
 export type GameServerClaimStatus = "CLAIMED" | (string & {});
-export const GameServerClaimStatus = /*@__PURE__*/ S.String;
+export const GameServerClaimStatus = S.String;
 export type GameServerUtilizationStatus =
   | "AVAILABLE"
   | "UTILIZED"
   | (string & {});
-export const GameServerUtilizationStatus = /*@__PURE__*/ S.String;
+export const GameServerUtilizationStatus = S.String;
 export interface GameServer {
   GameServerGroupName?: string;
   GameServerGroupArn?: string;
@@ -332,7 +332,7 @@ export const ClaimGameServerOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClaimGameServerOutput",
 }) as any as S.Schema<ClaimGameServerOutput>;
 export type RoutingStrategyType = "SIMPLE" | "TERMINAL" | (string & {});
-export const RoutingStrategyType = /*@__PURE__*/ S.String;
+export const RoutingStrategyType = S.String;
 export interface RoutingStrategy {
   Type?: RoutingStrategyType;
   FleetId?: string;
@@ -434,7 +434,7 @@ export type OperatingSystem =
   | "AMAZON_LINUX_2023"
   | "WINDOWS_2022"
   | (string & {});
-export const OperatingSystem = /*@__PURE__*/ S.String;
+export const OperatingSystem = S.String;
 export interface CreateBuildInput {
   Name?: string;
   Version?: string;
@@ -466,7 +466,7 @@ export const CreateBuildInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBuildInput",
 }) as any as S.Schema<CreateBuildInput>;
 export type BuildStatus = "INITIALIZED" | "READY" | "FAILED" | (string & {});
-export const BuildStatus = /*@__PURE__*/ S.String;
+export const BuildStatus = S.String;
 export interface Build {
   BuildId?: string;
   BuildArn?: string;
@@ -527,7 +527,7 @@ export const ConnectionPortRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionPortRange",
 }) as any as S.Schema<ConnectionPortRange>;
 export type IpProtocol = "TCP" | "UDP" | (string & {});
-export const IpProtocol = /*@__PURE__*/ S.String;
+export const IpProtocol = S.String;
 export interface IpPermission {
   FromPort?: number;
   ToPort?: number;
@@ -545,7 +545,7 @@ export const IpPermission = /*@__PURE__*/ S.suspend(() =>
 export type IpPermissionsList = IpPermission[];
 export const IpPermissionsList = /*@__PURE__*/ S.Array(IpPermission);
 export type ContainerFleetBillingType = "ON_DEMAND" | "SPOT" | (string & {});
-export const ContainerFleetBillingType = /*@__PURE__*/ S.String;
+export const ContainerFleetBillingType = S.String;
 export interface LocationConfiguration {
   Location?: string;
 }
@@ -564,7 +564,7 @@ export type ProtectionPolicy =
   | "NoProtection"
   | "FullProtection"
   | (string & {});
-export const ProtectionPolicy = /*@__PURE__*/ S.String;
+export const ProtectionPolicy = S.String;
 export interface GameSessionCreationLimitPolicy {
   NewGameSessionsPerCreator?: number;
   PolicyPeriodInMinutes?: number;
@@ -578,7 +578,7 @@ export const GameSessionCreationLimitPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "GameSessionCreationLimitPolicy",
 }) as any as S.Schema<GameSessionCreationLimitPolicy>;
 export type LogDestination = "NONE" | "CLOUDWATCH" | "S3" | (string & {});
-export const LogDestination = /*@__PURE__*/ S.String;
+export const LogDestination = S.String;
 export interface LogConfiguration {
   LogDestination?: LogDestination;
   S3BucketName?: string;
@@ -598,7 +598,7 @@ export type PlayerGatewayMode =
   | "ENABLED"
   | "REQUIRED"
   | (string & {});
-export const PlayerGatewayMode = /*@__PURE__*/ S.String;
+export const PlayerGatewayMode = S.String;
 export interface CreateContainerFleetInput {
   FleetRoleArn?: string;
   Description?: string;
@@ -658,7 +658,7 @@ export type ContainerFleetStatus =
   | "UPDATING"
   | "DELETING"
   | (string & {});
-export const ContainerFleetStatus = /*@__PURE__*/ S.String;
+export const ContainerFleetStatus = S.String;
 export interface DeploymentDetails {
   LatestDeploymentId?: string;
 }
@@ -676,9 +676,9 @@ export type ContainerFleetLocationStatus =
   | "UPDATING"
   | "DELETING"
   | (string & {});
-export const ContainerFleetLocationStatus = /*@__PURE__*/ S.String;
+export const ContainerFleetLocationStatus = S.String;
 export type PlayerGatewayStatus = "DISABLED" | "ENABLED" | (string & {});
-export const PlayerGatewayStatus = /*@__PURE__*/ S.String;
+export const PlayerGatewayStatus = S.String;
 export interface ContainerFleetLocationAttributes {
   Location?: string;
   Status?: ContainerFleetLocationStatus;
@@ -770,14 +770,14 @@ export const CreateContainerFleetOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateContainerFleetOutput",
 }) as any as S.Schema<CreateContainerFleetOutput>;
 export type ContainerGroupType = "GAME_SERVER" | "PER_INSTANCE" | (string & {});
-export const ContainerGroupType = /*@__PURE__*/ S.String;
+export const ContainerGroupType = S.String;
 export type ContainerDependencyCondition =
   | "START"
   | "COMPLETE"
   | "SUCCESS"
   | "HEALTHY"
   | (string & {});
-export const ContainerDependencyCondition = /*@__PURE__*/ S.String;
+export const ContainerDependencyCondition = S.String;
 export interface ContainerDependency {
   ContainerName?: string;
   Condition?: ContainerDependencyCondition;
@@ -797,7 +797,7 @@ export type ContainerMountPointAccessLevel =
   | "READ_ONLY"
   | "READ_AND_WRITE"
   | (string & {});
-export const ContainerMountPointAccessLevel = /*@__PURE__*/ S.String;
+export const ContainerMountPointAccessLevel = S.String;
 export interface ContainerMountPoint {
   InstancePath?: string;
   ContainerPath?: string;
@@ -927,7 +927,7 @@ export const SupportContainerDefinitionInputList = /*@__PURE__*/ S.Array(
   SupportContainerDefinitionInput,
 );
 export type ContainerOperatingSystem = "AMAZON_LINUX_2023" | (string & {});
-export const ContainerOperatingSystem = /*@__PURE__*/ S.String;
+export const ContainerOperatingSystem = S.String;
 export interface CreateContainerGroupDefinitionInput {
   Name?: string;
   ContainerGroupType?: ContainerGroupType;
@@ -1031,7 +1031,7 @@ export type ContainerGroupDefinitionStatus =
   | "COPYING"
   | "FAILED"
   | (string & {});
-export const ContainerGroupDefinitionStatus = /*@__PURE__*/ S.String;
+export const ContainerGroupDefinitionStatus = S.String;
 export interface ContainerGroupDefinition {
   ContainerGroupDefinitionArn?: string;
   CreationTime?: Date;
@@ -1631,7 +1631,7 @@ export type EC2InstanceType =
   | "r7a.32xlarge"
   | "r7a.48xlarge"
   | (string & {});
-export const EC2InstanceType = /*@__PURE__*/ S.String;
+export const EC2InstanceType = S.String;
 export interface ServerProcess {
   LaunchPath?: string;
   Parameters?: string;
@@ -1673,9 +1673,9 @@ export const ResourceCreationLimitPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceCreationLimitPolicy",
 }) as any as S.Schema<ResourceCreationLimitPolicy>;
 export type FleetType = "ON_DEMAND" | "SPOT" | (string & {});
-export const FleetType = /*@__PURE__*/ S.String;
+export const FleetType = S.String;
 export type CertificateType = "DISABLED" | "GENERATED" | (string & {});
-export const CertificateType = /*@__PURE__*/ S.String;
+export const CertificateType = S.String;
 export interface CertificateConfiguration {
   CertificateType?: CertificateType;
 }
@@ -1685,7 +1685,7 @@ export const CertificateConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "CertificateConfiguration",
 }) as any as S.Schema<CertificateConfiguration>;
 export type ComputeType = "EC2" | "ANYWHERE" | (string & {});
-export const ComputeType = /*@__PURE__*/ S.String;
+export const ComputeType = S.String;
 export interface AnywhereConfiguration {
   Cost?: string;
 }
@@ -1697,12 +1697,12 @@ export const AnywhereConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type InstanceRoleCredentialsProvider =
   | "SHARED_CREDENTIAL_FILE"
   | (string & {});
-export const InstanceRoleCredentialsProvider = /*@__PURE__*/ S.String;
+export const InstanceRoleCredentialsProvider = S.String;
 export type GameServerIpProtocolSupported =
   | "IPv4"
   | "DUAL_STACK"
   | (string & {});
-export const GameServerIpProtocolSupported = /*@__PURE__*/ S.String;
+export const GameServerIpProtocolSupported = S.String;
 export interface PlayerGatewayConfiguration {
   GameServerIpProtocolSupported?: GameServerIpProtocolSupported;
 }
@@ -1795,9 +1795,9 @@ export type FleetStatus =
   | "TERMINATED"
   | "NOT_FOUND"
   | (string & {});
-export const FleetStatus = /*@__PURE__*/ S.String;
+export const FleetStatus = S.String;
 export type FleetAction = "AUTO_SCALING" | (string & {});
-export const FleetAction = /*@__PURE__*/ S.String;
+export const FleetAction = S.String;
 export type FleetActionList = FleetAction[];
 export const FleetActionList = /*@__PURE__*/ S.Array(FleetAction);
 export interface FleetAttributes {
@@ -2041,7 +2041,7 @@ export type GameServerGroupInstanceType =
   | "m6g.12xlarge"
   | "m6g.16xlarge"
   | (string & {});
-export const GameServerGroupInstanceType = /*@__PURE__*/ S.String;
+export const GameServerGroupInstanceType = S.String;
 export interface InstanceDefinition {
   InstanceType?: GameServerGroupInstanceType;
   WeightedCapacity?: string;
@@ -2081,12 +2081,12 @@ export type BalancingStrategy =
   | "SPOT_PREFERRED"
   | "ON_DEMAND_ONLY"
   | (string & {});
-export const BalancingStrategy = /*@__PURE__*/ S.String;
+export const BalancingStrategy = S.String;
 export type GameServerProtectionPolicy =
   | "NO_PROTECTION"
   | "FULL_PROTECTION"
   | (string & {});
-export const GameServerProtectionPolicy = /*@__PURE__*/ S.String;
+export const GameServerProtectionPolicy = S.String;
 export type VpcSubnets = string[];
 export const VpcSubnets = /*@__PURE__*/ S.Array(S.String);
 export interface CreateGameServerGroupInput {
@@ -2138,9 +2138,9 @@ export type GameServerGroupStatus =
   | "DELETED"
   | "ERROR"
   | (string & {});
-export const GameServerGroupStatus = /*@__PURE__*/ S.String;
+export const GameServerGroupStatus = S.String;
 export type GameServerGroupAction = "REPLACE_INSTANCE_TYPES" | (string & {});
-export const GameServerGroupAction = /*@__PURE__*/ S.String;
+export const GameServerGroupAction = S.String;
 export type GameServerGroupActions = GameServerGroupAction[];
 export const GameServerGroupActions = /*@__PURE__*/ S.Array(
   GameServerGroupAction,
@@ -2245,18 +2245,18 @@ export type GameSessionStatus =
   | "TERMINATING"
   | "ERROR"
   | (string & {});
-export const GameSessionStatus = /*@__PURE__*/ S.String;
+export const GameSessionStatus = S.String;
 export type GameSessionStatusReason =
   | "INTERRUPTED"
   | "TRIGGERED_ON_PROCESS_TERMINATE"
   | "FORCE_TERMINATED"
   | (string & {});
-export const GameSessionStatusReason = /*@__PURE__*/ S.String;
+export const GameSessionStatusReason = S.String;
 export type PlayerSessionCreationPolicy =
   | "ACCEPT_ALL"
   | "DENY_ALL"
   | (string & {});
-export const PlayerSessionCreationPolicy = /*@__PURE__*/ S.String;
+export const PlayerSessionCreationPolicy = S.String;
 export interface GameSession {
   GameSessionId?: string;
   Name?: string;
@@ -2363,7 +2363,7 @@ export type PriorityType =
   | "DESTINATION"
   | "LOCATION"
   | (string & {});
-export const PriorityType = /*@__PURE__*/ S.String;
+export const PriorityType = S.String;
 export type PriorityTypeList = PriorityType[];
 export const PriorityTypeList = /*@__PURE__*/ S.Array(PriorityType);
 export interface PriorityConfiguration {
@@ -2506,9 +2506,9 @@ export const CreateLocationOutput = /*@__PURE__*/ S.suspend(() =>
 export type QueueArnsList = string[];
 export const QueueArnsList = /*@__PURE__*/ S.Array(S.String);
 export type BackfillMode = "AUTOMATIC" | "MANUAL" | (string & {});
-export const BackfillMode = /*@__PURE__*/ S.String;
+export const BackfillMode = S.String;
 export type FlexMatchMode = "STANDALONE" | "WITH_QUEUE" | (string & {});
-export const FlexMatchMode = /*@__PURE__*/ S.String;
+export const FlexMatchMode = S.String;
 export interface CreateMatchmakingConfigurationInput {
   Name?: string;
   Description?: string;
@@ -2691,7 +2691,7 @@ export type PlayerSessionStatus =
   | "COMPLETED"
   | "TIMEDOUT"
   | (string & {});
-export const PlayerSessionStatus = /*@__PURE__*/ S.String;
+export const PlayerSessionStatus = S.String;
 export interface PlayerSession {
   PlayerSessionId?: string;
   PlayerId?: string | redacted.Redacted<string>;
@@ -3080,7 +3080,7 @@ export type GameServerGroupDeleteOption =
   | "FORCE_DELETE"
   | "RETAIN"
   | (string & {});
-export const GameServerGroupDeleteOption = /*@__PURE__*/ S.String;
+export const GameServerGroupDeleteOption = S.String;
 export interface DeleteGameServerGroupInput {
   GameServerGroupName?: string;
   DeleteOption?: GameServerGroupDeleteOption;
@@ -3452,7 +3452,7 @@ export type ComputeStatus =
   | "TERMINATING"
   | "IMPAIRED"
   | (string & {});
-export const ComputeStatus = /*@__PURE__*/ S.String;
+export const ComputeStatus = S.String;
 export interface ContainerAttribute {
   ContainerName?: string;
   ContainerRuntimeId?: string;
@@ -3790,7 +3790,7 @@ export type ZeroCapacityStrategy =
   | "MANUAL"
   | "SCALE_TO_AND_FROM_ZERO"
   | (string & {});
-export const ZeroCapacityStrategy = /*@__PURE__*/ S.String;
+export const ZeroCapacityStrategy = S.String;
 export interface ManagedCapacityConfiguration {
   ZeroCapacityStrategy?: ZeroCapacityStrategy;
   ScaleInAfterInactivityMinutes?: number;
@@ -3868,17 +3868,17 @@ export type DeploymentStatus =
   | "CANCELLED"
   | "PENDING"
   | (string & {});
-export const DeploymentStatus = /*@__PURE__*/ S.String;
+export const DeploymentStatus = S.String;
 export type DeploymentProtectionStrategy =
   | "WITH_PROTECTION"
   | "IGNORE_PROTECTION"
   | (string & {});
-export const DeploymentProtectionStrategy = /*@__PURE__*/ S.String;
+export const DeploymentProtectionStrategy = S.String;
 export type DeploymentImpairmentStrategy =
   | "MAINTAIN"
   | "ROLLBACK"
   | (string & {});
-export const DeploymentImpairmentStrategy = /*@__PURE__*/ S.String;
+export const DeploymentImpairmentStrategy = S.String;
 export interface DeploymentConfiguration {
   ProtectionStrategy?: DeploymentProtectionStrategy;
   MinimumHealthyPercentage?: number;
@@ -4032,7 +4032,7 @@ export type EventCode =
   | "LOCATION_STATE_DELETING"
   | "LOCATION_STATE_DELETED"
   | (string & {});
-export const EventCode = /*@__PURE__*/ S.String;
+export const EventCode = S.String;
 export interface Event {
   EventId?: string;
   ResourceId?: string;
@@ -4095,7 +4095,7 @@ export const DescribeFleetLocationAttributesInput = /*@__PURE__*/ S.suspend(
   identifier: "DescribeFleetLocationAttributesInput",
 }) as any as S.Schema<DescribeFleetLocationAttributesInput>;
 export type LocationUpdateStatus = "PENDING_UPDATE" | (string & {});
-export const LocationUpdateStatus = /*@__PURE__*/ S.String;
+export const LocationUpdateStatus = S.String;
 export interface LocationAttributes {
   LocationState?: LocationState;
   StoppedActions?: FleetAction[];
@@ -4388,7 +4388,7 @@ export type GameServerInstanceStatus =
   | "DRAINING"
   | "SPOT_TERMINATING"
   | (string & {});
-export const GameServerInstanceStatus = /*@__PURE__*/ S.String;
+export const GameServerInstanceStatus = S.String;
 export interface GameServerInstance {
   GameServerGroupName?: string;
   GameServerGroupArn?: string;
@@ -4509,7 +4509,7 @@ export type GameSessionPlacementState =
   | "TIMED_OUT"
   | "FAILED"
   | (string & {});
-export const GameSessionPlacementState = /*@__PURE__*/ S.String;
+export const GameSessionPlacementState = S.String;
 export interface PlayerLatency {
   PlayerId?: string | redacted.Redacted<string>;
   RegionIdentifier?: string;
@@ -4543,7 +4543,7 @@ export type PlacementFallbackStrategy =
   | "DEFAULT_AFTER_SINGLE_PASS"
   | "NONE"
   | (string & {});
-export const PlacementFallbackStrategy = /*@__PURE__*/ S.String;
+export const PlacementFallbackStrategy = S.String;
 export type LocationOrderOverrideList = string[];
 export const LocationOrderOverrideList = /*@__PURE__*/ S.Array(S.String);
 export interface PriorityConfigurationOverride {
@@ -4746,7 +4746,7 @@ export type InstanceStatus =
   | "ACTIVE"
   | "TERMINATING"
   | (string & {});
-export const InstanceStatus = /*@__PURE__*/ S.String;
+export const InstanceStatus = S.String;
 export interface Instance {
   FleetId?: string;
   FleetArn?: string;
@@ -4817,7 +4817,7 @@ export type MatchmakingConfigurationStatus =
   | "SEARCHING"
   | "TIMED_OUT"
   | (string & {});
-export const MatchmakingConfigurationStatus = /*@__PURE__*/ S.String;
+export const MatchmakingConfigurationStatus = S.String;
 export type PlayerAttributeStringList = string[];
 export const PlayerAttributeStringList = /*@__PURE__*/ S.Array(S.String);
 export type PlayerAttributeStringDoubleMap = {
@@ -5115,7 +5115,7 @@ export type ScalingStatusType =
   | "DELETED"
   | "ERROR"
   | (string & {});
-export const ScalingStatusType = /*@__PURE__*/ S.String;
+export const ScalingStatusType = S.String;
 export interface DescribeScalingPoliciesInput {
   FleetId?: string;
   StatusFilter?: ScalingStatusType;
@@ -5149,14 +5149,14 @@ export type ScalingAdjustmentType =
   | "ExactCapacity"
   | "PercentChangeInCapacity"
   | (string & {});
-export const ScalingAdjustmentType = /*@__PURE__*/ S.String;
+export const ScalingAdjustmentType = S.String;
 export type ComparisonOperatorType =
   | "GreaterThanOrEqualToThreshold"
   | "GreaterThanThreshold"
   | "LessThanThreshold"
   | "LessThanOrEqualToThreshold"
   | (string & {});
-export const ComparisonOperatorType = /*@__PURE__*/ S.String;
+export const ComparisonOperatorType = S.String;
 export type MetricName =
   | "ActivatingGameSessions"
   | "ActiveGameSessions"
@@ -5171,9 +5171,9 @@ export type MetricName =
   | "WaitTime"
   | "ConcurrentActivatableGameSessions"
   | (string & {});
-export const MetricName = /*@__PURE__*/ S.String;
+export const MetricName = S.String;
 export type PolicyType = "RuleBased" | "TargetBased" | (string & {});
-export const PolicyType = /*@__PURE__*/ S.String;
+export const PolicyType = S.String;
 export interface TargetConfiguration {
   TargetValue?: number;
 }
@@ -5685,7 +5685,7 @@ export const ListBuildsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBuildsOutput",
 }) as any as S.Schema<ListBuildsOutput>;
 export type ListComputeInputStatus = "ACTIVE" | "IMPAIRED" | (string & {});
-export const ListComputeInputStatus = /*@__PURE__*/ S.String;
+export const ListComputeInputStatus = S.String;
 export interface ListComputeInput {
   FleetId?: string;
   Location?: string;
@@ -6066,7 +6066,7 @@ export const ListGameServerGroupsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGameServerGroupsOutput",
 }) as any as S.Schema<ListGameServerGroupsOutput>;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-export const SortOrder = /*@__PURE__*/ S.String;
+export const SortOrder = S.String;
 export interface ListGameServersInput {
   GameServerGroupName?: string;
   SortOrder?: SortOrder;
@@ -6108,7 +6108,7 @@ export const ListGameServersOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGameServersOutput",
 }) as any as S.Schema<ListGameServersOutput>;
 export type LocationFilter = "AWS" | "CUSTOM" | (string & {});
-export const LocationFilter = /*@__PURE__*/ S.String;
+export const LocationFilter = S.String;
 export type LocationFilterList = LocationFilter[];
 export const LocationFilterList = /*@__PURE__*/ S.Array(LocationFilter);
 export interface ListLocationsInput {
@@ -6803,7 +6803,7 @@ export type TerminationMode =
   | "TRIGGER_ON_PROCESS_TERMINATE"
   | "FORCE_TERMINATE"
   | (string & {});
-export const TerminationMode = /*@__PURE__*/ S.String;
+export const TerminationMode = S.String;
 export interface TerminateGameSessionInput {
   GameSessionId?: string;
   TerminationMode?: TerminationMode;
@@ -6938,7 +6938,7 @@ export const UpdateBuildOutput = /*@__PURE__*/ S.suspend(() =>
 export type ContainerFleetRemoveAttribute =
   | "PER_INSTANCE_CONTAINER_GROUP_DEFINITION"
   | (string & {});
-export const ContainerFleetRemoveAttribute = /*@__PURE__*/ S.String;
+export const ContainerFleetRemoveAttribute = S.String;
 export type ContainerFleetRemoveAttributeList = ContainerFleetRemoveAttribute[];
 export const ContainerFleetRemoveAttributeList = /*@__PURE__*/ S.Array(
   ContainerFleetRemoveAttribute,
@@ -7229,7 +7229,7 @@ export const UpdateFleetPortSettingsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateFleetPortSettingsOutput",
 }) as any as S.Schema<UpdateFleetPortSettingsOutput>;
 export type GameServerHealthCheck = "HEALTHY" | (string & {});
-export const GameServerHealthCheck = /*@__PURE__*/ S.String;
+export const GameServerHealthCheck = S.String;
 export interface UpdateGameServerInput {
   GameServerGroupName?: string;
   GameServerId?: string;

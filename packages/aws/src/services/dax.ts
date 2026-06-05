@@ -108,9 +108,9 @@ export const SSESpecification = /*@__PURE__*/ S.suspend(() =>
   identifier: "SSESpecification",
 }) as any as S.Schema<SSESpecification>;
 export type ClusterEndpointEncryptionType = "NONE" | "TLS" | (string & {});
-export const ClusterEndpointEncryptionType = /*@__PURE__*/ S.String;
+export const ClusterEndpointEncryptionType = S.String;
 export type NetworkType = "ipv4" | "ipv6" | "dual_stack" | (string & {});
-export const NetworkType = /*@__PURE__*/ S.String;
+export const NetworkType = S.String;
 export interface CreateClusterRequest {
   ClusterName: string;
   NodeType: string;
@@ -241,7 +241,7 @@ export type SSEStatus =
   | "DISABLING"
   | "DISABLED"
   | (string & {});
-export const SSEStatus = /*@__PURE__*/ S.String;
+export const SSEStatus = S.String;
 export interface SSEDescription {
   Status?: SSEStatus;
 }
@@ -581,7 +581,7 @@ export const DescribeDefaultParametersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDefaultParametersRequest",
 }) as any as S.Schema<DescribeDefaultParametersRequest>;
 export type ParameterType = "DEFAULT" | "NODE_TYPE_SPECIFIC" | (string & {});
-export const ParameterType = /*@__PURE__*/ S.String;
+export const ParameterType = S.String;
 export interface NodeTypeSpecificValue {
   NodeType?: string;
   Value?: string;
@@ -596,9 +596,9 @@ export const NodeTypeSpecificValueList = /*@__PURE__*/ S.Array(
   NodeTypeSpecificValue,
 );
 export type IsModifiable = "TRUE" | "FALSE" | "CONDITIONAL" | (string & {});
-export const IsModifiable = /*@__PURE__*/ S.String;
+export const IsModifiable = S.String;
 export type ChangeType = "IMMEDIATE" | "REQUIRES_REBOOT" | (string & {});
-export const ChangeType = /*@__PURE__*/ S.String;
+export const ChangeType = S.String;
 export interface Parameter {
   ParameterName?: string;
   ParameterType?: ParameterType;
@@ -644,7 +644,7 @@ export type SourceType =
   | "PARAMETER_GROUP"
   | "SUBNET_GROUP"
   | (string & {});
-export const SourceType = /*@__PURE__*/ S.String;
+export const SourceType = S.String;
 export interface DescribeEventsRequest {
   SourceName?: string;
   SourceType?: SourceType;

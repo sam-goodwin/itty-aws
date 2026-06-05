@@ -225,7 +225,7 @@ export const AcceptSharedDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceptSharedDirectoryRequest",
 }) as any as S.Schema<AcceptSharedDirectoryRequest>;
 export type ShareMethod = "ORGANIZATIONS" | "HANDSHAKE" | (string & {});
-export const ShareMethod = /*@__PURE__*/ S.String;
+export const ShareMethod = S.String;
 export type ShareStatus =
   | "Shared"
   | "PendingAcceptance"
@@ -237,7 +237,7 @@ export type ShareStatus =
   | "Deleted"
   | "Deleting"
   | (string & {});
-export const ShareStatus = /*@__PURE__*/ S.String;
+export const ShareStatus = S.String;
 export interface SharedDirectory {
   OwnerAccountId?: string;
   OwnerDirectoryId?: string;
@@ -421,7 +421,7 @@ export const CancelSchemaExtensionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelSchemaExtensionResult",
 }) as any as S.Schema<CancelSchemaExtensionResult>;
 export type DirectorySize = "Small" | "Large" | (string & {});
-export const DirectorySize = /*@__PURE__*/ S.String;
+export const DirectorySize = S.String;
 export type DnsIpAddrs = string[];
 export const DnsIpAddrs = /*@__PURE__*/ S.Array(S.String);
 export type DnsIpv6Addrs = string[];
@@ -445,7 +445,7 @@ export const DirectoryConnectSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "DirectoryConnectSettings",
 }) as any as S.Schema<DirectoryConnectSettings>;
 export type NetworkType = "Dual-stack" | "IPv4" | "IPv6" | (string & {});
-export const NetworkType = /*@__PURE__*/ S.String;
+export const NetworkType = S.String;
 export interface ConnectDirectoryRequest {
   Name: string;
   ShortName?: string;
@@ -712,7 +712,7 @@ export type DirectoryEdition =
   | "Standard"
   | "Hybrid"
   | (string & {});
-export const DirectoryEdition = /*@__PURE__*/ S.String;
+export const DirectoryEdition = S.String;
 export interface CreateMicrosoftADRequest {
   Name: string;
   ShortName?: string;
@@ -787,11 +787,11 @@ export type TrustDirection =
   | "One-Way: Incoming"
   | "Two-Way"
   | (string & {});
-export const TrustDirection = /*@__PURE__*/ S.String;
+export const TrustDirection = S.String;
 export type TrustType = "Forest" | "External" | (string & {});
-export const TrustType = /*@__PURE__*/ S.String;
+export const TrustType = S.String;
 export type SelectiveAuth = "Enabled" | "Disabled" | (string & {});
-export const SelectiveAuth = /*@__PURE__*/ S.String;
+export const SelectiveAuth = S.String;
 export interface CreateTrustRequest {
   DirectoryId: string;
   RemoteDomainName: string;
@@ -1182,7 +1182,7 @@ export type CaEnrollmentPolicyStatus =
   | "Disabled"
   | "Impaired"
   | (string & {});
-export const CaEnrollmentPolicyStatus = /*@__PURE__*/ S.String;
+export const CaEnrollmentPolicyStatus = S.String;
 export interface DescribeCAEnrollmentPolicyResult {
   DirectoryId?: string;
   PcaConnectorArn?: string;
@@ -1230,9 +1230,9 @@ export type CertificateState =
   | "Deregistered"
   | "DeregisterFailed"
   | (string & {});
-export const CertificateState = /*@__PURE__*/ S.String;
+export const CertificateState = S.String;
 export type CertificateType = "ClientCertAuth" | "ClientLDAPS" | (string & {});
-export const CertificateType = /*@__PURE__*/ S.String;
+export const CertificateType = S.String;
 export interface ClientCertAuthSettings {
   OCSPUrl?: string;
 }
@@ -1277,7 +1277,7 @@ export type ClientAuthenticationType =
   | "SmartCard"
   | "SmartCardOrPassword"
   | (string & {});
-export const ClientAuthenticationType = /*@__PURE__*/ S.String;
+export const ClientAuthenticationType = S.String;
 export interface DescribeClientAuthenticationSettingsRequest {
   DirectoryId: string;
   Type?: ClientAuthenticationType;
@@ -1306,7 +1306,7 @@ export const DescribeClientAuthenticationSettingsRequest =
     identifier: "DescribeClientAuthenticationSettingsRequest",
   }) as any as S.Schema<DescribeClientAuthenticationSettingsRequest>;
 export type ClientAuthenticationStatus = "Enabled" | "Disabled" | (string & {});
-export const ClientAuthenticationStatus = /*@__PURE__*/ S.String;
+export const ClientAuthenticationStatus = S.String;
 export interface ClientAuthenticationSettingInfo {
   Type?: ClientAuthenticationType;
   Status?: ClientAuthenticationStatus;
@@ -1369,7 +1369,7 @@ export const DescribeConditionalForwardersRequest = /*@__PURE__*/ S.suspend(
   identifier: "DescribeConditionalForwardersRequest",
 }) as any as S.Schema<DescribeConditionalForwardersRequest>;
 export type ReplicationScope = "Domain" | (string & {});
-export const ReplicationScope = /*@__PURE__*/ S.String;
+export const ReplicationScope = S.String;
 export interface ConditionalForwarder {
   RemoteDomainName?: string;
   DnsIpAddrs?: string[];
@@ -1439,14 +1439,14 @@ export type DirectoryStage =
   | "Failed"
   | "Updating"
   | (string & {});
-export const DirectoryStage = /*@__PURE__*/ S.String;
+export const DirectoryStage = S.String;
 export type DirectoryType =
   | "SimpleAD"
   | "ADConnector"
   | "MicrosoftAD"
   | "SharedMicrosoftAD"
   | (string & {});
-export const DirectoryType = /*@__PURE__*/ S.String;
+export const DirectoryType = S.String;
 export type AvailabilityZones = string[];
 export const AvailabilityZones = /*@__PURE__*/ S.Array(S.String);
 export interface DirectoryVpcSettingsDescription {
@@ -1499,7 +1499,7 @@ export type RadiusAuthenticationProtocol =
   | "MS-CHAPv1"
   | "MS-CHAPv2"
   | (string & {});
-export const RadiusAuthenticationProtocol = /*@__PURE__*/ S.String;
+export const RadiusAuthenticationProtocol = S.String;
 export interface RadiusSettings {
   RadiusServers?: string[];
   RadiusServersIpv6?: string[];
@@ -1525,7 +1525,7 @@ export const RadiusSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RadiusSettings" }) as any as S.Schema<RadiusSettings>;
 export type RadiusStatus = "Creating" | "Completed" | "Failed" | (string & {});
-export const RadiusStatus = /*@__PURE__*/ S.String;
+export const RadiusStatus = S.String;
 export interface OwnerDirectoryDescription {
   DirectoryId?: string;
   AccountId?: string;
@@ -1563,7 +1563,7 @@ export const RegionsInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RegionsInfo" }) as any as S.Schema<RegionsInfo>;
 export type OSVersion = "SERVER_2012" | "SERVER_2019" | (string & {});
-export const OSVersion = /*@__PURE__*/ S.String;
+export const OSVersion = S.String;
 export interface HybridSettingsDescription {
   SelfManagedDnsIpAddrs?: string[];
   SelfManagedInstanceIds?: string[];
@@ -1684,7 +1684,7 @@ export type DataAccessStatus =
   | "Enabling"
   | "Failed"
   | (string & {});
-export const DataAccessStatus = /*@__PURE__*/ S.String;
+export const DataAccessStatus = S.String;
 export interface DescribeDirectoryDataAccessResult {
   DataAccessStatus?: DataAccessStatus;
 }
@@ -1731,7 +1731,7 @@ export type DomainControllerStatus =
   | "Failed"
   | "Updating"
   | (string & {});
-export const DomainControllerStatus = /*@__PURE__*/ S.String;
+export const DomainControllerStatus = S.String;
 export interface DomainController {
   DirectoryId?: string;
   DomainControllerId?: string;
@@ -1808,7 +1808,7 @@ export type TopicStatus =
   | "Failed"
   | "Deleted"
   | (string & {});
-export const TopicStatus = /*@__PURE__*/ S.String;
+export const TopicStatus = S.String;
 export interface EventTopic {
   DirectoryId?: string;
   TopicName?: string;
@@ -1841,7 +1841,7 @@ export type HybridUpdateType =
   | "SelfManagedInstances"
   | "HybridAdministratorAccount"
   | (string & {});
-export const HybridUpdateType = /*@__PURE__*/ S.String;
+export const HybridUpdateType = S.String;
 export interface DescribeHybridADUpdateRequest {
   DirectoryId: string;
   UpdateType?: HybridUpdateType;
@@ -1871,7 +1871,7 @@ export type UpdateStatus =
   | "Updating"
   | "UpdateFailed"
   | (string & {});
-export const UpdateStatus = /*@__PURE__*/ S.String;
+export const UpdateStatus = S.String;
 export interface HybridUpdateValue {
   InstanceIds?: string[];
   DnsIps?: string[];
@@ -1939,7 +1939,7 @@ export const DescribeHybridADUpdateResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeHybridADUpdateResult",
 }) as any as S.Schema<DescribeHybridADUpdateResult>;
 export type LDAPSType = "Client" | (string & {});
-export const LDAPSType = /*@__PURE__*/ S.String;
+export const LDAPSType = S.String;
 export interface DescribeLDAPSSettingsRequest {
   DirectoryId: string;
   Type?: LDAPSType;
@@ -1972,7 +1972,7 @@ export type LDAPSStatus =
   | "EnableFailed"
   | "Disabled"
   | (string & {});
-export const LDAPSStatus = /*@__PURE__*/ S.String;
+export const LDAPSStatus = S.String;
 export interface LDAPSSettingInfo {
   LDAPSStatus?: LDAPSStatus;
   LDAPSStatusReason?: string;
@@ -2028,7 +2028,7 @@ export const DescribeRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeRegionsRequest",
 }) as any as S.Schema<DescribeRegionsRequest>;
 export type RegionType = "Primary" | "Additional" | (string & {});
-export const RegionType = /*@__PURE__*/ S.String;
+export const RegionType = S.String;
 export interface RegionDescription {
   DirectoryId?: string;
   RegionName?: string;
@@ -2080,7 +2080,7 @@ export type DirectoryConfigurationStatus =
   | "Failed"
   | "Default"
   | (string & {});
-export const DirectoryConfigurationStatus = /*@__PURE__*/ S.String;
+export const DirectoryConfigurationStatus = S.String;
 export interface DescribeSettingsRequest {
   DirectoryId: string;
   Status?: DirectoryConfigurationStatus;
@@ -2234,13 +2234,13 @@ export const DescribeSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeSnapshotsRequest",
 }) as any as S.Schema<DescribeSnapshotsRequest>;
 export type SnapshotType = "Auto" | "Manual" | (string & {});
-export const SnapshotType = /*@__PURE__*/ S.String;
+export const SnapshotType = S.String;
 export type SnapshotStatus =
   | "Creating"
   | "Completed"
   | "Failed"
   | (string & {});
-export const SnapshotStatus = /*@__PURE__*/ S.String;
+export const SnapshotStatus = S.String;
 export interface Snapshot {
   DirectoryId?: string;
   SnapshotId?: string;
@@ -2314,7 +2314,7 @@ export type TrustState =
   | "Deleted"
   | "Failed"
   | (string & {});
-export const TrustState = /*@__PURE__*/ S.String;
+export const TrustState = S.String;
 export interface Trust {
   DirectoryId?: string;
   TrustId?: string;
@@ -2364,7 +2364,7 @@ export const DescribeTrustsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeTrustsResult",
 }) as any as S.Schema<DescribeTrustsResult>;
 export type UpdateType = "OS" | "NETWORK" | "SIZE" | (string & {});
-export const UpdateType = /*@__PURE__*/ S.String;
+export const UpdateType = S.String;
 export interface DescribeUpdateDirectoryRequest {
   DirectoryId: string;
   UpdateType: UpdateType;
@@ -2991,7 +2991,7 @@ export type IpRouteStatusMsg =
   | "AddFailed"
   | "RemoveFailed"
   | (string & {});
-export const IpRouteStatusMsg = /*@__PURE__*/ S.String;
+export const IpRouteStatusMsg = S.String;
 export interface IpRouteInfo {
   DirectoryId?: string;
   CidrIp?: string;
@@ -3115,7 +3115,7 @@ export type SchemaExtensionStatus =
   | "Failed"
   | "Completed"
   | (string & {});
-export const SchemaExtensionStatus = /*@__PURE__*/ S.String;
+export const SchemaExtensionStatus = S.String;
 export interface SchemaExtensionInfo {
   DirectoryId?: string;
   SchemaExtensionId?: string;
@@ -3412,7 +3412,7 @@ export const RestoreFromSnapshotResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestoreFromSnapshotResult",
 }) as any as S.Schema<RestoreFromSnapshotResult>;
 export type TargetType = "ACCOUNT" | (string & {});
-export const TargetType = /*@__PURE__*/ S.String;
+export const TargetType = S.String;
 export interface ShareTarget {
   Id: string;
   Type: TargetType;

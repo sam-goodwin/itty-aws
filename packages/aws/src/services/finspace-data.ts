@@ -170,7 +170,7 @@ export const AssociateUserToPermissionGroupResponse = /*@__PURE__*/ S.suspend(
   identifier: "AssociateUserToPermissionGroupResponse",
 }) as any as S.Schema<AssociateUserToPermissionGroupResponse>;
 export type ChangeType = "REPLACE" | "APPEND" | "MODIFY" | (string & {});
-export const ChangeType = /*@__PURE__*/ S.String;
+export const ChangeType = S.String;
 export type SourceParams = { [key: string]: string | undefined };
 export const SourceParams = /*@__PURE__*/ S.Record(
   S.String,
@@ -221,7 +221,7 @@ export const CreateChangesetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateChangesetResponse",
 }) as any as S.Schema<CreateChangesetResponse>;
 export type DatasetKind = "TABULAR" | "NON_TABULAR" | (string & {});
-export const DatasetKind = /*@__PURE__*/ S.String;
+export const DatasetKind = S.String;
 export interface DatasetOwnerInfo {
   name?: string;
   phoneNumber?: string;
@@ -273,7 +273,7 @@ export type ColumnDataType =
   | "BOOLEAN"
   | "BINARY"
   | (string & {});
-export const ColumnDataType = /*@__PURE__*/ S.String;
+export const ColumnDataType = S.String;
 export interface ColumnDefinition {
   dataType?: ColumnDataType;
   columnName?: string;
@@ -356,7 +356,7 @@ export const SortColumnList = /*@__PURE__*/ S.Array(S.String);
 export type PartitionColumnList = string[];
 export const PartitionColumnList = /*@__PURE__*/ S.Array(S.String);
 export type ExportFileFormat = "PARQUET" | "DELIMITED_TEXT" | (string & {});
-export const ExportFileFormat = /*@__PURE__*/ S.String;
+export const ExportFileFormat = S.String;
 export type S3DestinationFormatOptions = { [key: string]: string | undefined };
 export const S3DestinationFormatOptions = /*@__PURE__*/ S.Record(
   S.String,
@@ -430,7 +430,7 @@ export type ApplicationPermission =
   | "AccessNotebooks"
   | "GetTemporaryCredentials"
   | (string & {});
-export const ApplicationPermission = /*@__PURE__*/ S.String;
+export const ApplicationPermission = S.String;
 export type ApplicationPermissionList = ApplicationPermission[];
 export const ApplicationPermissionList = /*@__PURE__*/ S.Array(
   ApplicationPermission,
@@ -469,9 +469,9 @@ export const CreatePermissionGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePermissionGroupResponse",
 }) as any as S.Schema<CreatePermissionGroupResponse>;
 export type UserType = "SUPER_USER" | "APP_USER" | (string & {});
-export const UserType = /*@__PURE__*/ S.String;
+export const UserType = S.String;
 export type ApiAccess = "ENABLED" | "DISABLED" | (string & {});
-export const ApiAccess = /*@__PURE__*/ S.String;
+export const ApiAccess = S.String;
 export interface CreateUserRequest {
   emailAddress: string | redacted.Redacted<string>;
   type: UserType;
@@ -706,7 +706,7 @@ export type IngestionStatus =
   | "RUNNING"
   | "STOP_REQUESTED"
   | (string & {});
-export const IngestionStatus = /*@__PURE__*/ S.String;
+export const IngestionStatus = S.String;
 export type ErrorCategory =
   | "VALIDATION"
   | "SERVICE_QUOTA_EXCEEDED"
@@ -717,7 +717,7 @@ export type ErrorCategory =
   | "CANCELLED"
   | "USER_RECOVERABLE"
   | (string & {});
-export const ErrorCategory = /*@__PURE__*/ S.String;
+export const ErrorCategory = S.String;
 export interface ChangesetErrorInfo {
   errorMessage?: string;
   errorCategory?: ErrorCategory;
@@ -787,7 +787,7 @@ export type DatasetStatus =
   | "SUCCESS"
   | "RUNNING"
   | (string & {});
-export const DatasetStatus = /*@__PURE__*/ S.String;
+export const DatasetStatus = S.String;
 export interface GetDatasetResponse {
   datasetId?: string;
   datasetArn?: string;
@@ -862,7 +862,7 @@ export type DataViewStatus =
   | "PENDING"
   | "FAILED_CLEANUP_FAILED"
   | (string & {});
-export const DataViewStatus = /*@__PURE__*/ S.String;
+export const DataViewStatus = S.String;
 export interface GetDataViewResponse {
   autoUpdate?: boolean;
   partitionColumns?: string[];
@@ -978,7 +978,7 @@ export type PermissionGroupMembershipStatus =
   | "ADDITION_SUCCESS"
   | "REMOVAL_IN_PROGRESS"
   | (string & {});
-export const PermissionGroupMembershipStatus = /*@__PURE__*/ S.String;
+export const PermissionGroupMembershipStatus = S.String;
 export interface PermissionGroup {
   permissionGroupId?: string;
   name?: string | redacted.Redacted<string>;
@@ -1074,7 +1074,7 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
 export type UserStatus = "CREATING" | "ENABLED" | "DISABLED" | (string & {});
-export const UserStatus = /*@__PURE__*/ S.String;
+export const UserStatus = S.String;
 export interface GetUserResponse {
   userId?: string;
   status?: UserStatus;
@@ -1110,7 +1110,7 @@ export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUserResponse",
 }) as any as S.Schema<GetUserResponse>;
 export type LocationType = "INGESTION" | "SAGEMAKER" | (string & {});
-export const LocationType = /*@__PURE__*/ S.String;
+export const LocationType = S.String;
 export interface GetWorkingLocationRequest {
   locationType?: LocationType;
 }

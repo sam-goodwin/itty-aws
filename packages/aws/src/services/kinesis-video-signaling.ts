@@ -95,7 +95,7 @@ export type Answer = string;
 
 //# Schemas
 export type Service = "TURN" | (string & {});
-export const Service = /*@__PURE__*/ S.String;
+export const Service = S.String;
 export interface GetIceServerConfigRequest {
   ChannelARN?: string;
   ClientId?: string;

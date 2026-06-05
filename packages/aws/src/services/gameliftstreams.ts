@@ -148,7 +148,7 @@ export type StreamGroupLocationStatus =
   | "ERROR"
   | "REMOVING"
   | (string & {});
-export const StreamGroupLocationStatus = /*@__PURE__*/ S.String;
+export const StreamGroupLocationStatus = S.String;
 export interface VpcTransitConfigurationResponse {
   VpcId?: string;
   Ipv4CidrBlocks?: string[];
@@ -382,7 +382,7 @@ export type StreamSessionStatus =
   | "TERMINATED"
   | "ERROR"
   | (string & {});
-export const StreamSessionStatus = /*@__PURE__*/ S.String;
+export const StreamSessionStatus = S.String;
 export type StreamSessionStatusReason =
   | "internalError"
   | "invalidSignalRequest"
@@ -395,9 +395,9 @@ export type StreamSessionStatusReason =
   | "idleTimeout"
   | "apiTerminated"
   | (string & {});
-export const StreamSessionStatusReason = /*@__PURE__*/ S.String;
+export const StreamSessionStatusReason = S.String;
 export type Protocol = "WebRTC" | (string & {});
-export const Protocol = /*@__PURE__*/ S.String;
+export const Protocol = S.String;
 export type GameLaunchArgList = string[];
 export const GameLaunchArgList = /*@__PURE__*/ S.Array(S.String);
 export type EnvironmentVariables = { [key: string]: string | undefined };
@@ -418,7 +418,7 @@ export type ExportFilesStatus =
   | "FAILED"
   | "PENDING"
   | (string & {});
-export const ExportFilesStatus = /*@__PURE__*/ S.String;
+export const ExportFilesStatus = S.String;
 export interface ExportFilesMetadata {
   Status?: ExportFilesStatus;
   StatusReason?: string;
@@ -844,7 +844,7 @@ export type RuntimeEnvironmentType =
   | "WINDOWS"
   | "UBUNTU"
   | (string & {});
-export const RuntimeEnvironmentType = /*@__PURE__*/ S.String;
+export const RuntimeEnvironmentType = S.String;
 export interface RuntimeEnvironment {
   Type: RuntimeEnvironmentType;
   Version: string;
@@ -896,15 +896,15 @@ export type ApplicationStatus =
   | "DELETING"
   | "ERROR"
   | (string & {});
-export const ApplicationStatus = /*@__PURE__*/ S.String;
+export const ApplicationStatus = S.String;
 export type ApplicationStatusReason =
   | "internalError"
   | "accessDenied"
   | "sourceModified"
   | (string & {});
-export const ApplicationStatusReason = /*@__PURE__*/ S.String;
+export const ApplicationStatusReason = S.String;
 export type ReplicationStatusType = "REPLICATING" | "COMPLETED" | (string & {});
-export const ReplicationStatusType = /*@__PURE__*/ S.String;
+export const ReplicationStatusType = S.String;
 export interface ReplicationStatus {
   Location?: string;
   Status?: ReplicationStatusType;
@@ -1168,7 +1168,7 @@ export type StreamClass =
   | "gen6e_pro"
   | "gen6e_pro_win2022"
   | (string & {});
-export const StreamClass = /*@__PURE__*/ S.String;
+export const StreamClass = S.String;
 export interface CreateStreamGroupInput {
   Description: string;
   StreamClass: StreamClass;
@@ -1216,12 +1216,12 @@ export type StreamGroupStatus =
   | "DELETING"
   | "EXPIRED"
   | (string & {});
-export const StreamGroupStatus = /*@__PURE__*/ S.String;
+export const StreamGroupStatus = S.String;
 export type StreamGroupStatusReason =
   | "internalError"
   | "noAvailableInstances"
   | (string & {});
-export const StreamGroupStatusReason = /*@__PURE__*/ S.String;
+export const StreamGroupStatusReason = S.String;
 export interface CreateStreamGroupOutput {
   Arn: string;
   Description?: string;

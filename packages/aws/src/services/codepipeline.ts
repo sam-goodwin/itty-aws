@@ -229,7 +229,7 @@ export type JobStatus =
   | "Succeeded"
   | "Failed"
   | (string & {});
-export const JobStatus = /*@__PURE__*/ S.String;
+export const JobStatus = S.String;
 export interface AcknowledgeJobOutput {
   status?: JobStatus;
 }
@@ -275,7 +275,7 @@ export type ActionCategory =
   | "Approval"
   | "Compute"
   | (string & {});
-export const ActionCategory = /*@__PURE__*/ S.String;
+export const ActionCategory = S.String;
 export interface ActionTypeSettings {
   thirdPartyConfigurationUrl?: string;
   entityUrlTemplate?: string;
@@ -297,7 +297,7 @@ export type ActionConfigurationPropertyType =
   | "Number"
   | "Boolean"
   | (string & {});
-export const ActionConfigurationPropertyType = /*@__PURE__*/ S.String;
+export const ActionConfigurationPropertyType = S.String;
 export interface ActionConfigurationProperty {
   name: string;
   required: boolean;
@@ -377,7 +377,7 @@ export const CreateCustomActionTypeInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCustomActionTypeInput",
 }) as any as S.Schema<CreateCustomActionTypeInput>;
 export type ActionOwner = "AWS" | "ThirdParty" | "Custom" | (string & {});
-export const ActionOwner = /*@__PURE__*/ S.String;
+export const ActionOwner = S.String;
 export interface ActionTypeId {
   category: ActionCategory;
   owner: ActionOwner;
@@ -418,9 +418,9 @@ export const CreateCustomActionTypeOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCustomActionTypeOutput",
 }) as any as S.Schema<CreateCustomActionTypeOutput>;
 export type ArtifactStoreType = "S3" | (string & {});
-export const ArtifactStoreType = /*@__PURE__*/ S.String;
+export const ArtifactStoreType = S.String;
 export type EncryptionKeyType = "KMS" | (string & {});
-export const EncryptionKeyType = /*@__PURE__*/ S.String;
+export const EncryptionKeyType = S.String;
 export interface EncryptionKey {
   id: string;
   type: EncryptionKeyType;
@@ -446,7 +446,7 @@ export const ArtifactStoreMap = /*@__PURE__*/ S.Record(
   ArtifactStore.pipe(S.optional),
 );
 export type BlockerType = "Schedule" | (string & {});
-export const BlockerType = /*@__PURE__*/ S.String;
+export const BlockerType = S.String;
 export interface BlockerDeclaration {
   name: string;
   type: BlockerType;
@@ -491,7 +491,7 @@ export type EnvironmentVariableType =
   | "PLAINTEXT"
   | "SECRETS_MANAGER"
   | (string & {});
-export const EnvironmentVariableType = /*@__PURE__*/ S.String;
+export const EnvironmentVariableType = S.String;
 export interface EnvironmentVariable {
   name: string;
   value: string;
@@ -547,9 +547,9 @@ export type StageActionDeclarationList = ActionDeclaration[];
 export const StageActionDeclarationList =
   /*@__PURE__*/ S.Array(ActionDeclaration);
 export type Result = "ROLLBACK" | "FAIL" | "RETRY" | "SKIP" | (string & {});
-export const Result = /*@__PURE__*/ S.String;
+export const Result = S.String;
 export type StageRetryMode = "FAILED_ACTIONS" | "ALL_ACTIONS" | (string & {});
-export const StageRetryMode = /*@__PURE__*/ S.String;
+export const StageRetryMode = S.String;
 export interface RetryConfiguration {
   retryMode?: StageRetryMode;
 }
@@ -559,9 +559,9 @@ export const RetryConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetryConfiguration",
 }) as any as S.Schema<RetryConfiguration>;
 export type RuleCategory = "Rule" | (string & {});
-export const RuleCategory = /*@__PURE__*/ S.String;
+export const RuleCategory = S.String;
 export type RuleOwner = "AWS" | (string & {});
-export const RuleOwner = /*@__PURE__*/ S.String;
+export const RuleOwner = S.String;
 export interface RuleTypeId {
   category: RuleCategory;
   owner?: RuleOwner;
@@ -677,9 +677,9 @@ export type ExecutionMode =
   | "SUPERSEDED"
   | "PARALLEL"
   | (string & {});
-export const ExecutionMode = /*@__PURE__*/ S.String;
+export const ExecutionMode = S.String;
 export type PipelineType = "V1" | "V2" | (string & {});
-export const PipelineType = /*@__PURE__*/ S.String;
+export const PipelineType = S.String;
 export interface PipelineVariableDeclaration {
   name: string;
   defaultValue?: string;
@@ -701,7 +701,7 @@ export const PipelineVariableDeclarationList = /*@__PURE__*/ S.Array(
 export type PipelineTriggerProviderType =
   | "CodeStarSourceConnection"
   | (string & {});
-export const PipelineTriggerProviderType = /*@__PURE__*/ S.String;
+export const PipelineTriggerProviderType = S.String;
 export type GitTagPatternList = string[];
 export const GitTagPatternList = /*@__PURE__*/ S.Array(S.String);
 export interface GitTagFilterCriteria {
@@ -763,7 +763,7 @@ export type GitPullRequestEventType =
   | "UPDATED"
   | "CLOSED"
   | (string & {});
-export const GitPullRequestEventType = /*@__PURE__*/ S.String;
+export const GitPullRequestEventType = S.String;
 export type GitPullRequestEventTypeList = GitPullRequestEventType[];
 export const GitPullRequestEventTypeList = /*@__PURE__*/ S.Array(
   GitPullRequestEventType,
@@ -978,7 +978,7 @@ export const DeregisterWebhookWithThirdPartyOutput = /*@__PURE__*/ S.suspend(
   identifier: "DeregisterWebhookWithThirdPartyOutput",
 }) as any as S.Schema<DeregisterWebhookWithThirdPartyOutput>;
 export type StageTransitionType = "Inbound" | "Outbound" | (string & {});
-export const StageTransitionType = /*@__PURE__*/ S.String;
+export const StageTransitionType = S.String;
 export interface DisableStageTransitionInput {
   pipelineName: string;
   stageName: string;
@@ -1104,7 +1104,7 @@ export const ExecutorConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutorConfiguration",
 }) as any as S.Schema<ExecutorConfiguration>;
 export type ExecutorType = "JobWorker" | "Lambda" | (string & {});
-export const ExecutorType = /*@__PURE__*/ S.String;
+export const ExecutorType = S.String;
 export interface ActionTypeExecutor {
   configuration: ExecutorConfiguration;
   type: ExecutorType;
@@ -1285,7 +1285,7 @@ export const PipelineContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "PipelineContext",
 }) as any as S.Schema<PipelineContext>;
 export type ArtifactLocationType = "S3" | (string & {});
-export const ArtifactLocationType = /*@__PURE__*/ S.String;
+export const ArtifactLocationType = S.String;
 export interface S3ArtifactLocation {
   bucketName: string;
   objectKey: string;
@@ -1454,7 +1454,7 @@ export type PipelineExecutionStatus =
   | "Superseded"
   | "Failed"
   | (string & {});
-export const PipelineExecutionStatus = /*@__PURE__*/ S.String;
+export const PipelineExecutionStatus = S.String;
 export interface ArtifactRevision {
   name?: string;
   revisionId?: string;
@@ -1501,7 +1501,7 @@ export type TriggerType =
   | "ManualRollback"
   | "AutomatedRollback"
   | (string & {});
-export const TriggerType = /*@__PURE__*/ S.String;
+export const TriggerType = S.String;
 export interface ExecutionTrigger {
   triggerType?: TriggerType;
   triggerDetail?: string;
@@ -1515,7 +1515,7 @@ export const ExecutionTrigger = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutionTrigger",
 }) as any as S.Schema<ExecutionTrigger>;
 export type ExecutionType = "STANDARD" | "ROLLBACK" | (string & {});
-export const ExecutionType = /*@__PURE__*/ S.String;
+export const ExecutionType = S.String;
 export interface PipelineRollbackMetadata {
   rollbackTargetPipelineExecutionId?: string;
 }
@@ -1589,7 +1589,7 @@ export type StageExecutionStatus =
   | "Succeeded"
   | "Skipped"
   | (string & {});
-export const StageExecutionStatus = /*@__PURE__*/ S.String;
+export const StageExecutionStatus = S.String;
 export interface StageExecution {
   pipelineExecutionId: string;
   status: StageExecutionStatus;
@@ -1638,7 +1638,7 @@ export type ActionExecutionStatus =
   | "Succeeded"
   | "Failed"
   | (string & {});
-export const ActionExecutionStatus = /*@__PURE__*/ S.String;
+export const ActionExecutionStatus = S.String;
 export interface ErrorDetails {
   code?: string;
   message?: string;
@@ -1705,7 +1705,7 @@ export type ConditionExecutionStatus =
   | "Abandoned"
   | "Overridden"
   | (string & {});
-export const ConditionExecutionStatus = /*@__PURE__*/ S.String;
+export const ConditionExecutionStatus = S.String;
 export interface StageConditionsExecution {
   status?: ConditionExecutionStatus;
   summary?: string;
@@ -1752,7 +1752,7 @@ export type RuleExecutionStatus =
   | "Succeeded"
   | "Failed"
   | (string & {});
-export const RuleExecutionStatus = /*@__PURE__*/ S.String;
+export const RuleExecutionStatus = S.String;
 export interface RuleExecution {
   ruleExecutionId?: string;
   status?: RuleExecutionStatus;
@@ -1825,7 +1825,7 @@ export type RetryTrigger =
   | "AutomatedStageRetry"
   | "ManualStageRetry"
   | (string & {});
-export const RetryTrigger = /*@__PURE__*/ S.String;
+export const RetryTrigger = S.String;
 export interface RetryStageMetadata {
   autoStageRetryAttempt?: number;
   manualStageRetryAttempt?: number;
@@ -1952,7 +1952,7 @@ export const GetThirdPartyJobDetailsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetThirdPartyJobDetailsOutput",
 }) as any as S.Schema<GetThirdPartyJobDetailsOutput>;
 export type StartTimeRange = "Latest" | "All" | (string & {});
-export const StartTimeRange = /*@__PURE__*/ S.String;
+export const StartTimeRange = S.String;
 export interface LatestInPipelineExecutionFilter {
   pipelineExecutionId: string;
   startTimeRange: StartTimeRange;
@@ -2167,7 +2167,7 @@ export const ListActionTypesOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListActionTypesOutput",
 }) as any as S.Schema<ListActionTypesOutput>;
 export type TargetFilterName = "TARGET_STATUS" | (string & {});
-export const TargetFilterName = /*@__PURE__*/ S.String;
+export const TargetFilterName = S.String;
 export type TargetFilterValueList = string[];
 export const TargetFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface TargetFilter {
@@ -2625,7 +2625,7 @@ export type RuleConfigurationPropertyType =
   | "Number"
   | "Boolean"
   | (string & {});
-export const RuleConfigurationPropertyType = /*@__PURE__*/ S.String;
+export const RuleConfigurationPropertyType = S.String;
 export interface RuleConfigurationProperty {
   name: string;
   required: boolean;
@@ -2749,7 +2749,7 @@ export type WebhookAuthenticationType =
   | "IP"
   | "UNAUTHENTICATED"
   | (string & {});
-export const WebhookAuthenticationType = /*@__PURE__*/ S.String;
+export const WebhookAuthenticationType = S.String;
 export interface WebhookAuthConfiguration {
   AllowedIPRange?: string;
   SecretToken?: string;
@@ -2819,7 +2819,7 @@ export const ListWebhooksOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWebhooksOutput",
 }) as any as S.Schema<ListWebhooksOutput>;
 export type ConditionType = "BEFORE_ENTRY" | "ON_SUCCESS" | (string & {});
-export const ConditionType = /*@__PURE__*/ S.String;
+export const ConditionType = S.String;
 export interface OverrideStageConditionInput {
   pipelineName: string;
   stageName: string;
@@ -2983,7 +2983,7 @@ export const PutActionRevisionOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutActionRevisionOutput",
 }) as any as S.Schema<PutActionRevisionOutput>;
 export type ApprovalStatus = "Approved" | "Rejected" | (string & {});
-export const ApprovalStatus = /*@__PURE__*/ S.String;
+export const ApprovalStatus = S.String;
 export interface ApprovalResult {
   summary: string;
   status: ApprovalStatus;
@@ -3037,7 +3037,7 @@ export type FailureType =
   | "RevisionUnavailable"
   | "SystemUnavailable"
   | (string & {});
-export const FailureType = /*@__PURE__*/ S.String;
+export const FailureType = S.String;
 export interface FailureDetails {
   type: FailureType;
   message: string;
@@ -3337,7 +3337,7 @@ export type SourceRevisionType =
   | "S3_OBJECT_VERSION_ID"
   | "S3_OBJECT_KEY"
   | (string & {});
-export const SourceRevisionType = /*@__PURE__*/ S.String;
+export const SourceRevisionType = S.String;
 export interface SourceRevisionOverride {
   actionName: string;
   revisionType: SourceRevisionType;

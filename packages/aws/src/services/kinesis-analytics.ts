@@ -199,7 +199,7 @@ export const InputParallelism = /*@__PURE__*/ S.suspend(() =>
   identifier: "InputParallelism",
 }) as any as S.Schema<InputParallelism>;
 export type RecordFormatType = "JSON" | "CSV" | (string & {});
-export const RecordFormatType = /*@__PURE__*/ S.String;
+export const RecordFormatType = S.String;
 export interface JSONMappingParameters {
   RecordRowPath: string;
 }
@@ -539,7 +539,7 @@ export type ApplicationStatus =
   | "RUNNING"
   | "UPDATING"
   | (string & {});
-export const ApplicationStatus = /*@__PURE__*/ S.String;
+export const ApplicationStatus = S.String;
 export interface ApplicationSummary {
   ApplicationName: string;
   ApplicationARN: string;
@@ -784,7 +784,7 @@ export type InputStartingPosition =
   | "TRIM_HORIZON"
   | "LAST_STOPPED_POINT"
   | (string & {});
-export const InputStartingPosition = /*@__PURE__*/ S.String;
+export const InputStartingPosition = S.String;
 export interface InputStartingPositionConfiguration {
   InputStartingPosition?: InputStartingPosition;
 }

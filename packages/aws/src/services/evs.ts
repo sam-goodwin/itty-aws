@@ -122,9 +122,9 @@ export const GetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetVersionsRequest",
 }) as any as S.Schema<GetVersionsRequest>;
 export type VcfVersion = "VCF-5.2.1" | "VCF-5.2.2" | (string & {});
-export const VcfVersion = /*@__PURE__*/ S.String;
+export const VcfVersion = S.String;
 export type InstanceType = "i4i.metal" | (string & {});
-export const InstanceType = /*@__PURE__*/ S.String;
+export const InstanceType = S.String;
 export type InstanceTypeList = InstanceType[];
 export const InstanceTypeList = /*@__PURE__*/ S.Array(InstanceType);
 export interface VcfVersionInfo {
@@ -392,16 +392,16 @@ export type EnvironmentState =
   | "DELETED"
   | "CREATE_FAILED"
   | (string & {});
-export const EnvironmentState = /*@__PURE__*/ S.String;
+export const EnvironmentState = S.String;
 export type CheckResult = "PASSED" | "FAILED" | "UNKNOWN" | (string & {});
-export const CheckResult = /*@__PURE__*/ S.String;
+export const CheckResult = S.String;
 export type CheckType =
   | "KEY_REUSE"
   | "KEY_COVERAGE"
   | "REACHABILITY"
   | "HOST_COUNT"
   | (string & {});
-export const CheckType = /*@__PURE__*/ S.String;
+export const CheckType = S.String;
 export interface Check {
   type?: CheckType;
   result?: CheckResult;
@@ -484,7 +484,7 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -619,7 +619,7 @@ export type VlanState =
   | "DELETED"
   | "CREATE_FAILED"
   | (string & {});
-export const VlanState = /*@__PURE__*/ S.String;
+export const VlanState = S.String;
 export interface EipAssociation {
   associationId?: string;
   allocationId?: string;
@@ -699,7 +699,7 @@ export type HostState =
   | "CREATE_FAILED"
   | "UPDATE_FAILED"
   | (string & {});
-export const HostState = /*@__PURE__*/ S.String;
+export const HostState = S.String;
 export interface NetworkInterface {
   networkInterfaceId?: string;
 }

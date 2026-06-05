@@ -167,7 +167,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 export type BadRequestReason = "InvalidConfiguration" | (string & {});
-export const BadRequestReason = /*@__PURE__*/ S.String;
+export const BadRequestReason = S.String;
 export interface InvalidConfigurationDetail {
   Constraint?: string;
   Location?: string;
@@ -197,7 +197,7 @@ export const BadRequestDetails = /*@__PURE__*/ S.Union([
   S.Struct({ InvalidConfiguration: InvalidConfigurationDetailList }),
 ]);
 export type ValidatorType = "JSON_SCHEMA" | "LAMBDA" | (string & {});
-export const ValidatorType = /*@__PURE__*/ S.String;
+export const ValidatorType = S.String;
 export interface Validator {
   Type: ValidatorType;
   Content: string | redacted.Redacted<string>;
@@ -274,9 +274,9 @@ export const ConfigurationProfile = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationProfile",
 }) as any as S.Schema<ConfigurationProfile>;
 export type GrowthType = "LINEAR" | "EXPONENTIAL" | (string & {});
-export const GrowthType = /*@__PURE__*/ S.String;
+export const GrowthType = S.String;
 export type ReplicateTo = "NONE" | "SSM_DOCUMENT" | (string & {});
-export const ReplicateTo = /*@__PURE__*/ S.String;
+export const ReplicateTo = S.String;
 export interface CreateDeploymentStrategyRequest {
   Name: string;
   Description?: string;
@@ -380,7 +380,7 @@ export type EnvironmentState =
   | "ROLLED_BACK"
   | "REVERTED"
   | (string & {});
-export const EnvironmentState = /*@__PURE__*/ S.String;
+export const EnvironmentState = S.String;
 export interface Environment {
   ApplicationId?: string;
   Id?: string;
@@ -409,7 +409,7 @@ export type ActionPoint =
   | "ON_DEPLOYMENT_COMPLETE"
   | "ON_DEPLOYMENT_ROLLED_BACK"
   | (string & {});
-export const ActionPoint = /*@__PURE__*/ S.String;
+export const ActionPoint = S.String;
 export interface Action {
   Name?: string;
   Description?: string;
@@ -617,7 +617,7 @@ export const HostedConfigurationVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "HostedConfigurationVersion",
 }) as any as S.Schema<HostedConfigurationVersion>;
 export type BytesMeasure = "KILOBYTES" | (string & {});
-export const BytesMeasure = /*@__PURE__*/ S.String;
+export const BytesMeasure = S.String;
 export interface DeleteApplicationRequest {
   ApplicationId: string;
 }
@@ -646,7 +646,7 @@ export type DeletionProtectionCheck =
   | "APPLY"
   | "BYPASS"
   | (string & {});
-export const DeletionProtectionCheck = /*@__PURE__*/ S.String;
+export const DeletionProtectionCheck = S.String;
 export interface DeleteConfigurationProfileRequest {
   ApplicationId: string;
   ConfigurationProfileId: string;
@@ -989,7 +989,7 @@ export type DeploymentState =
   | "ROLLED_BACK"
   | "REVERTED"
   | (string & {});
-export const DeploymentState = /*@__PURE__*/ S.String;
+export const DeploymentState = S.String;
 export type DeploymentEventType =
   | "PERCENTAGE_UPDATED"
   | "ROLLBACK_STARTED"
@@ -999,14 +999,14 @@ export type DeploymentEventType =
   | "DEPLOYMENT_COMPLETED"
   | "REVERT_COMPLETED"
   | (string & {});
-export const DeploymentEventType = /*@__PURE__*/ S.String;
+export const DeploymentEventType = S.String;
 export type TriggeredBy =
   | "USER"
   | "APPCONFIG"
   | "CLOUDWATCH_ALARM"
   | "INTERNAL_ERROR"
   | (string & {});
-export const TriggeredBy = /*@__PURE__*/ S.String;
+export const TriggeredBy = S.String;
 export interface ActionInvocation {
   ExtensionIdentifier?: string;
   ActionName?: string;

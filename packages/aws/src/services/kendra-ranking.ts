@@ -192,7 +192,7 @@ export type RescoreExecutionPlanStatus =
   | "DELETING"
   | "FAILED"
   | (string & {});
-export const RescoreExecutionPlanStatus = /*@__PURE__*/ S.String;
+export const RescoreExecutionPlanStatus = S.String;
 export interface DescribeRescoreExecutionPlanResponse {
   Id?: string;
   Arn?: string;

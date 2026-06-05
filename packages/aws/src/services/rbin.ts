@@ -99,7 +99,7 @@ export type NextToken = string;
 
 //# Schemas
 export type RetentionPeriodUnit = "DAYS" | (string & {});
-export const RetentionPeriodUnit = /*@__PURE__*/ S.String;
+export const RetentionPeriodUnit = S.String;
 export interface RetentionPeriod {
   RetentionPeriodValue: number;
   RetentionPeriodUnit: RetentionPeriodUnit;
@@ -126,7 +126,7 @@ export type ResourceType =
   | "EC2_IMAGE"
   | "EBS_VOLUME"
   | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
+export const ResourceType = S.String;
 export interface ResourceTag {
   ResourceTagKey: string;
   ResourceTagValue?: string;
@@ -140,7 +140,7 @@ export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
 export type ResourceTags = ResourceTag[];
 export const ResourceTags = /*@__PURE__*/ S.Array(ResourceTag);
 export type UnlockDelayUnit = "DAYS" | (string & {});
-export const UnlockDelayUnit = /*@__PURE__*/ S.String;
+export const UnlockDelayUnit = S.String;
 export interface UnlockDelay {
   UnlockDelayValue: number;
   UnlockDelayUnit: UnlockDelayUnit;
@@ -190,13 +190,13 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
 export type RuleStatus = "pending" | "available" | (string & {});
-export const RuleStatus = /*@__PURE__*/ S.String;
+export const RuleStatus = S.String;
 export type LockState =
   | "locked"
   | "pending_unlock"
   | "unlocked"
   | (string & {});
-export const LockState = /*@__PURE__*/ S.String;
+export const LockState = S.String;
 export interface CreateRuleResponse {
   Identifier?: string;
   RetentionPeriod?: RetentionPeriod;
@@ -230,12 +230,12 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
 export type ServiceQuotaExceededExceptionReason =
   | "SERVICE_QUOTA_EXCEEDED"
   | (string & {});
-export const ServiceQuotaExceededExceptionReason = /*@__PURE__*/ S.String;
+export const ServiceQuotaExceededExceptionReason = S.String;
 export type ValidationExceptionReason =
   | "INVALID_PAGE_TOKEN"
   | "INVALID_PARAMETER_VALUE"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface DeleteRuleRequest {
   Identifier: string;
 }
@@ -260,9 +260,9 @@ export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRuleResponse",
 }) as any as S.Schema<DeleteRuleResponse>;
 export type ConflictExceptionReason = "INVALID_RULE_STATE" | (string & {});
-export const ConflictExceptionReason = /*@__PURE__*/ S.String;
+export const ConflictExceptionReason = S.String;
 export type ResourceNotFoundExceptionReason = "RULE_NOT_FOUND" | (string & {});
-export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
+export const ResourceNotFoundExceptionReason = S.String;
 export interface GetRuleRequest {
   Identifier: string;
 }

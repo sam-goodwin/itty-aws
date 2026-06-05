@@ -216,9 +216,9 @@ export const SigningMaterial = /*@__PURE__*/ S.suspend(() =>
   identifier: "SigningMaterial",
 }) as any as S.Schema<SigningMaterial>;
 export type EncryptionAlgorithm = "RSA" | "ECDSA" | (string & {});
-export const EncryptionAlgorithm = /*@__PURE__*/ S.String;
+export const EncryptionAlgorithm = S.String;
 export type HashAlgorithm = "SHA1" | "SHA256" | (string & {});
-export const HashAlgorithm = /*@__PURE__*/ S.String;
+export const HashAlgorithm = S.String;
 export interface SigningConfigurationOverrides {
   encryptionAlgorithm?: EncryptionAlgorithm;
   hashAlgorithm?: HashAlgorithm;
@@ -236,7 +236,7 @@ export type ImageFormat =
   | "JSONEmbedded"
   | "JSONDetached"
   | (string & {});
-export const ImageFormat = /*@__PURE__*/ S.String;
+export const ImageFormat = S.String;
 export interface SigningPlatformOverrides {
   signingConfiguration?: SigningConfigurationOverrides;
   signingImageFormat?: ImageFormat;
@@ -259,7 +259,7 @@ export type SigningStatus =
   | "Failed"
   | "Succeeded"
   | (string & {});
-export const SigningStatus = /*@__PURE__*/ S.String;
+export const SigningStatus = S.String;
 export interface SigningJobRevocationRecord {
   reason?: string;
   revokedAt?: Date;
@@ -394,7 +394,7 @@ export const GetSigningPlatformRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSigningPlatformRequest",
 }) as any as S.Schema<GetSigningPlatformRequest>;
 export type Category = "AWSIoT" | (string & {});
-export const Category = /*@__PURE__*/ S.String;
+export const Category = S.String;
 export type EncryptionAlgorithms = EncryptionAlgorithm[];
 export const EncryptionAlgorithms = /*@__PURE__*/ S.Array(EncryptionAlgorithm);
 export interface EncryptionAlgorithmOptions {
@@ -507,7 +507,7 @@ export const SigningProfileRevocationRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "SigningProfileRevocationRecord",
 }) as any as S.Schema<SigningProfileRevocationRecord>;
 export type ValidityType = "DAYS" | "MONTHS" | "YEARS" | (string & {});
-export const ValidityType = /*@__PURE__*/ S.String;
+export const ValidityType = S.String;
 export interface SignatureValidityPeriod {
   value?: number;
   type?: ValidityType;
@@ -522,7 +522,7 @@ export type SigningProfileStatus =
   | "Canceled"
   | "Revoked"
   | (string & {});
-export const SigningProfileStatus = /*@__PURE__*/ S.String;
+export const SigningProfileStatus = S.String;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,

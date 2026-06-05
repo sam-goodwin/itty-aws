@@ -99,7 +99,7 @@ export type StartSelectorType =
   | "EARLIEST"
   | "CONTINUATION_TOKEN"
   | (string & {});
-export const StartSelectorType = /*@__PURE__*/ S.String;
+export const StartSelectorType = S.String;
 export interface StartSelector {
   StartSelectorType: StartSelectorType;
   AfterFragmentNumber?: string;

@@ -146,7 +146,7 @@ export const ReferenceInput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReferenceInput" }) as any as S.Schema<ReferenceInput>;
 export type TaskType = "INVESTIGATION" | "EVALUATION" | (string & {});
-export const TaskType = /*@__PURE__*/ S.String;
+export const TaskType = S.String;
 export type Priority =
   | "CRITICAL"
   | "HIGH"
@@ -154,7 +154,7 @@ export type Priority =
   | "LOW"
   | "MINIMAL"
   | (string & {});
-export const Priority = /*@__PURE__*/ S.String;
+export const Priority = S.String;
 export interface CreateBacklogTaskRequest {
   agentSpaceId: string;
   reference?: ReferenceInput;
@@ -218,7 +218,7 @@ export type TaskStatus =
   | "TIMED_OUT"
   | "CANCELED"
   | (string & {});
-export const TaskStatus = /*@__PURE__*/ S.String;
+export const TaskStatus = S.String;
 export interface Task {
   agentSpaceId: string;
   taskId: string;
@@ -281,7 +281,7 @@ export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export type UserType = "IAM" | "IDC" | "IDP" | (string & {});
-export const UserType = /*@__PURE__*/ S.String;
+export const UserType = S.String;
 export interface CreateChatRequest {
   agentSpaceId: string;
   userId: string;
@@ -439,9 +439,9 @@ export type RecommendationStatus =
   | "COMPLETED"
   | "UPDATE_IN_PROGRESS"
   | (string & {});
-export const RecommendationStatus = /*@__PURE__*/ S.String;
+export const RecommendationStatus = S.String;
 export type RecommendationPriority = "HIGH" | "MEDIUM" | "LOW" | (string & {});
-export const RecommendationPriority = /*@__PURE__*/ S.String;
+export const RecommendationPriority = S.String;
 export interface Recommendation {
   agentSpaceArn: string;
   recommendationId: string;
@@ -511,9 +511,9 @@ export const TaskFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaskFilter" }) as any as S.Schema<TaskFilter>;
 export type TaskSortField = "CREATED_AT" | "PRIORITY" | (string & {});
-export const TaskSortField = /*@__PURE__*/ S.String;
+export const TaskSortField = S.String;
 export type TaskSortOrder = "ASC" | "DESC" | (string & {});
-export const TaskSortOrder = /*@__PURE__*/ S.String;
+export const TaskSortOrder = S.String;
 export interface ListBacklogTasksRequest {
   agentSpaceId: string;
   filter?: TaskFilter;
@@ -645,7 +645,7 @@ export type ExecutionStatus =
   | "CANCELED"
   | "TIMED_OUT"
   | (string & {});
-export const ExecutionStatus = /*@__PURE__*/ S.String;
+export const ExecutionStatus = S.String;
 export interface Execution {
   agentSpaceId: string;
   executionId: string;
@@ -682,9 +682,9 @@ export const ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListExecutionsResponse",
 }) as any as S.Schema<ListExecutionsResponse>;
 export type GoalStatus = "ACTIVE" | "PAUSED" | "COMPLETE" | (string & {});
-export const GoalStatus = /*@__PURE__*/ S.String;
+export const GoalStatus = S.String;
 export type GoalType = "CUSTOMER_DEFINED" | "ONCALL_REPORT" | (string & {});
-export const GoalType = /*@__PURE__*/ S.String;
+export const GoalType = S.String;
 export interface ListGoalsRequest {
   agentSpaceId: string;
   status?: GoalStatus;
@@ -723,7 +723,7 @@ export const GoalContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ description: S.String, objectives: S.String }),
 ).annotate({ identifier: "GoalContent" }) as any as S.Schema<GoalContent>;
 export type SchedulerState = "ENABLED" | "DISABLED" | (string & {});
-export const SchedulerState = /*@__PURE__*/ S.String;
+export const SchedulerState = S.String;
 export interface GoalSchedule {
   state: SchedulerState;
   expression?: string;
@@ -777,7 +777,7 @@ export const ListGoalsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGoalsResponse",
 }) as any as S.Schema<ListGoalsResponse>;
 export type OrderType = "ASC" | "DESC" | (string & {});
-export const OrderType = /*@__PURE__*/ S.String;
+export const OrderType = S.String;
 export interface ListJournalRecordsRequest {
   agentSpaceId: string;
   executionId: string;
@@ -1636,7 +1636,7 @@ export const DeleteAgentSpaceOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAgentSpaceOutput",
 }) as any as S.Schema<DeleteAgentSpaceOutput>;
 export type AuthFlow = "iam" | "idc" | "idp" | (string & {});
-export const AuthFlow = /*@__PURE__*/ S.String;
+export const AuthFlow = S.String;
 export interface DisableOperatorAppInput {
   agentSpaceId: string;
   authFlow?: AuthFlow;
@@ -1874,7 +1874,7 @@ export const ListAgentSpacesOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAgentSpacesOutput",
 }) as any as S.Schema<ListAgentSpacesOutput>;
 export type SourceAccountType = "source" | (string & {});
-export const SourceAccountType = /*@__PURE__*/ S.String;
+export const SourceAccountType = S.String;
 export interface SourceAwsConfiguration {
   accountId: string;
   accountType: SourceAccountType;
@@ -1892,7 +1892,7 @@ export const SourceAwsConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceAwsConfiguration",
 }) as any as S.Schema<SourceAwsConfiguration>;
 export type MonitorAccountType = "monitor" | (string & {});
-export const MonitorAccountType = /*@__PURE__*/ S.String;
+export const MonitorAccountType = S.String;
 export interface AWSConfiguration {
   assumableRoleArn: string;
   accountId: string;
@@ -1908,7 +1908,7 @@ export const AWSConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AWSConfiguration",
 }) as any as S.Schema<AWSConfiguration>;
 export type GithubRepoOwnerType = "organization" | "user" | (string & {});
-export const GithubRepoOwnerType = /*@__PURE__*/ S.String;
+export const GithubRepoOwnerType = S.String;
 export interface GitHubConfiguration {
   repoName: string;
   repoId: string;
@@ -2423,7 +2423,7 @@ export type ValidationStatus =
   | "invalid"
   | "pending-confirmation"
   | (string & {});
-export const ValidationStatus = /*@__PURE__*/ S.String;
+export const ValidationStatus = S.String;
 export interface Association {
   agentSpaceId: string;
   createdAt: Date;
@@ -2450,7 +2450,7 @@ export type WebhookType =
   | "gitlab"
   | "pagerduty"
   | (string & {});
-export const WebhookType = /*@__PURE__*/ S.String;
+export const WebhookType = S.String;
 export interface GenericWebhook {
   webhookUrl?: string;
   webhookId?: string;
@@ -2691,7 +2691,7 @@ export const ListOfSubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type ListOfSecurityGroupIds = string[];
 export const ListOfSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export type IpAddressType = "IPV4" | "IPV6" | "DUAL_STACK" | (string & {});
-export const IpAddressType = /*@__PURE__*/ S.String;
+export const IpAddressType = S.String;
 export type PortRanges = string[];
 export const PortRanges = /*@__PURE__*/ S.Array(S.String);
 export interface ServiceManagedInput {
@@ -2764,7 +2764,7 @@ export type PrivateConnectionType =
   | "SELF_MANAGED"
   | "SERVICE_MANAGED"
   | (string & {});
-export const PrivateConnectionType = /*@__PURE__*/ S.String;
+export const PrivateConnectionType = S.String;
 export type PrivateConnectionStatus =
   | "ACTIVE"
   | "CREATE_IN_PROGRESS"
@@ -2772,7 +2772,7 @@ export type PrivateConnectionStatus =
   | "DELETE_IN_PROGRESS"
   | "DELETE_FAILED"
   | (string & {});
-export const PrivateConnectionStatus = /*@__PURE__*/ S.String;
+export const PrivateConnectionStatus = S.String;
 export interface CreatePrivateConnectionOutput {
   name: string;
   type: PrivateConnectionType;
@@ -2990,7 +2990,7 @@ export type PostRegisterServiceSupportedService =
   | "mcpserversplunk"
   | "azureidentity"
   | (string & {});
-export const PostRegisterServiceSupportedService = /*@__PURE__*/ S.String;
+export const PostRegisterServiceSupportedService = S.String;
 export type ExchangeParameters = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -3243,7 +3243,7 @@ export const MCPServerDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "MCPServerDetails",
 }) as any as S.Schema<MCPServerDetails>;
 export type GitLabTokenType = "personal" | "group" | (string & {});
-export const GitLabTokenType = /*@__PURE__*/ S.String;
+export const GitLabTokenType = S.String;
 export interface GitLabDetails {
   targetUrl: string;
   tokenType: GitLabTokenType;
@@ -3259,7 +3259,7 @@ export const GitLabDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GitLabDetails" }) as any as S.Schema<GitLabDetails>;
 export type NewRelicRegion = "US" | "EU" | (string & {});
-export const NewRelicRegion = /*@__PURE__*/ S.String;
+export const NewRelicRegion = S.String;
 export type NewRelicApplicationIds = string[];
 export const NewRelicApplicationIds = /*@__PURE__*/ S.Array(S.String);
 export type NewRelicEntityGuids = string[];
@@ -3301,7 +3301,7 @@ export const NewRelicServiceDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "NewRelicServiceDetails",
 }) as any as S.Schema<NewRelicServiceDetails>;
 export type EventChannelType = "webhook" | (string & {});
-export const EventChannelType = /*@__PURE__*/ S.String;
+export const EventChannelType = S.String;
 export interface EventChannelDetails {
   type?: EventChannelType;
 }
@@ -3633,7 +3633,7 @@ export type Service =
   | "mcpserversplunk"
   | "azureidentity"
   | (string & {});
-export const Service = /*@__PURE__*/ S.String;
+export const Service = S.String;
 export type DocumentList = any[];
 export const DocumentList = /*@__PURE__*/ S.Array(S.Any);
 export interface RegisteredGithubServiceDetails {
@@ -3665,7 +3665,7 @@ export type MCPServerAuthorizationMethod =
   | "api-key"
   | "bearer-token"
   | (string & {});
-export const MCPServerAuthorizationMethod = /*@__PURE__*/ S.String;
+export const MCPServerAuthorizationMethod = S.String;
 export interface RegisteredMCPServerDetails {
   name: string;
   endpoint: string;

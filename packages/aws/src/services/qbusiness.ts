@@ -211,7 +211,7 @@ export type MaxResultsIntegerForListWebExperiencesRequest = number;
 export type QIamActions = string[];
 export const QIamActions = /*@__PURE__*/ S.Array(S.String);
 export type PermissionConditionOperator = "StringEquals" | (string & {});
-export const PermissionConditionOperator = /*@__PURE__*/ S.String;
+export const PermissionConditionOperator = S.String;
 export type PermissionConditionValues = string[];
 export const PermissionConditionValues = /*@__PURE__*/ S.Array(S.String);
 export interface PermissionCondition {
@@ -270,7 +270,7 @@ export type ValidationExceptionReason =
   | "FIELD_VALIDATION_FAILED"
   | "UNKNOWN_OPERATION"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -326,7 +326,7 @@ export type ErrorCode =
   | "ResourceInactive"
   | "ResourceNotFound"
   | (string & {});
-export const ErrorCode = /*@__PURE__*/ S.String;
+export const ErrorCode = S.String;
 export interface ErrorDetail {
   errorMessage?: string;
   errorCode?: ErrorCode;
@@ -431,11 +431,11 @@ export type ContentType =
   | "JSON"
   | "MD"
   | (string & {});
-export const ContentType = /*@__PURE__*/ S.String;
+export const ContentType = S.String;
 export type ReadAccessType = "ALLOW" | "DENY" | (string & {});
-export const ReadAccessType = /*@__PURE__*/ S.String;
+export const ReadAccessType = S.String;
 export type MembershipType = "INDEX" | "DATASOURCE" | (string & {});
-export const MembershipType = /*@__PURE__*/ S.String;
+export const MembershipType = S.String;
 export interface PrincipalUser {
   id?: string;
   access: ReadAccessType;
@@ -470,7 +470,7 @@ export const Principal = /*@__PURE__*/ S.Union([
 export type Principals = Principal[];
 export const Principals = /*@__PURE__*/ S.Array(Principal);
 export type MemberRelation = "AND" | "OR" | (string & {});
-export const MemberRelation = /*@__PURE__*/ S.String;
+export const MemberRelation = S.String;
 export interface AccessControl {
   principals: Principal[];
   memberRelation?: MemberRelation;
@@ -508,7 +508,7 @@ export type DocumentEnrichmentConditionOperator =
   | "NOT_EXISTS"
   | "BEGINS_WITH"
   | (string & {});
-export const DocumentEnrichmentConditionOperator = /*@__PURE__*/ S.String;
+export const DocumentEnrichmentConditionOperator = S.String;
 export interface DocumentAttributeCondition {
   key: string;
   operator: DocumentEnrichmentConditionOperator;
@@ -524,7 +524,7 @@ export const DocumentAttributeCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "DocumentAttributeCondition",
 }) as any as S.Schema<DocumentAttributeCondition>;
 export type AttributeValueOperator = "DELETE" | (string & {});
-export const AttributeValueOperator = /*@__PURE__*/ S.String;
+export const AttributeValueOperator = S.String;
 export interface DocumentAttributeTarget {
   key: string;
   value?: DocumentAttributeValue;
@@ -540,7 +540,7 @@ export const DocumentAttributeTarget = /*@__PURE__*/ S.suspend(() =>
   identifier: "DocumentAttributeTarget",
 }) as any as S.Schema<DocumentAttributeTarget>;
 export type DocumentContentOperator = "DELETE" | (string & {});
-export const DocumentContentOperator = /*@__PURE__*/ S.String;
+export const DocumentContentOperator = S.String;
 export interface InlineDocumentEnrichmentConfiguration {
   condition?: DocumentAttributeCondition;
   target?: DocumentAttributeTarget;
@@ -592,7 +592,7 @@ export const DocumentEnrichmentConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "DocumentEnrichmentConfiguration",
 }) as any as S.Schema<DocumentEnrichmentConfiguration>;
 export type ImageExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
-export const ImageExtractionStatus = /*@__PURE__*/ S.String;
+export const ImageExtractionStatus = S.String;
 export interface ImageExtractionConfiguration {
   imageExtractionStatus: ImageExtractionStatus;
 }
@@ -602,7 +602,7 @@ export const ImageExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageExtractionConfiguration",
 }) as any as S.Schema<ImageExtractionConfiguration>;
 export type AudioExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
-export const AudioExtractionStatus = /*@__PURE__*/ S.String;
+export const AudioExtractionStatus = S.String;
 export interface AudioExtractionConfiguration {
   audioExtractionStatus: AudioExtractionStatus;
 }
@@ -612,7 +612,7 @@ export const AudioExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AudioExtractionConfiguration",
 }) as any as S.Schema<AudioExtractionConfiguration>;
 export type VideoExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
-export const VideoExtractionStatus = /*@__PURE__*/ S.String;
+export const VideoExtractionStatus = S.String;
 export interface VideoExtractionConfiguration {
   videoExtractionStatus: VideoExtractionStatus;
 }
@@ -724,7 +724,7 @@ export const CancelSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelSubscriptionRequest",
 }) as any as S.Schema<CancelSubscriptionRequest>;
 export type SubscriptionType = "Q_LITE" | "Q_BUSINESS" | (string & {});
-export const SubscriptionType = /*@__PURE__*/ S.String;
+export const SubscriptionType = S.String;
 export interface SubscriptionDetails {
   type?: SubscriptionType;
 }
@@ -754,7 +754,7 @@ export type ChatMode =
   | "CREATOR_MODE"
   | "PLUGIN_MODE"
   | (string & {});
-export const ChatMode = /*@__PURE__*/ S.String;
+export const ChatMode = S.String;
 export interface PluginConfiguration {
   pluginId: string;
 }
@@ -1016,7 +1016,7 @@ export type SystemMessageType =
   | "RESPONSE"
   | "GROUNDED_RESPONSE"
   | (string & {});
-export const SystemMessageType = /*@__PURE__*/ S.String;
+export const SystemMessageType = S.String;
 export interface TextOutputEvent {
   systemMessageType?: SystemMessageType;
   conversationId?: string;
@@ -1054,7 +1054,7 @@ export const ImageSourceDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageSourceDetails",
 }) as any as S.Schema<ImageSourceDetails>;
 export type AudioExtractionType = "TRANSCRIPT" | "SUMMARY" | (string & {});
-export const AudioExtractionType = /*@__PURE__*/ S.String;
+export const AudioExtractionType = S.String;
 export interface AudioSourceDetails {
   mediaId?: string;
   mediaMimeType?: string;
@@ -1074,7 +1074,7 @@ export const AudioSourceDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "AudioSourceDetails",
 }) as any as S.Schema<AudioSourceDetails>;
 export type VideoExtractionType = "TRANSCRIPT" | "SUMMARY" | (string & {});
-export const VideoExtractionType = /*@__PURE__*/ S.String;
+export const VideoExtractionType = S.String;
 export interface VideoSourceDetails {
   mediaId?: string;
   mediaMimeType?: string;
@@ -1199,14 +1199,14 @@ export type PluginType =
   | "SMARTSHEET"
   | "ASANA"
   | (string & {});
-export const PluginType = /*@__PURE__*/ S.String;
+export const PluginType = S.String;
 export type ActionPayloadFieldType =
   | "STRING"
   | "NUMBER"
   | "ARRAY"
   | "BOOLEAN"
   | (string & {});
-export const ActionPayloadFieldType = /*@__PURE__*/ S.String;
+export const ActionPayloadFieldType = S.String;
 export interface ActionReviewPayloadFieldAllowedValue {
   value?: any;
   displayValue?: any;
@@ -1277,7 +1277,7 @@ export const ActionReviewEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionReviewEvent",
 }) as any as S.Schema<ActionReviewEvent>;
 export type AttachmentStatus = "FAILED" | "SUCCESS" | (string & {});
-export const AttachmentStatus = /*@__PURE__*/ S.String;
+export const AttachmentStatus = S.String;
 export interface AttachmentOutput {
   name?: string;
   status?: AttachmentStatus;
@@ -1650,7 +1650,7 @@ export const CreateAnonymousWebExperienceUrlResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateAnonymousWebExperienceUrlResponse",
 }) as any as S.Schema<CreateAnonymousWebExperienceUrlResponse>;
 export type ResponseConfigurationType = "ALL" | (string & {});
-export const ResponseConfigurationType = /*@__PURE__*/ S.String;
+export const ResponseConfigurationType = S.String;
 export interface InstructionCollection {
   responseLength?: string;
   targetAudience?: string;
@@ -2091,9 +2091,9 @@ export type ResponseScope =
   | "ENTERPRISE_CONTENT_ONLY"
   | "EXTENDED_KNOWLEDGE_ENABLED"
   | (string & {});
-export const ResponseScope = /*@__PURE__*/ S.String;
+export const ResponseScope = S.String;
 export type OrchestrationControl = "ENABLED" | "DISABLED" | (string & {});
-export const OrchestrationControl = /*@__PURE__*/ S.String;
+export const OrchestrationControl = S.String;
 export interface AppliedOrchestrationConfiguration {
   control: OrchestrationControl;
 }
@@ -2134,7 +2134,7 @@ export type RuleType =
   | "CONTENT_BLOCKER_RULE"
   | "CONTENT_RETRIEVAL_RULE"
   | (string & {});
-export const RuleType = /*@__PURE__*/ S.String;
+export const RuleType = S.String;
 export interface ContentBlockerRule {
   systemMessageOverride?: string;
 }
@@ -2207,7 +2207,7 @@ export const TopicConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type TopicConfigurations = TopicConfiguration[];
 export const TopicConfigurations = /*@__PURE__*/ S.Array(TopicConfiguration);
 export type CreatorModeControl = "ENABLED" | "DISABLED" | (string & {});
-export const CreatorModeControl = /*@__PURE__*/ S.String;
+export const CreatorModeControl = S.String;
 export interface AppliedCreatorModeConfiguration {
   creatorModeControl: CreatorModeControl;
 }
@@ -2220,7 +2220,7 @@ export type HallucinationReductionControl =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
-export const HallucinationReductionControl = /*@__PURE__*/ S.String;
+export const HallucinationReductionControl = S.String;
 export interface HallucinationReductionConfiguration {
   hallucinationReductionControl?: HallucinationReductionControl;
 }
@@ -2288,7 +2288,7 @@ export type ChatResponseConfigurationStatus =
   | "FAILED"
   | "ACTIVE"
   | (string & {});
-export const ChatResponseConfigurationStatus = /*@__PURE__*/ S.String;
+export const ChatResponseConfigurationStatus = S.String;
 export interface ChatResponseConfigurationDetail {
   responseConfigurations?: { [key: string]: ResponseConfiguration | undefined };
   responseConfigurationSummary?: string;
@@ -2329,7 +2329,7 @@ export const GetChatResponseConfigurationResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetChatResponseConfigurationResponse",
 }) as any as S.Schema<GetChatResponseConfigurationResponse>;
 export type OutputFormat = "RAW" | "EXTRACTED" | (string & {});
-export const OutputFormat = /*@__PURE__*/ S.String;
+export const OutputFormat = S.String;
 export interface GetDocumentContentRequest {
   applicationId: string;
   indexId: string;
@@ -2404,7 +2404,7 @@ export type GroupStatus =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const GroupStatus = /*@__PURE__*/ S.String;
+export const GroupStatus = S.String;
 export interface GroupStatusDetail {
   status?: GroupStatus;
   lastUpdatedAt?: Date;
@@ -2727,7 +2727,7 @@ export type DataSourceSyncJobStatus =
   | "ABORTED"
   | "SYNCING_INDEXING"
   | (string & {});
-export const DataSourceSyncJobStatus = /*@__PURE__*/ S.String;
+export const DataSourceSyncJobStatus = S.String;
 export interface ListDataSourceSyncJobsRequest {
   dataSourceId: string;
   applicationId: string;
@@ -2866,7 +2866,7 @@ export type DocumentStatus =
   | "DELETED"
   | "DOCUMENT_FAILED_TO_INDEX"
   | (string & {});
-export const DocumentStatus = /*@__PURE__*/ S.String;
+export const DocumentStatus = S.String;
 export interface DocumentDetails {
   documentId?: string;
   status?: DocumentStatus;
@@ -2984,7 +2984,7 @@ export const ListMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMessagesRequest",
 }) as any as S.Schema<ListMessagesRequest>;
 export type MessageType = "USER" | "SYSTEM" | (string & {});
-export const MessageType = /*@__PURE__*/ S.String;
+export const MessageType = S.String;
 export interface Message {
   messageId?: string;
   body?: string;
@@ -3131,7 +3131,7 @@ export type PluginTypeCategory =
   | "Productivity"
   | "Ticketing and incident management"
   | (string & {});
-export const PluginTypeCategory = /*@__PURE__*/ S.String;
+export const PluginTypeCategory = S.String;
 export interface PluginTypeMetadataSummary {
   type?: PluginType;
   category?: PluginTypeCategory;
@@ -3244,7 +3244,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type MessageUsefulness = "USEFUL" | "NOT_USEFUL" | (string & {});
-export const MessageUsefulness = /*@__PURE__*/ S.String;
+export const MessageUsefulness = S.String;
 export type MessageUsefulnessReason =
   | "NOT_FACTUALLY_CORRECT"
   | "HARMFUL_OR_UNSAFE"
@@ -3259,7 +3259,7 @@ export type MessageUsefulnessReason =
   | "NOT_CONCISE"
   | "OTHER"
   | (string & {});
-export const MessageUsefulnessReason = /*@__PURE__*/ S.String;
+export const MessageUsefulnessReason = S.String;
 export interface MessageUsefulnessFeedback {
   usefulness: MessageUsefulness;
   reason?: MessageUsefulnessReason;
@@ -3437,7 +3437,7 @@ export type ScoreConfidence =
   | "LOW"
   | "NOT_AVAILABLE"
   | (string & {});
-export const ScoreConfidence = /*@__PURE__*/ S.String;
+export const ScoreConfidence = S.String;
 export interface ScoreAttributes {
   scoreConfidence?: ScoreConfidence;
 }
@@ -3809,7 +3809,7 @@ export type IdentityType =
   | "AWS_QUICKSIGHT_IDP"
   | "ANONYMOUS"
   | (string & {});
-export const IdentityType = /*@__PURE__*/ S.String;
+export const IdentityType = S.String;
 export type ClientIdsForOIDC = string[];
 export const ClientIdsForOIDC = /*@__PURE__*/ S.Array(S.String);
 export interface EncryptionConfiguration {
@@ -3821,7 +3821,7 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
 export type AttachmentsControlMode = "ENABLED" | "DISABLED" | (string & {});
-export const AttachmentsControlMode = /*@__PURE__*/ S.String;
+export const AttachmentsControlMode = S.String;
 export interface AttachmentsConfiguration {
   attachmentsControlMode: AttachmentsControlMode;
 }
@@ -3831,7 +3831,7 @@ export const AttachmentsConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttachmentsConfiguration",
 }) as any as S.Schema<AttachmentsConfiguration>;
 export type QAppsControlMode = "ENABLED" | "DISABLED" | (string & {});
-export const QAppsControlMode = /*@__PURE__*/ S.String;
+export const QAppsControlMode = S.String;
 export interface QAppsConfiguration {
   qAppsControlMode: QAppsControlMode;
 }
@@ -3841,7 +3841,7 @@ export const QAppsConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "QAppsConfiguration",
 }) as any as S.Schema<QAppsConfiguration>;
 export type PersonalizationControlMode = "ENABLED" | "DISABLED" | (string & {});
-export const PersonalizationControlMode = /*@__PURE__*/ S.String;
+export const PersonalizationControlMode = S.String;
 export interface PersonalizationConfiguration {
   personalizationControlMode: PersonalizationControlMode;
 }
@@ -3939,7 +3939,7 @@ export type ApplicationStatus =
   | "FAILED"
   | "UPDATING"
   | (string & {});
-export const ApplicationStatus = /*@__PURE__*/ S.String;
+export const ApplicationStatus = S.String;
 export interface AppliedAttachmentsConfiguration {
   attachmentsControlMode?: AttachmentsControlMode;
 }
@@ -3949,7 +3949,7 @@ export const AppliedAttachmentsConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppliedAttachmentsConfiguration",
 }) as any as S.Schema<AppliedAttachmentsConfiguration>;
 export type AutoSubscriptionStatus = "ENABLED" | "DISABLED" | (string & {});
-export const AutoSubscriptionStatus = /*@__PURE__*/ S.String;
+export const AutoSubscriptionStatus = S.String;
 export interface AutoSubscriptionConfiguration {
   autoSubscribe: AutoSubscriptionStatus;
   defaultSubscriptionType?: SubscriptionType;
@@ -4154,7 +4154,7 @@ export type DataAccessorAuthenticationType =
   | "AWS_IAM_IDC_TTI"
   | "AWS_IAM_IDC_AUTH_CODE"
   | (string & {});
-export const DataAccessorAuthenticationType = /*@__PURE__*/ S.String;
+export const DataAccessorAuthenticationType = S.String;
 export interface DataAccessorIdcTrustedTokenIssuerConfiguration {
   idcTrustedTokenIssuerArn: string;
 }
@@ -4420,7 +4420,7 @@ export const ListDataAccessorsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDataAccessorsResponse",
 }) as any as S.Schema<ListDataAccessorsResponse>;
 export type IndexType = "ENTERPRISE" | "STARTER" | (string & {});
-export const IndexType = /*@__PURE__*/ S.String;
+export const IndexType = S.String;
 export interface IndexCapacityConfiguration {
   units?: number;
 }
@@ -4500,16 +4500,16 @@ export type IndexStatus =
   | "FAILED"
   | "UPDATING"
   | (string & {});
-export const IndexStatus = /*@__PURE__*/ S.String;
+export const IndexStatus = S.String;
 export type AttributeType =
   | "STRING"
   | "STRING_LIST"
   | "NUMBER"
   | "DATE"
   | (string & {});
-export const AttributeType = /*@__PURE__*/ S.String;
+export const AttributeType = S.String;
 export type Status = "ENABLED" | "DISABLED" | (string & {});
-export const Status = /*@__PURE__*/ S.String;
+export const Status = S.String;
 export interface DocumentAttributeConfiguration {
   name?: string;
   type?: AttributeType;
@@ -4809,7 +4809,7 @@ export type DataSourceStatus =
   | "FAILED"
   | "UPDATING"
   | (string & {});
-export const DataSourceStatus = /*@__PURE__*/ S.String;
+export const DataSourceStatus = S.String;
 export interface GetDataSourceResponse {
   applicationId?: string;
   indexId?: string;
@@ -5070,7 +5070,7 @@ export const PluginAuthConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ idcAuthConfiguration: IdcAuthConfiguration }),
 ]);
 export type APISchemaType = "OPEN_API_V3" | (string & {});
-export const APISchemaType = /*@__PURE__*/ S.String;
+export const APISchemaType = S.String;
 export type APISchema =
   | { payload: string | redacted.Redacted<string>; s3?: never }
   | { payload?: never; s3: S3 };
@@ -5134,7 +5134,7 @@ export type PluginBuildStatus =
   | "DELETE_IN_PROGRESS"
   | "DELETE_FAILED"
   | (string & {});
-export const PluginBuildStatus = /*@__PURE__*/ S.String;
+export const PluginBuildStatus = S.String;
 export interface CreatePluginResponse {
   pluginId?: string;
   pluginArn?: string;
@@ -5174,7 +5174,7 @@ export const GetPluginRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPluginRequest",
 }) as any as S.Schema<GetPluginRequest>;
 export type PluginState = "ENABLED" | "DISABLED" | (string & {});
-export const PluginState = /*@__PURE__*/ S.String;
+export const PluginState = S.String;
 export interface GetPluginResponse {
   applicationId?: string;
   pluginId?: string;
@@ -5334,7 +5334,7 @@ export const ListPluginsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPluginsResponse",
 }) as any as S.Schema<ListPluginsResponse>;
 export type RetrieverType = "NATIVE_INDEX" | "KENDRA_INDEX" | (string & {});
-export const RetrieverType = /*@__PURE__*/ S.String;
+export const RetrieverType = S.String;
 export type DocumentAttributeBoostingLevel =
   | "NONE"
   | "LOW"
@@ -5344,12 +5344,12 @@ export type DocumentAttributeBoostingLevel =
   | "ONE"
   | "TWO"
   | (string & {});
-export const DocumentAttributeBoostingLevel = /*@__PURE__*/ S.String;
+export const DocumentAttributeBoostingLevel = S.String;
 export type NumberAttributeBoostingType =
   | "PRIORITIZE_LARGER_VALUES"
   | "PRIORITIZE_SMALLER_VALUES"
   | (string & {});
-export const NumberAttributeBoostingType = /*@__PURE__*/ S.String;
+export const NumberAttributeBoostingType = S.String;
 export interface NumberAttributeBoostingConfiguration {
   boostingLevel: DocumentAttributeBoostingLevel;
   boostingType?: NumberAttributeBoostingType;
@@ -5374,7 +5374,7 @@ export type StringAttributeValueBoostingLevel =
   | "FOUR"
   | "FIVE"
   | (string & {});
-export const StringAttributeValueBoostingLevel = /*@__PURE__*/ S.String;
+export const StringAttributeValueBoostingLevel = S.String;
 export type StringAttributeValueBoosting = {
   [key: string]: StringAttributeValueBoostingLevel | undefined;
 };
@@ -5565,7 +5565,7 @@ export const GetRetrieverRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRetrieverRequest",
 }) as any as S.Schema<GetRetrieverRequest>;
 export type RetrieverStatus = "CREATING" | "ACTIVE" | "FAILED" | (string & {});
-export const RetrieverStatus = /*@__PURE__*/ S.String;
+export const RetrieverStatus = S.String;
 export interface GetRetrieverResponse {
   applicationId?: string;
   retrieverId?: string;
@@ -5720,7 +5720,7 @@ export type WebExperienceSamplePromptsControlMode =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
-export const WebExperienceSamplePromptsControlMode = /*@__PURE__*/ S.String;
+export const WebExperienceSamplePromptsControlMode = S.String;
 export type WebExperienceOrigins = string[];
 export const WebExperienceOrigins = /*@__PURE__*/ S.Array(S.String);
 export interface SamlProviderConfiguration {
@@ -5866,7 +5866,7 @@ export type WebExperienceStatus =
   | "FAILED"
   | "PENDING_AUTH_CONFIG"
   | (string & {});
-export const WebExperienceStatus = /*@__PURE__*/ S.String;
+export const WebExperienceStatus = S.String;
 export interface SamlConfiguration {
   metadataXML: string;
   roleArn: string;

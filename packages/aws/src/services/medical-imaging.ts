@@ -198,7 +198,7 @@ export const CopyImageSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CopyImageSetRequest",
 }) as any as S.Schema<CopyImageSetRequest>;
 export type ImageSetState = "ACTIVE" | "LOCKED" | "DELETED" | (string & {});
-export const ImageSetState = /*@__PURE__*/ S.String;
+export const ImageSetState = S.String;
 export type ImageSetWorkflowStatus =
   | "CREATED"
   | "COPIED"
@@ -215,7 +215,7 @@ export type ImageSetWorkflowStatus =
   | "IMPORTED"
   | "IMPORT_FAILED"
   | (string & {});
-export const ImageSetWorkflowStatus = /*@__PURE__*/ S.String;
+export const ImageSetWorkflowStatus = S.String;
 export interface CopySourceImageSetProperties {
   imageSetId: string;
   latestVersionId: string;
@@ -344,7 +344,7 @@ export type JobStatus =
   | "COMPLETED"
   | "FAILED"
   | (string & {});
-export const JobStatus = /*@__PURE__*/ S.String;
+export const JobStatus = S.String;
 export interface DICOMImportJobProperties {
   jobId: string;
   jobName: string;
@@ -465,7 +465,7 @@ export type StorageTier =
   | "FREQUENT_ACCESS"
   | "ARCHIVE_INSTANT_ACCESS"
   | (string & {});
-export const StorageTier = /*@__PURE__*/ S.String;
+export const StorageTier = S.String;
 export interface GetImageSetResponse {
   datastoreId: string;
   imageSetId: string;
@@ -840,7 +840,7 @@ export const SearchByAttributeValues = /*@__PURE__*/ S.Array(
   SearchByAttributeValue,
 );
 export type Operator = "EQUAL" | "BETWEEN" | (string & {});
-export const Operator = /*@__PURE__*/ S.String;
+export const Operator = S.String;
 export interface SearchFilter {
   values: SearchByAttributeValue[];
   operator: Operator;
@@ -851,13 +851,13 @@ export const SearchFilter = /*@__PURE__*/ S.suspend(() =>
 export type SearchFilters = SearchFilter[];
 export const SearchFilters = /*@__PURE__*/ S.Array(SearchFilter);
 export type SortOrder = "ASC" | "DESC" | (string & {});
-export const SortOrder = /*@__PURE__*/ S.String;
+export const SortOrder = S.String;
 export type SortField =
   | "updatedAt"
   | "createdAt"
   | "DICOMStudyDateAndTime"
   | (string & {});
-export const SortField = /*@__PURE__*/ S.String;
+export const SortField = S.String;
 export interface Sort {
   sortOrder: SortOrder;
   sortField: SortField;
@@ -1167,7 +1167,7 @@ export type LosslessStorageFormat =
   | "HTJ2K"
   | "JPEG_2000_LOSSLESS"
   | (string & {});
-export const LosslessStorageFormat = /*@__PURE__*/ S.String;
+export const LosslessStorageFormat = S.String;
 export interface CreateDatastoreRequest {
   datastoreName?: string;
   clientToken: string;
@@ -1204,7 +1204,7 @@ export type DatastoreStatus =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const DatastoreStatus = /*@__PURE__*/ S.String;
+export const DatastoreStatus = S.String;
 export interface CreateDatastoreResponse {
   datastoreId: string;
   datastoreStatus: DatastoreStatus;

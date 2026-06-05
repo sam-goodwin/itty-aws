@@ -124,9 +124,9 @@ export type StopReason = string;
 
 //# Schemas
 export type AcceptType = "DELIVERED" | "READ" | (string & {});
-export const AcceptType = /*@__PURE__*/ S.String;
+export const AcceptType = S.String;
 export type AcceptCodeValidation = "IGNORE" | "ENFORCE" | (string & {});
-export const AcceptCodeValidation = /*@__PURE__*/ S.String;
+export const AcceptCodeValidation = S.String;
 export interface AcceptPageRequest {
   PageId: string;
   ContactChannelId?: string;
@@ -161,7 +161,7 @@ export type ValidationExceptionReason =
   | "FIELD_VALIDATION_FAILED"
   | "OTHER"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
@@ -197,7 +197,7 @@ export type ContactType =
   | "ESCALATION"
   | "ONCALL_SCHEDULE"
   | (string & {});
-export const ContactType = /*@__PURE__*/ S.String;
+export const ContactType = S.String;
 export interface ChannelTargetInfo {
   ContactChannelId: string;
   RetryIntervalInMinutes?: number;
@@ -306,7 +306,7 @@ export const DependentEntity = /*@__PURE__*/ S.suspend(() =>
 export type DependentEntityList = DependentEntity[];
 export const DependentEntityList = /*@__PURE__*/ S.Array(DependentEntity);
 export type ChannelType = "SMS" | "VOICE" | "EMAIL" | (string & {});
-export const ChannelType = /*@__PURE__*/ S.String;
+export const ChannelType = S.String;
 export interface ContactChannelAddress {
   SimpleAddress?: string;
 }
@@ -372,7 +372,7 @@ export type DayOfWeek =
   | "SAT"
   | "SUN"
   | (string & {});
-export const DayOfWeek = /*@__PURE__*/ S.String;
+export const DayOfWeek = S.String;
 export interface WeeklySetting {
   DayOfWeek: DayOfWeek;
   HandOffTime: HandOffTime;
@@ -680,7 +680,7 @@ export const GetContactChannelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetContactChannelRequest",
 }) as any as S.Schema<GetContactChannelRequest>;
 export type ActivationStatus = "ACTIVATED" | "NOT_ACTIVATED" | (string & {});
-export const ActivationStatus = /*@__PURE__*/ S.String;
+export const ActivationStatus = S.String;
 export interface GetContactChannelResult {
   ContactArn: string;
   ContactChannelArn: string;
@@ -955,7 +955,7 @@ export type ReceiptType =
   | "SENT"
   | "STOP"
   | (string & {});
-export const ReceiptType = /*@__PURE__*/ S.String;
+export const ReceiptType = S.String;
 export interface Receipt {
   ContactChannelArn?: string;
   ReceiptType: ReceiptType;
@@ -1150,7 +1150,7 @@ export const ListPreviewRotationShiftsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPreviewRotationShiftsRequest",
 }) as any as S.Schema<ListPreviewRotationShiftsRequest>;
 export type ShiftType = "REGULAR" | "OVERRIDDEN" | (string & {});
-export const ShiftType = /*@__PURE__*/ S.String;
+export const ShiftType = S.String;
 export interface ShiftDetails {
   OverriddenContactIds: string[];
 }

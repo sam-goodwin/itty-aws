@@ -131,9 +131,9 @@ export type ExportStatus =
   | "SUCCEEDED"
   | "FAILED"
   | (string & {});
-export const ExportStatus = /*@__PURE__*/ S.String;
+export const ExportStatus = S.String;
 export type S3SseAlgorithm = "AES256" | "KMS" | (string & {});
-export const S3SseAlgorithm = /*@__PURE__*/ S.String;
+export const S3SseAlgorithm = S.String;
 export interface GetExportResponse {
   exportArn: string;
   clientToken: string;

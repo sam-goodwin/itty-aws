@@ -193,7 +193,7 @@ export type RevisionLocationType =
   | "String"
   | "AppSpecContent"
   | (string & {});
-export const RevisionLocationType = /*@__PURE__*/ S.String;
+export const RevisionLocationType = S.String;
 export type BundleType =
   | "tar"
   | "tgz"
@@ -201,7 +201,7 @@ export type BundleType =
   | "YAML"
   | "JSON"
   | (string & {});
-export const BundleType = /*@__PURE__*/ S.String;
+export const BundleType = S.String;
 export interface S3Location {
   bucket?: string;
   key?: string;
@@ -348,7 +348,7 @@ export const BatchGetApplicationsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetApplicationsInput",
 }) as any as S.Schema<BatchGetApplicationsInput>;
 export type ComputePlatform = "Server" | "Lambda" | "ECS" | (string & {});
-export const ComputePlatform = /*@__PURE__*/ S.String;
+export const ComputePlatform = S.String;
 export interface ApplicationInfo {
   applicationId?: string;
   applicationName?: string;
@@ -406,7 +406,7 @@ export type EC2TagFilterType =
   | "VALUE_ONLY"
   | "KEY_AND_VALUE"
   | (string & {});
-export const EC2TagFilterType = /*@__PURE__*/ S.String;
+export const EC2TagFilterType = S.String;
 export interface EC2TagFilter {
   Key?: string;
   Value?: string;
@@ -426,7 +426,7 @@ export type TagFilterType =
   | "VALUE_ONLY"
   | "KEY_AND_VALUE"
   | (string & {});
-export const TagFilterType = /*@__PURE__*/ S.String;
+export const TagFilterType = S.String;
 export interface TagFilter {
   Key?: string;
   Value?: string;
@@ -469,7 +469,7 @@ export type TriggerEventType =
   | "InstanceFailure"
   | "InstanceReady"
   | (string & {});
-export const TriggerEventType = /*@__PURE__*/ S.String;
+export const TriggerEventType = S.String;
 export type TriggerEventTypeList = TriggerEventType[];
 export const TriggerEventTypeList = /*@__PURE__*/ S.Array(TriggerEventType);
 export interface TriggerConfig {
@@ -513,7 +513,7 @@ export type AutoRollbackEvent =
   | "DEPLOYMENT_STOP_ON_ALARM"
   | "DEPLOYMENT_STOP_ON_REQUEST"
   | (string & {});
-export const AutoRollbackEvent = /*@__PURE__*/ S.String;
+export const AutoRollbackEvent = S.String;
 export type AutoRollbackEventsList = AutoRollbackEvent[];
 export const AutoRollbackEventsList = /*@__PURE__*/ S.Array(AutoRollbackEvent);
 export interface AutoRollbackConfiguration {
@@ -529,12 +529,12 @@ export const AutoRollbackConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoRollbackConfiguration",
 }) as any as S.Schema<AutoRollbackConfiguration>;
 export type DeploymentType = "IN_PLACE" | "BLUE_GREEN" | (string & {});
-export const DeploymentType = /*@__PURE__*/ S.String;
+export const DeploymentType = S.String;
 export type DeploymentOption =
   | "WITH_TRAFFIC_CONTROL"
   | "WITHOUT_TRAFFIC_CONTROL"
   | (string & {});
-export const DeploymentOption = /*@__PURE__*/ S.String;
+export const DeploymentOption = S.String;
 export interface DeploymentStyle {
   deploymentType?: DeploymentType;
   deploymentOption?: DeploymentOption;
@@ -548,9 +548,9 @@ export const DeploymentStyle = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentStyle",
 }) as any as S.Schema<DeploymentStyle>;
 export type OutdatedInstancesStrategy = "UPDATE" | "IGNORE" | (string & {});
-export const OutdatedInstancesStrategy = /*@__PURE__*/ S.String;
+export const OutdatedInstancesStrategy = S.String;
 export type InstanceAction = "TERMINATE" | "KEEP_ALIVE" | (string & {});
-export const InstanceAction = /*@__PURE__*/ S.String;
+export const InstanceAction = S.String;
 export interface BlueInstanceTerminationOption {
   action?: InstanceAction;
   terminationWaitTimeInMinutes?: number;
@@ -567,7 +567,7 @@ export type DeploymentReadyAction =
   | "CONTINUE_DEPLOYMENT"
   | "STOP_DEPLOYMENT"
   | (string & {});
-export const DeploymentReadyAction = /*@__PURE__*/ S.String;
+export const DeploymentReadyAction = S.String;
 export interface DeploymentReadyOption {
   actionOnTimeout?: DeploymentReadyAction;
   waitTimeInMinutes?: number;
@@ -584,7 +584,7 @@ export type GreenFleetProvisioningAction =
   | "DISCOVER_EXISTING"
   | "COPY_AUTO_SCALING_GROUP"
   | (string & {});
-export const GreenFleetProvisioningAction = /*@__PURE__*/ S.String;
+export const GreenFleetProvisioningAction = S.String;
 export interface GreenFleetProvisioningOption {
   action?: GreenFleetProvisioningAction;
 }
@@ -676,7 +676,7 @@ export type DeploymentStatus =
   | "Stopped"
   | "Ready"
   | (string & {});
-export const DeploymentStatus = /*@__PURE__*/ S.String;
+export const DeploymentStatus = S.String;
 export interface LastDeploymentInfo {
   deploymentId?: string;
   status?: DeploymentStatus;
@@ -824,7 +824,7 @@ export type InstanceStatus =
   | "Unknown"
   | "Ready"
   | (string & {});
-export const InstanceStatus = /*@__PURE__*/ S.String;
+export const InstanceStatus = S.String;
 export type LifecycleErrorCode =
   | "Success"
   | "ScriptMissing"
@@ -833,7 +833,7 @@ export type LifecycleErrorCode =
   | "ScriptFailed"
   | "UnknownError"
   | (string & {});
-export const LifecycleErrorCode = /*@__PURE__*/ S.String;
+export const LifecycleErrorCode = S.String;
 export interface Diagnostics {
   errorCode?: LifecycleErrorCode;
   scriptName?: string;
@@ -856,7 +856,7 @@ export type LifecycleEventStatus =
   | "Skipped"
   | "Unknown"
   | (string & {});
-export const LifecycleEventStatus = /*@__PURE__*/ S.String;
+export const LifecycleEventStatus = S.String;
 export interface LifecycleEvent {
   lifecycleEventName?: string;
   diagnostics?: Diagnostics;
@@ -876,7 +876,7 @@ export const LifecycleEvent = /*@__PURE__*/ S.suspend(() =>
 export type LifecycleEventList = LifecycleEvent[];
 export const LifecycleEventList = /*@__PURE__*/ S.Array(LifecycleEvent);
 export type InstanceType = "Blue" | "Green" | (string & {});
-export const InstanceType = /*@__PURE__*/ S.String;
+export const InstanceType = S.String;
 export interface InstanceSummary {
   deploymentId?: string;
   instanceId?: string;
@@ -967,7 +967,7 @@ export type ErrorCode =
   | "TIMEOUT"
   | "CLOUDFORMATION_STACK_FAILURE"
   | (string & {});
-export const ErrorCode = /*@__PURE__*/ S.String;
+export const ErrorCode = S.String;
 export interface ErrorInformation {
   code?: ErrorCode;
   message?: string;
@@ -1007,7 +1007,7 @@ export type DeploymentCreator =
   | "CloudFormationRollback"
   | "autoscalingTermination"
   | (string & {});
-export const DeploymentCreator = /*@__PURE__*/ S.String;
+export const DeploymentCreator = S.String;
 export interface RollbackInfo {
   rollbackDeploymentId?: string;
   rollbackTriggeringDeploymentId?: string;
@@ -1041,7 +1041,7 @@ export type FileExistsBehavior =
   | "OVERWRITE"
   | "RETAIN"
   | (string & {});
-export const FileExistsBehavior = /*@__PURE__*/ S.String;
+export const FileExistsBehavior = S.String;
 export type DeploymentStatusMessageList = string[];
 export const DeploymentStatusMessageList = /*@__PURE__*/ S.Array(S.String);
 export interface RelatedDeployments {
@@ -1161,7 +1161,7 @@ export type DeploymentTargetType =
   | "ECSTarget"
   | "CloudFormationTarget"
   | (string & {});
-export const DeploymentTargetType = /*@__PURE__*/ S.String;
+export const DeploymentTargetType = S.String;
 export type TargetStatus =
   | "Pending"
   | "InProgress"
@@ -1171,9 +1171,9 @@ export type TargetStatus =
   | "Unknown"
   | "Ready"
   | (string & {});
-export const TargetStatus = /*@__PURE__*/ S.String;
+export const TargetStatus = S.String;
 export type TargetLabel = "Blue" | "Green" | (string & {});
-export const TargetLabel = /*@__PURE__*/ S.String;
+export const TargetLabel = S.String;
 export interface InstanceTarget {
   deploymentId?: string;
   targetId?: string;
@@ -1378,7 +1378,7 @@ export type DeploymentWaitType =
   | "READY_WAIT"
   | "TERMINATION_WAIT"
   | (string & {});
-export const DeploymentWaitType = /*@__PURE__*/ S.String;
+export const DeploymentWaitType = S.String;
 export interface ContinueDeploymentInput {
   deploymentId?: string;
   deploymentWaitType?: DeploymentWaitType;
@@ -1491,7 +1491,7 @@ export type MinimumHealthyHostsType =
   | "HOST_COUNT"
   | "FLEET_PERCENT"
   | (string & {});
-export const MinimumHealthyHostsType = /*@__PURE__*/ S.String;
+export const MinimumHealthyHostsType = S.String;
 export interface MinimumHealthyHosts {
   type?: MinimumHealthyHostsType;
   value?: number;
@@ -1509,7 +1509,7 @@ export type TrafficRoutingType =
   | "TimeBasedLinear"
   | "AllAtOnce"
   | (string & {});
-export const TrafficRoutingType = /*@__PURE__*/ S.String;
+export const TrafficRoutingType = S.String;
 export interface TimeBasedCanary {
   canaryPercentage?: number;
   canaryInterval?: number;
@@ -1552,7 +1552,7 @@ export type MinimumHealthyHostsPerZoneType =
   | "HOST_COUNT"
   | "FLEET_PERCENT"
   | (string & {});
-export const MinimumHealthyHostsPerZoneType = /*@__PURE__*/ S.String;
+export const MinimumHealthyHostsPerZoneType = S.String;
 export interface MinimumHealthyHostsPerZone {
   type?: MinimumHealthyHostsPerZoneType;
   value?: number;
@@ -2073,15 +2073,15 @@ export type ApplicationRevisionSortBy =
   | "firstUsedTime"
   | "lastUsedTime"
   | (string & {});
-export const ApplicationRevisionSortBy = /*@__PURE__*/ S.String;
+export const ApplicationRevisionSortBy = S.String;
 export type SortOrder = "ascending" | "descending" | (string & {});
-export const SortOrder = /*@__PURE__*/ S.String;
+export const SortOrder = S.String;
 export type ListStateFilterAction =
   | "include"
   | "exclude"
   | "ignore"
   | (string & {});
-export const ListStateFilterAction = /*@__PURE__*/ S.String;
+export const ListStateFilterAction = S.String;
 export interface ListApplicationRevisionsInput {
   applicationName: string;
   sortBy?: ApplicationRevisionSortBy;
@@ -2321,7 +2321,7 @@ export type TargetFilterName =
   | "TargetStatus"
   | "ServerInstanceLabel"
   | (string & {});
-export const TargetFilterName = /*@__PURE__*/ S.String;
+export const TargetFilterName = S.String;
 export type FilterValueList = string[];
 export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
 export type TargetFilters = { [key in TargetFilterName]?: string[] };
@@ -2398,7 +2398,7 @@ export const ListGitHubAccountTokenNamesOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGitHubAccountTokenNamesOutput",
 }) as any as S.Schema<ListGitHubAccountTokenNamesOutput>;
 export type RegistrationStatus = "Registered" | "Deregistered" | (string & {});
-export const RegistrationStatus = /*@__PURE__*/ S.String;
+export const RegistrationStatus = S.String;
 export interface ListOnPremisesInstancesInput {
   registrationStatus?: RegistrationStatus;
   tagFilters?: TagFilter[];
@@ -2631,7 +2631,7 @@ export const StopDeploymentInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopDeploymentInput",
 }) as any as S.Schema<StopDeploymentInput>;
 export type StopStatus = "Pending" | "Succeeded" | (string & {});
-export const StopStatus = /*@__PURE__*/ S.String;
+export const StopStatus = S.String;
 export interface StopDeploymentOutput {
   status?: StopStatus;
   statusMessage?: string;

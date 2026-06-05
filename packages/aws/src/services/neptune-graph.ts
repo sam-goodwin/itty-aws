@@ -188,18 +188,18 @@ export type ValidationExceptionReason =
   | "UNSUPPORTED_OPERATION"
   | "BAD_REQUEST"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export type QueryLanguage = "OPEN_CYPHER" | (string & {});
-export const QueryLanguage = /*@__PURE__*/ S.String;
+export const QueryLanguage = S.String;
 export type DocumentValuedMap = { [key: string]: any | undefined };
 export const DocumentValuedMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Any.pipe(S.optional),
 );
 export type PlanCacheType = "ENABLED" | "DISABLED" | "AUTO" | (string & {});
-export const PlanCacheType = /*@__PURE__*/ S.String;
+export const PlanCacheType = S.String;
 export type ExplainMode = "STATIC" | "DETAILS" | (string & {});
-export const ExplainMode = /*@__PURE__*/ S.String;
+export const ExplainMode = S.String;
 export interface ExecuteQueryInput {
   graphIdentifier: string;
   queryString: string;
@@ -246,7 +246,7 @@ export const ExecuteQueryOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecuteQueryOutput",
 }) as any as S.Schema<ExecuteQueryOutput>;
 export type ConflictExceptionReason = "CONCURRENT_MODIFICATION" | (string & {});
-export const ConflictExceptionReason = /*@__PURE__*/ S.String;
+export const ConflictExceptionReason = S.String;
 export type UnprocessableExceptionReason =
   | "QUERY_TIMEOUT"
   | "INTERNAL_LIMIT_EXCEEDED"
@@ -254,9 +254,9 @@ export type UnprocessableExceptionReason =
   | "STORAGE_LIMIT_EXCEEDED"
   | "PARTITION_FULL"
   | (string & {});
-export const UnprocessableExceptionReason = /*@__PURE__*/ S.String;
+export const UnprocessableExceptionReason = S.String;
 export type GraphSummaryMode = "BASIC" | "DETAILED" | (string & {});
-export const GraphSummaryMode = /*@__PURE__*/ S.String;
+export const GraphSummaryMode = S.String;
 export interface GetGraphSummaryInput {
   graphIdentifier: string;
   mode?: GraphSummaryMode;
@@ -401,7 +401,7 @@ export const GetQueryInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetQueryInput" }) as any as S.Schema<GetQueryInput>;
 export type QueryState = "RUNNING" | "WAITING" | "CANCELLING" | (string & {});
-export const QueryState = /*@__PURE__*/ S.String;
+export const QueryState = S.String;
 export interface GetQueryOutput {
   id?: string;
   queryString?: string;
@@ -424,7 +424,7 @@ export type QueryStateInput =
   | "WAITING"
   | "CANCELLING"
   | (string & {});
-export const QueryStateInput = /*@__PURE__*/ S.String;
+export const QueryStateInput = S.String;
 export interface ListQueriesInput {
   graphIdentifier: string;
   maxResults: number;
@@ -622,7 +622,7 @@ export type GraphStatus =
   | "STOPPING"
   | "STOPPED"
   | (string & {});
-export const GraphStatus = /*@__PURE__*/ S.String;
+export const GraphStatus = S.String;
 export interface CreateGraphOutput {
   id: string;
   name: string;
@@ -1181,7 +1181,7 @@ export type PrivateGraphEndpointStatus =
   | "DELETING"
   | "FAILED"
   | (string & {});
-export const PrivateGraphEndpointStatus = /*@__PURE__*/ S.String;
+export const PrivateGraphEndpointStatus = S.String;
 export interface CreatePrivateGraphEndpointOutput {
   vpcId: string;
   subnetIds: string[];
@@ -1366,7 +1366,7 @@ export type SnapshotStatus =
   | "DELETING"
   | "FAILED"
   | (string & {});
-export const SnapshotStatus = /*@__PURE__*/ S.String;
+export const SnapshotStatus = S.String;
 export interface CreateGraphSnapshotOutput {
   id: string;
   name: string;
@@ -1571,11 +1571,11 @@ export type ExportTaskStatus =
   | "CANCELLED"
   | "DELETED"
   | (string & {});
-export const ExportTaskStatus = /*@__PURE__*/ S.String;
+export const ExportTaskStatus = S.String;
 export type ExportFormat = "PARQUET" | "CSV" | (string & {});
-export const ExportFormat = /*@__PURE__*/ S.String;
+export const ExportFormat = S.String;
 export type ParquetType = "COLUMNAR" | (string & {});
-export const ParquetType = /*@__PURE__*/ S.String;
+export const ParquetType = S.String;
 export interface CancelExportTaskOutput {
   graphId: string;
   roleArn: string;
@@ -1628,7 +1628,7 @@ export type Format =
   | "PARQUET"
   | "NTRIPLES"
   | (string & {});
-export const Format = /*@__PURE__*/ S.String;
+export const Format = S.String;
 export type ImportTaskStatus =
   | "INITIALIZING"
   | "EXPORTING"
@@ -1642,7 +1642,7 @@ export type ImportTaskStatus =
   | "CANCELLED"
   | "DELETED"
   | (string & {});
-export const ImportTaskStatus = /*@__PURE__*/ S.String;
+export const ImportTaskStatus = S.String;
 export interface CancelImportTaskOutput {
   graphId?: string;
   taskId: string;
@@ -1686,7 +1686,7 @@ export const ImportOptions = /*@__PURE__*/ S.Union([
   S.Struct({ neptune: NeptuneImportOptions }),
 ]);
 export type BlankNodeHandling = "convertToIri" | (string & {});
-export const BlankNodeHandling = /*@__PURE__*/ S.String;
+export const BlankNodeHandling = S.String;
 export interface CreateGraphUsingImportTaskInput {
   graphName: string;
   tags?: { [key: string]: string | undefined };
@@ -1800,7 +1800,7 @@ export const ExportTaskDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExportTaskDetails",
 }) as any as S.Schema<ExportTaskDetails>;
 export type MultiValueHandlingType = "TO_LIST" | "PICK_FIRST" | (string & {});
-export const MultiValueHandlingType = /*@__PURE__*/ S.String;
+export const MultiValueHandlingType = S.String;
 export interface ExportFilterPropertyAttributes {
   outputType?: string;
   sourcePropertyName?: string;

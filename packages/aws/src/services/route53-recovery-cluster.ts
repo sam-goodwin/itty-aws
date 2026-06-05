@@ -104,7 +104,7 @@ export const GetRoutingControlStateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRoutingControlStateRequest",
 }) as any as S.Schema<GetRoutingControlStateRequest>;
 export type RoutingControlState = "On" | "Off" | (string & {});
-export const RoutingControlState = /*@__PURE__*/ S.String;
+export const RoutingControlState = S.String;
 export interface GetRoutingControlStateResponse {
   RoutingControlArn: string;
   RoutingControlState: RoutingControlState;
@@ -125,7 +125,7 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;

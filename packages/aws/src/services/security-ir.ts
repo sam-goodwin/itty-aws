@@ -124,7 +124,7 @@ export type ValidationExceptionReason =
   | "FIELD_VALIDATION_FAILED"
   | "OTHER"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -195,12 +195,12 @@ export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceOutput",
 }) as any as S.Schema<UntagResourceOutput>;
 export type ResolverType = "AWS" | "Self" | (string & {});
-export const ResolverType = /*@__PURE__*/ S.String;
+export const ResolverType = S.String;
 export type EngagementType =
   | "Security Incident"
   | "Investigation"
   | (string & {});
-export const EngagementType = /*@__PURE__*/ S.String;
+export const EngagementType = S.String;
 export type ImpactedAccounts = string[];
 export const ImpactedAccounts = /*@__PURE__*/ S.Array(S.String);
 export interface Watcher {
@@ -266,7 +266,7 @@ export type AwsRegion =
   | "us-west-1"
   | "us-west-2"
   | (string & {});
-export const AwsRegion = /*@__PURE__*/ S.String;
+export const AwsRegion = S.String;
 export interface ImpactedAwsRegion {
   region: AwsRegion;
 }
@@ -350,22 +350,22 @@ export type CaseStatus =
   | "Ready to Close"
   | "Closed"
   | (string & {});
-export const CaseStatus = /*@__PURE__*/ S.String;
+export const CaseStatus = S.String;
 export type PendingAction = "Customer" | "None" | (string & {});
-export const PendingAction = /*@__PURE__*/ S.String;
+export const PendingAction = S.String;
 export type ClosureCode =
   | "Investigation Completed"
   | "Not Resolved"
   | "False Positive"
   | "Duplicate"
   | (string & {});
-export const ClosureCode = /*@__PURE__*/ S.String;
+export const ClosureCode = S.String;
 export type CaseAttachmentStatus =
   | "Verified"
   | "Failed"
   | "Pending"
   | (string & {});
-export const CaseAttachmentStatus = /*@__PURE__*/ S.String;
+export const CaseAttachmentStatus = S.String;
 export interface CaseAttachmentAttributes {
   attachmentId: string;
   fileName: string | redacted.Redacted<string>;
@@ -846,7 +846,7 @@ export type ActionType =
   | "Investigation"
   | "Summarization"
   | (string & {});
-export const ActionType = /*@__PURE__*/ S.String;
+export const ActionType = S.String;
 export type ExecutionStatus =
   | "Pending"
   | "InProgress"
@@ -855,9 +855,9 @@ export type ExecutionStatus =
   | "Failed"
   | "Cancelled"
   | (string & {});
-export const ExecutionStatus = /*@__PURE__*/ S.String;
+export const ExecutionStatus = S.String;
 export type UsefulnessRating = "USEFUL" | "NOT_USEFUL" | (string & {});
-export const UsefulnessRating = /*@__PURE__*/ S.String;
+export const UsefulnessRating = S.String;
 export interface InvestigationFeedback {
   usefulness?: UsefulnessRating;
   comment?: string;
@@ -984,7 +984,7 @@ export type SelfManagedCaseStatus =
   | "Containment, Eradication and Recovery"
   | "Post-incident Activities"
   | (string & {});
-export const SelfManagedCaseStatus = /*@__PURE__*/ S.String;
+export const SelfManagedCaseStatus = S.String;
 export interface UpdateCaseStatusRequest {
   caseId: string;
   caseStatus: SelfManagedCaseStatus;
@@ -1070,7 +1070,7 @@ export type CommunicationType =
   | "Deregister Delegated Administrator"
   | "Disable AWS Service Access"
   | (string & {});
-export const CommunicationType = /*@__PURE__*/ S.String;
+export const CommunicationType = S.String;
 export type CommunicationPreferences = CommunicationType[];
 export const CommunicationPreferences =
   /*@__PURE__*/ S.Array(CommunicationType);
@@ -1093,7 +1093,7 @@ export const IncidentResponder = /*@__PURE__*/ S.suspend(() =>
 export type IncidentResponseTeam = IncidentResponder[];
 export const IncidentResponseTeam = /*@__PURE__*/ S.Array(IncidentResponder);
 export type OptInFeatureName = "Triage" | (string & {});
-export const OptInFeatureName = /*@__PURE__*/ S.String;
+export const OptInFeatureName = S.String;
 export interface OptInFeature {
   featureName: OptInFeatureName;
   isEnabled: boolean;
@@ -1162,9 +1162,9 @@ export type MembershipStatus =
   | "Cancelled"
   | "Terminated"
   | (string & {});
-export const MembershipStatus = /*@__PURE__*/ S.String;
+export const MembershipStatus = S.String;
 export type CustomerType = "Standalone" | "Organization" | (string & {});
-export const CustomerType = /*@__PURE__*/ S.String;
+export const CustomerType = S.String;
 export type OrganizationalUnits = string[];
 export const OrganizationalUnits = /*@__PURE__*/ S.Array(S.String);
 export interface MembershipAccountsConfigurations {
@@ -1358,12 +1358,12 @@ export type MembershipAccountRelationshipStatus =
   | "Disassociated"
   | "Unassociated"
   | (string & {});
-export const MembershipAccountRelationshipStatus = /*@__PURE__*/ S.String;
+export const MembershipAccountRelationshipStatus = S.String;
 export type MembershipAccountRelationshipType =
   | "Organization"
   | "Unrelated"
   | (string & {});
-export const MembershipAccountRelationshipType = /*@__PURE__*/ S.String;
+export const MembershipAccountRelationshipType = S.String;
 export interface GetMembershipAccountDetailItem {
   accountId?: string;
   relationshipStatus?: MembershipAccountRelationshipStatus;

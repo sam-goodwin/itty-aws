@@ -287,7 +287,7 @@ export const JobDriver = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JobDriver" }) as any as S.Schema<JobDriver>;
 export type TemplateParameterDataType = "NUMBER" | "STRING" | (string & {});
-export const TemplateParameterDataType = /*@__PURE__*/ S.String;
+export const TemplateParameterDataType = S.String;
 export interface TemplateParameterConfiguration {
   type?: TemplateParameterDataType;
   defaultValue?: string;
@@ -380,7 +380,7 @@ export const CreateJobTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateJobTemplateResponse",
 }) as any as S.Schema<CreateJobTemplateResponse>;
 export type AllowAWSToRetainLogs = "ENABLED" | "DISABLED" | (string & {});
-export const AllowAWSToRetainLogs = /*@__PURE__*/ S.String;
+export const AllowAWSToRetainLogs = S.String;
 export interface ManagedLogs {
   allowAWSToRetainLogs?: AllowAWSToRetainLogs;
   encryptionKeyArn?: string;
@@ -392,7 +392,7 @@ export const ManagedLogs = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ManagedLogs" }) as any as S.Schema<ManagedLogs>;
 export type PersistentAppUI = "ENABLED" | "DISABLED" | (string & {});
-export const PersistentAppUI = /*@__PURE__*/ S.String;
+export const PersistentAppUI = S.String;
 export interface CloudWatchMonitoringConfiguration {
   logGroupName: string;
   logStreamNamePrefix?: string;
@@ -511,7 +511,7 @@ export const CreateManagedEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateManagedEndpointResponse",
 }) as any as S.Schema<CreateManagedEndpointResponse>;
 export type ContainerProviderType = "EKS" | (string & {});
-export const ContainerProviderType = /*@__PURE__*/ S.String;
+export const ContainerProviderType = S.String;
 export interface EksInfo {
   namespace?: string;
   nodeLabel?: string;
@@ -567,7 +567,7 @@ export const LakeFormationConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "LakeFormationConfiguration",
 }) as any as S.Schema<LakeFormationConfiguration>;
 export type CertificateProviderType = "PEM" | (string & {});
-export const CertificateProviderType = /*@__PURE__*/ S.String;
+export const CertificateProviderType = S.String;
 export interface TLSCertificateConfiguration {
   certificateProviderType?: CertificateProviderType;
   publicCertificateSecretArn?: string;
@@ -827,14 +827,14 @@ export type JobRunState =
   | "CANCEL_PENDING"
   | "COMPLETED"
   | (string & {});
-export const JobRunState = /*@__PURE__*/ S.String;
+export const JobRunState = S.String;
 export type FailureReason =
   | "INTERNAL_ERROR"
   | "USER_ERROR"
   | "VALIDATION_ERROR"
   | "CLUSTER_UNAVAILABLE"
   | (string & {});
-export const FailureReason = /*@__PURE__*/ S.String;
+export const FailureReason = S.String;
 export interface RetryPolicyConfiguration {
   maxAttempts: number;
 }
@@ -987,7 +987,7 @@ export type EndpointState =
   | "TERMINATED"
   | "TERMINATED_WITH_ERRORS"
   | (string & {});
-export const EndpointState = /*@__PURE__*/ S.String;
+export const EndpointState = S.String;
 export interface Certificate {
   certificateArn?: string;
   certificateData?: string;
@@ -1125,7 +1125,7 @@ export type VirtualClusterState =
   | "TERMINATED"
   | "ARRESTED"
   | (string & {});
-export const VirtualClusterState = /*@__PURE__*/ S.String;
+export const VirtualClusterState = S.String;
 export interface VirtualCluster {
   id?: string;
   name?: string;

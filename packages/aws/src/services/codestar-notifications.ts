@@ -126,11 +126,11 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
 export type Targets = Target[];
 export const Targets = /*@__PURE__*/ S.Array(Target);
 export type DetailType = "BASIC" | "FULL" | (string & {});
-export const DetailType = /*@__PURE__*/ S.String;
+export const DetailType = S.String;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export type NotificationRuleStatus = "ENABLED" | "DISABLED" | (string & {});
-export const NotificationRuleStatus = /*@__PURE__*/ S.String;
+export const NotificationRuleStatus = S.String;
 export interface CreateNotificationRuleRequest {
   Name: string | redacted.Redacted<string>;
   EventTypeIds: string[];
@@ -266,7 +266,7 @@ export type TargetStatus =
   | "INACTIVE"
   | "DEACTIVATED"
   | (string & {});
-export const TargetStatus = /*@__PURE__*/ S.String;
+export const TargetStatus = S.String;
 export interface TargetSummary {
   TargetAddress?: string | redacted.Redacted<string>;
   TargetType?: string;
@@ -319,7 +319,7 @@ export type ListEventTypesFilterName =
   | "RESOURCE_TYPE"
   | "SERVICE_NAME"
   | (string & {});
-export const ListEventTypesFilterName = /*@__PURE__*/ S.String;
+export const ListEventTypesFilterName = S.String;
 export interface ListEventTypesFilter {
   Name: ListEventTypesFilterName;
   Value: string;
@@ -373,7 +373,7 @@ export type ListNotificationRulesFilterName =
   | "RESOURCE"
   | "TARGET_ADDRESS"
   | (string & {});
-export const ListNotificationRulesFilterName = /*@__PURE__*/ S.String;
+export const ListNotificationRulesFilterName = S.String;
 export interface ListNotificationRulesFilter {
   Name: ListNotificationRulesFilterName;
   Value: string;
@@ -465,7 +465,7 @@ export type ListTargetsFilterName =
   | "TARGET_ADDRESS"
   | "TARGET_STATUS"
   | (string & {});
-export const ListTargetsFilterName = /*@__PURE__*/ S.String;
+export const ListTargetsFilterName = S.String;
 export interface ListTargetsFilter {
   Name: ListTargetsFilterName;
   Value: string;

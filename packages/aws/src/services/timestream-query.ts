@@ -173,7 +173,7 @@ export const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotificationConfiguration",
 }) as any as S.Schema<NotificationConfiguration>;
 export type DimensionValueType = "VARCHAR" | (string & {});
-export const DimensionValueType = /*@__PURE__*/ S.String;
+export const DimensionValueType = S.String;
 export interface DimensionMapping {
   Name: string;
   DimensionValueType: DimensionValueType;
@@ -192,7 +192,7 @@ export type ScalarMeasureValueType =
   | "VARCHAR"
   | "TIMESTAMP"
   | (string & {});
-export const ScalarMeasureValueType = /*@__PURE__*/ S.String;
+export const ScalarMeasureValueType = S.String;
 export interface MultiMeasureAttributeMapping {
   SourceColumn: string;
   TargetMultiMeasureAttributeName?: string;
@@ -230,7 +230,7 @@ export type MeasureValueType =
   | "VARCHAR"
   | "MULTI"
   | (string & {});
-export const MeasureValueType = /*@__PURE__*/ S.String;
+export const MeasureValueType = S.String;
 export interface MixedMeasureMapping {
   MeasureName?: string;
   SourceColumn?: string;
@@ -292,7 +292,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type S3EncryptionOption = "SSE_S3" | "SSE_KMS" | (string & {});
-export const S3EncryptionOption = /*@__PURE__*/ S.String;
+export const S3EncryptionOption = S.String;
 export interface S3Configuration {
   BucketName: string;
   ObjectKeyPrefix?: string;
@@ -381,9 +381,9 @@ export type QueryPricingModel =
   | "BYTES_SCANNED"
   | "COMPUTE_UNITS"
   | (string & {});
-export const QueryPricingModel = /*@__PURE__*/ S.String;
+export const QueryPricingModel = S.String;
 export type ComputeMode = "ON_DEMAND" | "PROVISIONED" | (string & {});
-export const ComputeMode = /*@__PURE__*/ S.String;
+export const ComputeMode = S.String;
 export interface AccountSettingsNotificationConfiguration {
   SnsConfiguration?: SnsConfiguration;
   RoleArn: string;
@@ -402,7 +402,7 @@ export type LastUpdateStatus =
   | "FAILED"
   | "SUCCEEDED"
   | (string & {});
-export const LastUpdateStatus = /*@__PURE__*/ S.String;
+export const LastUpdateStatus = S.String;
 export interface LastUpdate {
   TargetQueryTCU?: number;
   Status?: LastUpdateStatus;
@@ -493,14 +493,14 @@ export const DescribeScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeScheduledQueryRequest",
 }) as any as S.Schema<DescribeScheduledQueryRequest>;
 export type ScheduledQueryState = "ENABLED" | "DISABLED" | (string & {});
-export const ScheduledQueryState = /*@__PURE__*/ S.String;
+export const ScheduledQueryState = S.String;
 export type ScheduledQueryRunStatus =
   | "AUTO_TRIGGER_SUCCESS"
   | "AUTO_TRIGGER_FAILURE"
   | "MANUAL_TRIGGER_SUCCESS"
   | "MANUAL_TRIGGER_FAILURE"
   | (string & {});
-export const ScheduledQueryRunStatus = /*@__PURE__*/ S.String;
+export const ScheduledQueryRunStatus = S.String;
 export interface ExecutionStats {
   ExecutionTimeInMillis?: number;
   DataWrites?: number;
@@ -678,7 +678,7 @@ export type ScheduledQueryInsightsMode =
   | "ENABLED_WITH_RATE_CONTROL"
   | "DISABLED"
   | (string & {});
-export const ScheduledQueryInsightsMode = /*@__PURE__*/ S.String;
+export const ScheduledQueryInsightsMode = S.String;
 export interface ScheduledQueryInsights {
   Mode: ScheduledQueryInsightsMode;
 }
@@ -839,7 +839,7 @@ export type ScalarType =
   | "UNKNOWN"
   | "INTEGER"
   | (string & {});
-export const ScalarType = /*@__PURE__*/ S.String;
+export const ScalarType = S.String;
 export interface ColumnInfo {
   Name?: string;
   Type: Type;
@@ -931,7 +931,7 @@ export type QueryInsightsMode =
   | "ENABLED_WITH_RATE_CONTROL"
   | "DISABLED"
   | (string & {});
-export const QueryInsightsMode = /*@__PURE__*/ S.String;
+export const QueryInsightsMode = S.String;
 export interface QueryInsights {
   Mode: QueryInsightsMode;
 }

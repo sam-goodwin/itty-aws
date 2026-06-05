@@ -154,7 +154,7 @@ export type TaggableResourceType =
   | "Evaluation"
   | "MLModel"
   | (string & {});
-export const TaggableResourceType = /*@__PURE__*/ S.String;
+export const TaggableResourceType = S.String;
 export interface AddTagsInput {
   Tags: Tag[];
   ResourceId: string;
@@ -468,7 +468,7 @@ export type MLModelType =
   | "BINARY"
   | "MULTICLASS"
   | (string & {});
-export const MLModelType = /*@__PURE__*/ S.String;
+export const MLModelType = S.String;
 export type TrainingParameters = { [key: string]: string | undefined };
 export const TrainingParameters = /*@__PURE__*/ S.Record(
   S.String,
@@ -538,7 +538,7 @@ export type RealtimeEndpointStatus =
   | "UPDATING"
   | "FAILED"
   | (string & {});
-export const RealtimeEndpointStatus = /*@__PURE__*/ S.String;
+export const RealtimeEndpointStatus = S.String;
 export interface RealtimeEndpointInfo {
   PeakRequestsPerSecond?: number;
   CreatedAt?: Date;
@@ -749,9 +749,9 @@ export type BatchPredictionFilterVariable =
   | "DataSourceId"
   | "DataURI"
   | (string & {});
-export const BatchPredictionFilterVariable = /*@__PURE__*/ S.String;
+export const BatchPredictionFilterVariable = S.String;
 export type SortOrder = "asc" | "dsc" | (string & {});
-export const SortOrder = /*@__PURE__*/ S.String;
+export const SortOrder = S.String;
 export interface DescribeBatchPredictionsInput {
   FilterVariable?: BatchPredictionFilterVariable;
   EQ?: string;
@@ -799,7 +799,7 @@ export type EntityStatus =
   | "COMPLETED"
   | "DELETED"
   | (string & {});
-export const EntityStatus = /*@__PURE__*/ S.String;
+export const EntityStatus = S.String;
 export interface BatchPrediction {
   BatchPredictionId?: string;
   MLModelId?: string;
@@ -862,7 +862,7 @@ export type DataSourceFilterVariable =
   | "DataLocationS3"
   | "IAMUser"
   | (string & {});
-export const DataSourceFilterVariable = /*@__PURE__*/ S.String;
+export const DataSourceFilterVariable = S.String;
 export interface DescribeDataSourcesInput {
   FilterVariable?: DataSourceFilterVariable;
   EQ?: string;
@@ -1001,7 +1001,7 @@ export type EvaluationFilterVariable =
   | "DataSourceId"
   | "DataURI"
   | (string & {});
-export const EvaluationFilterVariable = /*@__PURE__*/ S.String;
+export const EvaluationFilterVariable = S.String;
 export interface DescribeEvaluationsInput {
   FilterVariable?: EvaluationFilterVariable;
   EQ?: string;
@@ -1117,7 +1117,7 @@ export type MLModelFilterVariable =
   | "Algorithm"
   | "TrainingDataURI"
   | (string & {});
-export const MLModelFilterVariable = /*@__PURE__*/ S.String;
+export const MLModelFilterVariable = S.String;
 export interface DescribeMLModelsInput {
   FilterVariable?: MLModelFilterVariable;
   EQ?: string;
@@ -1159,7 +1159,7 @@ export const DescribeMLModelsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeMLModelsInput",
 }) as any as S.Schema<DescribeMLModelsInput>;
 export type Algorithm = "sgd" | (string & {});
-export const Algorithm = /*@__PURE__*/ S.String;
+export const Algorithm = S.String;
 export interface MLModel {
   MLModelId?: string;
   TrainingDataSourceId?: string;
@@ -1543,7 +1543,7 @@ export type DetailsAttributes =
   | "PredictiveModelType"
   | "Algorithm"
   | (string & {});
-export const DetailsAttributes = /*@__PURE__*/ S.String;
+export const DetailsAttributes = S.String;
 export type DetailsMap = { [key in DetailsAttributes]?: string };
 export const DetailsMap = /*@__PURE__*/ S.Record(
   DetailsAttributes,

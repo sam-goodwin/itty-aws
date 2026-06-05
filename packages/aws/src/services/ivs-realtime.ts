@@ -236,7 +236,7 @@ export const ParticipantAttributes = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type IngestProtocol = "RTMP" | "RTMPS" | (string & {});
-export const IngestProtocol = /*@__PURE__*/ S.String;
+export const IngestProtocol = S.String;
 export interface CreateIngestConfigurationRequest {
   name?: string;
   stageArn?: string;
@@ -417,18 +417,18 @@ export type ParticipantRecordingMediaType =
   | "AUDIO_ONLY"
   | "NONE"
   | (string & {});
-export const ParticipantRecordingMediaType = /*@__PURE__*/ S.String;
+export const ParticipantRecordingMediaType = S.String;
 export type ParticipantRecordingMediaTypeList = ParticipantRecordingMediaType[];
 export const ParticipantRecordingMediaTypeList = /*@__PURE__*/ S.Array(
   ParticipantRecordingMediaType,
 );
 export type ThumbnailStorageType = "SEQUENTIAL" | "LATEST" | (string & {});
-export const ThumbnailStorageType = /*@__PURE__*/ S.String;
+export const ThumbnailStorageType = S.String;
 export type ThumbnailStorageTypeList = ThumbnailStorageType[];
 export const ThumbnailStorageTypeList =
   /*@__PURE__*/ S.Array(ThumbnailStorageType);
 export type ThumbnailRecordingMode = "INTERVAL" | "DISABLED" | (string & {});
-export const ThumbnailRecordingMode = /*@__PURE__*/ S.String;
+export const ThumbnailRecordingMode = S.String;
 export interface ParticipantThumbnailConfiguration {
   targetIntervalSeconds?: number;
   storage?: ThumbnailStorageType[];
@@ -770,9 +770,9 @@ export type VideoAspectRatio =
   | "SQUARE"
   | "PORTRAIT"
   | (string & {});
-export const VideoAspectRatio = /*@__PURE__*/ S.String;
+export const VideoAspectRatio = S.String;
 export type VideoFillMode = "FILL" | "COVER" | "CONTAIN" | (string & {});
-export const VideoFillMode = /*@__PURE__*/ S.String;
+export const VideoFillMode = S.String;
 export interface GridConfiguration {
   featuredParticipantAttribute?: string;
   omitStoppedVideo?: boolean;
@@ -794,14 +794,14 @@ export const GridConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "GridConfiguration",
 }) as any as S.Schema<GridConfiguration>;
 export type PipBehavior = "STATIC" | "DYNAMIC" | (string & {});
-export const PipBehavior = /*@__PURE__*/ S.String;
+export const PipBehavior = S.String;
 export type PipPosition =
   | "TOP_LEFT"
   | "TOP_RIGHT"
   | "BOTTOM_LEFT"
   | "BOTTOM_RIGHT"
   | (string & {});
-export const PipPosition = /*@__PURE__*/ S.String;
+export const PipPosition = S.String;
 export interface PipConfiguration {
   featuredParticipantAttribute?: string;
   omitStoppedVideo?: boolean;
@@ -1072,7 +1072,7 @@ export type ParticipantProtocol =
   | "RTMP"
   | "RTMPS"
   | (string & {});
-export const ParticipantProtocol = /*@__PURE__*/ S.String;
+export const ParticipantProtocol = S.String;
 export interface Participant {
   participantId?: string;
   userId?: string;
@@ -1537,7 +1537,7 @@ export type EventErrorCode =
   | "INVALID_INPUT"
   | "INTERNAL_SERVER_EXCEPTION"
   | (string & {});
-export const EventErrorCode = /*@__PURE__*/ S.String;
+export const EventErrorCode = S.String;
 export interface ExchangedParticipantToken {
   capabilities?: string[];
   attributes?: { [key: string]: string | undefined };

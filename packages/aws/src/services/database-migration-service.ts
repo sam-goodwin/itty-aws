@@ -541,7 +541,7 @@ export type MigrationTypeValue =
   | "cdc"
   | "full-load-and-cdc"
   | (string & {});
-export const MigrationTypeValue = /*@__PURE__*/ S.String;
+export const MigrationTypeValue = S.String;
 export interface SourceDataSetting {
   CDCStartPosition?: string;
   CDCStartTime?: Date;
@@ -569,7 +569,7 @@ export type TablePreparationMode =
   | "truncate"
   | "drop-tables-on-target"
   | (string & {});
-export const TablePreparationMode = /*@__PURE__*/ S.String;
+export const TablePreparationMode = S.String;
 export interface TargetDataSetting {
   TablePreparationMode?: TablePreparationMode;
 }
@@ -742,7 +742,7 @@ export type DmsSslModeValue =
   | "verify-ca"
   | "verify-full"
   | (string & {});
-export const DmsSslModeValue = /*@__PURE__*/ S.String;
+export const DmsSslModeValue = S.String;
 export interface PostgreSqlDataProviderSettings {
   ServerName?: string;
   Port?: number;
@@ -947,13 +947,13 @@ export const IbmDb2zOsDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "IbmDb2zOsDataProviderSettings",
 }) as any as S.Schema<IbmDb2zOsDataProviderSettings>;
 export type AuthTypeValue = "no" | "password" | (string & {});
-export const AuthTypeValue = /*@__PURE__*/ S.String;
+export const AuthTypeValue = S.String;
 export type AuthMechanismValue =
   | "default"
   | "mongodb_cr"
   | "scram_sha_1"
   | (string & {});
-export const AuthMechanismValue = /*@__PURE__*/ S.String;
+export const AuthMechanismValue = S.String;
 export interface MongoDbDataProviderSettings {
   ServerName?: string;
   Port?: number;
@@ -1198,7 +1198,7 @@ export const CreateDataProviderResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDataProviderResponse",
 }) as any as S.Schema<CreateDataProviderResponse>;
 export type ReplicationEndpointTypeValue = "source" | "target" | (string & {});
-export const ReplicationEndpointTypeValue = /*@__PURE__*/ S.String;
+export const ReplicationEndpointTypeValue = S.String;
 export interface DynamoDbSettings {
   ServiceAccessRoleArn: string;
 }
@@ -1208,19 +1208,19 @@ export const DynamoDbSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamoDbSettings",
 }) as any as S.Schema<DynamoDbSettings>;
 export type CompressionTypeValue = "none" | "gzip" | (string & {});
-export const CompressionTypeValue = /*@__PURE__*/ S.String;
+export const CompressionTypeValue = S.String;
 export type EncryptionModeValue = "sse-s3" | "sse-kms" | (string & {});
-export const EncryptionModeValue = /*@__PURE__*/ S.String;
+export const EncryptionModeValue = S.String;
 export type DataFormatValue = "csv" | "parquet" | (string & {});
-export const DataFormatValue = /*@__PURE__*/ S.String;
+export const DataFormatValue = S.String;
 export type EncodingTypeValue =
   | "plain"
   | "plain-dictionary"
   | "rle-dictionary"
   | (string & {});
-export const EncodingTypeValue = /*@__PURE__*/ S.String;
+export const EncodingTypeValue = S.String;
 export type ParquetVersionValue = "parquet-1-0" | "parquet-2-0" | (string & {});
-export const ParquetVersionValue = /*@__PURE__*/ S.String;
+export const ParquetVersionValue = S.String;
 export type DatePartitionSequenceValue =
   | "YYYYMMDD"
   | "YYYYMMDDHH"
@@ -1228,14 +1228,14 @@ export type DatePartitionSequenceValue =
   | "MMYYYYDD"
   | "DDMMYYYY"
   | (string & {});
-export const DatePartitionSequenceValue = /*@__PURE__*/ S.String;
+export const DatePartitionSequenceValue = S.String;
 export type DatePartitionDelimiterValue =
   | "SLASH"
   | "UNDERSCORE"
   | "DASH"
   | "NONE"
   | (string & {});
-export const DatePartitionDelimiterValue = /*@__PURE__*/ S.String;
+export const DatePartitionDelimiterValue = S.String;
 export type CannedAclForObjectsValue =
   | "none"
   | "private"
@@ -1246,7 +1246,7 @@ export type CannedAclForObjectsValue =
   | "bucket-owner-read"
   | "bucket-owner-full-control"
   | (string & {});
-export const CannedAclForObjectsValue = /*@__PURE__*/ S.String;
+export const CannedAclForObjectsValue = S.String;
 export interface S3Settings {
   ServiceAccessRoleArn?: string;
   ExternalTableDefinition?: string;
@@ -1348,7 +1348,7 @@ export const DmsTransferSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "DmsTransferSettings",
 }) as any as S.Schema<DmsTransferSettings>;
 export type NestingLevelValue = "none" | "one" | (string & {});
-export const NestingLevelValue = /*@__PURE__*/ S.String;
+export const NestingLevelValue = S.String;
 export interface MongoDbSettings {
   Username?: string;
   Password?: string | redacted.Redacted<string>;
@@ -1390,7 +1390,7 @@ export const MongoDbSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "MongoDbSettings",
 }) as any as S.Schema<MongoDbSettings>;
 export type MessageFormatValue = "json" | "json-unformatted" | (string & {});
-export const MessageFormatValue = /*@__PURE__*/ S.String;
+export const MessageFormatValue = S.String;
 export interface KinesisSettings {
   StreamArn?: string;
   MessageFormat?: MessageFormatValue;
@@ -1427,14 +1427,14 @@ export type KafkaSecurityProtocol =
   | "ssl-encryption"
   | "sasl-ssl"
   | (string & {});
-export const KafkaSecurityProtocol = /*@__PURE__*/ S.String;
+export const KafkaSecurityProtocol = S.String;
 export type KafkaSaslMechanism = "scram-sha-512" | "plain" | (string & {});
-export const KafkaSaslMechanism = /*@__PURE__*/ S.String;
+export const KafkaSaslMechanism = S.String;
 export type KafkaSslEndpointIdentificationAlgorithm =
   | "none"
   | "https"
   | (string & {});
-export const KafkaSslEndpointIdentificationAlgorithm = /*@__PURE__*/ S.String;
+export const KafkaSslEndpointIdentificationAlgorithm = S.String;
 export interface KafkaSettings {
   Broker?: string;
   Topic?: string;
@@ -1600,17 +1600,17 @@ export type PluginNameValue =
   | "test-decoding"
   | "pglogical"
   | (string & {});
-export const PluginNameValue = /*@__PURE__*/ S.String;
+export const PluginNameValue = S.String;
 export type LongVarcharMappingType =
   | "wstring"
   | "clob"
   | "nclob"
   | (string & {});
-export const LongVarcharMappingType = /*@__PURE__*/ S.String;
+export const LongVarcharMappingType = S.String;
 export type DatabaseMode = "default" | "babelfish" | (string & {});
-export const DatabaseMode = /*@__PURE__*/ S.String;
+export const DatabaseMode = S.String;
 export type PostgreSQLAuthenticationMethod = "password" | "iam" | (string & {});
-export const PostgreSQLAuthenticationMethod = /*@__PURE__*/ S.String;
+export const PostgreSQLAuthenticationMethod = S.String;
 export interface PostgreSQLSettings {
   AfterConnectScript?: string;
   CaptureDdls?: boolean;
@@ -1677,9 +1677,9 @@ export type TargetDbType =
   | "specific-database"
   | "multiple-databases"
   | (string & {});
-export const TargetDbType = /*@__PURE__*/ S.String;
+export const TargetDbType = S.String;
 export type MySQLAuthenticationMethod = "password" | "iam" | (string & {});
-export const MySQLAuthenticationMethod = /*@__PURE__*/ S.String;
+export const MySQLAuthenticationMethod = S.String;
 export interface MySQLSettings {
   AfterConnectScript?: string;
   CleanSourceMetadataOnMismatch?: boolean;
@@ -1723,12 +1723,12 @@ export const MySQLSettings = /*@__PURE__*/ S.suspend(() =>
 export type IntegerList = number[];
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
 export type CharLengthSemantics = "default" | "char" | "byte" | (string & {});
-export const CharLengthSemantics = /*@__PURE__*/ S.String;
+export const CharLengthSemantics = S.String;
 export type OracleAuthenticationMethod =
   | "password"
   | "kerberos"
   | (string & {});
-export const OracleAuthenticationMethod = /*@__PURE__*/ S.String;
+export const OracleAuthenticationMethod = S.String;
 export interface OracleSettings {
   AddSupplementalLogging?: boolean;
   ArchivedLogDestId?: number;
@@ -1848,19 +1848,19 @@ export type SafeguardPolicy =
   | "exclusive-automatic-truncation"
   | "shared-automatic-truncation"
   | (string & {});
-export const SafeguardPolicy = /*@__PURE__*/ S.String;
+export const SafeguardPolicy = S.String;
 export type TlogAccessMode =
   | "BackupOnly"
   | "PreferBackup"
   | "PreferTlog"
   | "TlogOnly"
   | (string & {});
-export const TlogAccessMode = /*@__PURE__*/ S.String;
+export const TlogAccessMode = S.String;
 export type SqlServerAuthenticationMethod =
   | "password"
   | "kerberos"
   | (string & {});
-export const SqlServerAuthenticationMethod = /*@__PURE__*/ S.String;
+export const SqlServerAuthenticationMethod = S.String;
 export interface MicrosoftSQLServerSettings {
   Port?: number;
   BcpPacketSize?: number;
@@ -1975,13 +1975,13 @@ export type SslSecurityProtocolValue =
   | "plaintext"
   | "ssl-encryption"
   | (string & {});
-export const SslSecurityProtocolValue = /*@__PURE__*/ S.String;
+export const SslSecurityProtocolValue = S.String;
 export type RedisAuthTypeValue =
   | "none"
   | "auth-role"
   | "auth-token"
   | (string & {});
-export const RedisAuthTypeValue = /*@__PURE__*/ S.String;
+export const RedisAuthTypeValue = S.String;
 export interface RedisSettings {
   ServerName: string;
   Port: number;
@@ -3902,7 +3902,7 @@ export type EndpointSettingTypeValue =
   | "integer"
   | "enum"
   | (string & {});
-export const EndpointSettingTypeValue = /*@__PURE__*/ S.String;
+export const EndpointSettingTypeValue = S.String;
 export type EndpointSettingEnumValues = string[];
 export const EndpointSettingEnumValues = /*@__PURE__*/ S.Array(S.String);
 export interface EndpointSetting {
@@ -4028,7 +4028,7 @@ export const DescribeEngineVersionsMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeEngineVersionsMessage",
 }) as any as S.Schema<DescribeEngineVersionsMessage>;
 export type ReleaseStatusValues = "beta" | "prod" | (string & {});
-export const ReleaseStatusValues = /*@__PURE__*/ S.String;
+export const ReleaseStatusValues = S.String;
 export type AvailableUpgradesList = string[];
 export const AvailableUpgradesList = /*@__PURE__*/ S.Array(S.String);
 export interface EngineVersion {
@@ -4128,7 +4128,7 @@ export const DescribeEventCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeEventCategoriesResponse",
 }) as any as S.Schema<DescribeEventCategoriesResponse>;
 export type SourceType = "replication-instance" | (string & {});
-export const SourceType = /*@__PURE__*/ S.String;
+export const SourceType = S.String;
 export interface DescribeEventsMessage {
   SourceIdentifier?: string;
   SourceType?: SourceType;
@@ -4315,9 +4315,9 @@ export type VersionStatus =
   | "OUTDATED"
   | "UNSUPPORTED"
   | (string & {});
-export const VersionStatus = /*@__PURE__*/ S.String;
+export const VersionStatus = S.String;
 export type CollectorStatus = "UNREGISTERED" | "ACTIVE" | (string & {});
-export const CollectorStatus = /*@__PURE__*/ S.String;
+export const CollectorStatus = S.String;
 export interface CollectorHealthCheck {
   CollectorStatus?: CollectorStatus;
   LocalCollectorS3Access?: boolean;
@@ -4758,7 +4758,7 @@ export const DescribeInstanceProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeInstanceProfilesResponse",
 }) as any as S.Schema<DescribeInstanceProfilesResponse>;
 export type OriginTypeValue = "SOURCE" | "TARGET" | (string & {});
-export const OriginTypeValue = /*@__PURE__*/ S.String;
+export const OriginTypeValue = S.String;
 export interface DescribeMetadataModelMessage {
   SelectionRules: string;
   MigrationProjectIdentifier: string;
@@ -5463,7 +5463,7 @@ export type RefreshSchemasStatusTypeValue =
   | "failed"
   | "refreshing"
   | (string & {});
-export const RefreshSchemasStatusTypeValue = /*@__PURE__*/ S.String;
+export const RefreshSchemasStatusTypeValue = S.String;
 export interface RefreshSchemasStatus {
   EndpointArn?: string;
   ReplicationInstanceArn?: string;
@@ -6294,7 +6294,7 @@ export const DescribeTableStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeTableStatisticsResponse",
 }) as any as S.Schema<DescribeTableStatisticsResponse>;
 export type AssessmentReportType = "pdf" | "csv" | (string & {});
-export const AssessmentReportType = /*@__PURE__*/ S.String;
+export const AssessmentReportType = S.String;
 export type AssessmentReportTypesList = AssessmentReportType[];
 export const AssessmentReportTypesList =
   /*@__PURE__*/ S.Array(AssessmentReportType);
@@ -7058,7 +7058,7 @@ export const TableToReload = /*@__PURE__*/ S.suspend(() =>
 export type TableListToReload = TableToReload[];
 export const TableListToReload = /*@__PURE__*/ S.Array(TableToReload);
 export type ReloadOptionValue = "data-reload" | "validate-only" | (string & {});
-export const ReloadOptionValue = /*@__PURE__*/ S.String;
+export const ReloadOptionValue = S.String;
 export interface ReloadReplicationTablesMessage {
   ReplicationConfigArn: string;
   TablesToReload: TableToReload[];
@@ -7183,7 +7183,7 @@ export type StartReplicationMigrationTypeValue =
   | "resume-processing"
   | "start-replication"
   | (string & {});
-export const StartReplicationMigrationTypeValue = /*@__PURE__*/ S.String;
+export const StartReplicationMigrationTypeValue = S.String;
 export interface StartDataMigrationMessage {
   DataMigrationIdentifier: string;
   StartType: StartReplicationMigrationTypeValue;
@@ -7519,7 +7519,7 @@ export type StartReplicationTaskTypeValue =
   | "resume-processing"
   | "reload-target"
   | (string & {});
-export const StartReplicationTaskTypeValue = /*@__PURE__*/ S.String;
+export const StartReplicationTaskTypeValue = S.String;
 export interface StartReplicationTaskMessage {
   ReplicationTaskArn: string;
   StartReplicationTaskType: StartReplicationTaskTypeValue;

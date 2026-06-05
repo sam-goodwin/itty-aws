@@ -137,12 +137,12 @@ export const AssociateAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateAccountsResponse",
 }) as any as S.Schema<AssociateAccountsResponse>;
 export type RuleType = "OrganizationRule" | "AccountRule" | (string & {});
-export const RuleType = /*@__PURE__*/ S.String;
+export const RuleType = S.String;
 export type RuleApplyOrder =
   | "BeforeAccountRules"
   | "AfterAccountRules"
   | (string & {});
-export const RuleApplyOrder = /*@__PURE__*/ S.String;
+export const RuleApplyOrder = S.String;
 export type OrganizationConfigurationAccountIds = string[];
 export const OrganizationConfigurationAccountIds = /*@__PURE__*/ S.Array(
   S.String,
@@ -163,7 +163,7 @@ export type RecommendedActionType =
   | "SnapshotAndDeleteUnattachedEbsVolume"
   | "UpgradeEbsVolumeType"
   | (string & {});
-export const RecommendedActionType = /*@__PURE__*/ S.String;
+export const RecommendedActionType = S.String;
 export type RecommendedActionTypeList = RecommendedActionType[];
 export const RecommendedActionTypeList = /*@__PURE__*/ S.Array(
   RecommendedActionType,
@@ -182,7 +182,7 @@ export type ComparisonOperator =
   | "NumericGreaterThan"
   | "NumericGreaterThanEquals"
   | (string & {});
-export const ComparisonOperator = /*@__PURE__*/ S.String;
+export const ComparisonOperator = S.String;
 export type StringCriteriaValues = string[];
 export const StringCriteriaValues = /*@__PURE__*/ S.Array(S.String);
 export interface StringCriteriaCondition {
@@ -290,7 +290,7 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 export type RuleStatus = "Active" | "Inactive" | (string & {});
-export const RuleStatus = /*@__PURE__*/ S.String;
+export const RuleStatus = S.String;
 export interface Tag {
   key: string;
   value: string;
@@ -432,7 +432,7 @@ export type EventType =
   | "SnapshotAndDeleteUnattachedEbsVolume"
   | "UpgradeEbsVolumeType"
   | (string & {});
-export const EventType = /*@__PURE__*/ S.String;
+export const EventType = S.String;
 export type EventStatus =
   | "Ready"
   | "InProgress"
@@ -444,14 +444,14 @@ export type EventStatus =
   | "RollbackComplete"
   | "RollbackFailed"
   | (string & {});
-export const EventStatus = /*@__PURE__*/ S.String;
+export const EventStatus = S.String;
 export type ResourceType = "EbsVolume" | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
+export const ResourceType = S.String;
 export type SavingsEstimationMode =
   | "BeforeDiscount"
   | "AfterDiscount"
   | (string & {});
-export const SavingsEstimationMode = /*@__PURE__*/ S.String;
+export const SavingsEstimationMode = S.String;
 export interface EstimatedMonthlySavings {
   currency: string;
   beforeDiscountSavings: number;
@@ -578,9 +578,9 @@ export type EnrollmentStatus =
   | "Pending"
   | "Failed"
   | (string & {});
-export const EnrollmentStatus = /*@__PURE__*/ S.String;
+export const EnrollmentStatus = S.String;
 export type OrganizationRuleMode = "AnyAllowed" | "NoneAllowed" | (string & {});
-export const OrganizationRuleMode = /*@__PURE__*/ S.String;
+export const OrganizationRuleMode = S.String;
 export interface GetEnrollmentConfigurationResponse {
   status: EnrollmentStatus;
   statusReason?: string;
@@ -757,14 +757,14 @@ export type StepType =
   | "ModifyEbsVolume"
   | "CreateEbsVolume"
   | (string & {});
-export const StepType = /*@__PURE__*/ S.String;
+export const StepType = S.String;
 export type StepStatus =
   | "Ready"
   | "InProgress"
   | "Complete"
   | "Failed"
   | (string & {});
-export const StepStatus = /*@__PURE__*/ S.String;
+export const StepStatus = S.String;
 export interface AutomationEventStep {
   eventId?: string;
   stepId?: string;

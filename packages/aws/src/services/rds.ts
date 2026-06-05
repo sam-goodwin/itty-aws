@@ -552,7 +552,7 @@ export const CancelExportTaskMessage = /*@__PURE__*/ S.suspend(() =>
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export type ExportSourceType = "SNAPSHOT" | "CLUSTER" | (string & {});
-export const ExportSourceType = /*@__PURE__*/ S.String;
+export const ExportSourceType = S.String;
 export interface ExportTask {
   ExportTaskIdentifier?: string;
   SourceArn?: string;
@@ -688,7 +688,7 @@ export type StorageEncryptionType =
   | "sse-kms"
   | "sse-rds"
   | (string & {});
-export const StorageEncryptionType = /*@__PURE__*/ S.String;
+export const StorageEncryptionType = S.String;
 export interface DBClusterSnapshot {
   AvailabilityZones?: string[];
   DBClusterSnapshotIdentifier?: string;
@@ -1517,7 +1517,7 @@ export const ScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScalingConfiguration",
 }) as any as S.Schema<ScalingConfiguration>;
 export type ReplicaMode = "open-read-only" | "mounted" | (string & {});
-export const ReplicaMode = /*@__PURE__*/ S.String;
+export const ReplicaMode = S.String;
 export interface RdsCustomClusterConfiguration {
   InterconnectSubnetId?: string;
   TransitGatewayMulticastDomainId?: string;
@@ -1547,9 +1547,9 @@ export const ServerlessV2ScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServerlessV2ScalingConfiguration",
 }) as any as S.Schema<ServerlessV2ScalingConfiguration>;
 export type DatabaseInsightsMode = "standard" | "advanced" | (string & {});
-export const DatabaseInsightsMode = /*@__PURE__*/ S.String;
+export const DatabaseInsightsMode = S.String;
 export type ClusterScalabilityType = "standard" | "limitless" | (string & {});
-export const ClusterScalabilityType = /*@__PURE__*/ S.String;
+export const ClusterScalabilityType = S.String;
 export interface TagSpecification {
   ResourceType?: string;
   Tags?: Tag[];
@@ -1569,7 +1569,7 @@ export type MasterUserAuthenticationType =
   | "password"
   | "iam-db-auth"
   | (string & {});
-export const MasterUserAuthenticationType = /*@__PURE__*/ S.String;
+export const MasterUserAuthenticationType = S.String;
 export interface CreateDBClusterMessage {
   AvailabilityZones?: string[];
   BackupRetentionPeriod?: number;
@@ -1727,7 +1727,7 @@ export const DBClusterOptionGroupMemberships = /*@__PURE__*/ S.Array(
   }),
 );
 export type UpgradeRolloutOrder = "first" | "second" | "last" | (string & {});
-export const UpgradeRolloutOrder = /*@__PURE__*/ S.String;
+export const UpgradeRolloutOrder = S.String;
 export type ReadReplicaIdentifierList = string[];
 export const ReadReplicaIdentifierList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ReadReplicaIdentifier")),
@@ -1871,14 +1871,14 @@ export const ScalingConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScalingConfigurationInfo",
 }) as any as S.Schema<ScalingConfigurationInfo>;
 export type ActivityStreamMode = "sync" | "async" | (string & {});
-export const ActivityStreamMode = /*@__PURE__*/ S.String;
+export const ActivityStreamMode = S.String;
 export type ActivityStreamStatus =
   | "stopped"
   | "starting"
   | "started"
   | "stopping"
   | (string & {});
-export const ActivityStreamStatus = /*@__PURE__*/ S.String;
+export const ActivityStreamStatus = S.String;
 export interface DomainMembership {
   Domain?: string;
   Status?: string;
@@ -1914,7 +1914,7 @@ export type WriteForwardingStatus =
   | "disabling"
   | "unknown"
   | (string & {});
-export const WriteForwardingStatus = /*@__PURE__*/ S.String;
+export const WriteForwardingStatus = S.String;
 export interface ServerlessV2ScalingConfigurationInfo {
   MinCapacity?: number;
   MaxCapacity?: number;
@@ -1951,7 +1951,7 @@ export type LocalWriteForwardingStatus =
   | "disabling"
   | "requested"
   | (string & {});
-export const LocalWriteForwardingStatus = /*@__PURE__*/ S.String;
+export const LocalWriteForwardingStatus = S.String;
 export type LimitlessDatabaseStatus =
   | "active"
   | "not-in-use"
@@ -1962,7 +1962,7 @@ export type LimitlessDatabaseStatus =
   | "modifying-max-capacity"
   | "error"
   | (string & {});
-export const LimitlessDatabaseStatus = /*@__PURE__*/ S.String;
+export const LimitlessDatabaseStatus = S.String;
 export interface LimitlessDatabase {
   Status?: LimitlessDatabaseStatus;
   MinRequiredACU?: number;
@@ -2547,7 +2547,7 @@ export const DBSubnetGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DBSubnetGroup" }) as any as S.Schema<DBSubnetGroup>;
 export type AutomationMode = "full" | "all-paused" | (string & {});
-export const AutomationMode = /*@__PURE__*/ S.String;
+export const AutomationMode = S.String;
 export interface PendingModifiedValues {
   DBInstanceClass?: string;
   AllocatedStorage?: number;
@@ -2691,7 +2691,7 @@ export type ActivityStreamPolicyStatus =
   | "locking-policy"
   | "unlocking-policy"
   | (string & {});
-export const ActivityStreamPolicyStatus = /*@__PURE__*/ S.String;
+export const ActivityStreamPolicyStatus = S.String;
 export interface AdditionalStorageVolumeOutput {
   VolumeName?: string;
   StorageVolumeStatus?: string;
@@ -3100,13 +3100,13 @@ export const CreateDBParameterGroupResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDBParameterGroupResult",
 }) as any as S.Schema<CreateDBParameterGroupResult>;
 export type EngineFamily = "MYSQL" | "POSTGRESQL" | "SQLSERVER" | (string & {});
-export const EngineFamily = /*@__PURE__*/ S.String;
+export const EngineFamily = S.String;
 export type DefaultAuthScheme = "IAM_AUTH" | "NONE" | (string & {});
-export const DefaultAuthScheme = /*@__PURE__*/ S.String;
+export const DefaultAuthScheme = S.String;
 export type AuthScheme = "SECRETS" | (string & {});
-export const AuthScheme = /*@__PURE__*/ S.String;
+export const AuthScheme = S.String;
 export type IAMAuthMode = "DISABLED" | "REQUIRED" | "ENABLED" | (string & {});
-export const IAMAuthMode = /*@__PURE__*/ S.String;
+export const IAMAuthMode = S.String;
 export type ClientPasswordAuthType =
   | "MYSQL_NATIVE_PASSWORD"
   | "MYSQL_CACHING_SHA2_PASSWORD"
@@ -3114,7 +3114,7 @@ export type ClientPasswordAuthType =
   | "POSTGRES_MD5"
   | "SQL_SERVER_AUTHENTICATION"
   | (string & {});
-export const ClientPasswordAuthType = /*@__PURE__*/ S.String;
+export const ClientPasswordAuthType = S.String;
 export interface UserAuthConfig {
   Description?: string;
   UserName?: string;
@@ -3136,9 +3136,9 @@ export const UserAuthConfig = /*@__PURE__*/ S.suspend(() =>
 export type UserAuthConfigList = UserAuthConfig[];
 export const UserAuthConfigList = /*@__PURE__*/ S.Array(UserAuthConfig);
 export type EndpointNetworkType = "IPV4" | "IPV6" | "DUAL" | (string & {});
-export const EndpointNetworkType = /*@__PURE__*/ S.String;
+export const EndpointNetworkType = S.String;
 export type TargetConnectionNetworkType = "IPV4" | "IPV6" | (string & {});
-export const TargetConnectionNetworkType = /*@__PURE__*/ S.String;
+export const TargetConnectionNetworkType = S.String;
 export interface CreateDBProxyRequest {
   DBProxyName?: string;
   EngineFamily?: EngineFamily;
@@ -3194,7 +3194,7 @@ export type DBProxyStatus =
   | "suspending"
   | "reactivating"
   | (string & {});
-export const DBProxyStatus = /*@__PURE__*/ S.String;
+export const DBProxyStatus = S.String;
 export interface UserAuthConfigInfo {
   Description?: string;
   UserName?: string;
@@ -3275,7 +3275,7 @@ export type DBProxyEndpointTargetRole =
   | "READ_WRITE"
   | "READ_ONLY"
   | (string & {});
-export const DBProxyEndpointTargetRole = /*@__PURE__*/ S.String;
+export const DBProxyEndpointTargetRole = S.String;
 export interface CreateDBProxyEndpointRequest {
   DBProxyName?: string;
   DBProxyEndpointName?: string;
@@ -3316,7 +3316,7 @@ export type DBProxyEndpointStatus =
   | "creating"
   | "deleting"
   | (string & {});
-export const DBProxyEndpointStatus = /*@__PURE__*/ S.String;
+export const DBProxyEndpointStatus = S.String;
 export interface DBProxyEndpoint {
   DBProxyEndpointName?: string;
   DBProxyEndpointArn?: string;
@@ -3607,7 +3607,7 @@ export type GlobalClusterMemberSynchronizationStatus =
   | "connected"
   | "pending-resync"
   | (string & {});
-export const GlobalClusterMemberSynchronizationStatus = /*@__PURE__*/ S.String;
+export const GlobalClusterMemberSynchronizationStatus = S.String;
 export interface GlobalClusterMember {
   DBClusterArn?: string;
   Readers?: string[];
@@ -3637,7 +3637,7 @@ export type FailoverStatus =
   | "failing-over"
   | "cancelling"
   | (string & {});
-export const FailoverStatus = /*@__PURE__*/ S.String;
+export const FailoverStatus = S.String;
 export interface FailoverState {
   Status?: FailoverStatus;
   FromDbClusterArn?: string;
@@ -3744,7 +3744,7 @@ export type IntegrationStatus =
   | "syncing"
   | "needs_attention"
   | (string & {});
-export const IntegrationStatus = /*@__PURE__*/ S.String;
+export const IntegrationStatus = S.String;
 export interface IntegrationError {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -5066,7 +5066,7 @@ export const DescribeDBClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDBClusterParametersMessage",
 }) as any as S.Schema<DescribeDBClusterParametersMessage>;
 export type ApplyMethod = "immediate" | "pending-reboot" | (string & {});
-export const ApplyMethod = /*@__PURE__*/ S.String;
+export const ApplyMethod = S.String;
 export interface Parameter {
   ParameterName?: string;
   ParameterValue?: string;
@@ -5529,7 +5529,7 @@ export type LifecycleSupportName =
   | "open-source-rds-standard-support"
   | "open-source-rds-extended-support"
   | (string & {});
-export const LifecycleSupportName = /*@__PURE__*/ S.String;
+export const LifecycleSupportName = S.String;
 export interface SupportedEngineLifecycle {
   LifecycleSupportName?: LifecycleSupportName;
   LifecycleSupportStartDate?: Date;
@@ -5880,16 +5880,16 @@ export type TargetType =
   | "RDS_SERVERLESS_ENDPOINT"
   | "TRACKED_CLUSTER"
   | (string & {});
-export const TargetType = /*@__PURE__*/ S.String;
+export const TargetType = S.String;
 export type TargetRole = "READ_WRITE" | "READ_ONLY" | "UNKNOWN" | (string & {});
-export const TargetRole = /*@__PURE__*/ S.String;
+export const TargetRole = S.String;
 export type TargetState =
   | "REGISTERING"
   | "AVAILABLE"
   | "UNAVAILABLE"
   | "UNUSED"
   | (string & {});
-export const TargetState = /*@__PURE__*/ S.String;
+export const TargetState = S.String;
 export type TargetHealthReason =
   | "UNREACHABLE"
   | "CONNECTION_FAILED"
@@ -5898,7 +5898,7 @@ export type TargetHealthReason =
   | "INVALID_REPLICATION_STATE"
   | "PROMOTED"
   | (string & {});
-export const TargetHealthReason = /*@__PURE__*/ S.String;
+export const TargetHealthReason = S.String;
 export interface TargetHealth {
   State?: TargetState;
   Reason?: TargetHealthReason;
@@ -6694,7 +6694,7 @@ export type SourceType =
   | "db-shard-group"
   | "zero-etl"
   | (string & {});
-export const SourceType = /*@__PURE__*/ S.String;
+export const SourceType = S.String;
 export interface DescribeEventsMessage {
   SourceIdentifier?: string;
   SourceType?: SourceType;
@@ -8039,7 +8039,7 @@ export const TagListMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
 ).annotate({ identifier: "TagListMessage" }) as any as S.Schema<TagListMessage>;
 export type AuditPolicyState = "locked" | "unlocked" | (string & {});
-export const AuditPolicyState = /*@__PURE__*/ S.String;
+export const AuditPolicyState = S.String;
 export interface ModifyActivityStreamRequest {
   ResourceArn?: string;
   AuditPolicyState?: AuditPolicyState;
@@ -8162,7 +8162,7 @@ export type CustomEngineVersionStatus =
   | "inactive"
   | "inactive-except-restore"
   | (string & {});
-export const CustomEngineVersionStatus = /*@__PURE__*/ S.String;
+export const CustomEngineVersionStatus = S.String;
 export interface ModifyCustomDBEngineVersionMessage {
   Engine?: string;
   EngineVersion?: string;

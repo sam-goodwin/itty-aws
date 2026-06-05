@@ -155,7 +155,7 @@ export type ValidationExceptionReason =
   | "FIELD_VALIDATION_FAILED"
   | "OTHER"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -300,13 +300,13 @@ export const CreateProtectionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProtectionResponse",
 }) as any as S.Schema<CreateProtectionResponse>;
 export type ProtectionGroupAggregation = "SUM" | "MEAN" | "MAX" | (string & {});
-export const ProtectionGroupAggregation = /*@__PURE__*/ S.String;
+export const ProtectionGroupAggregation = S.String;
 export type ProtectionGroupPattern =
   | "ALL"
   | "ARBITRARY"
   | "BY_RESOURCE_TYPE"
   | (string & {});
-export const ProtectionGroupPattern = /*@__PURE__*/ S.String;
+export const ProtectionGroupPattern = S.String;
 export type ProtectedResourceType =
   | "CLOUDFRONT_DISTRIBUTION"
   | "ROUTE_53_HOSTED_ZONE"
@@ -315,7 +315,7 @@ export type ProtectedResourceType =
   | "APPLICATION_LOAD_BALANCER"
   | "GLOBAL_ACCELERATOR"
   | (string & {});
-export const ProtectedResourceType = /*@__PURE__*/ S.String;
+export const ProtectedResourceType = S.String;
 export type ProtectionGroupMembers = string[];
 export const ProtectionGroupMembers = /*@__PURE__*/ S.Array(S.String);
 export interface CreateProtectionGroupRequest {
@@ -465,7 +465,7 @@ export const DescribeAttackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAttackRequest",
 }) as any as S.Schema<DescribeAttackRequest>;
 export type SubResourceType = "IP" | "URL" | (string & {});
-export const SubResourceType = /*@__PURE__*/ S.String;
+export const SubResourceType = S.String;
 export interface SummarizedCounter {
   Name?: string;
   Max?: number;
@@ -523,7 +523,7 @@ export const SubResourceSummary = /*@__PURE__*/ S.suspend(() =>
 export type SubResourceSummaryList = SubResourceSummary[];
 export const SubResourceSummaryList = /*@__PURE__*/ S.Array(SubResourceSummary);
 export type AttackLayer = "NETWORK" | "APPLICATION" | (string & {});
-export const AttackLayer = /*@__PURE__*/ S.String;
+export const AttackLayer = S.String;
 export type AttackPropertyIdentifier =
   | "DESTINATION_URL"
   | "REFERRER"
@@ -534,7 +534,7 @@ export type AttackPropertyIdentifier =
   | "WORDPRESS_PINGBACK_REFLECTOR"
   | "WORDPRESS_PINGBACK_SOURCE"
   | (string & {});
-export const AttackPropertyIdentifier = /*@__PURE__*/ S.String;
+export const AttackPropertyIdentifier = S.String;
 export interface Contributor {
   Name?: string;
   Value?: number;
@@ -545,7 +545,7 @@ export const Contributor = /*@__PURE__*/ S.suspend(() =>
 export type TopContributors = Contributor[];
 export const TopContributors = /*@__PURE__*/ S.Array(Contributor);
 export type Unit = "BITS" | "BYTES" | "PACKETS" | "REQUESTS" | (string & {});
-export const Unit = /*@__PURE__*/ S.String;
+export const Unit = S.String;
 export interface AttackProperty {
   AttackLayer?: AttackLayer;
   AttackPropertyIdentifier?: AttackPropertyIdentifier;
@@ -758,7 +758,7 @@ export type ApplicationLayerAutomaticResponseStatus =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
-export const ApplicationLayerAutomaticResponseStatus = /*@__PURE__*/ S.String;
+export const ApplicationLayerAutomaticResponseStatus = S.String;
 export interface BlockAction {}
 export const BlockAction = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
   { identifier: "BlockAction" },
@@ -878,7 +878,7 @@ export const DescribeSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeSubscriptionRequest",
 }) as any as S.Schema<DescribeSubscriptionRequest>;
 export type AutoRenew = "ENABLED" | "DISABLED" | (string & {});
-export const AutoRenew = /*@__PURE__*/ S.String;
+export const AutoRenew = S.String;
 export interface Limit {
   Type?: string;
   Max?: number;
@@ -893,7 +893,7 @@ export type ProactiveEngagementStatus =
   | "DISABLED"
   | "PENDING"
   | (string & {});
-export const ProactiveEngagementStatus = /*@__PURE__*/ S.String;
+export const ProactiveEngagementStatus = S.String;
 export interface ProtectionLimits {
   ProtectedResourceTypeLimits: Limit[];
 }
@@ -1153,7 +1153,7 @@ export const GetSubscriptionStateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSubscriptionStateRequest",
 }) as any as S.Schema<GetSubscriptionStateRequest>;
 export type SubscriptionState = "ACTIVE" | "INACTIVE" | (string & {});
-export const SubscriptionState = /*@__PURE__*/ S.String;
+export const SubscriptionState = S.String;
 export interface GetSubscriptionStateResponse {
   SubscriptionState: SubscriptionState;
 }

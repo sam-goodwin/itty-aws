@@ -199,7 +199,7 @@ export type Tier =
   | "SAP_NETWEAVER_DISTRIBUTED"
   | "SAP_NETWEAVER_HIGH_AVAILABILITY"
   | (string & {});
-export const Tier = /*@__PURE__*/ S.String;
+export const Tier = S.String;
 export interface WorkloadConfiguration {
   WorkloadName?: string;
   Tier?: Tier;
@@ -252,7 +252,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type GroupingType = "ACCOUNT_BASED" | (string & {});
-export const GroupingType = /*@__PURE__*/ S.String;
+export const GroupingType = S.String;
 export interface CreateApplicationRequest {
   ResourceGroupName?: string;
   OpsCenterEnabled?: boolean;
@@ -287,7 +287,7 @@ export type DiscoveryType =
   | "RESOURCE_GROUP_BASED"
   | "ACCOUNT_BASED"
   | (string & {});
-export const DiscoveryType = /*@__PURE__*/ S.String;
+export const DiscoveryType = S.String;
 export interface ApplicationInfo {
   AccountId?: string;
   ResourceGroupName?: string;
@@ -490,7 +490,7 @@ export const DescribeComponentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeComponentRequest",
 }) as any as S.Schema<DescribeComponentRequest>;
 export type OsType = "WINDOWS" | "LINUX" | (string & {});
-export const OsType = /*@__PURE__*/ S.String;
+export const OsType = S.String;
 export type WorkloadMetaData = { [key: string]: string | undefined };
 export const WorkloadMetaData = /*@__PURE__*/ S.Record(
   S.String,
@@ -576,7 +576,7 @@ export type RecommendationType =
   | "WORKLOAD_ONLY"
   | "ALL"
   | (string & {});
-export const RecommendationType = /*@__PURE__*/ S.String;
+export const RecommendationType = S.String;
 export interface DescribeComponentConfigurationRecommendationRequest {
   ResourceGroupName: string;
   ComponentName: string;
@@ -651,14 +651,14 @@ export const DescribeObservationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeObservationRequest",
 }) as any as S.Schema<DescribeObservationRequest>;
 export type LogFilter = "ERROR" | "WARN" | "INFO" | (string & {});
-export const LogFilter = /*@__PURE__*/ S.String;
+export const LogFilter = S.String;
 export type CloudWatchEventSource =
   | "EC2"
   | "CODE_DEPLOY"
   | "HEALTH"
   | "RDS"
   | (string & {});
-export const CloudWatchEventSource = /*@__PURE__*/ S.String;
+export const CloudWatchEventSource = S.String;
 export interface Observation {
   Id?: string;
   StartTime?: Date;
@@ -781,35 +781,35 @@ export type Status =
   | "RECURRING"
   | "RECOVERING"
   | (string & {});
-export const Status = /*@__PURE__*/ S.String;
+export const Status = S.String;
 export type SeverityLevel =
   | "Informative"
   | "Low"
   | "Medium"
   | "High"
   | (string & {});
-export const SeverityLevel = /*@__PURE__*/ S.String;
+export const SeverityLevel = S.String;
 export type FeedbackKey = "INSIGHTS_FEEDBACK" | (string & {});
-export const FeedbackKey = /*@__PURE__*/ S.String;
+export const FeedbackKey = S.String;
 export type FeedbackValue =
   | "NOT_SPECIFIED"
   | "USEFUL"
   | "NOT_USEFUL"
   | (string & {});
-export const FeedbackValue = /*@__PURE__*/ S.String;
+export const FeedbackValue = S.String;
 export type Feedback = { [key in FeedbackKey]?: FeedbackValue };
 export const Feedback = /*@__PURE__*/ S.Record(
   FeedbackKey,
   FeedbackValue.pipe(S.optional),
 );
 export type Visibility = "IGNORED" | "VISIBLE" | (string & {});
-export const Visibility = /*@__PURE__*/ S.String;
+export const Visibility = S.String;
 export type ResolutionMethod =
   | "MANUAL"
   | "AUTOMATIC"
   | "UNRESOLVED"
   | (string & {});
-export const ResolutionMethod = /*@__PURE__*/ S.String;
+export const ResolutionMethod = S.String;
 export interface Problem {
   Id?: string;
   Title?: string;
@@ -991,7 +991,7 @@ export type ConfigurationEventStatus =
   | "WARN"
   | "ERROR"
   | (string & {});
-export const ConfigurationEventStatus = /*@__PURE__*/ S.String;
+export const ConfigurationEventStatus = S.String;
 export interface ListConfigurationHistoryRequest {
   ResourceGroupName?: string;
   StartTime?: Date;
@@ -1022,7 +1022,7 @@ export type ConfigurationEventResourceType =
   | "CLOUDFORMATION"
   | "SSM_ASSOCIATION"
   | (string & {});
-export const ConfigurationEventResourceType = /*@__PURE__*/ S.String;
+export const ConfigurationEventResourceType = S.String;
 export interface ConfigurationEvent {
   ResourceGroupName?: string;
   AccountId?: string;
@@ -1426,7 +1426,7 @@ export const UpdateLogPatternResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLogPatternResponse",
 }) as any as S.Schema<UpdateLogPatternResponse>;
 export type UpdateStatus = "RESOLVED" | (string & {});
-export const UpdateStatus = /*@__PURE__*/ S.String;
+export const UpdateStatus = S.String;
 export interface UpdateProblemRequest {
   ProblemId: string;
   UpdateStatus?: UpdateStatus;

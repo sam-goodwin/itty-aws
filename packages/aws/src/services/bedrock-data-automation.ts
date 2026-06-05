@@ -123,7 +123,7 @@ export type DataAutomationProjectDescription =
 
 //# Schemas
 export type BlueprintStage = "DEVELOPMENT" | "LIVE" | (string & {});
-export const BlueprintStage = /*@__PURE__*/ S.String;
+export const BlueprintStage = S.String;
 export interface CopyBlueprintStageRequest {
   blueprintArn: string;
   sourceStage: BlueprintStage;
@@ -190,7 +190,7 @@ export const CreateBlueprintVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBlueprintVersionRequest",
 }) as any as S.Schema<CreateBlueprintVersionRequest>;
 export type Type = "DOCUMENT" | "IMAGE" | "AUDIO" | "VIDEO" | (string & {});
-export const Type = /*@__PURE__*/ S.String;
+export const Type = S.String;
 export type KmsEncryptionContext = { [key: string]: string | undefined };
 export const KmsEncryptionContext = /*@__PURE__*/ S.Record(
   S.String,
@@ -257,7 +257,7 @@ export const CreateBlueprintVersionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBlueprintVersionResponse",
 }) as any as S.Schema<CreateBlueprintVersionResponse>;
 export type EntityType = "VOCABULARY" | (string & {});
-export const EntityType = /*@__PURE__*/ S.String;
+export const EntityType = S.String;
 export interface GetDataAutomationLibraryEntityRequest {
   libraryArn: string;
   entityType: EntityType;
@@ -298,7 +298,7 @@ export type Language =
   | "TW"
   | "HK"
   | (string & {});
-export const Language = /*@__PURE__*/ S.String;
+export const Language = S.String;
 export interface Phrase {
   text: string | redacted.Redacted<string>;
   displayAsText?: string | redacted.Redacted<string>;
@@ -597,7 +597,7 @@ export type BlueprintOptimizationJobStatus =
   | "ServiceError"
   | "ClientError"
   | (string & {});
-export const BlueprintOptimizationJobStatus = /*@__PURE__*/ S.String;
+export const BlueprintOptimizationJobStatus = S.String;
 export interface GetBlueprintOptimizationStatusResponse {
   status?: BlueprintOptimizationJobStatus;
   errorType?: string;
@@ -748,15 +748,15 @@ export const DeleteBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteBlueprintResponse",
 }) as any as S.Schema<DeleteBlueprintResponse>;
 export type ResourceOwner = "SERVICE" | "ACCOUNT" | (string & {});
-export const ResourceOwner = /*@__PURE__*/ S.String;
+export const ResourceOwner = S.String;
 export type BlueprintStageFilter =
   | "DEVELOPMENT"
   | "LIVE"
   | "ALL"
   | (string & {});
-export const BlueprintStageFilter = /*@__PURE__*/ S.String;
+export const BlueprintStageFilter = S.String;
 export type DataAutomationProjectStage = "DEVELOPMENT" | "LIVE" | (string & {});
-export const DataAutomationProjectStage = /*@__PURE__*/ S.String;
+export const DataAutomationProjectStage = S.String;
 export interface DataAutomationProjectFilter {
   projectArn: string;
   projectStage?: DataAutomationProjectStage;
@@ -886,7 +886,7 @@ export type LibraryIngestionJobOperationType =
   | "UPSERT"
   | "DELETE"
   | (string & {});
-export const LibraryIngestionJobOperationType = /*@__PURE__*/ S.String;
+export const LibraryIngestionJobOperationType = S.String;
 export interface OutputConfiguration {
   s3Uri: string;
 }
@@ -988,7 +988,7 @@ export type LibraryIngestionJobStatus =
   | "COMPLETED_WITH_ERRORS"
   | "FAILED"
   | (string & {});
-export const LibraryIngestionJobStatus = /*@__PURE__*/ S.String;
+export const LibraryIngestionJobStatus = S.String;
 export interface DataAutomationLibraryIngestionJob {
   jobArn: string;
   creationTime: Date;
@@ -1122,7 +1122,7 @@ export const CreateDataAutomationLibraryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDataAutomationLibraryRequest",
 }) as any as S.Schema<CreateDataAutomationLibraryRequest>;
 export type DataAutomationLibraryStatus = "ACTIVE" | "DELETING" | (string & {});
-export const DataAutomationLibraryStatus = /*@__PURE__*/ S.String;
+export const DataAutomationLibraryStatus = S.String;
 export interface CreateDataAutomationLibraryResponse {
   libraryArn?: string;
   status?: DataAutomationLibraryStatus;
@@ -1320,7 +1320,7 @@ export const ListDataAutomationLibrariesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDataAutomationLibrariesResponse",
 }) as any as S.Schema<ListDataAutomationLibrariesResponse>;
 export type DataAutomationProjectType = "ASYNC" | "SYNC" | (string & {});
-export const DataAutomationProjectType = /*@__PURE__*/ S.String;
+export const DataAutomationProjectType = S.String;
 export type DocumentExtractionGranularityType =
   | "DOCUMENT"
   | "PAGE"
@@ -1328,7 +1328,7 @@ export type DocumentExtractionGranularityType =
   | "WORD"
   | "LINE"
   | (string & {});
-export const DocumentExtractionGranularityType = /*@__PURE__*/ S.String;
+export const DocumentExtractionGranularityType = S.String;
 export type DocumentExtractionGranularityTypes =
   DocumentExtractionGranularityType[];
 export const DocumentExtractionGranularityTypes = /*@__PURE__*/ S.Array(
@@ -1343,7 +1343,7 @@ export const DocumentExtractionGranularity = /*@__PURE__*/ S.suspend(() =>
   identifier: "DocumentExtractionGranularity",
 }) as any as S.Schema<DocumentExtractionGranularity>;
 export type State = "ENABLED" | "DISABLED" | (string & {});
-export const State = /*@__PURE__*/ S.String;
+export const State = S.String;
 export interface DocumentBoundingBox {
   state: State;
 }
@@ -1378,7 +1378,7 @@ export type DocumentOutputTextFormatType =
   | "HTML"
   | "CSV"
   | (string & {});
-export const DocumentOutputTextFormatType = /*@__PURE__*/ S.String;
+export const DocumentOutputTextFormatType = S.String;
 export type DocumentOutputTextFormatTypes = DocumentOutputTextFormatType[];
 export const DocumentOutputTextFormatTypes = /*@__PURE__*/ S.Array(
   DocumentOutputTextFormatType,
@@ -1430,7 +1430,7 @@ export type ImageExtractionCategoryType =
   | "TEXT_DETECTION"
   | "LOGOS"
   | (string & {});
-export const ImageExtractionCategoryType = /*@__PURE__*/ S.String;
+export const ImageExtractionCategoryType = S.String;
 export type ImageExtractionCategoryTypes = ImageExtractionCategoryType[];
 export const ImageExtractionCategoryTypes = /*@__PURE__*/ S.Array(
   ImageExtractionCategoryType,
@@ -1468,7 +1468,7 @@ export type ImageStandardGenerativeFieldType =
   | "IMAGE_SUMMARY"
   | "IAB"
   | (string & {});
-export const ImageStandardGenerativeFieldType = /*@__PURE__*/ S.String;
+export const ImageStandardGenerativeFieldType = S.String;
 export type ImageStandardGenerativeFieldTypes =
   ImageStandardGenerativeFieldType[];
 export const ImageStandardGenerativeFieldTypes = /*@__PURE__*/ S.Array(
@@ -1504,7 +1504,7 @@ export type VideoExtractionCategoryType =
   | "TRANSCRIPT"
   | "LOGOS"
   | (string & {});
-export const VideoExtractionCategoryType = /*@__PURE__*/ S.String;
+export const VideoExtractionCategoryType = S.String;
 export type VideoExtractionCategoryTypes = VideoExtractionCategoryType[];
 export const VideoExtractionCategoryTypes = /*@__PURE__*/ S.Array(
   VideoExtractionCategoryType,
@@ -1543,7 +1543,7 @@ export type VideoStandardGenerativeFieldType =
   | "IAB"
   | "CHAPTER_SUMMARY"
   | (string & {});
-export const VideoStandardGenerativeFieldType = /*@__PURE__*/ S.String;
+export const VideoStandardGenerativeFieldType = S.String;
 export type VideoStandardGenerativeFieldTypes =
   VideoStandardGenerativeFieldType[];
 export const VideoStandardGenerativeFieldTypes = /*@__PURE__*/ S.Array(
@@ -1578,7 +1578,7 @@ export type AudioExtractionCategoryType =
   | "TRANSCRIPT"
   | "TOPIC_CONTENT_MODERATION"
   | (string & {});
-export const AudioExtractionCategoryType = /*@__PURE__*/ S.String;
+export const AudioExtractionCategoryType = S.String;
 export type AudioExtractionCategoryTypes = AudioExtractionCategoryType[];
 export const AudioExtractionCategoryTypes = /*@__PURE__*/ S.Array(
   AudioExtractionCategoryType,
@@ -1646,7 +1646,7 @@ export type AudioStandardGenerativeFieldType =
   | "IAB"
   | "TOPIC_SUMMARY"
   | (string & {});
-export const AudioStandardGenerativeFieldType = /*@__PURE__*/ S.String;
+export const AudioStandardGenerativeFieldType = S.String;
 export type AudioStandardGenerativeFieldTypes =
   AudioStandardGenerativeFieldType[];
 export const AudioStandardGenerativeFieldTypes = /*@__PURE__*/ S.Array(
@@ -1734,12 +1734,12 @@ export type SensitiveDataDetectionMode =
   | "DETECTION"
   | "DETECTION_AND_REDACTION"
   | (string & {});
-export const SensitiveDataDetectionMode = /*@__PURE__*/ S.String;
+export const SensitiveDataDetectionMode = S.String;
 export type SensitiveDataDetectionScopeType =
   | "STANDARD"
   | "CUSTOM"
   | (string & {});
-export const SensitiveDataDetectionScopeType = /*@__PURE__*/ S.String;
+export const SensitiveDataDetectionScopeType = S.String;
 export type SensitiveDataDetectionScope = SensitiveDataDetectionScopeType[];
 export const SensitiveDataDetectionScope = /*@__PURE__*/ S.Array(
   SensitiveDataDetectionScopeType,
@@ -1778,11 +1778,11 @@ export type PIIEntityType =
   | "UK_NATIONAL_INSURANCE_NUMBER"
   | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
   | (string & {});
-export const PIIEntityType = /*@__PURE__*/ S.String;
+export const PIIEntityType = S.String;
 export type PIIEntityTypes = PIIEntityType[];
 export const PIIEntityTypes = /*@__PURE__*/ S.Array(PIIEntityType);
 export type PIIRedactionMaskMode = "PII" | "ENTITY_TYPE" | (string & {});
-export const PIIRedactionMaskMode = /*@__PURE__*/ S.String;
+export const PIIRedactionMaskMode = S.String;
 export interface PIIEntitiesConfiguration {
   piiEntityTypes?: PIIEntityType[];
   redactionMaskMode?: PIIRedactionMaskMode;
@@ -1850,7 +1850,7 @@ export const VideoOverrideConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type AudioInputLanguages = Language[];
 export const AudioInputLanguages = /*@__PURE__*/ S.Array(Language);
 export type AudioGenerativeOutputLanguage = "DEFAULT" | "EN" | (string & {});
-export const AudioGenerativeOutputLanguage = /*@__PURE__*/ S.String;
+export const AudioGenerativeOutputLanguage = S.String;
 export interface AudioLanguageConfiguration {
   inputLanguages?: Language[];
   generativeOutputLanguage?: AudioGenerativeOutputLanguage;
@@ -1885,7 +1885,7 @@ export type DesiredModality =
   | "AUDIO"
   | "VIDEO"
   | (string & {});
-export const DesiredModality = /*@__PURE__*/ S.String;
+export const DesiredModality = S.String;
 export interface ModalityRoutingConfiguration {
   jpeg?: DesiredModality;
   png?: DesiredModality;
@@ -1986,7 +1986,7 @@ export type DataAutomationProjectStatus =
   | "IN_PROGRESS"
   | "FAILED"
   | (string & {});
-export const DataAutomationProjectStatus = /*@__PURE__*/ S.String;
+export const DataAutomationProjectStatus = S.String;
 export interface CreateDataAutomationProjectResponse {
   projectArn: string;
   projectStage?: DataAutomationProjectStage;
@@ -2157,7 +2157,7 @@ export type DataAutomationProjectStageFilter =
   | "LIVE"
   | "ALL"
   | (string & {});
-export const DataAutomationProjectStageFilter = /*@__PURE__*/ S.String;
+export const DataAutomationProjectStageFilter = S.String;
 export interface BlueprintFilter {
   blueprintArn: string;
   blueprintVersion?: string;

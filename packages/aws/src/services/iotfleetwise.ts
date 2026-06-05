@@ -161,7 +161,7 @@ export type VehicleAssociationBehavior =
   | "CreateIotThing"
   | "ValidateIotThingExists"
   | (string & {});
-export const VehicleAssociationBehavior = /*@__PURE__*/ S.String;
+export const VehicleAssociationBehavior = S.String;
 export interface Tag {
   Key: string;
   Value: string;
@@ -177,7 +177,7 @@ export type TimeUnit =
   | "MINUTE"
   | "HOUR"
   | (string & {});
-export const TimeUnit = /*@__PURE__*/ S.String;
+export const TimeUnit = S.String;
 export interface TimePeriod {
   unit: TimeUnit;
   value: number;
@@ -317,7 +317,7 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -332,7 +332,7 @@ export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export type UpdateMode = "Overwrite" | "Merge" | (string & {});
-export const UpdateMode = /*@__PURE__*/ S.String;
+export const UpdateMode = S.String;
 export type StateTemplateAssociationIdentifiers = string[];
 export const StateTemplateAssociationIdentifiers = /*@__PURE__*/ S.Array(
   S.String,
@@ -443,12 +443,12 @@ export type EncryptionStatus =
   | "SUCCESS"
   | "FAILURE"
   | (string & {});
-export const EncryptionStatus = /*@__PURE__*/ S.String;
+export const EncryptionStatus = S.String;
 export type EncryptionType =
   | "KMS_BASED_ENCRYPTION"
   | "FLEETWISE_DEFAULT_ENCRYPTION"
   | (string & {});
-export const EncryptionType = /*@__PURE__*/ S.String;
+export const EncryptionType = S.String;
 export interface GetEncryptionConfigurationResponse {
   kmsKeyId?: string;
   encryptionStatus: EncryptionStatus;
@@ -487,7 +487,7 @@ export const GetLoggingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLoggingOptionsRequest",
 }) as any as S.Schema<GetLoggingOptionsRequest>;
 export type LogType = "OFF" | "ERROR" | (string & {});
-export const LogType = /*@__PURE__*/ S.String;
+export const LogType = S.String;
 export interface CloudWatchLogDeliveryOptions {
   logType: LogType;
   logGroupName?: string;
@@ -525,7 +525,7 @@ export type RegistrationStatus =
   | "REGISTRATION_SUCCESS"
   | "REGISTRATION_FAILURE"
   | (string & {});
-export const RegistrationStatus = /*@__PURE__*/ S.String;
+export const RegistrationStatus = S.String;
 export interface TimestreamRegistrationResponse {
   timestreamDatabaseName: string;
   timestreamTableName: string;
@@ -611,7 +611,7 @@ export type VehicleState =
   | "DELETING"
   | "READY_FOR_CHECKIN"
   | (string & {});
-export const VehicleState = /*@__PURE__*/ S.String;
+export const VehicleState = S.String;
 export interface VehicleStatus {
   campaignName?: string;
   vehicleName?: string;
@@ -832,11 +832,11 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export type DiagnosticsMode = "OFF" | "SEND_ACTIVE_DTCS" | (string & {});
-export const DiagnosticsMode = /*@__PURE__*/ S.String;
+export const DiagnosticsMode = S.String;
 export type SpoolingMode = "OFF" | "TO_DISK" | (string & {});
-export const SpoolingMode = /*@__PURE__*/ S.String;
+export const SpoolingMode = S.String;
 export type Compression = "OFF" | "SNAPPY" | (string & {});
-export const Compression = /*@__PURE__*/ S.String;
+export const Compression = S.String;
 export interface SignalInformation {
   name: string;
   maxSampleCount?: number;
@@ -864,7 +864,7 @@ export const TimeBasedCollectionScheme = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeBasedCollectionScheme",
 }) as any as S.Schema<TimeBasedCollectionScheme>;
 export type TriggerMode = "ALWAYS" | "RISING_EDGE" | (string & {});
-export const TriggerMode = /*@__PURE__*/ S.String;
+export const TriggerMode = S.String;
 export interface ConditionBasedCollectionScheme {
   expression: string | redacted.Redacted<string>;
   minimumTriggerIntervalMs?: number;
@@ -897,9 +897,9 @@ export const CollectionScheme = /*@__PURE__*/ S.Union([
 export type DataExtraDimensionNodePathList = string[];
 export const DataExtraDimensionNodePathList = /*@__PURE__*/ S.Array(S.String);
 export type DataFormat = "JSON" | "PARQUET" | (string & {});
-export const DataFormat = /*@__PURE__*/ S.String;
+export const DataFormat = S.String;
 export type StorageCompressionFormat = "NONE" | "GZIP" | (string & {});
-export const StorageCompressionFormat = /*@__PURE__*/ S.String;
+export const StorageCompressionFormat = S.String;
 export interface S3Config {
   bucketArn: string;
   dataFormat?: DataFormat;
@@ -954,7 +954,7 @@ export const DataDestinationConfigs = /*@__PURE__*/ S.Array(
   DataDestinationConfig,
 );
 export type StorageMaximumSizeUnit = "MB" | "GB" | "TB" | (string & {});
-export const StorageMaximumSizeUnit = /*@__PURE__*/ S.String;
+export const StorageMaximumSizeUnit = S.String;
 export interface StorageMaximumSize {
   unit: StorageMaximumSizeUnit;
   value: number;
@@ -969,7 +969,7 @@ export type StorageMinimumTimeToLiveUnit =
   | "DAYS"
   | "WEEKS"
   | (string & {});
-export const StorageMinimumTimeToLiveUnit = /*@__PURE__*/ S.String;
+export const StorageMinimumTimeToLiveUnit = S.String;
 export interface StorageMinimumTimeToLive {
   unit: StorageMinimumTimeToLiveUnit;
   value: number;
@@ -1150,7 +1150,7 @@ export type CampaignStatus =
   | "RUNNING"
   | "SUSPENDED"
   | (string & {});
-export const CampaignStatus = /*@__PURE__*/ S.String;
+export const CampaignStatus = S.String;
 export interface GetCampaignResponse {
   name?: string;
   arn?: string;
@@ -1209,7 +1209,7 @@ export type UpdateCampaignAction =
   | "RESUME"
   | "UPDATE"
   | (string & {});
-export const UpdateCampaignAction = /*@__PURE__*/ S.String;
+export const UpdateCampaignAction = S.String;
 export interface UpdateCampaignRequest {
   name: string;
   description?: string;
@@ -1276,7 +1276,7 @@ export const DeleteCampaignResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCampaignResponse",
 }) as any as S.Schema<DeleteCampaignResponse>;
 export type ListResponseScope = "METADATA_ONLY" | (string & {});
-export const ListResponseScope = /*@__PURE__*/ S.String;
+export const ListResponseScope = S.String;
 export interface ListCampaignsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1348,9 +1348,9 @@ export type SignalDecoderType =
   | "MESSAGE_SIGNAL"
   | "CUSTOM_DECODING_SIGNAL"
   | (string & {});
-export const SignalDecoderType = /*@__PURE__*/ S.String;
+export const SignalDecoderType = S.String;
 export type SignalValueType = "INTEGER" | "FLOATING_POINT" | (string & {});
-export const SignalValueType = /*@__PURE__*/ S.String;
+export const SignalValueType = S.String;
 export interface CanSignal {
   messageId: number;
   isBigEndian: boolean;
@@ -1420,7 +1420,7 @@ export type ROS2PrimitiveType =
   | "STRING"
   | "WSTRING"
   | (string & {});
-export const ROS2PrimitiveType = /*@__PURE__*/ S.String;
+export const ROS2PrimitiveType = S.String;
 export interface ROS2PrimitiveMessageDefinition {
   primitiveType: ROS2PrimitiveType;
   offset?: number;
@@ -1448,7 +1448,7 @@ export type StructuredMessageListType =
   | "DYNAMIC_UNBOUNDED_CAPACITY"
   | "DYNAMIC_BOUNDED_CAPACITY"
   | (string & {});
-export const StructuredMessageListType = /*@__PURE__*/ S.String;
+export const StructuredMessageListType = S.String;
 export interface StructuredMessageListDefinition {
   name: string;
   memberType: StructuredMessage;
@@ -1563,7 +1563,7 @@ export type NetworkInterfaceType =
   | "VEHICLE_MIDDLEWARE"
   | "CUSTOM_DECODING_INTERFACE"
   | (string & {});
-export const NetworkInterfaceType = /*@__PURE__*/ S.String;
+export const NetworkInterfaceType = S.String;
 export interface CanInterface {
   name: string;
   protocolName?: string;
@@ -1597,7 +1597,7 @@ export const ObdInterface = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ObdInterface" }) as any as S.Schema<ObdInterface>;
 export type VehicleMiddlewareProtocol = "ROS_2" | (string & {});
-export const VehicleMiddlewareProtocol = /*@__PURE__*/ S.String;
+export const VehicleMiddlewareProtocol = S.String;
 export interface VehicleMiddleware {
   name: string;
   protocolName: VehicleMiddlewareProtocol;
@@ -1638,7 +1638,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 export type NetworkInterfaces = NetworkInterface[];
 export const NetworkInterfaces = /*@__PURE__*/ S.Array(NetworkInterface);
 export type DefaultForUnmappedSignalsType = "CUSTOM_DECODING" | (string & {});
-export const DefaultForUnmappedSignalsType = /*@__PURE__*/ S.String;
+export const DefaultForUnmappedSignalsType = S.String;
 export interface CreateDecoderManifestRequest {
   name: string;
   description?: string;
@@ -1697,7 +1697,7 @@ export type SignalDecoderFailureReason =
   | "EMPTY_MESSAGE_SIGNAL"
   | "CUSTOM_DECODING_SIGNAL_INFO_IS_NULL"
   | (string & {});
-export const SignalDecoderFailureReason = /*@__PURE__*/ S.String;
+export const SignalDecoderFailureReason = S.String;
 export interface InvalidSignalDecoder {
   name?: string;
   reason?: SignalDecoderFailureReason;
@@ -1725,7 +1725,7 @@ export type NetworkInterfaceFailureReason =
   | "VEHICLE_MIDDLEWARE_NETWORK_INTERFACE_INFO_IS_NULL"
   | "CUSTOM_DECODING_SIGNAL_NETWORK_INTERFACE_INFO_IS_NULL"
   | (string & {});
-export const NetworkInterfaceFailureReason = /*@__PURE__*/ S.String;
+export const NetworkInterfaceFailureReason = S.String;
 export interface InvalidNetworkInterface {
   interfaceId?: string;
   reason?: NetworkInterfaceFailureReason;
@@ -1765,7 +1765,7 @@ export type ManifestStatus =
   | "INVALID"
   | "VALIDATING"
   | (string & {});
-export const ManifestStatus = /*@__PURE__*/ S.String;
+export const ManifestStatus = S.String;
 export interface GetDecoderManifestResponse {
   name: string;
   arn: string;
@@ -2573,7 +2573,7 @@ export type NodeDataType =
   | "STRUCT"
   | "STRUCT_ARRAY"
   | (string & {});
-export const NodeDataType = /*@__PURE__*/ S.String;
+export const NodeDataType = S.String;
 export interface Sensor {
   fullyQualifiedName: string;
   dataType: NodeDataType;
@@ -2671,7 +2671,7 @@ export const CustomStruct = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomStruct" }) as any as S.Schema<CustomStruct>;
 export type NodeDataEncoding = "BINARY" | "TYPED" | (string & {});
-export const NodeDataEncoding = /*@__PURE__*/ S.String;
+export const NodeDataEncoding = S.String;
 export interface CustomProperty {
   fullyQualifiedName: string;
   dataType: NodeDataType;
@@ -3013,7 +3013,7 @@ export type SignalNodeType =
   | "CUSTOM_STRUCT"
   | "CUSTOM_PROPERTY"
   | (string & {});
-export const SignalNodeType = /*@__PURE__*/ S.String;
+export const SignalNodeType = S.String;
 export interface ListSignalCatalogNodesRequest {
   name: string;
   nextToken?: string;

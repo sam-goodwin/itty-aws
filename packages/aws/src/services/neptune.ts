@@ -1587,7 +1587,7 @@ export type FailoverStatus =
   | "failing-over"
   | "cancelling"
   | (string & {});
-export const FailoverStatus = /*@__PURE__*/ S.String;
+export const FailoverStatus = S.String;
 export interface FailoverState {
   Status?: FailoverStatus;
   FromDbClusterArn?: string;
@@ -2064,7 +2064,7 @@ export const DescribeDBClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDBClusterParametersMessage",
 }) as any as S.Schema<DescribeDBClusterParametersMessage>;
 export type ApplyMethod = "immediate" | "pending-reboot" | (string & {});
-export const ApplyMethod = /*@__PURE__*/ S.String;
+export const ApplyMethod = S.String;
 export interface Parameter {
   ParameterName?: string;
   ParameterValue?: string;
@@ -2718,7 +2718,7 @@ export type SourceType =
   | "db-cluster"
   | "db-cluster-snapshot"
   | (string & {});
-export const SourceType = /*@__PURE__*/ S.String;
+export const SourceType = S.String;
 export interface DescribeEventsMessage {
   SourceIdentifier?: string;
   SourceType?: SourceType;

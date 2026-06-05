@@ -221,7 +221,7 @@ export type PortfolioShareType =
   | "AWS_SERVICECATALOG"
   | "AWS_ORGANIZATIONS"
   | (string & {});
-export const PortfolioShareType = /*@__PURE__*/ S.String;
+export const PortfolioShareType = S.String;
 export interface AcceptPortfolioShareInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -262,7 +262,7 @@ export const AssociateBudgetWithResourceOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateBudgetWithResourceOutput",
 }) as any as S.Schema<AssociateBudgetWithResourceOutput>;
 export type PrincipalType = "IAM" | "IAM_PATTERN" | (string & {});
-export const PrincipalType = /*@__PURE__*/ S.String;
+export const PrincipalType = S.String;
 export interface AssociatePrincipalWithPortfolioInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -396,7 +396,7 @@ export type ServiceActionAssociationErrorCode =
   | "THROTTLING"
   | "INVALID_PARAMETER"
   | (string & {});
-export const ServiceActionAssociationErrorCode = /*@__PURE__*/ S.String;
+export const ServiceActionAssociationErrorCode = S.String;
 export interface FailedServiceActionAssociation {
   ServiceActionId?: string;
   ProductId?: string;
@@ -461,7 +461,7 @@ export const BatchDisassociateServiceActionFromProvisioningArtifactOutput =
     identifier: "BatchDisassociateServiceActionFromProvisioningArtifactOutput",
   }) as any as S.Schema<BatchDisassociateServiceActionFromProvisioningArtifactOutput>;
 export type ProvisioningArtifactPropertyName = "Id" | (string & {});
-export const ProvisioningArtifactPropertyName = /*@__PURE__*/ S.String;
+export const ProvisioningArtifactPropertyName = S.String;
 export type SourceProvisioningArtifactPropertiesMap = {
   [key in ProvisioningArtifactPropertyName]?: string;
 };
@@ -476,7 +476,7 @@ export const SourceProvisioningArtifactProperties = /*@__PURE__*/ S.Array(
   SourceProvisioningArtifactPropertiesMap,
 );
 export type CopyOption = "CopyTags" | (string & {});
-export const CopyOption = /*@__PURE__*/ S.String;
+export const CopyOption = S.String;
 export type CopyOptions = CopyOption[];
 export const CopyOptions = /*@__PURE__*/ S.Array(CopyOption);
 export interface CopyProductInput {
@@ -560,7 +560,7 @@ export const ConstraintDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConstraintDetail",
 }) as any as S.Schema<ConstraintDetail>;
 export type Status = "AVAILABLE" | "CREATING" | "FAILED" | (string & {});
-export const Status = /*@__PURE__*/ S.String;
+export const Status = S.String;
 export interface CreateConstraintOutput {
   ConstraintDetail?: ConstraintDetail;
   ConstraintParameters?: string;
@@ -645,7 +645,7 @@ export type OrganizationNodeType =
   | "ORGANIZATIONAL_UNIT"
   | "ACCOUNT"
   | (string & {});
-export const OrganizationNodeType = /*@__PURE__*/ S.String;
+export const OrganizationNodeType = S.String;
 export interface OrganizationNode {
   Type?: OrganizationNodeType;
   Value?: string;
@@ -695,7 +695,7 @@ export type ProductType =
   | "TERRAFORM_CLOUD"
   | "EXTERNAL"
   | (string & {});
-export const ProductType = /*@__PURE__*/ S.String;
+export const ProductType = S.String;
 export type ProvisioningArtifactInfo = { [key: string]: string | undefined };
 export const ProvisioningArtifactInfo = /*@__PURE__*/ S.Record(
   S.String,
@@ -709,7 +709,7 @@ export type ProvisioningArtifactType =
   | "TERRAFORM_CLOUD"
   | "EXTERNAL"
   | (string & {});
-export const ProvisioningArtifactType = /*@__PURE__*/ S.String;
+export const ProvisioningArtifactType = S.String;
 export interface ProvisioningArtifactProperties {
   Name?: string;
   Description?: string;
@@ -729,7 +729,7 @@ export const ProvisioningArtifactProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProvisioningArtifactProperties",
 }) as any as S.Schema<ProvisioningArtifactProperties>;
 export type SourceType = "CODESTAR" | (string & {});
-export const SourceType = /*@__PURE__*/ S.String;
+export const SourceType = S.String;
 export interface CodeStarParameters {
   ConnectionArn: string;
   Repository: string;
@@ -833,7 +833,7 @@ export const ProductViewSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductViewSummary",
 }) as any as S.Schema<ProductViewSummary>;
 export type LastSyncStatus = "SUCCEEDED" | "FAILED" | (string & {});
-export const LastSyncStatus = /*@__PURE__*/ S.String;
+export const LastSyncStatus = S.String;
 export interface LastSync {
   LastSyncTime?: Date;
   LastSyncStatus?: LastSyncStatus;
@@ -888,7 +888,7 @@ export type ProvisioningArtifactGuidance =
   | "DEFAULT"
   | "DEPRECATED"
   | (string & {});
-export const ProvisioningArtifactGuidance = /*@__PURE__*/ S.String;
+export const ProvisioningArtifactGuidance = S.String;
 export interface ProvisioningArtifactDetail {
   Id?: string;
   Name?: string;
@@ -928,7 +928,7 @@ export const CreateProductOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProductOutput",
 }) as any as S.Schema<CreateProductOutput>;
 export type ProvisionedProductPlanType = "CLOUDFORMATION" | (string & {});
-export const ProvisionedProductPlanType = /*@__PURE__*/ S.String;
+export const ProvisionedProductPlanType = S.String;
 export type NotificationArns = string[];
 export const NotificationArns = /*@__PURE__*/ S.Array(S.String);
 export interface UpdateProvisioningParameter {
@@ -1032,14 +1032,14 @@ export const CreateProvisioningArtifactOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProvisioningArtifactOutput",
 }) as any as S.Schema<CreateProvisioningArtifactOutput>;
 export type ServiceActionDefinitionType = "SSM_AUTOMATION" | (string & {});
-export const ServiceActionDefinitionType = /*@__PURE__*/ S.String;
+export const ServiceActionDefinitionType = S.String;
 export type ServiceActionDefinitionKey =
   | "Name"
   | "Version"
   | "AssumeRole"
   | "Parameters"
   | (string & {});
-export const ServiceActionDefinitionKey = /*@__PURE__*/ S.String;
+export const ServiceActionDefinitionKey = S.String;
 export type ServiceActionDefinitionMap = {
   [key in ServiceActionDefinitionKey]?: string;
 };
@@ -1345,7 +1345,7 @@ export type CopyProductStatus =
   | "IN_PROGRESS"
   | "FAILED"
   | (string & {});
-export const CopyProductStatus = /*@__PURE__*/ S.String;
+export const CopyProductStatus = S.String;
 export interface DescribeCopyProductStatusOutput {
   CopyProductStatus?: CopyProductStatus;
   TargetProductId?: string;
@@ -1403,7 +1403,7 @@ export type DescribePortfolioShareType =
   | "ORGANIZATIONAL_UNIT"
   | "ORGANIZATION_MEMBER_ACCOUNT"
   | (string & {});
-export const DescribePortfolioShareType = /*@__PURE__*/ S.String;
+export const DescribePortfolioShareType = S.String;
 export interface DescribePortfolioSharesInput {
   PortfolioId: string;
   Type: DescribePortfolioShareType;
@@ -1472,7 +1472,7 @@ export type ShareStatus =
   | "COMPLETED_WITH_ERRORS"
   | "ERROR"
   | (string & {});
-export const ShareStatus = /*@__PURE__*/ S.String;
+export const ShareStatus = S.String;
 export type SuccessfulShares = string[];
 export const SuccessfulShares = /*@__PURE__*/ S.Array(S.String);
 export type Namespaces = string[];
@@ -1685,7 +1685,7 @@ export type ProvisionedProductStatus =
   | "ERROR"
   | "PLAN_IN_PROGRESS"
   | (string & {});
-export const ProvisionedProductStatus = /*@__PURE__*/ S.String;
+export const ProvisionedProductStatus = S.String;
 export interface ProvisionedProductDetail {
   Name?: string;
   Arn?: string;
@@ -1770,7 +1770,7 @@ export type ProvisionedProductPlanStatus =
   | "EXECUTE_SUCCESS"
   | "EXECUTE_FAILED"
   | (string & {});
-export const ProvisionedProductPlanStatus = /*@__PURE__*/ S.String;
+export const ProvisionedProductPlanStatus = S.String;
 export interface ProvisionedProductPlanDetails {
   CreatedTime?: Date;
   PathId?: string;
@@ -1810,9 +1810,9 @@ export const ProvisionedProductPlanDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProvisionedProductPlanDetails",
 }) as any as S.Schema<ProvisionedProductPlanDetails>;
 export type ChangeAction = "ADD" | "MODIFY" | "REMOVE" | (string & {});
-export const ChangeAction = /*@__PURE__*/ S.String;
+export const ChangeAction = S.String;
 export type Replacement = "TRUE" | "FALSE" | "CONDITIONAL" | (string & {});
-export const Replacement = /*@__PURE__*/ S.String;
+export const Replacement = S.String;
 export type ResourceAttribute =
   | "PROPERTIES"
   | "METADATA"
@@ -1821,7 +1821,7 @@ export type ResourceAttribute =
   | "DELETIONPOLICY"
   | "TAGS"
   | (string & {});
-export const ResourceAttribute = /*@__PURE__*/ S.String;
+export const ResourceAttribute = S.String;
 export type Scope = ResourceAttribute[];
 export const Scope = /*@__PURE__*/ S.Array(ResourceAttribute);
 export type RequiresRecreation =
@@ -1829,7 +1829,7 @@ export type RequiresRecreation =
   | "CONDITIONALLY"
   | "ALWAYS"
   | (string & {});
-export const RequiresRecreation = /*@__PURE__*/ S.String;
+export const RequiresRecreation = S.String;
 export interface ResourceTargetDefinition {
   Attribute?: ResourceAttribute;
   Name?: string;
@@ -1845,7 +1845,7 @@ export const ResourceTargetDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceTargetDefinition",
 }) as any as S.Schema<ResourceTargetDefinition>;
 export type EvaluationType = "STATIC" | "DYNAMIC" | (string & {});
-export const EvaluationType = /*@__PURE__*/ S.String;
+export const EvaluationType = S.String;
 export interface ResourceChangeDetail {
   Target?: ResourceTargetDefinition;
   Evaluation?: EvaluationType;
@@ -2128,7 +2128,7 @@ export type RecordStatus =
   | "SUCCEEDED"
   | "FAILED"
   | (string & {});
-export const RecordStatus = /*@__PURE__*/ S.String;
+export const RecordStatus = S.String;
 export interface RecordError {
   Code?: string;
   Description?: string;
@@ -2503,7 +2503,7 @@ export type AccessStatus =
   | "UNDER_CHANGE"
   | "DISABLED"
   | (string & {});
-export const AccessStatus = /*@__PURE__*/ S.String;
+export const AccessStatus = S.String;
 export interface GetAWSOrganizationsAccessStatusOutput {
   AccessStatus?: AccessStatus;
 }
@@ -2893,7 +2893,7 @@ export const ListPrincipalsForPortfolioOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPrincipalsForPortfolioOutput",
 }) as any as S.Schema<ListPrincipalsForPortfolioOutput>;
 export type AccessLevelFilterKey = "Account" | "Role" | "User" | (string & {});
-export const AccessLevelFilterKey = /*@__PURE__*/ S.String;
+export const AccessLevelFilterKey = S.String;
 export interface AccessLevelFilter {
   Key?: AccessLevelFilterKey;
   Value?: string;
@@ -3217,7 +3217,7 @@ export type StackInstanceStatus =
   | "OUTDATED"
   | "INOPERABLE"
   | (string & {});
-export const StackInstanceStatus = /*@__PURE__*/ S.String;
+export const StackInstanceStatus = S.String;
 export interface StackInstance {
   Account?: string;
   Region?: string;
@@ -3288,7 +3288,7 @@ export const ListTagOptionsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagOptionsOutput",
 }) as any as S.Schema<ListTagOptionsOutput>;
 export type EngineWorkflowStatus = "SUCCEEDED" | "FAILED" | (string & {});
-export const EngineWorkflowStatus = /*@__PURE__*/ S.String;
+export const EngineWorkflowStatus = S.String;
 export interface UniqueTagResourceIdentifier {
   Key?: string;
   Value?: string;
@@ -3529,7 +3529,7 @@ export type ProductViewFilterBy =
   | "ProductType"
   | "SourceProductId"
   | (string & {});
-export const ProductViewFilterBy = /*@__PURE__*/ S.String;
+export const ProductViewFilterBy = S.String;
 export type ProductViewFilterValues = string[];
 export const ProductViewFilterValues = /*@__PURE__*/ S.Array(S.String);
 export type ProductViewFilters = { [key in ProductViewFilterBy]?: string[] };
@@ -3542,9 +3542,9 @@ export type ProductViewSortBy =
   | "VersionCount"
   | "CreationDate"
   | (string & {});
-export const ProductViewSortBy = /*@__PURE__*/ S.String;
+export const ProductViewSortBy = S.String;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-export const SortOrder = /*@__PURE__*/ S.String;
+export const SortOrder = S.String;
 export interface SearchProductsInput {
   AcceptLanguage?: string;
   Filters?: { [key: string]: string[] | undefined };
@@ -3609,7 +3609,7 @@ export const SearchProductsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchProductsOutput",
 }) as any as S.Schema<SearchProductsOutput>;
 export type ProductSource = "ACCOUNT" | (string & {});
-export const ProductSource = /*@__PURE__*/ S.String;
+export const ProductSource = S.String;
 export interface SearchProductsAsAdminInput {
   AcceptLanguage?: string;
   PortfolioId?: string;
@@ -3651,7 +3651,7 @@ export const SearchProductsAsAdminOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchProductsAsAdminOutput",
 }) as any as S.Schema<SearchProductsAsAdminOutput>;
 export type ProvisionedProductViewFilterBy = "SearchQuery" | (string & {});
-export const ProvisionedProductViewFilterBy = /*@__PURE__*/ S.String;
+export const ProvisionedProductViewFilterBy = S.String;
 export type ProvisionedProductViewFilterValues = string[];
 export const ProvisionedProductViewFilterValues = /*@__PURE__*/ S.Array(
   S.String,
@@ -3936,7 +3936,7 @@ export type StackSetOperationType =
   | "UPDATE"
   | "DELETE"
   | (string & {});
-export const StackSetOperationType = /*@__PURE__*/ S.String;
+export const StackSetOperationType = S.String;
 export interface UpdateProvisioningPreferences {
   StackSetAccounts?: string[];
   StackSetRegions?: string[];
@@ -4004,7 +4004,7 @@ export const UpdateProvisionedProductOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateProvisionedProductOutput",
 }) as any as S.Schema<UpdateProvisionedProductOutput>;
 export type PropertyKey = "OWNER" | "LAUNCH_ROLE" | (string & {});
-export const PropertyKey = /*@__PURE__*/ S.String;
+export const PropertyKey = S.String;
 export type ProvisionedProductProperties = { [key in PropertyKey]?: string };
 export const ProvisionedProductProperties = /*@__PURE__*/ S.Record(
   PropertyKey,

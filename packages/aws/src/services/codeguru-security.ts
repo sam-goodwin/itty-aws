@@ -129,7 +129,7 @@ export const BatchGetFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetFindingsRequest",
 }) as any as S.Schema<BatchGetFindingsRequest>;
 export type Status = "Closed" | "Open" | "All" | (string & {});
-export const Status = /*@__PURE__*/ S.String;
+export const Status = S.String;
 export interface Resource {
   id?: string;
   subResourceId?: string;
@@ -189,7 +189,7 @@ export type Severity =
   | "Low"
   | "Info"
   | (string & {});
-export const Severity = /*@__PURE__*/ S.String;
+export const Severity = S.String;
 export interface Recommendation {
   text?: string;
   url?: string;
@@ -265,7 +265,7 @@ export type ErrorCode =
   | "INVALID_FINDING_ID"
   | "INVALID_SCAN_NAME"
   | (string & {});
-export const ErrorCode = /*@__PURE__*/ S.String;
+export const ErrorCode = S.String;
 export interface BatchGetFindingsError_ {
   scanName: string;
   findingId: string;
@@ -302,7 +302,7 @@ export type ValidationExceptionReason =
   | "other"
   | "lambdaCodeShaMisMatch"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -321,9 +321,9 @@ export const ResourceId = /*@__PURE__*/ S.Union([
   S.Struct({ codeArtifactId: S.String }),
 ]);
 export type ScanType = "Standard" | "Express" | (string & {});
-export const ScanType = /*@__PURE__*/ S.String;
+export const ScanType = S.String;
 export type AnalysisType = "Security" | "All" | (string & {});
-export const AnalysisType = /*@__PURE__*/ S.String;
+export const AnalysisType = S.String;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -359,7 +359,7 @@ export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScanRequest",
 }) as any as S.Schema<CreateScanRequest>;
 export type ScanState = "InProgress" | "Successful" | "Failed" | (string & {});
-export const ScanState = /*@__PURE__*/ S.String;
+export const ScanState = S.String;
 export interface CreateScanResponse {
   scanName: string;
   runId: string;

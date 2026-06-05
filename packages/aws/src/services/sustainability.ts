@@ -132,7 +132,7 @@ export type Dimension =
   | "REGION"
   | "SERVICE"
   | (string & {});
-export const Dimension = /*@__PURE__*/ S.String;
+export const Dimension = S.String;
 export type DimensionList = Dimension[];
 export const DimensionList = /*@__PURE__*/ S.Array(Dimension);
 export type DimensionValueList = string[];
@@ -159,7 +159,7 @@ export type EmissionsType =
   | "TOTAL_SCOPE_3_LBM_CARBON_EMISSIONS"
   | "TOTAL_SCOPE_3_MBM_CARBON_EMISSIONS"
   | (string & {});
-export const EmissionsType = /*@__PURE__*/ S.String;
+export const EmissionsType = S.String;
 export type EmissionsTypeList = EmissionsType[];
 export const EmissionsTypeList = /*@__PURE__*/ S.Array(EmissionsType);
 export type TimeGranularity =
@@ -169,7 +169,7 @@ export type TimeGranularity =
   | "QUARTERLY_FISCAL"
   | "MONTHLY"
   | (string & {});
-export const TimeGranularity = /*@__PURE__*/ S.String;
+export const TimeGranularity = S.String;
 export interface GranularityConfiguration {
   FiscalYearStartMonth?: number;
 }
@@ -217,7 +217,7 @@ export const DimensionsMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type EmissionsUnit = "MTCO2e" | (string & {});
-export const EmissionsUnit = /*@__PURE__*/ S.String;
+export const EmissionsUnit = S.String;
 export interface Emissions {
   Value: number;
   Unit: EmissionsUnit;

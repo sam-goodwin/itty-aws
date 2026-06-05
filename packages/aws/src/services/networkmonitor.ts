@@ -187,7 +187,7 @@ export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceOutput",
 }) as any as S.Schema<UntagResourceOutput>;
 export type Protocol = "TCP" | "ICMP" | (string & {});
-export const Protocol = /*@__PURE__*/ S.String;
+export const Protocol = S.String;
 export interface CreateMonitorProbeInput {
   sourceArn: string;
   destination: string;
@@ -246,7 +246,7 @@ export type MonitorState =
   | "ERROR"
   | "DELETING"
   | (string & {});
-export const MonitorState = /*@__PURE__*/ S.String;
+export const MonitorState = S.String;
 export interface CreateMonitorOutput {
   monitorArn: string;
   monitorName: string;
@@ -283,7 +283,7 @@ export const GetMonitorInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMonitorInput",
 }) as any as S.Schema<GetMonitorInput>;
 export type AddressFamily = "IPV4" | "IPV6" | (string & {});
-export const AddressFamily = /*@__PURE__*/ S.String;
+export const AddressFamily = S.String;
 export type ProbeState =
   | "PENDING"
   | "ACTIVE"
@@ -292,7 +292,7 @@ export type ProbeState =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const ProbeState = /*@__PURE__*/ S.String;
+export const ProbeState = S.String;
 export interface Probe {
   probeId?: string;
   probeArn?: string;

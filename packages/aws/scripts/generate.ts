@@ -127,7 +127,7 @@ class UnableToTransformShapeToSchema extends Data.TaggedError(
 const annotatePureExportConst = (definition: string) =>
   definition.replace(
     /^export const ([^=]+?)\s*=\s*/m,
-    "export const $1 = /*@__PURE__*/ ",
+    `export const $1 = ${definition.includes("(") ? "/*@__PURE__*/ " : ""}`,
   );
 
 // =============================================================================

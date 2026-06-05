@@ -172,7 +172,7 @@ export type ComparisonOperator =
   | "EQUAL"
   | "NOT_EQUAL"
   | (string & {});
-export const ComparisonOperator = /*@__PURE__*/ S.String;
+export const ComparisonOperator = S.String;
 export interface SimpleRule {
   inputProperty: string;
   comparisonOperator: ComparisonOperator;
@@ -192,7 +192,7 @@ export const AlarmRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ simpleRule: S.optional(SimpleRule) }),
 ).annotate({ identifier: "AlarmRule" }) as any as S.Schema<AlarmRule>;
 export type PayloadType = "STRING" | "JSON" | (string & {});
-export const PayloadType = /*@__PURE__*/ S.String;
+export const PayloadType = S.String;
 export interface Payload {
   contentExpression: string;
   type: PayloadType;
@@ -554,7 +554,7 @@ export type AlarmModelVersionStatus =
   | "INACTIVE"
   | "FAILED"
   | (string & {});
-export const AlarmModelVersionStatus = /*@__PURE__*/ S.String;
+export const AlarmModelVersionStatus = S.String;
 export interface CreateAlarmModelResponse {
   creationTime?: Date;
   alarmModelArn?: string;
@@ -730,7 +730,7 @@ export const DetectorModelDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "DetectorModelDefinition",
 }) as any as S.Schema<DetectorModelDefinition>;
 export type EvaluationMethod = "BATCH" | "SERIAL" | (string & {});
-export const EvaluationMethod = /*@__PURE__*/ S.String;
+export const EvaluationMethod = S.String;
 export interface CreateDetectorModelRequest {
   detectorModelName: string;
   detectorModelDefinition: DetectorModelDefinition;
@@ -771,7 +771,7 @@ export type DetectorModelVersionStatus =
   | "PAUSED"
   | "FAILED"
   | (string & {});
-export const DetectorModelVersionStatus = /*@__PURE__*/ S.String;
+export const DetectorModelVersionStatus = S.String;
 export interface DetectorModelConfiguration {
   detectorModelName?: string;
   detectorModelVersion?: string;
@@ -857,7 +857,7 @@ export type InputStatus =
   | "ACTIVE"
   | "DELETING"
   | (string & {});
-export const InputStatus = /*@__PURE__*/ S.String;
+export const InputStatus = S.String;
 export interface InputConfiguration {
   inputName: string;
   inputDescription?: string;
@@ -1079,7 +1079,7 @@ export const DescribeDetectorModelAnalysisRequest = /*@__PURE__*/ S.suspend(
   identifier: "DescribeDetectorModelAnalysisRequest",
 }) as any as S.Schema<DescribeDetectorModelAnalysisRequest>;
 export type AnalysisStatus = "RUNNING" | "COMPLETE" | "FAILED" | (string & {});
-export const AnalysisStatus = /*@__PURE__*/ S.String;
+export const AnalysisStatus = S.String;
 export interface DescribeDetectorModelAnalysisResponse {
   status?: AnalysisStatus;
 }
@@ -1139,7 +1139,7 @@ export const DescribeLoggingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeLoggingOptionsRequest",
 }) as any as S.Schema<DescribeLoggingOptionsRequest>;
 export type LoggingLevel = "ERROR" | "INFO" | "DEBUG" | (string & {});
-export const LoggingLevel = /*@__PURE__*/ S.String;
+export const LoggingLevel = S.String;
 export interface DetectorDebugOption {
   detectorModelName: string;
   keyValue?: string;
@@ -1201,7 +1201,7 @@ export const GetDetectorModelAnalysisResultsRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetDetectorModelAnalysisResultsRequest",
 }) as any as S.Schema<GetDetectorModelAnalysisResultsRequest>;
 export type AnalysisResultLevel = "INFO" | "WARNING" | "ERROR" | (string & {});
-export const AnalysisResultLevel = /*@__PURE__*/ S.String;
+export const AnalysisResultLevel = S.String;
 export interface AnalysisResultLocation {
   path?: string;
 }

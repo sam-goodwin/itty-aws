@@ -96,7 +96,7 @@ export type Token = string;
 
 //# Schemas
 export type TargetType = "ACCOUNT" | (string & {});
-export const TargetType = /*@__PURE__*/ S.String;
+export const TargetType = S.String;
 export interface Target {
   Type: TargetType;
   Id?: string;

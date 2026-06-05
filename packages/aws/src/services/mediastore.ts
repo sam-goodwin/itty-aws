@@ -135,7 +135,7 @@ export type ContainerStatus =
   | "CREATING"
   | "DELETING"
   | (string & {});
-export const ContainerStatus = /*@__PURE__*/ S.String;
+export const ContainerStatus = S.String;
 export interface Container {
   Endpoint?: string;
   CreationTime?: Date;
@@ -355,7 +355,7 @@ export const GetCorsPolicyInput = /*@__PURE__*/ S.suspend(() =>
 export type AllowedOrigins = string[];
 export const AllowedOrigins = /*@__PURE__*/ S.Array(S.String);
 export type MethodName = "PUT" | "GET" | "DELETE" | "HEAD" | (string & {});
-export const MethodName = /*@__PURE__*/ S.String;
+export const MethodName = S.String;
 export type AllowedMethods = MethodName[];
 export const AllowedMethods = /*@__PURE__*/ S.Array(MethodName);
 export type AllowedHeaders = string[];
@@ -433,7 +433,7 @@ export const GetMetricPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMetricPolicyInput",
 }) as any as S.Schema<GetMetricPolicyInput>;
 export type ContainerLevelMetrics = "ENABLED" | "DISABLED" | (string & {});
-export const ContainerLevelMetrics = /*@__PURE__*/ S.String;
+export const ContainerLevelMetrics = S.String;
 export interface MetricPolicyRule {
   ObjectGroup: string;
   ObjectGroupName: string;

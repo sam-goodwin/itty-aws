@@ -122,13 +122,13 @@ export type ResourceShareInvitationStatus =
   | "REJECTED"
   | "EXPIRED"
   | (string & {});
-export const ResourceShareInvitationStatus = /*@__PURE__*/ S.String;
+export const ResourceShareInvitationStatus = S.String;
 export type ResourceShareAssociationType =
   | "PRINCIPAL"
   | "RESOURCE"
   | "SOURCE"
   | (string & {});
-export const ResourceShareAssociationType = /*@__PURE__*/ S.String;
+export const ResourceShareAssociationType = S.String;
 export type ResourceShareAssociationStatus =
   | "ASSOCIATING"
   | "ASSOCIATED"
@@ -139,7 +139,7 @@ export type ResourceShareAssociationStatus =
   | "SUSPENDING"
   | "RESTORING"
   | (string & {});
-export const ResourceShareAssociationStatus = /*@__PURE__*/ S.String;
+export const ResourceShareAssociationStatus = S.String;
 export interface ResourceShareAssociation {
   resourceShareArn?: string;
   resourceShareName?: string;
@@ -344,13 +344,13 @@ export const CreatePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePermissionRequest",
 }) as any as S.Schema<CreatePermissionRequest>;
 export type PermissionType = "CUSTOMER_MANAGED" | "AWS_MANAGED" | (string & {});
-export const PermissionType = /*@__PURE__*/ S.String;
+export const PermissionType = S.String;
 export type PermissionFeatureSet =
   | "CREATED_FROM_POLICY"
   | "PROMOTING_TO_STANDARD"
   | "STANDARD"
   | (string & {});
-export const PermissionFeatureSet = /*@__PURE__*/ S.String;
+export const PermissionFeatureSet = S.String;
 export interface ResourceSharePermissionSummary {
   arn?: string;
   version?: string;
@@ -426,7 +426,7 @@ export type PermissionStatus =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const PermissionStatus = /*@__PURE__*/ S.String;
+export const PermissionStatus = S.String;
 export interface ResourceSharePermissionDetail {
   arn?: string;
   version?: string;
@@ -529,13 +529,13 @@ export type ResourceShareStatus =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const ResourceShareStatus = /*@__PURE__*/ S.String;
+export const ResourceShareStatus = S.String;
 export type ResourceShareFeatureSet =
   | "CREATED_FROM_POLICY"
   | "PROMOTING_TO_STANDARD"
   | "STANDARD"
   | (string & {});
-export const ResourceShareFeatureSet = /*@__PURE__*/ S.String;
+export const ResourceShareFeatureSet = S.String;
 export interface ResourceShare {
   resourceShareArn?: string;
   name?: string;
@@ -950,7 +950,7 @@ export const GetResourceShareInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResourceShareInvitationsResponse",
 }) as any as S.Schema<GetResourceShareInvitationsResponse>;
 export type ResourceOwner = "SELF" | "OTHER-ACCOUNTS" | (string & {});
-export const ResourceOwner = /*@__PURE__*/ S.String;
+export const ResourceOwner = S.String;
 export type TagValueList = string[];
 export const TagValueList = /*@__PURE__*/ S.Array(S.String);
 export interface TagFilter {
@@ -1023,7 +1023,7 @@ export type ResourceRegionScopeFilter =
   | "REGIONAL"
   | "GLOBAL"
   | (string & {});
-export const ResourceRegionScopeFilter = /*@__PURE__*/ S.String;
+export const ResourceRegionScopeFilter = S.String;
 export interface ListPendingInvitationResourcesRequest {
   resourceShareInvitationArn: string;
   nextToken?: string;
@@ -1057,9 +1057,9 @@ export type ResourceStatus =
   | "UNAVAILABLE"
   | "PENDING"
   | (string & {});
-export const ResourceStatus = /*@__PURE__*/ S.String;
+export const ResourceStatus = S.String;
 export type ResourceRegionScope = "REGIONAL" | "GLOBAL" | (string & {});
-export const ResourceRegionScope = /*@__PURE__*/ S.String;
+export const ResourceRegionScope = S.String;
 export interface Resource {
   arn?: string;
   type?: string;
@@ -1185,7 +1185,7 @@ export type PermissionTypeFilter =
   | "AWS_MANAGED"
   | "CUSTOMER_MANAGED"
   | (string & {});
-export const PermissionTypeFilter = /*@__PURE__*/ S.String;
+export const PermissionTypeFilter = S.String;
 export interface ListPermissionsRequest {
   resourceType?: string;
   nextToken?: string;
@@ -1338,7 +1338,7 @@ export type ReplacePermissionAssociationsWorkStatus =
   | "COMPLETED"
   | "FAILED"
   | (string & {});
-export const ReplacePermissionAssociationsWorkStatus = /*@__PURE__*/ S.String;
+export const ReplacePermissionAssociationsWorkStatus = S.String;
 export interface ListReplacePermissionAssociationsWorkRequest {
   workIds?: string[];
   status?: ReplacePermissionAssociationsWorkStatus;

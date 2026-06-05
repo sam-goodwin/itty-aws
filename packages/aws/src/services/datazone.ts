@@ -210,7 +210,7 @@ export type RuleId = string;
 
 //# Schemas
 export type AcceptRuleBehavior = "ALL" | "NONE" | (string & {});
-export const AcceptRuleBehavior = /*@__PURE__*/ S.String;
+export const AcceptRuleBehavior = S.String;
 export interface AcceptRule {
   rule?: AcceptRuleBehavior;
   threshold?: number;
@@ -291,7 +291,7 @@ export const AcceptedAssetScope = /*@__PURE__*/ S.suspend(() =>
 export type AcceptedAssetScopes = AcceptedAssetScope[];
 export const AcceptedAssetScopes = /*@__PURE__*/ S.Array(AcceptedAssetScope);
 export type S3Permission = "READ" | "WRITE" | (string & {});
-export const S3Permission = /*@__PURE__*/ S.String;
+export const S3Permission = S.String;
 export type S3Permissions = S3Permission[];
 export const S3Permissions = /*@__PURE__*/ S.Array(S3Permission);
 export type Permissions = { s3: S3Permission[] };
@@ -344,7 +344,7 @@ export type SubscriptionRequestStatus =
   | "ACCEPTED"
   | "REJECTED"
   | (string & {});
-export const SubscriptionRequestStatus = /*@__PURE__*/ S.String;
+export const SubscriptionRequestStatus = S.String;
 export interface SubscribedProject {
   id?: string;
   name?: string | redacted.Redacted<string>;
@@ -602,7 +602,7 @@ export const AcceptSubscriptionRequestOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceptSubscriptionRequestOutput",
 }) as any as S.Schema<AcceptSubscriptionRequestOutput>;
 export type DataZoneEntityType = "DOMAIN_UNIT" | (string & {});
-export const DataZoneEntityType = /*@__PURE__*/ S.String;
+export const DataZoneEntityType = S.String;
 export interface OwnerUserProperties {
   userIdentifier: string;
 }
@@ -668,7 +668,7 @@ export type TargetEntityType =
   | "ENVIRONMENT_PROFILE"
   | "ASSET_TYPE"
   | (string & {});
-export const TargetEntityType = /*@__PURE__*/ S.String;
+export const TargetEntityType = S.String;
 export type ManagedPolicyType =
   | "CREATE_DOMAIN_UNIT"
   | "OVERRIDE_DOMAIN_UNIT_OWNERS"
@@ -685,7 +685,7 @@ export type ManagedPolicyType =
   | "CREATE_PROJECT_FROM_PROJECT_PROFILE"
   | "USE_ASSET_TYPE"
   | (string & {});
-export const ManagedPolicyType = /*@__PURE__*/ S.String;
+export const ManagedPolicyType = S.String;
 export interface AllUsersGrantFilter {}
 export const AllUsersGrantFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -708,7 +708,7 @@ export type ProjectDesignation =
   | "CONTRIBUTOR"
   | "PROJECT_CATALOG_STEWARD"
   | (string & {});
-export const ProjectDesignation = /*@__PURE__*/ S.String;
+export const ProjectDesignation = S.String;
 export interface DomainUnitFilterForProject {
   domainUnit: string;
   includeChildDomainUnits?: boolean;
@@ -742,7 +742,7 @@ export const ProjectPolicyGrantPrincipal = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectPolicyGrantPrincipal",
 }) as any as S.Schema<ProjectPolicyGrantPrincipal>;
 export type DomainUnitDesignation = "OWNER" | (string & {});
-export const DomainUnitDesignation = /*@__PURE__*/ S.String;
+export const DomainUnitDesignation = S.String;
 export interface AllDomainUnitsGrantFilter {}
 export const AllDomainUnitsGrantFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -1224,7 +1224,7 @@ export const AssociateEnvironmentRoleOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateEnvironmentRoleOutput",
 }) as any as S.Schema<AssociateEnvironmentRoleOutput>;
 export type GovernedEntityType = "ASSET" | (string & {});
-export const GovernedEntityType = /*@__PURE__*/ S.String;
+export const GovernedEntityType = S.String;
 export type GovernedGlossaryTerms = string[];
 export const GovernedGlossaryTerms = /*@__PURE__*/ S.Array(S.String);
 export interface AssociateGovernedTermsInput {
@@ -1262,7 +1262,7 @@ export const AssociateGovernedTermsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateGovernedTermsOutput",
 }) as any as S.Schema<AssociateGovernedTermsOutput>;
 export type AttributeEntityType = "ASSET" | "LISTING" | (string & {});
-export const AttributeEntityType = /*@__PURE__*/ S.String;
+export const AttributeEntityType = S.String;
 export type AttributesList = string[];
 export const AttributesList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetAttributesMetadataInput {
@@ -1449,7 +1449,7 @@ export type SubscriptionStatus =
   | "REVOKED"
   | "CANCELLED"
   | (string & {});
-export const SubscriptionStatus = /*@__PURE__*/ S.String;
+export const SubscriptionStatus = S.String;
 export interface CancelSubscriptionOutput {
   id: string;
   createdBy: string;
@@ -1481,7 +1481,7 @@ export const CancelSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelSubscriptionOutput",
 }) as any as S.Schema<CancelSubscriptionOutput>;
 export type ResolutionStrategy = "MANUAL" | (string & {});
-export const ResolutionStrategy = /*@__PURE__*/ S.String;
+export const ResolutionStrategy = S.String;
 export type AwsRegionList = string[];
 export const AwsRegionList = /*@__PURE__*/ S.Array(S.String);
 export interface AccountInfo {
@@ -1948,7 +1948,7 @@ export const CreateAssetFilterInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAssetFilterInput",
 }) as any as S.Schema<CreateAssetFilterInput>;
 export type FilterStatus = "VALID" | "INVALID" | (string & {});
-export const FilterStatus = /*@__PURE__*/ S.String;
+export const FilterStatus = S.String;
 export interface CreateAssetFilterOutput {
   id: string;
   domainId: string;
@@ -2058,20 +2058,20 @@ export type GlueConnectionType =
   | "TERADATA"
   | "VERTICA"
   | (string & {});
-export const GlueConnectionType = /*@__PURE__*/ S.String;
+export const GlueConnectionType = S.String;
 export type ComputeEnvironments = "SPARK" | "ATHENA" | "PYTHON" | (string & {});
-export const ComputeEnvironments = /*@__PURE__*/ S.String;
+export const ComputeEnvironments = S.String;
 export type ComputeEnvironmentsList = ComputeEnvironments[];
 export const ComputeEnvironmentsList =
   /*@__PURE__*/ S.Array(ComputeEnvironments);
 export type AuthenticationType = "BASIC" | "OAUTH2" | "CUSTOM" | (string & {});
-export const AuthenticationType = /*@__PURE__*/ S.String;
+export const AuthenticationType = S.String;
 export type OAuth2GrantType =
   | "AUTHORIZATION_CODE"
   | "CLIENT_CREDENTIALS"
   | "JWT_BEARER"
   | (string & {});
-export const OAuth2GrantType = /*@__PURE__*/ S.String;
+export const OAuth2GrantType = S.String;
 export interface OAuth2ClientApplication {
   userManagedClientApplicationClientId?: string;
   aWSManagedClientApplicationReference?: string;
@@ -2585,7 +2585,7 @@ export const ConnectionPropertiesInput = /*@__PURE__*/ S.Union([
   }),
 ]);
 export type ConnectionScope = "DOMAIN" | "PROJECT" | (string & {});
-export const ConnectionScope = /*@__PURE__*/ S.String;
+export const ConnectionScope = S.String;
 export interface CreateConnectionInput {
   awsLocation?: AwsLocation;
   clientToken?: string;
@@ -2650,7 +2650,7 @@ export type ConnectionType =
   | "AMAZON_Q"
   | "MLFLOW"
   | (string & {});
-export const ConnectionType = /*@__PURE__*/ S.String;
+export const ConnectionType = S.String;
 export type MatchCriteria = string[];
 export const MatchCriteria = /*@__PURE__*/ S.Array(S.String);
 export type ConnectionStatus =
@@ -2663,7 +2663,7 @@ export type ConnectionStatus =
   | "UPDATE_FAILED"
   | "DELETED"
   | (string & {});
-export const ConnectionStatus = /*@__PURE__*/ S.String;
+export const ConnectionStatus = S.String;
 export interface AuthenticationConfiguration {
   authenticationType?: AuthenticationType;
   secretArn?: string;
@@ -2733,7 +2733,7 @@ export type Protocol =
   | "ODBC"
   | "PRISM"
   | (string & {});
-export const Protocol = /*@__PURE__*/ S.String;
+export const Protocol = S.String;
 export interface PhysicalEndpoint {
   awsLocation?: AwsLocation;
   glueConnectionName?: string;
@@ -2783,7 +2783,7 @@ export const GluePropertiesOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GluePropertiesOutput",
 }) as any as S.Schema<GluePropertiesOutput>;
 export type HyperPodOrchestrator = "EKS" | "SLURM" | (string & {});
-export const HyperPodOrchestrator = /*@__PURE__*/ S.String;
+export const HyperPodOrchestrator = S.String;
 export interface HyperPodPropertiesOutput {
   clusterName: string;
   clusterArn?: string;
@@ -2852,7 +2852,7 @@ export const RedshiftPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RedshiftPropertiesOutput",
 }) as any as S.Schema<RedshiftPropertiesOutput>;
 export type GovernanceType = "AWS_MANAGED" | "USER_MANAGED" | (string & {});
-export const GovernanceType = /*@__PURE__*/ S.String;
+export const GovernanceType = S.String;
 export interface ManagedEndpointCredentials {
   id?: string;
   token?: string;
@@ -3288,12 +3288,12 @@ export type EnvironmentStatus =
   | "DELETED"
   | "INACCESSIBLE"
   | (string & {});
-export const EnvironmentStatus = /*@__PURE__*/ S.String;
+export const EnvironmentStatus = S.String;
 export type ConfigurableActionTypeAuthorization =
   | "IAM"
   | "HTTPS"
   | (string & {});
-export const ConfigurableActionTypeAuthorization = /*@__PURE__*/ S.String;
+export const ConfigurableActionTypeAuthorization = S.String;
 export interface ConfigurableActionParameter {
   key?: string;
   value?: string;
@@ -3350,14 +3350,14 @@ export const CustomParameter = /*@__PURE__*/ S.suspend(() =>
 export type CustomParameterList = CustomParameter[];
 export const CustomParameterList = /*@__PURE__*/ S.Array(CustomParameter);
 export type DeploymentType = "CREATE" | "UPDATE" | "DELETE" | (string & {});
-export const DeploymentType = /*@__PURE__*/ S.String;
+export const DeploymentType = S.String;
 export type DeploymentStatus =
   | "IN_PROGRESS"
   | "SUCCESSFUL"
   | "FAILED"
   | "PENDING_DEPLOYMENT"
   | (string & {});
-export const DeploymentStatus = /*@__PURE__*/ S.String;
+export const DeploymentStatus = S.String;
 export interface EnvironmentError {
   code?: string;
   message: string;
@@ -3694,7 +3694,7 @@ export const CreateGroupProfileInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGroupProfileInput",
 }) as any as S.Schema<CreateGroupProfileInput>;
 export type GroupProfileStatus = "ASSIGNED" | "NOT_ASSIGNED" | (string & {});
-export const GroupProfileStatus = /*@__PURE__*/ S.String;
+export const GroupProfileStatus = S.String;
 export interface CreateGroupProfileOutput {
   domainId?: string;
   id?: string;
@@ -3712,9 +3712,9 @@ export const CreateGroupProfileOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGroupProfileOutput",
 }) as any as S.Schema<CreateGroupProfileOutput>;
 export type EntityType = "ASSET" | "DATA_PRODUCT" | (string & {});
-export const EntityType = /*@__PURE__*/ S.String;
+export const EntityType = S.String;
 export type ChangeAction = "PUBLISH" | "UNPUBLISH" | (string & {});
-export const ChangeAction = /*@__PURE__*/ S.String;
+export const ChangeAction = S.String;
 export interface CreateListingChangeSetInput {
   domainIdentifier: string;
   entityIdentifier: string;
@@ -3748,7 +3748,7 @@ export const CreateListingChangeSetInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateListingChangeSetInput",
 }) as any as S.Schema<CreateListingChangeSetInput>;
 export type ListingStatus = "CREATING" | "ACTIVE" | "INACTIVE" | (string & {});
-export const ListingStatus = /*@__PURE__*/ S.String;
+export const ListingStatus = S.String;
 export interface CreateListingChangeSetOutput {
   listingId: string;
   listingRevision: string;
@@ -3845,7 +3845,7 @@ export type ProjectStatus =
   | "UPDATE_FAILED"
   | "MOVING"
   | (string & {});
-export const ProjectStatus = /*@__PURE__*/ S.String;
+export const ProjectStatus = S.String;
 export interface ProjectDeletionError {
   code?: string;
   message?: string;
@@ -3858,7 +3858,7 @@ export const ProjectDeletionError = /*@__PURE__*/ S.suspend(() =>
 export type FailureReasons = ProjectDeletionError[];
 export const FailureReasons = /*@__PURE__*/ S.Array(ProjectDeletionError);
 export type ResourceTagSource = "PROJECT" | "PROJECT_PROFILE" | (string & {});
-export const ResourceTagSource = /*@__PURE__*/ S.String;
+export const ResourceTagSource = S.String;
 export interface ResourceTag {
   key: string;
   value: string;
@@ -3876,7 +3876,7 @@ export type OverallDeploymentStatus =
   | "FAILED_VALIDATION"
   | "FAILED_DEPLOYMENT"
   | (string & {});
-export const OverallDeploymentStatus = /*@__PURE__*/ S.String;
+export const OverallDeploymentStatus = S.String;
 export type EnvironmentFailureReasonsList = EnvironmentError[];
 export const EnvironmentFailureReasonsList =
   /*@__PURE__*/ S.Array(EnvironmentError);
@@ -3955,7 +3955,7 @@ export type UserDesignation =
   | "PROJECT_CATALOG_CONSUMER"
   | "PROJECT_CATALOG_STEWARD"
   | (string & {});
-export const UserDesignation = /*@__PURE__*/ S.String;
+export const UserDesignation = S.String;
 export interface CreateProjectMembershipInput {
   domainIdentifier: string;
   projectIdentifier: string;
@@ -3991,7 +3991,7 @@ export const CreateProjectMembershipOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProjectMembershipOutput",
 }) as any as S.Schema<CreateProjectMembershipOutput>;
 export type Status = "ENABLED" | "DISABLED" | (string & {});
-export const Status = /*@__PURE__*/ S.String;
+export const Status = S.String;
 export interface ResourceTagParameter {
   key: string;
   value: string;
@@ -4006,7 +4006,7 @@ export type ProjectResourceTagParameters = ResourceTagParameter[];
 export const ProjectResourceTagParameters =
   /*@__PURE__*/ S.Array(ResourceTagParameter);
 export type DeploymentMode = "ON_CREATE" | "ON_DEMAND" | (string & {});
-export const DeploymentMode = /*@__PURE__*/ S.String;
+export const DeploymentMode = S.String;
 export interface EnvironmentConfigurationParameter {
   name?: string;
   value?: string;
@@ -4245,7 +4245,7 @@ export type SubscriptionGrantOverallStatus =
   | "COMPLETED"
   | "INACCESSIBLE"
   | (string & {});
-export const SubscriptionGrantOverallStatus = /*@__PURE__*/ S.String;
+export const SubscriptionGrantOverallStatus = S.String;
 export type SubscriptionGrantStatus =
   | "GRANT_PENDING"
   | "REVOKE_PENDING"
@@ -4256,7 +4256,7 @@ export type SubscriptionGrantStatus =
   | "GRANT_FAILED"
   | "REVOKE_FAILED"
   | (string & {});
-export const SubscriptionGrantStatus = /*@__PURE__*/ S.String;
+export const SubscriptionGrantStatus = S.String;
 export interface FailureCause {
   message?: string;
 }
@@ -4491,7 +4491,7 @@ export type SubscriptionGrantCreationMode =
   | "AUTOMATIC"
   | "MANUAL"
   | (string & {});
-export const SubscriptionGrantCreationMode = /*@__PURE__*/ S.String;
+export const SubscriptionGrantCreationMode = S.String;
 export interface CreateSubscriptionTargetInput {
   domainIdentifier: string;
   environmentIdentifier: string;
@@ -4575,7 +4575,7 @@ export const CreateSubscriptionTargetOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSubscriptionTargetOutput",
 }) as any as S.Schema<CreateSubscriptionTargetOutput>;
 export type UserType = "IAM_USER" | "IAM_ROLE" | "SSO_USER" | (string & {});
-export const UserType = /*@__PURE__*/ S.String;
+export const UserType = S.String;
 export interface CreateUserProfileInput {
   domainIdentifier: string;
   userIdentifier: string;
@@ -4605,14 +4605,14 @@ export const CreateUserProfileInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateUserProfileInput",
 }) as any as S.Schema<CreateUserProfileInput>;
 export type UserProfileType = "IAM" | "SSO" | (string & {});
-export const UserProfileType = /*@__PURE__*/ S.String;
+export const UserProfileType = S.String;
 export type UserProfileStatus =
   | "ASSIGNED"
   | "NOT_ASSIGNED"
   | "ACTIVATED"
   | "DEACTIVATED"
   | (string & {});
-export const UserProfileStatus = /*@__PURE__*/ S.String;
+export const UserProfileStatus = S.String;
 export interface CreateUserProfileOutput {
   domainId?: string;
   id?: string;
@@ -5090,7 +5090,7 @@ export const DeleteSubscriptionTargetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSubscriptionTargetResponse",
 }) as any as S.Schema<DeleteSubscriptionTargetResponse>;
 export type TimeSeriesEntityType = "ASSET" | "LISTING" | (string & {});
-export const TimeSeriesEntityType = /*@__PURE__*/ S.String;
+export const TimeSeriesEntityType = S.String;
 export interface DeleteTimeSeriesDataPointsInput {
   domainIdentifier: string;
   entityIdentifier: string;
@@ -5413,7 +5413,7 @@ export const GetDataExportConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDataExportConfigurationInput",
 }) as any as S.Schema<GetDataExportConfigurationInput>;
 export type ConfigurationStatus = "COMPLETED" | "FAILED" | (string & {});
-export const ConfigurationStatus = /*@__PURE__*/ S.String;
+export const ConfigurationStatus = S.String;
 export interface EncryptionConfiguration {
   kmsKeyArn?: string;
   sseAlgorithm?: string;
@@ -5826,9 +5826,9 @@ export const GetJobRunInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetJobRunInput" }) as any as S.Schema<GetJobRunInput>;
 export type JobType = "LINEAGE" | (string & {});
-export const JobType = /*@__PURE__*/ S.String;
+export const JobType = S.String;
 export type JobRunMode = "SCHEDULED" | "ON_DEMAND" | (string & {});
-export const JobRunMode = /*@__PURE__*/ S.String;
+export const JobRunMode = S.String;
 export type FailedQueryProcessingErrorMessages = string[];
 export const FailedQueryProcessingErrorMessages = /*@__PURE__*/ S.Array(
   S.String,
@@ -5873,7 +5873,7 @@ export type JobRunStatus =
   | "TIMED_OUT"
   | "CANCELED"
   | (string & {});
-export const JobRunStatus = /*@__PURE__*/ S.String;
+export const JobRunStatus = S.String;
 export interface JobRunError {
   message: string;
 }
@@ -5942,7 +5942,7 @@ export type LineageEventProcessingStatus =
   | "SUCCESS"
   | "FAILED"
   | (string & {});
-export const LineageEventProcessingStatus = /*@__PURE__*/ S.String;
+export const LineageEventProcessingStatus = S.String;
 export interface GetLineageEventOutput {
   domainId?: string;
   id?: string;
@@ -6529,9 +6529,9 @@ export const GetUserProfileOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUserProfileOutput",
 }) as any as S.Schema<GetUserProfileOutput>;
 export type SortFieldAccountPool = "NAME" | (string & {});
-export const SortFieldAccountPool = /*@__PURE__*/ S.String;
+export const SortFieldAccountPool = S.String;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-export const SortOrder = /*@__PURE__*/ S.String;
+export const SortOrder = S.String;
 export interface ListAccountPoolsInput {
   domainIdentifier: string;
   name?: string | redacted.Redacted<string>;
@@ -6768,7 +6768,7 @@ export const ListAssetRevisionsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAssetRevisionsOutput",
 }) as any as S.Schema<ListAssetRevisionsOutput>;
 export type SortFieldConnection = "NAME" | (string & {});
-export const SortFieldConnection = /*@__PURE__*/ S.String;
+export const SortFieldConnection = S.String;
 export interface ListConnectionsInput {
   domainIdentifier: string;
   maxResults?: number;
@@ -6921,7 +6921,7 @@ export type DataAssetActivityStatus =
   | "SKIPPED_NO_ACCESS"
   | "UNCHANGED"
   | (string & {});
-export const DataAssetActivityStatus = /*@__PURE__*/ S.String;
+export const DataAssetActivityStatus = S.String;
 export interface ListDataSourceRunActivitiesInput {
   domainIdentifier: string;
   identifier: string;
@@ -6961,7 +6961,7 @@ export type DataSourceErrorType =
   | "THROTTLING_EXCEPTION"
   | "VALIDATION_EXCEPTION"
   | (string & {});
-export const DataSourceErrorType = /*@__PURE__*/ S.String;
+export const DataSourceErrorType = S.String;
 export interface DataSourceErrorMessage {
   errorType: DataSourceErrorType;
   errorDetail?: string;
@@ -7544,7 +7544,7 @@ export type OpenLineageRunState =
   | "FAIL"
   | "OTHER"
   | (string & {});
-export const OpenLineageRunState = /*@__PURE__*/ S.String;
+export const OpenLineageRunState = S.String;
 export interface NameIdentifier {
   name?: string;
   namespace?: string;
@@ -7615,7 +7615,7 @@ export const ListLineageEventsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLineageEventsOutput",
 }) as any as S.Schema<ListLineageEventsOutput>;
 export type EdgeDirection = "UPSTREAM" | "DOWNSTREAM" | (string & {});
-export const EdgeDirection = /*@__PURE__*/ S.String;
+export const EdgeDirection = S.String;
 export interface ListLineageNodeHistoryInput {
   domainIdentifier: string;
   maxResults?: number;
@@ -7703,11 +7703,11 @@ export const ListLineageNodeHistoryOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLineageNodeHistoryOutput",
 }) as any as S.Schema<ListLineageNodeHistoryOutput>;
 export type NotificationType = "TASK" | "EVENT" | (string & {});
-export const NotificationType = /*@__PURE__*/ S.String;
+export const NotificationType = S.String;
 export type NotificationSubjects = string[];
 export const NotificationSubjects = /*@__PURE__*/ S.Array(S.String);
 export type TaskStatus = "ACTIVE" | "INACTIVE" | (string & {});
-export const TaskStatus = /*@__PURE__*/ S.String;
+export const TaskStatus = S.String;
 export interface ListNotificationsInput {
   domainIdentifier: string;
   type: NotificationType;
@@ -7749,7 +7749,7 @@ export const ListNotificationsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNotificationsInput",
 }) as any as S.Schema<ListNotificationsInput>;
 export type NotificationResourceType = "PROJECT" | (string & {});
-export const NotificationResourceType = /*@__PURE__*/ S.String;
+export const NotificationResourceType = S.String;
 export interface NotificationResource {
   type: NotificationResourceType;
   id: string;
@@ -7771,7 +7771,7 @@ export type NotificationRole =
   | "DOMAIN_OWNER"
   | "PROJECT_SUBSCRIBER"
   | (string & {});
-export const NotificationRole = /*@__PURE__*/ S.String;
+export const NotificationRole = S.String;
 export interface Topic {
   subject: string;
   resource: NotificationResource;
@@ -7895,7 +7895,7 @@ export const ListPolicyGrantsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPolicyGrantsOutput",
 }) as any as S.Schema<ListPolicyGrantsOutput>;
 export type SortFieldProject = "NAME" | (string & {});
-export const SortFieldProject = /*@__PURE__*/ S.String;
+export const SortFieldProject = S.String;
 export interface ListProjectMembershipsInput {
   domainIdentifier: string;
   projectIdentifier: string;
@@ -8117,7 +8117,7 @@ export const ListProjectsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsOutput",
 }) as any as S.Schema<ListProjectsOutput>;
 export type SortKey = "CREATED_AT" | "UPDATED_AT" | (string & {});
-export const SortKey = /*@__PURE__*/ S.String;
+export const SortKey = S.String;
 export interface ListSubscriptionGrantsInput {
   domainIdentifier: string;
   environmentId?: string;
@@ -8758,9 +8758,9 @@ export const PutDataExportConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutDataExportConfigurationOutput",
 }) as any as S.Schema<PutDataExportConfigurationOutput>;
 export type RelationType = "LINEAGE" | (string & {});
-export const RelationType = /*@__PURE__*/ S.String;
+export const RelationType = S.String;
 export type RelationDirection = "IN" | "OUT" | (string & {});
-export const RelationDirection = /*@__PURE__*/ S.String;
+export const RelationDirection = S.String;
 export interface RelationPattern {
   relationType: RelationType;
   relationDirection: RelationDirection;
@@ -8776,7 +8776,7 @@ export const RelationPattern = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelationPattern",
 }) as any as S.Schema<RelationPattern>;
 export type GraphEntityType = "LINEAGE_NODE" | (string & {});
-export const GraphEntityType = /*@__PURE__*/ S.String;
+export const GraphEntityType = S.String;
 export type FilterOperator =
   | "EQ"
   | "LE"
@@ -8785,7 +8785,7 @@ export type FilterOperator =
   | "GT"
   | "TEXT_SEARCH"
   | (string & {});
-export const FilterOperator = /*@__PURE__*/ S.String;
+export const FilterOperator = S.String;
 export interface Filter {
   attribute: string;
   value?: string;
@@ -8937,7 +8937,7 @@ export const QueryGraphOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryGraphOutput",
 }) as any as S.Schema<QueryGraphOutput>;
 export type RejectRuleBehavior = "ALL" | "NONE" | (string & {});
-export const RejectRuleBehavior = /*@__PURE__*/ S.String;
+export const RejectRuleBehavior = S.String;
 export interface RejectRule {
   rule?: RejectRuleBehavior;
   threshold?: number;
@@ -9204,7 +9204,7 @@ export type InventorySearchScope =
   | "GLOSSARY_TERM"
   | "DATA_PRODUCT"
   | (string & {});
-export const InventorySearchScope = /*@__PURE__*/ S.String;
+export const InventorySearchScope = S.String;
 export interface SearchInItem {
   attribute: string;
 }
@@ -9225,7 +9225,7 @@ export type SearchOutputAdditionalAttribute =
   | "TIME_SERIES_DATA_POINT_FORMS"
   | "TEXT_MATCH_RATIONALE"
   | (string & {});
-export const SearchOutputAdditionalAttribute = /*@__PURE__*/ S.String;
+export const SearchOutputAdditionalAttribute = S.String;
 export type SearchOutputAdditionalAttributes =
   SearchOutputAdditionalAttribute[];
 export const SearchOutputAdditionalAttributes = /*@__PURE__*/ S.Array(
@@ -9267,9 +9267,9 @@ export const SearchInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SearchInput" }) as any as S.Schema<SearchInput>;
 export type GlossaryStatus = "DISABLED" | "ENABLED" | (string & {});
-export const GlossaryStatus = /*@__PURE__*/ S.String;
+export const GlossaryStatus = S.String;
 export type GlossaryUsageRestriction = "ASSET_GOVERNED_TERMS" | (string & {});
-export const GlossaryUsageRestriction = /*@__PURE__*/ S.String;
+export const GlossaryUsageRestriction = S.String;
 export type GlossaryUsageRestrictions = GlossaryUsageRestriction[];
 export const GlossaryUsageRestrictions = /*@__PURE__*/ S.Array(
   GlossaryUsageRestriction,
@@ -9355,7 +9355,7 @@ export const TermRelations = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TermRelations" }) as any as S.Schema<TermRelations>;
 export type GlossaryTermStatus = "ENABLED" | "DISABLED" | (string & {});
-export const GlossaryTermStatus = /*@__PURE__*/ S.String;
+export const GlossaryTermStatus = S.String;
 export interface GlossaryTermItemAdditionalAttributes {
   matchRationale?: MatchRationaleItem[];
 }
@@ -9547,7 +9547,7 @@ export type GroupSearchType =
   | "SSO_GROUP"
   | "DATAZONE_SSO_GROUP"
   | (string & {});
-export const GroupSearchType = /*@__PURE__*/ S.String;
+export const GroupSearchType = S.String;
 export interface SearchGroupProfilesInput {
   domainIdentifier: string;
   groupType: GroupSearchType;
@@ -9839,7 +9839,7 @@ export type TypesSearchScope =
   | "FORM_TYPE"
   | "LINEAGE_NODE_TYPE"
   | (string & {});
-export const TypesSearchScope = /*@__PURE__*/ S.String;
+export const TypesSearchScope = S.String;
 export interface SearchTypesInput {
   domainIdentifier: string;
   maxResults?: number;
@@ -9930,7 +9930,7 @@ export const AssetTypeItem = /*@__PURE__*/ S.suspend(() =>
 export type Model = { smithy: string };
 export const Model = /*@__PURE__*/ S.Union([S.Struct({ smithy: S.String })]);
 export type FormTypeStatus = "ENABLED" | "DISABLED" | (string & {});
-export const FormTypeStatus = /*@__PURE__*/ S.String;
+export const FormTypeStatus = S.String;
 export interface Import {
   name: string | redacted.Redacted<string>;
   revision: string;
@@ -10041,7 +10041,7 @@ export type UserSearchType =
   | "DATAZONE_SSO_USER"
   | "DATAZONE_IAM_USER"
   | (string & {});
-export const UserSearchType = /*@__PURE__*/ S.String;
+export const UserSearchType = S.String;
 export interface SearchUserProfilesInput {
   domainIdentifier: string;
   userType: UserSearchType;
@@ -11817,7 +11817,7 @@ export const GetAssetTypeOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAssetTypeOutput",
 }) as any as S.Schema<GetAssetTypeOutput>;
 export type DataProductItemType = "ASSET" | (string & {});
-export const DataProductItemType = /*@__PURE__*/ S.String;
+export const DataProductItemType = S.String;
 export type ItemGlossaryTerms = string[];
 export const ItemGlossaryTerms = /*@__PURE__*/ S.Array(S.String);
 export interface DataProductItem {
@@ -11879,7 +11879,7 @@ export type DataProductStatus =
   | "CREATING"
   | "CREATE_FAILED"
   | (string & {});
-export const DataProductStatus = /*@__PURE__*/ S.String;
+export const DataProductStatus = S.String;
 export interface CreateDataProductOutput {
   domainId: string;
   id: string;
@@ -12087,7 +12087,7 @@ export const CreateDataProductRevisionOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDataProductRevisionOutput",
 }) as any as S.Schema<CreateDataProductRevisionOutput>;
 export type FilterExpressionType = "INCLUDE" | "EXCLUDE" | (string & {});
-export const FilterExpressionType = /*@__PURE__*/ S.String;
+export const FilterExpressionType = S.String;
 export interface FilterExpression {
   type: FilterExpressionType;
   expression: string;
@@ -12233,7 +12233,7 @@ export const RecommendationConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecommendationConfiguration",
 }) as any as S.Schema<RecommendationConfiguration>;
 export type EnableSetting = "ENABLED" | "DISABLED" | (string & {});
-export const EnableSetting = /*@__PURE__*/ S.String;
+export const EnableSetting = S.String;
 export type Timezone =
   | "UTC"
   | "AFRICA_JOHANNESBURG"
@@ -12300,7 +12300,7 @@ export type Timezone =
   | "US_MOUNTAIN"
   | "US_PACIFIC"
   | (string & {});
-export const Timezone = /*@__PURE__*/ S.String;
+export const Timezone = S.String;
 export interface ScheduleConfiguration {
   timezone?: Timezone;
   schedule?: string;
@@ -12368,7 +12368,7 @@ export type DataSourceStatus =
   | "DELETING"
   | "FAILED_DELETION"
   | (string & {});
-export const DataSourceStatus = /*@__PURE__*/ S.String;
+export const DataSourceStatus = S.String;
 export interface GlueRunConfigurationOutput {
   accountId?: string;
   region?: string;
@@ -12453,7 +12453,7 @@ export type DataSourceRunStatus =
   | "PARTIALLY_SUCCEEDED"
   | "SUCCESS"
   | (string & {});
-export const DataSourceRunStatus = /*@__PURE__*/ S.String;
+export const DataSourceRunStatus = S.String;
 export interface CreateDataSourceOutput {
   id: string;
   status?: DataSourceStatus;
@@ -12543,7 +12543,7 @@ export type SelfGrantStatus =
   | "GRANT_FAILED"
   | "REVOKE_FAILED"
   | (string & {});
-export const SelfGrantStatus = /*@__PURE__*/ S.String;
+export const SelfGrantStatus = S.String;
 export interface SelfGrantStatusDetail {
   databaseName: string;
   schemaName?: string;
@@ -12972,7 +12972,7 @@ export const StartDataSourceRunInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartDataSourceRunInput",
 }) as any as S.Schema<StartDataSourceRunInput>;
 export type DataSourceRunType = "PRIORITIZED" | "SCHEDULED" | (string & {});
-export const DataSourceRunType = /*@__PURE__*/ S.String;
+export const DataSourceRunType = S.String;
 export interface RunStatisticsForAssets {
   added?: number;
   updated?: number;
@@ -13059,7 +13059,7 @@ export type LineageImportStatus =
   | "FAILED"
   | "PARTIALLY_SUCCEEDED"
   | (string & {});
-export const LineageImportStatus = /*@__PURE__*/ S.String;
+export const LineageImportStatus = S.String;
 export interface DataSourceRunLineageSummary {
   importStatus?: LineageImportStatus;
 }
@@ -13187,9 +13187,9 @@ export const ListDataSourceRunsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDataSourceRunsOutput",
 }) as any as S.Schema<ListDataSourceRunsOutput>;
 export type AuthType = "IAM_IDC" | "DISABLED" | (string & {});
-export const AuthType = /*@__PURE__*/ S.String;
+export const AuthType = S.String;
 export type UserAssignment = "AUTOMATIC" | "MANUAL" | (string & {});
-export const UserAssignment = /*@__PURE__*/ S.String;
+export const UserAssignment = S.String;
 export interface SingleSignOn {
   type?: AuthType;
   userAssignment?: UserAssignment;
@@ -13203,7 +13203,7 @@ export const SingleSignOn = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SingleSignOn" }) as any as S.Schema<SingleSignOn>;
 export type DomainVersion = "V1" | "V2" | (string & {});
-export const DomainVersion = /*@__PURE__*/ S.String;
+export const DomainVersion = S.String;
 export interface CreateDomainInput {
   name: string;
   description?: string;
@@ -13247,7 +13247,7 @@ export type DomainStatus =
   | "DELETED"
   | "DELETION_FAILED"
   | (string & {});
-export const DomainStatus = /*@__PURE__*/ S.String;
+export const DomainStatus = S.String;
 export interface CreateDomainOutput {
   id: string;
   rootDomainUnitId?: string;
@@ -14765,13 +14765,13 @@ export type MetadataGenerationRunType =
   | "BUSINESS_NAMES"
   | "BUSINESS_GLOSSARY_ASSOCIATIONS"
   | (string & {});
-export const MetadataGenerationRunType = /*@__PURE__*/ S.String;
+export const MetadataGenerationRunType = S.String;
 export type MetadataGenerationRunTypes = MetadataGenerationRunType[];
 export const MetadataGenerationRunTypes = /*@__PURE__*/ S.Array(
   MetadataGenerationRunType,
 );
 export type MetadataGenerationTargetType = "ASSET" | (string & {});
-export const MetadataGenerationTargetType = /*@__PURE__*/ S.String;
+export const MetadataGenerationTargetType = S.String;
 export interface MetadataGenerationRunTarget {
   type: MetadataGenerationTargetType;
   identifier: string;
@@ -14826,7 +14826,7 @@ export type MetadataGenerationRunStatus =
   | "FAILED"
   | "PARTIALLY_SUCCEEDED"
   | (string & {});
-export const MetadataGenerationRunStatus = /*@__PURE__*/ S.String;
+export const MetadataGenerationRunStatus = S.String;
 export interface StartMetadataGenerationRunOutput {
   domainId: string;
   id: string;
@@ -15049,9 +15049,9 @@ export type RuleAction =
   | "CREATE_LISTING_CHANGE_SET"
   | "CREATE_SUBSCRIPTION_REQUEST"
   | (string & {});
-export const RuleAction = /*@__PURE__*/ S.String;
+export const RuleAction = S.String;
 export type RuleScopeSelectionMode = "ALL" | "SPECIFIC" | (string & {});
-export const RuleScopeSelectionMode = /*@__PURE__*/ S.String;
+export const RuleScopeSelectionMode = S.String;
 export type RuleAssetTypeList = string[];
 export const RuleAssetTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface AssetTypesForRule {
@@ -15173,9 +15173,9 @@ export type RuleType =
   | "METADATA_FORM_ENFORCEMENT"
   | "GLOSSARY_TERM_ENFORCEMENT"
   | (string & {});
-export const RuleType = /*@__PURE__*/ S.String;
+export const RuleType = S.String;
 export type RuleTargetType = "DOMAIN_UNIT" | (string & {});
-export const RuleTargetType = /*@__PURE__*/ S.String;
+export const RuleTargetType = S.String;
 export interface CreateRuleOutput {
   identifier: string;
   name: string | redacted.Redacted<string>;

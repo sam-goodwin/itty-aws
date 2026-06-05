@@ -154,7 +154,7 @@ export type GroupByAttribute =
   | "REGION"
   | "RESOURCE_TYPE"
   | (string & {});
-export const GroupByAttribute = /*@__PURE__*/ S.String;
+export const GroupByAttribute = S.String;
 export type GroupBy = GroupByAttribute[];
 export const GroupBy = /*@__PURE__*/ S.Array(GroupByAttribute);
 export interface GetComplianceSummaryInput {
@@ -189,7 +189,7 @@ export const GetComplianceSummaryInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetComplianceSummaryInput",
 }) as any as S.Schema<GetComplianceSummaryInput>;
 export type TargetIdType = "ACCOUNT" | "OU" | "ROOT" | (string & {});
-export const TargetIdType = /*@__PURE__*/ S.String;
+export const TargetIdType = S.String;
 export interface Summary {
   LastUpdated?: string;
   TargetId?: string;
@@ -486,7 +486,7 @@ export type ErrorCode =
   | "InternalServiceException"
   | "InvalidParameterException"
   | (string & {});
-export const ErrorCode = /*@__PURE__*/ S.String;
+export const ErrorCode = S.String;
 export interface FailureInfo {
   StatusCode?: number;
   ErrorCode?: ErrorCode;

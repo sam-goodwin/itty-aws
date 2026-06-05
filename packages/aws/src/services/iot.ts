@@ -711,7 +711,7 @@ export type SbomValidationStatus =
   | "FAILED"
   | "SUCCEEDED"
   | (string & {});
-export const SbomValidationStatus = /*@__PURE__*/ S.String;
+export const SbomValidationStatus = S.String;
 export interface AssociateSbomWithPackageVersionResponse {
   packageName?: string;
   versionName?: string;
@@ -860,7 +860,7 @@ export type ThingPrincipalType =
   | "EXCLUSIVE_THING"
   | "NON_EXCLUSIVE_THING"
   | (string & {});
-export const ThingPrincipalType = /*@__PURE__*/ S.String;
+export const ThingPrincipalType = S.String;
 export interface AttachThingPrincipalRequest {
   thingName: string;
   principal: string;
@@ -1215,7 +1215,7 @@ export const PublicKeyMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type AuthorizerStatus = "ACTIVE" | "INACTIVE" | (string & {});
-export const AuthorizerStatus = /*@__PURE__*/ S.String;
+export const AuthorizerStatus = S.String;
 export interface Tag {
   Key: string;
   Value?: string;
@@ -1353,7 +1353,7 @@ export const CreateCertificateFromCsrResponse = /*@__PURE__*/ S.suspend(() =>
 export type CertificateProviderOperation =
   | "CreateCertificateFromCsr"
   | (string & {});
-export const CertificateProviderOperation = /*@__PURE__*/ S.String;
+export const CertificateProviderOperation = S.String;
 export type CertificateProviderAccountDefaultForOperations =
   CertificateProviderOperation[];
 export const CertificateProviderAccountDefaultForOperations =
@@ -1403,7 +1403,7 @@ export const CreateCertificateProviderResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCertificateProviderResponse",
 }) as any as S.Schema<CreateCertificateProviderResponse>;
 export type CommandNamespace = "AWS-IoT" | "AWS-IoT-FleetWise" | (string & {});
-export const CommandNamespace = /*@__PURE__*/ S.String;
+export const CommandNamespace = S.String;
 export interface CommandPayload {
   content?: Uint8Array;
   contentType?: string;
@@ -1412,7 +1412,7 @@ export const CommandPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ content: S.optional(T.Blob), contentType: S.optional(S.String) }),
 ).annotate({ identifier: "CommandPayload" }) as any as S.Schema<CommandPayload>;
 export type OutputFormat = "JSON" | "CBOR" | (string & {});
-export const OutputFormat = /*@__PURE__*/ S.String;
+export const OutputFormat = S.String;
 export interface AwsJsonSubstitutionCommandPreprocessorConfig {
   outputFormat: OutputFormat;
 }
@@ -1443,7 +1443,7 @@ export type CommandParameterType =
   | "BOOLEAN"
   | "BINARY"
   | (string & {});
-export const CommandParameterType = /*@__PURE__*/ S.String;
+export const CommandParameterType = S.String;
 export interface CommandParameterValue {
   S?: string;
   B?: boolean;
@@ -1478,7 +1478,7 @@ export type CommandParameterValueComparisonOperator =
   | "IN_RANGE"
   | "NOT_IN_RANGE"
   | (string & {});
-export const CommandParameterValueComparisonOperator = /*@__PURE__*/ S.String;
+export const CommandParameterValueComparisonOperator = S.String;
 export type CommandParameterValueStringList = string[];
 export const CommandParameterValueStringList = /*@__PURE__*/ S.Array(S.String);
 export interface CommandParameterValueNumberRange {
@@ -1603,7 +1603,7 @@ export type CustomMetricType =
   | "number-list"
   | "number"
   | (string & {});
-export const CustomMetricType = /*@__PURE__*/ S.String;
+export const CustomMetricType = S.String;
 export interface CreateCustomMetricRequest {
   metricName: string;
   displayName?: string;
@@ -1644,7 +1644,7 @@ export const CreateCustomMetricResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCustomMetricResponse",
 }) as any as S.Schema<CreateCustomMetricResponse>;
 export type DimensionType = "TOPIC_FILTER" | (string & {});
-export const DimensionType = /*@__PURE__*/ S.String;
+export const DimensionType = S.String;
 export type DimensionStringValues = string[];
 export const DimensionStringValues = /*@__PURE__*/ S.Array(S.String);
 export interface CreateDimensionRequest {
@@ -1702,7 +1702,7 @@ export type ServiceType =
   | "CREDENTIAL_PROVIDER"
   | "JOBS"
   | (string & {});
-export const ServiceType = /*@__PURE__*/ S.String;
+export const ServiceType = S.String;
 export interface TlsConfig {
   securityPolicy?: string;
 }
@@ -1730,14 +1730,14 @@ export type AuthenticationType =
   | "AWS_SIGV4"
   | "DEFAULT"
   | (string & {});
-export const AuthenticationType = /*@__PURE__*/ S.String;
+export const AuthenticationType = S.String;
 export type ApplicationProtocol =
   | "SECURE_MQTT"
   | "MQTT_WSS"
   | "HTTPS"
   | "DEFAULT"
   | (string & {});
-export const ApplicationProtocol = /*@__PURE__*/ S.String;
+export const ApplicationProtocol = S.String;
 export interface ClientCertificateConfig {
   clientCertificateCallbackArn?: string;
 }
@@ -1887,7 +1887,7 @@ export type AggregationTypeName =
   | "Percentiles"
   | "Cardinality"
   | (string & {});
-export const AggregationTypeName = /*@__PURE__*/ S.String;
+export const AggregationTypeName = S.String;
 export type AggregationTypeValues = string[];
 export const AggregationTypeValues = /*@__PURE__*/ S.Array(S.String);
 export interface AggregationType {
@@ -1931,7 +1931,7 @@ export type FleetMetricUnit =
   | "Count/Second"
   | "None"
   | (string & {});
-export const FleetMetricUnit = /*@__PURE__*/ S.String;
+export const FleetMetricUnit = S.String;
 export interface CreateFleetMetricRequest {
   metricName: string;
   queryString: string;
@@ -1994,7 +1994,7 @@ export const PresignedUrlConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PresignedUrlConfig",
 }) as any as S.Schema<PresignedUrlConfig>;
 export type TargetSelection = "CONTINUOUS" | "SNAPSHOT" | (string & {});
-export const TargetSelection = /*@__PURE__*/ S.String;
+export const TargetSelection = S.String;
 export interface RateIncreaseCriteria {
   numberOfNotifiedThings?: number;
   numberOfSucceededThings?: number;
@@ -2039,9 +2039,9 @@ export type JobExecutionFailureType =
   | "TIMED_OUT"
   | "ALL"
   | (string & {});
-export const JobExecutionFailureType = /*@__PURE__*/ S.String;
+export const JobExecutionFailureType = S.String;
 export type AbortAction = "CANCEL" | (string & {});
-export const AbortAction = /*@__PURE__*/ S.String;
+export const AbortAction = S.String;
 export interface AbortCriteria {
   failureType: JobExecutionFailureType;
   action: AbortAction;
@@ -2075,7 +2075,7 @@ export type RetryableFailureType =
   | "TIMED_OUT"
   | "ALL"
   | (string & {});
-export const RetryableFailureType = /*@__PURE__*/ S.String;
+export const RetryableFailureType = S.String;
 export interface RetryCriteria {
   failureType: RetryableFailureType;
   numberOfRetries: number;
@@ -2103,7 +2103,7 @@ export type JobEndBehavior =
   | "CANCEL"
   | "FORCE_CANCEL"
   | (string & {});
-export const JobEndBehavior = /*@__PURE__*/ S.String;
+export const JobEndBehavior = S.String;
 export interface MaintenanceWindow {
   startTime: string;
   durationInMinutes: number;
@@ -2299,7 +2299,7 @@ export const CreateKeysAndCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateKeysAndCertificateResponse",
 }) as any as S.Schema<CreateKeysAndCertificateResponse>;
 export type DeviceCertificateUpdateAction = "DEACTIVATE" | (string & {});
-export const DeviceCertificateUpdateAction = /*@__PURE__*/ S.String;
+export const DeviceCertificateUpdateAction = S.String;
 export interface UpdateDeviceCertificateParams {
   action: DeviceCertificateUpdateAction;
 }
@@ -2309,7 +2309,7 @@ export const UpdateDeviceCertificateParams = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDeviceCertificateParams",
 }) as any as S.Schema<UpdateDeviceCertificateParams>;
 export type CACertificateUpdateAction = "DEACTIVATE" | (string & {});
-export const CACertificateUpdateAction = /*@__PURE__*/ S.String;
+export const CACertificateUpdateAction = S.String;
 export interface UpdateCACertificateParams {
   action: CACertificateUpdateAction;
 }
@@ -2333,7 +2333,7 @@ export const AddThingsToThingGroupParams = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddThingsToThingGroupParams",
 }) as any as S.Schema<AddThingsToThingGroupParams>;
 export type PolicyTemplateName = "BLANK_POLICY" | (string & {});
-export const PolicyTemplateName = /*@__PURE__*/ S.String;
+export const PolicyTemplateName = S.String;
 export interface ReplaceDefaultPolicyVersionParams {
   templateName: PolicyTemplateName;
 }
@@ -2349,7 +2349,7 @@ export type LogLevel =
   | "WARN"
   | "DISABLED"
   | (string & {});
-export const LogLevel = /*@__PURE__*/ S.String;
+export const LogLevel = S.String;
 export interface EnableIoTLoggingParams {
   roleArnForLogging: string;
   logLevel: LogLevel;
@@ -2429,7 +2429,7 @@ export const CreateMitigationActionResponse = /*@__PURE__*/ S.suspend(() =>
 export type Targets = string[];
 export const Targets = /*@__PURE__*/ S.Array(S.String);
 export type Protocol = "MQTT" | "HTTP" | (string & {});
-export const Protocol = /*@__PURE__*/ S.String;
+export const Protocol = S.String;
 export type Protocols = Protocol[];
 export const Protocols = /*@__PURE__*/ S.Array(Protocol);
 export interface AwsJobRateIncreaseCriteria {
@@ -2484,9 +2484,9 @@ export type AwsJobAbortCriteriaFailureType =
   | "TIMED_OUT"
   | "ALL"
   | (string & {});
-export const AwsJobAbortCriteriaFailureType = /*@__PURE__*/ S.String;
+export const AwsJobAbortCriteriaFailureType = S.String;
 export type AwsJobAbortCriteriaAbortAction = "CANCEL" | (string & {});
-export const AwsJobAbortCriteriaAbortAction = /*@__PURE__*/ S.String;
+export const AwsJobAbortCriteriaAbortAction = S.String;
 export interface AwsJobAbortCriteria {
   failureType: AwsJobAbortCriteriaFailureType;
   action: AwsJobAbortCriteriaAbortAction;
@@ -2706,7 +2706,7 @@ export type OTAUpdateStatus =
   | "DELETE_IN_PROGRESS"
   | "DELETE_FAILED"
   | (string & {});
-export const OTAUpdateStatus = /*@__PURE__*/ S.String;
+export const OTAUpdateStatus = S.String;
 export interface CreateOTAUpdateResponse {
   otaUpdateId?: string;
   awsIotJobId?: string;
@@ -2829,7 +2829,7 @@ export type PackageVersionStatus =
   | "PUBLISHED"
   | "DEPRECATED"
   | (string & {});
-export const PackageVersionStatus = /*@__PURE__*/ S.String;
+export const PackageVersionStatus = S.String;
 export interface CreatePackageVersionResponse {
   packageVersionArn?: string;
   packageName?: string;
@@ -2976,7 +2976,7 @@ export const ProvisioningHook = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProvisioningHook",
 }) as any as S.Schema<ProvisioningHook>;
 export type TemplateType = "FLEET_PROVISIONING" | "JITP" | (string & {});
-export const TemplateType = /*@__PURE__*/ S.String;
+export const TemplateType = S.String;
 export interface CreateProvisioningTemplateRequest {
   templateName: string;
   description?: string;
@@ -3111,7 +3111,7 @@ export type AuditFrequency =
   | "BIWEEKLY"
   | "MONTHLY"
   | (string & {});
-export const AuditFrequency = /*@__PURE__*/ S.String;
+export const AuditFrequency = S.String;
 export type DayOfWeek =
   | "SUN"
   | "MON"
@@ -3121,7 +3121,7 @@ export type DayOfWeek =
   | "FRI"
   | "SAT"
   | (string & {});
-export const DayOfWeek = /*@__PURE__*/ S.String;
+export const DayOfWeek = S.String;
 export type TargetAuditCheckNames = string[];
 export const TargetAuditCheckNames = /*@__PURE__*/ S.Array(S.String);
 export interface CreateScheduledAuditRequest {
@@ -3165,7 +3165,7 @@ export const CreateScheduledAuditResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScheduledAuditResponse",
 }) as any as S.Schema<CreateScheduledAuditResponse>;
 export type DimensionValueOperator = "IN" | "NOT_IN" | (string & {});
-export const DimensionValueOperator = /*@__PURE__*/ S.String;
+export const DimensionValueOperator = S.String;
 export interface MetricDimension {
   dimensionName: string;
   operator?: DimensionValueOperator;
@@ -3190,7 +3190,7 @@ export type ComparisonOperator =
   | "in-set"
   | "not-in-set"
   | (string & {});
-export const ComparisonOperator = /*@__PURE__*/ S.String;
+export const ComparisonOperator = S.String;
 export type Cidrs = string[];
 export const Cidrs = /*@__PURE__*/ S.Array(S.String);
 export type Ports = number[];
@@ -3226,7 +3226,7 @@ export const StatisticalThreshold = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatisticalThreshold",
 }) as any as S.Schema<StatisticalThreshold>;
 export type ConfidenceLevel = "LOW" | "MEDIUM" | "HIGH" | (string & {});
-export const ConfidenceLevel = /*@__PURE__*/ S.String;
+export const ConfidenceLevel = S.String;
 export interface MachineLearningDetectionConfig {
   confidenceLevel: ConfidenceLevel;
 }
@@ -3278,7 +3278,7 @@ export const Behavior = /*@__PURE__*/ S.suspend(() =>
 export type Behaviors = Behavior[];
 export const Behaviors = /*@__PURE__*/ S.Array(Behavior);
 export type AlertTargetType = "SNS" | (string & {});
-export const AlertTargetType = /*@__PURE__*/ S.String;
+export const AlertTargetType = S.String;
 export interface AlertTarget {
   alertTargetArn: string;
   roleArn: string;
@@ -3577,7 +3577,7 @@ export const CreateThingTypeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateThingTypeResponse",
 }) as any as S.Schema<CreateThingTypeResponse>;
 export type DynamoKeyType = "STRING" | "NUMBER" | (string & {});
-export const DynamoKeyType = /*@__PURE__*/ S.String;
+export const DynamoKeyType = S.String;
 export interface DynamoDBAction {
   tableName: string;
   roleArn: string;
@@ -3626,7 +3626,7 @@ export const LambdaAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ functionArn: S.String }),
 ).annotate({ identifier: "LambdaAction" }) as any as S.Schema<LambdaAction>;
 export type MessageFormat = "RAW" | "JSON" | (string & {});
-export const MessageFormat = /*@__PURE__*/ S.String;
+export const MessageFormat = S.String;
 export interface SnsAction {
   targetArn: string;
   roleArn: string;
@@ -3716,7 +3716,7 @@ export type CannedAccessControlList =
   | "bucket-owner-full-control"
   | "log-delivery-write"
   | (string & {});
-export const CannedAccessControlList = /*@__PURE__*/ S.String;
+export const CannedAccessControlList = S.String;
 export interface S3Action {
   roleArn: string;
   bucketName: string;
@@ -4310,7 +4310,7 @@ export type TopicRuleDestinationStatus =
   | "ERROR"
   | "DELETING"
   | (string & {});
-export const TopicRuleDestinationStatus = /*@__PURE__*/ S.String;
+export const TopicRuleDestinationStatus = S.String;
 export interface HttpUrlDestinationProperties {
   confirmationUrl?: string;
 }
@@ -5311,7 +5311,7 @@ export type LogTargetType =
   | "SOURCE_IP"
   | "PRINCIPAL_ID"
   | (string & {});
-export const LogTargetType = /*@__PURE__*/ S.String;
+export const LogTargetType = S.String;
 export interface DeleteV2LoggingLevelRequest {
   targetType: LogTargetType;
   targetName: string;
@@ -5383,7 +5383,7 @@ export const DescribeAccountAuditConfigurationRequest = /*@__PURE__*/ S.suspend(
   identifier: "DescribeAccountAuditConfigurationRequest",
 }) as any as S.Schema<DescribeAccountAuditConfigurationRequest>;
 export type AuditNotificationType = "SNS" | (string & {});
-export const AuditNotificationType = /*@__PURE__*/ S.String;
+export const AuditNotificationType = S.String;
 export interface AuditNotificationTarget {
   targetArn?: string;
   roleArn?: string;
@@ -5409,7 +5409,7 @@ export type ConfigName =
   | "CERT_AGE_THRESHOLD_IN_DAYS"
   | "CERT_EXPIRATION_THRESHOLD_IN_DAYS"
   | (string & {});
-export const ConfigName = /*@__PURE__*/ S.String;
+export const ConfigName = S.String;
 export type CheckCustomConfiguration = { [key in ConfigName]?: string };
 export const CheckCustomConfiguration = /*@__PURE__*/ S.Record(
   ConfigName,
@@ -5478,7 +5478,7 @@ export type AuditFindingSeverity =
   | "MEDIUM"
   | "LOW"
   | (string & {});
-export const AuditFindingSeverity = /*@__PURE__*/ S.String;
+export const AuditFindingSeverity = S.String;
 export type ResourceType =
   | "DEVICE_CERTIFICATE"
   | "CA_CERTIFICATE"
@@ -5490,7 +5490,7 @@ export type ResourceType =
   | "IAM_ROLE"
   | "ISSUER_CERTIFICATE"
   | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
+export const ResourceType = S.String;
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -5589,7 +5589,7 @@ export type AuditMitigationActionsTaskStatus =
   | "FAILED"
   | "CANCELED"
   | (string & {});
-export const AuditMitigationActionsTaskStatus = /*@__PURE__*/ S.String;
+export const AuditMitigationActionsTaskStatus = S.String;
 export interface TaskStatisticsForAuditCheck {
   totalFindingsCount?: number;
   failedFindingsCount?: number;
@@ -5752,12 +5752,12 @@ export type AuditTaskStatus =
   | "FAILED"
   | "CANCELED"
   | (string & {});
-export const AuditTaskStatus = /*@__PURE__*/ S.String;
+export const AuditTaskStatus = S.String;
 export type AuditTaskType =
   | "ON_DEMAND_AUDIT_TASK"
   | "SCHEDULED_AUDIT_TASK"
   | (string & {});
-export const AuditTaskType = /*@__PURE__*/ S.String;
+export const AuditTaskType = S.String;
 export interface TaskStatistics {
   totalChecks?: number;
   inProgressChecks?: number;
@@ -5786,7 +5786,7 @@ export type AuditCheckRunStatus =
   | "COMPLETED_NON_COMPLIANT"
   | "FAILED"
   | (string & {});
-export const AuditCheckRunStatus = /*@__PURE__*/ S.String;
+export const AuditCheckRunStatus = S.String;
 export interface AuditCheckDetails {
   checkRunStatus?: AuditCheckRunStatus;
   checkCompliant?: boolean;
@@ -5958,9 +5958,9 @@ export const DescribeCACertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeCACertificateRequest",
 }) as any as S.Schema<DescribeCACertificateRequest>;
 export type CACertificateStatus = "ACTIVE" | "INACTIVE" | (string & {});
-export const CACertificateStatus = /*@__PURE__*/ S.String;
+export const CACertificateStatus = S.String;
 export type AutoRegistrationStatus = "ENABLE" | "DISABLE" | (string & {});
-export const AutoRegistrationStatus = /*@__PURE__*/ S.String;
+export const AutoRegistrationStatus = S.String;
 export interface CertificateValidity {
   notBefore?: Date;
   notAfter?: Date;
@@ -5974,7 +5974,7 @@ export const CertificateValidity = /*@__PURE__*/ S.suspend(() =>
   identifier: "CertificateValidity",
 }) as any as S.Schema<CertificateValidity>;
 export type CertificateMode = "DEFAULT" | "SNI_ONLY" | (string & {});
-export const CertificateMode = /*@__PURE__*/ S.String;
+export const CertificateMode = S.String;
 export interface CACertificateDescription {
   certificateArn?: string;
   certificateId?: string;
@@ -6060,7 +6060,7 @@ export type CertificateStatus =
   | "REGISTER_INACTIVE"
   | "PENDING_ACTIVATION"
   | (string & {});
-export const CertificateStatus = /*@__PURE__*/ S.String;
+export const CertificateStatus = S.String;
 export interface TransferData {
   transferMessage?: string;
   rejectReason?: string;
@@ -6260,7 +6260,7 @@ export type DetectMitigationActionsTaskStatus =
   | "FAILED"
   | "CANCELED"
   | (string & {});
-export const DetectMitigationActionsTaskStatus = /*@__PURE__*/ S.String;
+export const DetectMitigationActionsTaskStatus = S.String;
 export type TargetViolationIdsForDetectMitigationActions = string[];
 export const TargetViolationIdsForDetectMitigationActions =
   /*@__PURE__*/ S.Array(S.String);
@@ -6406,7 +6406,7 @@ export const DescribeDomainConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDomainConfigurationRequest",
 }) as any as S.Schema<DescribeDomainConfigurationRequest>;
 export type ServerCertificateStatus = "INVALID" | "VALID" | (string & {});
-export const ServerCertificateStatus = /*@__PURE__*/ S.String;
+export const ServerCertificateStatus = S.String;
 export interface ServerCertificateSummary {
   serverCertificateArn?: string;
   serverCertificateStatus?: ServerCertificateStatus;
@@ -6426,13 +6426,13 @@ export const ServerCertificates = /*@__PURE__*/ S.Array(
   ServerCertificateSummary,
 );
 export type DomainConfigurationStatus = "ENABLED" | "DISABLED" | (string & {});
-export const DomainConfigurationStatus = /*@__PURE__*/ S.String;
+export const DomainConfigurationStatus = S.String;
 export type DomainType =
   | "ENDPOINT"
   | "AWS_MANAGED"
   | "CUSTOMER_MANAGED"
   | (string & {});
-export const DomainType = /*@__PURE__*/ S.String;
+export const DomainType = S.String;
 export interface DescribeDomainConfigurationResponse {
   domainConfigurationName?: string;
   domainConfigurationArn?: string;
@@ -6491,9 +6491,9 @@ export type EncryptionType =
   | "CUSTOMER_MANAGED_KMS_KEY"
   | "AWS_OWNED_KMS_KEY"
   | (string & {});
-export const EncryptionType = /*@__PURE__*/ S.String;
+export const EncryptionType = S.String;
 export type ConfigurationStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
-export const ConfigurationStatus = /*@__PURE__*/ S.String;
+export const ConfigurationStatus = S.String;
 export interface ConfigurationDetails {
   configurationStatus?: ConfigurationStatus;
   errorCode?: string;
@@ -6584,7 +6584,7 @@ export type EventType =
   | "CERTIFICATE"
   | "CA_CERTIFICATE"
   | (string & {});
-export const EventType = /*@__PURE__*/ S.String;
+export const EventType = S.String;
 export interface Configuration {
   Enabled?: boolean;
 }
@@ -6683,7 +6683,7 @@ export const DescribeIndexRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeIndexRequest",
 }) as any as S.Schema<DescribeIndexRequest>;
 export type IndexStatus = "ACTIVE" | "BUILDING" | "REBUILDING" | (string & {});
-export const IndexStatus = /*@__PURE__*/ S.String;
+export const IndexStatus = S.String;
 export interface DescribeIndexResponse {
   indexName?: string;
   indexStatus?: IndexStatus;
@@ -6728,7 +6728,7 @@ export type JobStatus =
   | "DELETION_IN_PROGRESS"
   | "SCHEDULED"
   | (string & {});
-export const JobStatus = /*@__PURE__*/ S.String;
+export const JobStatus = S.String;
 export type ProcessingTargetNameList = string[];
 export const ProcessingTargetNameList = /*@__PURE__*/ S.Array(S.String);
 export interface JobProcessDetails {
@@ -6866,7 +6866,7 @@ export type JobExecutionStatus =
   | "REMOVED"
   | "CANCELED"
   | (string & {});
-export const JobExecutionStatus = /*@__PURE__*/ S.String;
+export const JobExecutionStatus = S.String;
 export interface JobExecutionStatusDetails {
   detailsMap?: { [key: string]: string | undefined };
 }
@@ -7052,7 +7052,7 @@ export type MitigationActionType =
   | "ENABLE_IOT_LOGGING"
   | "PUBLISH_FINDING_TO_SNS"
   | (string & {});
-export const MitigationActionType = /*@__PURE__*/ S.String;
+export const MitigationActionType = S.String;
 export interface DescribeMitigationActionResponse {
   actionName?: string;
   actionType?: MitigationActionType;
@@ -7453,7 +7453,7 @@ export type DynamicGroupStatus =
   | "BUILDING"
   | "REBUILDING"
   | (string & {});
-export const DynamicGroupStatus = /*@__PURE__*/ S.String;
+export const DynamicGroupStatus = S.String;
 export interface DescribeThingGroupResponse {
   thingGroupName?: string;
   thingGroupId?: string;
@@ -7507,7 +7507,7 @@ export type Status =
   | "Cancelled"
   | "Cancelling"
   | (string & {});
-export const Status = /*@__PURE__*/ S.String;
+export const Status = S.String;
 export interface DescribeThingRegistrationTaskResponse {
   taskId?: string;
   creationDate?: Date;
@@ -7819,7 +7819,7 @@ export type ModelStatus =
   | "ACTIVE"
   | "EXPIRED"
   | (string & {});
-export const ModelStatus = /*@__PURE__*/ S.String;
+export const ModelStatus = S.String;
 export interface BehaviorModelTrainingSummary {
   securityProfileName?: string;
   behaviorName?: string;
@@ -8039,7 +8039,7 @@ export type CommandExecutionStatus =
   | "REJECTED"
   | "TIMED_OUT"
   | (string & {});
-export const CommandExecutionStatus = /*@__PURE__*/ S.String;
+export const CommandExecutionStatus = S.String;
 export interface StatusReason {
   reasonCode: string;
   reasonDescription?: string;
@@ -8176,15 +8176,15 @@ export type ThingIndexingMode =
   | "REGISTRY"
   | "REGISTRY_AND_SHADOW"
   | (string & {});
-export const ThingIndexingMode = /*@__PURE__*/ S.String;
+export const ThingIndexingMode = S.String;
 export type ThingConnectivityIndexingMode = "OFF" | "STATUS" | (string & {});
-export const ThingConnectivityIndexingMode = /*@__PURE__*/ S.String;
+export const ThingConnectivityIndexingMode = S.String;
 export type DeviceDefenderIndexingMode = "OFF" | "VIOLATIONS" | (string & {});
-export const DeviceDefenderIndexingMode = /*@__PURE__*/ S.String;
+export const DeviceDefenderIndexingMode = S.String;
 export type NamedShadowIndexingMode = "OFF" | "ON" | (string & {});
-export const NamedShadowIndexingMode = /*@__PURE__*/ S.String;
+export const NamedShadowIndexingMode = S.String;
 export type FieldType = "Number" | "String" | "Boolean" | (string & {});
-export const FieldType = /*@__PURE__*/ S.String;
+export const FieldType = S.String;
 export interface Field {
   name?: string;
   type?: FieldType;
@@ -8197,7 +8197,7 @@ export const Fields = /*@__PURE__*/ S.Array(Field);
 export type NamedShadowNamesFilter = string[];
 export const NamedShadowNamesFilter = /*@__PURE__*/ S.Array(S.String);
 export type TargetFieldOrder = "LatLon" | "LonLat" | (string & {});
-export const TargetFieldOrder = /*@__PURE__*/ S.String;
+export const TargetFieldOrder = S.String;
 export interface GeoLocationTarget {
   name?: string;
   order?: TargetFieldOrder;
@@ -8242,7 +8242,7 @@ export const ThingIndexingConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ThingIndexingConfiguration",
 }) as any as S.Schema<ThingIndexingConfiguration>;
 export type ThingGroupIndexingMode = "OFF" | "ON" | (string & {});
-export const ThingGroupIndexingMode = /*@__PURE__*/ S.String;
+export const ThingGroupIndexingMode = S.String;
 export interface ThingGroupIndexingConfiguration {
   thingGroupIndexingMode: ThingGroupIndexingMode;
   managedFields?: Field[];
@@ -8779,7 +8779,7 @@ export type DisconnectReasonValue =
   | "UNKNOWN"
   | "NONE"
   | (string & {});
-export const DisconnectReasonValue = /*@__PURE__*/ S.String;
+export const DisconnectReasonValue = S.String;
 export interface GetThingConnectivityDataResponse {
   thingName?: string | redacted.Redacted<string>;
   connected?: boolean;
@@ -8927,14 +8927,14 @@ export type BehaviorCriteriaType =
   | "STATISTICAL"
   | "MACHINE_LEARNING"
   | (string & {});
-export const BehaviorCriteriaType = /*@__PURE__*/ S.String;
+export const BehaviorCriteriaType = S.String;
 export type VerificationState =
   | "FALSE_POSITIVE"
   | "BENIGN_POSITIVE"
   | "TRUE_POSITIVE"
   | "UNKNOWN"
   | (string & {});
-export const VerificationState = /*@__PURE__*/ S.String;
+export const VerificationState = S.String;
 export interface ListActiveViolationsRequest {
   thingName?: string;
   securityProfileName?: string;
@@ -9132,7 +9132,7 @@ export type AuditMitigationActionsExecutionStatus =
   | "SKIPPED"
   | "PENDING"
   | (string & {});
-export const AuditMitigationActionsExecutionStatus = /*@__PURE__*/ S.String;
+export const AuditMitigationActionsExecutionStatus = S.String;
 export interface ListAuditMitigationActionsExecutionsRequest {
   taskId: string;
   actionStatus?: AuditMitigationActionsExecutionStatus;
@@ -9682,7 +9682,7 @@ export const ListCertificatesByCAResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCertificatesByCAResponse",
 }) as any as S.Schema<ListCertificatesByCAResponse>;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-export const SortOrder = /*@__PURE__*/ S.String;
+export const SortOrder = S.String;
 export interface TimeFilter {
   after?: string;
   before?: string;
@@ -9903,7 +9903,7 @@ export type DetectMitigationActionExecutionStatus =
   | "FAILED"
   | "SKIPPED"
   | (string & {});
-export const DetectMitigationActionExecutionStatus = /*@__PURE__*/ S.String;
+export const DetectMitigationActionExecutionStatus = S.String;
 export interface DetectMitigationActionExecution {
   taskId?: string;
   violationId?: string;
@@ -11257,7 +11257,7 @@ export const ListRoleAliasesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRoleAliasesResponse",
 }) as any as S.Schema<ListRoleAliasesResponse>;
 export type SbomValidationResult = "FAILED" | "SUCCEEDED" | (string & {});
-export const SbomValidationResult = /*@__PURE__*/ S.String;
+export const SbomValidationResult = S.String;
 export interface ListSbomValidationResultsRequest {
   packageName: string;
   versionName: string;
@@ -11294,7 +11294,7 @@ export type SbomValidationErrorCode =
   | "INCOMPATIBLE_FORMAT"
   | "FILE_SIZE_LIMIT_EXCEEDED"
   | (string & {});
-export const SbomValidationErrorCode = /*@__PURE__*/ S.String;
+export const SbomValidationErrorCode = S.String;
 export interface SbomValidationResultSummary {
   fileName?: string;
   validationResult?: SbomValidationResult;
@@ -11825,7 +11825,7 @@ export const ListThingPrincipalsV2Response = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListThingPrincipalsV2Response",
 }) as any as S.Schema<ListThingPrincipalsV2Response>;
 export type ReportType = "ERRORS" | "RESULTS" | (string & {});
-export const ReportType = /*@__PURE__*/ S.String;
+export const ReportType = S.String;
 export interface ListThingRegistrationTaskReportsRequest {
   taskId: string;
   reportType: ReportType;
@@ -12348,7 +12348,7 @@ export type ViolationEventType =
   | "alarm-cleared"
   | "alarm-invalidated"
   | (string & {});
-export const ViolationEventType = /*@__PURE__*/ S.String;
+export const ViolationEventType = S.String;
 export interface ViolationEvent {
   violationId?: string;
   thingName?: string;
@@ -13153,7 +13153,7 @@ export type ActionType =
   | "RECEIVE"
   | "CONNECT"
   | (string & {});
-export const ActionType = /*@__PURE__*/ S.String;
+export const ActionType = S.String;
 export type Resources = string[];
 export const Resources = /*@__PURE__*/ S.Array(S.String);
 export interface AuthInfo {
@@ -13229,7 +13229,7 @@ export type AuthDecision =
   | "EXPLICIT_DENY"
   | "IMPLICIT_DENY"
   | (string & {});
-export const AuthDecision = /*@__PURE__*/ S.String;
+export const AuthDecision = S.String;
 export type MissingContextValues = string[];
 export const MissingContextValues = /*@__PURE__*/ S.Array(S.String);
 export interface AuthResult {
@@ -14129,7 +14129,7 @@ export const UpdatePackageConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePackageConfigurationResponse",
 }) as any as S.Schema<UpdatePackageConfigurationResponse>;
 export type PackageVersionAction = "PUBLISH" | "DEPRECATE" | (string & {});
-export const PackageVersionAction = /*@__PURE__*/ S.String;
+export const PackageVersionAction = S.String;
 export interface UpdatePackageVersionRequest {
   packageName: string;
   versionName: string;

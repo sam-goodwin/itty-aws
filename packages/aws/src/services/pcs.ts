@@ -173,7 +173,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export type SchedulerType = "SLURM" | (string & {});
-export const SchedulerType = /*@__PURE__*/ S.String;
+export const SchedulerType = S.String;
 export interface SchedulerRequest {
   type: SchedulerType;
   version: string;
@@ -184,13 +184,13 @@ export const SchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchedulerRequest",
 }) as any as S.Schema<SchedulerRequest>;
 export type Size = "SMALL" | "MEDIUM" | "LARGE" | (string & {});
-export const Size = /*@__PURE__*/ S.String;
+export const Size = S.String;
 export type SubnetIdList = string[];
 export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupIdList = string[];
 export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
 export type NetworkType = "IPV4" | "IPV6" | (string & {});
-export const NetworkType = /*@__PURE__*/ S.String;
+export const NetworkType = S.String;
 export interface NetworkingRequest {
   subnetIds?: string[];
   securityGroupIds?: string[];
@@ -241,7 +241,7 @@ export const CgroupCustomSetting = /*@__PURE__*/ S.suspend(() =>
 export type CgroupCustomSettings = CgroupCustomSetting[];
 export const CgroupCustomSettings = /*@__PURE__*/ S.Array(CgroupCustomSetting);
 export type AccountingMode = "STANDARD" | "NONE" | (string & {});
-export const AccountingMode = /*@__PURE__*/ S.String;
+export const AccountingMode = S.String;
 export interface AccountingRequest {
   defaultPurgeTimeInDays?: number;
   mode: AccountingMode;
@@ -255,7 +255,7 @@ export const AccountingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountingRequest",
 }) as any as S.Schema<AccountingRequest>;
 export type SlurmRestMode = "STANDARD" | "NONE" | (string & {});
-export const SlurmRestMode = /*@__PURE__*/ S.String;
+export const SlurmRestMode = S.String;
 export interface SlurmRestRequest {
   mode: SlurmRestMode;
 }
@@ -320,7 +320,7 @@ export type ClusterStatus =
   | "SUSPENDED"
   | "RESUMING"
   | (string & {});
-export const ClusterStatus = /*@__PURE__*/ S.String;
+export const ClusterStatus = S.String;
 export interface Scheduler {
   type: SchedulerType;
   version: string;
@@ -405,7 +405,7 @@ export type EndpointType =
   | "SLURMDBD"
   | "SLURMRESTD"
   | (string & {});
-export const EndpointType = /*@__PURE__*/ S.String;
+export const EndpointType = S.String;
 export interface Endpoint {
   type: EndpointType;
   privateIpAddress: string;
@@ -477,7 +477,7 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -671,7 +671,7 @@ export type PurchaseOption =
   | "SPOT"
   | "CAPACITY_BLOCK"
   | (string & {});
-export const PurchaseOption = /*@__PURE__*/ S.String;
+export const PurchaseOption = S.String;
 export interface CustomLaunchTemplate {
   id: string;
   version: string;
@@ -703,7 +703,7 @@ export type SpotAllocationStrategy =
   | "capacity-optimized"
   | "price-capacity-optimized"
   | (string & {});
-export const SpotAllocationStrategy = /*@__PURE__*/ S.String;
+export const SpotAllocationStrategy = S.String;
 export interface SpotOptions {
   allocationStrategy?: SpotAllocationStrategy;
 }
@@ -768,7 +768,7 @@ export type ComputeNodeGroupStatus =
   | "SUSPENDED"
   | "RESUMING"
   | (string & {});
-export const ComputeNodeGroupStatus = /*@__PURE__*/ S.String;
+export const ComputeNodeGroupStatus = S.String;
 export interface ScalingConfiguration {
   minInstanceCount: number;
   maxInstanceCount: number;
@@ -1041,7 +1041,7 @@ export type QueueStatus =
   | "SUSPENDED"
   | "RESUMING"
   | (string & {});
-export const QueueStatus = /*@__PURE__*/ S.String;
+export const QueueStatus = S.String;
 export interface QueueSlurmConfiguration {
   slurmCustomSettings?: SlurmCustomSetting[];
 }

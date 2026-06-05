@@ -150,7 +150,7 @@ export type AccessDeniedReason =
   | "DIRECTORY_AUTH"
   | "DATA_DISABLED"
   | (string & {});
-export const AccessDeniedReason = /*@__PURE__*/ S.String;
+export const AccessDeniedReason = S.String;
 export type DirectoryUnavailableReason =
   | "INVALID_DIRECTORY_STATE"
   | "DIRECTORY_TIMEOUT"
@@ -158,7 +158,7 @@ export type DirectoryUnavailableReason =
   | "NO_DISK_SPACE"
   | "TRUST_AUTH_FAILURE"
   | (string & {});
-export const DirectoryUnavailableReason = /*@__PURE__*/ S.String;
+export const DirectoryUnavailableReason = S.String;
 export type ValidationExceptionReason =
   | "INVALID_REALM"
   | "INVALID_DIRECTORY_TYPE"
@@ -176,16 +176,16 @@ export type ValidationExceptionReason =
   | "LDAP_SIZE_LIMIT_EXCEEDED"
   | "LDAP_UNSUPPORTED_OPERATION"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export type GroupType = "Distribution" | "Security" | (string & {});
-export const GroupType = /*@__PURE__*/ S.String;
+export const GroupType = S.String;
 export type GroupScope =
   | "DomainLocal"
   | "Global"
   | "Universal"
   | "BuiltinLocal"
   | (string & {});
-export const GroupScope = /*@__PURE__*/ S.String;
+export const GroupScope = S.String;
 export type StringSetAttributeValue = string | redacted.Redacted<string>[];
 export const StringSetAttributeValue = /*@__PURE__*/ S.Array(SensitiveString);
 export type AttributeValue =
@@ -533,7 +533,7 @@ export const ListGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupMembersRequest",
 }) as any as S.Schema<ListGroupMembersRequest>;
 export type MemberType = "USER" | "GROUP" | "COMPUTER" | (string & {});
-export const MemberType = /*@__PURE__*/ S.String;
+export const MemberType = S.String;
 export interface Member {
   SID: string;
   SAMAccountName: string;
@@ -901,7 +901,7 @@ export const SearchUsersResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchUsersResult",
 }) as any as S.Schema<SearchUsersResult>;
 export type UpdateType = "ADD" | "REPLACE" | "REMOVE" | (string & {});
-export const UpdateType = /*@__PURE__*/ S.String;
+export const UpdateType = S.String;
 export interface UpdateGroupRequest {
   DirectoryId: string;
   SAMAccountName: string;

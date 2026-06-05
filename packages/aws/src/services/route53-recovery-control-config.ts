@@ -145,7 +145,7 @@ export const __mapOf__stringMin0Max256PatternS = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type NetworkType = "IPV4" | "DUALSTACK" | (string & {});
-export const NetworkType = /*@__PURE__*/ S.String;
+export const NetworkType = S.String;
 export interface CreateClusterRequest {
   ClientToken?: string;
   ClusterName?: string;
@@ -187,7 +187,7 @@ export type Status =
   | "DEPLOYED"
   | "PENDING_DELETION"
   | (string & {});
-export const Status = /*@__PURE__*/ S.String;
+export const Status = S.String;
 export interface Cluster {
   ClusterArn?: string;
   ClusterEndpoints?: ClusterEndpoint[];
@@ -321,7 +321,7 @@ export const __listOf__stringMin1Max256PatternAZaZ09 = /*@__PURE__*/ S.Array(
   S.String,
 );
 export type RuleType = "ATLEAST" | "AND" | "OR" | (string & {});
-export const RuleType = /*@__PURE__*/ S.String;
+export const RuleType = S.String;
 export interface RuleConfig {
   Inverted?: boolean;
   Threshold?: number;

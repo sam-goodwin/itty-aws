@@ -101,17 +101,17 @@ export type SavingsEstimationMode =
   | "BeforeDiscounts"
   | "AfterDiscounts"
   | (string & {});
-export const SavingsEstimationMode = /*@__PURE__*/ S.String;
+export const SavingsEstimationMode = S.String;
 export type MemberAccountDiscountVisibility = "All" | "None" | (string & {});
-export const MemberAccountDiscountVisibility = /*@__PURE__*/ S.String;
+export const MemberAccountDiscountVisibility = S.String;
 export type Term = "OneYear" | "ThreeYears" | (string & {});
-export const Term = /*@__PURE__*/ S.String;
+export const Term = S.String;
 export type PaymentOption =
   | "AllUpfront"
   | "PartialUpfront"
   | "NoUpfront"
   | (string & {});
-export const PaymentOption = /*@__PURE__*/ S.String;
+export const PaymentOption = S.String;
 export interface PreferredCommitment {
   term?: Term;
   paymentOption?: PaymentOption;
@@ -144,7 +144,7 @@ export type ValidationExceptionReason =
   | "FieldValidationFailed"
   | "Other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionDetail {
   fieldName: string;
   message: string;
@@ -189,9 +189,9 @@ export type ResourceType =
   | "MemoryDbReservedInstances"
   | "NatGateway"
   | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
+export const ResourceType = S.String;
 export type Source = "ComputeOptimizer" | "CostExplorer" | (string & {});
-export const Source = /*@__PURE__*/ S.String;
+export const Source = S.String;
 export type ImplementationEffort =
   | "VeryLow"
   | "Low"
@@ -199,7 +199,7 @@ export type ImplementationEffort =
   | "High"
   | "VeryHigh"
   | (string & {});
-export const ImplementationEffort = /*@__PURE__*/ S.String;
+export const ImplementationEffort = S.String;
 export type ActionType =
   | "Rightsize"
   | "Stop"
@@ -210,7 +210,7 @@ export type ActionType =
   | "Delete"
   | "ScaleIn"
   | (string & {});
-export const ActionType = /*@__PURE__*/ S.String;
+export const ActionType = S.String;
 export interface ComputeConfiguration {
   vCpu?: number;
   memorySizeInMB?: number;
@@ -408,9 +408,9 @@ export type Ec2AutoScalingGroupType =
   | "SingleInstanceType"
   | "MixedInstanceTypes"
   | (string & {});
-export const Ec2AutoScalingGroupType = /*@__PURE__*/ S.String;
+export const Ec2AutoScalingGroupType = S.String;
 export type AllocationStrategy = "Prioritized" | "LowestPrice" | (string & {});
-export const AllocationStrategy = /*@__PURE__*/ S.String;
+export const AllocationStrategy = S.String;
 export interface Ec2AutoScalingGroupConfiguration {
   instance?: InstanceConfiguration;
   mixedInstances?: MixedInstanceConfiguration[];
@@ -1492,7 +1492,7 @@ export const GetRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRecommendationResponse",
 }) as any as S.Schema<GetRecommendationResponse>;
 export type GranularityType = "Daily" | "Monthly" | (string & {});
-export const GranularityType = /*@__PURE__*/ S.String;
+export const GranularityType = S.String;
 export interface TimePeriod {
   start: string;
   end: string;
@@ -1501,7 +1501,7 @@ export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ start: S.String, end: S.String }),
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
 export type Order = "Asc" | "Desc" | (string & {});
-export const Order = /*@__PURE__*/ S.String;
+export const Order = S.String;
 export interface OrderBy {
   dimension?: string;
   order?: Order;
@@ -1596,7 +1596,7 @@ export const ListEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnrollmentStatusesRequest",
 }) as any as S.Schema<ListEnrollmentStatusesRequest>;
 export type EnrollmentStatus = "Active" | "Inactive" | (string & {});
-export const EnrollmentStatus = /*@__PURE__*/ S.String;
+export const EnrollmentStatus = S.String;
 export interface AccountEnrollmentStatus {
   accountId?: string;
   status?: EnrollmentStatus;
@@ -1765,7 +1765,7 @@ export const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRecommendationsResponse",
 }) as any as S.Schema<ListRecommendationsResponse>;
 export type SummaryMetrics = "SavingsPercentage" | (string & {});
-export const SummaryMetrics = /*@__PURE__*/ S.String;
+export const SummaryMetrics = S.String;
 export type SummaryMetricsList = SummaryMetrics[];
 export const SummaryMetricsList = /*@__PURE__*/ S.Array(SummaryMetrics);
 export interface ListRecommendationSummariesRequest {

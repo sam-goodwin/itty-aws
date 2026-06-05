@@ -222,7 +222,7 @@ export type QueryStatus =
   | "CANCELLED"
   | "TIMED_OUT"
   | (string & {});
-export const QueryStatus = /*@__PURE__*/ S.String;
+export const QueryStatus = S.String;
 export interface CancelQueryResponse {
   QueryId: string;
   QueryStatus: QueryStatus;
@@ -241,7 +241,7 @@ export type DestinationType =
   | "EVENT_DATA_STORE"
   | "AWS_SERVICE"
   | (string & {});
-export const DestinationType = /*@__PURE__*/ S.String;
+export const DestinationType = S.String;
 export interface Destination {
   Type: DestinationType;
   Location: string;
@@ -296,7 +296,7 @@ export const CreateChannelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateChannelResponse",
 }) as any as S.Schema<CreateChannelResponse>;
 export type RefreshScheduleFrequencyUnit = "HOURS" | "DAYS" | (string & {});
-export const RefreshScheduleFrequencyUnit = /*@__PURE__*/ S.String;
+export const RefreshScheduleFrequencyUnit = S.String;
 export interface RefreshScheduleFrequency {
   Unit?: RefreshScheduleFrequencyUnit;
   Value?: number;
@@ -310,7 +310,7 @@ export const RefreshScheduleFrequency = /*@__PURE__*/ S.suspend(() =>
   identifier: "RefreshScheduleFrequency",
 }) as any as S.Schema<RefreshScheduleFrequency>;
 export type RefreshScheduleStatus = "ENABLED" | "DISABLED" | (string & {});
-export const RefreshScheduleStatus = /*@__PURE__*/ S.String;
+export const RefreshScheduleStatus = S.String;
 export interface RefreshSchedule {
   Frequency?: RefreshScheduleFrequency;
   Status?: RefreshScheduleStatus;
@@ -375,7 +375,7 @@ export const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDashboardRequest",
 }) as any as S.Schema<CreateDashboardRequest>;
 export type DashboardType = "MANAGED" | "CUSTOM" | (string & {});
-export const DashboardType = /*@__PURE__*/ S.String;
+export const DashboardType = S.String;
 export interface Widget {
   QueryAlias?: string;
   QueryStatement?: string;
@@ -462,7 +462,7 @@ export type BillingMode =
   | "EXTENDABLE_RETENTION_PRICING"
   | "FIXED_RETENTION_PRICING"
   | (string & {});
-export const BillingMode = /*@__PURE__*/ S.String;
+export const BillingMode = S.String;
 export interface CreateEventDataStoreRequest {
   Name: string;
   AdvancedEventSelectors?: AdvancedEventSelector[];
@@ -509,7 +509,7 @@ export type EventDataStoreStatus =
   | "STOPPING_INGESTION"
   | "STOPPED_INGESTION"
   | (string & {});
-export const EventDataStoreStatus = /*@__PURE__*/ S.String;
+export const EventDataStoreStatus = S.String;
 export interface CreateEventDataStoreResponse {
   EventDataStoreArn?: string;
   Name?: string;
@@ -825,7 +825,7 @@ export type DeliveryStatus =
   | "CANCELLED"
   | "UNKNOWN"
   | (string & {});
-export const DeliveryStatus = /*@__PURE__*/ S.String;
+export const DeliveryStatus = S.String;
 export interface DescribeQueryResponse {
   QueryId?: string;
   QueryString?: string;
@@ -948,7 +948,7 @@ export type FederationStatus =
   | "DISABLING"
   | "DISABLED"
   | (string & {});
-export const FederationStatus = /*@__PURE__*/ S.String;
+export const FederationStatus = S.String;
 export interface DisableFederationResponse {
   EventDataStoreArn?: string;
   FederationStatus?: FederationStatus;
@@ -1124,7 +1124,7 @@ export type DashboardStatus =
   | "UPDATED"
   | "DELETING"
   | (string & {});
-export const DashboardStatus = /*@__PURE__*/ S.String;
+export const DashboardStatus = S.String;
 export interface GetDashboardResponse {
   DashboardArn?: string;
   Type?: DashboardType;
@@ -1180,9 +1180,9 @@ export const GetEventConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEventConfigurationRequest",
 }) as any as S.Schema<GetEventConfigurationRequest>;
 export type MaxEventSize = "Standard" | "Large" | (string & {});
-export const MaxEventSize = /*@__PURE__*/ S.String;
+export const MaxEventSize = S.String;
 export type Type = "TagContext" | "RequestContext" | (string & {});
-export const Type = /*@__PURE__*/ S.String;
+export const Type = S.String;
 export type OperatorTargetList = string[];
 export const OperatorTargetList = /*@__PURE__*/ S.Array(S.String);
 export interface ContextKeySelector {
@@ -1201,11 +1201,11 @@ export type Template =
   | "RESOURCE_ACCESS"
   | "USER_ACTIONS"
   | (string & {});
-export const Template = /*@__PURE__*/ S.String;
+export const Template = S.String;
 export type Templates = Template[];
 export const Templates = /*@__PURE__*/ S.Array(Template);
 export type EventCategoryAggregation = "Data" | (string & {});
-export const EventCategoryAggregation = /*@__PURE__*/ S.String;
+export const EventCategoryAggregation = S.String;
 export interface AggregationConfiguration {
   Templates: Template[];
   EventCategory: EventCategoryAggregation;
@@ -1325,7 +1325,7 @@ export const GetEventSelectorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEventSelectorsRequest",
 }) as any as S.Schema<GetEventSelectorsRequest>;
 export type ReadWriteType = "ReadOnly" | "WriteOnly" | "All" | (string & {});
-export const ReadWriteType = /*@__PURE__*/ S.String;
+export const ReadWriteType = S.String;
 export type DataResourceValues = string[];
 export const DataResourceValues = /*@__PURE__*/ S.Array(S.String);
 export interface DataResource {
@@ -1417,7 +1417,7 @@ export type ImportStatus =
   | "STOPPED"
   | "COMPLETED"
   | (string & {});
-export const ImportStatus = /*@__PURE__*/ S.String;
+export const ImportStatus = S.String;
 export interface ImportStatistics {
   PrefixesFound?: number;
   PrefixesCompleted?: number;
@@ -1492,9 +1492,9 @@ export type InsightType =
   | "ApiCallRateInsight"
   | "ApiErrorRateInsight"
   | (string & {});
-export const InsightType = /*@__PURE__*/ S.String;
+export const InsightType = S.String;
 export type SourceEventCategory = "Management" | "Data" | (string & {});
-export const SourceEventCategory = /*@__PURE__*/ S.String;
+export const SourceEventCategory = S.String;
 export type SourceEventCategories = SourceEventCategory[];
 export const SourceEventCategories = /*@__PURE__*/ S.Array(SourceEventCategory);
 export interface InsightSelector {
@@ -1916,7 +1916,7 @@ export type ImportFailureStatus =
   | "RETRY"
   | "SUCCEEDED"
   | (string & {});
-export const ImportFailureStatus = /*@__PURE__*/ S.String;
+export const ImportFailureStatus = S.String;
 export interface ImportFailureListItem {
   Location?: string;
   Status?: ImportFailureStatus;
@@ -2014,13 +2014,13 @@ export const ListImportsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListImportsResponse",
 }) as any as S.Schema<ListImportsResponse>;
 export type ListInsightsDataType = "InsightsEvents" | (string & {});
-export const ListInsightsDataType = /*@__PURE__*/ S.String;
+export const ListInsightsDataType = S.String;
 export type ListInsightsDataDimensionKey =
   | "EventId"
   | "EventName"
   | "EventSource"
   | (string & {});
-export const ListInsightsDataDimensionKey = /*@__PURE__*/ S.String;
+export const ListInsightsDataDimensionKey = S.String;
 export type ListInsightsDataDimensions = {
   [key in ListInsightsDataDimensionKey]?: string;
 };
@@ -2114,7 +2114,7 @@ export type InsightsMetricDataType =
   | "FillWithZeros"
   | "NonZeroData"
   | (string & {});
-export const InsightsMetricDataType = /*@__PURE__*/ S.String;
+export const InsightsMetricDataType = S.String;
 export interface ListInsightsMetricDataRequest {
   TrailName?: string;
   EventSource: string;
@@ -2399,7 +2399,7 @@ export type LookupAttributeKey =
   | "EventSource"
   | "AccessKeyId"
   | (string & {});
-export const LookupAttributeKey = /*@__PURE__*/ S.String;
+export const LookupAttributeKey = S.String;
 export interface LookupAttribute {
   AttributeKey: LookupAttributeKey;
   AttributeValue: string;
@@ -2412,7 +2412,7 @@ export const LookupAttribute = /*@__PURE__*/ S.suspend(() =>
 export type LookupAttributesList = LookupAttribute[];
 export const LookupAttributesList = /*@__PURE__*/ S.Array(LookupAttribute);
 export type EventCategory = "insight" | (string & {});
-export const EventCategory = /*@__PURE__*/ S.String;
+export const EventCategory = S.String;
 export interface LookupEventsRequest {
   LookupAttributes?: LookupAttribute[];
   StartTime?: Date;

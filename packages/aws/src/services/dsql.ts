@@ -212,19 +212,19 @@ export type ClusterStatus =
   | "PENDING_SETUP"
   | "PENDING_DELETE"
   | (string & {});
-export const ClusterStatus = /*@__PURE__*/ S.String;
+export const ClusterStatus = S.String;
 export type EncryptionType =
   | "AWS_OWNED_KMS_KEY"
   | "CUSTOMER_MANAGED_KMS_KEY"
   | (string & {});
-export const EncryptionType = /*@__PURE__*/ S.String;
+export const EncryptionType = S.String;
 export type EncryptionStatus =
   | "ENABLED"
   | "UPDATING"
   | "KMS_KEY_INACCESSIBLE"
   | "ENABLING"
   | (string & {});
-export const EncryptionStatus = /*@__PURE__*/ S.String;
+export const EncryptionStatus = S.String;
 export interface EncryptionDetails {
   encryptionType: EncryptionType;
   kmsKeyArn?: string;
@@ -270,7 +270,7 @@ export type ValidationExceptionReason =
   | "deletionProtectionEnabled"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;

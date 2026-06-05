@@ -108,7 +108,7 @@ export type ClipFragmentSelectorType =
   | "PRODUCER_TIMESTAMP"
   | "SERVER_TIMESTAMP"
   | (string & {});
-export const ClipFragmentSelectorType = /*@__PURE__*/ S.String;
+export const ClipFragmentSelectorType = S.String;
 export interface ClipTimestampRange {
   StartTimestamp: Date;
   EndTimestamp: Date;
@@ -169,16 +169,16 @@ export type DASHPlaybackMode =
   | "LIVE_REPLAY"
   | "ON_DEMAND"
   | (string & {});
-export const DASHPlaybackMode = /*@__PURE__*/ S.String;
+export const DASHPlaybackMode = S.String;
 export type DASHDisplayFragmentTimestamp = "ALWAYS" | "NEVER" | (string & {});
-export const DASHDisplayFragmentTimestamp = /*@__PURE__*/ S.String;
+export const DASHDisplayFragmentTimestamp = S.String;
 export type DASHDisplayFragmentNumber = "ALWAYS" | "NEVER" | (string & {});
-export const DASHDisplayFragmentNumber = /*@__PURE__*/ S.String;
+export const DASHDisplayFragmentNumber = S.String;
 export type DASHFragmentSelectorType =
   | "PRODUCER_TIMESTAMP"
   | "SERVER_TIMESTAMP"
   | (string & {});
-export const DASHFragmentSelectorType = /*@__PURE__*/ S.String;
+export const DASHFragmentSelectorType = S.String;
 export interface DASHTimestampRange {
   StartTimestamp?: Date;
   EndTimestamp?: Date;
@@ -249,12 +249,12 @@ export type HLSPlaybackMode =
   | "LIVE_REPLAY"
   | "ON_DEMAND"
   | (string & {});
-export const HLSPlaybackMode = /*@__PURE__*/ S.String;
+export const HLSPlaybackMode = S.String;
 export type HLSFragmentSelectorType =
   | "PRODUCER_TIMESTAMP"
   | "SERVER_TIMESTAMP"
   | (string & {});
-export const HLSFragmentSelectorType = /*@__PURE__*/ S.String;
+export const HLSFragmentSelectorType = S.String;
 export interface HLSTimestampRange {
   StartTimestamp?: Date;
   EndTimestamp?: Date;
@@ -280,15 +280,15 @@ export const HLSFragmentSelector = /*@__PURE__*/ S.suspend(() =>
   identifier: "HLSFragmentSelector",
 }) as any as S.Schema<HLSFragmentSelector>;
 export type ContainerFormat = "FRAGMENTED_MP4" | "MPEG_TS" | (string & {});
-export const ContainerFormat = /*@__PURE__*/ S.String;
+export const ContainerFormat = S.String;
 export type HLSDiscontinuityMode =
   | "ALWAYS"
   | "NEVER"
   | "ON_DISCONTINUITY"
   | (string & {});
-export const HLSDiscontinuityMode = /*@__PURE__*/ S.String;
+export const HLSDiscontinuityMode = S.String;
 export type HLSDisplayFragmentTimestamp = "ALWAYS" | "NEVER" | (string & {});
-export const HLSDisplayFragmentTimestamp = /*@__PURE__*/ S.String;
+export const HLSDisplayFragmentTimestamp = S.String;
 export interface GetHLSStreamingSessionURLInput {
   StreamName?: string;
   StreamARN?: string;
@@ -336,11 +336,11 @@ export type ImageSelectorType =
   | "PRODUCER_TIMESTAMP"
   | "SERVER_TIMESTAMP"
   | (string & {});
-export const ImageSelectorType = /*@__PURE__*/ S.String;
+export const ImageSelectorType = S.String;
 export type Format = "JPEG" | "PNG" | (string & {});
-export const Format = /*@__PURE__*/ S.String;
+export const Format = S.String;
 export type FormatConfigKey = "JPEGQuality" | (string & {});
-export const FormatConfigKey = /*@__PURE__*/ S.String;
+export const FormatConfigKey = S.String;
 export type FormatConfig = { [key in FormatConfigKey]?: string };
 export const FormatConfig = /*@__PURE__*/ S.Record(
   FormatConfigKey,
@@ -386,7 +386,7 @@ export const GetImagesInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetImagesInput" }) as any as S.Schema<GetImagesInput>;
 export type ImageError = "NO_MEDIA" | "MEDIA_ERROR" | (string & {});
-export const ImageError = /*@__PURE__*/ S.String;
+export const ImageError = S.String;
 export interface Image {
   TimeStamp?: Date;
   Error?: ImageError;
@@ -451,7 +451,7 @@ export type FragmentSelectorType =
   | "PRODUCER_TIMESTAMP"
   | "SERVER_TIMESTAMP"
   | (string & {});
-export const FragmentSelectorType = /*@__PURE__*/ S.String;
+export const FragmentSelectorType = S.String;
 export interface TimestampRange {
   StartTimestamp: Date;
   EndTimestamp: Date;

@@ -127,23 +127,23 @@ export const CancelJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelJobResponse",
 }) as any as S.Schema<CancelJobResponse>;
 export type CEType = "MANAGED" | "UNMANAGED" | (string & {});
-export const CEType = /*@__PURE__*/ S.String;
+export const CEType = S.String;
 export type CEState = "ENABLED" | "DISABLED" | (string & {});
-export const CEState = /*@__PURE__*/ S.String;
+export const CEState = S.String;
 export type CRType =
   | "EC2"
   | "SPOT"
   | "FARGATE"
   | "FARGATE_SPOT"
   | (string & {});
-export const CRType = /*@__PURE__*/ S.String;
+export const CRType = S.String;
 export type CRAllocationStrategy =
   | "BEST_FIT"
   | "BEST_FIT_PROGRESSIVE"
   | "SPOT_CAPACITY_OPTIMIZED"
   | "SPOT_PRICE_CAPACITY_OPTIMIZED"
   | (string & {});
-export const CRAllocationStrategy = /*@__PURE__*/ S.String;
+export const CRAllocationStrategy = S.String;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export type TagsMap = { [key: string]: string | undefined };
@@ -152,7 +152,7 @@ export const TagsMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type UserdataType = "EKS_BOOTSTRAP_SH" | "EKS_NODEADM" | (string & {});
-export const UserdataType = /*@__PURE__*/ S.String;
+export const UserdataType = S.String;
 export interface LaunchTemplateSpecificationOverride {
   launchTemplateId?: string;
   launchTemplateName?: string;
@@ -368,7 +368,7 @@ export const CreateConsumableResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConsumableResourceResponse",
 }) as any as S.Schema<CreateConsumableResourceResponse>;
 export type JQState = "ENABLED" | "DISABLED" | (string & {});
-export const JQState = /*@__PURE__*/ S.String;
+export const JQState = S.String;
 export interface ComputeEnvironmentOrder {
   order?: number;
   computeEnvironment?: string;
@@ -407,14 +407,14 @@ export type JobQueueType =
   | "ECS_FARGATE"
   | "SAGEMAKER_TRAINING"
   | (string & {});
-export const JobQueueType = /*@__PURE__*/ S.String;
+export const JobQueueType = S.String;
 export type JobStateTimeLimitActionsState = "RUNNABLE" | (string & {});
-export const JobStateTimeLimitActionsState = /*@__PURE__*/ S.String;
+export const JobStateTimeLimitActionsState = S.String;
 export type JobStateTimeLimitActionsAction =
   | "CANCEL"
   | "TERMINATE"
   | (string & {});
-export const JobStateTimeLimitActionsAction = /*@__PURE__*/ S.String;
+export const JobStateTimeLimitActionsAction = S.String;
 export interface JobStateTimeLimitAction {
   reason?: string;
   state?: JobStateTimeLimitActionsState;
@@ -504,7 +504,7 @@ export type QuotaShareResourceSharingStrategy =
   | "LEND"
   | "LEND_AND_BORROW"
   | (string & {});
-export const QuotaShareResourceSharingStrategy = /*@__PURE__*/ S.String;
+export const QuotaShareResourceSharingStrategy = S.String;
 export interface QuotaShareResourceSharingConfiguration {
   strategy?: QuotaShareResourceSharingStrategy;
   borrowLimit?: number;
@@ -522,7 +522,7 @@ export type QuotaShareInSharePreemptionState =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
-export const QuotaShareInSharePreemptionState = /*@__PURE__*/ S.String;
+export const QuotaShareInSharePreemptionState = S.String;
 export interface QuotaSharePreemptionConfiguration {
   inSharePreemption?: QuotaShareInSharePreemptionState;
 }
@@ -532,7 +532,7 @@ export const QuotaSharePreemptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "QuotaSharePreemptionConfiguration",
 }) as any as S.Schema<QuotaSharePreemptionConfiguration>;
 export type QuotaShareState = "ENABLED" | "DISABLED" | (string & {});
-export const QuotaShareState = /*@__PURE__*/ S.String;
+export const QuotaShareState = S.String;
 export interface CreateQuotaShareRequest {
   quotaShareName?: string;
   jobQueue?: string;
@@ -580,7 +580,7 @@ export const CreateQuotaShareResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateQuotaShareResponse",
 }) as any as S.Schema<CreateQuotaShareResponse>;
 export type QuotaShareIdleResourceAssignmentStrategy = "FIFO" | (string & {});
-export const QuotaShareIdleResourceAssignmentStrategy = /*@__PURE__*/ S.String;
+export const QuotaShareIdleResourceAssignmentStrategy = S.String;
 export interface QuotaSharePolicy {
   idleResourceAssignmentStrategy?: QuotaShareIdleResourceAssignmentStrategy;
 }
@@ -657,9 +657,9 @@ export const CreateSchedulingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSchedulingPolicyResponse",
 }) as any as S.Schema<CreateSchedulingPolicyResponse>;
 export type ServiceEnvironmentType = "SAGEMAKER_TRAINING" | (string & {});
-export const ServiceEnvironmentType = /*@__PURE__*/ S.String;
+export const ServiceEnvironmentType = S.String;
 export type ServiceEnvironmentState = "ENABLED" | "DISABLED" | (string & {});
-export const ServiceEnvironmentState = /*@__PURE__*/ S.String;
+export const ServiceEnvironmentState = S.String;
 export interface CapacityLimit {
   maxCapacity?: number;
   capacityUnit?: string;
@@ -912,7 +912,7 @@ export type CEStatus =
   | "VALID"
   | "INVALID"
   | (string & {});
-export const CEStatus = /*@__PURE__*/ S.String;
+export const CEStatus = S.String;
 export interface UpdatePolicy {
   terminateJobsOnUpdate?: boolean;
   jobExecutionTimeoutMinutes?: number;
@@ -924,7 +924,7 @@ export const UpdatePolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpdatePolicy" }) as any as S.Schema<UpdatePolicy>;
 export type OrchestrationType = "ECS" | "EKS" | (string & {});
-export const OrchestrationType = /*@__PURE__*/ S.String;
+export const OrchestrationType = S.String;
 export interface ComputeEnvironmentDetail {
   computeEnvironmentName?: string;
   computeEnvironmentArn?: string;
@@ -1070,7 +1070,7 @@ export const ParametersMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type RetryAction = "RETRY" | "EXIT" | (string & {});
-export const RetryAction = /*@__PURE__*/ S.String;
+export const RetryAction = S.String;
 export interface EvaluateOnExit {
   onStatusReason?: string;
   onReason?: string;
@@ -1104,9 +1104,9 @@ export const Host = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sourcePath: S.optional(S.String) }),
 ).annotate({ identifier: "Host" }) as any as S.Schema<Host>;
 export type EFSTransitEncryption = "ENABLED" | "DISABLED" | (string & {});
-export const EFSTransitEncryption = /*@__PURE__*/ S.String;
+export const EFSTransitEncryption = S.String;
 export type EFSAuthorizationConfigIAM = "ENABLED" | "DISABLED" | (string & {});
-export const EFSAuthorizationConfigIAM = /*@__PURE__*/ S.String;
+export const EFSAuthorizationConfigIAM = S.String;
 export interface EFSAuthorizationConfig {
   accessPointId?: string;
   iam?: EFSAuthorizationConfigIAM;
@@ -1189,7 +1189,7 @@ export const Ulimit = /*@__PURE__*/ S.suspend(() =>
 export type Ulimits = Ulimit[];
 export const Ulimits = /*@__PURE__*/ S.Array(Ulimit);
 export type ResourceType = "GPU" | "VCPU" | "MEMORY" | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
+export const ResourceType = S.String;
 export interface ResourceRequirement {
   value?: string;
   type?: ResourceType;
@@ -1202,7 +1202,7 @@ export const ResourceRequirement = /*@__PURE__*/ S.suspend(() =>
 export type ResourceRequirements = ResourceRequirement[];
 export const ResourceRequirements = /*@__PURE__*/ S.Array(ResourceRequirement);
 export type DeviceCgroupPermission = "READ" | "WRITE" | "MKNOD" | (string & {});
-export const DeviceCgroupPermission = /*@__PURE__*/ S.String;
+export const DeviceCgroupPermission = S.String;
 export type DeviceCgroupPermissions = DeviceCgroupPermission[];
 export const DeviceCgroupPermissions = /*@__PURE__*/ S.Array(
   DeviceCgroupPermission,
@@ -1265,7 +1265,7 @@ export type LogDriver =
   | "splunk"
   | "awsfirelens"
   | (string & {});
-export const LogDriver = /*@__PURE__*/ S.String;
+export const LogDriver = S.String;
 export type LogConfigurationOptionsMap = { [key: string]: string | undefined };
 export const LogConfigurationOptionsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1295,7 +1295,7 @@ export const LogConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogConfiguration",
 }) as any as S.Schema<LogConfiguration>;
 export type AssignPublicIp = "ENABLED" | "DISABLED" | (string & {});
-export const AssignPublicIp = /*@__PURE__*/ S.String;
+export const AssignPublicIp = S.String;
 export interface NetworkConfiguration {
   assignPublicIp?: AssignPublicIp;
 }
@@ -1419,7 +1419,7 @@ export const TaskContainerDependencyList = /*@__PURE__*/ S.Array(
   TaskContainerDependency,
 );
 export type FirelensConfigurationType = "fluentd" | "fluentbit" | (string & {});
-export const FirelensConfigurationType = /*@__PURE__*/ S.String;
+export const FirelensConfigurationType = S.String;
 export type FirelensConfigurationOptionsMap = {
   [key: string]: string | undefined;
 };
@@ -1801,7 +1801,7 @@ export const NodeProperties = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeProperties" }) as any as S.Schema<NodeProperties>;
 export type PlatformCapability = "EC2" | "FARGATE" | (string & {});
-export const PlatformCapability = /*@__PURE__*/ S.String;
+export const PlatformCapability = S.String;
 export type PlatformCapabilityList = PlatformCapability[];
 export const PlatformCapabilityList = /*@__PURE__*/ S.Array(PlatformCapability);
 export interface JobDefinition {
@@ -2079,7 +2079,7 @@ export type JQStatus =
   | "VALID"
   | "INVALID"
   | (string & {});
-export const JQStatus = /*@__PURE__*/ S.String;
+export const JQStatus = S.String;
 export interface JobQueueDetail {
   jobQueueName?: string;
   jobQueueArn?: string;
@@ -2170,7 +2170,7 @@ export type JobStatus =
   | "SUCCEEDED"
   | "FAILED"
   | (string & {});
-export const JobStatus = /*@__PURE__*/ S.String;
+export const JobStatus = S.String;
 export interface NetworkInterface {
   attachmentId?: string;
   ipv6Address?: string;
@@ -2266,7 +2266,7 @@ export const AttemptDetail = /*@__PURE__*/ S.suspend(() =>
 export type AttemptDetails = AttemptDetail[];
 export const AttemptDetails = /*@__PURE__*/ S.Array(AttemptDetail);
 export type ArrayJobDependency = "N_TO_N" | "SEQUENTIAL" | (string & {});
-export const ArrayJobDependency = /*@__PURE__*/ S.String;
+export const ArrayJobDependency = S.String;
 export interface JobDependency {
   jobId?: string;
   type?: ArrayJobDependency;
@@ -2878,7 +2878,7 @@ export type QuotaShareStatus =
   | "UPDATING"
   | "DELETING"
   | (string & {});
-export const QuotaShareStatus = /*@__PURE__*/ S.String;
+export const QuotaShareStatus = S.String;
 export interface DescribeQuotaShareResponse {
   quotaShareName?: string;
   quotaShareArn?: string;
@@ -3005,7 +3005,7 @@ export type ServiceEnvironmentStatus =
   | "VALID"
   | "INVALID"
   | (string & {});
-export const ServiceEnvironmentStatus = /*@__PURE__*/ S.String;
+export const ServiceEnvironmentStatus = S.String;
 export interface ServiceEnvironmentDetail {
   serviceEnvironmentName?: string;
   serviceEnvironmentArn?: string;
@@ -3068,7 +3068,7 @@ export const DescribeServiceJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeServiceJobRequest",
 }) as any as S.Schema<DescribeServiceJobRequest>;
 export type ServiceResourceIdName = "TrainingJobArn" | (string & {});
-export const ServiceResourceIdName = /*@__PURE__*/ S.String;
+export const ServiceResourceIdName = S.String;
 export interface ServiceResourceId {
   name?: ServiceResourceIdName;
   value?: string;
@@ -3126,7 +3126,7 @@ export const LatestServiceJobAttempt = /*@__PURE__*/ S.suspend(() =>
   identifier: "LatestServiceJobAttempt",
 }) as any as S.Schema<LatestServiceJobAttempt>;
 export type ServiceJobRetryAction = "RETRY" | "EXIT" | (string & {});
-export const ServiceJobRetryAction = /*@__PURE__*/ S.String;
+export const ServiceJobRetryAction = S.String;
 export interface ServiceJobEvaluateOnExit {
   action?: ServiceJobRetryAction;
   onStatusReason?: string;
@@ -3156,7 +3156,7 @@ export const ServiceJobRetryStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceJobRetryStrategy",
 }) as any as S.Schema<ServiceJobRetryStrategy>;
 export type ServiceJobType = "SAGEMAKER_TRAINING" | (string & {});
-export const ServiceJobType = /*@__PURE__*/ S.String;
+export const ServiceJobType = S.String;
 export interface ServiceJobPreemptionConfiguration {
   preemptionRetriesBeforeTermination?: number;
 }
@@ -3207,7 +3207,7 @@ export type ServiceJobStatus =
   | "SUCCEEDED"
   | "FAILED"
   | (string & {});
-export const ServiceJobStatus = /*@__PURE__*/ S.String;
+export const ServiceJobStatus = S.String;
 export interface ServiceJobTimeout {
   attemptDurationSeconds?: number;
 }
@@ -4050,7 +4050,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type JobDefinitionType = "container" | "multinode" | (string & {});
-export const JobDefinitionType = /*@__PURE__*/ S.String;
+export const JobDefinitionType = S.String;
 export interface RegisterJobDefinitionRequest {
   jobDefinitionName?: string;
   type?: JobDefinitionType;
@@ -4496,7 +4496,7 @@ export type CRUpdateAllocationStrategy =
   | "SPOT_CAPACITY_OPTIMIZED"
   | "SPOT_PRICE_CAPACITY_OPTIMIZED"
   | (string & {});
-export const CRUpdateAllocationStrategy = /*@__PURE__*/ S.String;
+export const CRUpdateAllocationStrategy = S.String;
 export interface ComputeResourceUpdate {
   minvCpus?: number;
   maxvCpus?: number;

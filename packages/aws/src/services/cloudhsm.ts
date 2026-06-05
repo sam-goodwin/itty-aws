@@ -153,7 +153,7 @@ export const CreateHapgResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateHapgResponse",
 }) as any as S.Schema<CreateHapgResponse>;
 export type SubscriptionType = "PRODUCTION" | (string & {});
-export const SubscriptionType = /*@__PURE__*/ S.String;
+export const SubscriptionType = S.String;
 export interface CreateHsmRequest {
   SubnetId: string;
   SshKey: string;
@@ -296,7 +296,7 @@ export type CloudHsmObjectState =
   | "UPDATING"
   | "DEGRADED"
   | (string & {});
-export const CloudHsmObjectState = /*@__PURE__*/ S.String;
+export const CloudHsmObjectState = S.String;
 export interface DescribeHapgResponse {
   HapgArn?: string;
   HapgSerial?: string;
@@ -346,7 +346,7 @@ export type HsmStatus =
   | "TERMINATED"
   | "DEGRADED"
   | (string & {});
-export const HsmStatus = /*@__PURE__*/ S.String;
+export const HsmStatus = S.String;
 export type PartitionList = string[];
 export const PartitionList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeHsmResponse {
@@ -432,7 +432,7 @@ export const DescribeLunaClientResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeLunaClientResponse",
 }) as any as S.Schema<DescribeLunaClientResponse>;
 export type ClientVersion = "5.1" | "5.3" | (string & {});
-export const ClientVersion = /*@__PURE__*/ S.String;
+export const ClientVersion = S.String;
 export type HapgList = string[];
 export const HapgList = /*@__PURE__*/ S.Array(S.String);
 export interface GetConfigRequest {

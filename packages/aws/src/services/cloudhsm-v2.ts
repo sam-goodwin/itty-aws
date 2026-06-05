@@ -172,7 +172,7 @@ export const CopyBackupToRegionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CopyBackupToRegionResponse",
 }) as any as S.Schema<CopyBackupToRegionResponse>;
 export type BackupRetentionType = "DAYS" | (string & {});
-export const BackupRetentionType = /*@__PURE__*/ S.String;
+export const BackupRetentionType = S.String;
 export interface BackupRetentionPolicy {
   Type?: BackupRetentionType;
   Value?: string;
@@ -188,9 +188,9 @@ export const BackupRetentionPolicy = /*@__PURE__*/ S.suspend(() =>
 export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type NetworkType = "IPV4" | "DUALSTACK" | (string & {});
-export const NetworkType = /*@__PURE__*/ S.String;
+export const NetworkType = S.String;
 export type ClusterMode = "FIPS" | "NON_FIPS" | (string & {});
-export const ClusterMode = /*@__PURE__*/ S.String;
+export const ClusterMode = S.String;
 export interface CreateClusterRequest {
   BackupRetentionPolicy?: BackupRetentionPolicy;
   HsmType: string;
@@ -216,7 +216,7 @@ export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateClusterRequest",
 }) as any as S.Schema<CreateClusterRequest>;
 export type BackupPolicy = "DEFAULT" | (string & {});
-export const BackupPolicy = /*@__PURE__*/ S.String;
+export const BackupPolicy = S.String;
 export type HsmState =
   | "CREATE_IN_PROGRESS"
   | "ACTIVE"
@@ -224,7 +224,7 @@ export type HsmState =
   | "DELETE_IN_PROGRESS"
   | "DELETED"
   | (string & {});
-export const HsmState = /*@__PURE__*/ S.String;
+export const HsmState = S.String;
 export interface Hsm {
   AvailabilityZone?: string;
   ClusterId?: string;
@@ -266,7 +266,7 @@ export type ClusterState =
   | "DELETED"
   | "DEGRADED"
   | (string & {});
-export const ClusterState = /*@__PURE__*/ S.String;
+export const ClusterState = S.String;
 export type ExternalSubnetMapping = { [key: string]: string | undefined };
 export const ExternalSubnetMapping = /*@__PURE__*/ S.Record(
   S.String,
@@ -382,7 +382,7 @@ export type BackupState =
   | "DELETED"
   | "PENDING_DELETION"
   | (string & {});
-export const BackupState = /*@__PURE__*/ S.String;
+export const BackupState = S.String;
 export interface Backup {
   BackupId: string;
   BackupArn?: string;

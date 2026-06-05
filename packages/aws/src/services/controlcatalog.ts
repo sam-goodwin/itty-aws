@@ -112,7 +112,7 @@ export type MappingType =
   | "COMMON_CONTROL"
   | "RELATED_CONTROL"
   | (string & {});
-export const MappingType = /*@__PURE__*/ S.String;
+export const MappingType = S.String;
 export type MappingTypeFilterList = MappingType[];
 export const MappingTypeFilterList = /*@__PURE__*/ S.Array(MappingType);
 export interface ControlMappingFilter {
@@ -174,7 +174,7 @@ export type ControlRelationType =
   | "ALTERNATIVE"
   | "MUTUALLY_EXCLUSIVE"
   | (string & {});
-export const ControlRelationType = /*@__PURE__*/ S.String;
+export const ControlRelationType = S.String;
 export interface RelatedControlMappingDetails {
   ControlArn?: string;
   RelationType: ControlRelationType;
@@ -356,16 +356,16 @@ export type ControlBehavior =
   | "PROACTIVE"
   | "DETECTIVE"
   | (string & {});
-export const ControlBehavior = /*@__PURE__*/ S.String;
+export const ControlBehavior = S.String;
 export type ControlSeverity =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL"
   | (string & {});
-export const ControlSeverity = /*@__PURE__*/ S.String;
+export const ControlSeverity = S.String;
 export type ControlScope = "GLOBAL" | "REGIONAL" | (string & {});
-export const ControlScope = /*@__PURE__*/ S.String;
+export const ControlScope = S.String;
 export type DeployableRegions = string[];
 export const DeployableRegions = /*@__PURE__*/ S.Array(S.String);
 export interface RegionConfiguration {

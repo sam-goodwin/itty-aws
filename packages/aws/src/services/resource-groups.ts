@@ -148,7 +148,7 @@ export type QueryType =
   | "TAG_FILTERS_1_0"
   | "CLOUDFORMATION_STACK_1_0"
   | (string & {});
-export const QueryType = /*@__PURE__*/ S.String;
+export const QueryType = S.String;
 export interface ResourceQuery {
   Type: QueryType;
   Query: string;
@@ -254,7 +254,7 @@ export type GroupConfigurationStatus =
   | "UPDATE_COMPLETE"
   | "UPDATE_FAILED"
   | (string & {});
-export const GroupConfigurationStatus = /*@__PURE__*/ S.String;
+export const GroupConfigurationStatus = S.String;
 export interface GroupConfiguration {
   Configuration?: GroupConfigurationItem[];
   ProposedConfiguration?: GroupConfigurationItem[];
@@ -328,14 +328,14 @@ export type GroupLifecycleEventsDesiredStatus =
   | "ACTIVE"
   | "INACTIVE"
   | (string & {});
-export const GroupLifecycleEventsDesiredStatus = /*@__PURE__*/ S.String;
+export const GroupLifecycleEventsDesiredStatus = S.String;
 export type GroupLifecycleEventsStatus =
   | "ACTIVE"
   | "INACTIVE"
   | "IN_PROGRESS"
   | "ERROR"
   | (string & {});
-export const GroupLifecycleEventsStatus = /*@__PURE__*/ S.String;
+export const GroupLifecycleEventsStatus = S.String;
 export interface AccountSettings {
   GroupLifecycleEventsDesiredStatus?: GroupLifecycleEventsDesiredStatus;
   GroupLifecycleEventsStatus?: GroupLifecycleEventsStatus;
@@ -486,7 +486,7 @@ export const GetTagSyncTaskInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTagSyncTaskInput",
 }) as any as S.Schema<GetTagSyncTaskInput>;
 export type TagSyncTaskStatus = "ACTIVE" | "ERROR" | (string & {});
-export const TagSyncTaskStatus = /*@__PURE__*/ S.String;
+export const TagSyncTaskStatus = S.String;
 export interface GetTagSyncTaskOutput {
   GroupArn?: string;
   GroupName?: string;
@@ -577,7 +577,7 @@ export type ListGroupingStatusesFilterName =
   | "status"
   | "resource-arn"
   | (string & {});
-export const ListGroupingStatusesFilterName = /*@__PURE__*/ S.String;
+export const ListGroupingStatusesFilterName = S.String;
 export type ListGroupingStatusesFilterValues = string[];
 export const ListGroupingStatusesFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface ListGroupingStatusesFilter {
@@ -622,14 +622,14 @@ export const ListGroupingStatusesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupingStatusesInput",
 }) as any as S.Schema<ListGroupingStatusesInput>;
 export type GroupingType = "GROUP" | "UNGROUP" | (string & {});
-export const GroupingType = /*@__PURE__*/ S.String;
+export const GroupingType = S.String;
 export type GroupingStatus =
   | "SUCCESS"
   | "FAILED"
   | "IN_PROGRESS"
   | "SKIPPED"
   | (string & {});
-export const GroupingStatus = /*@__PURE__*/ S.String;
+export const GroupingStatus = S.String;
 export interface GroupingStatusesItem {
   ResourceArn?: string;
   Action?: GroupingType;
@@ -667,7 +667,7 @@ export const ListGroupingStatusesOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupingStatusesOutput",
 }) as any as S.Schema<ListGroupingStatusesOutput>;
 export type ResourceFilterName = "resource-type" | (string & {});
-export const ResourceFilterName = /*@__PURE__*/ S.String;
+export const ResourceFilterName = S.String;
 export type ResourceFilterValues = string[];
 export const ResourceFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface ResourceFilter {
@@ -719,7 +719,7 @@ export const ResourceIdentifier = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceIdentifier",
 }) as any as S.Schema<ResourceIdentifier>;
 export type ResourceStatusValue = "PENDING" | (string & {});
-export const ResourceStatusValue = /*@__PURE__*/ S.String;
+export const ResourceStatusValue = S.String;
 export interface ResourceStatus {
   Name?: ResourceStatusValue;
 }
@@ -750,7 +750,7 @@ export type QueryErrorCode =
   | "CLOUDFORMATION_STACK_UNASSUMABLE_ROLE"
   | "RESOURCE_TYPE_NOT_SUPPORTED"
   | (string & {});
-export const QueryErrorCode = /*@__PURE__*/ S.String;
+export const QueryErrorCode = S.String;
 export interface QueryError {
   ErrorCode?: QueryErrorCode;
   Message?: string;
@@ -786,7 +786,7 @@ export type GroupFilterName =
   | "display-name"
   | "criticality"
   | (string & {});
-export const GroupFilterName = /*@__PURE__*/ S.String;
+export const GroupFilterName = S.String;
 export type GroupFilterValues = string[];
 export const GroupFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface GroupFilter {

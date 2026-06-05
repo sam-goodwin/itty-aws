@@ -185,7 +185,7 @@ export type ContentType =
   | "SSML"
   | "CustomPayload"
   | (string & {});
-export const ContentType = /*@__PURE__*/ S.String;
+export const ContentType = S.String;
 export interface Message {
   contentType: ContentType;
   content: string;
@@ -226,7 +226,7 @@ export type Status =
   | "FAILED"
   | "NOT_BUILT"
   | (string & {});
-export const Status = /*@__PURE__*/ S.String;
+export const Status = S.String;
 export type Locale =
   | "de-DE"
   | "en-AU"
@@ -242,7 +242,7 @@ export type Locale =
   | "ja-JP"
   | "ko-KR"
   | (string & {});
-export const Locale = /*@__PURE__*/ S.String;
+export const Locale = S.String;
 export interface CreateBotVersionResponse {
   name?: string;
   description?: string;
@@ -309,11 +309,11 @@ export const CreateIntentVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateIntentVersionRequest",
 }) as any as S.Schema<CreateIntentVersionRequest>;
 export type SlotConstraint = "Required" | "Optional" | (string & {});
-export const SlotConstraint = /*@__PURE__*/ S.String;
+export const SlotConstraint = S.String;
 export type SlotUtteranceList = string[];
 export const SlotUtteranceList = /*@__PURE__*/ S.Array(S.String);
 export type ObfuscationSetting = "NONE" | "DEFAULT_OBFUSCATION" | (string & {});
-export const ObfuscationSetting = /*@__PURE__*/ S.String;
+export const ObfuscationSetting = S.String;
 export interface SlotDefaultValue {
   defaultValue: string;
 }
@@ -382,7 +382,7 @@ export type FulfillmentActivityType =
   | "ReturnIntent"
   | "CodeHook"
   | (string & {});
-export const FulfillmentActivityType = /*@__PURE__*/ S.String;
+export const FulfillmentActivityType = S.String;
 export interface FulfillmentActivity {
   type: FulfillmentActivityType;
   codeHook?: CodeHook;
@@ -512,7 +512,7 @@ export type SlotValueSelectionStrategy =
   | "ORIGINAL_VALUE"
   | "TOP_RESOLUTION"
   | (string & {});
-export const SlotValueSelectionStrategy = /*@__PURE__*/ S.String;
+export const SlotValueSelectionStrategy = S.String;
 export interface SlotTypeRegexConfiguration {
   pattern: string;
 }
@@ -592,7 +592,7 @@ export type ReferenceType =
   | "BotAlias"
   | "BotChannel"
   | (string & {});
-export const ReferenceType = /*@__PURE__*/ S.String;
+export const ReferenceType = S.String;
 export interface ResourceReference {
   name?: string;
   version?: string;
@@ -900,9 +900,9 @@ export const GetBotAliasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBotAliasRequest",
 }) as any as S.Schema<GetBotAliasRequest>;
 export type LogType = "AUDIO" | "TEXT" | (string & {});
-export const LogType = /*@__PURE__*/ S.String;
+export const LogType = S.String;
 export type Destination = "CLOUDWATCH_LOGS" | "S3" | (string & {});
-export const Destination = /*@__PURE__*/ S.String;
+export const Destination = S.String;
 export interface LogSettingsResponse {
   logType?: LogType;
   destination?: Destination;
@@ -1059,7 +1059,7 @@ export type ChannelType =
   | "Twilio-Sms"
   | "Kik"
   | (string & {});
-export const ChannelType = /*@__PURE__*/ S.String;
+export const ChannelType = S.String;
 export type ChannelConfigurationMap = { [key: string]: string | undefined };
 export const ChannelConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1070,7 +1070,7 @@ export type ChannelStatus =
   | "CREATED"
   | "FAILED"
   | (string & {});
-export const ChannelStatus = /*@__PURE__*/ S.String;
+export const ChannelStatus = S.String;
 export interface GetBotChannelAssociationResponse {
   name?: string;
   description?: string;
@@ -1413,9 +1413,9 @@ export const GetBuiltinSlotTypesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBuiltinSlotTypesResponse",
 }) as any as S.Schema<GetBuiltinSlotTypesResponse>;
 export type ResourceType = "BOT" | "INTENT" | "SLOT_TYPE" | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
+export const ResourceType = S.String;
 export type ExportType = "ALEXA_SKILLS_KIT" | "LEX" | (string & {});
-export const ExportType = /*@__PURE__*/ S.String;
+export const ExportType = S.String;
 export interface GetExportRequest {
   name: string;
   version: string;
@@ -1442,7 +1442,7 @@ export const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetExportRequest",
 }) as any as S.Schema<GetExportRequest>;
 export type ExportStatus = "IN_PROGRESS" | "READY" | "FAILED" | (string & {});
-export const ExportStatus = /*@__PURE__*/ S.String;
+export const ExportStatus = S.String;
 export interface GetExportResponse {
   name?: string;
   version?: string;
@@ -1486,13 +1486,13 @@ export type MergeStrategy =
   | "OVERWRITE_LATEST"
   | "FAIL_ON_CONFLICT"
   | (string & {});
-export const MergeStrategy = /*@__PURE__*/ S.String;
+export const MergeStrategy = S.String;
 export type ImportStatus =
   | "IN_PROGRESS"
   | "COMPLETE"
   | "FAILED"
   | (string & {});
-export const ImportStatus = /*@__PURE__*/ S.String;
+export const ImportStatus = S.String;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface GetImportResponse {
@@ -1696,14 +1696,14 @@ export type MigrationStatus =
   | "COMPLETED"
   | "FAILED"
   | (string & {});
-export const MigrationStatus = /*@__PURE__*/ S.String;
+export const MigrationStatus = S.String;
 export type MigrationStrategy =
   | "CREATE_NEW"
   | "UPDATE_EXISTING"
   | (string & {});
-export const MigrationStrategy = /*@__PURE__*/ S.String;
+export const MigrationStrategy = S.String;
 export type MigrationAlertType = "ERROR" | "WARN" | (string & {});
-export const MigrationAlertType = /*@__PURE__*/ S.String;
+export const MigrationAlertType = S.String;
 export type MigrationAlertDetails = string[];
 export const MigrationAlertDetails = /*@__PURE__*/ S.Array(S.String);
 export type MigrationAlertReferenceURLs = string[];
@@ -1758,9 +1758,9 @@ export type MigrationSortAttribute =
   | "V1_BOT_NAME"
   | "MIGRATION_DATE_TIME"
   | (string & {});
-export const MigrationSortAttribute = /*@__PURE__*/ S.String;
+export const MigrationSortAttribute = S.String;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-export const SortOrder = /*@__PURE__*/ S.String;
+export const SortOrder = S.String;
 export interface GetMigrationsRequest {
   sortByAttribute?: MigrationSortAttribute;
   sortByOrder?: SortOrder;
@@ -1984,7 +1984,7 @@ export const GetSlotTypeVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 export type BotVersions = string[];
 export const BotVersions = /*@__PURE__*/ S.Array(S.String);
 export type StatusType = "Detected" | "Missed" | (string & {});
-export const StatusType = /*@__PURE__*/ S.String;
+export const StatusType = S.String;
 export interface GetUtterancesViewRequest {
   botName: string;
   botVersions: string[];
@@ -2092,7 +2092,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type ProcessBehavior = "SAVE" | "BUILD" | (string & {});
-export const ProcessBehavior = /*@__PURE__*/ S.String;
+export const ProcessBehavior = S.String;
 export interface PutBotRequest {
   name: string;
   description?: string;

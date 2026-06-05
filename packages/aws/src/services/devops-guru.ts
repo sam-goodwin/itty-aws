@@ -186,7 +186,7 @@ export const SnsChannelConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnsChannelConfig",
 }) as any as S.Schema<SnsChannelConfig>;
 export type InsightSeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
-export const InsightSeverity = /*@__PURE__*/ S.String;
+export const InsightSeverity = S.String;
 export type InsightSeverities = InsightSeverity[];
 export const InsightSeverities = /*@__PURE__*/ S.Array(InsightSeverity);
 export type NotificationMessageType =
@@ -196,7 +196,7 @@ export type NotificationMessageType =
   | "SEVERITY_UPGRADED"
   | "NEW_RECOMMENDATION"
   | (string & {});
-export const NotificationMessageType = /*@__PURE__*/ S.String;
+export const NotificationMessageType = S.String;
 export type NotificationMessageTypes = NotificationMessageType[];
 export const NotificationMessageTypes = /*@__PURE__*/ S.Array(
   NotificationMessageType,
@@ -258,7 +258,7 @@ export type ValidationExceptionReason =
   | "INVALID_PARAMETER_COMBINATION"
   | "PARAMETER_INCONSISTENT_WITH_SERVICE_STATE"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
@@ -385,9 +385,9 @@ export const DescribeAnomalyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAnomalyRequest",
 }) as any as S.Schema<DescribeAnomalyRequest>;
 export type AnomalySeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
-export const AnomalySeverity = /*@__PURE__*/ S.String;
+export const AnomalySeverity = S.String;
 export type AnomalyStatus = "ONGOING" | "CLOSED" | (string & {});
-export const AnomalyStatus = /*@__PURE__*/ S.String;
+export const AnomalyStatus = S.String;
 export interface AnomalyTimeRange {
   StartTime: Date;
   EndTime?: Date;
@@ -447,7 +447,7 @@ export type CloudWatchMetricsStat =
   | "p90"
   | "p50"
   | (string & {});
-export const CloudWatchMetricsStat = /*@__PURE__*/ S.String;
+export const CloudWatchMetricsStat = S.String;
 export interface TimestampMetricValuePair {
   Timestamp?: Date;
   MetricValue?: number;
@@ -469,7 +469,7 @@ export type CloudWatchMetricDataStatusCode =
   | "InternalError"
   | "PartialData"
   | (string & {});
-export const CloudWatchMetricDataStatusCode = /*@__PURE__*/ S.String;
+export const CloudWatchMetricDataStatusCode = S.String;
 export interface CloudWatchMetricsDataSummary {
   TimestampMetricValuePairList?: TimestampMetricValuePair[];
   StatusCode?: CloudWatchMetricDataStatusCode;
@@ -739,7 +739,7 @@ export const ProactiveAnomaly = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProactiveAnomaly",
 }) as any as S.Schema<ProactiveAnomaly>;
 export type AnomalyType = "CAUSAL" | "CONTEXTUAL" | (string & {});
-export const AnomalyType = /*@__PURE__*/ S.String;
+export const AnomalyType = S.String;
 export interface ReactiveAnomaly {
   Id?: string;
   Severity?: AnomalySeverity;
@@ -802,7 +802,7 @@ export const DescribeEventSourcesConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeEventSourcesConfigRequest",
 }) as any as S.Schema<DescribeEventSourcesConfigRequest>;
 export type EventSourceOptInStatus = "ENABLED" | "DISABLED" | (string & {});
-export const EventSourceOptInStatus = /*@__PURE__*/ S.String;
+export const EventSourceOptInStatus = S.String;
 export interface AmazonCodeGuruProfilerIntegration {
   Status?: EventSourceOptInStatus;
 }
@@ -853,7 +853,7 @@ export type InsightFeedbackOption =
   | "DATA_NOISY_ANOMALY"
   | "DATA_INCORRECT"
   | (string & {});
-export const InsightFeedbackOption = /*@__PURE__*/ S.String;
+export const InsightFeedbackOption = S.String;
 export interface InsightFeedback {
   Id?: string;
   Feedback?: InsightFeedbackOption;
@@ -896,7 +896,7 @@ export const DescribeInsightRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeInsightRequest",
 }) as any as S.Schema<DescribeInsightRequest>;
 export type InsightStatus = "ONGOING" | "CLOSED" | (string & {});
-export const InsightStatus = /*@__PURE__*/ S.String;
+export const InsightStatus = S.String;
 export interface InsightTimeRange {
   StartTime: Date;
   EndTime?: Date;
@@ -1052,7 +1052,7 @@ export type OrganizationResourceCollectionType =
   | "AWS_ACCOUNT"
   | "AWS_TAGS"
   | (string & {});
-export const OrganizationResourceCollectionType = /*@__PURE__*/ S.String;
+export const OrganizationResourceCollectionType = S.String;
 export interface DescribeOrganizationResourceCollectionHealthRequest {
   OrganizationResourceCollectionType: OrganizationResourceCollectionType;
   AccountIds?: string[];
@@ -1140,7 +1140,7 @@ export type ServiceName =
   | "STEP_FUNCTIONS"
   | "SWF"
   | (string & {});
-export const ServiceName = /*@__PURE__*/ S.String;
+export const ServiceName = S.String;
 export interface ServiceInsightHealth {
   OpenProactiveInsights?: number;
   OpenReactiveInsights?: number;
@@ -1231,7 +1231,7 @@ export type ResourceCollectionType =
   | "AWS_SERVICE"
   | "AWS_TAGS"
   | (string & {});
-export const ResourceCollectionType = /*@__PURE__*/ S.String;
+export const ResourceCollectionType = S.String;
 export interface DescribeResourceCollectionHealthRequest {
   ResourceCollectionType: ResourceCollectionType;
   NextToken?: string;
@@ -1292,7 +1292,7 @@ export const DescribeServiceIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeServiceIntegrationRequest",
 }) as any as S.Schema<DescribeServiceIntegrationRequest>;
 export type OptInStatus = "ENABLED" | "DISABLED" | (string & {});
-export const OptInStatus = /*@__PURE__*/ S.String;
+export const OptInStatus = S.String;
 export interface OpsCenterIntegration {
   OptInStatus?: OptInStatus;
 }
@@ -1313,7 +1313,7 @@ export type ServerSideEncryptionType =
   | "CUSTOMER_MANAGED_KEY"
   | "AWS_OWNED_KMS_KEY"
   | (string & {});
-export const ServerSideEncryptionType = /*@__PURE__*/ S.String;
+export const ServerSideEncryptionType = S.String;
 export interface KMSServerSideEncryptionIntegration {
   KMSKeyId?: string;
   OptInStatus?: OptInStatus;
@@ -1413,12 +1413,12 @@ export const CostEstimationResourceCollectionFilter = /*@__PURE__*/ S.suspend(
   identifier: "CostEstimationResourceCollectionFilter",
 }) as any as S.Schema<CostEstimationResourceCollectionFilter>;
 export type CostEstimationStatus = "ONGOING" | "COMPLETED" | (string & {});
-export const CostEstimationStatus = /*@__PURE__*/ S.String;
+export const CostEstimationStatus = S.String;
 export type CostEstimationServiceResourceState =
   | "ACTIVE"
   | "INACTIVE"
   | (string & {});
-export const CostEstimationServiceResourceState = /*@__PURE__*/ S.String;
+export const CostEstimationServiceResourceState = S.String;
 export interface ServiceResourceCost {
   Type?: string;
   State?: CostEstimationServiceResourceState;
@@ -1720,7 +1720,7 @@ export type LogAnomalyType =
   | "NUMERICAL_NAN"
   | "NEW_FIELD_NAME"
   | (string & {});
-export const LogAnomalyType = /*@__PURE__*/ S.String;
+export const LogAnomalyType = S.String;
 export interface LogAnomalyClass {
   LogStreamName?: string;
   LogAnomalyType?: LogAnomalyType;
@@ -1810,12 +1810,12 @@ export type EventClass =
   | "CONFIG_CHANGE"
   | "SCHEMA_CHANGE"
   | (string & {});
-export const EventClass = /*@__PURE__*/ S.String;
+export const EventClass = S.String;
 export type EventDataSource =
   | "AWS_CLOUD_TRAIL"
   | "AWS_CODE_DEPLOY"
   | (string & {});
-export const EventDataSource = /*@__PURE__*/ S.String;
+export const EventDataSource = S.String;
 export interface ListEventsFilters {
   InsightId?: string;
   EventTimeRange?: EventTimeRange;
@@ -1909,7 +1909,7 @@ export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEventsResponse",
 }) as any as S.Schema<ListEventsResponse>;
 export type InsightType = "REACTIVE" | "PROACTIVE" | (string & {});
-export const InsightType = /*@__PURE__*/ S.String;
+export const InsightType = S.String;
 export interface ListInsightsOngoingStatusFilter {
   Type: InsightType;
 }
@@ -2057,7 +2057,7 @@ export type ResourcePermission =
   | "FULL_PERMISSION"
   | "MISSING_PERMISSION"
   | (string & {});
-export const ResourcePermission = /*@__PURE__*/ S.String;
+export const ResourcePermission = S.String;
 export type ResourceTypeFilter =
   | "LOG_GROUPS"
   | "CLOUDFRONT_DISTRIBUTION"
@@ -2087,7 +2087,7 @@ export type ResourceTypeFilter =
   | "STEP_FUNCTIONS_ACTIVITY"
   | "STEP_FUNCTIONS_STATE_MACHINE"
   | (string & {});
-export const ResourceTypeFilter = /*@__PURE__*/ S.String;
+export const ResourceTypeFilter = S.String;
 export type ResourceTypeFilters = ResourceTypeFilter[];
 export const ResourceTypeFilters = /*@__PURE__*/ S.Array(ResourceTypeFilter);
 export interface ListMonitoredResourcesFilters {
@@ -2322,7 +2322,7 @@ export type Locale =
   | "ZH_CN"
   | "ZH_TW"
   | (string & {});
-export const Locale = /*@__PURE__*/ S.String;
+export const Locale = S.String;
 export interface ListRecommendationsRequest {
   InsightId: string;
   NextToken?: string;
@@ -2696,7 +2696,7 @@ export const UpdateEventSourcesConfigResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEventSourcesConfigResponse",
 }) as any as S.Schema<UpdateEventSourcesConfigResponse>;
 export type UpdateResourceCollectionAction = "ADD" | "REMOVE" | (string & {});
-export const UpdateResourceCollectionAction = /*@__PURE__*/ S.String;
+export const UpdateResourceCollectionAction = S.String;
 export type UpdateStackNames = string[];
 export const UpdateStackNames = /*@__PURE__*/ S.Array(S.String);
 export interface UpdateCloudFormationCollectionFilter {

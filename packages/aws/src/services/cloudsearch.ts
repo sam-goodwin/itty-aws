@@ -250,14 +250,14 @@ export type AnalysisSchemeLanguage =
   | "zh-Hans"
   | "zh-Hant"
   | (string & {});
-export const AnalysisSchemeLanguage = /*@__PURE__*/ S.String;
+export const AnalysisSchemeLanguage = S.String;
 export type AlgorithmicStemming =
   | "none"
   | "minimal"
   | "light"
   | "full"
   | (string & {});
-export const AlgorithmicStemming = /*@__PURE__*/ S.String;
+export const AlgorithmicStemming = S.String;
 export interface AnalysisOptions {
   Synonyms?: string;
   Stopwords?: string;
@@ -313,7 +313,7 @@ export type OptionState =
   | "Active"
   | "FailedToValidate"
   | (string & {});
-export const OptionState = /*@__PURE__*/ S.String;
+export const OptionState = S.String;
 export interface OptionStatus {
   CreationDate: Date;
   UpdateDate: Date;
@@ -403,7 +403,7 @@ export type IndexFieldType =
   | "text-array"
   | "date-array"
   | (string & {});
-export const IndexFieldType = /*@__PURE__*/ S.String;
+export const IndexFieldType = S.String;
 export interface IntOptions {
   DefaultValue?: number;
   SourceField?: string;
@@ -671,7 +671,7 @@ export const DefineIndexFieldResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefineIndexFieldResponse",
 }) as any as S.Schema<DefineIndexFieldResponse>;
 export type SuggesterFuzzyMatching = "none" | "low" | "high" | (string & {});
-export const SuggesterFuzzyMatching = /*@__PURE__*/ S.String;
+export const SuggesterFuzzyMatching = S.String;
 export interface DocumentSuggesterOptions {
   SourceField: string;
   FuzzyMatching?: SuggesterFuzzyMatching;
@@ -965,7 +965,7 @@ export type TLSSecurityPolicy =
   | "Policy-Min-TLS-1-0-2019-07"
   | "Policy-Min-TLS-1-2-2019-07"
   | (string & {});
-export const TLSSecurityPolicy = /*@__PURE__*/ S.String;
+export const TLSSecurityPolicy = S.String;
 export interface DomainEndpointOptions {
   EnforceHTTPS?: boolean;
   TLSSecurityPolicy?: TLSSecurityPolicy;
@@ -1135,7 +1135,7 @@ export type PartitionInstanceType =
   | "search.previousgeneration.xlarge"
   | "search.previousgeneration.2xlarge"
   | (string & {});
-export const PartitionInstanceType = /*@__PURE__*/ S.String;
+export const PartitionInstanceType = S.String;
 export interface ScalingParameters {
   DesiredInstanceType?: PartitionInstanceType;
   DesiredReplicationCount?: number;

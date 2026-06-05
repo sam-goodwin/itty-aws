@@ -425,7 +425,7 @@ export type AwsLogSourceName =
   | "EKS_AUDIT"
   | "WAF"
   | (string & {});
-export const AwsLogSourceName = /*@__PURE__*/ S.String;
+export const AwsLogSourceName = S.String;
 export interface AwsLogSourceConfiguration {
   accounts?: string[];
   regions: string[];
@@ -671,7 +671,7 @@ export type DataLakeStatus =
   | "COMPLETED"
   | "FAILED"
   | (string & {});
-export const DataLakeStatus = /*@__PURE__*/ S.String;
+export const DataLakeStatus = S.String;
 export interface DataLakeUpdateException {
   reason?: string;
   code?: string;
@@ -956,7 +956,7 @@ export type SourceCollectionStatus =
   | "MISCONFIGURED"
   | "NOT_COLLECTING"
   | (string & {});
-export const SourceCollectionStatus = /*@__PURE__*/ S.String;
+export const SourceCollectionStatus = S.String;
 export interface DataLakeSourceStatus {
   resource?: string;
   status?: SourceCollectionStatus;
@@ -1121,7 +1121,7 @@ export const UpdateDataLakeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDataLakeResponse",
 }) as any as S.Schema<UpdateDataLakeResponse>;
 export type AccessType = "LAKEFORMATION" | "S3" | (string & {});
-export const AccessType = /*@__PURE__*/ S.String;
+export const AccessType = S.String;
 export type AccessTypeList = AccessType[];
 export const AccessTypeList = /*@__PURE__*/ S.Array(AccessType);
 export interface CreateSubscriberRequest {
@@ -1159,7 +1159,7 @@ export type SubscriberStatus =
   | "PENDING"
   | "READY"
   | (string & {});
-export const SubscriberStatus = /*@__PURE__*/ S.String;
+export const SubscriberStatus = S.String;
 export interface SubscriberResource {
   subscriberId: string;
   subscriberArn: string;
@@ -1335,7 +1335,7 @@ export const SqsNotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqsNotificationConfiguration",
 }) as any as S.Schema<SqsNotificationConfiguration>;
 export type HttpMethod = "POST" | "PUT" | (string & {});
-export const HttpMethod = /*@__PURE__*/ S.String;
+export const HttpMethod = S.String;
 export interface HttpsNotificationConfiguration {
   endpoint: string;
   authorizationApiKeyName?: string;

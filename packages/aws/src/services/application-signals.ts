@@ -143,14 +143,14 @@ export const BatchGetServiceLevelObjectiveBudgetReportInput =
     identifier: "BatchGetServiceLevelObjectiveBudgetReportInput",
   }) as any as S.Schema<BatchGetServiceLevelObjectiveBudgetReportInput>;
 export type EvaluationType = "PeriodBased" | "RequestBased" | (string & {});
-export const EvaluationType = /*@__PURE__*/ S.String;
+export const EvaluationType = S.String;
 export type ServiceLevelObjectiveBudgetStatus =
   | "OK"
   | "WARNING"
   | "BREACHED"
   | "INSUFFICIENT_DATA"
   | (string & {});
-export const ServiceLevelObjectiveBudgetStatus = /*@__PURE__*/ S.String;
+export const ServiceLevelObjectiveBudgetStatus = S.String;
 export type Attributes = { [key: string]: string | undefined };
 export const Attributes = /*@__PURE__*/ S.Record(
   S.String,
@@ -160,7 +160,7 @@ export type ServiceLevelIndicatorMetricType =
   | "LATENCY"
   | "AVAILABILITY"
   | (string & {});
-export const ServiceLevelIndicatorMetricType = /*@__PURE__*/ S.String;
+export const ServiceLevelIndicatorMetricType = S.String;
 export interface Dimension {
   Name: string;
   Value: string;
@@ -211,7 +211,7 @@ export type StandardUnit =
   | "Count/Second"
   | "None"
   | (string & {});
-export const StandardUnit = /*@__PURE__*/ S.String;
+export const StandardUnit = S.String;
 export interface MetricStat {
   Metric: Metric;
   Period: number;
@@ -298,7 +298,7 @@ export type ServiceLevelIndicatorComparisonOperator =
   | "LessThan"
   | "LessThanOrEqualTo"
   | (string & {});
-export const ServiceLevelIndicatorComparisonOperator = /*@__PURE__*/ S.String;
+export const ServiceLevelIndicatorComparisonOperator = S.String;
 export interface ServiceLevelIndicator {
   SliMetric: ServiceLevelIndicatorMetric;
   MetricThreshold: number;
@@ -358,7 +358,7 @@ export const RequestBasedServiceLevelIndicator = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestBasedServiceLevelIndicator",
 }) as any as S.Schema<RequestBasedServiceLevelIndicator>;
 export type DurationUnit = "MINUTE" | "HOUR" | "DAY" | "MONTH" | (string & {});
-export const DurationUnit = /*@__PURE__*/ S.String;
+export const DurationUnit = S.String;
 export interface RollingInterval {
   DurationUnit: DurationUnit;
   Duration: number;
@@ -760,7 +760,7 @@ export const AuditTarget = /*@__PURE__*/ S.suspend(() =>
 export type AuditTargets = AuditTarget[];
 export const AuditTargets = /*@__PURE__*/ S.Array(AuditTarget);
 export type DetailLevel = "BRIEF" | "DETAILED" | (string & {});
-export const DetailLevel = /*@__PURE__*/ S.String;
+export const DetailLevel = S.String;
 export interface ListAuditFindingsInput {
   StartTime: Date;
   EndTime: Date;
@@ -808,7 +808,7 @@ export type Severity =
   | "LOW"
   | "NONE"
   | (string & {});
-export const Severity = /*@__PURE__*/ S.String;
+export const Severity = S.String;
 export interface AuditorResult {
   Auditor?: string;
   Description?: string;
@@ -860,7 +860,7 @@ export const Node = /*@__PURE__*/ S.suspend(() =>
 export type Nodes = Node[];
 export const Nodes = /*@__PURE__*/ S.Array(Node);
 export type ConnectionType = "INDIRECT" | "DIRECT" | (string & {});
-export const ConnectionType = /*@__PURE__*/ S.String;
+export const ConnectionType = S.String;
 export interface Edge {
   SourceNodeId?: string;
   DestinationNodeId?: string;
@@ -950,7 +950,7 @@ export const ListEntityEventsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEntityEventsInput",
 }) as any as S.Schema<ListEntityEventsInput>;
 export type ChangeEventType = "DEPLOYMENT" | "CONFIGURATION" | (string & {});
-export const ChangeEventType = /*@__PURE__*/ S.String;
+export const ChangeEventType = S.String;
 export interface ChangeEvent {
   Timestamp: Date;
   AccountId: string;
@@ -1699,7 +1699,7 @@ export type MetricSourceType =
   | "Canary"
   | "Service"
   | (string & {});
-export const MetricSourceType = /*@__PURE__*/ S.String;
+export const MetricSourceType = S.String;
 export interface ServiceLevelObjective {
   Arn: string;
   Name: string;

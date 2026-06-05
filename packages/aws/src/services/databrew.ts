@@ -231,7 +231,7 @@ export type InputFormat =
   | "EXCEL"
   | "ORC"
   | (string & {});
-export const InputFormat = /*@__PURE__*/ S.String;
+export const InputFormat = S.String;
 export interface JsonOptions {
   MultiLine?: boolean;
 }
@@ -355,9 +355,9 @@ export const FilterExpression = /*@__PURE__*/ S.suspend(() =>
   identifier: "FilterExpression",
 }) as any as S.Schema<FilterExpression>;
 export type OrderedBy = "LAST_MODIFIED_DATE" | (string & {});
-export const OrderedBy = /*@__PURE__*/ S.String;
+export const OrderedBy = S.String;
 export type Order = "DESCENDING" | "ASCENDING" | (string & {});
-export const Order = /*@__PURE__*/ S.String;
+export const Order = S.String;
 export interface FilesLimit {
   MaxFiles: number;
   OrderedBy?: OrderedBy;
@@ -371,7 +371,7 @@ export const FilesLimit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FilesLimit" }) as any as S.Schema<FilesLimit>;
 export type ParameterType = "Datetime" | "Number" | "String" | (string & {});
-export const ParameterType = /*@__PURE__*/ S.String;
+export const ParameterType = S.String;
 export interface DatetimeOptions {
   Format: string;
   TimezoneOffset?: string;
@@ -464,9 +464,9 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDatasetResponse",
 }) as any as S.Schema<CreateDatasetResponse>;
 export type EncryptionMode = "SSE-KMS" | "SSE-S3" | (string & {});
-export const EncryptionMode = /*@__PURE__*/ S.String;
+export const EncryptionMode = S.String;
 export type LogSubscription = "ENABLE" | "DISABLE" | (string & {});
-export const LogSubscription = /*@__PURE__*/ S.String;
+export const LogSubscription = S.String;
 export type StatisticList = string[];
 export const StatisticList = /*@__PURE__*/ S.Array(S.String);
 export type ParameterMap = { [key: string]: string | undefined };
@@ -565,7 +565,7 @@ export const ProfileConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfileConfiguration",
 }) as any as S.Schema<ProfileConfiguration>;
 export type ValidationMode = "CHECK_ALL" | (string & {});
-export const ValidationMode = /*@__PURE__*/ S.String;
+export const ValidationMode = S.String;
 export interface ValidationConfiguration {
   RulesetArn: string;
   ValidationMode?: ValidationMode;
@@ -583,7 +583,7 @@ export const ValidationConfigurationList = /*@__PURE__*/ S.Array(
   ValidationConfiguration,
 );
 export type SampleMode = "FULL_DATASET" | "CUSTOM_ROWS" | (string & {});
-export const SampleMode = /*@__PURE__*/ S.String;
+export const SampleMode = S.String;
 export interface JobSample {
   Mode?: SampleMode;
   Size?: number;
@@ -645,7 +645,7 @@ export const CreateProfileJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProfileJobResponse",
 }) as any as S.Schema<CreateProfileJobResponse>;
 export type SampleType = "FIRST_N" | "LAST_N" | "RANDOM" | (string & {});
-export const SampleType = /*@__PURE__*/ S.String;
+export const SampleType = S.String;
 export interface Sample {
   Size?: number;
   Type: SampleType;
@@ -770,7 +770,7 @@ export type CompressionFormat =
   | "ZSTD"
   | "ZLIB"
   | (string & {});
-export const CompressionFormat = /*@__PURE__*/ S.String;
+export const CompressionFormat = S.String;
 export type OutputFormat =
   | "CSV"
   | "JSON"
@@ -781,7 +781,7 @@ export type OutputFormat =
   | "XML"
   | "TABLEAUHYPER"
   | (string & {});
-export const OutputFormat = /*@__PURE__*/ S.String;
+export const OutputFormat = S.String;
 export type ColumnNameList = string[];
 export const ColumnNameList = /*@__PURE__*/ S.Array(S.String);
 export interface CsvOutputOptions {
@@ -862,7 +862,7 @@ export const DataCatalogOutput = /*@__PURE__*/ S.suspend(() =>
 export type DataCatalogOutputList = DataCatalogOutput[];
 export const DataCatalogOutputList = /*@__PURE__*/ S.Array(DataCatalogOutput);
 export type DatabaseOutputMode = "NEW_TABLE" | (string & {});
-export const DatabaseOutputMode = /*@__PURE__*/ S.String;
+export const DatabaseOutputMode = S.String;
 export interface DatabaseOutput {
   GlueConnectionName: string;
   DatabaseOptions: DatabaseTableOutputOptions;
@@ -947,9 +947,9 @@ export type ThresholdType =
   | "GREATER_THAN"
   | "LESS_THAN"
   | (string & {});
-export const ThresholdType = /*@__PURE__*/ S.String;
+export const ThresholdType = S.String;
 export type ThresholdUnit = "COUNT" | "PERCENTAGE" | (string & {});
-export const ThresholdUnit = /*@__PURE__*/ S.String;
+export const ThresholdUnit = S.String;
 export interface Threshold {
   Value: number;
   Type?: ThresholdType;
@@ -1228,7 +1228,7 @@ export const DescribeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDatasetRequest",
 }) as any as S.Schema<DescribeDatasetRequest>;
 export type Source = "S3" | "DATA-CATALOG" | "DATABASE" | (string & {});
-export const Source = /*@__PURE__*/ S.String;
+export const Source = S.String;
 export interface DescribeDatasetResponse {
   CreatedBy?: string;
   CreateDate?: Date;
@@ -1281,7 +1281,7 @@ export const DescribeJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeJobRequest",
 }) as any as S.Schema<DescribeJobRequest>;
 export type JobType = "PROFILE" | "RECIPE" | (string & {});
-export const JobType = /*@__PURE__*/ S.String;
+export const JobType = S.String;
 export interface DescribeJobResponse {
   CreateDate?: Date;
   CreatedBy?: string;
@@ -1370,7 +1370,7 @@ export type JobRunState =
   | "FAILED"
   | "TIMEOUT"
   | (string & {});
-export const JobRunState = /*@__PURE__*/ S.String;
+export const JobRunState = S.String;
 export interface DescribeJobRunResponse {
   Attempt?: number;
   CompletedOn?: Date;
@@ -1446,7 +1446,7 @@ export type SessionStatus =
   | "TERMINATING"
   | "UPDATING"
   | (string & {});
-export const SessionStatus = /*@__PURE__*/ S.String;
+export const SessionStatus = S.String;
 export interface DescribeProjectResponse {
   CreateDate?: Date;
   CreatedBy?: string;
@@ -2219,7 +2219,7 @@ export const PublishRecipeResponse = /*@__PURE__*/ S.suspend(() =>
 export type HiddenColumnList = string[];
 export const HiddenColumnList = /*@__PURE__*/ S.Array(S.String);
 export type AnalyticsMode = "ENABLE" | "DISABLE" | (string & {});
-export const AnalyticsMode = /*@__PURE__*/ S.String;
+export const AnalyticsMode = S.String;
 export interface ViewFrame {
   StartColumnIndex: number;
   ColumnRange?: number;

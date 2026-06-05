@@ -96,9 +96,9 @@ export type SearchJobState =
   | "STOPPED"
   | "FAILED"
   | (string & {});
-export const SearchJobState = /*@__PURE__*/ S.String;
+export const SearchJobState = S.String;
 export type ResourceType = "S3" | "EBS" | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
+export const ResourceType = S.String;
 export interface SearchJobBackupsResult {
   Status?: SearchJobState;
   StatusMessage?: string;
@@ -361,7 +361,7 @@ export type StringConditionOperator =
   | "DOES_NOT_BEGIN_WITH"
   | "DOES_NOT_END_WITH"
   | (string & {});
-export const StringConditionOperator = /*@__PURE__*/ S.String;
+export const StringConditionOperator = S.String;
 export interface StringCondition {
   Value: string;
   Operator?: StringConditionOperator;
@@ -379,7 +379,7 @@ export type LongConditionOperator =
   | "LESS_THAN_EQUAL_TO"
   | "GREATER_THAN_EQUAL_TO"
   | (string & {});
-export const LongConditionOperator = /*@__PURE__*/ S.String;
+export const LongConditionOperator = S.String;
 export interface LongCondition {
   Value: number;
   Operator?: LongConditionOperator;
@@ -395,7 +395,7 @@ export type TimeConditionOperator =
   | "LESS_THAN_EQUAL_TO"
   | "GREATER_THAN_EQUAL_TO"
   | (string & {});
-export const TimeConditionOperator = /*@__PURE__*/ S.String;
+export const TimeConditionOperator = S.String;
 export interface TimeCondition {
   Value: Date;
   Operator?: TimeConditionOperator;
@@ -742,7 +742,7 @@ export type ExportJobStatus =
   | "FAILED"
   | "COMPLETED"
   | (string & {});
-export const ExportJobStatus = /*@__PURE__*/ S.String;
+export const ExportJobStatus = S.String;
 export interface GetSearchResultExportJobOutput {
   ExportJobIdentifier: string;
   ExportJobArn?: string;

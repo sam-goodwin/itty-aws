@@ -351,7 +351,7 @@ export type BulkPublishStatus =
   | "FAILED"
   | "SUCCEEDED"
   | (string & {});
-export const BulkPublishStatus = /*@__PURE__*/ S.String;
+export const BulkPublishStatus = S.String;
 export interface GetBulkPublishDetailsResponse {
   IdentityPoolId?: string;
   BulkPublishStartTime?: Date;
@@ -443,7 +443,7 @@ export const PushSync = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PushSync" }) as any as S.Schema<PushSync>;
 export type StreamingStatus = "ENABLED" | "DISABLED" | (string & {});
-export const StreamingStatus = /*@__PURE__*/ S.String;
+export const StreamingStatus = S.String;
 export interface CognitoStreams {
   StreamName?: string;
   RoleArn?: string;
@@ -646,7 +646,7 @@ export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRecordsResponse",
 }) as any as S.Schema<ListRecordsResponse>;
 export type Platform = "APNS" | "APNS_SANDBOX" | "GCM" | "ADM" | (string & {});
-export const Platform = /*@__PURE__*/ S.String;
+export const Platform = S.String;
 export interface RegisterDeviceRequest {
   IdentityPoolId: string;
   IdentityId: string;
@@ -825,7 +825,7 @@ export const UnsubscribeFromDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UnsubscribeFromDatasetResponse",
 }) as any as S.Schema<UnsubscribeFromDatasetResponse>;
 export type Operation = "replace" | "remove" | (string & {});
-export const Operation = /*@__PURE__*/ S.String;
+export const Operation = S.String;
 export interface RecordPatch {
   Op: Operation;
   Key: string;

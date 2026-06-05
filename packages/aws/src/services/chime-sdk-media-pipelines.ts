@@ -129,9 +129,9 @@ export type DataRetentionChangeInHours = number;
 
 //# Schemas
 export type MediaPipelineSourceType = "ChimeSdkMeeting" | (string & {});
-export const MediaPipelineSourceType = /*@__PURE__*/ S.String;
+export const MediaPipelineSourceType = S.String;
 export type MediaPipelineSinkType = "S3Bucket" | (string & {});
-export const MediaPipelineSinkType = /*@__PURE__*/ S.String;
+export const MediaPipelineSinkType = S.String;
 export type AttendeeIdList = string[];
 export const AttendeeIdList = /*@__PURE__*/ S.Array(S.String);
 export type ExternalUserIdList = string | redacted.Redacted<string>[];
@@ -161,7 +161,7 @@ export type AudioMuxType =
   | "AudioWithActiveSpeakerVideo"
   | "AudioWithCompositedVideo"
   | (string & {});
-export const AudioMuxType = /*@__PURE__*/ S.String;
+export const AudioMuxType = S.String;
 export interface AudioArtifactsConfiguration {
   MuxType: AudioMuxType;
 }
@@ -171,9 +171,9 @@ export const AudioArtifactsConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AudioArtifactsConfiguration",
 }) as any as S.Schema<AudioArtifactsConfiguration>;
 export type ArtifactsState = "Enabled" | "Disabled" | (string & {});
-export const ArtifactsState = /*@__PURE__*/ S.String;
+export const ArtifactsState = S.String;
 export type VideoMuxType = "VideoOnly" | (string & {});
-export const VideoMuxType = /*@__PURE__*/ S.String;
+export const VideoMuxType = S.String;
 export interface VideoArtifactsConfiguration {
   State: ArtifactsState;
   MuxType?: VideoMuxType;
@@ -184,7 +184,7 @@ export const VideoArtifactsConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "VideoArtifactsConfiguration",
 }) as any as S.Schema<VideoArtifactsConfiguration>;
 export type ContentMuxType = "ContentOnly" | (string & {});
-export const ContentMuxType = /*@__PURE__*/ S.String;
+export const ContentMuxType = S.String;
 export interface ContentArtifactsConfiguration {
   State: ArtifactsState;
   MuxType?: ContentMuxType;
@@ -195,23 +195,23 @@ export const ContentArtifactsConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContentArtifactsConfiguration",
 }) as any as S.Schema<ContentArtifactsConfiguration>;
 export type LayoutOption = "GridView" | (string & {});
-export const LayoutOption = /*@__PURE__*/ S.String;
+export const LayoutOption = S.String;
 export type ResolutionOption = "HD" | "FHD" | (string & {});
-export const ResolutionOption = /*@__PURE__*/ S.String;
+export const ResolutionOption = S.String;
 export type ContentShareLayoutOption =
   | "PresenterOnly"
   | "Horizontal"
   | "Vertical"
   | "ActiveSpeakerOnly"
   | (string & {});
-export const ContentShareLayoutOption = /*@__PURE__*/ S.String;
+export const ContentShareLayoutOption = S.String;
 export type PresenterPosition =
   | "TopLeft"
   | "TopRight"
   | "BottomLeft"
   | "BottomRight"
   | (string & {});
-export const PresenterPosition = /*@__PURE__*/ S.String;
+export const PresenterPosition = S.String;
 export interface PresenterOnlyConfiguration {
   PresenterPosition?: PresenterPosition;
 }
@@ -226,7 +226,7 @@ export type ActiveSpeakerPosition =
   | "BottomLeft"
   | "BottomRight"
   | (string & {});
-export const ActiveSpeakerPosition = /*@__PURE__*/ S.String;
+export const ActiveSpeakerPosition = S.String;
 export interface ActiveSpeakerOnlyConfiguration {
   ActiveSpeakerPosition?: ActiveSpeakerPosition;
 }
@@ -236,9 +236,9 @@ export const ActiveSpeakerOnlyConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActiveSpeakerOnlyConfiguration",
 }) as any as S.Schema<ActiveSpeakerOnlyConfiguration>;
 export type TileOrder = "JoinSequence" | "SpeakerSequence" | (string & {});
-export const TileOrder = /*@__PURE__*/ S.String;
+export const TileOrder = S.String;
 export type HorizontalTilePosition = "Top" | "Bottom" | (string & {});
-export const HorizontalTilePosition = /*@__PURE__*/ S.String;
+export const HorizontalTilePosition = S.String;
 export interface HorizontalLayoutConfiguration {
   TileOrder?: TileOrder;
   TilePosition?: HorizontalTilePosition;
@@ -256,7 +256,7 @@ export const HorizontalLayoutConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "HorizontalLayoutConfiguration",
 }) as any as S.Schema<HorizontalLayoutConfiguration>;
 export type VerticalTilePosition = "Left" | "Right" | (string & {});
-export const VerticalTilePosition = /*@__PURE__*/ S.String;
+export const VerticalTilePosition = S.String;
 export interface VerticalLayoutConfiguration {
   TileOrder?: TileOrder;
   TilePosition?: VerticalTilePosition;
@@ -281,7 +281,7 @@ export type BorderColor =
   | "White"
   | "Yellow"
   | (string & {});
-export const BorderColor = /*@__PURE__*/ S.String;
+export const BorderColor = S.String;
 export type HighlightColor =
   | "Black"
   | "Blue"
@@ -290,7 +290,7 @@ export type HighlightColor =
   | "White"
   | "Yellow"
   | (string & {});
-export const HighlightColor = /*@__PURE__*/ S.String;
+export const HighlightColor = S.String;
 export interface VideoAttribute {
   CornerRadius?: number;
   BorderColor?: BorderColor;
@@ -306,7 +306,7 @@ export const VideoAttribute = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VideoAttribute" }) as any as S.Schema<VideoAttribute>;
 export type CanvasOrientation = "Landscape" | "Portrait" | (string & {});
-export const CanvasOrientation = /*@__PURE__*/ S.String;
+export const CanvasOrientation = S.String;
 export interface GridViewConfiguration {
   ContentShareLayout: ContentShareLayoutOption;
   PresenterOnlyConfiguration?: PresenterOnlyConfiguration;
@@ -437,7 +437,7 @@ export type MediaPipelineStatus =
   | "Paused"
   | "NotStarted"
   | (string & {});
-export const MediaPipelineStatus = /*@__PURE__*/ S.String;
+export const MediaPipelineStatus = S.String;
 export interface MediaCapturePipeline {
   MediaPipelineId?: string;
   MediaPipelineArn?: string;
@@ -491,11 +491,11 @@ export type ErrorCode =
   | "ServiceUnavailable"
   | "Throttling"
   | (string & {});
-export const ErrorCode = /*@__PURE__*/ S.String;
+export const ErrorCode = S.String;
 export type ConcatenationSourceType = "MediaCapturePipeline" | (string & {});
-export const ConcatenationSourceType = /*@__PURE__*/ S.String;
+export const ConcatenationSourceType = S.String;
 export type AudioArtifactsConcatenationState = "Enabled" | (string & {});
-export const AudioArtifactsConcatenationState = /*@__PURE__*/ S.String;
+export const AudioArtifactsConcatenationState = S.String;
 export interface AudioConcatenationConfiguration {
   State: AudioArtifactsConcatenationState;
 }
@@ -508,7 +508,7 @@ export type ArtifactsConcatenationState =
   | "Enabled"
   | "Disabled"
   | (string & {});
-export const ArtifactsConcatenationState = /*@__PURE__*/ S.String;
+export const ArtifactsConcatenationState = S.String;
 export interface VideoConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }
@@ -620,7 +620,7 @@ export type ConcatenationSourceList = ConcatenationSource[];
 export const ConcatenationSourceList =
   /*@__PURE__*/ S.Array(ConcatenationSource);
 export type ConcatenationSinkType = "S3Bucket" | (string & {});
-export const ConcatenationSinkType = /*@__PURE__*/ S.String;
+export const ConcatenationSinkType = S.String;
 export interface S3BucketSinkConfiguration {
   Destination: string | redacted.Redacted<string>;
 }
@@ -709,7 +709,7 @@ export const CreateMediaConcatenationPipelineResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateMediaConcatenationPipelineResponse",
 }) as any as S.Schema<CreateMediaConcatenationPipelineResponse>;
 export type ParticipantRole = "AGENT" | "CUSTOMER" | (string & {});
-export const ParticipantRole = /*@__PURE__*/ S.String;
+export const ParticipantRole = S.String;
 export interface ChannelDefinition {
   ChannelId: number;
   ParticipantRole?: ParticipantRole;
@@ -753,7 +753,7 @@ export const StreamConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type Streams = StreamConfiguration[];
 export const Streams = /*@__PURE__*/ S.Array(StreamConfiguration);
 export type MediaEncoding = "pcm" | (string & {});
-export const MediaEncoding = /*@__PURE__*/ S.String;
+export const MediaEncoding = S.String;
 export interface KinesisVideoStreamSourceRuntimeConfiguration {
   Streams: StreamConfiguration[];
   MediaEncoding: MediaEncoding;
@@ -792,7 +792,7 @@ export type FragmentSelectorType =
   | "ProducerTimestamp"
   | "ServerTimestamp"
   | (string & {});
-export const FragmentSelectorType = /*@__PURE__*/ S.String;
+export const FragmentSelectorType = S.String;
 export interface TimestampRange {
   StartTimestamp: Date;
   EndTimestamp: Date;
@@ -829,7 +829,7 @@ export const KinesisVideoStreamRecordingSourceRuntimeConfiguration =
     identifier: "KinesisVideoStreamRecordingSourceRuntimeConfiguration",
   }) as any as S.Schema<KinesisVideoStreamRecordingSourceRuntimeConfiguration>;
 export type RecordingFileFormat = "Wav" | "Opus" | (string & {});
-export const RecordingFileFormat = /*@__PURE__*/ S.String;
+export const RecordingFileFormat = S.String;
 export interface S3RecordingSinkRuntimeConfiguration {
   Destination: string | redacted.Redacted<string>;
   RecordingFileFormat: RecordingFileFormat;
@@ -890,8 +890,7 @@ export type MediaInsightsPipelineConfigurationElementType =
   | "S3RecordingSink"
   | "VoiceEnhancementSink"
   | (string & {});
-export const MediaInsightsPipelineConfigurationElementType =
-  /*@__PURE__*/ S.String;
+export const MediaInsightsPipelineConfigurationElementType = S.String;
 export type MediaPipelineElementStatus =
   | "NotStarted"
   | "NotSupported"
@@ -902,7 +901,7 @@ export type MediaPipelineElementStatus =
   | "Stopped"
   | "Paused"
   | (string & {});
-export const MediaPipelineElementStatus = /*@__PURE__*/ S.String;
+export const MediaPipelineElementStatus = S.String;
 export interface MediaInsightsPipelineElementStatus {
   Type?: MediaInsightsPipelineConfigurationElementType;
   Status?: MediaPipelineElementStatus;
@@ -969,7 +968,7 @@ export type RealTimeAlertRuleType =
   | "Sentiment"
   | "IssueDetection"
   | (string & {});
-export const RealTimeAlertRuleType = /*@__PURE__*/ S.String;
+export const RealTimeAlertRuleType = S.String;
 export type KeywordMatchWordList = string[];
 export const KeywordMatchWordList = /*@__PURE__*/ S.Array(S.String);
 export interface KeywordMatchConfiguration {
@@ -987,7 +986,7 @@ export const KeywordMatchConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "KeywordMatchConfiguration",
 }) as any as S.Schema<KeywordMatchConfiguration>;
 export type SentimentType = "NEGATIVE" | (string & {});
-export const SentimentType = /*@__PURE__*/ S.String;
+export const SentimentType = S.String;
 export interface SentimentConfiguration {
   RuleName: string;
   SentimentType: SentimentType;
@@ -1051,18 +1050,18 @@ export type CallAnalyticsLanguageCode =
   | "de-DE"
   | "pt-BR"
   | (string & {});
-export const CallAnalyticsLanguageCode = /*@__PURE__*/ S.String;
+export const CallAnalyticsLanguageCode = S.String;
 export type VocabularyFilterMethod = "remove" | "mask" | "tag" | (string & {});
-export const VocabularyFilterMethod = /*@__PURE__*/ S.String;
+export const VocabularyFilterMethod = S.String;
 export type PartialResultsStability = "high" | "medium" | "low" | (string & {});
-export const PartialResultsStability = /*@__PURE__*/ S.String;
+export const PartialResultsStability = S.String;
 export type ContentType = "PII" | (string & {});
-export const ContentType = /*@__PURE__*/ S.String;
+export const ContentType = S.String;
 export type ContentRedactionOutput =
   | "redacted"
   | "redacted_and_unredacted"
   | (string & {});
-export const ContentRedactionOutput = /*@__PURE__*/ S.String;
+export const ContentRedactionOutput = S.String;
 export interface PostCallAnalyticsSettings {
   OutputLocation: string;
   DataAccessRoleArn: string;
@@ -1185,7 +1184,7 @@ export type VoiceAnalyticsConfigurationStatus =
   | "Enabled"
   | "Disabled"
   | (string & {});
-export const VoiceAnalyticsConfigurationStatus = /*@__PURE__*/ S.String;
+export const VoiceAnalyticsConfigurationStatus = S.String;
 export interface VoiceAnalyticsProcessorConfiguration {
   SpeakerSearchStatus?: VoiceAnalyticsConfigurationStatus;
   VoiceToneAnalysisStatus?: VoiceAnalyticsConfigurationStatus;
@@ -1354,12 +1353,12 @@ export const CreateMediaInsightsPipelineConfigurationResponse =
     identifier: "CreateMediaInsightsPipelineConfigurationResponse",
   }) as any as S.Schema<CreateMediaInsightsPipelineConfigurationResponse>;
 export type LiveConnectorSourceType = "ChimeSdkMeeting" | (string & {});
-export const LiveConnectorSourceType = /*@__PURE__*/ S.String;
+export const LiveConnectorSourceType = S.String;
 export type LiveConnectorMuxType =
   | "AudioWithCompositedVideo"
   | "AudioWithActiveSpeakerVideo"
   | (string & {});
-export const LiveConnectorMuxType = /*@__PURE__*/ S.String;
+export const LiveConnectorMuxType = S.String;
 export interface ChimeSdkMeetingLiveConnectorConfiguration {
   Arn: string | redacted.Redacted<string>;
   MuxType: LiveConnectorMuxType;
@@ -1395,9 +1394,9 @@ export const LiveConnectorSourceList = /*@__PURE__*/ S.Array(
   LiveConnectorSourceConfiguration,
 );
 export type LiveConnectorSinkType = "RTMP" | (string & {});
-export const LiveConnectorSinkType = /*@__PURE__*/ S.String;
+export const LiveConnectorSinkType = S.String;
 export type AudioChannelsOption = "Stereo" | "Mono" | (string & {});
-export const AudioChannelsOption = /*@__PURE__*/ S.String;
+export const AudioChannelsOption = S.String;
 export interface LiveConnectorRTMPConfiguration {
   Url: string | redacted.Redacted<string>;
   AudioChannels?: AudioChannelsOption;
@@ -1540,7 +1539,7 @@ export type KinesisVideoStreamPoolStatus =
   | "DELETING"
   | "FAILED"
   | (string & {});
-export const KinesisVideoStreamPoolStatus = /*@__PURE__*/ S.String;
+export const KinesisVideoStreamPoolStatus = S.String;
 export interface KinesisVideoStreamPoolConfiguration {
   PoolArn?: string | redacted.Redacted<string>;
   PoolName?: string;
@@ -1596,9 +1595,9 @@ export const MediaStreamSourceList = /*@__PURE__*/ S.Array(MediaStreamSource);
 export type MediaStreamPipelineSinkType =
   | "KinesisVideoStreamPool"
   | (string & {});
-export const MediaStreamPipelineSinkType = /*@__PURE__*/ S.String;
+export const MediaStreamPipelineSinkType = S.String;
 export type MediaStreamType = "MixedAudio" | "IndividualAudio" | (string & {});
-export const MediaStreamType = /*@__PURE__*/ S.String;
+export const MediaStreamType = S.String;
 export interface MediaStreamSink {
   SinkArn: string | redacted.Redacted<string>;
   SinkType: MediaStreamPipelineSinkType;
@@ -1957,7 +1956,7 @@ export type MediaPipelineTaskStatus =
   | "Stopping"
   | "Stopped"
   | (string & {});
-export const MediaPipelineTaskStatus = /*@__PURE__*/ S.String;
+export const MediaPipelineTaskStatus = S.String;
 export interface SpeakerSearchTask {
   SpeakerSearchTaskId?: string;
   SpeakerSearchTaskStatus?: MediaPipelineTaskStatus;
@@ -2330,7 +2329,7 @@ export const StartSpeakerSearchTaskResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartSpeakerSearchTaskResponse",
 }) as any as S.Schema<StartSpeakerSearchTaskResponse>;
 export type VoiceAnalyticsLanguageCode = "en-US" | (string & {});
-export const VoiceAnalyticsLanguageCode = /*@__PURE__*/ S.String;
+export const VoiceAnalyticsLanguageCode = S.String;
 export interface StartVoiceToneAnalysisTaskRequest {
   Identifier: string;
   LanguageCode: VoiceAnalyticsLanguageCode;
@@ -2524,7 +2523,7 @@ export const UpdateMediaInsightsPipelineConfigurationResponse =
     identifier: "UpdateMediaInsightsPipelineConfigurationResponse",
   }) as any as S.Schema<UpdateMediaInsightsPipelineConfigurationResponse>;
 export type MediaPipelineStatusUpdate = "Pause" | "Resume" | (string & {});
-export const MediaPipelineStatusUpdate = /*@__PURE__*/ S.String;
+export const MediaPipelineStatusUpdate = S.String;
 export interface UpdateMediaInsightsPipelineStatusRequest {
   Identifier: string;
   UpdateStatus: MediaPipelineStatusUpdate;

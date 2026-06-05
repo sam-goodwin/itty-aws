@@ -303,7 +303,7 @@ export type LanguageCodeString =
   | "zh-CN"
   | "zh-TW"
   | (string & {});
-export const LanguageCodeString = /*@__PURE__*/ S.String;
+export const LanguageCodeString = S.String;
 export interface CreateSMSSandboxPhoneNumberInput {
   PhoneNumber: string | redacted.Redacted<string>;
   LanguageCode?: LanguageCodeString;
@@ -739,9 +739,9 @@ export type RouteType =
   | "Promotional"
   | "Premium"
   | (string & {});
-export const RouteType = /*@__PURE__*/ S.String;
+export const RouteType = S.String;
 export type NumberCapability = "SMS" | "MMS" | "VOICE" | (string & {});
-export const NumberCapability = /*@__PURE__*/ S.String;
+export const NumberCapability = S.String;
 export type NumberCapabilityList = NumberCapability[];
 export const NumberCapabilityList = /*@__PURE__*/ S.Array(NumberCapability);
 export interface PhoneNumberInformation {
@@ -885,7 +885,7 @@ export type SMSSandboxPhoneNumberVerificationStatus =
   | "Pending"
   | "Verified"
   | (string & {});
-export const SMSSandboxPhoneNumberVerificationStatus = /*@__PURE__*/ S.String;
+export const SMSSandboxPhoneNumberVerificationStatus = S.String;
 export interface SMSSandboxPhoneNumber {
   PhoneNumber?: string | redacted.Redacted<string>;
   Status?: SMSSandboxPhoneNumberVerificationStatus;

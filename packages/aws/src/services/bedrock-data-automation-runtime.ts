@@ -109,7 +109,7 @@ export const SyncInputConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SyncInputConfiguration",
 }) as any as S.Schema<SyncInputConfiguration>;
 export type DataAutomationStage = "LIVE" | "DEVELOPMENT" | (string & {});
-export const DataAutomationStage = /*@__PURE__*/ S.String;
+export const DataAutomationStage = S.String;
 export interface DataAutomationConfiguration {
   dataAutomationProjectArn: string;
   stage?: DataAutomationStage;
@@ -123,7 +123,7 @@ export const DataAutomationConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataAutomationConfiguration",
 }) as any as S.Schema<DataAutomationConfiguration>;
 export type BlueprintStage = "DEVELOPMENT" | "LIVE" | (string & {});
-export const BlueprintStage = /*@__PURE__*/ S.String;
+export const BlueprintStage = S.String;
 export interface Blueprint {
   blueprintArn: string;
   version?: string;
@@ -191,9 +191,9 @@ export type SemanticModality =
   | "AUDIO"
   | "VIDEO"
   | (string & {});
-export const SemanticModality = /*@__PURE__*/ S.String;
+export const SemanticModality = S.String;
 export type CustomOutputStatus = "MATCH" | "NO_MATCH" | (string & {});
-export const CustomOutputStatus = /*@__PURE__*/ S.String;
+export const CustomOutputStatus = S.String;
 export interface OutputSegment {
   customOutputStatus?: CustomOutputStatus;
   customOutput?: string;
@@ -395,7 +395,7 @@ export type AutomationJobStatus =
   | "ServiceError"
   | "ClientError"
   | (string & {});
-export const AutomationJobStatus = /*@__PURE__*/ S.String;
+export const AutomationJobStatus = S.String;
 export interface GetDataAutomationStatusResponse {
   status?: AutomationJobStatus;
   errorType?: string;

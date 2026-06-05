@@ -244,18 +244,18 @@ export type StandardsStatus =
   | "DELETING"
   | "INCOMPLETE"
   | (string & {});
-export const StandardsStatus = /*@__PURE__*/ S.String;
+export const StandardsStatus = S.String;
 export type StandardsControlsUpdatable =
   | "READY_FOR_UPDATES"
   | "NOT_READY_FOR_UPDATES"
   | (string & {});
-export const StandardsControlsUpdatable = /*@__PURE__*/ S.String;
+export const StandardsControlsUpdatable = S.String;
 export type StatusReasonCode =
   | "NO_AVAILABLE_CONFIGURATION_RECORDER"
   | "MAXIMUM_NUMBER_OF_CONFIG_RULES_EXCEEDED"
   | "INTERNAL_ERROR"
   | (string & {});
-export const StatusReasonCode = /*@__PURE__*/ S.String;
+export const StatusReasonCode = S.String;
 export interface StandardsStatusReason {
   StatusReasonCode?: StatusReasonCode;
 }
@@ -373,7 +373,7 @@ export const BatchGetAutomationRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetAutomationRulesRequest",
 }) as any as S.Schema<BatchGetAutomationRulesRequest>;
 export type RuleStatus = "ENABLED" | "DISABLED" | (string & {});
-export const RuleStatus = /*@__PURE__*/ S.String;
+export const RuleStatus = S.String;
 export type StringFilterComparison =
   | "EQUALS"
   | "PREFIX"
@@ -383,7 +383,7 @@ export type StringFilterComparison =
   | "NOT_CONTAINS"
   | "CONTAINS_WORD"
   | (string & {});
-export const StringFilterComparison = /*@__PURE__*/ S.String;
+export const StringFilterComparison = S.String;
 export interface StringFilter {
   Value?: string;
   Comparison?: StringFilterComparison;
@@ -397,7 +397,7 @@ export const StringFilter = /*@__PURE__*/ S.suspend(() =>
 export type StringFilterList = StringFilter[];
 export const StringFilterList = /*@__PURE__*/ S.Array(StringFilter);
 export type DateRangeUnit = "DAYS" | (string & {});
-export const DateRangeUnit = /*@__PURE__*/ S.String;
+export const DateRangeUnit = S.String;
 export interface DateRange {
   Value?: number;
   Unit?: DateRangeUnit;
@@ -443,7 +443,7 @@ export type MapFilterComparison =
   | "CONTAINS"
   | "NOT_CONTAINS"
   | (string & {});
-export const MapFilterComparison = /*@__PURE__*/ S.String;
+export const MapFilterComparison = S.String;
 export interface MapFilter {
   Key?: string;
   Value?: string;
@@ -543,7 +543,7 @@ export const AutomationRulesFindingFilters = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutomationRulesFindingFilters",
 }) as any as S.Schema<AutomationRulesFindingFilters>;
 export type AutomationRulesActionType = "FINDING_FIELDS_UPDATE" | (string & {});
-export const AutomationRulesActionType = /*@__PURE__*/ S.String;
+export const AutomationRulesActionType = S.String;
 export interface NoteUpdate {
   Text?: string;
   UpdatedBy?: string;
@@ -558,7 +558,7 @@ export type SeverityLabel =
   | "HIGH"
   | "CRITICAL"
   | (string & {});
-export const SeverityLabel = /*@__PURE__*/ S.String;
+export const SeverityLabel = S.String;
 export interface SeverityUpdate {
   Normalized?: number;
   Product?: number;
@@ -577,7 +577,7 @@ export type VerificationState =
   | "FALSE_POSITIVE"
   | "BENIGN_POSITIVE"
   | (string & {});
-export const VerificationState = /*@__PURE__*/ S.String;
+export const VerificationState = S.String;
 export type TypeList = string[];
 export const TypeList = /*@__PURE__*/ S.Array(S.String);
 export type FieldMap = { [key: string]: string | undefined };
@@ -591,7 +591,7 @@ export type WorkflowStatus =
   | "RESOLVED"
   | "SUPPRESSED"
   | (string & {});
-export const WorkflowStatus = /*@__PURE__*/ S.String;
+export const WorkflowStatus = S.String;
 export interface WorkflowUpdate {
   Status?: WorkflowStatus;
 }
@@ -759,15 +759,15 @@ export type TargetType =
   | "ORGANIZATIONAL_UNIT"
   | "ROOT"
   | (string & {});
-export const TargetType = /*@__PURE__*/ S.String;
+export const TargetType = S.String;
 export type AssociationType = "INHERITED" | "APPLIED" | (string & {});
-export const AssociationType = /*@__PURE__*/ S.String;
+export const AssociationType = S.String;
 export type ConfigurationPolicyAssociationStatus =
   | "PENDING"
   | "SUCCESS"
   | "FAILED"
   | (string & {});
-export const ConfigurationPolicyAssociationStatus = /*@__PURE__*/ S.String;
+export const ConfigurationPolicyAssociationStatus = S.String;
 export interface ConfigurationPolicyAssociationSummary {
   ConfigurationPolicyId?: string;
   TargetId?: string;
@@ -861,13 +861,13 @@ export type SeverityRating =
   | "HIGH"
   | "CRITICAL"
   | (string & {});
-export const SeverityRating = /*@__PURE__*/ S.String;
+export const SeverityRating = S.String;
 export type ControlStatus = "ENABLED" | "DISABLED" | (string & {});
-export const ControlStatus = /*@__PURE__*/ S.String;
+export const ControlStatus = S.String;
 export type UpdateStatus = "READY" | "UPDATING" | (string & {});
-export const UpdateStatus = /*@__PURE__*/ S.String;
+export const UpdateStatus = S.String;
 export type ParameterValueType = "DEFAULT" | "CUSTOM" | (string & {});
-export const ParameterValueType = /*@__PURE__*/ S.String;
+export const ParameterValueType = S.String;
 export type IntegerList = number[];
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
 export type ParameterValue =
@@ -1015,7 +1015,7 @@ export type UnprocessedErrorCode =
   | "RESOURCE_NOT_FOUND"
   | "LIMIT_EXCEEDED"
   | (string & {});
-export const UnprocessedErrorCode = /*@__PURE__*/ S.String;
+export const UnprocessedErrorCode = S.String;
 export interface UnprocessedSecurityControl {
   SecurityControlId?: string;
   ErrorCode?: UnprocessedErrorCode;
@@ -1101,7 +1101,7 @@ export const BatchGetStandardsControlAssociationsRequest =
     identifier: "BatchGetStandardsControlAssociationsRequest",
   }) as any as S.Schema<BatchGetStandardsControlAssociationsRequest>;
 export type AssociationStatus = "ENABLED" | "DISABLED" | (string & {});
-export const AssociationStatus = /*@__PURE__*/ S.String;
+export const AssociationStatus = S.String;
 export type RelatedRequirementsList = string[];
 export const RelatedRequirementsList = /*@__PURE__*/ S.Array(S.String);
 export type StandardsControlArnList = string[];
@@ -1233,13 +1233,13 @@ export type MalwareType =
   | "VIRUS"
   | "WORM"
   | (string & {});
-export const MalwareType = /*@__PURE__*/ S.String;
+export const MalwareType = S.String;
 export type MalwareState =
   | "OBSERVED"
   | "REMOVAL_FAILED"
   | "REMOVED"
   | (string & {});
-export const MalwareState = /*@__PURE__*/ S.String;
+export const MalwareState = S.String;
 export interface Malware {
   Name?: string;
   Type?: MalwareType;
@@ -1257,7 +1257,7 @@ export const Malware = /*@__PURE__*/ S.suspend(() =>
 export type MalwareList = Malware[];
 export const MalwareList = /*@__PURE__*/ S.Array(Malware);
 export type NetworkDirection = "IN" | "OUT" | (string & {});
-export const NetworkDirection = /*@__PURE__*/ S.String;
+export const NetworkDirection = S.String;
 export interface PortRange {
   Begin?: number;
   End?: number;
@@ -1402,7 +1402,7 @@ export type ThreatIntelIndicatorType =
   | "PROCESS"
   | "URL"
   | (string & {});
-export const ThreatIntelIndicatorType = /*@__PURE__*/ S.String;
+export const ThreatIntelIndicatorType = S.String;
 export type ThreatIntelIndicatorCategory =
   | "BACKDOOR"
   | "CARD_STEALER"
@@ -1411,7 +1411,7 @@ export type ThreatIntelIndicatorCategory =
   | "EXPLOIT_SITE"
   | "KEYLOGGER"
   | (string & {});
-export const ThreatIntelIndicatorCategory = /*@__PURE__*/ S.String;
+export const ThreatIntelIndicatorCategory = S.String;
 export interface ThreatIntelIndicator {
   Type?: ThreatIntelIndicatorType;
   Value?: string;
@@ -1436,7 +1436,7 @@ export type ThreatIntelIndicatorList = ThreatIntelIndicator[];
 export const ThreatIntelIndicatorList =
   /*@__PURE__*/ S.Array(ThreatIntelIndicator);
 export type Partition = "aws" | "aws-cn" | "aws-us-gov" | (string & {});
-export const Partition = /*@__PURE__*/ S.String;
+export const Partition = S.String;
 export interface ClassificationStatus {
   Code?: string;
   Reason?: string;
@@ -3422,8 +3422,7 @@ export type AwsS3BucketNotificationConfigurationS3KeyFilterRuleName =
   | "Prefix"
   | "Suffix"
   | (string & {});
-export const AwsS3BucketNotificationConfigurationS3KeyFilterRuleName =
-  /*@__PURE__*/ S.String;
+export const AwsS3BucketNotificationConfigurationS3KeyFilterRuleName = S.String;
 export interface AwsS3BucketNotificationConfigurationS3KeyFilterRule {
   Name?: AwsS3BucketNotificationConfigurationS3KeyFilterRuleName;
   Value?: string;
@@ -3649,7 +3648,7 @@ export const AwsSecretsManagerSecretDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "AwsSecretsManagerSecretDetails",
 }) as any as S.Schema<AwsSecretsManagerSecretDetails>;
 export type AwsIamAccessKeyStatus = "Active" | "Inactive" | (string & {});
-export const AwsIamAccessKeyStatus = /*@__PURE__*/ S.String;
+export const AwsIamAccessKeyStatus = S.String;
 export interface AwsIamAccessKeySessionContextAttributes {
   MfaAuthenticated?: boolean;
   CreationDate?: string;
@@ -12065,7 +12064,7 @@ export type ComplianceStatus =
   | "FAILED"
   | "NOT_AVAILABLE"
   | (string & {});
-export const ComplianceStatus = /*@__PURE__*/ S.String;
+export const ComplianceStatus = S.String;
 export interface StatusReason {
   ReasonCode?: string;
   Description?: string;
@@ -12127,7 +12126,7 @@ export type WorkflowState =
   | "DEFERRED"
   | "RESOLVED"
   | (string & {});
-export const WorkflowState = /*@__PURE__*/ S.String;
+export const WorkflowState = S.String;
 export interface Workflow {
   Status?: WorkflowStatus;
 }
@@ -12135,7 +12134,7 @@ export const Workflow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(WorkflowStatus) }),
 ).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
 export type RecordState = "ACTIVE" | "ARCHIVED" | (string & {});
-export const RecordState = /*@__PURE__*/ S.String;
+export const RecordState = S.String;
 export interface Note {
   Text?: string;
   UpdatedBy?: string;
@@ -12230,9 +12229,9 @@ export type VulnerabilityFixAvailable =
   | "NO"
   | "PARTIAL"
   | (string & {});
-export const VulnerabilityFixAvailable = /*@__PURE__*/ S.String;
+export const VulnerabilityFixAvailable = S.String;
 export type VulnerabilityExploitAvailable = "YES" | "NO" | (string & {});
-export const VulnerabilityExploitAvailable = /*@__PURE__*/ S.String;
+export const VulnerabilityExploitAvailable = S.String;
 export interface CodeVulnerabilitiesFilePath {
   EndLine?: number;
   FileName?: string;
@@ -12587,7 +12586,7 @@ export const ActorUser = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActorUser" }) as any as S.Schema<ActorUser>;
 export type ActorSessionMfaStatus = "ENABLED" | "DISABLED" | (string & {});
-export const ActorSessionMfaStatus = /*@__PURE__*/ S.String;
+export const ActorSessionMfaStatus = S.String;
 export interface ActorSession {
   Uid?: string;
   MfaStatus?: ActorSessionMfaStatus;
@@ -12642,7 +12641,7 @@ export const NetworkAutonomousSystem = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkAutonomousSystem",
 }) as any as S.Schema<NetworkAutonomousSystem>;
 export type ConnectionDirection = "INBOUND" | "OUTBOUND" | (string & {});
-export const ConnectionDirection = /*@__PURE__*/ S.String;
+export const ConnectionDirection = S.String;
 export interface NetworkConnection {
   Direction?: ConnectionDirection;
 }
@@ -13131,8 +13130,7 @@ export type BatchUpdateFindingsV2UnprocessedFindingErrorCode =
   | "InternalServerException"
   | "ConflictException"
   | (string & {});
-export const BatchUpdateFindingsV2UnprocessedFindingErrorCode =
-  /*@__PURE__*/ S.String;
+export const BatchUpdateFindingsV2UnprocessedFindingErrorCode = S.String;
 export interface BatchUpdateFindingsV2UnprocessedFinding {
   FindingIdentifier?: OcsfFindingIdentifier;
   MetadataUid?: string;
@@ -13383,7 +13381,7 @@ export const CreateAutomationRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAutomationRuleResponse",
 }) as any as S.Schema<CreateAutomationRuleResponse>;
 export type RuleStatusV2 = "ENABLED" | "DISABLED" | (string & {});
-export const RuleStatusV2 = /*@__PURE__*/ S.String;
+export const RuleStatusV2 = S.String;
 export type OcsfStringField =
   | "metadata.uid"
   | "activity_name"
@@ -13457,7 +13455,7 @@ export type OcsfStringField =
   | "cloud.account.name"
   | "vendor_attributes.severity"
   | (string & {});
-export const OcsfStringField = /*@__PURE__*/ S.String;
+export const OcsfStringField = S.String;
 export interface OcsfStringFilter {
   FieldName?: OcsfStringField;
   Filter?: StringFilter;
@@ -13481,7 +13479,7 @@ export type OcsfDateField =
   | "resources.image.last_used_time_dt"
   | "resources.modified_time_dt"
   | (string & {});
-export const OcsfDateField = /*@__PURE__*/ S.String;
+export const OcsfDateField = S.String;
 export interface OcsfDateFilter {
   FieldName?: OcsfDateField;
   Filter?: DateFilter;
@@ -13499,7 +13497,7 @@ export type OcsfBooleanField =
   | "vulnerabilities.is_exploit_available"
   | "vulnerabilities.is_fix_available"
   | (string & {});
-export const OcsfBooleanField = /*@__PURE__*/ S.String;
+export const OcsfBooleanField = S.String;
 export interface BooleanFilter {
   Value?: boolean;
 }
@@ -13536,7 +13534,7 @@ export type OcsfNumberField =
   | "vulnerabilities.cve.cvss.base_score"
   | "vendor_attributes.severity_id"
   | (string & {});
-export const OcsfNumberField = /*@__PURE__*/ S.String;
+export const OcsfNumberField = S.String;
 export interface OcsfNumberFilter {
   FieldName?: OcsfNumberField;
   Filter?: NumberFilter;
@@ -13557,7 +13555,7 @@ export type OcsfMapField =
   | "databucket.tags"
   | "finding_info.tags"
   | (string & {});
-export const OcsfMapField = /*@__PURE__*/ S.String;
+export const OcsfMapField = S.String;
 export interface OcsfMapFilter {
   FieldName?: OcsfMapField;
   Filter?: MapFilter;
@@ -13574,7 +13572,7 @@ export type OcsfIpField =
   | "evidences.dst_endpoint.ip"
   | "evidences.src_endpoint.ip"
   | (string & {});
-export const OcsfIpField = /*@__PURE__*/ S.String;
+export const OcsfIpField = S.String;
 export interface IpFilter {
   Cidr?: string;
 }
@@ -13594,7 +13592,7 @@ export const OcsfIpFilter = /*@__PURE__*/ S.suspend(() =>
 export type OcsfIpFilterList = OcsfIpFilter[];
 export const OcsfIpFilterList = /*@__PURE__*/ S.Array(OcsfIpFilter);
 export type AllowedOperators = "AND" | "OR" | (string & {});
-export const AllowedOperators = /*@__PURE__*/ S.String;
+export const AllowedOperators = S.String;
 export interface CompositeFilter {
   StringFilters?: OcsfStringFilter[];
   DateFilters?: OcsfDateFilter[];
@@ -13649,7 +13647,7 @@ export type AutomationRulesActionTypeV2 =
   | "FINDING_FIELDS_UPDATE"
   | "EXTERNAL_INTEGRATION"
   | (string & {});
-export const AutomationRulesActionTypeV2 = /*@__PURE__*/ S.String;
+export const AutomationRulesActionTypeV2 = S.String;
 export interface AutomationRulesFindingFieldsUpdateV2 {
   SeverityId?: number;
   Comment?: string;
@@ -13913,7 +13911,7 @@ export type ConnectorStatus =
   | "PENDING_CONFIGURATION"
   | "PENDING_AUTHORIZATION"
   | (string & {});
-export const ConnectorStatus = /*@__PURE__*/ S.String;
+export const ConnectorStatus = S.String;
 export interface CreateConnectorV2Response {
   ConnectorArn: string;
   ConnectorId: string;
@@ -14274,7 +14272,7 @@ export const CreateMembersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMembersResponse",
 }) as any as S.Schema<CreateMembersResponse>;
 export type TicketCreationMode = "DRYRUN" | (string & {});
-export const TicketCreationMode = /*@__PURE__*/ S.String;
+export const TicketCreationMode = S.String;
 export interface CreateTicketV2Request {
   ConnectorId?: string;
   FindingMetadataUid?: string;
@@ -14642,7 +14640,7 @@ export type ControlFindingGenerator =
   | "STANDARD_CONTROL"
   | "SECURITY_CONTROL"
   | (string & {});
-export const ControlFindingGenerator = /*@__PURE__*/ S.String;
+export const ControlFindingGenerator = S.String;
 export interface DescribeHubResponse {
   HubArn?: string;
   SubscribedAt?: string;
@@ -14676,19 +14674,18 @@ export const DescribeOrganizationConfigurationRequest = /*@__PURE__*/ S.suspend(
   identifier: "DescribeOrganizationConfigurationRequest",
 }) as any as S.Schema<DescribeOrganizationConfigurationRequest>;
 export type AutoEnableStandards = "NONE" | "DEFAULT" | (string & {});
-export const AutoEnableStandards = /*@__PURE__*/ S.String;
+export const AutoEnableStandards = S.String;
 export type OrganizationConfigurationConfigurationType =
   | "CENTRAL"
   | "LOCAL"
   | (string & {});
-export const OrganizationConfigurationConfigurationType =
-  /*@__PURE__*/ S.String;
+export const OrganizationConfigurationConfigurationType = S.String;
 export type OrganizationConfigurationStatus =
   | "PENDING"
   | "ENABLED"
   | "FAILED"
   | (string & {});
-export const OrganizationConfigurationStatus = /*@__PURE__*/ S.String;
+export const OrganizationConfigurationStatus = S.String;
 export interface OrganizationConfiguration {
   ConfigurationType?: OrganizationConfigurationConfigurationType;
   Status?: OrganizationConfigurationStatus;
@@ -14750,7 +14747,7 @@ export type IntegrationType =
   | "RECEIVE_FINDINGS_FROM_SECURITY_HUB"
   | "UPDATE_FINDINGS_IN_SECURITY_HUB"
   | (string & {});
-export const IntegrationType = /*@__PURE__*/ S.String;
+export const IntegrationType = S.String;
 export type IntegrationTypeList = IntegrationType[];
 export const IntegrationTypeList = /*@__PURE__*/ S.Array(IntegrationType);
 export interface Product {
@@ -14818,7 +14815,7 @@ export type IntegrationV2Type =
   | "UPDATE_FINDINGS_IN_SECURITY_HUB"
   | "EXTENDED_PLAN"
   | (string & {});
-export const IntegrationV2Type = /*@__PURE__*/ S.String;
+export const IntegrationV2Type = S.String;
 export type IntegrationV2TypeList = IntegrationV2Type[];
 export const IntegrationV2TypeList = /*@__PURE__*/ S.Array(IntegrationV2Type);
 export interface ProductV2 {
@@ -15051,7 +15048,7 @@ export type SecurityHubFeature =
   | "SecurityHub"
   | "SecurityHubV2"
   | (string & {});
-export const SecurityHubFeature = /*@__PURE__*/ S.String;
+export const SecurityHubFeature = S.String;
 export interface DisableOrganizationAdminAccountRequest {
   AdminAccountId?: string;
   Feature?: SecurityHubFeature;
@@ -15544,7 +15541,7 @@ export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HealthCheck" }) as any as S.Schema<HealthCheck>;
 export type ConnectorAuthStatus = "ACTIVE" | "FAILED" | (string & {});
-export const ConnectorAuthStatus = /*@__PURE__*/ S.String;
+export const ConnectorAuthStatus = S.String;
 export interface JiraCloudDetail {
   CloudId?: string;
   ProjectKey?: string;
@@ -15731,7 +15728,7 @@ export type FindingHistoryUpdateSourceType =
   | "BATCH_UPDATE_FINDINGS"
   | "BATCH_IMPORT_FINDINGS"
   | (string & {});
-export const FindingHistoryUpdateSourceType = /*@__PURE__*/ S.String;
+export const FindingHistoryUpdateSourceType = S.String;
 export interface FindingHistoryUpdateSource {
   Type?: FindingHistoryUpdateSourceType;
   Identity?: string;
@@ -15804,7 +15801,7 @@ export const GetFindingHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetFindingHistoryResponse",
 }) as any as S.Schema<GetFindingHistoryResponse>;
 export type SortOrder = "asc" | "desc" | (string & {});
-export const SortOrder = /*@__PURE__*/ S.String;
+export const SortOrder = S.String;
 export interface SortCriterion {
   Field?: string;
   SortOrder?: SortOrder;
@@ -15914,7 +15911,7 @@ export type GroupByField =
   | "vendor_attributes.severity"
   | "metadata.product.vendor_name"
   | (string & {});
-export const GroupByField = /*@__PURE__*/ S.String;
+export const GroupByField = S.String;
 export interface GroupByRule {
   Filters?: OcsfFindingFilters;
   GroupByField?: GroupByField;
@@ -15991,7 +15988,7 @@ export type FindingsTrendsStringField =
   | "finding_provider"
   | "finding_activity_name"
   | (string & {});
-export const FindingsTrendsStringField = /*@__PURE__*/ S.String;
+export const FindingsTrendsStringField = S.String;
 export interface FindingsTrendsStringFilter {
   FieldName?: FindingsTrendsStringField;
   Filter?: StringFilter;
@@ -16075,7 +16072,7 @@ export const GetFindingsTrendsV2Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetFindingsTrendsV2Request",
 }) as any as S.Schema<GetFindingsTrendsV2Request>;
 export type GranularityField = "Daily" | "Weekly" | "Monthly" | (string & {});
-export const GranularityField = /*@__PURE__*/ S.String;
+export const GranularityField = S.String;
 export interface SeverityTrendsCount {
   Unknown?: number;
   Informational?: number;
@@ -16412,7 +16409,7 @@ export type ResourceGroupByField =
   | "ResourceName"
   | "FindingsSummary.FindingType"
   | (string & {});
-export const ResourceGroupByField = /*@__PURE__*/ S.String;
+export const ResourceGroupByField = S.String;
 export type ResourcesStringField =
   | "ResourceGuid"
   | "ResourceId"
@@ -16424,7 +16421,7 @@ export type ResourcesStringField =
   | "FindingsSummary.FindingType"
   | "FindingsSummary.ProductName"
   | (string & {});
-export const ResourcesStringField = /*@__PURE__*/ S.String;
+export const ResourcesStringField = S.String;
 export interface ResourcesStringFilter {
   FieldName?: ResourcesStringField;
   Filter?: StringFilter;
@@ -16445,7 +16442,7 @@ export type ResourcesDateField =
   | "ResourceDetailCaptureTime"
   | "ResourceCreationTime"
   | (string & {});
-export const ResourcesDateField = /*@__PURE__*/ S.String;
+export const ResourcesDateField = S.String;
 export interface ResourcesDateFilter {
   FieldName?: ResourcesDateField;
   Filter?: DateFilter;
@@ -16472,7 +16469,7 @@ export type ResourcesNumberField =
   | "FindingsSummary.Severities.Informational"
   | "FindingsSummary.Severities.Unknown"
   | (string & {});
-export const ResourcesNumberField = /*@__PURE__*/ S.String;
+export const ResourcesNumberField = S.String;
 export interface ResourcesNumberFilter {
   FieldName?: ResourcesNumberField;
   Filter?: NumberFilter;
@@ -16490,7 +16487,7 @@ export const ResourcesNumberFilterList = /*@__PURE__*/ S.Array(
   ResourcesNumberFilter,
 );
 export type ResourcesMapField = "ResourceTags" | (string & {});
-export const ResourcesMapField = /*@__PURE__*/ S.String;
+export const ResourcesMapField = S.String;
 export interface ResourcesMapFilter {
   FieldName?: ResourcesMapField;
   Filter?: MapFilter;
@@ -16598,7 +16595,7 @@ export type ResourcesTrendsStringField =
   | "resource_type"
   | "resource_category"
   | (string & {});
-export const ResourcesTrendsStringField = /*@__PURE__*/ S.String;
+export const ResourcesTrendsStringField = S.String;
 export interface ResourcesTrendsStringFilter {
   FieldName?: ResourcesTrendsStringField;
   Filter?: StringFilter;
@@ -16768,7 +16765,7 @@ export type ResourceCategory =
   | "Network"
   | "Other"
   | (string & {});
-export const ResourceCategory = /*@__PURE__*/ S.String;
+export const ResourceCategory = S.String;
 export interface ResourceSeverityBreakdown {
   Other?: number;
   Fatal?: number;
@@ -16906,9 +16903,9 @@ export type RegionAvailabilityStatus =
   | "AVAILABLE"
   | "UNAVAILABLE"
   | (string & {});
-export const RegionAvailabilityStatus = /*@__PURE__*/ S.String;
+export const RegionAvailabilityStatus = S.String;
 export type SecurityControlProperty = "Parameters" | (string & {});
-export const SecurityControlProperty = /*@__PURE__*/ S.String;
+export const SecurityControlProperty = S.String;
 export type CustomizableProperties = SecurityControlProperty[];
 export const CustomizableProperties = /*@__PURE__*/ S.Array(
   SecurityControlProperty,
@@ -17512,7 +17509,7 @@ export const ListConfigurationPolicyAssociationsResponse =
     identifier: "ListConfigurationPolicyAssociationsResponse",
   }) as any as S.Schema<ListConfigurationPolicyAssociationsResponse>;
 export type ConnectorProviderName = "JIRA_CLOUD" | "SERVICENOW" | (string & {});
-export const ConnectorProviderName = /*@__PURE__*/ S.String;
+export const ConnectorProviderName = S.String;
 export interface ListConnectorsV2Request {
   NextToken?: string;
   MaxResults?: number;
@@ -17769,7 +17766,7 @@ export const ListOrganizationAdminAccountsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListOrganizationAdminAccountsRequest",
 }) as any as S.Schema<ListOrganizationAdminAccountsRequest>;
 export type AdminStatus = "ENABLED" | "DISABLE_IN_PROGRESS" | (string & {});
-export const AdminStatus = /*@__PURE__*/ S.String;
+export const AdminStatus = S.String;
 export interface AdminAccount {
   AccountId?: string;
   Status?: AdminStatus;

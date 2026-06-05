@@ -155,7 +155,7 @@ export type ThirdPartyFirewall =
   | "PALO_ALTO_NETWORKS_CLOUD_NGFW"
   | "FORTIGATE_CLOUD_NATIVE_FIREWALL"
   | (string & {});
-export const ThirdPartyFirewall = /*@__PURE__*/ S.String;
+export const ThirdPartyFirewall = S.String;
 export interface AssociateThirdPartyFirewallRequest {
   ThirdPartyFirewall: ThirdPartyFirewall;
 }
@@ -173,7 +173,7 @@ export type ThirdPartyFirewallAssociationStatus =
   | "OFFBOARD_COMPLETE"
   | "NOT_EXIST"
   | (string & {});
-export const ThirdPartyFirewallAssociationStatus = /*@__PURE__*/ S.String;
+export const ThirdPartyFirewallAssociationStatus = S.String;
 export interface AssociateThirdPartyFirewallResponse {
   ThirdPartyFirewallStatus?: ThirdPartyFirewallAssociationStatus;
 }
@@ -205,7 +205,7 @@ export type FailedItemReason =
   | "NOT_VALID_RESOURCE_TYPE"
   | "NOT_VALID_ACCOUNT_ID"
   | (string & {});
-export const FailedItemReason = /*@__PURE__*/ S.String;
+export const FailedItemReason = S.String;
 export interface FailedItem {
   URI?: string;
   Reason?: FailedItemReason;
@@ -377,7 +377,7 @@ export type AccountRoleStatus =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const AccountRoleStatus = /*@__PURE__*/ S.String;
+export const AccountRoleStatus = S.String;
 export interface GetAdminAccountResponse {
   AdminAccount?: string;
   RoleStatus?: AccountRoleStatus;
@@ -455,7 +455,7 @@ export type SecurityServiceType =
   | "IMPORT_NETWORK_FIREWALL"
   | "NETWORK_ACL_COMMON"
   | (string & {});
-export const SecurityServiceType = /*@__PURE__*/ S.String;
+export const SecurityServiceType = S.String;
 export type SecurityServiceTypeList = SecurityServiceType[];
 export const SecurityServiceTypeList =
   /*@__PURE__*/ S.Array(SecurityServiceType);
@@ -491,7 +491,7 @@ export type OrganizationStatus =
   | "OFFBOARDING"
   | "OFFBOARDING_COMPLETE"
   | (string & {});
-export const OrganizationStatus = /*@__PURE__*/ S.String;
+export const OrganizationStatus = S.String;
 export interface GetAdminScopeResponse {
   AdminScope?: AdminScope;
   Status?: OrganizationStatus;
@@ -605,7 +605,7 @@ export type ViolationReason =
   | "INVALID_NETWORK_ACL_ENTRY"
   | "WEB_ACL_CONFIGURATION_OR_SCOPE_OF_USE"
   | (string & {});
-export const ViolationReason = /*@__PURE__*/ S.String;
+export const ViolationReason = S.String;
 export type ComplianceViolatorMetadata = { [key: string]: string | undefined };
 export const ComplianceViolatorMetadata = /*@__PURE__*/ S.Record(
   S.String,
@@ -635,7 +635,7 @@ export type DependentServiceName =
   | "AWSSHIELD_ADVANCED"
   | "AWSVPC"
   | (string & {});
-export const DependentServiceName = /*@__PURE__*/ S.String;
+export const DependentServiceName = S.String;
 export type IssueInfoMap = { [key in DependentServiceName]?: string };
 export const IssueInfoMap = /*@__PURE__*/ S.Record(
   DependentServiceName,
@@ -705,7 +705,7 @@ export type FirewallDeploymentModel =
   | "CENTRALIZED"
   | "DISTRIBUTED"
   | (string & {});
-export const FirewallDeploymentModel = /*@__PURE__*/ S.String;
+export const FirewallDeploymentModel = S.String;
 export interface NetworkFirewallPolicy {
   FirewallDeploymentModel?: FirewallDeploymentModel;
 }
@@ -741,7 +741,7 @@ export const NetworkAclPortRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkAclPortRange",
 }) as any as S.Schema<NetworkAclPortRange>;
 export type NetworkAclRuleAction = "allow" | "deny" | (string & {});
-export const NetworkAclRuleAction = /*@__PURE__*/ S.String;
+export const NetworkAclRuleAction = S.String;
 export interface NetworkAclEntry {
   IcmpTypeCode?: NetworkAclIcmpTypeCode;
   Protocol: string;
@@ -828,7 +828,7 @@ export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
 export type ResourceTags = ResourceTag[];
 export const ResourceTags = /*@__PURE__*/ S.Array(ResourceTag);
 export type CustomerPolicyScopeIdType = "ACCOUNT" | "ORG_UNIT" | (string & {});
-export const CustomerPolicyScopeIdType = /*@__PURE__*/ S.String;
+export const CustomerPolicyScopeIdType = S.String;
 export type CustomerPolicyScopeIdList = string[];
 export const CustomerPolicyScopeIdList = /*@__PURE__*/ S.Array(S.String);
 export type CustomerPolicyScopeMap = {
@@ -844,9 +844,9 @@ export type CustomerPolicyStatus =
   | "ACTIVE"
   | "OUT_OF_ADMIN_SCOPE"
   | (string & {});
-export const CustomerPolicyStatus = /*@__PURE__*/ S.String;
+export const CustomerPolicyStatus = S.String;
 export type ResourceTagLogicalOperator = "AND" | "OR" | (string & {});
-export const ResourceTagLogicalOperator = /*@__PURE__*/ S.String;
+export const ResourceTagLogicalOperator = S.String;
 export interface Policy {
   PolicyId?: string;
   PolicyName: string;
@@ -995,7 +995,7 @@ export const GetResourceSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResourceSetRequest",
 }) as any as S.Schema<GetResourceSetRequest>;
 export type ResourceSetStatus = "ACTIVE" | "OUT_OF_ADMIN_SCOPE" | (string & {});
-export const ResourceSetStatus = /*@__PURE__*/ S.String;
+export const ResourceSetStatus = S.String;
 export interface ResourceSet {
   Id?: string;
   Name: string;
@@ -1041,7 +1041,7 @@ export type MarketplaceSubscriptionOnboardingStatus =
   | "NOT_COMPLETE"
   | "COMPLETE"
   | (string & {});
-export const MarketplaceSubscriptionOnboardingStatus = /*@__PURE__*/ S.String;
+export const MarketplaceSubscriptionOnboardingStatus = S.String;
 export interface GetThirdPartyFirewallAssociationStatusResponse {
   ThirdPartyFirewallStatus?: ThirdPartyFirewallAssociationStatus;
   MarketplaceOnboardingStatus?: MarketplaceSubscriptionOnboardingStatus;
@@ -1090,7 +1090,7 @@ export const PartialMatch = /*@__PURE__*/ S.suspend(() =>
 export type PartialMatches = PartialMatch[];
 export const PartialMatches = /*@__PURE__*/ S.Array(PartialMatch);
 export type RemediationActionType = "REMOVE" | "MODIFY" | (string & {});
-export const RemediationActionType = /*@__PURE__*/ S.String;
+export const RemediationActionType = S.String;
 export interface SecurityGroupRuleDescription {
   IPV4Range?: string;
   IPV6Range?: string;
@@ -1254,7 +1254,7 @@ export const StatelessRuleGroupList = /*@__PURE__*/ S.Array(StatelessRuleGroup);
 export type NetworkFirewallActionList = string[];
 export const NetworkFirewallActionList = /*@__PURE__*/ S.Array(S.String);
 export type NetworkFirewallOverrideAction = "DROP_TO_ALERT" | (string & {});
-export const NetworkFirewallOverrideAction = /*@__PURE__*/ S.String;
+export const NetworkFirewallOverrideAction = S.String;
 export interface NetworkFirewallStatefulRuleGroupOverride {
   Action?: NetworkFirewallOverrideAction;
 }
@@ -1282,14 +1282,14 @@ export const StatefulRuleGroup = /*@__PURE__*/ S.suspend(() =>
 export type StatefulRuleGroupList = StatefulRuleGroup[];
 export const StatefulRuleGroupList = /*@__PURE__*/ S.Array(StatefulRuleGroup);
 export type RuleOrder = "STRICT_ORDER" | "DEFAULT_ACTION_ORDER" | (string & {});
-export const RuleOrder = /*@__PURE__*/ S.String;
+export const RuleOrder = S.String;
 export type StreamExceptionPolicy =
   | "DROP"
   | "CONTINUE"
   | "REJECT"
   | "FMS_IGNORE"
   | (string & {});
-export const StreamExceptionPolicy = /*@__PURE__*/ S.String;
+export const StreamExceptionPolicy = S.String;
 export interface StatefulEngineOptions {
   RuleOrder?: RuleOrder;
   StreamExceptionPolicy?: StreamExceptionPolicy;
@@ -1340,7 +1340,7 @@ export const NetworkFirewallPolicyModifiedViolation = /*@__PURE__*/ S.suspend(
   identifier: "NetworkFirewallPolicyModifiedViolation",
 }) as any as S.Schema<NetworkFirewallPolicyModifiedViolation>;
 export type DestinationType = "IPV4" | "IPV6" | "PREFIX_LIST" | (string & {});
-export const DestinationType = /*@__PURE__*/ S.String;
+export const DestinationType = S.String;
 export type TargetType =
   | "GATEWAY"
   | "CARRIER_GATEWAY"
@@ -1353,7 +1353,7 @@ export type TargetType =
   | "EGRESS_ONLY_INTERNET_GATEWAY"
   | "TRANSIT_GATEWAY"
   | (string & {});
-export const TargetType = /*@__PURE__*/ S.String;
+export const TargetType = S.String;
 export interface Route {
   DestinationType?: DestinationType;
   TargetType?: TargetType;
@@ -1712,7 +1712,7 @@ export type EntryType =
   | "FMS_MANAGED_LAST_ENTRY"
   | "CUSTOM_ENTRY"
   | (string & {});
-export const EntryType = /*@__PURE__*/ S.String;
+export const EntryType = S.String;
 export interface EntryDescription {
   EntryDetail?: NetworkAclEntry;
   EntryRuleNumber?: number;
@@ -1734,7 +1734,7 @@ export type EntryViolationReason =
   | "INCORRECT_ENTRY_ORDER"
   | "ENTRY_CONFLICT"
   | (string & {});
-export const EntryViolationReason = /*@__PURE__*/ S.String;
+export const EntryViolationReason = S.String;
 export type EntryViolationReasons = EntryViolationReason[];
 export const EntryViolationReasons =
   /*@__PURE__*/ S.Array(EntryViolationReason);
@@ -2373,7 +2373,7 @@ export type PolicyComplianceStatusType =
   | "COMPLIANT"
   | "NON_COMPLIANT"
   | (string & {});
-export const PolicyComplianceStatusType = /*@__PURE__*/ S.String;
+export const PolicyComplianceStatusType = S.String;
 export interface EvaluationResult {
   ComplianceStatus?: PolicyComplianceStatusType;
   ViolatorCount?: number;

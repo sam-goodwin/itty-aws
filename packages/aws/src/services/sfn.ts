@@ -181,7 +181,7 @@ export type EncryptionType =
   | "AWS_OWNED_KEY"
   | "CUSTOMER_MANAGED_KMS_KEY"
   | (string & {});
-export const EncryptionType = /*@__PURE__*/ S.String;
+export const EncryptionType = S.String;
 export interface EncryptionConfiguration {
   kmsKeyId?: string;
   kmsDataKeyReusePeriodSeconds?: number;
@@ -233,9 +233,9 @@ export const CreateActivityOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateActivityOutput",
 }) as any as S.Schema<CreateActivityOutput>;
 export type StateMachineType = "STANDARD" | "EXPRESS" | (string & {});
-export const StateMachineType = /*@__PURE__*/ S.String;
+export const StateMachineType = S.String;
 export type LogLevel = "ALL" | "ERROR" | "FATAL" | "OFF" | (string & {});
-export const LogLevel = /*@__PURE__*/ S.String;
+export const LogLevel = S.String;
 export interface CloudWatchLogsLogGroup {
   logGroupArn?: string;
 }
@@ -332,7 +332,7 @@ export type ValidationExceptionReason =
   | "CANNOT_UPDATE_COMPLETED_MAP_RUN"
   | "INVALID_ROUTING_CONFIGURATION"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface RoutingConfigurationListItem {
   stateMachineVersionArn: string;
   weight: number;
@@ -513,7 +513,7 @@ export const DescribeActivityOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeActivityOutput",
 }) as any as S.Schema<DescribeActivityOutput>;
 export type IncludedData = "ALL_DATA" | "METADATA_ONLY" | (string & {});
-export const IncludedData = /*@__PURE__*/ S.String;
+export const IncludedData = S.String;
 export interface DescribeExecutionInput {
   executionArn: string;
   includedData?: IncludedData;
@@ -544,7 +544,7 @@ export type ExecutionStatus =
   | "ABORTED"
   | "PENDING_REDRIVE"
   | (string & {});
-export const ExecutionStatus = /*@__PURE__*/ S.String;
+export const ExecutionStatus = S.String;
 export interface CloudWatchEventsExecutionDataDetails {
   included?: boolean;
 }
@@ -558,7 +558,7 @@ export type ExecutionRedriveStatus =
   | "NOT_REDRIVABLE"
   | "REDRIVABLE_BY_MAP_RUN"
   | (string & {});
-export const ExecutionRedriveStatus = /*@__PURE__*/ S.String;
+export const ExecutionRedriveStatus = S.String;
 export interface DescribeExecutionOutput {
   executionArn: string;
   stateMachineArn: string;
@@ -614,7 +614,7 @@ export type KmsKeyState =
   | "UNAVAILABLE"
   | "CREATING"
   | (string & {});
-export const KmsKeyState = /*@__PURE__*/ S.String;
+export const KmsKeyState = S.String;
 export interface DescribeMapRunInput {
   mapRunArn: string;
 }
@@ -639,7 +639,7 @@ export type MapRunStatus =
   | "FAILED"
   | "ABORTED"
   | (string & {});
-export const MapRunStatus = /*@__PURE__*/ S.String;
+export const MapRunStatus = S.String;
 export interface MapRunItemCounts {
   pending: number;
   running: number;
@@ -751,7 +751,7 @@ export const DescribeStateMachineInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeStateMachineInput",
 }) as any as S.Schema<DescribeStateMachineInput>;
 export type StateMachineStatus = "ACTIVE" | "DELETING" | (string & {});
-export const StateMachineStatus = /*@__PURE__*/ S.String;
+export const StateMachineStatus = S.String;
 export type VariableNameList = string | redacted.Redacted<string>[];
 export const VariableNameList = /*@__PURE__*/ S.Array(SensitiveString);
 export type VariableReferences = {
@@ -1018,7 +1018,7 @@ export type HistoryEventType =
   | "MapRunRedriven"
   | "EvaluationFailed"
   | (string & {});
-export const HistoryEventType = /*@__PURE__*/ S.String;
+export const HistoryEventType = S.String;
 export interface ActivityFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
@@ -1672,7 +1672,7 @@ export type ExecutionRedriveFilter =
   | "REDRIVEN"
   | "NOT_REDRIVEN"
   | (string & {});
-export const ExecutionRedriveFilter = /*@__PURE__*/ S.String;
+export const ExecutionRedriveFilter = S.String;
 export interface ListExecutionsInput {
   stateMachineArn?: string;
   statusFilter?: ExecutionStatus;
@@ -2199,7 +2199,7 @@ export type SyncExecutionStatus =
   | "FAILED"
   | "TIMED_OUT"
   | (string & {});
-export const SyncExecutionStatus = /*@__PURE__*/ S.String;
+export const SyncExecutionStatus = S.String;
 export interface BillingDetails {
   billedMemoryUsedInMB?: number;
   billedDurationInMilliseconds?: number;
@@ -2306,7 +2306,7 @@ export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type InspectionLevel = "INFO" | "DEBUG" | "TRACE" | (string & {});
-export const InspectionLevel = /*@__PURE__*/ S.String;
+export const InspectionLevel = S.String;
 export interface MockErrorOutput {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
@@ -2324,7 +2324,7 @@ export type MockResponseValidationMode =
   | "PRESENT"
   | "NONE"
   | (string & {});
-export const MockResponseValidationMode = /*@__PURE__*/ S.String;
+export const MockResponseValidationMode = S.String;
 export interface MockInput {
   result?: string | redacted.Redacted<string>;
   errorOutput?: MockErrorOutput;
@@ -2487,7 +2487,7 @@ export type TestExecutionStatus =
   | "RETRIABLE"
   | "CAUGHT_ERROR"
   | (string & {});
-export const TestExecutionStatus = /*@__PURE__*/ S.String;
+export const TestExecutionStatus = S.String;
 export interface TestStateOutput {
   output?: string | redacted.Redacted<string>;
   error?: string | redacted.Redacted<string>;
@@ -2653,7 +2653,7 @@ export type ValidateStateMachineDefinitionSeverity =
   | "ERROR"
   | "WARNING"
   | (string & {});
-export const ValidateStateMachineDefinitionSeverity = /*@__PURE__*/ S.String;
+export const ValidateStateMachineDefinitionSeverity = S.String;
 export interface ValidateStateMachineDefinitionInput {
   definition: string | redacted.Redacted<string>;
   type?: StateMachineType;
@@ -2684,7 +2684,7 @@ export type ValidateStateMachineDefinitionResultCode =
   | "OK"
   | "FAIL"
   | (string & {});
-export const ValidateStateMachineDefinitionResultCode = /*@__PURE__*/ S.String;
+export const ValidateStateMachineDefinitionResultCode = S.String;
 export interface ValidateStateMachineDefinitionDiagnostic {
   severity: ValidateStateMachineDefinitionSeverity;
   code: string | redacted.Redacted<string>;

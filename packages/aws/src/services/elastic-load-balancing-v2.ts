@@ -289,7 +289,7 @@ export const AddTagsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({ identifier: "AddTagsOutput" }) as any as S.Schema<AddTagsOutput>;
 export type RevocationType = "CRL" | (string & {});
-export const RevocationType = /*@__PURE__*/ S.String;
+export const RevocationType = S.String;
 export interface RevocationContent {
   S3Bucket?: string;
   S3Key?: string;
@@ -370,7 +370,7 @@ export type ProtocolEnum =
   | "QUIC"
   | "TCP_QUIC"
   | (string & {});
-export const ProtocolEnum = /*@__PURE__*/ S.String;
+export const ProtocolEnum = S.String;
 export type ActionTypeEnum =
   | "forward"
   | "authenticate-oidc"
@@ -379,7 +379,7 @@ export type ActionTypeEnum =
   | "fixed-response"
   | "jwt-validation"
   | (string & {});
-export const ActionTypeEnum = /*@__PURE__*/ S.String;
+export const ActionTypeEnum = S.String;
 export type AuthenticateOidcActionAuthenticationRequestExtraParams = {
   [key: string]: string | undefined;
 };
@@ -390,8 +390,7 @@ export type AuthenticateOidcActionConditionalBehaviorEnum =
   | "allow"
   | "authenticate"
   | (string & {});
-export const AuthenticateOidcActionConditionalBehaviorEnum =
-  /*@__PURE__*/ S.String;
+export const AuthenticateOidcActionConditionalBehaviorEnum = S.String;
 export interface AuthenticateOidcActionConfig {
   Issuer?: string;
   AuthorizationEndpoint?: string;
@@ -438,8 +437,7 @@ export type AuthenticateCognitoActionConditionalBehaviorEnum =
   | "allow"
   | "authenticate"
   | (string & {});
-export const AuthenticateCognitoActionConditionalBehaviorEnum =
-  /*@__PURE__*/ S.String;
+export const AuthenticateCognitoActionConditionalBehaviorEnum = S.String;
 export interface AuthenticateCognitoActionConfig {
   UserPoolArn?: string;
   UserPoolClientId?: string;
@@ -472,7 +470,7 @@ export type RedirectActionStatusCodeEnum =
   | "HTTP_301"
   | "HTTP_302"
   | (string & {});
-export const RedirectActionStatusCodeEnum = /*@__PURE__*/ S.String;
+export const RedirectActionStatusCodeEnum = S.String;
 export interface RedirectActionConfig {
   Protocol?: string;
   Port?: string;
@@ -550,8 +548,7 @@ export type JwtValidationActionAdditionalClaimFormatEnum =
   | "string-array"
   | "space-separated-values"
   | (string & {});
-export const JwtValidationActionAdditionalClaimFormatEnum =
-  /*@__PURE__*/ S.String;
+export const JwtValidationActionAdditionalClaimFormatEnum = S.String;
 export type JwtValidationActionAdditionalClaimValues = string[];
 export const JwtValidationActionAdditionalClaimValues = /*@__PURE__*/ S.Array(
   S.String,
@@ -621,9 +618,9 @@ export type TrustStoreAssociationStatusEnum =
   | "active"
   | "removed"
   | (string & {});
-export const TrustStoreAssociationStatusEnum = /*@__PURE__*/ S.String;
+export const TrustStoreAssociationStatusEnum = S.String;
 export type AdvertiseTrustStoreCaNamesEnum = "on" | "off" | (string & {});
-export const AdvertiseTrustStoreCaNamesEnum = /*@__PURE__*/ S.String;
+export const AdvertiseTrustStoreCaNamesEnum = S.String;
 export interface MutualAuthenticationAttributes {
   Mode?: string;
   TrustStoreArn?: string;
@@ -769,21 +766,21 @@ export type LoadBalancerSchemeEnum =
   | "internet-facing"
   | "internal"
   | (string & {});
-export const LoadBalancerSchemeEnum = /*@__PURE__*/ S.String;
+export const LoadBalancerSchemeEnum = S.String;
 export type LoadBalancerTypeEnum =
   | "application"
   | "network"
   | "gateway"
   | (string & {});
-export const LoadBalancerTypeEnum = /*@__PURE__*/ S.String;
+export const LoadBalancerTypeEnum = S.String;
 export type IpAddressType =
   | "ipv4"
   | "dualstack"
   | "dualstack-without-public-ipv4"
   | (string & {});
-export const IpAddressType = /*@__PURE__*/ S.String;
+export const IpAddressType = S.String;
 export type EnablePrefixForIpv6SourceNatEnum = "on" | "off" | (string & {});
-export const EnablePrefixForIpv6SourceNatEnum = /*@__PURE__*/ S.String;
+export const EnablePrefixForIpv6SourceNatEnum = S.String;
 export interface IpamPools {
   Ipv4IpamPoolId?: string;
 }
@@ -836,7 +833,7 @@ export type LoadBalancerStateEnum =
   | "active_impaired"
   | "failed"
   | (string & {});
-export const LoadBalancerStateEnum = /*@__PURE__*/ S.String;
+export const LoadBalancerStateEnum = S.String;
 export interface LoadBalancerState {
   Code?: LoadBalancerStateEnum;
   Reason?: string;
@@ -1046,7 +1043,7 @@ export type TransformTypeEnum =
   | "host-header-rewrite"
   | "url-rewrite"
   | (string & {});
-export const TransformTypeEnum = /*@__PURE__*/ S.String;
+export const TransformTypeEnum = S.String;
 export interface RewriteConfig {
   Regex?: string;
   Replace?: string;
@@ -1203,9 +1200,9 @@ export type TargetTypeEnum =
   | "lambda"
   | "alb"
   | (string & {});
-export const TargetTypeEnum = /*@__PURE__*/ S.String;
+export const TargetTypeEnum = S.String;
 export type TargetGroupIpAddressTypeEnum = "ipv4" | "ipv6" | (string & {});
-export const TargetGroupIpAddressTypeEnum = /*@__PURE__*/ S.String;
+export const TargetGroupIpAddressTypeEnum = S.String;
 export interface CreateTargetGroupInput {
   Name?: string;
   Protocol?: ProtocolEnum;
@@ -1345,7 +1342,7 @@ export const CreateTrustStoreInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateTrustStoreInput",
 }) as any as S.Schema<CreateTrustStoreInput>;
 export type TrustStoreStatus = "ACTIVE" | "CREATING" | (string & {});
-export const TrustStoreStatus = /*@__PURE__*/ S.String;
+export const TrustStoreStatus = S.String;
 export interface TrustStore {
   Name?: string;
   TrustStoreArn?: string;
@@ -1642,7 +1639,7 @@ export type CapacityReservationStateEnum =
   | "rebalancing"
   | "failed"
   | (string & {});
-export const CapacityReservationStateEnum = /*@__PURE__*/ S.String;
+export const CapacityReservationStateEnum = S.String;
 export interface CapacityReservationStatus {
   Code?: CapacityReservationStateEnum;
   Reason?: string;
@@ -2187,7 +2184,7 @@ export type DescribeTargetHealthInputIncludeEnum =
   | "AnomalyDetection"
   | "All"
   | (string & {});
-export const DescribeTargetHealthInputIncludeEnum = /*@__PURE__*/ S.String;
+export const DescribeTargetHealthInputIncludeEnum = S.String;
 export type ListOfDescribeTargetHealthIncludeOptions =
   DescribeTargetHealthInputIncludeEnum[];
 export const ListOfDescribeTargetHealthIncludeOptions = /*@__PURE__*/ S.Array(
@@ -2226,7 +2223,7 @@ export type TargetHealthStateEnum =
   | "draining"
   | "unavailable"
   | (string & {});
-export const TargetHealthStateEnum = /*@__PURE__*/ S.String;
+export const TargetHealthStateEnum = S.String;
 export type TargetHealthReasonEnum =
   | "Elb.RegistrationInProgress"
   | "Elb.InitialHealthChecking"
@@ -2241,7 +2238,7 @@ export type TargetHealthReasonEnum =
   | "Target.HealthCheckDisabled"
   | "Elb.InternalError"
   | (string & {});
-export const TargetHealthReasonEnum = /*@__PURE__*/ S.String;
+export const TargetHealthReasonEnum = S.String;
 export interface TargetHealth {
   State?: TargetHealthStateEnum;
   Reason?: TargetHealthReasonEnum;
@@ -2255,9 +2252,9 @@ export const TargetHealth = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TargetHealth" }) as any as S.Schema<TargetHealth>;
 export type AnomalyResultEnum = "anomalous" | "normal" | (string & {});
-export const AnomalyResultEnum = /*@__PURE__*/ S.String;
+export const AnomalyResultEnum = S.String;
 export type MitigationInEffectEnum = "yes" | "no" | (string & {});
-export const MitigationInEffectEnum = /*@__PURE__*/ S.String;
+export const MitigationInEffectEnum = S.String;
 export interface AnomalyDetection {
   Result?: AnomalyResultEnum;
   MitigationInEffect?: MitigationInEffectEnum;
@@ -2276,14 +2273,14 @@ export type TargetAdministrativeOverrideStateEnum =
   | "zonal_shift_active"
   | "zonal_shift_delegated_to_dns"
   | (string & {});
-export const TargetAdministrativeOverrideStateEnum = /*@__PURE__*/ S.String;
+export const TargetAdministrativeOverrideStateEnum = S.String;
 export type TargetAdministrativeOverrideReasonEnum =
   | "AdministrativeOverride.Unknown"
   | "AdministrativeOverride.NoOverride"
   | "AdministrativeOverride.ZonalShiftActive"
   | "AdministrativeOverride.ZonalShiftDelegatedToDns"
   | (string & {});
-export const TargetAdministrativeOverrideReasonEnum = /*@__PURE__*/ S.String;
+export const TargetAdministrativeOverrideReasonEnum = S.String;
 export interface AdministrativeOverride {
   State?: TargetAdministrativeOverrideStateEnum;
   Reason?: TargetAdministrativeOverrideReasonEnum;
@@ -2610,7 +2607,7 @@ export const ModifyCapacityReservationOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModifyCapacityReservationOutput",
 }) as any as S.Schema<ModifyCapacityReservationOutput>;
 export type RemoveIpamPoolEnum = "ipv4" | (string & {});
-export const RemoveIpamPoolEnum = /*@__PURE__*/ S.String;
+export const RemoveIpamPoolEnum = S.String;
 export type RemoveIpamPools = RemoveIpamPoolEnum[];
 export const RemoveIpamPools = /*@__PURE__*/ S.Array(RemoveIpamPoolEnum);
 export interface ModifyIpPoolsInput {
@@ -3202,7 +3199,7 @@ export type EnforceSecurityGroupInboundRulesOnPrivateLinkTrafficEnum =
   | "off"
   | (string & {});
 export const EnforceSecurityGroupInboundRulesOnPrivateLinkTrafficEnum =
-  /*@__PURE__*/ S.String;
+  S.String;
 export interface SetSecurityGroupsInput {
   LoadBalancerArn?: string;
   SecurityGroups?: string[];

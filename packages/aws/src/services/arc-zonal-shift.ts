@@ -102,7 +102,7 @@ export type ExpiresIn = string;
 
 //# Schemas
 export type AutoshiftExecutionStatus = "ACTIVE" | "COMPLETED" | (string & {});
-export const AutoshiftExecutionStatus = /*@__PURE__*/ S.String;
+export const AutoshiftExecutionStatus = S.String;
 export interface ListAutoshiftsRequest {
   nextToken?: string;
   status?: AutoshiftExecutionStatus;
@@ -173,7 +173,7 @@ export type ValidationExceptionReason =
   | "InvalidPracticeAllowedWindow"
   | "InvalidPracticeWindows"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface GetAutoshiftObserverNotificationStatusRequest {}
 export const GetAutoshiftObserverNotificationStatusRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -194,7 +194,7 @@ export type AutoshiftObserverNotificationStatus =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
-export const AutoshiftObserverNotificationStatus = /*@__PURE__*/ S.String;
+export const AutoshiftObserverNotificationStatus = S.String;
 export interface GetAutoshiftObserverNotificationStatusResponse {
   status: AutoshiftObserverNotificationStatus;
 }
@@ -256,14 +256,14 @@ export const AppliedWeights = /*@__PURE__*/ S.Record(
   S.Number.pipe(S.optional),
 );
 export type AppliedStatus = "APPLIED" | "NOT_APPLIED" | (string & {});
-export const AppliedStatus = /*@__PURE__*/ S.String;
+export const AppliedStatus = S.String;
 export type ShiftType =
   | "ZONAL_SHIFT"
   | "PRACTICE_RUN"
   | "FIS_EXPERIMENT"
   | "ZONAL_AUTOSHIFT"
   | (string & {});
-export const ShiftType = /*@__PURE__*/ S.String;
+export const ShiftType = S.String;
 export type PracticeRunOutcome =
   | "FAILED"
   | "INTERRUPTED"
@@ -271,7 +271,7 @@ export type PracticeRunOutcome =
   | "SUCCEEDED"
   | "CAPACITY_CHECK_FAILED"
   | (string & {});
-export const PracticeRunOutcome = /*@__PURE__*/ S.String;
+export const PracticeRunOutcome = S.String;
 export interface ZonalShiftInResource {
   appliedStatus: AppliedStatus;
   zonalShiftId: string;
@@ -302,7 +302,7 @@ export type ZonalShiftsInResource = ZonalShiftInResource[];
 export const ZonalShiftsInResource =
   /*@__PURE__*/ S.Array(ZonalShiftInResource);
 export type AutoshiftAppliedStatus = "APPLIED" | "NOT_APPLIED" | (string & {});
-export const AutoshiftAppliedStatus = /*@__PURE__*/ S.String;
+export const AutoshiftAppliedStatus = S.String;
 export interface AutoshiftInResource {
   appliedStatus: AutoshiftAppliedStatus;
   awayFrom: string;
@@ -320,7 +320,7 @@ export const AutoshiftInResource = /*@__PURE__*/ S.suspend(() =>
 export type AutoshiftsInResource = AutoshiftInResource[];
 export const AutoshiftsInResource = /*@__PURE__*/ S.Array(AutoshiftInResource);
 export type ControlConditionType = "CLOUDWATCH" | (string & {});
-export const ControlConditionType = /*@__PURE__*/ S.String;
+export const ControlConditionType = S.String;
 export interface ControlCondition {
   type: ControlConditionType;
   alarmIdentifier: string;
@@ -359,7 +359,7 @@ export const PracticeRunConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "PracticeRunConfiguration",
 }) as any as S.Schema<PracticeRunConfiguration>;
 export type ZonalAutoshiftStatus = "ENABLED" | "DISABLED" | (string & {});
-export const ZonalAutoshiftStatus = /*@__PURE__*/ S.String;
+export const ZonalAutoshiftStatus = S.String;
 export interface GetManagedResourceResponse {
   arn?: string;
   name?: string;
@@ -497,7 +497,7 @@ export type ConflictExceptionReason =
   | "PracticeInBlockedWindows"
   | "PracticeOutsideAllowedWindows"
   | (string & {});
-export const ConflictExceptionReason = /*@__PURE__*/ S.String;
+export const ConflictExceptionReason = S.String;
 export interface UpdatePracticeRunConfigurationRequest {
   resourceIdentifier: string;
   blockedWindows?: string[];
@@ -652,7 +652,7 @@ export type ZonalShiftStatus =
   | "EXPIRED"
   | "CANCELED"
   | (string & {});
-export const ZonalShiftStatus = /*@__PURE__*/ S.String;
+export const ZonalShiftStatus = S.String;
 export interface CancelPracticeRunResponse {
   zonalShiftId: string;
   resourceIdentifier: string;

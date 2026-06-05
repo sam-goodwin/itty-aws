@@ -257,9 +257,9 @@ export const CreatePublicDnsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePublicDnsNamespaceResponse",
 }) as any as S.Schema<CreatePublicDnsNamespaceResponse>;
 export type RoutingPolicy = "MULTIVALUE" | "WEIGHTED" | (string & {});
-export const RoutingPolicy = /*@__PURE__*/ S.String;
+export const RoutingPolicy = S.String;
 export type RecordType = "SRV" | "A" | "AAAA" | "CNAME" | (string & {});
-export const RecordType = /*@__PURE__*/ S.String;
+export const RecordType = S.String;
 export interface DnsRecord {
   Type: RecordType;
   TTL: number;
@@ -282,7 +282,7 @@ export const DnsConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsConfig" }) as any as S.Schema<DnsConfig>;
 export type HealthCheckType = "HTTP" | "HTTPS" | "TCP" | (string & {});
-export const HealthCheckType = /*@__PURE__*/ S.String;
+export const HealthCheckType = S.String;
 export interface HealthCheckConfig {
   Type: HealthCheckType;
   ResourcePath?: string;
@@ -306,7 +306,7 @@ export const HealthCheckCustomConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthCheckCustomConfig",
 }) as any as S.Schema<HealthCheckCustomConfig>;
 export type ServiceTypeOption = "HTTP" | (string & {});
-export const ServiceTypeOption = /*@__PURE__*/ S.String;
+export const ServiceTypeOption = S.String;
 export interface CreateServiceRequest {
   Name: string;
   NamespaceId?: string;
@@ -336,7 +336,7 @@ export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateServiceRequest",
 }) as any as S.Schema<CreateServiceRequest>;
 export type ServiceType = "HTTP" | "DNS_HTTP" | "DNS" | (string & {});
-export const ServiceType = /*@__PURE__*/ S.String;
+export const ServiceType = S.String;
 export interface Service {
   Id?: string;
   Arn?: string;
@@ -462,7 +462,7 @@ export type HealthStatusFilter =
   | "ALL"
   | "HEALTHY_OR_ELSE_ALL"
   | (string & {});
-export const HealthStatusFilter = /*@__PURE__*/ S.String;
+export const HealthStatusFilter = S.String;
 export interface DiscoverInstancesRequest {
   NamespaceName: string;
   ServiceName: string;
@@ -488,7 +488,7 @@ export const DiscoverInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiscoverInstancesRequest",
 }) as any as S.Schema<DiscoverInstancesRequest>;
 export type HealthStatus = "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
-export const HealthStatus = /*@__PURE__*/ S.String;
+export const HealthStatus = S.String;
 export interface HttpInstanceSummary {
   InstanceId?: string;
   NamespaceName?: string;
@@ -639,7 +639,7 @@ export type NamespaceType =
   | "DNS_PRIVATE"
   | "HTTP"
   | (string & {});
-export const NamespaceType = /*@__PURE__*/ S.String;
+export const NamespaceType = S.String;
 export interface DnsProperties {
   HostedZoneId?: string;
   SOA?: SOA;
@@ -718,20 +718,20 @@ export type OperationType =
   | "REGISTER_INSTANCE"
   | "DEREGISTER_INSTANCE"
   | (string & {});
-export const OperationType = /*@__PURE__*/ S.String;
+export const OperationType = S.String;
 export type OperationStatus =
   | "SUBMITTED"
   | "PENDING"
   | "SUCCESS"
   | "FAIL"
   | (string & {});
-export const OperationStatus = /*@__PURE__*/ S.String;
+export const OperationStatus = S.String;
 export type OperationTargetType =
   | "NAMESPACE"
   | "SERVICE"
   | "INSTANCE"
   | (string & {});
-export const OperationTargetType = /*@__PURE__*/ S.String;
+export const OperationTargetType = S.String;
 export type OperationTargetsMap = { [key in OperationTargetType]?: string };
 export const OperationTargetsMap = /*@__PURE__*/ S.Record(
   OperationTargetType,
@@ -880,7 +880,7 @@ export type NamespaceFilterName =
   | "HTTP_NAME"
   | "RESOURCE_OWNER"
   | (string & {});
-export const NamespaceFilterName = /*@__PURE__*/ S.String;
+export const NamespaceFilterName = S.String;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -891,7 +891,7 @@ export type FilterCondition =
   | "BETWEEN"
   | "BEGINS_WITH"
   | (string & {});
-export const FilterCondition = /*@__PURE__*/ S.String;
+export const FilterCondition = S.String;
 export interface NamespaceFilter {
   Name: NamespaceFilterName;
   Values: string[];
@@ -975,7 +975,7 @@ export type OperationFilterName =
   | "TYPE"
   | "UPDATE_DATE"
   | (string & {});
-export const OperationFilterName = /*@__PURE__*/ S.String;
+export const OperationFilterName = S.String;
 export interface OperationFilter {
   Name: OperationFilterName;
   Values: string[];
@@ -1043,7 +1043,7 @@ export type ServiceFilterName =
   | "NAMESPACE_ID"
   | "RESOURCE_OWNER"
   | (string & {});
-export const ServiceFilterName = /*@__PURE__*/ S.String;
+export const ServiceFilterName = S.String;
 export interface ServiceFilter {
   Name: ServiceFilterName;
   Values: string[];
@@ -1235,7 +1235,7 @@ export const UpdateHttpNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateHttpNamespaceResponse",
 }) as any as S.Schema<UpdateHttpNamespaceResponse>;
 export type CustomHealthStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
-export const CustomHealthStatus = /*@__PURE__*/ S.String;
+export const CustomHealthStatus = S.String;
 export interface UpdateInstanceCustomHealthStatusRequest {
   ServiceId: string;
   InstanceId: string;

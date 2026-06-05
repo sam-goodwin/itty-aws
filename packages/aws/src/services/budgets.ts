@@ -264,7 +264,7 @@ export type TimeUnit =
   | "ANNUALLY"
   | "CUSTOM"
   | (string & {});
-export const TimeUnit = /*@__PURE__*/ S.String;
+export const TimeUnit = S.String;
 export interface TimePeriod {
   Start?: Date;
   End?: Date;
@@ -292,9 +292,9 @@ export type BudgetType =
   | "SAVINGS_PLANS_UTILIZATION"
   | "SAVINGS_PLANS_COVERAGE"
   | (string & {});
-export const BudgetType = /*@__PURE__*/ S.String;
+export const BudgetType = S.String;
 export type AutoAdjustType = "HISTORICAL" | "FORECAST" | (string & {});
-export const AutoAdjustType = /*@__PURE__*/ S.String;
+export const AutoAdjustType = S.String;
 export interface HistoricalOptions {
   BudgetAdjustmentPeriod: number;
   LookBackAvailablePeriods?: number;
@@ -362,7 +362,7 @@ export type Dimension =
   | "TAG_KEY"
   | "COST_CATEGORY_NAME"
   | (string & {});
-export const Dimension = /*@__PURE__*/ S.String;
+export const Dimension = S.String;
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export type MatchOption =
@@ -375,7 +375,7 @@ export type MatchOption =
   | "CASE_SENSITIVE"
   | "CASE_INSENSITIVE"
   | (string & {});
-export const MatchOption = /*@__PURE__*/ S.String;
+export const MatchOption = S.String;
 export type MatchOptions = MatchOption[];
 export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface ExpressionDimensionValues {
@@ -454,18 +454,18 @@ export type Metric =
   | "NormalizedUsageAmount"
   | "Hours"
   | (string & {});
-export const Metric = /*@__PURE__*/ S.String;
+export const Metric = S.String;
 export type Metrics = Metric[];
 export const Metrics = /*@__PURE__*/ S.Array(Metric);
 export type HealthStatusValue = "HEALTHY" | "UNHEALTHY" | (string & {});
-export const HealthStatusValue = /*@__PURE__*/ S.String;
+export const HealthStatusValue = S.String;
 export type HealthStatusReason =
   | "BILLING_VIEW_NO_ACCESS"
   | "BILLING_VIEW_UNHEALTHY"
   | "FILTER_INVALID"
   | "MULTI_YEAR_HISTORICAL_DATA_DISABLED"
   | (string & {});
-export const HealthStatusReason = /*@__PURE__*/ S.String;
+export const HealthStatusReason = S.String;
 export interface HealthStatus {
   Status?: HealthStatusValue;
   StatusReason?: HealthStatusReason;
@@ -519,17 +519,17 @@ export const Budget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Budget" }) as any as S.Schema<Budget>;
 export type NotificationType = "ACTUAL" | "FORECASTED" | (string & {});
-export const NotificationType = /*@__PURE__*/ S.String;
+export const NotificationType = S.String;
 export type ComparisonOperator =
   | "GREATER_THAN"
   | "LESS_THAN"
   | "EQUAL_TO"
   | (string & {});
-export const ComparisonOperator = /*@__PURE__*/ S.String;
+export const ComparisonOperator = S.String;
 export type ThresholdType = "PERCENTAGE" | "ABSOLUTE_VALUE" | (string & {});
-export const ThresholdType = /*@__PURE__*/ S.String;
+export const ThresholdType = S.String;
 export type NotificationState = "OK" | "ALARM" | (string & {});
-export const NotificationState = /*@__PURE__*/ S.String;
+export const NotificationState = S.String;
 export interface Notification {
   NotificationType: NotificationType;
   ComparisonOperator: ComparisonOperator;
@@ -547,7 +547,7 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 export type SubscriptionType = "SNS" | "EMAIL" | (string & {});
-export const SubscriptionType = /*@__PURE__*/ S.String;
+export const SubscriptionType = S.String;
 export interface Subscriber {
   SubscriptionType: SubscriptionType;
   Address: string | redacted.Redacted<string>;
@@ -608,7 +608,7 @@ export type ActionType =
   | "APPLY_SCP_POLICY"
   | "RUN_SSM_DOCUMENTS"
   | (string & {});
-export const ActionType = /*@__PURE__*/ S.String;
+export const ActionType = S.String;
 export interface ActionThreshold {
   ActionThresholdValue: number;
   ActionThresholdType: ThresholdType;
@@ -658,7 +658,7 @@ export type ActionSubType =
   | "STOP_EC2_INSTANCES"
   | "STOP_RDS_INSTANCES"
   | (string & {});
-export const ActionSubType = /*@__PURE__*/ S.String;
+export const ActionSubType = S.String;
 export type InstanceIds = string[];
 export const InstanceIds = /*@__PURE__*/ S.Array(S.String);
 export interface SsmActionDefinition {
@@ -688,7 +688,7 @@ export const Definition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Definition" }) as any as S.Schema<Definition>;
 export type ApprovalModel = "AUTOMATIC" | "MANUAL" | (string & {});
-export const ApprovalModel = /*@__PURE__*/ S.String;
+export const ApprovalModel = S.String;
 export interface CreateBudgetActionRequest {
   AccountId: string;
   BudgetName: string;
@@ -822,7 +822,7 @@ export type ActionStatus =
   | "RESET_IN_PROGRESS"
   | "RESET_FAILURE"
   | (string & {});
-export const ActionStatus = /*@__PURE__*/ S.String;
+export const ActionStatus = S.String;
 export interface Action {
   ActionId: string;
   BudgetName: string;
@@ -985,7 +985,7 @@ export type EventType =
   | "UPDATE_ACTION"
   | "EXECUTE_ACTION"
   | (string & {});
-export const EventType = /*@__PURE__*/ S.String;
+export const EventType = S.String;
 export interface ActionHistoryDetails {
   Message: string;
   Action: Action;
@@ -1309,7 +1309,7 @@ export type ExecutionType =
   | "REVERSE_BUDGET_ACTION"
   | "RESET_BUDGET_ACTION"
   | (string & {});
-export const ExecutionType = /*@__PURE__*/ S.String;
+export const ExecutionType = S.String;
 export interface ExecuteBudgetActionRequest {
   AccountId: string;
   BudgetName: string;

@@ -102,7 +102,7 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
@@ -214,7 +214,7 @@ export type TaskInstanceStatus =
   | "CANCELLED"
   | "TIMEOUT"
   | (string & {});
-export const TaskInstanceStatus = /*@__PURE__*/ S.String;
+export const TaskInstanceStatus = S.String;
 export type GenericMap = { [key: string]: string | undefined };
 export const GenericMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -344,7 +344,7 @@ export type EncryptionType =
   | "AWS_MANAGED_KEY"
   | "CUSTOMER_MANAGED_KEY"
   | (string & {});
-export const EncryptionType = /*@__PURE__*/ S.String;
+export const EncryptionType = S.String;
 export interface EncryptionConfiguration {
   Type: EncryptionType;
   KmsKeyId?: string;
@@ -420,7 +420,7 @@ export const CreateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateWorkflowRequest",
 }) as any as S.Schema<CreateWorkflowRequest>;
 export type WorkflowStatus = "READY" | "DELETING" | (string & {});
-export const WorkflowStatus = /*@__PURE__*/ S.String;
+export const WorkflowStatus = S.String;
 export type WarningMessages = string[];
 export const WarningMessages = /*@__PURE__*/ S.Array(S.String);
 export interface CreateWorkflowResponse {
@@ -701,7 +701,7 @@ export type WorkflowRunStatus =
   | "STOPPING"
   | "STOPPED"
   | (string & {});
-export const WorkflowRunStatus = /*@__PURE__*/ S.String;
+export const WorkflowRunStatus = S.String;
 export interface StartWorkflowRunResponse {
   RunId?: string;
   Status?: WorkflowRunStatus;
@@ -740,7 +740,7 @@ export const GetWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetWorkflowRunRequest",
 }) as any as S.Schema<GetWorkflowRunRequest>;
 export type RunType = "ON_DEMAND" | "SCHEDULED" | (string & {});
-export const RunType = /*@__PURE__*/ S.String;
+export const RunType = S.String;
 export type TaskInstanceIds = string[];
 export const TaskInstanceIds = /*@__PURE__*/ S.Array(S.String);
 export interface WorkflowRunDetail {

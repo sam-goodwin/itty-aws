@@ -262,7 +262,7 @@ export const DeleteIdentitiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIdentitiesInput",
 }) as any as S.Schema<DeleteIdentitiesInput>;
 export type ErrorCode = "AccessDenied" | "InternalServerError" | (string & {});
-export const ErrorCode = /*@__PURE__*/ S.String;
+export const ErrorCode = S.String;
 export interface UnprocessedIdentityId {
   IdentityId?: string;
   ErrorCode?: ErrorCode;
@@ -478,19 +478,19 @@ export const RolesMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type RoleMappingType = "Token" | "Rules" | (string & {});
-export const RoleMappingType = /*@__PURE__*/ S.String;
+export const RoleMappingType = S.String;
 export type AmbiguousRoleResolutionType =
   | "AuthenticatedRole"
   | "Deny"
   | (string & {});
-export const AmbiguousRoleResolutionType = /*@__PURE__*/ S.String;
+export const AmbiguousRoleResolutionType = S.String;
 export type MappingRuleMatchType =
   | "Equals"
   | "Contains"
   | "StartsWith"
   | "NotEqual"
   | (string & {});
-export const MappingRuleMatchType = /*@__PURE__*/ S.String;
+export const MappingRuleMatchType = S.String;
 export interface MappingRule {
   Claim: string;
   MatchType: MappingRuleMatchType;

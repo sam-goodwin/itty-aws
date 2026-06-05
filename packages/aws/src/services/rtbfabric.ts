@@ -267,13 +267,13 @@ export type ResponderErrorMaskingAction =
   | "NO_BID"
   | "PASSTHROUGH"
   | (string & {});
-export const ResponderErrorMaskingAction = /*@__PURE__*/ S.String;
+export const ResponderErrorMaskingAction = S.String;
 export type ResponderErrorMaskingLoggingType =
   | "NONE"
   | "METRIC"
   | "RESPONSE"
   | (string & {});
-export const ResponderErrorMaskingLoggingType = /*@__PURE__*/ S.String;
+export const ResponderErrorMaskingLoggingType = S.String;
 export type ResponderErrorMaskingLoggingTypes =
   ResponderErrorMaskingLoggingType[];
 export const ResponderErrorMaskingLoggingTypes = /*@__PURE__*/ S.Array(
@@ -380,9 +380,9 @@ export type LinkStatus =
   | "ISOLATED"
   | "PENDING_RESTORATION"
   | (string & {});
-export const LinkStatus = /*@__PURE__*/ S.String;
+export const LinkStatus = S.String;
 export type LinkDirection = "RESPONSE" | "REQUEST" | (string & {});
-export const LinkDirection = /*@__PURE__*/ S.String;
+export const LinkDirection = S.String;
 export type FlowModuleNameList = string[];
 export const FlowModuleNameList = /*@__PURE__*/ S.Array(S.String);
 export interface NoBidModuleParameters {
@@ -400,7 +400,7 @@ export const NoBidModuleParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "NoBidModuleParameters",
 }) as any as S.Schema<NoBidModuleParameters>;
 export type FilterType = "INCLUDE" | "EXCLUDE" | (string & {});
-export const FilterType = /*@__PURE__*/ S.String;
+export const FilterType = S.String;
 export type ValueList = string[];
 export const ValueList = /*@__PURE__*/ S.Array(S.String);
 export interface FilterCriterion {
@@ -514,7 +514,7 @@ export type ConnectivityType =
   | "PUBLIC_EGRESS"
   | "EXTERNAL_INBOUND"
   | (string & {});
-export const ConnectivityType = /*@__PURE__*/ S.String;
+export const ConnectivityType = S.String;
 export interface CreateLinkResponse {
   gatewayId: string;
   peerGatewayId: string;
@@ -940,7 +940,7 @@ export type RequesterGatewayStatus =
   | "PENDING_ISOLATION"
   | "PENDING_RESTORATION"
   | (string & {});
-export const RequesterGatewayStatus = /*@__PURE__*/ S.String;
+export const RequesterGatewayStatus = S.String;
 export interface CreateRequesterGatewayResponse {
   gatewayId: string;
   domainName: string;
@@ -1194,7 +1194,7 @@ export const GetOutboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOutboundExternalLinkResponse",
 }) as any as S.Schema<GetOutboundExternalLinkResponse>;
 export type Protocol = "HTTP" | "HTTPS" | (string & {});
-export const Protocol = /*@__PURE__*/ S.String;
+export const Protocol = S.String;
 export type ProtocolList = Protocol[];
 export const ProtocolList = /*@__PURE__*/ S.Array(Protocol);
 export interface ListenerConfig {
@@ -1286,7 +1286,7 @@ export const ManagedEndpointConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ eksEndpoints: EksEndpointsConfiguration }),
 ]);
 export type GatewayType = "EXTERNAL" | "INTERNAL" | (string & {});
-export const GatewayType = /*@__PURE__*/ S.String;
+export const GatewayType = S.String;
 export interface CreateResponderGatewayRequest {
   vpcId: string;
   subnetIds: string[];
@@ -1341,7 +1341,7 @@ export type ResponderGatewayStatus =
   | "PENDING_ISOLATION"
   | "PENDING_RESTORATION"
   | (string & {});
-export const ResponderGatewayStatus = /*@__PURE__*/ S.String;
+export const ResponderGatewayStatus = S.String;
 export interface CreateResponderGatewayResponse {
   gatewayId: string;
   status: ResponderGatewayStatus;

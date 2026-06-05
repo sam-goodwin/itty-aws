@@ -197,7 +197,7 @@ export type ValidationExceptionReason =
   | "EventInOtherSession"
   | "ResourceConflict"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -243,7 +243,7 @@ export const GetResourceApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
 export type ScopesListType = string[];
 export const ScopesListType = /*@__PURE__*/ S.Array(S.String);
 export type Oauth2FlowType = "USER_FEDERATION" | "M2M" | (string & {});
-export const Oauth2FlowType = /*@__PURE__*/ S.String;
+export const Oauth2FlowType = S.String;
 export type CustomRequestParametersType = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -289,7 +289,7 @@ export const GetResourceOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResourceOauth2TokenRequest",
 }) as any as S.Schema<GetResourceOauth2TokenRequest>;
 export type SessionStatus = "IN_PROGRESS" | "FAILED" | (string & {});
-export const SessionStatus = /*@__PURE__*/ S.String;
+export const SessionStatus = S.String;
 export interface GetResourceOauth2TokenResponse {
   authorizationUrl?: string | redacted.Redacted<string>;
   accessToken?: string | redacted.Redacted<string>;
@@ -401,13 +401,13 @@ export type ToolName =
   | "getTask"
   | "stopTask"
   | (string & {});
-export const ToolName = /*@__PURE__*/ S.String;
+export const ToolName = S.String;
 export type ProgrammingLanguage =
   | "python"
   | "javascript"
   | "typescript"
   | (string & {});
-export const ProgrammingLanguage = /*@__PURE__*/ S.String;
+export const ProgrammingLanguage = S.String;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface InputContentBlock {
@@ -427,7 +427,7 @@ export const InputContentBlock = /*@__PURE__*/ S.suspend(() =>
 export type InputContentBlockList = InputContentBlock[];
 export const InputContentBlockList = /*@__PURE__*/ S.Array(InputContentBlock);
 export type LanguageRuntime = "nodejs" | "deno" | "python" | (string & {});
-export const LanguageRuntime = /*@__PURE__*/ S.String;
+export const LanguageRuntime = S.String;
 export interface ToolArguments {
   code?: string;
   language?: ProgrammingLanguage;
@@ -496,9 +496,9 @@ export type ContentBlockType =
   | "resource"
   | "resource_link"
   | (string & {});
-export const ContentBlockType = /*@__PURE__*/ S.String;
+export const ContentBlockType = S.String;
 export type ResourceContentType = "text" | "blob" | (string & {});
-export const ResourceContentType = /*@__PURE__*/ S.String;
+export const ResourceContentType = S.String;
 export interface ResourceContent {
   type: ResourceContentType;
   uri?: string;
@@ -550,7 +550,7 @@ export type TaskStatus =
   | "canceled"
   | "failed"
   | (string & {});
-export const TaskStatus = /*@__PURE__*/ S.String;
+export const TaskStatus = S.String;
 export interface ToolResultStructuredContent {
   taskId?: string;
   taskStatus?: TaskStatus;
@@ -921,7 +921,7 @@ export const ContentDeltaEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContentDeltaEvent",
 }) as any as S.Schema<ContentDeltaEvent>;
 export type CommandExecutionStatus = "COMPLETED" | "TIMED_OUT" | (string & {});
-export const CommandExecutionStatus = /*@__PURE__*/ S.String;
+export const CommandExecutionStatus = S.String;
 export interface ContentStopEvent {
   exitCode: number;
   status: CommandExecutionStatus;
@@ -1246,7 +1246,7 @@ export type BrowserEnterprisePolicyType =
   | "MANAGED"
   | "RECOMMENDED"
   | (string & {});
-export const BrowserEnterprisePolicyType = /*@__PURE__*/ S.String;
+export const BrowserEnterprisePolicyType = S.String;
 export interface BrowserEnterprisePolicy {
   location: ResourceLocation;
   type?: BrowserEnterprisePolicyType;
@@ -1272,9 +1272,9 @@ export const BrowserProfileConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "BrowserProfileConfiguration",
 }) as any as S.Schema<BrowserProfileConfiguration>;
 export type BrowserSessionStatus = "READY" | "TERMINATED" | (string & {});
-export const BrowserSessionStatus = /*@__PURE__*/ S.String;
+export const BrowserSessionStatus = S.String;
 export type AutomationStreamStatus = "ENABLED" | "DISABLED" | (string & {});
-export const AutomationStreamStatus = /*@__PURE__*/ S.String;
+export const AutomationStreamStatus = S.String;
 export interface AutomationStream {
   streamEndpoint: string;
   streamStatus: AutomationStreamStatus;
@@ -1410,7 +1410,7 @@ export const GetBrowserSessionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBrowserSessionResponse",
 }) as any as S.Schema<GetBrowserSessionResponse>;
 export type MouseButton = "LEFT" | "RIGHT" | "MIDDLE" | (string & {});
-export const MouseButton = /*@__PURE__*/ S.String;
+export const MouseButton = S.String;
 export interface MouseClickArguments {
   x: number;
   y: number;
@@ -1498,7 +1498,7 @@ export const KeyShortcutArguments = /*@__PURE__*/ S.suspend(() =>
   identifier: "KeyShortcutArguments",
 }) as any as S.Schema<KeyShortcutArguments>;
 export type ScreenshotFormat = "PNG" | (string & {});
-export const ScreenshotFormat = /*@__PURE__*/ S.String;
+export const ScreenshotFormat = S.String;
 export interface ScreenshotArguments {
   format?: ScreenshotFormat;
 }
@@ -1625,7 +1625,7 @@ export const InvokeBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvokeBrowserRequest",
 }) as any as S.Schema<InvokeBrowserRequest>;
 export type BrowserActionStatus = "SUCCESS" | "FAILED" | (string & {});
-export const BrowserActionStatus = /*@__PURE__*/ S.String;
+export const BrowserActionStatus = S.String;
 export interface MouseClickResult {
   status: BrowserActionStatus;
   error?: string;
@@ -2055,7 +2055,7 @@ export type CodeInterpreterSessionStatus =
   | "READY"
   | "TERMINATED"
   | (string & {});
-export const CodeInterpreterSessionStatus = /*@__PURE__*/ S.String;
+export const CodeInterpreterSessionStatus = S.String;
 export interface GetCodeInterpreterSessionResponse {
   codeInterpreterIdentifier: string;
   sessionId: string;
@@ -2445,7 +2445,7 @@ export const BatchCreateMemoryRecordsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateMemoryRecordsInput",
 }) as any as S.Schema<BatchCreateMemoryRecordsInput>;
 export type MemoryRecordStatus = "SUCCEEDED" | "FAILED" | (string & {});
-export const MemoryRecordStatus = /*@__PURE__*/ S.String;
+export const MemoryRecordStatus = S.String;
 export interface MemoryRecordOutput {
   memoryRecordId: string;
   status: MemoryRecordStatus;
@@ -2590,7 +2590,7 @@ export const Content = /*@__PURE__*/ S.Union([
   S.Struct({ text: SensitiveString }),
 ]);
 export type Role = "ASSISTANT" | "USER" | "TOOL" | "OTHER" | (string & {});
-export const Role = /*@__PURE__*/ S.String;
+export const Role = S.String;
 export interface Conversational {
   content: Content;
   role: Role;
@@ -2895,7 +2895,7 @@ export type OperatorType =
   | "EXISTS"
   | "NOT_EXISTS"
   | (string & {});
-export const OperatorType = /*@__PURE__*/ S.String;
+export const OperatorType = S.String;
 export type RightExpression = { metadataValue: MetadataValue };
 export const RightExpression = /*@__PURE__*/ S.Union([
   S.Struct({ metadataValue: MetadataValue }),
@@ -2974,7 +2974,7 @@ export const ListEventsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEventsOutput",
 }) as any as S.Schema<ListEventsOutput>;
 export type ExtractionJobStatus = "FAILED" | (string & {});
-export const ExtractionJobStatus = /*@__PURE__*/ S.String;
+export const ExtractionJobStatus = S.String;
 export interface ExtractionJobFilterInput {
   strategyId?: string;
   sessionId?: string;
@@ -3134,7 +3134,7 @@ export const ListMemoryRecordsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMemoryRecordsOutput",
 }) as any as S.Schema<ListMemoryRecordsOutput>;
 export type EventFilterCondition = "HAS_EVENTS" | (string & {});
-export const EventFilterCondition = /*@__PURE__*/ S.String;
+export const EventFilterCondition = S.String;
 export interface SessionFilter {
   eventFilter?: EventFilterCondition;
 }
@@ -3341,7 +3341,7 @@ export type DescriptorType =
   | "CUSTOM"
   | "AGENT_SKILLS"
   | (string & {});
-export const DescriptorType = /*@__PURE__*/ S.String;
+export const DescriptorType = S.String;
 export interface ServerDefinition {
   schemaVersion?: string;
   inlineContent?: string;
@@ -3452,7 +3452,7 @@ export type RegistryRecordStatus =
   | "REJECTED"
   | "DEPRECATED"
   | (string & {});
-export const RegistryRecordStatus = /*@__PURE__*/ S.String;
+export const RegistryRecordStatus = S.String;
 export interface RegistryRecordSummary {
   registryArn: string;
   recordArn: string;

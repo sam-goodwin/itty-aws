@@ -166,7 +166,7 @@ export type ResourceType =
   | "SCHEMA"
   | "POLICY_STORE_ALIAS"
   | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
+export const ResourceType = S.String;
 export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -204,7 +204,7 @@ export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceOutput",
 }) as any as S.Schema<UntagResourceOutput>;
 export type ValidationMode = "OFF" | "STRICT" | (string & {});
-export const ValidationMode = /*@__PURE__*/ S.String;
+export const ValidationMode = S.String;
 export interface ValidationSettings {
   mode: ValidationMode;
 }
@@ -214,7 +214,7 @@ export const ValidationSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidationSettings",
 }) as any as S.Schema<ValidationSettings>;
 export type DeletionProtection = "ENABLED" | "DISABLED" | (string & {});
-export const DeletionProtection = /*@__PURE__*/ S.String;
+export const DeletionProtection = S.String;
 export type EncryptionContext = { [key: string]: string | undefined };
 export const EncryptionContext = /*@__PURE__*/ S.Record(
   S.String,
@@ -313,7 +313,7 @@ export const EncryptionState = /*@__PURE__*/ S.Union([
   S.Struct({ default: S.Struct({}) }),
 ]);
 export type CedarVersion = "CEDAR_2" | "CEDAR_4" | (string & {});
-export const CedarVersion = /*@__PURE__*/ S.String;
+export const CedarVersion = S.String;
 export interface GetPolicyStoreOutput {
   policyStoreId: string;
   arn: string;
@@ -852,7 +852,7 @@ export const BatchIsAuthorizedInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchIsAuthorizedInput",
 }) as any as S.Schema<BatchIsAuthorizedInput>;
 export type Decision = "ALLOW" | "DENY" | (string & {});
-export const Decision = /*@__PURE__*/ S.String;
+export const Decision = S.String;
 export interface DeterminingPolicyItem {
   policyId: string;
 }
@@ -1135,7 +1135,7 @@ export const BatchGetPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetPolicyInput",
 }) as any as S.Schema<BatchGetPolicyInput>;
 export type PolicyType = "STATIC" | "TEMPLATE_LINKED" | (string & {});
-export const PolicyType = /*@__PURE__*/ S.String;
+export const PolicyType = S.String;
 export interface StaticPolicyDefinitionDetail {
   description?: string | redacted.Redacted<string>;
   statement: string | redacted.Redacted<string>;
@@ -1201,7 +1201,7 @@ export type BatchGetPolicyErrorCode =
   | "POLICY_NOT_FOUND"
   | "POLICY_STORE_ALIAS_NOT_FOUND"
   | (string & {});
-export const BatchGetPolicyErrorCode = /*@__PURE__*/ S.String;
+export const BatchGetPolicyErrorCode = S.String;
 export interface BatchGetPolicyErrorItem {
   code: BatchGetPolicyErrorCode;
   policyStoreId: string;
@@ -1383,7 +1383,7 @@ export const GetIdentitySourceInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIdentitySourceInput",
 }) as any as S.Schema<GetIdentitySourceInput>;
 export type OpenIdIssuer = "COGNITO" | (string & {});
-export const OpenIdIssuer = /*@__PURE__*/ S.String;
+export const OpenIdIssuer = S.String;
 export interface IdentitySourceDetails {
   clientIds?: string | redacted.Redacted<string>[];
   userPoolArn?: string;
@@ -1919,7 +1919,7 @@ export const CreatePolicyInput = /*@__PURE__*/ S.suspend(() =>
 export type ActionIdentifierList = ActionIdentifier[];
 export const ActionIdentifierList = /*@__PURE__*/ S.Array(ActionIdentifier);
 export type PolicyEffect = "Permit" | "Forbid" | (string & {});
-export const PolicyEffect = /*@__PURE__*/ S.String;
+export const PolicyEffect = S.String;
 export interface CreatePolicyOutput {
   policyStoreId: string;
   policyId: string;
@@ -2379,7 +2379,7 @@ export const GetPolicyStoreAliasInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPolicyStoreAliasInput",
 }) as any as S.Schema<GetPolicyStoreAliasInput>;
 export type AliasState = "Active" | "PendingDeletion" | (string & {});
-export const AliasState = /*@__PURE__*/ S.String;
+export const AliasState = S.String;
 export interface GetPolicyStoreAliasOutput {
   aliasName: string;
   policyStoreId: string;

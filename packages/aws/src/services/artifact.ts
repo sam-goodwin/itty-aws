@@ -132,7 +132,7 @@ export type NotificationSubscriptionStatus =
   | "SUBSCRIBED"
   | "NOT_SUBSCRIBED"
   | (string & {});
-export const NotificationSubscriptionStatus = /*@__PURE__*/ S.String;
+export const NotificationSubscriptionStatus = S.String;
 export interface AccountSettings {
   notificationSubscriptionStatus?: NotificationSubscriptionStatus;
 }
@@ -217,11 +217,11 @@ export type CustomerAgreementState =
   | "CUSTOMER_TERMINATED"
   | "AWS_TERMINATED"
   | (string & {});
-export const CustomerAgreementState = /*@__PURE__*/ S.String;
+export const CustomerAgreementState = S.String;
 export type AgreementTerms = string[];
 export const AgreementTerms = /*@__PURE__*/ S.Array(S.String);
 export type AgreementType = "CUSTOM" | "DEFAULT" | "MODIFIED" | (string & {});
-export const AgreementType = /*@__PURE__*/ S.String;
+export const AgreementType = S.String;
 export interface CustomerAgreementSummary {
   name?: string;
   arn?: string;
@@ -298,16 +298,16 @@ export const GetReportMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetReportMetadataRequest",
 }) as any as S.Schema<GetReportMetadataRequest>;
 export type PublishedState = "PUBLISHED" | "UNPUBLISHED" | (string & {});
-export const PublishedState = /*@__PURE__*/ S.String;
+export const PublishedState = S.String;
 export type AcceptanceType = "PASSTHROUGH" | "EXPLICIT" | (string & {});
-export const AcceptanceType = /*@__PURE__*/ S.String;
+export const AcceptanceType = S.String;
 export type UploadState =
   | "PROCESSING"
   | "COMPLETE"
   | "FAILED"
   | "FAULT"
   | (string & {});
-export const UploadState = /*@__PURE__*/ S.String;
+export const UploadState = S.String;
 export interface ReportDetail {
   id?: string;
   name?: string;

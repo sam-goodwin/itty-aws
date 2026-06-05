@@ -71,9 +71,9 @@ export type NextStep = string;
 
 //# Schemas
 export type FilterName = "FEATURE" | "SEVERITY" | "TYPE" | (string & {});
-export const FilterName = /*@__PURE__*/ S.String;
+export const FilterName = S.String;
 export type MatchOption = "EQUALS" | "NOT_EQUALS" | (string & {});
-export const MatchOption = /*@__PURE__*/ S.String;
+export const MatchOption = S.String;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface ActionFilter {
@@ -130,9 +130,9 @@ export type ActionType =
   | "UPDATE_TAX_EXEMPTION_CERTIFICATE"
   | "UPDATE_TAX_REGISTRATION_NUMBER"
   | (string & {});
-export const ActionType = /*@__PURE__*/ S.String;
+export const ActionType = S.String;
 export type Severity = "INFO" | "WARNING" | "CRITICAL" | (string & {});
-export const Severity = /*@__PURE__*/ S.String;
+export const Severity = S.String;
 export type Feature =
   | "ACCOUNT"
   | "BUDGETS"
@@ -145,7 +145,7 @@ export type Feature =
   | "SAVINGS_PLANS"
   | "TAX_SETTINGS"
   | (string & {});
-export const Feature = /*@__PURE__*/ S.String;
+export const Feature = S.String;
 export type Context = { [key: string]: string | undefined };
 export const Context = /*@__PURE__*/ S.Record(
   S.String,
@@ -197,7 +197,7 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;

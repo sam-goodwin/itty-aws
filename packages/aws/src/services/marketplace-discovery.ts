@@ -150,7 +150,7 @@ export type ListingBadgeType =
   | "QUICK_LAUNCH"
   | "MULTI_PRODUCT"
   | (string & {});
-export const ListingBadgeType = /*@__PURE__*/ S.String;
+export const ListingBadgeType = S.String;
 export interface ListingBadge {
   displayName: string;
   badgeType: ListingBadgeType;
@@ -183,7 +183,7 @@ export type FulfillmentOptionType =
   | "SAGEMAKER_ALGORITHM"
   | "SAGEMAKER_MODEL"
   | (string & {});
-export const FulfillmentOptionType = /*@__PURE__*/ S.String;
+export const FulfillmentOptionType = S.String;
 export interface FulfillmentOptionSummary {
   fulfillmentOptionType: FulfillmentOptionType;
   displayName: string;
@@ -208,7 +208,7 @@ export type PricingModelType =
   | "BYOL"
   | "FREE"
   | (string & {});
-export const PricingModelType = /*@__PURE__*/ S.String;
+export const PricingModelType = S.String;
 export interface PricingModel {
   pricingModelType: PricingModelType;
   displayName: string;
@@ -227,7 +227,7 @@ export type PricingUnitType =
   | "REQUESTS"
   | "UNITS"
   | (string & {});
-export const PricingUnitType = /*@__PURE__*/ S.String;
+export const PricingUnitType = S.String;
 export interface PricingUnit {
   pricingUnitType: PricingUnitType;
   displayName: string;
@@ -282,14 +282,14 @@ export type ResourceType =
   | "MANUFACTURER_SUPPORT"
   | "MANUFACTURER_INSTRUCTIONS"
   | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
+export const ResourceType = S.String;
 export type ResourceContentType =
   | "EMAIL"
   | "PHONE_NUMBER"
   | "LINK"
   | "OTHER"
   | (string & {});
-export const ResourceContentType = /*@__PURE__*/ S.String;
+export const ResourceContentType = S.String;
 export interface Resource {
   resourceType: ResourceType;
   contentType: ResourceContentType;
@@ -307,7 +307,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 export type ResourceList = Resource[];
 export const ResourceList = /*@__PURE__*/ S.Array(Resource);
 export type ReviewSourceId = "AWS_MARKETPLACE" | (string & {});
-export const ReviewSourceId = /*@__PURE__*/ S.String;
+export const ReviewSourceId = S.String;
 export interface ReviewSourceSummary {
   sourceName: string;
   sourceId: ReviewSourceId;
@@ -339,9 +339,9 @@ export type SellerEngagementType =
   | "REQUEST_FOR_PRIVATE_OFFER"
   | "REQUEST_FOR_DEMO"
   | (string & {});
-export const SellerEngagementType = /*@__PURE__*/ S.String;
+export const SellerEngagementType = S.String;
 export type SellerEngagementContentType = "LINK" | (string & {});
-export const SellerEngagementContentType = /*@__PURE__*/ S.String;
+export const SellerEngagementContentType = S.String;
 export interface SellerEngagement {
   engagementType: SellerEngagementType;
   contentType: SellerEngagementContentType;
@@ -442,7 +442,7 @@ export type PurchaseOptionBadgeType =
   | "FUTURE_DATED"
   | "REPLACEMENT_OFFER"
   | (string & {});
-export const PurchaseOptionBadgeType = /*@__PURE__*/ S.String;
+export const PurchaseOptionBadgeType = S.String;
 export interface PurchaseOptionBadge {
   displayName: string;
   badgeType: PurchaseOptionBadgeType;
@@ -605,7 +605,7 @@ export type TermType =
   | "ValidityTerm"
   | "VariablePaymentTerm"
   | (string & {});
-export const TermType = /*@__PURE__*/ S.String;
+export const TermType = S.String;
 export interface ByolPricingTerm {
   id: string;
   type: TermType;
@@ -616,7 +616,7 @@ export const ByolPricingTerm = /*@__PURE__*/ S.suspend(() =>
   identifier: "ByolPricingTerm",
 }) as any as S.Schema<ByolPricingTerm>;
 export type SelectorType = "Duration" | (string & {});
-export const SelectorType = /*@__PURE__*/ S.String;
+export const SelectorType = S.String;
 export interface Selector {
   type: SelectorType;
   value: string;
@@ -625,7 +625,7 @@ export const Selector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: SelectorType, value: S.String }),
 ).annotate({ identifier: "Selector" }) as any as S.Schema<Selector>;
 export type RateCardConstraintType = "Allowed" | "Disallowed" | (string & {});
-export const RateCardConstraintType = /*@__PURE__*/ S.String;
+export const RateCardConstraintType = S.String;
 export interface Constraints {
   multipleDimensionSelection: RateCardConstraintType;
   quantityConfiguration: RateCardConstraintType;
@@ -637,7 +637,7 @@ export const Constraints = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Constraints" }) as any as S.Schema<Constraints>;
 export type DimensionLabelType = "Region" | "SagemakerOption" | (string & {});
-export const DimensionLabelType = /*@__PURE__*/ S.String;
+export const DimensionLabelType = S.String;
 export interface DimensionLabel {
   labelType: DimensionLabelType;
   labelValue: string;
@@ -769,7 +769,7 @@ export type LegalDocumentType =
   | "StandardEula"
   | "StandardDsa"
   | (string & {});
-export const LegalDocumentType = /*@__PURE__*/ S.String;
+export const LegalDocumentType = S.String;
 export interface DocumentItem {
   type: LegalDocumentType;
   url: string;
@@ -821,7 +821,7 @@ export const PaymentScheduleTerm = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaymentScheduleTerm",
 }) as any as S.Schema<PaymentScheduleTerm>;
 export type BillingPeriodType = "Monthly" | (string & {});
-export const BillingPeriodType = /*@__PURE__*/ S.String;
+export const BillingPeriodType = S.String;
 export interface RecurringPaymentTerm {
   id: string;
   type: TermType;
@@ -1135,7 +1135,7 @@ export type DeployedOnAwsStatus =
   | "NOT_DEPLOYED"
   | "NOT_APPLICABLE"
   | (string & {});
-export const DeployedOnAwsStatus = /*@__PURE__*/ S.String;
+export const DeployedOnAwsStatus = S.String;
 export interface GetProductOutput {
   productId: string;
   catalog: string;
@@ -1810,7 +1810,7 @@ export type PurchaseOptionFilterType =
   | "VISIBILITY_SCOPE"
   | "AVAILABILITY_STATUS"
   | (string & {});
-export const PurchaseOptionFilterType = /*@__PURE__*/ S.String;
+export const PurchaseOptionFilterType = S.String;
 export type PurchaseOptionFilterValueList = string[];
 export const PurchaseOptionFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface PurchaseOptionFilter {
@@ -1852,7 +1852,7 @@ export const ListPurchaseOptionsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPurchaseOptionsInput",
 }) as any as S.Schema<ListPurchaseOptionsInput>;
 export type PurchaseOptionType = "OFFER" | "OFFERSET" | (string & {});
-export const PurchaseOptionType = /*@__PURE__*/ S.String;
+export const PurchaseOptionType = S.String;
 export interface PurchaseOptionAssociatedEntity {
   product: ProductInformation;
   offer: OfferInformation;
@@ -1927,7 +1927,7 @@ export type SearchFilterType =
   | "DEPLOYED_ON_AWS"
   | "NUMBER_OF_PRODUCTS"
   | (string & {});
-export const SearchFilterType = /*@__PURE__*/ S.String;
+export const SearchFilterType = S.String;
 export type SearchFilterValueList = string[];
 export const SearchFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface SearchFilter {
@@ -1952,7 +1952,7 @@ export type SearchFacetType =
   | "DEPLOYED_ON_AWS"
   | "NUMBER_OF_PRODUCTS"
   | (string & {});
-export const SearchFacetType = /*@__PURE__*/ S.String;
+export const SearchFacetType = S.String;
 export type FacetTypeList = SearchFacetType[];
 export const FacetTypeList = /*@__PURE__*/ S.Array(SearchFacetType);
 export interface SearchFacetsInput {
@@ -2019,12 +2019,12 @@ export type SearchListingsSortBy =
   | "RELEVANCE"
   | "AVERAGE_CUSTOMER_RATING"
   | (string & {});
-export const SearchListingsSortBy = /*@__PURE__*/ S.String;
+export const SearchListingsSortBy = S.String;
 export type SearchListingsSortOrder =
   | "DESCENDING"
   | "ASCENDING"
   | (string & {});
-export const SearchListingsSortOrder = /*@__PURE__*/ S.String;
+export const SearchListingsSortOrder = S.String;
 export interface SearchListingsInput {
   searchText?: string;
   filters?: SearchFilter[];

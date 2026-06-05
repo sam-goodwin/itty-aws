@@ -134,7 +134,7 @@ export type ValidationExceptionReason =
   | "UNKNOWN_OPERATION"
   | "OTHER"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -448,7 +448,7 @@ export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConnectorRequest",
 }) as any as S.Schema<GetConnectorRequest>;
 export type ConnectorType = "GENERAL_PURPOSE" | "INTUNE" | (string & {});
-export const ConnectorType = /*@__PURE__*/ S.String;
+export const ConnectorType = S.String;
 export interface OpenIdConfiguration {
   Issuer?: string;
   Subject?: string;
@@ -469,7 +469,7 @@ export type ConnectorStatus =
   | "DELETING"
   | "FAILED"
   | (string & {});
-export const ConnectorStatus = /*@__PURE__*/ S.String;
+export const ConnectorStatus = S.String;
 export type ConnectorStatusReason =
   | "INTERNAL_FAILURE"
   | "PRIVATECA_ACCESS_DENIED"
@@ -478,7 +478,7 @@ export type ConnectorStatusReason =
   | "VPC_ENDPOINT_RESOURCE_NOT_FOUND"
   | "VPC_ENDPOINT_DNS_ENTRIES_NOT_FOUND"
   | (string & {});
-export const ConnectorStatusReason = /*@__PURE__*/ S.String;
+export const ConnectorStatusReason = S.String;
 export interface Connector {
   Arn?: string;
   CertificateAuthorityArn?: string;

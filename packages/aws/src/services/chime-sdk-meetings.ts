@@ -113,7 +113,7 @@ export type MediaCapabilities =
   | "Receive"
   | "None"
   | (string & {});
-export const MediaCapabilities = /*@__PURE__*/ S.String;
+export const MediaCapabilities = S.String;
 export interface AttendeeCapabilities {
   Audio: MediaCapabilities;
   Video: MediaCapabilities;
@@ -299,7 +299,7 @@ export const NotificationsConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotificationsConfiguration",
 }) as any as S.Schema<NotificationsConfiguration>;
 export type MeetingFeatureStatus = "AVAILABLE" | "UNAVAILABLE" | (string & {});
-export const MeetingFeatureStatus = /*@__PURE__*/ S.String;
+export const MeetingFeatureStatus = S.String;
 export interface AudioFeatures {
   EchoReduction?: MeetingFeatureStatus;
 }
@@ -307,7 +307,7 @@ export const AudioFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EchoReduction: S.optional(MeetingFeatureStatus) }),
 ).annotate({ identifier: "AudioFeatures" }) as any as S.Schema<AudioFeatures>;
 export type VideoResolution = "None" | "HD" | "FHD" | (string & {});
-export const VideoResolution = /*@__PURE__*/ S.String;
+export const VideoResolution = S.String;
 export interface VideoFeatures {
   MaxResolution?: VideoResolution;
 }
@@ -315,7 +315,7 @@ export const VideoFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MaxResolution: S.optional(VideoResolution) }),
 ).annotate({ identifier: "VideoFeatures" }) as any as S.Schema<VideoFeatures>;
 export type ContentResolution = "None" | "FHD" | "UHD" | (string & {});
-export const ContentResolution = /*@__PURE__*/ S.String;
+export const ContentResolution = S.String;
 export interface ContentFeatures {
   MaxResolution?: ContentResolution;
 }
@@ -363,7 +363,7 @@ export type MediaPlacementNetworkType =
   | "Ipv4Only"
   | "DualStack"
   | (string & {});
-export const MediaPlacementNetworkType = /*@__PURE__*/ S.String;
+export const MediaPlacementNetworkType = S.String;
 export interface CreateMeetingRequest {
   ClientRequestToken: string | redacted.Redacted<string>;
   MediaRegion: string;
@@ -699,13 +699,13 @@ export type TranscribeLanguageCode =
   | "th-TH"
   | "hi-IN"
   | (string & {});
-export const TranscribeLanguageCode = /*@__PURE__*/ S.String;
+export const TranscribeLanguageCode = S.String;
 export type TranscribeVocabularyFilterMethod =
   | "remove"
   | "mask"
   | "tag"
   | (string & {});
-export const TranscribeVocabularyFilterMethod = /*@__PURE__*/ S.String;
+export const TranscribeVocabularyFilterMethod = S.String;
 export type TranscribeRegion =
   | "us-east-2"
   | "us-east-1"
@@ -721,17 +721,17 @@ export type TranscribeRegion =
   | "auto"
   | "us-gov-west-1"
   | (string & {});
-export const TranscribeRegion = /*@__PURE__*/ S.String;
+export const TranscribeRegion = S.String;
 export type TranscribePartialResultsStability =
   | "low"
   | "medium"
   | "high"
   | (string & {});
-export const TranscribePartialResultsStability = /*@__PURE__*/ S.String;
+export const TranscribePartialResultsStability = S.String;
 export type TranscribeContentIdentificationType = "PII" | (string & {});
-export const TranscribeContentIdentificationType = /*@__PURE__*/ S.String;
+export const TranscribeContentIdentificationType = S.String;
 export type TranscribeContentRedactionType = "PII" | (string & {});
-export const TranscribeContentRedactionType = /*@__PURE__*/ S.String;
+export const TranscribeContentRedactionType = S.String;
 export interface EngineTranscribeSettings {
   LanguageCode?: TranscribeLanguageCode;
   VocabularyFilterMethod?: TranscribeVocabularyFilterMethod;
@@ -773,7 +773,7 @@ export const EngineTranscribeSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "EngineTranscribeSettings",
 }) as any as S.Schema<EngineTranscribeSettings>;
 export type TranscribeMedicalLanguageCode = "en-US" | (string & {});
-export const TranscribeMedicalLanguageCode = /*@__PURE__*/ S.String;
+export const TranscribeMedicalLanguageCode = S.String;
 export type TranscribeMedicalSpecialty =
   | "PRIMARYCARE"
   | "CARDIOLOGY"
@@ -782,12 +782,12 @@ export type TranscribeMedicalSpecialty =
   | "RADIOLOGY"
   | "UROLOGY"
   | (string & {});
-export const TranscribeMedicalSpecialty = /*@__PURE__*/ S.String;
+export const TranscribeMedicalSpecialty = S.String;
 export type TranscribeMedicalType =
   | "CONVERSATION"
   | "DICTATION"
   | (string & {});
-export const TranscribeMedicalType = /*@__PURE__*/ S.String;
+export const TranscribeMedicalType = S.String;
 export type TranscribeMedicalRegion =
   | "us-east-1"
   | "us-east-2"
@@ -797,10 +797,9 @@ export type TranscribeMedicalRegion =
   | "eu-west-1"
   | "auto"
   | (string & {});
-export const TranscribeMedicalRegion = /*@__PURE__*/ S.String;
+export const TranscribeMedicalRegion = S.String;
 export type TranscribeMedicalContentIdentificationType = "PHI" | (string & {});
-export const TranscribeMedicalContentIdentificationType =
-  /*@__PURE__*/ S.String;
+export const TranscribeMedicalContentIdentificationType = S.String;
 export interface EngineTranscribeMedicalSettings {
   LanguageCode: TranscribeMedicalLanguageCode;
   Specialty: TranscribeMedicalSpecialty;

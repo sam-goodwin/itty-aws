@@ -116,7 +116,7 @@ export type NodeListMaxResults = number;
 
 //# Schemas
 export type AccessorType = "BILLING_TOKEN" | (string & {});
-export const AccessorType = /*@__PURE__*/ S.String;
+export const AccessorType = S.String;
 export type InputTagMap = { [key: string]: string | undefined };
 export const InputTagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -129,7 +129,7 @@ export type AccessorNetworkType =
   | "POLYGON_MAINNET"
   | "POLYGON_MUMBAI"
   | (string & {});
-export const AccessorNetworkType = /*@__PURE__*/ S.String;
+export const AccessorNetworkType = S.String;
 export interface CreateAccessorInput {
   ClientRequestToken: string;
   AccessorType: AccessorType;
@@ -272,9 +272,9 @@ export const CreateMemberOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMemberOutput",
 }) as any as S.Schema<CreateMemberOutput>;
 export type Framework = "HYPERLEDGER_FABRIC" | "ETHEREUM" | (string & {});
-export const Framework = /*@__PURE__*/ S.String;
+export const Framework = S.String;
 export type Edition = "STARTER" | "STANDARD" | (string & {});
-export const Edition = /*@__PURE__*/ S.String;
+export const Edition = S.String;
 export interface NetworkFabricConfiguration {
   Edition: Edition;
 }
@@ -295,7 +295,7 @@ export type ThresholdComparator =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL_TO"
   | (string & {});
-export const ThresholdComparator = /*@__PURE__*/ S.String;
+export const ThresholdComparator = S.String;
 export interface ApprovalThresholdPolicy {
   ThresholdPercentage?: number;
   ProposalDurationInHours?: number;
@@ -382,7 +382,7 @@ export const NodeLogPublishingConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeLogPublishingConfiguration",
 }) as any as S.Schema<NodeLogPublishingConfiguration>;
 export type StateDBType = "LevelDB" | "CouchDB" | (string & {});
-export const StateDBType = /*@__PURE__*/ S.String;
+export const StateDBType = S.String;
 export interface NodeConfiguration {
   InstanceType: string;
   AvailabilityZone?: string;
@@ -603,7 +603,7 @@ export type AccessorStatus =
   | "PENDING_DELETION"
   | "DELETED"
   | (string & {});
-export const AccessorStatus = /*@__PURE__*/ S.String;
+export const AccessorStatus = S.String;
 export type OutputTagMap = { [key: string]: string | undefined };
 export const OutputTagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -692,7 +692,7 @@ export type MemberStatus =
   | "DELETED"
   | "INACCESSIBLE_ENCRYPTION_KEY"
   | (string & {});
-export const MemberStatus = /*@__PURE__*/ S.String;
+export const MemberStatus = S.String;
 export interface Member {
   NetworkId?: string;
   Id?: string;
@@ -787,7 +787,7 @@ export type NetworkStatus =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const NetworkStatus = /*@__PURE__*/ S.String;
+export const NetworkStatus = S.String;
 export interface Network {
   Id?: string;
   Name?: string;
@@ -896,7 +896,7 @@ export type NodeStatus =
   | "FAILED"
   | "INACCESSIBLE_ENCRYPTION_KEY"
   | (string & {});
-export const NodeStatus = /*@__PURE__*/ S.String;
+export const NodeStatus = S.String;
 export interface Node {
   NetworkId?: string;
   MemberId?: string;
@@ -968,7 +968,7 @@ export type ProposalStatus =
   | "EXPIRED"
   | "ACTION_FAILED"
   | (string & {});
-export const ProposalStatus = /*@__PURE__*/ S.String;
+export const ProposalStatus = S.String;
 export interface Proposal {
   ProposalId?: string;
   NetworkId?: string;
@@ -1104,7 +1104,7 @@ export type InvitationStatus =
   | "REJECTED"
   | "EXPIRED"
   | (string & {});
-export const InvitationStatus = /*@__PURE__*/ S.String;
+export const InvitationStatus = S.String;
 export interface NetworkSummary {
   Id?: string;
   Name?: string;
@@ -1424,7 +1424,7 @@ export const ListProposalVotesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProposalVotesInput",
 }) as any as S.Schema<ListProposalVotesInput>;
 export type VoteValue = "YES" | "NO" | (string & {});
-export const VoteValue = /*@__PURE__*/ S.String;
+export const VoteValue = S.String;
 export interface VoteSummary {
   Vote?: VoteValue;
   MemberName?: string;

@@ -106,7 +106,7 @@ export type CapacityInBytes = number;
 
 //# Schemas
 export type EndpointAccessType = "Private" | "CustomerOwnedIp" | (string & {});
-export const EndpointAccessType = /*@__PURE__*/ S.String;
+export const EndpointAccessType = S.String;
 export interface CreateEndpointRequest {
   OutpostId: string;
   SubnetId: string;
@@ -197,7 +197,7 @@ export type EndpointStatus =
   | "Create_Failed"
   | "Delete_Failed"
   | (string & {});
-export const EndpointStatus = /*@__PURE__*/ S.String;
+export const EndpointStatus = S.String;
 export interface NetworkInterface {
   NetworkInterfaceId?: string;
 }

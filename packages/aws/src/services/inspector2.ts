@@ -377,7 +377,7 @@ export type AssociationResultStatusCode =
   | "RESOURCE_NOT_FOUND"
   | "QUOTA_EXCEEDED"
   | (string & {});
-export const AssociationResultStatusCode = /*@__PURE__*/ S.String;
+export const AssociationResultStatusCode = S.String;
 export interface FailedAssociationResult {
   scanConfigurationArn?: string;
   resource?: CodeSecurityResource;
@@ -1029,7 +1029,7 @@ export const CancelSbomExportResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelSbomExportResponse",
 }) as any as S.Schema<CancelSbomExportResponse>;
 export type CisSecurityLevel = "LEVEL_1" | "LEVEL_2" | (string & {});
-export const CisSecurityLevel = /*@__PURE__*/ S.String;
+export const CisSecurityLevel = S.String;
 export interface OneTimeSchedule {}
 export const OneTimeSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -1058,7 +1058,7 @@ export type Day =
   | "FRI"
   | "SAT"
   | (string & {});
-export const Day = /*@__PURE__*/ S.String;
+export const Day = S.String;
 export type DaysList = Day[];
 export const DaysList = /*@__PURE__*/ S.Array(Day);
 export interface WeeklySchedule {
@@ -1155,7 +1155,7 @@ export const CreateCisScanConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCisScanConfigurationResponse",
 }) as any as S.Schema<CreateCisScanConfigurationResponse>;
 export type IntegrationType = "GITLAB_SELF_MANAGED" | "GITHUB" | (string & {});
-export const IntegrationType = /*@__PURE__*/ S.String;
+export const IntegrationType = S.String;
 export interface CreateGitLabSelfManagedIntegrationDetail {
   instanceUrl: string | redacted.Redacted<string>;
   accessToken: string | redacted.Redacted<string>;
@@ -1210,7 +1210,7 @@ export type IntegrationStatus =
   | "INACTIVE"
   | "DISABLING"
   | (string & {});
-export const IntegrationStatus = /*@__PURE__*/ S.String;
+export const IntegrationStatus = S.String;
 export interface CreateCodeSecurityIntegrationResponse {
   integrationArn: string;
   status: IntegrationStatus;
@@ -1227,13 +1227,13 @@ export const CreateCodeSecurityIntegrationResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateCodeSecurityIntegrationResponse",
 }) as any as S.Schema<CreateCodeSecurityIntegrationResponse>;
 export type ConfigurationLevel = "ORGANIZATION" | "ACCOUNT" | (string & {});
-export const ConfigurationLevel = /*@__PURE__*/ S.String;
+export const ConfigurationLevel = S.String;
 export type PeriodicScanFrequency =
   | "WEEKLY"
   | "MONTHLY"
   | "NEVER"
   | (string & {});
-export const PeriodicScanFrequency = /*@__PURE__*/ S.String;
+export const PeriodicScanFrequency = S.String;
 export interface PeriodicScanConfiguration {
   frequency?: PeriodicScanFrequency;
   frequencyExpression?: string;
@@ -1250,7 +1250,7 @@ export type ContinuousIntegrationScanEvent =
   | "PULL_REQUEST"
   | "PUSH"
   | (string & {});
-export const ContinuousIntegrationScanEvent = /*@__PURE__*/ S.String;
+export const ContinuousIntegrationScanEvent = S.String;
 export type ContinuousIntegrationScanSupportedEvents =
   ContinuousIntegrationScanEvent[];
 export const ContinuousIntegrationScanSupportedEvents = /*@__PURE__*/ S.Array(
@@ -1265,7 +1265,7 @@ export const ContinuousIntegrationScanConfiguration = /*@__PURE__*/ S.suspend(
   identifier: "ContinuousIntegrationScanConfiguration",
 }) as any as S.Schema<ContinuousIntegrationScanConfiguration>;
 export type RuleSetCategory = "SAST" | "IAC" | "SCA" | (string & {});
-export const RuleSetCategory = /*@__PURE__*/ S.String;
+export const RuleSetCategory = S.String;
 export type RuleSetCategories = RuleSetCategory[];
 export const RuleSetCategories = /*@__PURE__*/ S.Array(RuleSetCategory);
 export interface CodeSecurityScanConfiguration {
@@ -1285,7 +1285,7 @@ export const CodeSecurityScanConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "CodeSecurityScanConfiguration",
 }) as any as S.Schema<CodeSecurityScanConfiguration>;
 export type ProjectSelectionScope = "ALL" | (string & {});
-export const ProjectSelectionScope = /*@__PURE__*/ S.String;
+export const ProjectSelectionScope = S.String;
 export interface ScopeSettings {
   projectSelectionScope?: ProjectSelectionScope;
 }
@@ -1991,7 +1991,7 @@ export const EnableDelegatedAdminAccountResponse = /*@__PURE__*/ S.suspend(() =>
 export type ReportTargetAccounts = string[];
 export const ReportTargetAccounts = /*@__PURE__*/ S.Array(S.String);
 export type CisReportFormat = "PDF" | "CSV" | (string & {});
-export const CisReportFormat = /*@__PURE__*/ S.String;
+export const CisReportFormat = S.String;
 export interface GetCisScanReportRequest {
   scanArn: string;
   targetAccounts?: string[];
@@ -2020,7 +2020,7 @@ export type CisReportStatus =
   | "FAILED"
   | "IN_PROGRESS"
   | (string & {});
-export const CisReportStatus = /*@__PURE__*/ S.String;
+export const CisReportStatus = S.String;
 export interface GetCisScanReportResponse {
   url?: string;
   status?: CisReportStatus;
@@ -2031,9 +2031,9 @@ export const GetCisScanReportResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCisScanReportResponse",
 }) as any as S.Schema<GetCisScanReportResponse>;
 export type CisFindingStatusComparison = "EQUALS" | (string & {});
-export const CisFindingStatusComparison = /*@__PURE__*/ S.String;
+export const CisFindingStatusComparison = S.String;
 export type CisFindingStatus = "PASSED" | "FAILED" | "SKIPPED" | (string & {});
-export const CisFindingStatus = /*@__PURE__*/ S.String;
+export const CisFindingStatus = S.String;
 export interface CisFindingStatusFilter {
   comparison: CisFindingStatusComparison;
   value: CisFindingStatus;
@@ -2052,7 +2052,7 @@ export type CisStringComparison =
   | "PREFIX"
   | "NOT_EQUALS"
   | (string & {});
-export const CisStringComparison = /*@__PURE__*/ S.String;
+export const CisStringComparison = S.String;
 export interface CisStringFilter {
   comparison: CisStringComparison;
   value: string;
@@ -2067,7 +2067,7 @@ export const CheckIdFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
 export type TitleFilterList = CisStringFilter[];
 export const TitleFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
 export type CisSecurityLevelComparison = "EQUALS" | (string & {});
-export const CisSecurityLevelComparison = /*@__PURE__*/ S.String;
+export const CisSecurityLevelComparison = S.String;
 export interface CisSecurityLevelFilter {
   comparison: CisSecurityLevelComparison;
   value: CisSecurityLevel;
@@ -2102,9 +2102,9 @@ export const CisScanResultDetailsFilterCriteria = /*@__PURE__*/ S.suspend(() =>
   identifier: "CisScanResultDetailsFilterCriteria",
 }) as any as S.Schema<CisScanResultDetailsFilterCriteria>;
 export type CisScanResultDetailsSortBy = "CHECK_ID" | "STATUS" | (string & {});
-export const CisScanResultDetailsSortBy = /*@__PURE__*/ S.String;
+export const CisScanResultDetailsSortBy = S.String;
 export type CisSortOrder = "ASC" | "DESC" | (string & {});
-export const CisSortOrder = /*@__PURE__*/ S.String;
+export const CisSortOrder = S.String;
 export interface GetCisScanResultDetailsRequest {
   scanArn: string;
   targetResourceId: string;
@@ -2371,7 +2371,7 @@ export type CodeScanStatus =
   | "FAILED"
   | "SKIPPED"
   | (string & {});
-export const CodeScanStatus = /*@__PURE__*/ S.String;
+export const CodeScanStatus = S.String;
 export interface GetCodeSecurityScanResponse {
   scanId?: string;
   resource?: CodeSecurityResource;
@@ -2770,7 +2770,7 @@ export const ListAccountPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 export type CisScanNameFilterList = CisStringFilter[];
 export const CisScanNameFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
 export type TagComparison = "EQUALS" | (string & {});
-export const TagComparison = /*@__PURE__*/ S.String;
+export const TagComparison = S.String;
 export interface TagFilter {
   comparison: TagComparison;
   key: string;
@@ -2805,7 +2805,7 @@ export type CisScanConfigurationsSortBy =
   | "SCAN_NAME"
   | "SCAN_CONFIGURATION_ARN"
   | (string & {});
-export const CisScanConfigurationsSortBy = /*@__PURE__*/ S.String;
+export const CisScanConfigurationsSortBy = S.String;
 export interface ListCisScanConfigurationsRequest {
   filterCriteria?: ListCisScanConfigurationsFilterCriteria;
   sortBy?: CisScanConfigurationsSortBy;
@@ -2928,7 +2928,7 @@ export type CisScanResultsAggregatedByChecksSortBy =
   | "FAILED_COUNTS"
   | "SECURITY_LEVEL"
   | (string & {});
-export const CisScanResultsAggregatedByChecksSortBy = /*@__PURE__*/ S.String;
+export const CisScanResultsAggregatedByChecksSortBy = S.String;
 export interface ListCisScanResultsAggregatedByChecksRequest {
   scanArn: string;
   filterCriteria?: CisScanResultsAggregatedByChecksFilterCriteria;
@@ -3016,9 +3016,9 @@ export const ListCisScanResultsAggregatedByChecksResponse =
 export type AccountIdFilterList = CisStringFilter[];
 export const AccountIdFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
 export type CisResultStatusComparison = "EQUALS" | (string & {});
-export const CisResultStatusComparison = /*@__PURE__*/ S.String;
+export const CisResultStatusComparison = S.String;
 export type CisResultStatus = "PASSED" | "FAILED" | "SKIPPED" | (string & {});
-export const CisResultStatus = /*@__PURE__*/ S.String;
+export const CisResultStatus = S.String;
 export interface CisResultStatusFilter {
   comparison: CisResultStatusComparison;
   value: CisResultStatus;
@@ -3035,13 +3035,13 @@ export const CisResultStatusFilterList = /*@__PURE__*/ S.Array(
 export type ResourceIdFilterList = CisStringFilter[];
 export const ResourceIdFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
 export type CisTargetStatusComparison = "EQUALS" | (string & {});
-export const CisTargetStatusComparison = /*@__PURE__*/ S.String;
+export const CisTargetStatusComparison = S.String;
 export type CisTargetStatus =
   | "TIMED_OUT"
   | "CANCELLED"
   | "COMPLETED"
   | (string & {});
-export const CisTargetStatus = /*@__PURE__*/ S.String;
+export const CisTargetStatus = S.String;
 export interface CisTargetStatusFilter {
   comparison: CisTargetStatusComparison;
   value: CisTargetStatus;
@@ -3060,7 +3060,7 @@ export type CisTargetStatusReason =
   | "UNSUPPORTED_OS"
   | "SSM_UNMANAGED"
   | (string & {});
-export const CisTargetStatusReason = /*@__PURE__*/ S.String;
+export const CisTargetStatusReason = S.String;
 export interface CisTargetStatusReasonFilter {
   comparison: CisTargetStatusComparison;
   value: CisTargetStatusReason;
@@ -3112,8 +3112,7 @@ export type CisScanResultsAggregatedByTargetResourceSortBy =
   | "TARGET_STATUS"
   | "TARGET_STATUS_REASON"
   | (string & {});
-export const CisScanResultsAggregatedByTargetResourceSortBy =
-  /*@__PURE__*/ S.String;
+export const CisScanResultsAggregatedByTargetResourceSortBy = S.String;
 export interface ListCisScanResultsAggregatedByTargetResourceRequest {
   scanArn: string;
   filterCriteria?: CisScanResultsAggregatedByTargetResourceFilterCriteria;
@@ -3188,14 +3187,14 @@ export const ListCisScanResultsAggregatedByTargetResourceResponse =
     identifier: "ListCisScanResultsAggregatedByTargetResourceResponse",
   }) as any as S.Schema<ListCisScanResultsAggregatedByTargetResourceResponse>;
 export type CisScanStatusComparison = "EQUALS" | (string & {});
-export const CisScanStatusComparison = /*@__PURE__*/ S.String;
+export const CisScanStatusComparison = S.String;
 export type CisScanStatus =
   | "FAILED"
   | "COMPLETED"
   | "CANCELLED"
   | "IN_PROGRESS"
   | (string & {});
-export const CisScanStatus = /*@__PURE__*/ S.String;
+export const CisScanStatus = S.String;
 export interface CisScanStatusFilter {
   comparison: CisScanStatusComparison;
   value: CisScanStatus;
@@ -3257,14 +3256,14 @@ export const ListCisScansFilterCriteria = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCisScansFilterCriteria",
 }) as any as S.Schema<ListCisScansFilterCriteria>;
 export type ListCisScansDetailLevel = "ORGANIZATION" | "MEMBER" | (string & {});
-export const ListCisScansDetailLevel = /*@__PURE__*/ S.String;
+export const ListCisScansDetailLevel = S.String;
 export type ListCisScansSortBy =
   | "STATUS"
   | "SCHEDULED_BY"
   | "SCAN_START_DATE"
   | "FAILED_CHECKS"
   | (string & {});
-export const ListCisScansSortBy = /*@__PURE__*/ S.String;
+export const ListCisScansSortBy = S.String;
 export interface ListCisScansRequest {
   filterCriteria?: ListCisScansFilterCriteria;
   detailLevel?: ListCisScansDetailLevel;
@@ -5697,7 +5696,7 @@ export type CisRuleStatus =
   | "NOT_APPLICABLE"
   | "ERROR"
   | (string & {});
-export const CisRuleStatus = /*@__PURE__*/ S.String;
+export const CisRuleStatus = S.String;
 export interface CisSessionMessage {
   ruleId: string;
   status: CisRuleStatus;
@@ -5810,7 +5809,7 @@ export type StopCisSessionStatus =
   | "INTERRUPTED"
   | "UNSUPPORTED_OS"
   | (string & {});
-export const StopCisSessionStatus = /*@__PURE__*/ S.String;
+export const StopCisSessionStatus = S.String;
 export interface StopCisMessageProgress {
   totalChecks?: number;
   successfulChecks?: number;

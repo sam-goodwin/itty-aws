@@ -137,9 +137,9 @@ export const GetReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetReportDefinitionRequest",
 }) as any as S.Schema<GetReportDefinitionRequest>;
 export type ReportFrequency = "MONTHLY" | "DAILY" | "ALL" | (string & {});
-export const ReportFrequency = /*@__PURE__*/ S.String;
+export const ReportFrequency = S.String;
 export type Format = "CSV" | "PARQUET" | (string & {});
-export const Format = /*@__PURE__*/ S.String;
+export const Format = S.String;
 export interface S3Location {
   bucket: string;
   prefix: string;
@@ -175,7 +175,7 @@ export type S3BucketRegion =
   | "eu-south-1"
   | "af-south-1"
   | (string & {});
-export const S3BucketRegion = /*@__PURE__*/ S.String;
+export const S3BucketRegion = S.String;
 export interface SourceS3Location {
   bucket: string;
   key: string;

@@ -1193,7 +1193,7 @@ export type AnomalyDetectorStatusCode =
   | "UPDATE_FAILED"
   | "DELETION_FAILED"
   | (string & {});
-export const AnomalyDetectorStatusCode = /*@__PURE__*/ S.String;
+export const AnomalyDetectorStatusCode = S.String;
 export interface AnomalyDetectorStatus {
   statusCode: AnomalyDetectorStatusCode;
   statusReason?: string;

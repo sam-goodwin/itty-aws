@@ -120,7 +120,7 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -135,7 +135,7 @@ export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export type SupportedAwsIntegration = "KmsTde" | (string & {});
-export const SupportedAwsIntegration = /*@__PURE__*/ S.String;
+export const SupportedAwsIntegration = S.String;
 export interface AssociateIamRoleToResourceInput {
   iamRoleArn: string;
   awsIntegration: SupportedAwsIntegration;
@@ -203,7 +203,7 @@ export type OciOnboardingStatus =
   | "SUSPENDED"
   | "CANCELED"
   | (string & {});
-export const OciOnboardingStatus = /*@__PURE__*/ S.String;
+export const OciOnboardingStatus = S.String;
 export type ResourceStatus =
   | "AVAILABLE"
   | "FAILED"
@@ -213,7 +213,7 @@ export type ResourceStatus =
   | "UPDATING"
   | "MAINTENANCE_IN_PROGRESS"
   | (string & {});
-export const ResourceStatus = /*@__PURE__*/ S.String;
+export const ResourceStatus = S.String;
 export interface OciIdentityDomain {
   ociIdentityDomainId?: string;
   ociIdentityDomainResourceUrl?: string;
@@ -290,9 +290,9 @@ export type ShapeType =
   | "INTEL_FLEX_X9"
   | "AMPERE_FLEX_A1"
   | (string & {});
-export const ShapeType = /*@__PURE__*/ S.String;
+export const ShapeType = S.String;
 export type ComputeModel = "ECPU" | "OCPU" | (string & {});
-export const ComputeModel = /*@__PURE__*/ S.String;
+export const ComputeModel = S.String;
 export interface DbSystemShapeSummary {
   availableCoreCount?: number;
   availableCoreCountPerNode?: number;
@@ -517,7 +517,7 @@ export type LicenseModel =
   | "BRING_YOUR_OWN_LICENSE"
   | "LICENSE_INCLUDED"
   | (string & {});
-export const LicenseModel = /*@__PURE__*/ S.String;
+export const LicenseModel = S.String;
 export type DayOfWeekName =
   | "MONDAY"
   | "TUESDAY"
@@ -527,7 +527,7 @@ export type DayOfWeekName =
   | "SATURDAY"
   | "SUNDAY"
   | (string & {});
-export const DayOfWeekName = /*@__PURE__*/ S.String;
+export const DayOfWeekName = S.String;
 export interface DayOfWeek {
   name?: DayOfWeekName;
 }
@@ -552,7 +552,7 @@ export type MonthName =
   | "NOVEMBER"
   | "DECEMBER"
   | (string & {});
-export const MonthName = /*@__PURE__*/ S.String;
+export const MonthName = S.String;
 export interface Month {
   name?: MonthName;
 }
@@ -562,12 +562,12 @@ export const Month = /*@__PURE__*/ S.suspend(() =>
 export type Months = Month[];
 export const Months = /*@__PURE__*/ S.Array(Month);
 export type PatchingModeType = "ROLLING" | "NONROLLING" | (string & {});
-export const PatchingModeType = /*@__PURE__*/ S.String;
+export const PatchingModeType = S.String;
 export type PreferenceType =
   | "NO_PREFERENCE"
   | "CUSTOM_PREFERENCE"
   | (string & {});
-export const PreferenceType = /*@__PURE__*/ S.String;
+export const PreferenceType = S.String;
 export type WeeksOfMonth = number[];
 export const WeeksOfMonth = /*@__PURE__*/ S.Array(S.Number);
 export interface MaintenanceWindow {
@@ -682,7 +682,7 @@ export type IamRoleStatus =
   | "PARTIALLY_CONNECTED"
   | "UNKNOWN"
   | (string & {});
-export const IamRoleStatus = /*@__PURE__*/ S.String;
+export const IamRoleStatus = S.String;
 export interface IamRole {
   iamRoleArn?: string;
   status?: IamRoleStatus;
@@ -1503,7 +1503,7 @@ export type DbServerPatchingStatus =
   | "MAINTENANCE_IN_PROGRESS"
   | "SCHEDULED"
   | (string & {});
-export const DbServerPatchingStatus = /*@__PURE__*/ S.String;
+export const DbServerPatchingStatus = S.String;
 export interface DbServerPatchingDetails {
   estimatedPatchDuration?: number;
   patchingStatus?: DbServerPatchingStatus;
@@ -1750,7 +1750,7 @@ export const GetCloudVmClusterInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCloudVmClusterInput",
 }) as any as S.Schema<GetCloudVmClusterInput>;
 export type DiskRedundancy = "HIGH" | "NORMAL" | (string & {});
-export const DiskRedundancy = /*@__PURE__*/ S.String;
+export const DiskRedundancy = S.String;
 export interface DbIormConfig {
   dbName?: string;
   flashCacheLimit?: string;
@@ -1772,7 +1772,7 @@ export type IormLifecycleState =
   | "FAILED"
   | "UPDATING"
   | (string & {});
-export const IormLifecycleState = /*@__PURE__*/ S.String;
+export const IormLifecycleState = S.String;
 export type Objective =
   | "AUTO"
   | "BALANCED"
@@ -1780,7 +1780,7 @@ export type Objective =
   | "HIGH_THROUGHPUT"
   | "LOW_LATENCY"
   | (string & {});
-export const Objective = /*@__PURE__*/ S.String;
+export const Objective = S.String;
 export interface ExadataIormConfig {
   dbPlans?: DbIormConfig[];
   lifecycleDetails?: string;
@@ -2068,9 +2068,9 @@ export type DbNodeResourceStatus =
   | "STOPPED"
   | "STARTING"
   | (string & {});
-export const DbNodeResourceStatus = /*@__PURE__*/ S.String;
+export const DbNodeResourceStatus = S.String;
 export type DbNodeMaintenanceType = "VMDB_REBOOT_MIGRATION" | (string & {});
-export const DbNodeMaintenanceType = /*@__PURE__*/ S.String;
+export const DbNodeMaintenanceType = S.String;
 export interface DbNode {
   dbNodeId?: string;
   dbNodeArn?: string;
@@ -2315,7 +2315,7 @@ export const StopDbNodeOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopDbNodeOutput",
 }) as any as S.Schema<StopDbNodeOutput>;
 export type Access = "ENABLED" | "DISABLED" | (string & {});
-export const Access = /*@__PURE__*/ S.String;
+export const Access = S.String;
 export interface CreateOdbNetworkInput {
   displayName: string;
   availabilityZone?: string;
@@ -2403,7 +2403,7 @@ export const OciDnsForwardingConfigList = /*@__PURE__*/ S.Array(
   OciDnsForwardingConfig,
 );
 export type VpcEndpointType = "SERVICENETWORK" | (string & {});
-export const VpcEndpointType = /*@__PURE__*/ S.String;
+export const VpcEndpointType = S.String;
 export interface ServiceNetworkEndpoint {
   vpcEndpointId?: string;
   vpcEndpointType?: VpcEndpointType;
@@ -2422,7 +2422,7 @@ export type ManagedResourceStatus =
   | "DISABLED"
   | "DISABLING"
   | (string & {});
-export const ManagedResourceStatus = /*@__PURE__*/ S.String;
+export const ManagedResourceStatus = S.String;
 export interface ManagedS3BackupAccess {
   status?: ManagedResourceStatus;
   ipv4Addresses?: string[];

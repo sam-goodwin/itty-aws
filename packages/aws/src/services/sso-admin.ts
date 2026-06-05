@@ -156,7 +156,7 @@ export const AddRegionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddRegionRequest",
 }) as any as S.Schema<AddRegionRequest>;
 export type RegionStatus = "ACTIVE" | "ADDING" | "REMOVING" | (string & {});
-export const RegionStatus = /*@__PURE__*/ S.String;
+export const RegionStatus = S.String;
 export interface AddRegionResponse {
   Status?: RegionStatus;
 }
@@ -168,17 +168,17 @@ export const AddRegionResponse = /*@__PURE__*/ S.suspend(() =>
 export type AccessDeniedExceptionReason =
   | "KMS_AccessDeniedException"
   | (string & {});
-export const AccessDeniedExceptionReason = /*@__PURE__*/ S.String;
+export const AccessDeniedExceptionReason = S.String;
 export type ThrottlingExceptionReason =
   | "KMS_ThrottlingException"
   | (string & {});
-export const ThrottlingExceptionReason = /*@__PURE__*/ S.String;
+export const ThrottlingExceptionReason = S.String;
 export type ValidationExceptionReason =
   | "KMS_InvalidKeyUsageException"
   | "KMS_InvalidStateException"
   | "KMS_DisabledException"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface CustomerManagedPolicyReference {
   Name: string;
   Path?: string;
@@ -213,7 +213,7 @@ export const AttachCustomerManagedPolicyReferenceToPermissionSetResponse =
 export type ResourceNotFoundExceptionReason =
   | "KMS_NotFoundException"
   | (string & {});
-export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
+export const ResourceNotFoundExceptionReason = S.String;
 export interface AttachManagedPolicyToPermissionSetRequest {
   InstanceArn: string;
   PermissionSetArn: string;
@@ -237,9 +237,9 @@ export const AttachManagedPolicyToPermissionSetResponse =
     identifier: "AttachManagedPolicyToPermissionSetResponse",
   }) as any as S.Schema<AttachManagedPolicyToPermissionSetResponse>;
 export type TargetType = "AWS_ACCOUNT" | (string & {});
-export const TargetType = /*@__PURE__*/ S.String;
+export const TargetType = S.String;
 export type PrincipalType = "USER" | "GROUP" | (string & {});
-export const PrincipalType = /*@__PURE__*/ S.String;
+export const PrincipalType = S.String;
 export interface CreateAccountAssignmentRequest {
   InstanceArn: string;
   TargetId: string;
@@ -267,7 +267,7 @@ export type StatusValues =
   | "FAILED"
   | "SUCCEEDED"
   | (string & {});
-export const StatusValues = /*@__PURE__*/ S.String;
+export const StatusValues = S.String;
 export interface AccountAssignmentOperationStatus {
   Status?: StatusValues;
   RequestId?: string;
@@ -307,7 +307,7 @@ export const CreateAccountAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAccountAssignmentResponse",
 }) as any as S.Schema<CreateAccountAssignmentResponse>;
 export type SignInOrigin = "IDENTITY_CENTER" | "APPLICATION" | (string & {});
-export const SignInOrigin = /*@__PURE__*/ S.String;
+export const SignInOrigin = S.String;
 export interface SignInOptions {
   Origin: SignInOrigin;
   ApplicationUrl?: string;
@@ -316,7 +316,7 @@ export const SignInOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Origin: SignInOrigin, ApplicationUrl: S.optional(S.String) }),
 ).annotate({ identifier: "SignInOptions" }) as any as S.Schema<SignInOptions>;
 export type ApplicationVisibility = "ENABLED" | "DISABLED" | (string & {});
-export const ApplicationVisibility = /*@__PURE__*/ S.String;
+export const ApplicationVisibility = S.String;
 export interface PortalOptions {
   SignInOptions?: SignInOptions;
   Visibility?: ApplicationVisibility;
@@ -337,7 +337,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type ApplicationStatus = "ENABLED" | "DISABLED" | (string & {});
-export const ApplicationStatus = /*@__PURE__*/ S.String;
+export const ApplicationStatus = S.String;
 export interface CreateApplicationRequest {
   InstanceArn: string;
   ApplicationProviderArn: string;
@@ -522,9 +522,9 @@ export const CreatePermissionSetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePermissionSetResponse",
 }) as any as S.Schema<CreatePermissionSetResponse>;
 export type TrustedTokenIssuerType = "OIDC_JWT" | (string & {});
-export const TrustedTokenIssuerType = /*@__PURE__*/ S.String;
+export const TrustedTokenIssuerType = S.String;
 export type JwksRetrievalOption = "OPEN_ID_DISCOVERY" | (string & {});
-export const JwksRetrievalOption = /*@__PURE__*/ S.String;
+export const JwksRetrievalOption = S.String;
 export interface OidcJwtConfiguration {
   IssuerUrl: string;
   ClaimAttributePath: string;
@@ -885,7 +885,7 @@ export const DescribeApplicationProviderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeApplicationProviderRequest",
 }) as any as S.Schema<DescribeApplicationProviderRequest>;
 export type FederationProtocol = "SAML" | "OAUTH" | (string & {});
-export const FederationProtocol = /*@__PURE__*/ S.String;
+export const FederationProtocol = S.String;
 export interface DisplayData {
   DisplayName?: string;
   IconUrl?: string;
@@ -957,18 +957,18 @@ export type InstanceStatus =
   | "DELETE_IN_PROGRESS"
   | "ACTIVE"
   | (string & {});
-export const InstanceStatus = /*@__PURE__*/ S.String;
+export const InstanceStatus = S.String;
 export type KmsKeyType =
   | "AWS_OWNED_KMS_KEY"
   | "CUSTOMER_MANAGED_KEY"
   | (string & {});
-export const KmsKeyType = /*@__PURE__*/ S.String;
+export const KmsKeyType = S.String;
 export type KmsKeyStatus =
   | "UPDATING"
   | "ENABLED"
   | "UPDATE_FAILED"
   | (string & {});
-export const KmsKeyStatus = /*@__PURE__*/ S.String;
+export const KmsKeyStatus = S.String;
 export interface EncryptionConfigurationDetails {
   KeyType?: KmsKeyType;
   KmsKeyArn?: string;
@@ -1025,8 +1025,7 @@ export type InstanceAccessControlAttributeConfigurationStatus =
   | "CREATION_IN_PROGRESS"
   | "CREATION_FAILED"
   | (string & {});
-export const InstanceAccessControlAttributeConfigurationStatus =
-  /*@__PURE__*/ S.String;
+export const InstanceAccessControlAttributeConfigurationStatus = S.String;
 export interface DescribeInstanceAccessControlAttributeConfigurationResponse {
   Status?: InstanceAccessControlAttributeConfigurationStatus;
   StatusReason?: string;
@@ -1245,7 +1244,7 @@ export type UserBackgroundSessionApplicationStatus =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
-export const UserBackgroundSessionApplicationStatus = /*@__PURE__*/ S.String;
+export const UserBackgroundSessionApplicationStatus = S.String;
 export interface GetApplicationSessionConfigurationResponse {
   UserBackgroundSessionApplicationStatus?: UserBackgroundSessionApplicationStatus;
 }
@@ -1526,7 +1525,7 @@ export type ProvisioningStatus =
   | "LATEST_PERMISSION_SET_PROVISIONED"
   | "LATEST_PERMISSION_SET_NOT_PROVISIONED"
   | (string & {});
-export const ProvisioningStatus = /*@__PURE__*/ S.String;
+export const ProvisioningStatus = S.String;
 export interface ListAccountsForProvisionedPermissionSetRequest {
   InstanceArn: string;
   PermissionSetArn: string;
@@ -2158,7 +2157,7 @@ export type ProvisionTargetType =
   | "AWS_ACCOUNT"
   | "ALL_PROVISIONED_ACCOUNTS"
   | (string & {});
-export const ProvisionTargetType = /*@__PURE__*/ S.String;
+export const ProvisionTargetType = S.String;
 export interface ProvisionPermissionSetRequest {
   InstanceArn: string;
   PermissionSetArn: string;
@@ -2590,7 +2589,7 @@ export const ListApplicationAccessScopesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListApplicationAccessScopesResponse",
 }) as any as S.Schema<ListApplicationAccessScopesResponse>;
 export type AuthenticationMethodType = "IAM" | (string & {});
-export const AuthenticationMethodType = /*@__PURE__*/ S.String;
+export const AuthenticationMethodType = S.String;
 export interface IamAuthenticationMethod {
   ActorPolicy: any;
 }
@@ -2719,7 +2718,7 @@ export type GrantType =
   | "urn:ietf:params:oauth:grant-type:jwt-bearer"
   | "urn:ietf:params:oauth:grant-type:token-exchange"
   | (string & {});
-export const GrantType = /*@__PURE__*/ S.String;
+export const GrantType = S.String;
 export type RedirectUris = string[];
 export const RedirectUris = /*@__PURE__*/ S.Array(S.String);
 export interface AuthorizationCodeGrant {

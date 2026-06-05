@@ -124,7 +124,7 @@ export type ChannelRole =
   | "MODERATOR"
   | "SUPPORTREQUESTOR"
   | (string & {});
-export const ChannelRole = /*@__PURE__*/ S.String;
+export const ChannelRole = S.String;
 export interface BatchAddChannelRoleToAccessorsInput {
   spaceId: string;
   channelId: string;
@@ -178,7 +178,7 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -198,7 +198,7 @@ export type Role =
   | "ADMINISTRATOR"
   | "SUPPORTREQUESTOR"
   | (string & {});
-export const Role = /*@__PURE__*/ S.String;
+export const Role = S.String;
 export interface BatchAddRoleInput {
   spaceId: string;
   accessorIds: string[];
@@ -334,11 +334,11 @@ export const CreateChannelOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateChannelOutput",
 }) as any as S.Schema<CreateChannelOutput>;
 export type TierLevel = "BASIC" | "STANDARD" | (string & {});
-export const TierLevel = /*@__PURE__*/ S.String;
+export const TierLevel = S.String;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export type FeatureEnableParameter = "ENABLED" | "DISABLED" | (string & {});
-export const FeatureEnableParameter = /*@__PURE__*/ S.String;
+export const FeatureEnableParameter = S.String;
 export type AllowedDomainsList = string | redacted.Redacted<string>[];
 export const AllowedDomainsList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface SupportedEmailDomainsParameters {
@@ -480,7 +480,7 @@ export type ChannelStatus =
   | "DELETING"
   | "DELETE_FAILED"
   | (string & {});
-export const ChannelStatus = /*@__PURE__*/ S.String;
+export const ChannelStatus = S.String;
 export interface GetChannelOutput {
   spaceId: string;
   channelId: string;
@@ -523,13 +523,13 @@ export const GetSpaceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetSpaceInput" }) as any as S.Schema<GetSpaceInput>;
 export type ConfigurationStatus = "CONFIGURED" | "UNCONFIGURED" | (string & {});
-export const ConfigurationStatus = /*@__PURE__*/ S.String;
+export const ConfigurationStatus = S.String;
 export type VanityDomainStatus =
   | "PENDING"
   | "APPROVED"
   | "UNAPPROVED"
   | (string & {});
-export const VanityDomainStatus = /*@__PURE__*/ S.String;
+export const VanityDomainStatus = S.String;
 export type UserAdmins = string[];
 export const UserAdmins = /*@__PURE__*/ S.Array(S.String);
 export type GroupAdmins = string[];
@@ -546,7 +546,7 @@ export type FeatureEnableStatus =
   | "DISABLED"
   | "NOT_ALLOWED"
   | (string & {});
-export const FeatureEnableStatus = /*@__PURE__*/ S.String;
+export const FeatureEnableStatus = S.String;
 export interface SupportedEmailDomainsStatus {
   enabled?: FeatureEnableStatus;
   allowedDomains?: string | redacted.Redacted<string>[];

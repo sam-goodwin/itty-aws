@@ -169,7 +169,7 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export const ValidationExceptionReason = S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -184,7 +184,7 @@ export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export type Dimension = "LINKED_ACCOUNT" | (string & {});
-export const Dimension = /*@__PURE__*/ S.String;
+export const Dimension = S.String;
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export interface DimensionValues {
@@ -341,14 +341,14 @@ export type BillingViewType =
   | "BILLING_TRANSFER"
   | "BILLING_TRANSFER_SHOWBACK"
   | (string & {});
-export const BillingViewType = /*@__PURE__*/ S.String;
+export const BillingViewType = S.String;
 export type BillingViewStatus =
   | "HEALTHY"
   | "UNHEALTHY"
   | "CREATING"
   | "UPDATING"
   | (string & {});
-export const BillingViewStatus = /*@__PURE__*/ S.String;
+export const BillingViewStatus = S.String;
 export type BillingViewStatusReason =
   | "SOURCE_VIEW_UNHEALTHY"
   | "SOURCE_VIEW_UPDATING"
@@ -359,7 +359,7 @@ export type BillingViewStatusReason =
   | "AGGREGATE_SOURCE"
   | "VIEW_OWNER_NOT_MANAGEMENT_ACCOUNT"
   | (string & {});
-export const BillingViewStatusReason = /*@__PURE__*/ S.String;
+export const BillingViewStatusReason = S.String;
 export type BillingViewStatusReasons = BillingViewStatusReason[];
 export const BillingViewStatusReasons = /*@__PURE__*/ S.Array(
   BillingViewStatusReason,
@@ -456,7 +456,7 @@ export const BillingViewArnList = /*@__PURE__*/ S.Array(S.String);
 export type BillingViewTypeList = BillingViewType[];
 export const BillingViewTypeList = /*@__PURE__*/ S.Array(BillingViewType);
 export type SearchOption = "STARTS_WITH" | (string & {});
-export const SearchOption = /*@__PURE__*/ S.String;
+export const SearchOption = S.String;
 export interface StringSearch {
   searchOption: SearchOption;
   searchValue: string;

@@ -139,7 +139,7 @@ export type LanguageCode =
   | "zh-TW"
   | "tr-TR"
   | (string & {});
-export const LanguageCode = /*@__PURE__*/ S.String;
+export const LanguageCode = S.String;
 export interface GetAccountActivityRequest {
   activityId: string;
   languageCode?: LanguageCode;
@@ -160,9 +160,9 @@ export type ActivityStatus =
   | "COMPLETED"
   | "EXPIRING"
   | (string & {});
-export const ActivityStatus = /*@__PURE__*/ S.String;
+export const ActivityStatus = S.String;
 export type CurrencyCode = "USD" | (string & {});
-export const CurrencyCode = /*@__PURE__*/ S.String;
+export const CurrencyCode = S.String;
 export interface MonetaryAmount {
   amount: number;
   unit: CurrencyCode;
@@ -217,13 +217,13 @@ export const GetAccountPlanStateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountPlanStateRequest",
 }) as any as S.Schema<GetAccountPlanStateRequest>;
 export type AccountPlanType = "FREE" | "PAID" | (string & {});
-export const AccountPlanType = /*@__PURE__*/ S.String;
+export const AccountPlanType = S.String;
 export type AccountPlanStatus =
   | "NOT_STARTED"
   | "ACTIVE"
   | "EXPIRED"
   | (string & {});
-export const AccountPlanStatus = /*@__PURE__*/ S.String;
+export const AccountPlanStatus = S.String;
 export interface GetAccountPlanStateResponse {
   accountId: string;
   accountPlanType: AccountPlanType;
@@ -259,7 +259,7 @@ export type Dimension =
   | "DESCRIPTION"
   | "USAGE_PERCENTAGE"
   | (string & {});
-export const Dimension = /*@__PURE__*/ S.String;
+export const Dimension = S.String;
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export type MatchOption =
@@ -269,7 +269,7 @@ export type MatchOption =
   | "CONTAINS"
   | "GREATER_THAN_OR_EQUAL"
   | (string & {});
-export const MatchOption = /*@__PURE__*/ S.String;
+export const MatchOption = S.String;
 export type MatchOptions = MatchOption[];
 export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface DimensionValues {
