@@ -107,3 +107,9 @@
 	shallow = true
 	ignore = dirty
 	fetchRecurseSubmodules = false
+[submodule "packages/unkey/specs/unkey"]
+	path = packages/unkey/specs/unkey
+	url = https://github.com/unkeyed/unkey.git
+[submodule "packages/unkey/specs/distilled-spec-unkey"]
+	path = packages/unkey/specs/distilled-spec-unkey
+	url = https://github.com/alchemy-run/distilled-spec-unkey.git
