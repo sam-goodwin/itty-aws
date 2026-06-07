@@ -196,6 +196,13 @@ export interface GeneratorConfig {
   defaultErrorStatuses?: Set<string>;
   /** Whether to skip deprecated operations (default: true) */
   skipDeprecated?: boolean;
+  /**
+   * Default `api-version` for versioned APIs (e.g. Azure ARM). When set, the
+   * generator bakes `apiVersion` into each operation's `T.Http` trait (so the
+   * client injects `?api-version=<value>` automatically) and omits the
+   * `api-version` query parameter from the generated input schema.
+   */
+  apiVersion?: string;
 }
 
 // ============================================================================
@@ -695,10 +702,15 @@ function generateInputSchemaSwagger(
   parameters: Parameter2[],
   spec: Swagger2Spec,
   ctx?: SchemaGenerationContext,
+  apiVersion?: string,
 ): { inputSchemaCode: string; inputSchemaName: string } {
   const inputSchemaName = `${toPascalCase(operationId)}Input`;
   const pathParams = parameters.filter((p) => p.in === "path");
-  const queryParams = parameters.filter((p) => p.in === "query");
+  // When the api-version is baked into the Http trait, drop it as an input
+  // field — the client injects it automatically.
+  const queryParams = parameters.filter(
+    (p) => p.in === "query" && !(apiVersion && p.name === "api-version"),
+  );
   const bodyParam = parameters.find((p) => p.in === "body");
 
   const fields: string[] = [];
@@ -755,10 +767,17 @@ function generateInputSchemaSwagger(
     }
   }
 
+  const swaggerHttpTraitParts = [
+    `method: "${method.toUpperCase()}"`,
+    `path: "${pathTemplate}"`,
+  ];
+  if (apiVersion) {
+    swaggerHttpTraitParts.push(`apiVersion: "${apiVersion}"`);
+  }
   const inputSchemaCode =
     annotatePureExportConst(`export const ${inputSchemaName} = Schema.Struct({
 ${fields.join("\n")}
-}).pipe(T.Http({ method: "${method.toUpperCase()}", path: "${pathTemplate}" }));`) +
+}).pipe(T.Http({ ${swaggerHttpTraitParts.join(", ")} }));`) +
     `
 export type ${inputSchemaName} = typeof ${inputSchemaName}.Type;`;
 
@@ -808,6 +827,7 @@ function generateInputSchema3(
   spec: OpenAPI3Spec,
   ctx?: SchemaGenerationContext,
   noFollowRedirect: boolean = false,
+  apiVersion?: string,
 ): { inputSchemaCode: string; inputSchemaName: string } {
   // Resolve top-level $ref (e.g. #/components/requestBodies/Foo).
   const requestBody = requestBodyParam?.$ref
@@ -815,7 +835,11 @@ function generateInputSchema3(
     : requestBodyParam;
   const inputSchemaName = `${toPascalCase(operationId)}Input`;
   const pathParams = parameters.filter((p) => p.in === "path");
-  const queryParams = parameters.filter((p) => p.in === "query");
+  // When the api-version is baked into the Http trait, drop it as an input
+  // field — the client injects it automatically.
+  const queryParams = parameters.filter(
+    (p) => p.in === "query" && !(apiVersion && p.name === "api-version"),
+  );
 
   const fields: string[] = [];
   const usedNames = new Set<string>();
@@ -929,6 +953,9 @@ function generateInputSchema3(
   const httpTraitParts = [`method: "${method.toUpperCase()}"`, `path: "${pathTemplate}"`];
   if (bodyContentType) {
     httpTraitParts.push(`contentType: "${bodyContentType}"`);
+  }
+  if (apiVersion) {
+    httpTraitParts.push(`apiVersion: "${apiVersion}"`);
   }
 
   // If the operation is marked as not following redirects (via the
@@ -1246,6 +1273,7 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
               parameters,
               swagger,
               sensitiveCtx,
+              config.apiVersion,
             );
 
           const responseSchema = getResponseSchema(
@@ -1388,6 +1416,7 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
             oas,
             sensitiveCtx,
             noFollowRedirect,
+            config.apiVersion,
           );
 
           const responseSchema = getResponseSchema(

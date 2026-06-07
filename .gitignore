@@ -10,3 +10,5 @@ pnpm-workspace.yaml
 vendor/
 .claude
 .worktrees
+.azure-np/
+**/.azure-np/

@@ -561,6 +561,20 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
             });
           }
 
+          // Inject a baked-in `api-version` query param for versioned APIs
+          // (e.g. Azure ARM, where it is required on every call and differs per
+          // resource provider). Applied for all methods; a caller-supplied
+          // `api-version` already present in the query takes precedence.
+          if (
+            httpTrait.apiVersion &&
+            parts.query["api-version"] === undefined
+          ) {
+            parts = {
+              ...parts,
+              query: { ...parts.query, "api-version": httpTrait.apiVersion },
+            };
+          }
+
           let request = HttpClientRequest.make(method)(
             baseUrl + parts.path,
           ).pipe(

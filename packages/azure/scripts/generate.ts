@@ -618,6 +618,10 @@ function main() {
         errorsImport: "../errors",
         includeOperationErrors: false,
         skipDeprecated: true,
+        // Bake the resolved api-version into each operation's Http trait so the
+        // client injects `?api-version=` automatically (ARM requires it on
+        // every call). Drops api-version from the user-facing input schema.
+        apiVersion: spec.apiVersion,
       });
 
       // Read generated files and group by service

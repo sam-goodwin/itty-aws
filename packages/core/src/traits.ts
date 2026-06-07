@@ -138,6 +138,14 @@ export interface HttpTrait {
   responseContentType?: string;
   /** Whether the request has a body (used by GCP generator) */
   hasBody?: boolean;
+  /**
+   * Default value for a versioned API's `api-version` query parameter, baked in
+   * at generation time. When set, the client injects `?api-version=<value>` on
+   * every request for this operation unless the caller already supplied one.
+   * Used by APIs like Azure ARM where `api-version` is required on every call
+   * and differs per resource provider.
+   */
+  apiVersion?: string;
 }
 
 /**
